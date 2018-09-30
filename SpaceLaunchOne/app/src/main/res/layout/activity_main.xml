@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    style="@style/matches_parent">
+
+    <android.support.design.widget.AppBarLayout
+        android:id="@+id/list_appbar_layout"
+        style="@style/list_appbar_layout">
+
+        <fragment
+            android:id="@+id/NextLaunch"
+            android:name="io.github.nkrusch.spacelaunchone.features.next.NextLaunchFragment"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/next_launch_fragment_height"
+            app:layout_scrollFlags="scroll" />
+
+    </android.support.design.widget.AppBarLayout>
+
+    <fragment
+        android:id="@+id/Launches"
+        android:name="io.github.nkrusch.spacelaunchone.features.launches.FutureLaunches"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior" />
+
+</android.support.design.widget.CoordinatorLayout>

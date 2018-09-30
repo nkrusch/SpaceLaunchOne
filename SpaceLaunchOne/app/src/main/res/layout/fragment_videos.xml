@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/video_container"
+    style="@style/video_layout">
+
+    <ImageView
+        android:id="@+id/videos_icon"
+        style="@style/video_header_image"
+        android:contentDescription="@string/videos" />
+
+    <TextView
+        android:id="@+id/video_header"
+        style="@style/video_header" />
+
+    <TextView
+        android:id="@+id/video_subtitle"
+        style="@style/video_subtitle" />
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/recyclerView"
+        style="@style/videos_recyclerview" />
+
+</android.support.constraint.ConstraintLayout>

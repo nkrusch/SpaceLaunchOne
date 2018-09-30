@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/layout_root"
+    style="@style/timer_container">
+
+    <TextView
+        android:id="@+id/days"
+        style="@style/timer_number"
+        app:layout_constraintEnd_toStartOf="@id/left_div" />
+
+    <TextView
+        android:id="@+id/left_div"
+        style="@style/timer_divider"
+        app:layout_constraintEnd_toStartOf="@id/hours" />
+
+    <TextView
+        android:id="@+id/hours"
+        style="@style/timer_number"
+        app:layout_constraintEnd_toStartOf="@id/middle_div" />
+
+    <TextView
+        android:id="@+id/middle_div"
+        style="@style/timer_divider"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/mins"
+        style="@style/timer_number"
+        app:layout_constraintStart_toEndOf="@id/middle_div" />
+
+    <TextView
+        android:id="@+id/right_div"
+        style="@style/timer_divider"
+        app:layout_constraintStart_toEndOf="@id/mins" />
+
+    <TextView
+        android:id="@+id/secs"
+        style="@style/timer_number"
+        app:layout_constraintStart_toEndOf="@id/right_div" />
+
+    <View
+        android:id="@+id/centerPt"
+        style="@style/timer_center_point" />
+
+    <TextView
+        android:id="@+id/day_text"
+        style="@style/timer_text"
+        android:text="@string/day"
+        app:layout_constraintEnd_toEndOf="@id/days"
+        app:layout_constraintStart_toStartOf="@id/days" />
+
+    <TextView
+        android:id="@+id/hour_text"
+        style="@style/timer_text"
+        android:text="@string/hour"
+        app:layout_constraintEnd_toEndOf="@id/hours"
+        app:layout_constraintStart_toStartOf="@id/hours" />
+
+    <TextView
+        android:id="@+id/min_text"
+        style="@style/timer_text"
+        android:text="@string/min"
+        app:layout_constraintEnd_toEndOf="@id/mins"
+        app:layout_constraintStart_toStartOf="@id/mins" />
+
+    <TextView
+        android:id="@+id/sec_text"
+        style="@style/timer_text"
+        android:text="@string/sec"
+        app:layout_constraintEnd_toEndOf="@id/secs"
+        app:layout_constraintStart_toStartOf="@id/secs" />
+
+    <android.support.constraint.Group
+        android:id="@+id/countdown_group"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:constraint_referenced_ids="days,left_div,hours,middle_div,mins,right_div,secs,day_text,hour_text,min_text,sec_text" />
+
+    <TextView
+        android:id="@+id/blastoff"
+        style="@style/timer_blastoff" />
+
+</android.support.constraint.ConstraintLayout>

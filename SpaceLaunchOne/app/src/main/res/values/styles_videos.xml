@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="video_layout">
+        <item name="android:layout_width">@dimen/match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:visibility">gone</item>
+    </style>
+
+    <style name="video_header_image">
+        <item name="android:layout_margin">16dp</item>
+        <item name="android:layout_width">40dp</item>
+        <item name="android:layout_height">40dp</item>
+        <item name="android:padding">4dp</item>
+        <item name="layout_constraintStart_toStartOf">parent</item>
+        <item name="layout_constraintTop_toTopOf">parent</item>
+        <item name="srcCompat">@drawable/ic_television_classic</item>
+    </style>
+
+    <style name="video_header_text">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:minHeight">20dp</item>
+        <item name="android:ellipsize">end</item>
+        <item name="android:maxLines">1</item>
+        <item name="android:paddingStart">@dimen/toolbar_horz_margin</item>
+        <item name="android:paddingEnd">@dimen/toolbar_horz_margin</item>
+        <item name="android:gravity">start|center_vertical</item>
+        <item name="layout_constraintStart_toEndOf">@id/videos_icon</item>
+    </style>
+
+    <style name="video_header" parent="video_header_text">
+        <item name="android:textColor">@color/primary_text</item>
+        <item name="android:textSize">@dimen/primary_text</item>
+        <item name="android:text">@string/watch_this_launch</item>
+        <item name="layout_constraintTop_toTopOf">@id/videos_icon</item>
+        <item name="layout_constraintBottom_toTopOf">@id/video_subtitle</item>
+    </style>
+
+    <style name="video_subtitle" parent="video_header_text">
+        <item name="android:textColor">@color/secondary_text</item>
+        <item name="android:textSize">@dimen/secondary_text</item>
+        <item name="layout_constraintTop_toBottomOf">@id/video_header</item>
+        <item name="layout_constraintBottom_toBottomOf">@id/videos_icon</item>
+    </style>
+
+    <style name="videos_recyclerview">
+        <item name="android:layout_width">@dimen/match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:clipToPadding">false</item>
+        <item name="android:layout_marginTop">16dp</item>
+        <item name="android:paddingEnd">@dimen/video_recyclerview_horizontal_margin</item>
+        <item name="android:paddingStart">@dimen/video_recyclerview_horizontal_margin</item>
+        <item name="android:paddingBottom">16dp</item>
+        <item name="layout_constraintStart_toStartOf">parent</item>
+        <item name="layout_constraintEnd_toEndOf">parent</item>
+        <item name="layout_constraintTop_toBottomOf">@id/videos_icon</item>
+    </style>
+
+    <style name="video_card" parent="card">
+        <item name="cardBackgroundColor">@android:color/black</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginTop">@dimen/video_card_horizontal_marginVertical</item>
+        <item name="android:layout_marginStart">@dimen/video_card_horizontal_marginStart</item>
+        <item name="android:layout_marginEnd">@dimen/video_card_horizontal_marginEnd</item>
+        <item name="android:layout_marginBottom">@dimen/video_card_horizontal_marginVertical</item>
+    </style>
+
+    <style name="video_image_background">
+        <item name="android:background">@drawable/ic_gradient_video</item>
+        <item name="android:layout_height">@dimen/video_item_height</item>
+        <item name="android:layout_width">@dimen/video_item_width</item>
+        <item name="android:scaleType">centerCrop</item>
+    </style>
+
+    <style name="video_play_icon">
+        <item name="srcCompat">@drawable/ic_play_circle_outline</item>
+        <item name="android:layout_height">@dimen/video_play_icon_size</item>
+        <item name="android:layout_width">@dimen/video_play_icon_size</item>
+        <item name="android:layout_gravity">center</item>
+    </style>
+
+</resources>

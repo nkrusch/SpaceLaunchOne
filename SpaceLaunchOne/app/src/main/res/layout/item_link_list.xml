@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/link_layout"
+    style="@style/link_item">
+
+    <ImageView
+        style="@style/links_icon"
+        android:contentDescription="@string/external_link" />
+
+    <TextView
+        android:id="@+id/link_text"
+        style="@style/links_text" />
+
+</LinearLayout>

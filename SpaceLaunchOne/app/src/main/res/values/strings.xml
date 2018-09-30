@@ -1,0 +1,146 @@
+<resources>
+
+    <string name="app_name">Space Launch 1</string>
+    <string name="title_activity_main">Future Launches</string>
+    <string name="title_activity_settings">Settings</string>
+    <string name="title_activity_details">Launch Details</string>
+    <string name="title_activity_credits">About</string>
+    <string name="title_activity_history">Completed Launches</string>
+    <string name="title_activity_filters">Apply Filters</string>
+
+    <plurals name="years">
+        <item quantity="one">%d year</item>
+        <item quantity="other">%d years</item>
+    </plurals>
+    <plurals name="months">
+        <item quantity="other">%d mth</item>
+    </plurals>
+    <plurals name="days">
+        <item quantity="one">%d day</item>
+        <item quantity="other">%d days</item>
+    </plurals>
+    <plurals name="hours">
+        <item quantity="one">%d hour</item>
+        <item quantity="other">%d hours</item>
+    </plurals>
+    <plurals name="minutes">
+        <item quantity="other">%d min</item>
+    </plurals>
+    <plurals name="seconds">
+        <item quantity="other">%d s</item>
+    </plurals>
+    <string name="sec">sec</string>
+    <string name="min">min</string>
+    <string name="hour">hour</string>
+    <string name="day">day</string>
+    <string name="timer_placeholder">··</string>
+    <string name="timer_divider">:</string>
+    <string name="blastoff">blastoff</string>
+    <string name="past">past event</string>
+    <string name="pref_title_sync_frequency">Data sync frequency</string>
+    <string name="timer">timer</string>
+    <string-array name="pref_sync_frequency_titles">
+        <item>1 hour</item>
+        <item>6 hours</item>
+        <item>12 hours</item>
+        <item>24 hours</item>
+        <item>48 hours</item>
+    </string-array>
+    <string-array name="pref_sync_frequency_values">
+        <item>1</item>
+        <item>6</item>
+        <item>12</item>
+        <item>24</item>
+        <item>48</item>
+    </string-array>
+    <string name="pref_sync_started">Synchronizing…</string>
+    <string name="sync_frequency">Sync frequency</string>
+    <string-array name="credits_array">
+        <item>About this Project ; This app was created as a capstone project for Udacity android
+            developer nanodegree program. The goal of this project is to apply different concepts
+            and components learned across the Nanodegree program while creating and designing an
+            application of choice.&lt;br/>&lt;br/>This application is based on Launch Library service
+            (launchlibrary.net),
+            and the purpose of the app is to present that launch data in interesting ways.
+            This application is intended for astronomy enthusiasts looking for up-to-date information
+            about upcoming rocket launches.
+        </item>
+        <item>Developer ; Neea Rusch (2018)</item>
+        <item>Source Code ; &lt;a href="https://github.com/nkrusch/SpaceLaunchOne">SpaceLaunchOne on Github&lt;/a></item>
+        <item>License ; MIT</item>
+        <item>Launch Data ; &lt;a href="http://launchlibrary.net/docs/1.4/api.html">Launch Library API&lt;/a></item>
+        <item>Image Credits ; &lt;a href="http://launchlibrary.net">Launch Library&lt;/a>&lt;br/>
+            &lt;a href="https://en.wikipedia.org">Wikipedia&lt;/a>&lt;br/>
+            &lt;a href="https://www.nasa.gov/multimedia/imagegallery/iotd.html">NASA image of the day&lt;/a></item>
+        <item>Maps ; &lt;a href="https://developers.google.com/maps/documentation/android-sdk/intro">Google Maps Android SDK&lt;/a></item>
+    </string-array>
+    <string name="credits_array_separator">;</string>
+    <string name="version">Version</string>
+    <string name="scroll_to_top">Scroll to top</string>
+    <string name="dataset_last_sync">last_sync_timestamp</string>
+    <string name="last_sync_never_occurred">has not run</string>
+    <string name="last_sync_timestamp">Last synced %s</string>
+    <string name="widget_loading">Loading</string>
+    <string name="widget_image">widget image</string>
+    <string name="widget_unavailable">Unavailable</string>
+    <string name="offline_message">No connection</string>
+    <string name="next_launch_title">next launch</string>
+    <string name="list_empty">Application needs to initialize.\n\nMake sure you are connected to the Internet\nthen relaunch this app.</string>
+    <string name="list_no_matches">There are no launches to show.\nThis is most likely caused by filters.\n\nUse menu in top right corner to adjust filters.</string>
+    <string name="tab_event">Summary</string>
+    <string name="tab_map">Map</string>
+    <string name="unknown">unknown</string>
+    <plurals name="mission_no">
+        <item quantity="one">Mission%s: %s</item>
+        <item quantity="other">Mission %s: %s</item>
+    </plurals>
+    <plurals name="video_label">
+        <item quantity="one">%d video</item>
+        <item quantity="other">%d videos</item>
+    </plurals>
+    <plurals name="document_label">
+        <item quantity="other">Learn more on Wikipedia</item>
+    </plurals>
+    <string name="external_link">External link</string>
+    <string name="bullet">●</string>
+    <string name="none">None</string>
+    <string name="filter_by_rocket">Rockets</string>
+    <string name="filter_by_agency">Agencies</string>
+    <string name="filter_by_location">Locations</string>
+    <string name="filter_instructions_title">How filters work</string>
+    <string name="filter_instructions">Filters allow you to limit the list of launches displayed by this application.
+        \n\nBy checking filter property, you will exclude any launches that match that property from displaying.
+        \n\nHaving all options unchecked means all launches will be displayed.
+        \n\nEXAMPLES
+        \n\n1.) to exclude launches by specific rocket, find rocket by name and check box next to it
+        \n\n2.) to view launches from specific location only, first check all locations, then uncheck the desired location
+    </string>
+    <string name="Help">Help</string>
+    <string name="space_themed_background">space themed background</string>
+    <string name="launch_status_icon">snapshot icon</string>
+    <string name="launch_thumbnail">launch thumbnail</string>
+    <string name="place_image">place image</string>
+    <string name="image_background_gradient">image background gradient</string>
+    <string name="video_play_icon">video play icon</string>
+    <string name="event_name">Launch Name</string>
+    <string name="launch_date">Launch Date</string>
+    <string name="launch_service_provider">Launch Service Provider</string>
+    <string name="agency_country_code">Agency Country Code</string>
+    <string name="hashtag">Hashtag</string>
+    <string name="last_modified">Last modified</string>
+    <string name="rocket">Rocket</string>
+    <string name="videos">Videos</string>
+    <string name="watch_this_launch">Watch this Launch</string>
+    <string name="check_uncheck_all">Check/Uncheck all</string>
+    <string name="place_not_found">Place not found</string>
+    <string name="no_place_images">No images found for selected place</string>
+    <string name="pref_immediate_sync">Update app data now</string>
+    <string name="launch_site">Launch site</string>
+    <string name="ok">OK</string>
+    <string name="show_less">Show less</string>
+    <string name="show_more">Show more</string>
+    <string name="status">Status</string>
+    <string name="country">Country</string>
+    <string name="agency">Agency</string>
+    <string name="rocket_summary_label">Rocket Name / Family / Configuration</string>
+</resources>

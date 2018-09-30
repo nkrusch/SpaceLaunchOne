@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="next_container" parent="@style/matches_parent">
+        <item name="android:background">@color/next_launch_bg_color</item>
+    </style>
+
+    <style name="next_launch_image" parent="@style/matches_parent">
+        <item name="android:visibility">@integer/next_launch_img_visibility</item>
+        <item name="android:adjustViewBounds">true</item>
+        <item name="android:scaleType">centerCrop</item>
+        <item name="android:background">@drawable/ic_gradient_next</item>
+    </style>
+
+    <style name="next_text" parent="@style/shadow_text">
+        <item name="android:layout_width">@dimen/match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:shadowColor">@color/text_shadow_color</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:gravity">center</item>
+        <item name="android:maxLines">1</item>
+        <item name="android:ellipsize">end</item>
+        <item name="android:layout_marginLeft">@dimen/next_launch_text_horizMargin</item>
+        <item name="android:layout_marginRight">@dimen/next_launch_text_horizMargin</item>
+    </style>
+
+    <style name="next_launch_title" parent="@style/next_text">
+        <item name="android:visibility">invisible</item>
+        <item name="android:textSize">@dimen/next_launch_title_size</item>
+        <item name="android:text">@string/next_launch_title</item>
+        <item name="android:textAllCaps">true</item>
+    </style>
+
+    <style name="next_launch_text" parent="@style/next_text">
+        <item name="android:maxLines">@integer/next_launch_text_maxLines</item>
+        <item name="android:paddingTop">@dimen/next_launch_text_vertPadding</item>
+        <item name="android:textSize">@dimen/next_launch_text_size</item>
+        <item name="android:lineSpacingExtra">@dimen/next_launch_text_lineSpacing</item>
+    </style>
+
+    <style name="next_launch_status" parent="@style/shadow_text">
+        <item name="android:paddingStart">10dp</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:gravity">top</item>
+        <item name="android:textSize">@dimen/next_launch_bullet_size</item>
+    </style>
+
+    <style name="next_launch_title_layout" parent="next_launch_title">
+        <item name="layout_constraintBottom_toTopOf">@+id/next_text</item>
+    </style>
+
+    <style name="next_launch_name_layout" parent="next_launch_text">
+        <item name="layout_constraintBottom_toTopOf">@+id/next_date</item>
+    </style>
+
+    <style name="next_launch_date_layout" parent="next_launch_text">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="layout_constraintBottom_toTopOf">@+id/timer</item>
+        <item name="layout_constraintEnd_toEndOf">parent</item>
+        <item name="layout_constraintStart_toStartOf">parent</item>
+        <item name="android:paddingBottom">8dp</item>
+    </style>
+
+    <style name="next_launch_status_layout" parent="next_launch_status">
+        <item name="layout_constraintTop_toTopOf">@+id/next_date</item>
+        <item name="layout_constraintStart_toEndOf">@+id/next_date</item>
+    </style>
+
+    <style name="next_timer_container">
+        <item name="android:layout_marginStart">@dimen/next_launch_timer_leftMargin</item>
+        <item name="android:layout_marginEnd">@dimen/next_launch_timer_rightMargin</item>
+        <item name="android:layout_marginTop">@dimen/next_launch_timer_topMargin</item>
+        <item name="android:layout_height">@dimen/timer_fragment_height</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="layout_constraintBottom_toBottomOf">parent</item>
+        <item name="layout_constraintTop_toTopOf">parent</item>
+    </style>
+
+    <style name="next_launch_timer_layout" parent="next_timer_container">
+        <item name="layout_constraintEnd_toEndOf">parent</item>
+        <item name="layout_constraintStart_toStartOf">parent</item>
+    </style>
+
+</resources>

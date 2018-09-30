@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    style="@style/matches_parent">
+
+    <CheckBox
+        android:id="@+id/check_all"
+        style="@style/filter_checkall_checkbox" />
+
+    <TextView style="@style/filter_checkall_text" />
+
+    <View
+        android:id="@+id/divider"
+        style="@style/filter_checkall_divider" />
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/recyclerView"
+        style="@style/filter_recycler_view" />
+
+</android.support.constraint.ConstraintLayout>

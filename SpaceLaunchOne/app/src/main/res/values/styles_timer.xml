@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="timer_container" parent="@style/matches_parent">
+        <item name="android:minWidth">220dp</item>
+    </style>
+
+    <style name="timer_number">
+        <item name="android:textStyle">bold</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:textSize">@dimen/timer_number_size</item>
+        <item name="android:paddingRight">@dimen/timer_number_horizPadding</item>
+        <item name="android:paddingLeft">@dimen/timer_number_horizPadding</item>
+        <item name="layout_constraintBottom_toTopOf">@id/centerPt</item>
+        <item name="android:text">@string/timer_placeholder</item>
+        <item name="android:gravity">center_horizontal|bottom</item>
+        <item name="android:fontFamily">@font/roboto_mono</item>
+        <item name="android:textColor">@color/text_with_shadow</item>
+    </style>
+
+    <style name="timer_divider" parent="@style/timer_number">
+        <item name="android:paddingRight">@dimen/timer_divider_horizPadding</item>
+        <item name="android:paddingLeft">@dimen/timer_divider_horizPadding</item>
+        <item name="android:text">@string/timer_divider</item>
+    </style>
+
+    <style name="timer_text">
+        <item name="layout_constraintTop_toBottomOf">@id/centerPt</item>
+        <item name="android:textSize">@dimen/timer_text_size</item>
+        <item name="android:gravity">center_horizontal|top</item>
+        <item name="android:textAllCaps">true</item>
+        <item name="android:maxLines">1</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:textColor">@color/text_with_shadow</item>
+    </style>
+
+    <style name="timer_center_point">
+        <item name="android:layout_width">@dimen/timer_middle_divider_width</item>
+        <item name="android:layout_height">@dimen/timer_middle_divider_height</item>
+        <item name="layout_constraintTop_toTopOf">parent</item>
+        <item name="layout_constraintBottom_toBottomOf">parent</item>
+        <item name="layout_constraintEnd_toEndOf">parent</item>
+        <item name="layout_constraintStart_toStartOf">parent</item>
+    </style>
+
+    <style name="timer_blastoff">
+        <item name="android:textColor">@color/text_with_shadow</item>
+        <item name="android:fontFamily">monospace</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textSize">@dimen/timer_blastoff_size</item>
+        <item name="android:paddingTop">10dp</item>
+        <item name="android:visibility">@integer/visibility_invisible</item>
+        <item name="android:text">@string/blastoff</item>
+        <item name="android:textAllCaps">true</item>
+        <item name="android:gravity">top|center_horizontal</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">@dimen/timer_fragment_height</item>
+        <item name="layout_constraintTop_toTopOf">parent</item>
+        <item name="layout_constraintEnd_toEndOf">parent</item>
+        <item name="layout_constraintStart_toStartOf">parent</item>
+    </style>
+
+    <style name="details_timer_layout">
+        <item name="android:layout_width">@dimen/match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:orientation">vertical</item>
+    </style>
+
+    <style name="details_timer_card" parent="@style/details_card_layout">
+        <item name="android:layout_gravity">top|center_horizontal</item>
+        <item name="cardBackgroundColor">@color/details_timer_background</item>
+    </style>
+
+    <style name="details_timer_content">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_gravity">start|center_vertical</item>
+        <item name="android:layout_marginStart">10dp</item>
+        <item name="android:layout_marginTop">8dp</item>
+    </style>
+
+    <style name="details_timer_image">
+        <item name="android:layout_width">@dimen/timer_fragment_height</item>
+        <item name="android:layout_height">@dimen/timer_fragment_height</item>
+        <item name="android:layout_gravity">end|center_vertical</item>
+        <item name="android:paddingBottom">10dp</item>
+        <item name="android:paddingEnd">16dp</item>
+        <item name="android:paddingTop">10dp</item>
+        <item name="srcCompat">@drawable/ic_alarm</item>
+    </style>
+
+</resources>

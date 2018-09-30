@@ -1,0 +1,13 @@
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    style="@style/places_layout">
+
+    <TextView
+        android:id="@+id/places_heading"
+        style="@style/places_heading" />
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/recyclerView"
+        style="@style/places_recyclerview" />
+
+</LinearLayout>

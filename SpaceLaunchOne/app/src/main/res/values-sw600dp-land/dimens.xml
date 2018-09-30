@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <dimen name="next_launch_fragment_height">@dimen/timer_fragment_height</dimen>
+    <dimen name="timer_fragment_height">100dp</dimen>
+    <integer name="list_column_count">2</integer>
+    <dimen name="details_content_max_width">565dp</dimen>
+    <dimen name="links_column_width">260dp</dimen>
+    <integer name="links_column_count">2</integer>
+    <dimen name="list_image_width">40dp</dimen>
+    <dimen name="list_image_height">40dp</dimen>
+    <dimen name="list_image_margin_left">16dp</dimen>
+    <integer name="filter_rockets_column_count">4</integer>
+    <integer name="filter_agencies_column_count">2</integer>
+    <integer name="filter_locations_column_count">2</integer>
+
+</resources>

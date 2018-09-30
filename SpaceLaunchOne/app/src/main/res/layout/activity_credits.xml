@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    style="@style/matches_parent"
+    android:background="@color/details_background">
+
+    <android.support.v7.widget.CardView style="@style/credits_card">
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/recyclerView"
+            style="@style/matches_parent" />
+    </android.support.v7.widget.CardView>
+</android.support.constraint.ConstraintLayout>

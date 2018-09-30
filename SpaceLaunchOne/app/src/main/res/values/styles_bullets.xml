@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="bullet_container">
+        <!--<item name="android:visibility">@integer/visibility_gone</item>-->
+        <item name="android:gravity">center</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:orientation">horizontal</item>
+    </style>
+
+    <style name="bullet">
+        <!--<item name="android:visibility">@integer/visibility_gone</item>-->
+        <item name="android:textSize">@dimen/bullet_textSize</item>
+        <item name="android:textColor">@color/bullet_inactive</item>
+        <item name="android:text">@string/bullet</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:gravity">center</item>
+        <item name="android:paddingEnd">@dimen/bullet_horizontal_padding</item>
+        <item name="android:paddingStart">@dimen/bullet_horizontal_padding</item>
+        <item name="android:paddingTop">0dp</item>
+        <item name="android:paddingBottom">@dimen/bullet_vertical_padding</item>
+    </style>
+
+</resources>

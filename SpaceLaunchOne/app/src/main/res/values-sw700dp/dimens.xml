@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <dimen name="filter_label_text_size">15sp</dimen>
+    <integer name="filter_rockets_column_count">3</integer>
+    <integer name="filter_agencies_column_count">1</integer>
+    <integer name="filter_locations_column_count">1</integer>
+    <dimen name="next_launch_timer_topMargin">100dp</dimen>
+    <bool name="next_launch_row_item">false</bool>
+    <dimen name="details_content_max_width">565dp</dimen>
+
+    <!-- LAUNCH LIST: START -->
+    <integer name="list_column_count">4</integer>
+    <integer name="list_image_width_int">300</integer>
+    <dimen name="list_image_width">@dimen/match_parent</dimen>
+    <dimen name="list_image_height">250dp</dimen>
+    <dimen name="list_image_margin_left">4dp</dimen>
+    <dimen name="list_image_margin_right">4dp</dimen>
+    <dimen name="list_image_vert_margin">8dp</dimen>
+    <dimen name="list_grid_padding">8dp</dimen>
+    <dimen name="list_tpadding">4dp</dimen>
+    <dimen name="list_image_card_radius">0dp</dimen>
+    <integer name="list_divider_visibility">@integer/visibility_gone</integer>
+    <color name="list_image_bg_color">@color/photo_placeholder_inverse</color>
+
+    <style name="list_threeline_text" parent="shadow_text">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:shadowColor">@color/text_shadow_color</item>
+        <item name="android:ellipsize">end</item>
+        <item name="android:maxLines">1</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:gravity">left</item>
+        <item name="android:background">#55000000</item>
+        <item name="android:paddingLeft">@dimen/toolbar_horz_margin</item>
+        <item name="android:paddingRight">@dimen/toolbar_horz_margin</item>
+    </style>
+
+    <style name="list_primary_text_layout" parent="list_primary_text">
+        <item name="android:textColor">@android:color/white</item>
+        <item name="android:maxLines">1</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="layout_constraintBottom_toTopOf">@id/sub_line_1</item>
+        <item name="layout_constraintLeft_toLeftOf">@id/thumbnail_card</item>
+        <item name="layout_constraintRight_toRightOf">@id/thumbnail_card</item>
+    </style>
+
+    <style name="list_seondary_text_line_1" parent="list_secondary_text">
+        <item name="android:textColor">@android:color/white</item>
+        <item name="android:layout_height">30dp</item>
+        <item name="android:gravity">left|top</item>
+        <item name="layout_constraintBottom_toBottomOf">@id/thumbnail_card</item>
+        <item name="layout_constraintLeft_toLeftOf">@id/thumbnail_card</item>
+        <item name="layout_constraintRight_toRightOf">@id/thumbnail_card</item>
+    </style>
+
+    <style name="list_seondary_text_line_2" parent="list_secondary_text">
+        <item name="android:visibility">@integer/visibility_gone</item>
+    </style>
+
+    <style name="list_number" parent="list_number_style">
+        <item name="android:textColor">@android:color/white</item>
+        <item name="android:layout_marginTop">10dp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:gravity">top|right</item>
+        <item name="layout_constraintTop_toTopOf">@id/thumbnail_card</item>
+        <item name="layout_constraintEnd_toEndOf">@id/thumbnail_card</item>
+    </style>
+
+    <style name="list_status" parent="list_status_style">
+        <item name="android:layout_marginStart">8dp</item>
+        <item name="layout_constraintTop_toTopOf">@id/list_number</item>
+        <item name="layout_constraintBottom_toBottomOf">@id/list_number</item>
+        <item name="layout_constraintLeft_toLeftOf">@id/title</item>
+    </style>
+    <!-- LAUNCH LIST: END -->
+
+</resources>

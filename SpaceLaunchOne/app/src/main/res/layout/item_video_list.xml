@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    style="@style/video_card">
+
+    <ImageView
+        android:id="@+id/video_image"
+        style="@style/video_image_background"
+        android:contentDescription="@string/image_background_gradient" />
+
+    <ImageView
+        style="@style/video_play_icon"
+        android:contentDescription="@string/video_play_icon" />
+
+
+</android.support.v7.widget.CardView>

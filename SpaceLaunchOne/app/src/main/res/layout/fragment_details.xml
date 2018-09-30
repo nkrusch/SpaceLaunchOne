@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<android.support.v4.widget.NestedScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/scrollview"
+    style="@style/details_nested_scroll">
+
+    <android.support.constraint.ConstraintLayout style="@style/details_layout">
+
+        <FrameLayout
+            android:id="@+id/timerContainer"
+            style="@style/details_timer_container" />
+
+        <android.support.v7.widget.CardView
+            android:id="@+id/Summary"
+            style="@style/details_card_layout">
+
+            <include layout="@layout/fragment_summary" />
+        </android.support.v7.widget.CardView>
+
+        <android.support.v7.widget.CardView
+            android:id="@+id/Rocket"
+            style="@style/details_rocket_image_card">
+
+            <ImageView
+                android:contentDescription="@string/rocket"
+                android:id="@+id/details_rocket_image"
+                style="@style/details_rocket_image" />
+        </android.support.v7.widget.CardView>
+
+        <!--suppress AndroidUnknownAttribute -->
+        <fragment
+            android:id="@+id/ExternalLinks"
+            android:name="io.github.nkrusch.spacelaunchone.features.details.LinksFragment"
+            style="@style/details_links_container" />
+
+    </android.support.constraint.ConstraintLayout>
+</android.support.v4.widget.NestedScrollView>

@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="widget_container" parent="matches_parent">
+        <item name="android:background">@drawable/widget_bg</item>
+        <item name="android:paddingTop">@dimen/widget_marginTop</item>
+        <item name="android:paddingBottom">@dimen/widget_marginBottom</item>
+        <item name="android:paddingStart">@dimen/widget_marginStart</item>
+        <item name="android:paddingEnd">@dimen/widget_marginEnd</item>
+    </style>
+
+    <style name="widget_image">
+        <item name="android:scaleType">centerCrop</item>
+        <item name="android:layout_centerInParent">true</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:visibility">gone</item>
+    </style>
+
+    <style name="widget_gradient" parent="widget_image">
+        <item name="android:visibility">visible</item>
+    </style>
+
+    <style name="widget_text" parent="shadow_text">
+        <item name="android:lineSpacingMultiplier">1</item>
+        <item name="android:textSize">@dimen/widget_text_size</item>
+        <item name="android:textColor">@color/widget_text</item>
+        <item name="android:maxLines">1</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:gravity">center</item>
+        <item name="android:textAllCaps">true</item>
+        <item name="android:shadowDx">0</item>
+        <item name="android:shadowDy">2</item>
+        <item name="android:shadowRadius">6</item>
+        <item name="android:shadowColor">@color/widget_shadow_color</item>
+    </style>
+
+    <style name="widget_title" parent="widget_text">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_alignParentTop">true</item>
+        <item name="android:gravity">center</item>
+        <item name="android:paddingTop">4dp</item>
+        <item name="android:maxLines">2</item>
+        <item name="android:ellipsize">end</item>
+        <item name="android:paddingStart">10dp</item>
+        <item name="android:paddingEnd">10dp</item>
+    </style>
+
+    <style name="widget_number" parent="widget_text">
+        <item name="android:layout_centerInParent">true</item>
+        <item name="android:paddingTop">10dp</item>
+        <item name="android:fontFamily">@font/roboto_mono</item>
+        <item name="android:textSize">@dimen/widget_number_size</item>
+    </style>
+
+</resources>

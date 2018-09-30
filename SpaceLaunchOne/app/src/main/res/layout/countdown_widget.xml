@@ -1,0 +1,23 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/widget_container"
+    style="@style/widget_container">
+
+    <ImageView
+        android:id="@+id/widget_image"
+        style="@style/widget_image"
+        android:contentDescription="@string/widget_image" />
+
+    <ImageView
+        style="@style/widget_gradient"
+        android:background="@drawable/ic_gradient_widget"
+        android:contentDescription="@string/widget_image" />
+
+    <TextView
+        android:id="@+id/launch_name"
+        style="@style/widget_title" />
+
+    <Chronometer
+        android:id="@+id/timer"
+        style="@style/widget_number" />
+
+</RelativeLayout>

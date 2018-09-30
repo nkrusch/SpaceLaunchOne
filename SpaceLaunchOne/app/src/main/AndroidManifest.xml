@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    package="io.github.nkrusch.spacelaunchone">
+
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.INTERNET" />
+
+    <application
+        android:name=".app.Application"
+        android:allowBackup="true"
+        android:fullBackupContent="false"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme"
+        tools:replace="android:fullBackupContent"
+        tools:ignore="GoogleAppIndexingWarning">
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="@string/google_maps_key" />
+        <activity
+            android:name=".features.SplashActivity"
+            android:theme="@style/SplashTheme">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".features.MainActivity"
+            android:label="@string/title_activity_main"
+            android:launchMode="singleTop" />
+        <activity
+            android:label="@string/title_activity_main"
+            android:name=".features.ImageListActivity"
+            android:launchMode="singleTop" />
+        <activity
+            android:name=".features.DetailActivity"
+            android:label="@string/title_activity_details"
+            android:parentActivityName=".features.MainActivity"
+            android:theme="@style/TabbedActivityTheme">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".features.MainActivity" />
+        </activity>
+        <activity
+            android:name=".features.SettingsActivity"
+            android:label="@string/title_activity_settings"
+            android:parentActivityName=".features.MainActivity" />
+        <activity
+            android:name=".features.CreditsActivity"
+            android:label="@string/title_activity_credits"
+            android:parentActivityName=".features.SettingsActivity"
+            android:theme="@style/CreditsTheme">
+            <intent-filter>
+                <action android:name="example.action.ACTION_ABOUT_ACTIVITY" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".features.HistoryActivity"
+            android:label="@string/title_activity_history" />
+        <activity
+            android:name=".features.FilterActivity"
+            android:label="@string/title_activity_filters"
+            android:parentActivityName=".features.MainActivity"
+            android:theme="@style/TabbedActivityTheme" />
+
+        <receiver
+            android:name=".features.widget.CountdownWidget"
+            android:enabled="@bool/is_api_greater_or_equal_24">
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+            </intent-filter>
+            <meta-data
+                android:name="android.appwidget.provider"
+                android:resource="@xml/countdown_widget_info" />
+        </receiver>
+
+        <service
+            android:name="service.InitIntentService"
+            android:exported="false" />
+        <service
+            android:name="service.UpdateIntentService"
+            android:exported="false" />
+        <service
+            android:name="service.UpdateJobService"
+            android:exported="true"
+            android:label="Data syncronization service"
+            android:permission="android.permission.BIND_JOB_SERVICE" />
+
+    </application>
+
+</manifest>

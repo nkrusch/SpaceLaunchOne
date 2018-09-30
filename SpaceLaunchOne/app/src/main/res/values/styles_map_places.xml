@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="maps_custom_button">
+        <item name="android:visibility">@integer/visibility_gone</item>
+        <item name="android:layout_width">38dp</item>
+        <item name="android:layout_height">38dp</item>
+        <item name="android:layout_alignParentEnd">true</item>
+        <item name="android:layout_alignParentTop">true</item>
+        <item name="srcCompat">@drawable/ic_map_marker</item>
+        <item name="android:background">@drawable/ic_map_marker_bg</item>
+        <item name="android:gravity">center</item>
+        <item name="android:paddingTop">0dp</item>
+        <item name="android:paddingStart">5dp</item>
+        <item name="android:paddingEnd">5dp</item>
+        <item name="android:paddingBottom">2.5dp</item>
+        <item name="android:layout_marginTop">12dp</item>
+        <item name="android:layout_marginEnd">12dp</item>
+        <item name="android:layout_marginStart">12dp</item>
+    </style>
+
+    <style name="places_layout">
+        <item name="android:layout_width">@dimen/match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginBottom">@dimen/places_layout_vertical_margin</item>
+        <item name="android:layout_marginTop">@dimen/places_layout_vertical_margin</item>
+        <item name="android:layout_marginStart">@dimen/places_layout_horizontal_margin</item>
+        <item name="android:layout_marginEnd">@dimen/places_layout_horizontal_margin</item>
+        <item name="android:orientation">vertical</item>
+    </style>
+
+    <style name="places_heading" parent="bottom_dialog_fragment_heading" />
+
+    <style name="places_recyclerview">
+        <item name="android:layout_width">@dimen/match_parent</item>
+        <item name="android:layout_height">0dp</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:clipToPadding">false</item>
+        <item name="android:layout_marginBottom">@dimen/places_recycerview_bottom_margin</item>
+    </style>
+
+    <style name="places_card" parent="card">
+        <item name="android:layout_height">@dimen/places_card_height</item>
+        <item name="android:layout_width">@dimen/places_card_width</item>
+        <item name="android:layout_marginTop">@dimen/places_card_vertical_margin</item>
+        <item name="android:layout_marginLeft">@dimen/places_card_horizontal_margin</item>
+        <item name="android:layout_marginRight">@dimen/places_card_horizontal_margin</item>
+        <item name="android:layout_marginBottom">@dimen/places_card_vertical_margin</item>
+    </style>
+
+    <style name="places_image">
+        <item name="android:layout_width">@dimen/match_parent</item>
+        <item name="android:layout_height">@dimen/match_parent</item>
+        <item name="android:background">@color/places_image_background</item>
+        <item name="android:scaleType">centerCrop</item>
+    </style>
+
+</resources>

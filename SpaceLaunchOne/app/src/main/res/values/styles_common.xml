@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="matches_parent">
+        <item name="android:layout_width">@dimen/match_parent</item>
+        <item name="android:layout_height">@dimen/match_parent</item>
+    </style>
+
+    <style name="shadow_text">
+        <item name="android:shadowDx">@dimen/next_launch_text_shadow_x</item>
+        <item name="android:shadowDy">@dimen/next_launch_text_shadow_y</item>
+        <item name="android:shadowRadius">@dimen/next_launch_text_shadow_radius</item>
+        <item name="android:textColor">@color/text_with_shadow</item>
+    </style>
+
+    <style name="card" />
+
+    <style name="bottom_dialog_fragment_heading">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">@dimen/bottom_dialog_header_height</item>
+        <item name="android:layout_marginEnd">@dimen/bottom_dialog_header_horizontal_margin</item>
+        <item name="android:layout_marginStart">@dimen/bottom_dialog_header_horizontal_margin</item>
+        <item name="android:ellipsize">end</item>
+        <item name="android:gravity">start|center_vertical</item>
+        <item name="android:maxLines">1</item>
+        <item name="android:textColor">@color/bottom_drawer_dialog_title</item>
+        <item name="android:textSize">@dimen/bottom_dialog_header_textsize</item>
+    </style>
+
+</resources>

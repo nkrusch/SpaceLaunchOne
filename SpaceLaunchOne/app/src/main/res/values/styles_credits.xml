@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="credits_card">
+        <item name="android:layout_width">@dimen/details_content_max_width</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="layout_constraintEnd_toEndOf">parent</item>
+        <item name="layout_constraintStart_toStartOf">parent</item>
+        <item name="layout_constraintTop_toTopOf">parent</item>
+    </style>
+
+    <style name="credit_item_layout">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:orientation">vertical</item>
+        <item name="android:paddingTop">@dimen/credit_item_vert_padding</item>
+        <item name="android:paddingEnd">@dimen/credit_item_horiz_padding</item>
+        <item name="android:paddingStart">@dimen/credit_item_horiz_padding</item>
+        <item name="android:paddingBottom">@dimen/credit_item_vert_padding</item>
+    </style>
+
+    <style name="credit_item_label">
+        <item name="android:gravity">start|top</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textColor">@color/primary_text</item>
+        <item name="android:textSize">@dimen/primary_text</item>
+    </style>
+
+    <style name="credit_item_text">
+        <item name="android:gravity">start|top</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginTop">@dimen/credit_item_text_gap</item>
+        <item name="android:textColor">@color/secondary_text</item>
+        <item name="android:textSize">@dimen/secondary_text</item>
+        <item name="android:lineSpacingMultiplier">1.5</item>
+        <item name="android:linksClickable">true</item>
+    </style>
+
+</resources>

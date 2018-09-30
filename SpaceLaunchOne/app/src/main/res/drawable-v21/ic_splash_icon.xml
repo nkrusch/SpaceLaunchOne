@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="utf-8"?>
+<animated-vector xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:aapt="http://schemas.android.com/aapt">
+    <aapt:attr name="android:drawable">
+        <vector xmlns:android="http://schemas.android.com/apk/res/android"
+            android:width="128dp"
+            android:height="128dp"
+            android:viewportHeight="600"
+            android:viewportWidth="600">
+            <group
+                android:name="rotationGroup"
+                android:pivotX="300.0"
+                android:pivotY="300.0"
+                android:rotation="0">
+                <path
+                    android:name="rocket"
+                    android:fillColor="#CCC"
+                    android:pathData="M45.822,225.633C39.201,229.646 34.549,236.12 30.217,242.389C20.604,257.13 14.542,274.67 15.408,292.416C15.363,293.137 15.769,294.119 14.959,294.545C12.054,296.875 9.162,299.222 6.311,301.617C1.384,305.903 -0.958,312.865 0.365,319.258C1.993,326.815 3.746,334.347 5.424,341.893C6.16,345.395 10.355,347.482 13.613,346.084C15.715,345.11 17.193,343.234 18.969,341.807C22.643,338.723 26.128,335.267 29.889,332.389C34.504,336.702 40.807,339.343 47.174,338.895C52.704,338.588 57.974,336.043 61.939,332.227C67.181,336.608 72.292,341.145 77.535,345.521C80.694,348.059 86.065,346.24 86.973,342.27C88.605,334.551 90.089,326.794 91.631,319.055C92.737,312.928 90.591,306.336 85.994,302.111C82.792,299.331 79.448,296.715 76.197,293.99C77.438,275.598 71.287,257.298 61.229,242.063C56.958,235.905 52.352,229.547 45.822,225.633zM45.475,260.506L45.475,260.508C46.036,260.493 46.599,260.515 47.16,260.582C52.017,261.009 56.432,264.446 58.082,269.029C59.882,273.783 58.608,279.57 54.836,283.016C49.95,287.956 41.101,287.769 36.43,282.621C32.017,278.247 31.557,270.659 35.361,265.762C37.695,262.582 41.544,260.605 45.475,260.506zM45.723,267.346A6.373,6.373 0,0 0,39.352 273.721A6.373,6.373 0,0 0,45.723 280.092A6.373,6.373 0,0 0,52.096 273.721A6.373,6.373 0,0 0,45.723 267.346z" />
+                <path
+                    android:name="flames"
+                    android:fillColor="#000"
+                    android:pathData="M31.463,345.242C29.898,345.279 28.353,346.556 28.402,348.225C28.397,352.89 28.371,357.557 28.406,362.221C28.381,364.513 31.424,366.012 33.207,364.563C34.568,363.362 35.801,362.017 37.094,360.744C39.209,364.781 41.152,368.909 43.256,372.949C44.28,374.852 47.419,374.839 48.424,372.92C50.516,368.887 52.472,364.783 54.547,360.74C55.858,362.002 57.088,363.354 58.451,364.557C60.242,365.999 63.288,364.528 63.252,362.223C63.278,357.496 63.274,352.765 63.248,348.039C63.181,345.874 60.486,344.532 58.668,345.648C50.746,349.728 40.898,349.73 32.977,345.65C32.509,345.356 31.985,345.232 31.463,345.244L31.463,345.242z" />
+            </group>
+            <group android:name="fixedGroup">
+                <path
+                    android:fillAlpha="1"
+                    android:fillColor="#0277bd"
+                    android:fillType="nonZero"
+                    android:pathData="M300,300m-171.078,0a171.078,171.078 0,1 1,342.156 0a171.078,171.078 0,1 1,-342.156 0"
+                    android:strokeAlpha="1"
+                    android:strokeColor="#00000000"
+                    android:strokeLineCap="round"
+                    android:strokeLineJoin="round"
+                    android:strokeWidth="0.2" />
+                <path
+                    android:fillAlpha="1"
+                    android:fillColor="#f7cf52"
+                    android:fillType="evenOdd"
+                    android:pathData="M450.285,218.596C446.064,218.966 439.035,219.271 426.357,219.752C392.523,221.037 396.942,312.132 419.676,307.965C464.167,299.809 448.76,337.743 461.777,354.076C462.008,353.802 462.225,353.524 462.453,353.25A171.078,171.078 0,0 0,471.078 300A171.078,171.078 0,0 0,450.285 218.596z"
+                    android:strokeAlpha="1"
+                    android:strokeColor="#00000000"
+                    android:strokeLineCap="butt"
+                    android:strokeLineJoin="miter"
+                    android:strokeWidth="1" />
+                <path
+                    android:fillAlpha="1"
+                    android:fillColor="#f7cf52"
+                    android:fillType="evenOdd"
+                    android:pathData="m282.011,140.896c12.329,10.17 19.515,22.141 24.726,39.428l22.053,-26.731c-13.482,-8.455 -29.762,-11.313 -46.779,-12.697z"
+                    android:strokeAlpha="1"
+                    android:strokeColor="#00000000"
+                    android:strokeLineCap="butt"
+                    android:strokeLineJoin="miter"
+                    android:strokeWidth="1" />
+                <path
+                    android:fillAlpha="1"
+                    android:fillColor="#f7cf52"
+                    android:fillType="evenOdd"
+                    android:pathData="M240.541,139.707A171.078,171.078 0,0 0,172.127 186.596C150.71,252.727 169.305,288.682 210.984,304.992C220.653,308.776 221.771,330.815 220.879,342.791C219.171,365.715 226.231,378.41 247.791,395.99C255.939,402.635 256.681,466.74 265.305,463.672C273.928,460.604 330.209,405.962 338.814,375.461C344.777,354.328 315.088,348.435 300.752,333.316C277.934,309.254 259.435,300.891 221.199,317.988C218.962,311.257 217.141,297.459 213.066,293.281C181.543,260.96 193.824,242.938 203.059,241.156C210.619,239.697 222.233,248.736 228.371,240.088C247.053,213.765 267.713,217.622 285.354,201.709C295.66,183.061 268.471,161.414 240.541,139.707z"
+                    android:strokeAlpha="1"
+                    android:strokeColor="#00000000"
+                    android:strokeLineCap="butt"
+                    android:strokeLineJoin="miter"
+                    android:strokeWidth="1" />
+                <path
+                    android:fillAlpha="1"
+                    android:fillColor="#f7cf52"
+                    android:fillType="evenOdd"
+                    android:pathData="M397.26,159.307C389.401,180.661 380.016,203.763 388.268,209.061C408.79,222.237 410.492,192.456 420.98,197.402C427.427,200.443 435.179,202.819 441.736,204.463A171.078,171.078 0,0 0,397.26 159.307z"
+                    android:strokeAlpha="1"
+                    android:strokeColor="#00000000"
+                    android:strokeLineCap="butt"
+                    android:strokeLineJoin="miter"
+                    android:strokeWidth="1" />
+            </group>
+            <group android:name="overlayGroup">
+                <path
+                    android:name="overlay"
+                    android:fillAlpha="1"
+                    android:fillColor="#000000"
+                    android:fillType="nonZero"
+                    android:pathData="M0,1.068h600v600h-600z"
+                    android:strokeAlpha="1"
+                    android:strokeColor="#00000000"
+                    android:strokeLineCap="round"
+                    android:strokeLineJoin="round"
+                    android:strokeWidth="0.2" />
+            </group>
+        </vector>
+    </aapt:attr>
+
+    <target android:name="overlay">
+        <aapt:attr name="android:animation">
+            <objectAnimator
+                android:name="overlay"
+                android:duration="400"
+                android:interpolator="@android:interpolator/fast_out_slow_in"
+                android:propertyName="fillAlpha"
+                android:valueFrom="1"
+                android:valueTo="0" />
+        </aapt:attr>
+    </target>
+
+    <target android:name="rotationGroup">
+        <aapt:attr name="android:animation">
+            <objectAnimator
+                android:duration="6000"
+                android:interpolator="@android:interpolator/linear"
+                android:propertyName="rotation"
+                android:repeatCount="infinite"
+                android:valueFrom="0"
+                android:valueTo="360" />
+        </aapt:attr>
+    </target>
+
+    <target android:name="flames">
+        <aapt:attr name="android:animation">
+            <objectAnimator
+                android:name="flames"
+                android:duration="200"
+                android:interpolator="@android:interpolator/linear"
+                android:propertyName="fillAlpha"
+                android:repeatCount="infinite"
+                android:repeatMode="reverse"
+                android:valueFrom="0"
+                android:valueTo="1" />
+        </aapt:attr>
+    </target>
+
+    <target android:name="flames">
+        <aapt:attr name="android:animation">
+            <objectAnimator xmlns:android="http://schemas.android.com/apk/res/android"
+                android:duration="500"
+                android:interpolator="@android:interpolator/decelerate_cubic"
+                android:propertyName="fillColor"
+                android:repeatCount="infinite"
+                android:repeatMode="reverse"
+                android:startOffset="200"
+                android:valueFrom="#fee737"
+                android:valueTo="#ff565c"
+                android:valueType="intType" />
+        </aapt:attr>
+    </target>
+
+</animated-vector>

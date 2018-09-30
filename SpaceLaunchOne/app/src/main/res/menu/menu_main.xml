@@ -1,0 +1,23 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/past"
+        android:icon="@drawable/ic_history"
+        android:title="@string/title_activity_history"
+        app:showAsAction="ifRoom" />
+    <item
+        android:id="@+id/top"
+        android:icon="@drawable/ic_format_vertical_align_top"
+        android:title="@string/scroll_to_top"
+        app:showAsAction="ifRoom" />
+    <item
+        android:icon="@drawable/ic_tune"
+        android:id="@+id/filters"
+        android:title="@string/title_activity_filters"
+        app:showAsAction="ifRoom" />
+    <item
+        android:id="@+id/settings"
+        android:title="@string/title_activity_settings"
+        app:showAsAction="never" />
+</menu>

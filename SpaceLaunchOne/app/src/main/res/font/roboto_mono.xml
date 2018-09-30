@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<font-family xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <font
+        app:font="@font/mono"
+        app:fontStyle="normal"
+        app:fontWeight="800"
+        android:font="@font/mono"
+        android:fontStyle="normal"
+        android:fontWeight="800"
+        tools:ignore="UnusedAttribute" />
+
+</font-family>

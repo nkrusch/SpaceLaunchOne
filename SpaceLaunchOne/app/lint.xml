@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<lint>
+    <issue id="IconLocation">
+        <ignore path="src/main/res/drawable/flag_ind.png" />
+        <ignore path="src/main/res/drawable/flag_jpn.png" />
+        <ignore path="src/main/res/drawable/space_bg_00.jpg" />
+        <ignore path="src/main/res/drawable/space_bg_01.jpg" />
+        <ignore path="src/main/res/drawable/space_bg_02.jpg" />
+        <ignore path="src/main/res/drawable/space_bg_03.jpg" />
+        <ignore path="src/main/res/drawable/space_bg_04.jpg" />
+        <ignore path="src/main/res/drawable/space_bg_05.jpg" />
+        <ignore path="src/main/res/drawable/space_bg_06.jpg" />
+        <ignore path="src/main/res/drawable/space_bg_07.jpg" />
+        <ignore path="src/main/res/drawable/space_bg_08.jpg" />
+        <ignore path="src/main/res/drawable/space_bg_08.jpg" />
+        <ignore path="src/main/res/drawable/space_bg_09.jpg" />
+        <ignore path="src/main/res/drawable/space_bg_10.jpg" />
+        <ignore path="src/main/res/drawable/space_bg_11.jpg" />
+        <ignore path="src/main/res/drawable/space_bg_12.jpg" />
+        <ignore path="src/main/res/drawable/space_bg_13.jpg" />
+        <ignore path="src/main/res/drawable/space_bg_14.jpg" />
+        <ignore path="src/main/res/drawable/space_bg_15.jpg" />
+        <ignore path="src/main/res/drawable/space_bg_16.jpg" />
+        <ignore path="src/main/res/drawable/space_bg_17.jpg" />
+        <ignore path="src/main/res/drawable/space_bg_18.jpg" />
+        <ignore path="src/main/res/drawable/space_bg_19.jpg" />
+        <ignore path="src/main/res/drawable/space_bg_20.jpg" />
+        <ignore path="src/main/res/drawable/space_bg_21.jpg" />
+        <ignore path="src/main/res/drawable/space_bg_22.jpg" />
+        <ignore path="src/main/res/drawable/space_bg_23.jpg" />
+        <ignore path="src/main/res/drawable/space_bg_24.jpg" />
+        <ignore path="src/main/res/drawable/space_bg_25.jpg" />
+        <ignore path="src/main/res/drawable/space_bg_26.jpg" />
+        <ignore path="src/main/res/drawable/space_bg_27.jpg" />
+        <ignore path="src/main/res/drawable/space_bg_28.jpg" />
+        <ignore path="src/main/res/drawable/space_bg_29.jpg" />
+        <ignore path="src/main/res/drawable/space_bg_30.jpg" />
+        <ignore path="src/main/res/drawable/space_bg_31.jpg" />
+        <ignore path="src/main/res/drawable/space_bg_32.jpg" />
+        <ignore path="src/main/res/drawable/space_bg_33.jpg" />
+        <ignore path="src/main/res/drawable/space_bg_34.jpg" />
+        <ignore path="src/main/res/drawable/space_bg_35.jpg" />
+        <ignore path="src/main/res/drawable/space_bg_36.jpg" />
+        <ignore path="src/main/res/drawable/space_bg_37.jpg" />
+        <ignore path="src/main/res/drawable/space_bg_38.jpg" />
+        <ignore path="src/main/res/drawable/space_bg_39.jpg" />
+    </issue>
+</lint>

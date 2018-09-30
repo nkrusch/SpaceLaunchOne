@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    style="@style/snapshot_container">
+
+    <View
+        android:id="@+id/center_guideline_vert"
+        style="@style/snapshot_guideline_vert" />
+
+    <View
+        android:id="@+id/center_guideline_horiz"
+        style="@style/snapshot_guideline_horz" />
+
+    <ImageView
+        android:contentDescription="@string/launch_status_icon"
+        android:id="@+id/event_status"
+        style="@style/event_snapshot_image"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/ic_status" />
+
+    <TextView
+        android:id="@+id/event_status_text"
+        style="@style/event_snapshot_primary_text"
+        android:text="@string/status"
+        app:layout_constraintStart_toEndOf="@+id/event_status"
+        app:layout_constraintTop_toTopOf="@+id/event_status" />
+
+    <TextView
+        android:id="@+id/event_status_text2"
+        style="@style/event_snapshot_secondary_text"
+        app:layout_constraintEnd_toStartOf="@style/snapshot_guideline_vert"
+        app:layout_constraintStart_toEndOf="@+id/event_status"
+        app:layout_constraintTop_toBottomOf="@+id/event_status_text" />
+
+
+    <ImageView
+     android:contentDescription="@string/launch_status_icon"
+        android:id="@+id/event_rocket"
+        style="@style/event_snapshot_image"
+        app:layout_constraintStart_toStartOf="@+id/center_guideline_vert"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/ic_rocket" />
+
+    <TextView
+        android:id="@+id/event_rocket_text"
+        style="@style/event_snapshot_primary_text"
+        android:text="@string/rocket"
+        app:layout_constraintStart_toEndOf="@+id/event_rocket"
+        app:layout_constraintTop_toTopOf="@+id/event_rocket" />
+
+    <TextView
+        android:id="@+id/event_rocket_text2"
+        style="@style/event_snapshot_secondary_text"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/event_rocket"
+        app:layout_constraintTop_toBottomOf="@+id/event_rocket_text" />
+
+
+    <ImageView
+        android:contentDescription="@string/launch_status_icon"
+        android:id="@+id/event_agency"
+        style="@style/event_snapshot_image"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/center_guideline_horiz"
+        app:srcCompat="@drawable/ic_office_building" />
+
+    <TextView
+        android:id="@+id/event_agency_text"
+        style="@style/event_snapshot_primary_text"
+        android:text="@string/agency"
+        app:layout_constraintStart_toEndOf="@id/event_agency"
+        app:layout_constraintTop_toTopOf="@id/event_agency" />
+
+    <TextView
+        android:id="@+id/event_agency_text2"
+        style="@style/event_snapshot_secondary_text"
+        app:layout_constraintEnd_toStartOf="@style/snapshot_guideline_vert"
+        app:layout_constraintStart_toEndOf="@+id/event_agency"
+        app:layout_constraintTop_toBottomOf="@+id/event_agency_text" />
+
+
+    <ImageView
+        android:contentDescription="@string/launch_status_icon"
+        android:id="@+id/event_country"
+        style="@style/event_snapshot_image"
+        app:layout_constraintStart_toStartOf="@id/center_guideline_vert"
+        app:layout_constraintTop_toBottomOf="@id/center_guideline_horiz"
+        app:srcCompat="@drawable/ic_earth" />
+
+    <TextView
+        android:id="@+id/event_country_text"
+        style="@style/event_snapshot_primary_text"
+        android:text="@string/country"
+        app:layout_constraintStart_toEndOf="@id/event_country"
+        app:layout_constraintTop_toTopOf="@id/event_country" />
+
+    <TextView
+        android:id="@+id/event_country_text2"
+        style="@style/event_snapshot_secondary_text"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/event_country"
+        app:layout_constraintTop_toBottomOf="@+id/event_country_text" />
+
+</android.support.constraint.ConstraintLayout>

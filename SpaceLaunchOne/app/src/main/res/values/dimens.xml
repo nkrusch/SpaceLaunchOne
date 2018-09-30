@@ -1,0 +1,194 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- use match parent in res styles -->
+    <dimen name="match_parent">-1px</dimen>
+    <integer name="visibility_visible">0</integer>
+    <integer name="visibility_invisible">1</integer>
+    <integer name="visibility_gone">2</integer>
+    <dimen name="toolbar_horz_margin">16dp</dimen>
+    <dimen name="bottom_dialog_header_textsize">16sp</dimen>
+    <dimen name="bottom_dialog_header_height">56dp</dimen>
+    <dimen name="bottom_dialog_header_horizontal_margin">16dp</dimen>
+    <dimen name="bullet_horizontal_padding">4dp</dimen>
+    <dimen name="bullet_vertical_padding">16dp</dimen>
+    <dimen name="bullet_textSize">18dp</dimen>
+
+
+    <!-- LAUNCH LIST: START -->
+    <dimen name="list_item_minHeight">88dp</dimen>
+    <dimen name="primary_text">15sp</dimen>
+    <dimen name="primary_text_height">32dp</dimen>
+    <dimen name="secondary_text">14sp</dimen>
+    <dimen name="secondary_text_height">21dp</dimen>
+    <dimen name="list_image_card_elevation">0dp</dimen>
+    <dimen name="list_image_card_radius">0dp</dimen>
+    <integer name="list_column_count">1</integer>
+    <integer name="list_number_visibility">@integer/visibility_visible</integer>
+    <dimen name="list_item_margin">0dp</dimen>
+    <dimen name="list_number_horz_padding">@dimen/toolbar_horz_margin</dimen>
+    <integer name="list_image_width_int">100</integer>
+    <dimen name="list_image_width">100dp</dimen>
+    <dimen name="list_image_height">56dp</dimen>
+    <dimen name="list_image_margin_left">0dp</dimen>
+    <dimen name="list_image_margin_right">0dp</dimen>
+    <dimen name="list_image_vert_margin">16dp</dimen>
+    <dimen name="list_grid_padding">0dp</dimen>
+    <dimen name="list_rpadding">@dimen/list_grid_padding</dimen>
+    <dimen name="list_lpadding">@dimen/list_grid_padding</dimen>
+    <dimen name="list_tpadding">@dimen/list_grid_padding</dimen>
+    <dimen name="list_bpadding">@dimen/list_grid_padding</dimen>
+    <integer name="list_divider_visibility">@integer/visibility_visible</integer>
+    <color name="list_image_bg_color">@color/photo_placeholder</color>
+    <!-- LAUNCH LIST: END -->
+
+
+    <!-- NEXT LAUNCH: START -->
+    <bool name="next_launch_row_item">false</bool>
+    <dimen name="next_launch_fragment_height">250dp</dimen>
+    <color name="next_launch_bg_color">@color/next_launch_bar</color>
+    <integer name="next_launch_img_visibility">@integer/visibility_visible</integer>
+    <dimen name="next_launch_text_shadow_x">1</dimen>
+    <dimen name="next_launch_text_shadow_y">1</dimen>
+    <dimen name="next_launch_text_shadow_radius">3</dimen>
+    <dimen name="next_launch_title_size">13sp</dimen>
+    <dimen name="next_launch_text_size">15sp</dimen>
+    <dimen name="next_launch_bullet_size">15sp</dimen>
+    <dimen name="next_launch_text_lineSpacing">4dp</dimen>
+    <dimen name="next_launch_text_vertPadding">4dp</dimen>
+    <dimen name="next_launch_text_horizMargin">30dp</dimen>
+    <integer name="next_launch_text_maxLines">1</integer>
+    <dimen name="next_launch_timer_leftMargin">0dp</dimen>
+    <dimen name="next_launch_timer_rightMargin">0dp</dimen>
+    <dimen name="next_launch_timer_topMargin">50dp</dimen>
+    <integer-array name="next_launch_images">
+        <item>@drawable/space_bg_00</item>
+        <item>@drawable/space_bg_01</item>
+        <item>@drawable/space_bg_02</item>
+        <item>@drawable/space_bg_03</item>
+        <item>@drawable/space_bg_04</item>
+        <item>@drawable/space_bg_05</item>
+        <item>@drawable/space_bg_06</item>
+        <item>@drawable/space_bg_07</item>
+        <item>@drawable/space_bg_08</item>
+        <item>@drawable/space_bg_09</item>
+        <item>@drawable/space_bg_10</item>
+        <item>@drawable/space_bg_11</item>
+        <item>@drawable/space_bg_12</item>
+        <item>@drawable/space_bg_13</item>
+        <item>@drawable/space_bg_14</item>
+        <item>@drawable/space_bg_15</item>
+        <item>@drawable/space_bg_16</item>
+        <item>@drawable/space_bg_17</item>
+        <item>@drawable/space_bg_18</item>
+        <item>@drawable/space_bg_19</item>
+        <item>@drawable/space_bg_20</item>
+        <item>@drawable/space_bg_21</item>
+        <item>@drawable/space_bg_22</item>
+        <item>@drawable/space_bg_23</item>
+        <item>@drawable/space_bg_24</item>
+        <item>@drawable/space_bg_25</item>
+        <item>@drawable/space_bg_26</item>
+        <item>@drawable/space_bg_27</item>
+        <item>@drawable/space_bg_28</item>
+        <item>@drawable/space_bg_29</item>
+        <item>@drawable/space_bg_30</item>
+        <item>@drawable/space_bg_31</item>
+        <item>@drawable/space_bg_32</item>
+        <item>@drawable/space_bg_33</item>
+        <item>@drawable/space_bg_34</item>
+        <item>@drawable/space_bg_35</item>
+        <item>@drawable/space_bg_36</item>
+        <item>@drawable/space_bg_37</item>
+        <item>@drawable/space_bg_38</item>
+        <item>@drawable/space_bg_39</item>
+        <item>@drawable/space_bg_40</item>
+        <item>@drawable/space_bg_41</item>
+        <item>@drawable/space_bg_42</item>
+        <item>@drawable/space_bg_43</item>
+        <item>@drawable/space_bg_44</item>
+    </integer-array>
+    <!-- NEXT LAUNCH: END -->
+
+
+    <!-- TIMER: START -->
+    <dimen name="timer_fragment_height">85dp</dimen>
+    <dimen name="timer_blastoff_size">30dp</dimen>
+    <dimen name="timer_number_size">26dp</dimen>
+    <dimen name="timer_text_size">12sp</dimen>
+    <dimen name="timer_number_horizPadding">3dp</dimen>
+    <dimen name="timer_divider_horizPadding">0dp</dimen>
+    <dimen name="timer_middle_divider_height">4dp</dimen>
+    <dimen name="timer_middle_divider_width">1dp</dimen>
+    <!-- TIMER: END -->
+
+
+    <!-- WIDGET: START -->
+    <dimen name="widget_marginStart">1dp</dimen>
+    <dimen name="widget_marginEnd">1dp</dimen>
+    <dimen name="widget_marginTop">0dp</dimen>
+    <dimen name="widget_marginBottom">3dp</dimen>
+    <dimen name="widget_text_size">10sp</dimen>
+    <dimen name="widget_number_size">26sp</dimen>
+    <!-- WIDGET: END -->
+
+
+    <!-- MAP+PLACES: START -->
+    <dimen name="places_layout_horizontal_margin">0dp</dimen>
+    <dimen name="places_layout_vertical_margin">8dp</dimen>
+    <dimen name="places_recycerview_bottom_margin">20dp</dimen>
+    <dimen name="places_card_horizontal_margin">8dp</dimen>
+    <dimen name="places_card_vertical_margin">8dp</dimen>
+    <dimen name="places_card_width">220dp</dimen>
+    <dimen name="places_card_height">220dp</dimen>
+    <!-- MAP+PLACES: END -->
+
+
+    <!-- VIDEOS: START -->
+    <dimen name="video_item_width">202dp</dimen>
+    <dimen name="video_item_height">110dp</dimen>
+    <dimen name="video_play_icon_size">40dp</dimen>
+    <dimen name="video_card_horizontal_marginEnd">16dp</dimen>
+    <dimen name="video_card_horizontal_marginStart">0dp</dimen>
+    <dimen name="video_card_horizontal_marginVertical">8dp</dimen>
+    <dimen name="video_recyclerview_horizontal_margin">16dp</dimen>
+    <!-- VIDEOS: END -->
+
+
+    <!-- FILTERS: START -->
+    <integer name="filter_rockets_column_count">2</integer>
+    <integer name="filter_agencies_column_count">1</integer>
+    <integer name="filter_locations_column_count">1</integer>
+    <dimen name="filter_label_text_size">13sp</dimen>
+    <dimen name="fitler_checkbox_gap">8dp</dimen>
+    <dimen name="filter_item_margin_end">16dp</dimen>
+    <dimen name="filter_item_margin_start">16dp</dimen>
+    <!-- FILTERS: END -->
+
+
+    <!-- DETAILS: START -->
+    <dimen name="details_content_max_width">@dimen/match_parent</dimen>
+    <dimen name="details_card_margin_top">8dp</dimen>
+    <dimen name="details_card_margin_left">8dp</dimen>
+    <dimen name="details_card_margin_right">8dp</dimen>
+    <dimen name="details_timer_gap">3dp</dimen>
+    <dimen name="details_container_padding_top">0dp</dimen>
+    <dimen name="details_timer_margin_top">0dp</dimen>
+    <!-- DETAILS: END -->
+
+
+    <!-- LINKS: START -->
+    <integer name="links_column_count">1</integer>
+    <dimen name="links_column_width">@dimen/match_parent</dimen>
+    <dimen name="links_icon_size">18dp</dimen>
+    <!-- LINKS: END -->
+
+
+    <!-- CREDITS: START -->
+    <dimen name="credit_item_vert_padding">16dp</dimen>
+    <dimen name="credit_item_horiz_padding">24dp</dimen>
+    <dimen name="credit_item_text_gap">8dp</dimen>
+    <!-- CREDITS: END -->
+
+
+</resources>

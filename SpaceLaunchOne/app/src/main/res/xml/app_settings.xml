@@ -1,0 +1,19 @@
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+    <ListPreference
+        android:defaultValue="24"
+        android:entries="@array/pref_sync_frequency_titles"
+        android:entryValues="@array/pref_sync_frequency_values"
+        android:icon="@drawable/ic_av_timer"
+        android:key="@string/sync_frequency"
+        android:title="@string/pref_title_sync_frequency" />
+    <PreferenceScreen
+        android:icon="@drawable/ic_sync"
+        android:key="@string/dataset_last_sync"
+        android:summary="synchronize immediately"
+        android:title="@string/pref_immediate_sync"/>
+    <Preference
+        android:icon="@drawable/ic_information_outline"
+        android:title="@string/title_activity_credits">
+        <intent android:action="example.action.ACTION_ABOUT_ACTIVITY"/>
+    </Preference>
+</PreferenceScreen>

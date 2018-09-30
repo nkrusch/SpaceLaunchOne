@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- NEXT LAUNCH: START -->
+    <bool name="next_launch_row_item">true</bool>
+    <color name="next_launch_bg_color">@color/next_launch_bar</color>
+    <dimen name="next_launch_fragment_height">@dimen/timer_fragment_height</dimen>
+    <dimen name="next_launch_text_lineSpacing">0dp</dimen>
+    <dimen name="next_launch_title_size">12sp</dimen>
+    <dimen name="next_launch_text_size">13sp</dimen>
+    <dimen name="next_launch_bullet_size">16sp</dimen>
+    <dimen name="next_launch_text_horizMargin">@dimen/toolbar_horz_margin</dimen>
+    <dimen name="next_launch_timer_rightMargin">@dimen/toolbar_horz_margin</dimen>
+    <dimen name="next_launch_timer_leftMargin">30dp</dimen>
+    <dimen name="next_launch_timer_topMargin">@dimen/toolbar_horz_margin</dimen>
+    <dimen name="next_launch_text_vertPadding">0dp</dimen>
+    <integer name="next_launch_img_visibility">@integer/visibility_gone</integer>
+
+    <!-- override view placements -->
+    <style name="next_launch_title_layout" parent="next_launch_title">
+        <item name="layout_constraintBottom_toTopOf">@+id/next_text</item>
+        <item name="layout_constraintEnd_toStartOf">@+id/timer</item>
+        <item name="layout_constraintStart_toStartOf">parent</item>
+        <item name="android:shadowRadius">0</item>
+        <item name="android:gravity">left</item>
+    </style>
+
+    <style name="next_launch_name_layout" parent="next_launch_text">
+        <item name="layout_constraintBottom_toBottomOf">parent</item>
+        <item name="layout_constraintTop_toTopOf">parent</item>
+        <item name="layout_constraintEnd_toStartOf">@+id/timer</item>
+        <item name="layout_constraintStart_toStartOf">parent</item>
+        <item name="android:shadowRadius">0</item>
+        <item name="android:gravity">left</item>
+        <item name="android:layout_width">0dp</item>
+    </style>
+
+    <style name="next_launch_date_layout" parent="next_launch_text">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="layout_constraintTop_toBottomOf">@+id/next_text</item>
+        <item name="layout_constraintRight_toLeftOf">@+id/timer</item>
+        <item name="layout_constraintStart_toStartOf">parent</item>
+        <item name="android:shadowRadius">0</item>
+        <item name="android:gravity">left</item>
+    </style>
+
+    <style name="next_launch_timer_layout" parent="next_timer_container">
+        <item name="layout_constraintEnd_toEndOf">parent</item>
+    </style>
+    <!-- NEXT LAUNCH: END -->
+
+    <!-- FILTERS: START -->
+    <integer name="filter_rockets_column_count">3</integer>
+    <integer name="filter_agencies_column_count">1</integer>
+    <integer name="filter_locations_column_count">1</integer>
+    <!-- FILTERS: END -->
+
+    <!-- DETAILS: START -->
+    <!--suppress AndroidDomInspection -->
+    <dimen name="details_content_max_width">450dp</dimen>
+    <!-- DETAILS: END -->
+
+
+</resources>

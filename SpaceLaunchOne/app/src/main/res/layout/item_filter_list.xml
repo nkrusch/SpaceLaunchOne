@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/layout_root"
+    style="@style/filter_list_item">
+
+    <CheckBox
+        android:id="@+id/checkbox"
+        style="@style/filter_checkbox" />
+
+    <TextView
+        android:id="@+id/name"
+        style="@style/filter_text" />
+
+</LinearLayout>

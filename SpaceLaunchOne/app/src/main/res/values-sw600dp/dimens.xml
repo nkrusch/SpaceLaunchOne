@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <dimen name="next_launch_fragment_height">320dp</dimen>
+    <dimen name="next_launch_title_size">14sp</dimen>
+    <dimen name="next_launch_text_size">17sp</dimen>
+    <dimen name="next_launch_bullet_size">18sp</dimen>
+    <dimen name="timer_number_size">30dp</dimen>
+    <dimen name="video_item_width">260dp</dimen>
+    <dimen name="video_item_height">132dp</dimen>
+
+</resources>

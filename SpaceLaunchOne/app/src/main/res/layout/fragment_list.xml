@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    style="@style/matches_parent">
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/recyclerView"
+        style="@style/list_recyclerview" />
+
+    <LinearLayout
+        android:id="@+id/empty_state"
+        style='@style/list_empty_state'>
+
+        <TextView
+            android:id="@+id/list_empty_state_text"
+            style="@style/list_empty_state_text" />
+    </LinearLayout>
+
+</android.support.constraint.ConstraintLayout>

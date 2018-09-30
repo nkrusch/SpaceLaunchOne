@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/bullets"
+    style="@style/bullet_container">
+
+    <TextView
+        android:id="@+id/bullet_1"
+        style="@style/bullet"
+        android:textColor="@color/bullet_active" />
+
+    <TextView
+        android:id="@+id/bullet_2"
+        style="@style/bullet" />
+
+    <TextView
+        android:id="@+id/bullet_3"
+        style="@style/bullet" />
+
+    <TextView
+        android:id="@+id/bullet_4"
+        style="@style/bullet" />
+
+    <TextView
+        android:id="@+id/bullet_5"
+        style="@style/bullet" />
+
+</LinearLayout>

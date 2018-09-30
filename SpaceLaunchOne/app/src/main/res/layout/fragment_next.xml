@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/layout_root"
+    style="@style/next_container">
+
+    <ImageView
+        android:id="@+id/image"
+        style="@style/next_launch_image"
+        android:contentDescription="@string/space_themed_background" />
+
+    <ImageView
+        style="@style/next_launch_image"
+        android:contentDescription="@string/space_themed_background" />
+
+    <TextView
+        android:id="@+id/next_launch_title"
+        style="@style/next_launch_title_layout" />
+
+    <TextView
+        android:id="@+id/next_text"
+        style="@style/next_launch_name_layout" />
+
+    <TextView
+        android:id="@+id/next_date"
+        style="@style/next_launch_date_layout" />
+
+    <TextView
+        android:id="@+id/next_status"
+        style="@style/next_launch_status_layout" />
+
+    <FrameLayout
+        android:id="@+id/timer"
+        style="@style/next_launch_timer_layout" />
+
+</android.support.constraint.ConstraintLayout>

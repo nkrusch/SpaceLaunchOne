@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    style="@style/credit_item_layout">
+
+    <TextView
+        android:id="@+id/list_label"
+        style="@style/credit_item_label" />
+
+    <TextView
+        android:id="@+id/list_value"
+        style="@style/credit_item_text" />
+
+</LinearLayout>

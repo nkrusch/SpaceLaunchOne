@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    style="@style/details_timer_layout">
+
+    <android.support.v7.widget.CardView style="@style/details_timer_card">
+
+        <include
+            android:id="@+id/timer"
+            style="@style/details_timer_content"
+            layout="@layout/fragment_timer" />
+
+        <ImageView
+            style="@style/details_timer_image"
+            android:contentDescription="@string/timer" />
+
+    </android.support.v7.widget.CardView>
+
+    <!-- add gap for drop shadow -->
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/details_timer_gap" />
+</LinearLayout>

@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?><!--suppress ALL -->
+<resources>
+
+    <style name="event_divider">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">0dp</item>
+        <item name="android:background">?attr/dividerVertical</item>
+        <item name="layout_constraintHeight_default">spread</item>
+    </style>
+
+    <style name="event_label" parent="event_text">
+        <item name="android:layout_marginTop">16dp</item>
+        <item name="android:layout_marginBottom">4dp</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="event_text">
+        <item name="android:textAlignment">viewStart</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginStart">16dp</item>
+        <item name="android:layout_marginEnd">16dp</item>
+        <item name="android:gravity">start</item>
+    </style>
+
+    <style name="event_summary_item">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="layout_constraintStart_toStartOf">parent</item>
+    </style>
+
+    <style name="snapshot_container">
+        <item name="android:layout_width">@dimen/match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:padding">16dp</item>
+    </style>
+
+    <style name="snapshot_guideline">
+        <item name="layout_constraintBottom_toBottomOf">parent</item>
+        <item name="layout_constraintEnd_toEndOf">parent</item>
+        <item name="layout_constraintStart_toStartOf">parent</item>
+        <item name="layout_constraintTop_toTopOf">parent</item>
+        <item name="android:background">@android:color/white</item>
+    </style>
+
+    <style name="snapshot_guideline_vert" parent="snapshot_guideline">
+        <item name="android:layout_width">1dp</item>
+        <item name="android:layout_height">96dp</item>
+    </style>
+
+    <style name="snapshot_guideline_horz" parent="snapshot_guideline">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">16dp</item>
+    </style>
+
+    <style name="event_snapshot_image">
+        <item name="android:layout_width">40dp</item>
+        <item name="android:layout_height">40dp</item>
+        <item name="android:padding">4dp</item>
+    </style>
+
+    <style name="event_snaphot_twoline_text">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:ellipsize">end</item>
+        <item name="android:maxLines">1</item>
+        <item name="android:gravity">start|center_vertical</item>
+        <item name="android:paddingStart">@dimen/toolbar_horz_margin</item>
+        <item name="android:paddingEnd">@dimen/toolbar_horz_margin</item>
+        <item name="android:layout_height">20dp</item>
+    </style>
+
+    <style name="event_snapshot_primary_text" parent="event_snaphot_twoline_text">
+        <item name="android:textColor">@color/primary_text</item>
+        <item name="android:textSize">@dimen/primary_text</item>
+    </style>
+
+    <style name="event_snapshot_secondary_text" parent="event_snaphot_twoline_text">
+        <item name="android:textColor">@color/secondary_text</item>
+        <item name="android:textSize">@dimen/secondary_text</item>
+    </style>
+
+</resources>

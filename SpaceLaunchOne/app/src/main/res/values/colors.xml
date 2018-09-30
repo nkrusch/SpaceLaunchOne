@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#323232</color>
+    <color name="colorPrimaryDark">#212121</color>
+    <color name="colorAccent">#fdd835</color>
+
+    <!-- backgrounds -->
+    <color name="photo_placeholder">#ccc</color>
+    <color name="photo_placeholder_inverse">#888</color>
+    <color name="next_launch_bar">@color/details_timer_background</color>
+    <color name="places_image_background">#EEE</color>
+    <color name="maps_button_background">#B3FFFFFF</color>
+    <color name="details_background">#DDD</color>
+    <color name="details_timer_background">#1976D2</color>
+    <color name="filter_divider_color">#DDD</color>
+
+    <!-- text colors -->
+    <color name="textLinkColor">#03A9F4</color>
+    <color name="primary_text">#de000000</color>
+    <color name="secondary_text">#99000000</color>
+    <color name="widget_text">#FFF</color>
+    <color name="text_with_shadow">#FFF</color>
+    <color name="text_shadow_color">#CC000000</color>
+    <color name="widget_shadow_color">#000</color>
+    <color name="bottom_drawer_dialog_title">#999</color>
+    <color name="bullet_inactive">#DDD</color>
+    <color name="bullet_active">@color/colorAccent</color>
+
+
+</resources>

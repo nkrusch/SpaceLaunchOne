@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/list_item_container"
+    style="@style/list_item">
+
+    <android.support.v7.widget.CardView
+        android:id="@+id/thumbnail_card"
+        style="@style/list_image_card">
+
+        <ImageView
+            android:id="@+id/thumbnail"
+            style="@style/list_image"
+            android:contentDescription="@string/launch_thumbnail" />
+    </android.support.v7.widget.CardView>
+
+    <TextView
+        android:id="@+id/title"
+        style="@style/list_primary_text_layout" />
+
+    <TextView
+        android:id="@+id/sub_line_1"
+        style="@style/list_seondary_text_line_1" />
+
+    <TextView
+        android:id="@+id/sub_line_2"
+        style="@style/list_seondary_text_line_2" />
+
+    <TextView
+        android:id="@+id/list_number"
+        style="@style/list_number" />
+
+    <TextView
+        android:id="@+id/status"
+        style="@style/list_status" />
+
+    <View style="@style/list_divider" />
+
+</android.support.constraint.ConstraintLayout>
