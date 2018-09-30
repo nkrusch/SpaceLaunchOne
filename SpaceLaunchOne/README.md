@@ -18,11 +18,17 @@ git clone https://github.com/nkrusch/SpaceLaunchOne.git
 
 If you need instructions [see signing your app](https://developer.android.com/studio/publish/app-signing)
 
-**4. Optional: get necessary API keys** 
+**4. Optional: obtain 3rd party API keys** 
 
-This application uses Google Maps and Cloudinary. You can skip this step but images and maps will not render if you skip this step. 
-For instructions how to acquire API keys see: [Cloudinary Setup](https://cloudinary.com/documentation/android_integration#setup) | 
-[Google Maps](https://developers.google.com/maps/documentation/android-sdk/start)
+This application uses multiple 3rd party services: Google Maps, Cloudinary and OneSignal. 
+To get these services working properly, you must obtain an API keys. OR you may skip this
+step knowing that some functionality will not work as intended until you obtain the keys.
+
+For instructions how to acquire API keys see: 
+
+[Cloudinary Setup](https://cloudinary.com/documentation/android_integration#setup) | 
+[Google Maps](https://developers.google.com/maps/documentation/android-sdk/start) |
+[OneSignal](https://documentation.onesignal.com/docs/android-sdk-setup)
 
 **5. Create a file called `secret.properites` and add following properties to it:**
 
@@ -38,10 +44,13 @@ Cloudinary_Cloud="ENTER_YOUR_CLOUD_NAME_HERE"
 #
 # Google Maps Key
 Google_Maps_Key="ENTER_MAPS_API_KEY_HERE"
+#
+# OneSignal App ID
+onesignal="ENTER_ONESIGNAL_APP_ID_HERE"
 ```   
 
 The file path should be `./SpaceLaunchOne/secret.properties` relative to repository root. 
-Failure to add this file will cause project to not compile.
+Failure to add this file and the listed <Key,Value> pairs will cause project to not compile.
 
 **6. Build the project**
 
