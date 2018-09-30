@@ -34,19 +34,19 @@ For instructions how to acquire API keys see:
 
 ```
 # Keystore
-storeFile = "path/to/keystore"
-keyAlias = "ENTER_KEYSTORE_ALIAS"
-keyPassword = "ENTER_KEY_PWD"
-storePassword = "ENTER_STORE_PWD"
+storeFile = path/to/keystore
+keyAlias = ENTER_KEYSTORE_ALIAS
+keyPassword = ENTER_KEY_PWD
+storePassword = ENTER_STORE_PWD
 #
 # Cloudinary Name
-Cloudinary_Cloud="ENTER_YOUR_CLOUD_NAME_HERE"
+Cloudinary_Cloud = "ENTER_YOUR_CLOUD_NAME_HERE"
 #
 # Google Maps Key
-Google_Maps_Key="ENTER_MAPS_API_KEY_HERE"
+Google_Maps_Key = "ENTER_MAPS_API_KEY_HERE"
 #
 # OneSignal App ID (UUID without quotes)
-onesignal=00000000-0000-0000-0000-000000000000
+onesignal = 00000000-0000-0000-0000-000000000000
 ```   
 
 The file path should be `./SpaceLaunchOne/secret.properties` relative to repository root. 
