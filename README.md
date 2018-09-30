@@ -2,7 +2,7 @@
 
 [![Build Status](https://travis-ci.com/nkrusch/SpaceLaunchOne.svg?branch=master)](https://travis-ci.com/nkrusch/SpaceLaunchOne)
 
-This android app is a capstone project for Udacity android developer nanodegree program. The goal of this project is to apply different concepts and components learned across the Nanodegree program while creating and designing an application of choice. 
+This android app is a capstone project for Udacity android developer nanodegree program. The goal of this project is to apply different concepts and components learned across the nanodegree program while creating and designing an application of choice. 
 
 This repository contains both stages of the capstone project. In stage 1 the purpose is to design the application and produce a design document. In stage 2 the purpose is to build the application based on the design document. 
 
