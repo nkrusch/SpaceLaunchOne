@@ -21,7 +21,7 @@ If you need instructions [see signing your app](https://developer.android.com/st
 **4. Optional: obtain 3rd party API keys** 
 
 This application uses multiple 3rd party services: Google Maps, Cloudinary and OneSignal. 
-To get these services working properly, you must obtain an API keys. OR you may skip this
+To get these services working properly, you must obtain API keys. OR you may skip this
 step knowing that some functionality will not work as intended until you obtain the keys.
 
 For instructions how to acquire API keys see: 
@@ -45,8 +45,8 @@ Cloudinary_Cloud="ENTER_YOUR_CLOUD_NAME_HERE"
 # Google Maps Key
 Google_Maps_Key="ENTER_MAPS_API_KEY_HERE"
 #
-# OneSignal App ID
-onesignal="ENTER_ONESIGNAL_APP_ID_HERE"
+# OneSignal App ID (UUID without quotes)
+onesignal=00000000-0000-0000-0000-000000000000
 ```   
 
 The file path should be `./SpaceLaunchOne/secret.properties` relative to repository root. 
