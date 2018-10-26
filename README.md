@@ -43,7 +43,7 @@ This application itself is based on [Launch Library API](https://launchlibrary.n
 
 ## Downloads
 
-Google Play store [here &raquo;](https://play.google.com/apps/testing/io.github.nkrusch.spacelaunchone) (Beta)
+Google Play store [here &raquo;](https://play.google.com/store/apps/details?id=io.github.nkrusch.spacelaunchone)
 
 Stage 2: source code is [here &raquo;](https://github.com/nkrusch/SpaceLaunchOne/tree/master/SpaceLaunchOne)
 
