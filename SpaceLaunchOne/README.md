@@ -1,6 +1,6 @@
 # Space Launch 1 Source
 
-This directory contains the srouce code for Sapce Launch 1 android app.
+This directory contains the source code for Space Launch 1 android app.
 
 ### Table of Contents
 
