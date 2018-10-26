@@ -49,7 +49,7 @@ This application itself is based on [Launch Library API](https://launchlibrary.n
 
 Stage 2: source code is [here &raquo;](https://github.com/nkrusch/SpaceLaunchOne/tree/master/SpaceLaunchOne)
 
-Stage 1: design proposal is [here &raquo;](https://github.com/nkrusch/SpaceLaunchOne/blob/master/docs/Capstone_Stage1.pdf)
+Stage 1: design proposal is [here &raquo;](https://github.com/nkrusch/SpaceLaunchOne/tree/master/docs)
 
 ## License 
 
