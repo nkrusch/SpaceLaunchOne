@@ -19,6 +19,7 @@
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/recyclerView"
-        style="@style/videos_recyclerview" />
+        style="@style/videos_recyclerview"
+        android:contentDescription="@string/videos" />
 
 </android.support.constraint.ConstraintLayout>

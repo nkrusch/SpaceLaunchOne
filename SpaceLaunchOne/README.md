@@ -1,4 +1,8 @@
-# Instructions
+# Space Launch 1 Source
+
+This directory contains the srouce code for Sapce Launch 1 android app.
+
+### Table of Contents
 
 1. [How to compile](#how-to-compile)
 2. [Project organization](#project-organization)

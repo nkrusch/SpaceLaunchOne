@@ -2,14 +2,21 @@ package io.github.nkrusch.spacelaunchone.features.map;
 
 import android.arch.lifecycle.Observer;
 import android.arch.lifecycle.ViewModelProviders;
+import android.content.Context;
+import android.content.DialogInterface;
+import android.net.ConnectivityManager;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.support.design.widget.BottomSheetBehavior;
+import android.support.design.widget.BottomSheetDialog;
+import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.AppCompatImageButton;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.FrameLayout;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
@@ -22,6 +29,7 @@ import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.gms.maps.model.PointOfInterest;
 
 import io.github.nkrusch.spacelaunchone.R;
+import io.github.nkrusch.spacelaunchone.app.Utilities;
 import local.LaunchDetails;
 import viewmodels.LaunchDetailsViewModel;
 
@@ -117,9 +125,17 @@ public class MapFragment extends Fragment implements OnMapReadyCallback, GoogleM
      * This will attempt to load places images for the selected location
      */
     public void onPoiClick(PointOfInterest poi) {
-        PlacesFragment psf = PlacesFragment.newInstance(poi.placeId, poi.name);
-        if (getFragmentManager() != null)
-            psf.show(getFragmentManager(), null);
+        final ConnectivityManager cm = (ConnectivityManager)
+                getActivity().getSystemService(Context.CONNECTIVITY_SERVICE);
+
+        boolean canLoadPlaces = Utilities.isNetworkAvailable(cm);
+        if (canLoadPlaces) {
+            if (getFragmentManager() != null) {
+                PlacesFragment psf = PlacesFragment.newInstance(poi.placeId, poi.name);
+                psf.show(getFragmentManager(), null);
+            }
+        } else Snackbar.make(getActivity().findViewById(android.R.id.content),
+                R.string.offline_message, Snackbar.LENGTH_LONG).show();
     }
 
     /**

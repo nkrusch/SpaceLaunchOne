@@ -11,8 +11,20 @@ apply plugin: 'com.onesignal.androidsdk.onesignal-gradle-plugin'
 apply plugin: 'com.android.application'
 
 android {
+
     Properties properties = new Properties()
     properties.load(project.rootProject.file('secret.properties').newDataInputStream())
+    Properties versionProps = new Properties()
+    def versionPropsFile = project.rootProject.file('version.properties')
+    versionProps.load(new FileInputStream(versionPropsFile))
+
+    def major = 1
+    def minor = 1
+    def patch = 0
+    def code = versionProps['VERSION_CODE'].toInteger() + 1
+    versionProps['VERSION_CODE'] = code.toString()
+    versionProps.store(versionPropsFile.newWriter(), null)
+
     signingConfigs {
         config {
             storeFile file(properties.getProperty('storeFile'))
@@ -22,13 +34,13 @@ android {
         }
     }
     compileSdkVersion 27
-    buildToolsVersion "27.0.3"
+    buildToolsVersion '28.0.2'
     defaultConfig {
         applicationId "io.github.nkrusch.spacelaunchone"
         minSdkVersion 19
         targetSdkVersion 27
-        versionCode 1
-        versionName "1.0"
+        versionCode code
+        versionName major + "." + minor + "." + patch + "." + code
         vectorDrawables.useSupportLibrary = true
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
         buildConfigField 'int', "UpdateInterval", Min_Update_Interval

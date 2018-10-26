@@ -36,6 +36,14 @@ public interface AppDao {
             "ORDER BY launchDateUTC DESC LIMIT :limit OFFSET :offset")
     LiveData<List<Launch>> pastLaunches(long cutoff, int limit, int offset);
 
+
+    @Query("SELECT id, name, image, launchDateUTC, locationName, status " +
+            "FROM Launch JOIN details ON id = uid WHERE " +
+            "(name LIKE :q OR agencyName LIKE :q OR locationName LIKE :q OR rocketName LIKE :q) " +
+            "ORDER BY launchDateUTC DESC LIMIT :limit OFFSET :offset")
+    List<Launch> searchLaunches(String q, int limit, int offset);
+
+
     @Query("SELECT id, name, image, launchDateUTC, locationName, status " +
             "FROM Launch JOIN details ON id = uid WHERE status=1 AND launchDateUTC > :cutoff " +
             "AND rocketId NOT IN (SELECT rfid FROM rocketFilter) " +

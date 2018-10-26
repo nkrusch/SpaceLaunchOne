@@ -11,6 +11,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import java.util.LinkedList;
 import java.util.List;
@@ -32,6 +33,7 @@ abstract class LaunchRecyclerView<S extends AndroidViewModel & ILaunchesViewMode
 
     private ListAdapter.OnItemClickListener mCustomHandler;
     private LinearLayout mEmptyState;
+    protected TextView mEmptyStateText;
     private boolean customFirstItem;
 
     abstract Class<S> getType();
@@ -120,6 +122,7 @@ abstract class LaunchRecyclerView<S extends AndroidViewModel & ILaunchesViewMode
         mRecyclerView.setLayoutManager(glm);
         mRecyclerView.setAdapter(la);
         mEmptyState = view.findViewById(R.id.empty_state);
+        mEmptyStateText = view.findViewById(R.id.list_empty_state_text);
         restoreRecyclerViewState(savedInstanceState);
         return view;
     }

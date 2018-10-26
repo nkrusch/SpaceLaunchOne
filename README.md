@@ -22,19 +22,21 @@ This application itself is based on [Launch Library API](https://launchlibrary.n
           <li>List of completed launches</li>
           <li>Filter launches by preference</li>
           <li>View launch details</li>
-          <li>Automatic data synchronization</li>
+          <li>Watch launch videos</li>
           <li>Google Maps and Places</li>
-      </ul>    
+          <li>Push notifications</li>
+      </ul>
     </td>
     <td>
       <ul>
+          <li>Automatic data synchronization</li>
           <li>Homescreen countdown widget</li>
           <li>Responsive design</li>
           <li>Works offline</li>
-          <li>Images optimized to display size</li>
+          <li>Optimized images</li>
           <li>RTL and accessibility support</li>
-          <li>Device Support Kitkat and later (>= API 19)</li>
-      </ul>          
+          <li>Device support: >= Kitkat</li>
+      </ul>
     </td>
   </tr>
 </table>

@@ -3,11 +3,13 @@ package io.github.nkrusch.spacelaunchone.app;
 import android.content.Context;
 import android.content.res.Configuration;
 import android.content.res.Resources;
+import android.graphics.Rect;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.support.annotation.Nullable;
 import android.util.DisplayMetrics;
 import android.util.Pair;
+import android.view.View;
 import android.view.WindowManager;
 
 import com.cloudinary.Transformation;
@@ -271,5 +273,18 @@ public class Utilities {
      */
     public static int clamp(int min, int max, int value) {
         return Math.max(min, Math.min(max, value));
+    }
+
+    public static boolean isVisible(final View view, int screenWidth, int screenHeight) {
+        if (view == null) {
+            return false;
+        }
+        if (!view.isShown()) {
+            return false;
+        }
+        final Rect actualPosition = new Rect();
+        view.getGlobalVisibleRect(actualPosition);
+        final Rect screen = new Rect(0, 0, screenWidth, screenHeight);
+        return actualPosition.intersect(screen);
     }
 }

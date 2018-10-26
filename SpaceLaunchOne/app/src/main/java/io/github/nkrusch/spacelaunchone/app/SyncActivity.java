@@ -26,20 +26,24 @@ public abstract class SyncActivity extends AppCompatActivity {
     /**
      * Implement this method to perform some actions after sync finishes.
      */
-    protected void onReceiveHandler() {
+    protected void onReceiveHandler() { }
+
+
+    protected void onStop() {
+        super.onStop();
+        unregisterReceiver();
     }
 
     /**
      * Unregister broadcast receiver
      */
-    protected void onStop() {
-        super.onStop();
-        if (syncReceiver != null && receiverRegistered)
-            try {
-                unregisterReceiver(syncReceiver);
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
+    private void unregisterReceiver(){
+        if (syncReceiver == null || !receiverRegistered) return;
+        try {
+            unregisterReceiver(syncReceiver);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     /**
@@ -57,6 +61,7 @@ public abstract class SyncActivity extends AppCompatActivity {
         public void onReceive(Context context, Intent intent) {
             if (SYNC_KEY.equals(intent.getAction())) {
                 UpdateTime.updateSyncTimestamp(PreferenceManager.getDefaultSharedPreferences(context));
+                unregisterReceiver();
                 onReceiveHandler();
             }
         }
@@ -66,6 +71,10 @@ public abstract class SyncActivity extends AppCompatActivity {
      * Call this method to synchronize application data immediately
      */
     protected void requestImmediateSync() {
+        if(syncReceiver != null){
+            Log.d(TAG, "Pending sync already running, will not launch another");
+            return;
+        }
         Log.d(TAG, "Starting immediate sync...");
         syncReceiver = new DataSyncReceiver();
         IntentFilter intentFilter = new IntentFilter();
@@ -78,5 +87,4 @@ public abstract class SyncActivity extends AppCompatActivity {
         initIntent.setClass(this, UpdateIntentService.class);
         startService(initIntent);
     }
-
 }

@@ -99,6 +99,11 @@ public class ImageListActivity extends SyncActivity {
             scrollToTop();
             return true;
         }
+        if(id==R.id.search){
+            startActivity(new Intent(this, SearchActivity.class));
+            overridePendingTransition(R.anim.fade_in, R.anim.fade_out);
+            return true;
+        }
 
         return super.onOptionsItemSelected(item);
     }

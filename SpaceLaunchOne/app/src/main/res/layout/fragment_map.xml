@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     style="@style/matches_parent">
 
     <fragment
@@ -11,6 +10,7 @@
 
     <android.support.v7.widget.AppCompatImageButton
         android:id="@+id/custom_map_button"
-        style="@style/maps_custom_button" />
+        style="@style/maps_custom_button"
+        android:contentDescription="@string/tab_map" />
 
 </RelativeLayout>

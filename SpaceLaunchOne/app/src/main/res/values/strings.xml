@@ -6,6 +6,7 @@
     <string name="title_activity_details">Launch Details</string>
     <string name="title_activity_credits">About</string>
     <string name="title_activity_history">Completed Launches</string>
+    <string name="title_activity_search">Search Launches</string>
     <string name="title_activity_filters">Apply Filters</string>
 
     <plurals name="years">
@@ -67,7 +68,7 @@
         </item>
         <item>Developer ; Neea Rusch (2018)</item>
         <item>Source Code ; &lt;a href="https://github.com/nkrusch/SpaceLaunchOne">SpaceLaunchOne on Github&lt;/a></item>
-        <item>License ; MIT</item>
+        <item>Rate this app ; &lt;a href="https://play.google.com/store/apps/details?id=io.github.nkrusch.spacelaunchone">Rate at Google Play Store&lt;/a></item>
         <item>Launch Data ; &lt;a href="http://launchlibrary.net/docs/1.4/api.html">Launch Library API&lt;/a></item>
         <item>Image Credits ; &lt;a href="http://launchlibrary.net">Launch Library&lt;/a>&lt;br/>
             &lt;a href="https://en.wikipedia.org">Wikipedia&lt;/a>&lt;br/>
@@ -77,6 +78,7 @@
     <string name="credits_array_separator">;</string>
     <string name="version">Version</string>
     <string name="scroll_to_top">Scroll to top</string>
+    <string name="search">Search...</string>
     <string name="dataset_last_sync">last_sync_timestamp</string>
     <string name="last_sync_never_occurred">has not run</string>
     <string name="last_sync_timestamp">Last synced %s</string>
@@ -143,4 +145,11 @@
     <string name="country">Country</string>
     <string name="agency">Agency</string>
     <string name="rocket_summary_label">Rocket Name / Family / Configuration</string>
+    <string name="notifications_preference">notifications_preference</string>
+    <string name="disabled">Disabled</string>
+    <string name="enabled">Enabled</string>
+    <string name="app_notifications">App Notifications</string>
+    <string name="no_matches">No matches</string>
+    <string name="search_results">search results</string>
+    <string name="launches">launches</string>
 </resources>

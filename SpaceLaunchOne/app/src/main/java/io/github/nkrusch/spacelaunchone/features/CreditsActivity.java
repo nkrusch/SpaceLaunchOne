@@ -133,6 +133,7 @@ public class CreditsActivity extends AppCompatActivity {
 
         /**
          * Bind the view data; make links clickable
+         *
          * @param holder
          * @param position
          */
@@ -141,7 +142,10 @@ public class CreditsActivity extends AppCompatActivity {
             Pair<String, String> entry = dataSource.get(position);
             holder.label.setText(entry.first);
             holder.value.setText(Html.fromHtml(entry.second));
-            holder.value.setMovementMethod(LinkMovementMethod.getInstance());
+            if (entry.second.contains("href")) {
+                holder.value.setMovementMethod(LinkMovementMethod.getInstance());
+                holder.value.setPadding(0, 20, 0, 20);
+            }
         }
 
         public class ItemViewHolder extends RecyclerView.ViewHolder {

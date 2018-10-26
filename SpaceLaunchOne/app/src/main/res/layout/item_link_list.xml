@@ -9,6 +9,7 @@
         android:contentDescription="@string/external_link" />
 
     <TextView
+        android:contentDescription="@string/external_link"
         android:id="@+id/link_text"
         style="@style/links_text" />
 

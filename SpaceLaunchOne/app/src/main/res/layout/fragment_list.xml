@@ -4,6 +4,7 @@
     style="@style/matches_parent">
 
     <android.support.v7.widget.RecyclerView
+        android:contentDescription="@string/launches"
         android:id="@+id/recyclerView"
         style="@style/list_recyclerview" />
 

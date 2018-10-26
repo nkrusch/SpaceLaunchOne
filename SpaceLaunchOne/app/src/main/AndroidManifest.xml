@@ -11,15 +11,17 @@
         android:allowBackup="true"
         android:fullBackupContent="false"
         android:icon="@mipmap/ic_launcher"
+        android:largeHeap="true"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
-        tools:replace="android:fullBackupContent"
-        tools:ignore="GoogleAppIndexingWarning">
+        tools:ignore="GoogleAppIndexingWarning"
+        tools:replace="android:fullBackupContent">
         <meta-data
             android:name="com.google.android.geo.API_KEY"
             android:value="@string/google_maps_key" />
+
         <activity
             android:name=".features.SplashActivity"
             android:theme="@style/SplashTheme">
@@ -34,8 +36,8 @@
             android:label="@string/title_activity_main"
             android:launchMode="singleTop" />
         <activity
-            android:label="@string/title_activity_main"
             android:name=".features.ImageListActivity"
+            android:label="@string/title_activity_main"
             android:launchMode="singleTop" />
         <activity
             android:name=".features.DetailActivity"
@@ -57,12 +59,16 @@
             android:theme="@style/CreditsTheme">
             <intent-filter>
                 <action android:name="example.action.ACTION_ABOUT_ACTIVITY" />
+
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
         <activity
             android:name=".features.HistoryActivity"
             android:label="@string/title_activity_history" />
+        <activity
+            android:name=".features.SearchActivity"
+            android:label="@string/title_activity_search" />
         <activity
             android:name=".features.FilterActivity"
             android:label="@string/title_activity_filters"
@@ -75,6 +81,7 @@
             <intent-filter>
                 <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
             </intent-filter>
+
             <meta-data
                 android:name="android.appwidget.provider"
                 android:resource="@xml/countdown_widget_info" />

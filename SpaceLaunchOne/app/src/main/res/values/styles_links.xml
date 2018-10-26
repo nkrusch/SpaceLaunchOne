@@ -15,7 +15,7 @@
     <style name="links_title">
         <item name="android:layout_width">wrap_content</item>
         <item name="android:maxLines">1</item>
-        <item name="android:layout_height">30dp</item>
+        <item name="android:layout_height">48dp</item>
         <item name="android:gravity">start|top</item>
         <item name="android:textColor">@color/secondary_text</item>
         <item name="android:textSize">@dimen/primary_text</item>
@@ -23,13 +23,11 @@
 
     <style name="link_item">
         <item name="android:layout_width">@dimen/links_column_width</item>
-        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_height">40dp</item>
         <item name="android:layout_gravity">start|center_vertical</item>
         <!--suppress AndroidDomInspection -->
         <item name="android:background">?attr/selectableItemBackground</item>
         <item name="android:orientation">horizontal</item>
-        <item name="android:paddingBottom">8dp</item>
-        <item name="android:paddingTop">8dp</item>
     </style>
 
     <style name="links_text">
@@ -44,7 +42,7 @@
     <style name="links_icon">
         <item name="android:layout_width">@dimen/links_icon_size</item>
         <item name="android:layout_height">@dimen/links_icon_size</item>
-        <item name="android:layout_marginEnd">16dp</item>
+        <item name="android:layout_marginEnd">20dp</item>
         <item name="android:layout_marginTop">2dp</item>
         <item name="srcCompat">@drawable/ic_wikipedia</item>
     </style>

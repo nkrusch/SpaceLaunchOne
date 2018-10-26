@@ -1,9 +1,13 @@
 package io.github.nkrusch.spacelaunchone.features.map;
 
+import android.app.Dialog;
+import android.content.DialogInterface;
 import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.support.design.widget.BottomSheetBehavior;
+import android.support.design.widget.BottomSheetDialog;
 import android.support.design.widget.BottomSheetDialogFragment;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
@@ -11,6 +15,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -47,7 +52,7 @@ public class PlacesFragment extends BottomSheetDialogFragment {
     private TextView mHeading;
 
     /**
-     * @param id placeId of interest
+     * @param id   placeId of interest
      * @param name place name if known (this fragment will recover name if not known by parent)
      */
     public static PlacesFragment newInstance(String id, String name) {
@@ -70,6 +75,20 @@ public class PlacesFragment extends BottomSheetDialogFragment {
             placeId = bundle.getString(EXTRA_PLACEID);
             placeName = bundle.getString(EXTRA_PLACENAME);
         }
+    }
+
+    @Override
+    public Dialog onCreateDialog(Bundle savedInstanceState) {
+        Dialog psf = super.onCreateDialog(savedInstanceState);
+        psf.setOnShowListener(new DialogInterface.OnShowListener() {
+            @Override
+            public void onShow(DialogInterface dialog) {
+                BottomSheetDialog d = (BottomSheetDialog) dialog;
+                FrameLayout bottomSheet = d.findViewById(android.support.design.R.id.design_bottom_sheet);
+                BottomSheetBehavior.from(bottomSheet).setState(BottomSheetBehavior.STATE_EXPANDED);
+            }
+        });
+        return psf;
     }
 
     /**

@@ -22,6 +22,5 @@ public class FutureLaunches extends LaunchRecyclerView<FutureLaunchesViewModel> 
 
     public static Fragment newInstance() {
         return new FutureLaunches();
-
     }
 }

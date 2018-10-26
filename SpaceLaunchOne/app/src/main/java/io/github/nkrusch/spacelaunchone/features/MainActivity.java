@@ -4,12 +4,16 @@ import android.arch.lifecycle.Observer;
 import android.arch.lifecycle.ViewModelProviders;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Rect;
 import android.net.ConnectivityManager;
 import android.os.Build;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.design.widget.AppBarLayout;
+import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.DisplayMetrics;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.TextView;
@@ -35,6 +39,7 @@ import viewmodels.CompletedLaunchesViewModel;
  */
 public class MainActivity extends SyncActivity {
 
+    private final String EXTRA_APPBAR_STATE = "appbar_state_extra";
     private boolean showPastLaunchesOption = false;
     private CompletedLaunchesViewModel vm = null;
     private AppBarLayout mAppbar;
@@ -50,6 +55,9 @@ public class MainActivity extends SyncActivity {
                     .setText(R.string.list_empty);
         checkPastLaunchesStatus();
         checkSyncStatus();
+
+        if (savedInstanceState != null && mAppbar != null && savedInstanceState.containsKey(EXTRA_APPBAR_STATE))
+            mAppbar.setExpanded(savedInstanceState.getBoolean(EXTRA_APPBAR_STATE, true), false);
     }
 
     @Override
@@ -137,6 +145,11 @@ public class MainActivity extends SyncActivity {
             scrollToTop();
             return true;
         }
+        if(id==R.id.search){
+            startActivity(new Intent(this, SearchActivity.class));
+            overridePendingTransition(R.anim.fade_in, R.anim.fade_out);
+            return true;
+        }
 
         return super.onOptionsItemSelected(item);
     }
@@ -149,4 +162,11 @@ public class MainActivity extends SyncActivity {
         ((RecyclerView) findViewById(R.id.recyclerView)).scrollToPosition(0);
     }
 
+    @Override
+    public void onSaveInstanceState(@NonNull Bundle outState) {
+        DisplayMetrics dm = getResources().getDisplayMetrics();
+        boolean nextLaunchIsVisible = Utilities.isVisible(mAppbar, dm.widthPixels, dm.heightPixels);
+        outState.putBoolean(EXTRA_APPBAR_STATE, nextLaunchIsVisible);
+        super.onSaveInstanceState(outState);
+    }
 }
