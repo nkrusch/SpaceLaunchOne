@@ -59,7 +59,7 @@ public class SearchActivity extends AppCompatActivity {
 
     /**
      * Handle up action by finishing activity
-ª     */
+     */
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
