@@ -20,15 +20,17 @@ This application itself is based on [Launch Library API](https://launchlibrary.n
       <ul>
           <li>List of future launches</li>
           <li>List of completed launches</li>
-          <li>Filter launches by preference</li>
           <li>View launch details</li>
-          <li>Watch launch videos</li>
+          <li>Daily space-themed imagery</li>
+          <li>Watch launches live on Youtube</li>
+          <li>Filter launches by preference</li>
+          <li>Search launches by keyword</li>
           <li>Google Maps and Places</li>
-          <li>Push notifications</li>
       </ul>
     </td>
     <td>
       <ul>
+          <li>Push notifications</li>
           <li>Automatic data synchronization</li>
           <li>Homescreen countdown widget</li>
           <li>Responsive design</li>
