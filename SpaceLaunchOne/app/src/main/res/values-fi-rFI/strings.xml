@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <plurals name="years">
+        <item quantity="one">%d vuosi</item>
+        <item quantity="other">%d vuotta</item>
+    </plurals>
+    <plurals name="months">
+        <item quantity="one">%d kk</item>
+        <item quantity="other">%d kk</item>
+    </plurals>
+    <plurals name="days">
+        <item quantity="one">%d päivä</item>
+        <item quantity="other">%d päivää</item>
+    </plurals>
+    <plurals name="hours">
+        <item quantity="one">%d tunti</item>
+        <item quantity="other">%d tuntia</item>
+    </plurals>
+    <plurals name="minutes">
+        <item quantity="one">%d min</item>
+        <item quantity="other">%d min</item>
+    </plurals>
+    <plurals name="seconds">
+        <item quantity="one">%d s</item>
+        <item quantity="other">%d s</item>
+    </plurals>
+    <plurals name="mission_no">
+        <item quantity="one">Missio%s: %s</item>
+        <item quantity="other">Missio %s: %s</item>
+    </plurals>
+    <plurals name="video_label">
+        <item quantity="one">%d video</item>
+        <item quantity="other">%d videota</item>
+    </plurals>
+    <plurals name="document_label">
+        <item quantity="one">Lue lisää Wikipediasta</item>
+        <item quantity="other">Lue lisää Wikipediasta</item>
+    </plurals>
+
+    <string-array name="pref_sync_frequency_titles">
+        <item>1 tunti</item>
+        <item>6 tuntia</item>
+        <item>12 tuntia</item>
+        <item>24 tuntia</item>
+        <item>48 tuntia</item>
+    </string-array>
+    <string-array name="credits_array">
+        <item>Tietoa Sovelluksesta ; Tämä appi on Udacity Android nanodegree ohjelman opinnäytetyö.
+            Tämän työn tarkoitus on käyttää erilaisia konsepteja ja tekniikoita
+            joita on opittu ohjelman aikana sekä suunnitella ja luoda appi niiden pohjalta.
+            &lt;br/>&lt;br/>Tämä appi hyödyntää Launch Library nimistä palvelua (launchlibrary.net).
+            Appin tarkoitus on tarjota avaruuslaukaisu dataa uudella ja mielenkiintoisella
+            tavalla. Se on suunnattu astronomian harrastelijille ja opiskelijoille jotka
+            etsivät ajantasalla olevaa tietoa laukaisuista.
+        </item>
+        <item>Kehittäjä ; Neea Rusch (2018)</item>
+        <item>Lähdekoodi ; &lt;a href="https://github.com/nkrusch/SpaceLaunchOne">SpaceLaunchOne Githubissa&lt;/a></item>
+        <item>Arvostele appi ; &lt;a href="https://play.google.com/store/apps/details?id=io.github.nkrusch.spacelaunchone">Arvostele Google Play Storessa&lt;/a></item>
+        <item>Laukaisu Data ; &lt;a href="http://launchlibrary.net/docs/1.4/api.html">Launch Library API&lt;/a></item>
+        <item>Kuvat ; &lt;a href="http://launchlibrary.net">Launch Library&lt;/a>&lt;br/>
+            &lt;a href="https://en.wikipedia.org">Wikipedia&lt;/a>&lt;br/>
+            &lt;a href="https://www.nasa.gov/multimedia/imagegallery/iotd.html">NASA image of the day&lt;/a></item>
+        <item>Maps ; &lt;a href="https://developers.google.com/maps/documentation/android-sdk/intro">Google Maps Android SDK&lt;/a></item>
+    </string-array>
+
+    <string name="app_name">Avaruuslaukaisu 1</string>
+    <string name="title_activity_main">Tulevat Laukaisut</string>
+    <string name="title_activity_settings">Asetukset</string>
+    <string name="title_activity_credits">Tietoa</string>
+    <string name="title_activity_details">Lisätiedot</string>
+    <string name="title_activity_history">Menneet Laukaisut</string>
+    <string name="title_activity_search">Haku</string>
+    <string name="title_activity_filters">Suodattimet</string>
+    <string name="sec">sek</string>
+    <string name="min">min</string>
+    <string name="hour">tunti</string>
+    <string name="day">päivä</string>
+    <string name="blastoff">Lähtö</string>
+    <string name="past">mennyt tapahtuma</string>
+    <string name="pref_title_sync_frequency">"Datan synkronisointi "</string>
+    <string name="timer">ajastin</string>
+    <string name="pref_sync_started">synkronisoidaan....</string>
+    <string name="sync_frequency">sykronisointi frekvenssi</string>
+    <string name="version">Versio</string>
+    <string name="scroll_to_top">alkuun</string>
+    <string name="search">Etsi...</string>
+    <string name="last_sync_never_occurred"> </string>
+    <string name="last_sync_timestamp">Viimeisin synkronisointi %s</string>
+    <string name="widget_loading">Latautuu</string>
+    <string name="widget_image">kuva</string>
+    <string name="widget_unavailable">ei saatavilla</string>
+    <string name="offline_message">ei yhteyttä</string>
+    <string name="next_launch_title">Seuraava laukaisu</string>
+    <string name="list_empty">"Appin alustus ei ole vielä tapahtunut. Varmista että internet yhteys on saatavilla ja käynnistä sovellus uudelleen. "</string>
+    <string name="list_no_matches">Ei laukaisuja. Tämä todennäköisesti johtuu suodattimista. Voit muuttaa suodatin asetuksia yläoikealla olevasta valikosta.</string>
+    <string name="tab_event">Yhteenveto</string>
+    <string name="tab_map">Kartta</string>
+    <string name="unknown">Tuntematon</string>
+    <string name="external_link">Ulkoinen linkki</string>
+    <string name="none">-</string>
+    <string name="filter_by_rocket">Raketit</string>
+    <string name="filter_by_agency">Agentuurit</string>
+    <string name="filter_by_location">Paikat</string>
+    <string name="filter_instructions_title">Miten suodattimet toimivat</string>
+    <string name="filter_instructions">Suodattimien avulla voit rajoitaa appin listaamia laukaisuja.\n\nKun valitsen suodattimen, kaikki laukaisut jotka sisältävät valitsemasi ehdon piilotetaan.\n\nKun mitään suodattimia ei ole valittuna, appi listaa kaikki laukaisut.\n\nESIMERKKEJÄ\n\n1.) Jos haluat poissulkea tietyn raketin laukaisut, etsi sitä vastaava valitaruutu ja valitse ruutu.\n\n2.) Jos haluat nähdä laukaisuja vain tietystä paikasta, valitse ensin kaikki paikat, sitten poista valinta haluamastsi paikasta.</string>
+    <string name="Help">Apua</string>
+    <string name="space_themed_background">avaruus teemainen tausta</string>
+    <string name="launch_status_icon">tilannekuvan kuvake</string>
+    <string name="launch_thumbnail">laukaisun pienoiskuva</string>
+    <string name="place_image">paikan kuva</string>
+    <string name="image_background_gradient">kuvan tausta</string>
+    <string name="video_play_icon">videon toisto kuvake</string>
+    <string name="event_name">Laukaisun Nimi</string>
+    <string name="launch_date">Laukaisun Ajankohta</string>
+    <string name="launch_service_provider">Laukaisualustan Agentuuri</string>
+    <string name="agency_country_code">Agentuurin Maakoodi</string>
+    <string name="last_modified">Viimeksi muokattu</string>
+    <string name="rocket">Raketti</string>
+    <string name="videos">Videot</string>
+    <string name="watch_this_launch">Katso Videolta</string>
+    <string name="check_uncheck_all">Valitse kaikki / Poista valinnat</string>
+    <string name="place_not_found">Paikkaa ei löydy</string>
+    <string name="no_place_images">Ei kuvia valitusta paikasta</string>
+    <string name="pref_immediate_sync">"Synkronisoi data nyt "</string>
+    <string name="launch_site">Laukaisualusta</string>
+    <string name="ok">OK</string>
+    <string name="show_less">Piilota</string>
+    <string name="show_more">Näytä lisää</string>
+    <string name="status">Status</string>
+    <string name="country">Maa</string>
+    <string name="agency">Agentuuri</string>
+    <string name="rocket_summary_label">Raketin Nimi / Ryhmä / Rakenne</string>
+    <string name="enabled">Päällä</string>
+    <string name="disabled">Pois päältä</string>
+    <string name="app_notifications">Push ilmoitukset</string>
+    <string name="no_matches">Ei osumia</string>
+    <string name="search_results">Hakutulokset</string>
+    <string name="launches">Laukaisut</string>
+</resources>
