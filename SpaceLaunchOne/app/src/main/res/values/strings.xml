@@ -1,5 +1,4 @@
 <resources>
-
     <string name="app_name">Space Launch 1</string>
     <string name="title_activity_main">Future Launches</string>
     <string name="title_activity_settings">Settings</string>
@@ -30,16 +29,18 @@
     <plurals name="seconds">
         <item quantity="other">%d s</item>
     </plurals>
-    <string name="sec">sec</string>
-    <string name="min">min</string>
-    <string name="hour">hour</string>
-    <string name="day">day</string>
-    <string name="timer_placeholder">··</string>
-    <string name="timer_divider">:</string>
-    <string name="blastoff">blastoff</string>
-    <string name="past">past event</string>
-    <string name="pref_title_sync_frequency">Data sync frequency</string>
-    <string name="timer">timer</string>
+    <plurals name="mission_no">
+        <item quantity="one">Mission%s: %s</item>
+        <item quantity="other">Mission %s: %s</item>
+    </plurals>
+    <plurals name="video_label">
+        <item quantity="one">%d video</item>
+        <item quantity="other">%d videos</item>
+    </plurals>
+    <plurals name="document_label">
+        <item quantity="other">Learn more on Wikipedia</item>
+    </plurals>
+
     <string-array name="pref_sync_frequency_titles">
         <item>1 hour</item>
         <item>6 hours</item>
@@ -54,8 +55,6 @@
         <item>24</item>
         <item>48</item>
     </string-array>
-    <string name="pref_sync_started">Synchronizing…</string>
-    <string name="sync_frequency">Sync frequency</string>
     <string-array name="credits_array">
         <item>About this Project ; This app was created as a capstone project for Udacity android
             developer nanodegree program. The goal of this project is to apply different concepts
@@ -75,11 +74,24 @@
             &lt;a href="https://www.nasa.gov/multimedia/imagegallery/iotd.html">NASA image of the day&lt;/a></item>
         <item>Maps ; &lt;a href="https://developers.google.com/maps/documentation/android-sdk/intro">Google Maps Android SDK&lt;/a></item>
     </string-array>
-    <string name="credits_array_separator">;</string>
+
+    <string name="sec">sec</string>
+    <string name="min">min</string>
+    <string name="hour">hour</string>
+    <string name="day">day</string>
+    <string name="timer_placeholder" translatable="false">··</string>
+    <string name="timer_divider" translatable="false">:</string>
+    <string name="blastoff">blastoff</string>
+    <string name="past">past event</string>
+    <string name="pref_title_sync_frequency">Data sync frequency</string>
+    <string name="timer">timer</string>
+    <string name="pref_sync_started">Synchronizing…</string>
+    <string name="sync_frequency">Sync frequency</string>
+    <string name="credits_array_separator" translatable="false">;</string>
     <string name="version">Version</string>
     <string name="scroll_to_top">Scroll to top</string>
     <string name="search">Search...</string>
-    <string name="dataset_last_sync">last_sync_timestamp</string>
+    <string name="dataset_last_sync" translatable="false">last_sync_timestamp</string>
     <string name="last_sync_never_occurred">has not run</string>
     <string name="last_sync_timestamp">Last synced %s</string>
     <string name="widget_loading">Loading</string>
@@ -92,19 +104,8 @@
     <string name="tab_event">Summary</string>
     <string name="tab_map">Map</string>
     <string name="unknown">unknown</string>
-    <plurals name="mission_no">
-        <item quantity="one">Mission%s: %s</item>
-        <item quantity="other">Mission %s: %s</item>
-    </plurals>
-    <plurals name="video_label">
-        <item quantity="one">%d video</item>
-        <item quantity="other">%d videos</item>
-    </plurals>
-    <plurals name="document_label">
-        <item quantity="other">Learn more on Wikipedia</item>
-    </plurals>
     <string name="external_link">External link</string>
-    <string name="bullet">●</string>
+    <string name="bullet" translatable="false">●</string>
     <string name="none">None</string>
     <string name="filter_by_rocket">Rockets</string>
     <string name="filter_by_agency">Agencies</string>
@@ -128,7 +129,7 @@
     <string name="launch_date">Launch Date</string>
     <string name="launch_service_provider">Launch Service Provider</string>
     <string name="agency_country_code">Agency Country Code</string>
-    <string name="hashtag">Hashtag</string>
+    <string name="hashtag" translatable="false">Hashtag</string>
     <string name="last_modified">Last modified</string>
     <string name="rocket">Rocket</string>
     <string name="videos">Videos</string>
@@ -145,7 +146,7 @@
     <string name="country">Country</string>
     <string name="agency">Agency</string>
     <string name="rocket_summary_label">Rocket Name / Family / Configuration</string>
-    <string name="notifications_preference">notifications_preference</string>
+    <string name="notifications_preference" translatable="false">notifications_preference</string>
     <string name="disabled">Disabled</string>
     <string name="enabled">Enabled</string>
     <string name="app_notifications">App Notifications</string>

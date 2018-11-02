@@ -252,7 +252,7 @@ public class Launch extends InfoObj {
     }
 
     public Long getLaunchDateUTC() {
-        DateFormat format = new SimpleDateFormat(dateFormatPattern, Locale.getDefault());
+        DateFormat format = new SimpleDateFormat(dateFormatPattern, Locale.ENGLISH);
         format.setTimeZone(TimeZone.getTimeZone("UTC"));
         try {
             return format.parse(this.net).getTime();
@@ -263,7 +263,7 @@ public class Launch extends InfoObj {
     }
 
     public static Long changeDate(String changed) {
-        DateFormat format = new SimpleDateFormat(chagedFormatPattern, Locale.getDefault());
+        DateFormat format = new SimpleDateFormat(chagedFormatPattern, Locale.ENGLISH);
         try {
             return format.parse(changed).getTime();
         } catch (ParseException e) {

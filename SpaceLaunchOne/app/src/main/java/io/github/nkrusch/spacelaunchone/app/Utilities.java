@@ -180,6 +180,7 @@ public class Utilities {
         String pattern = "dd MMMM yyyy";
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat(pattern, Locale.getDefault());
         simpleDateFormat.setTimeZone(TimeZone.getTimeZone("UTC"));
+        // do not display year if date occurs in current year
         int year = Calendar.getInstance().get(Calendar.YEAR);
         return simpleDateFormat.format(current).replace(year + "", "").trim();
     }
