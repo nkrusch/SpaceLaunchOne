@@ -24,7 +24,7 @@ This application uses following 3rd party libraries, which may collect informati
 
 End user should review each library's privacy policy for details of data collected by 3rd parties.
 
-By using the application you consent to policies and terms set forth by the owner of this application, and the owners of the 3rd party libraries.
+By using the application the user consents to policies and terms set forth by the owner of this application, and the owners of the 3rd party libraries.
 
 
 Last Updated: February 8, 2019
