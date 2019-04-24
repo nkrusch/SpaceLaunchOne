@@ -1,5 +1,6 @@
 package io.github.nkrusch.spacelaunchone.features.details;
 
+import android.content.ActivityNotFoundException;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
@@ -17,6 +18,8 @@ import com.squareup.picasso.Picasso;
 import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import io.github.nkrusch.spacelaunchone.R;
 import local.LaunchDetails;
@@ -115,13 +118,33 @@ public class VideosFragment extends HorizontalRecyclerViewFragment<VideosFragmen
                 mVideoImage.setOnClickListener(this);
             }
 
+            public String extractYTId(String ytUrl) {
+                String vId = null;
+                Pattern pattern = Pattern.compile(
+                        "^https?://.*(?:youtu.be/|v/|u/\\w/|embed/|watch?v=)([^#&?]*).*$",
+                        Pattern.CASE_INSENSITIVE);
+                Matcher matcher = pattern.matcher(ytUrl);
+                if (matcher.matches()) {
+                    vId = matcher.group(1);
+                }
+                return vId;
+            }
+
             @Override
             public void onClick(View v) {
                 try {
                     String url = dataSource.get(getAdapterPosition());
+                    String ytId = extractYTId(url);
+                    if (ytId != null) {
+                        Intent appIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("vnd.youtube:" + ytId));
+                        try {
+                            startActivity(appIntent);
+                            return;
+                        } catch (ActivityNotFoundException ex) {
+                        }
+                    }
                     Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(url));
-                    intent.putExtra("force_fullscreen", true);
-                    startActivity(intent);
+                  startActivity(intent);
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
