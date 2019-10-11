@@ -1,6 +1,6 @@
 package viewmodels;
 
-import android.arch.lifecycle.LiveData;
+import androidx.lifecycle.LiveData;
 
 import java.util.List;
 

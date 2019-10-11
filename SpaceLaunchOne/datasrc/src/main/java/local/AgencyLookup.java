@@ -1,6 +1,6 @@
 package local;
 
-import android.arch.persistence.room.ColumnInfo;
+import androidx.room.ColumnInfo;
 
 @SuppressWarnings("SpellCheckingInspection")
 public class AgencyLookup implements IFilter {

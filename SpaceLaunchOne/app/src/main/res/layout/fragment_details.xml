@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<android.support.v4.widget.NestedScrollView
+<androidx.core.widget.NestedScrollView
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/scrollview"
     style="@style/details_nested_scroll">
 
-    <android.support.constraint.ConstraintLayout style="@style/details_layout">
+    <androidx.constraintlayout.ConstraintLayout style="@style/details_layout">
 
         <FrameLayout
             android:id="@+id/timerContainer"
@@ -34,5 +34,5 @@
             android:name="io.github.nkrusch.spacelaunchone.features.details.LinksFragment"
             style="@style/details_links_container" />
 
-    </android.support.constraint.ConstraintLayout>
-</android.support.v4.widget.NestedScrollView>
+    </androidx.constraintlayout.ConstraintLayout>
+</androidx.core.widget.NestedScrollView>

@@ -7,7 +7,6 @@ import android.preference.Preference;
 import android.preference.PreferenceFragment;
 import android.preference.PreferenceManager;
 import android.preference.SwitchPreference;
-import android.util.Log;
 import android.view.View;
 import android.widget.ListView;
 
@@ -74,7 +73,7 @@ public class SettingsFragment extends PreferenceFragment {
         View rootView = getView();
         ListView list = rootView.findViewById(android.R.id.list);
         if (list != null) list.setDivider(null);
-        android.support.v7.preference.PreferenceManager
+        androidx.preference.PreferenceManager
                 .setDefaultValues(rootView.getContext(), R.xml.app_settings, false);
     }
 

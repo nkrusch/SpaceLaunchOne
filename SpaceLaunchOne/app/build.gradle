@@ -33,16 +33,16 @@ android {
             keyPassword properties.getProperty('keyPassword')
         }
     }
-    compileSdkVersion 27
-    buildToolsVersion '28.0.2'
+    compileSdkVersion 28
+    buildToolsVersion '28.0.3'
     defaultConfig {
         applicationId "io.github.nkrusch.spacelaunchone"
         minSdkVersion 19
-        targetSdkVersion 27
+        targetSdkVersion 28
         versionCode code
         versionName major + "." + minor + "." + patch + "." + code
         vectorDrawables.useSupportLibrary = true
-        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         buildConfigField 'int', "UpdateInterval", Min_Update_Interval
         buildConfigField 'int', "MissionTextClipLength", MissionText_ClipLength
         buildConfigField 'String', "CloudinaryClound", properties.getProperty('Cloudinary_Cloud')
@@ -65,19 +65,19 @@ dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
 
     // support libraries
-    implementation "com.android.support:support-v4:$androidSupportVersion"
-    implementation "com.android.support:support-v13:$androidSupportVersion"
-    implementation "com.android.support:support-vector-drawable:$androidSupportVersion"
-    implementation "com.android.support:appcompat-v7:$androidSupportVersion"
-    implementation "com.android.support:recyclerview-v7:$androidSupportVersion"
-    implementation "com.android.support:cardview-v7:$androidSupportVersion"
-    implementation "com.android.support:preference-v14:$androidSupportVersion"
-    implementation "com.android.support:design:$androidSupportVersion"
-    implementation "com.android.support.constraint:constraint-layout:$constraintLayoutVersion"
+    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
+    implementation 'androidx.legacy:legacy-support-v13:1.0.0'
+    implementation 'androidx.vectordrawable:vectordrawable:1.0.0'
+    implementation 'androidx.appcompat:appcompat:1.0.0'
+    implementation 'androidx.recyclerview:recyclerview:1.0.0'
+    implementation 'androidx.cardview:cardview:1.0.0'
+    implementation 'androidx.legacy:legacy-preference-v14:1.0.0'
+    implementation 'com.google.android.material:material:1.0.0'
+    implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
 
     // viewModels
-    implementation "android.arch.lifecycle:extensions:$archLifecycleVersion"
-    annotationProcessor "android.arch.lifecycle:compiler:$archLifecycleVersion"
+    implementation 'androidx.lifecycle:lifecycle-extensions:2.0.0'
+    annotationProcessor 'androidx.lifecycle:lifecycle-compiler:2.0.0'
 
     // 3rd party libs
     implementation "com.cloudinary:cloudinary-android:$cloudinaryVersion"
@@ -92,8 +92,8 @@ dependencies {
 
     // testing
     testImplementation 'junit:junit:4.12'
-    androidTestImplementation 'com.android.support.test:runner:1.0.2'
-    androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
+    androidTestImplementation 'androidx.test:runner:1.1.0'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.1.0'
 }
 
 task javadoc(type: Javadoc) {

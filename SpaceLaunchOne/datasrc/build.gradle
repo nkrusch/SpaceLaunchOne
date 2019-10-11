@@ -12,7 +12,7 @@ android {
         buildConfigField 'int', "InitialLoadSize", Initial_Load_Size
         buildConfigField 'int', "MinCachePolicy", Min_Cache_Policy
         buildConfigField 'int', "MinRecentLimit", Min_Recent_Limit
-        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
 
     buildTypes {
@@ -25,10 +25,10 @@ android {
 
 dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
-    implementation "android.arch.lifecycle:extensions:$archLifecycleVersion"
-    annotationProcessor "android.arch.lifecycle:compiler:$archLifecycleVersion"
-    implementation "android.arch.persistence.room:runtime:$archLifecycleVersion"
-    annotationProcessor "android.arch.persistence.room:compiler:$archLifecycleVersion"
+    implementation 'androidx.lifecycle:lifecycle-extensions:2.0.0'
+    annotationProcessor 'androidx.lifecycle:lifecycle-compiler:2.0.0'
+    implementation 'androidx.room:room-runtime:2.0.0'
+    annotationProcessor 'androidx.room:room-compiler:2.0.0'
     implementation 'com.squareup.retrofit2:converter-gson:2.4.0'
     implementation 'com.squareup.retrofit2:retrofit:2.4.0'
     implementation 'org.jsoup:jsoup:1.11.3'

@@ -1,9 +1,9 @@
 package io.github.nkrusch.spacelaunchone.app;
 
 
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentStatePagerAdapter;
+import androidx.core.app.Fragment;
+import androidx.core.app.FragmentManager;
+import androidx.core.app.FragmentStatePagerAdapter;
 
 /**
  * Base class for tabbed activity adapter

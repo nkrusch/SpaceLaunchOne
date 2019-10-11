@@ -1,7 +1,7 @@
 package io.github.nkrusch.spacelaunchone.app;
 
 import android.os.Build;
-import android.support.v7.app.AppCompatDelegate;
+import androidx.appcompat.app.AppCompatDelegate;
 
 import com.cloudinary.android.MediaManager;
 import com.onesignal.OneSignal;

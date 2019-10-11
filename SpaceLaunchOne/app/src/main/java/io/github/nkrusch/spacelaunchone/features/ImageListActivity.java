@@ -5,8 +5,8 @@ import android.content.Intent;
 import android.net.ConnectivityManager;
 import android.os.Build;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
-import android.support.v7.widget.RecyclerView;
+import androidx.annotation.NonNull;
+import androidx.appcompat.widget.RecyclerView;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.FrameLayout;
@@ -114,7 +114,7 @@ public class ImageListActivity extends SyncActivity {
      * @param showCompletedLaunches set TRUE to display past launches
      */
     private void setLaunchesFragment(boolean showCompletedLaunches) {
-        android.support.v4.app.Fragment f = showCompletedLaunches ?
+        androidx.core.app.Fragment f = showCompletedLaunches ?
                 PastLaunches.newInstance() : FutureLaunches.newInstance();
 
         getSupportFragmentManager()

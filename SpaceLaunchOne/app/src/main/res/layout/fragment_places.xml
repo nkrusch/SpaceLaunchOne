@@ -6,7 +6,7 @@
         android:id="@+id/places_heading"
         style="@style/places_heading" />
 
-    <android.support.v7.widget.RecyclerView
+    <androidx.appcompat.widget.RecyclerView
         android:id="@+id/recyclerView"
         style="@style/places_recyclerview" />
 

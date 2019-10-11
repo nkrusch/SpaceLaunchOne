@@ -1,6 +1,6 @@
 package io.github.nkrusch.spacelaunchone.features.filters;
 
-import android.support.v4.app.Fragment;
+import androidx.core.app.Fragment;
 
 import io.github.nkrusch.spacelaunchone.R;
 import local.RocketLookup;

@@ -1,9 +1,9 @@
 package io.github.nkrusch.spacelaunchone.features;
 
-import android.arch.lifecycle.ViewModelProviders;
+import androidx.lifecycle.ViewModelProviders;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.SearchView;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.SearchView;
 import android.view.MenuItem;
 
 import io.github.nkrusch.spacelaunchone.R;
