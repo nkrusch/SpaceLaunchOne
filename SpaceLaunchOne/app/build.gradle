@@ -34,7 +34,7 @@ android {
         }
     }
     compileSdkVersion 28
-    buildToolsVersion '29.0.0'
+    buildToolsVersion "29.0.2"
     defaultConfig {
         applicationId "io.github.nkrusch.spacelaunchone"
         minSdkVersion 19
@@ -99,7 +99,7 @@ dependencies {
 task javadoc(type: Javadoc) {
     source = android.sourceSets.main.java.srcDirs
     classpath += project.files(android.getBootClasspath().join(File.pathSeparator))
-    options.memberLevel = org.gradle.external.javadoc.JavadocMemberLevel.PUBLIC
+    options.memberLevel = JavadocMemberLevel.PUBLIC
     options.addStringOption("encoding", "UTF-8")
     options.addStringOption("charset", "UTF-8")
     destinationDir = file("../../javadoc/")
