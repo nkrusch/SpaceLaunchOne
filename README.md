@@ -28,6 +28,9 @@ This application is based on [Launch Library API](https://launchlibrary.net/docs
 | Homescreen countdown widget | Responsive design | Works offline |
 | Filter launches by preference | RTL and accessibility support | Device support: >= Kitkat |
 
+## Privacy Policy
+
+[Read it here &raquo;](https://github.com/nkrusch/SpaceLaunchOne/blob/master/docs/privacy_policy.md)
 
 ## License 
 
