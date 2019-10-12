@@ -1,6 +1,7 @@
 package io.github.nkrusch.spacelaunchone.features.launches;
 
-import androidx.core.app.Fragment;
+
+import androidx.fragment.app.Fragment;
 
 import viewmodels.CompletedLaunchesViewModel;
 

@@ -3,7 +3,8 @@ package io.github.nkrusch.spacelaunchone.features.details;
 import android.content.res.Resources;
 import androidx.annotation.NonNull;
 import androidx.core.widget.NestedScrollView;
-import androidx.appcompat.widget.RecyclerView;
+import androidx.recyclerview.widget.RecyclerView;
+
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -22,7 +23,8 @@ import static android.view.View.GONE;
 import static android.view.View.VISIBLE;
 
 
-public class MissionsFragment extends HorizontalRecyclerViewFragment<MissionsFragment.MissionAdapter, Mission> {
+public class MissionsFragment extends HorizontalRecyclerViewFragment
+        <MissionsFragment.MissionAdapter, Mission> {
 
     public MissionsFragment() {
     }

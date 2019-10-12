@@ -2,11 +2,13 @@ package io.github.nkrusch.spacelaunchone.app;
 
 import android.os.Bundle;
 import androidx.annotation.NonNull;
-import android.support.design.widget.TabLayout;
-import androidx.core.view.ViewPager;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.viewpager.widget.ViewPager;
+
 import android.widget.ProgressBar;
+
+import com.google.android.material.tabs.TabLayout;
 
 import io.github.nkrusch.spacelaunchone.R;
 

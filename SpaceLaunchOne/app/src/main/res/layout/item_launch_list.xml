@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/list_item_container"
     style="@style/list_item">
 
-    <androidx.appcompat.widget.CardView
+    <androidx.cardview.widget.CardView
         android:id="@+id/thumbnail_card"
         style="@style/list_image_card">
 
@@ -11,7 +11,7 @@
             android:id="@+id/thumbnail"
             style="@style/list_image"
             android:contentDescription="@string/launch_thumbnail" />
-    </androidx.appcompat.widget.CardView>
+    </androidx.cardview.widget.CardView>
 
     <TextView
         android:id="@+id/title"
@@ -35,4 +35,4 @@
 
     <View style="@style/list_divider" />
 
-</androidx.constraintlayout.ConstraintLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

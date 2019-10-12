@@ -2,9 +2,10 @@ package io.github.nkrusch.spacelaunchone.app;
 
 import android.os.Bundle;
 import androidx.annotation.NonNull;
-import androidx.core.app.Fragment;
-import androidx.appcompat.widget.LinearLayoutManager;
-import androidx.appcompat.widget.RecyclerView;
+import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
 
 /**
  * This is an abstract base class for a fragment that contains a recyclerview,

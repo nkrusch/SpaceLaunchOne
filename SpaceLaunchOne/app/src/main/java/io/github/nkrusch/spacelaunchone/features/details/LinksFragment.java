@@ -5,7 +5,8 @@ import android.net.Uri;
 import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.appcompat.widget.RecyclerView;
+import androidx.recyclerview.widget.RecyclerView;
+
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -24,7 +25,8 @@ import local.Mission;
 import static io.github.nkrusch.spacelaunchone.app.Utilities.merge;
 
 @SuppressWarnings("SpellCheckingInspection")
-public class LinksFragment extends HorizontalRecyclerViewFragment<LinksFragment.ExternalLinksAdapter, LinksFragment.LinkItem> {
+public class LinksFragment extends HorizontalRecyclerViewFragment
+        <LinksFragment.ExternalLinksAdapter, LinksFragment.LinkItem> {
 
     private LinearLayout mContainer;
     private TextView mFragmentTitle;

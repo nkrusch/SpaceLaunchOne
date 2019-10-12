@@ -12,34 +12,23 @@ This application is based on [Launch Library API](https://launchlibrary.net/docs
 
 <img src="feature.png" alt="app feature" />
 
-<div id="feat">
-      <ul>
-          <li>List of future launches</li>
-          <li>List of completed launches</li>
-          <li>View launch details</li>
-          <li>Daily space-themed imagery</li>
-          <li>Watch launches live on Youtube</li> 
-      </ul> 
-      <ul>
-          <li>Search launches by keyword</li>
-          <li>Google Maps and Places</li>
-          <li>Push notifications</li>
-          <li>Automatic data synchronization</li>
-          <li>Homescreen countdown widget</li> 
-      </ul>
-      <ul>
-          <li>Responsive design</li>
-          <li>Works offline</li>
-          <li>Filter launches by preference</li>
-          <li>RTL and accessibility support</li>
-          <li>Device support: >= Kitkat</li>
-      </ul>
-</div>
-<style>
-    #feat ul{list-style:none;padding:0;margin:0;width:290px;display:inline-block;}
-    #feat li{padding:5px 12px;}
-    #feat li:nth-child(odd):not(.empty){background:#eee}
-</style>
+| Features |
+| --- |
+| List of future launches |
+| List of completed launches |
+| View launch details |
+| Daily space-themed imagery |
+| Watch launches live on Youtube |
+| Search launches by keyword |
+| Google Maps and Places |
+| Push notifications |
+| Automatic data synchronization |
+| Homescreen countdown widget |
+| Responsive design |
+| Works offline |
+| Filter launches by preference |
+| RTL and accessibility support |
+| Device support: >= Kitkat |
 
 ## Downloads
 

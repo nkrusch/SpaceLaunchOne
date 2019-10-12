@@ -1,20 +1,21 @@
 package io.github.nkrusch.spacelaunchone.features;
 
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import androidx.annotation.Nullable;
-import android.support.design.widget.AppBarLayout;
-import android.support.design.widget.TabLayout;
-import androidx.core.app.Fragment;
-import androidx.core.app.FragmentManager;
 import androidx.core.app.NavUtils;
 import androidx.core.app.TaskStackBuilder;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
+
+import com.google.android.material.appbar.AppBarLayout;
+import com.google.android.material.tabs.TabLayout;
 
 import io.github.nkrusch.spacelaunchone.R;
 import io.github.nkrusch.spacelaunchone.app.TabbedActivity;

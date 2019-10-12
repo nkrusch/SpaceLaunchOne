@@ -5,20 +5,20 @@
     android:id="@+id/scrollview"
     style="@style/details_nested_scroll">
 
-    <androidx.constraintlayout.ConstraintLayout style="@style/details_layout">
+    <androidx.constraintlayout.widget.ConstraintLayout style="@style/details_layout">
 
         <FrameLayout
             android:id="@+id/timerContainer"
             style="@style/details_timer_container" />
 
-        <android.support.v7.widget.CardView
+        <androidx.cardview.widget.CardView
             android:id="@+id/Summary"
             style="@style/details_card_layout">
 
             <include layout="@layout/fragment_summary" />
-        </android.support.v7.widget.CardView>
+        </androidx.cardview.widget.CardView>
 
-        <android.support.v7.widget.CardView
+        <androidx.cardview.widget.CardView
             android:id="@+id/Rocket"
             style="@style/details_rocket_image_card">
 
@@ -26,7 +26,7 @@
                 android:contentDescription="@string/rocket"
                 android:id="@+id/details_rocket_image"
                 style="@style/details_rocket_image" />
-        </android.support.v7.widget.CardView>
+        </androidx.cardview.widget.CardView>
 
         <!--suppress AndroidUnknownAttribute -->
         <fragment
@@ -34,5 +34,5 @@
             android:name="io.github.nkrusch.spacelaunchone.features.details.LinksFragment"
             style="@style/details_links_container" />
 
-    </androidx.constraintlayout.ConstraintLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.core.widget.NestedScrollView>
