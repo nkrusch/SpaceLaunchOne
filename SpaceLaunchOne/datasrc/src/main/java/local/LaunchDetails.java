@@ -1,6 +1,7 @@
 package local;
 
 import androidx.room.Embedded;
+import androidx.room.Ignore;
 import androidx.room.Relation;
 
 import java.util.Date;
@@ -19,6 +20,7 @@ public class LaunchDetails {
     private
     List<Mission> missions;
 
+    @Ignore
     public LaunchDetails() {
     }
 
