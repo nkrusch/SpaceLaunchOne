@@ -1,8 +1,8 @@
 # Space Launch 1
 
-[![Build Status](https://travis-ci.com/nkrusch/SpaceLaunchOne.svg?branch=master)](https://travis-ci.com/nkrusch/SpaceLaunchOne)
-
 <img src="feature.png" alt="app feature" />
+
+[![Build Status](https://travis-ci.com/nkrusch/SpaceLaunchOne.svg?branch=master)](https://travis-ci.com/nkrusch/SpaceLaunchOne)
 
 This android app is a capstone project for Udacity android developer nanodegree program. The goal of this project is to apply different concepts learned across the nanodegree program while creating and designing an application of choice. 
 
@@ -18,7 +18,7 @@ Stage 1: design proposal is [here &raquo;](https://github.com/nkrusch/SpaceLaunc
 
 ## App Features
 
-| * * * | * * * | * * * | 
+| * * * * * | * * * * * | * * * * * | 
 | --- | --- |  --- | 
 | List of future launches | List of completed launches | View launch details | 
 | Daily space-themed imagery | Watch launches live on Youtube | Search launches by keyword |
