@@ -8,3 +8,4 @@ javadoc/
 .idea/
 secret.tar
 SpaceLaunchOne/secret.properties
+private_key.pepk
