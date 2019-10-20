@@ -91,7 +91,7 @@ public class MapFragment extends Fragment implements OnMapReadyCallback, GoogleM
                 float currentZoomLevel = mMap.getCameraPosition().zoom;
                 float midZoom = Math.abs(mMap.getMaxZoomLevel() - mMap.getMinZoomLevel()) * 0.5f;
                 float current = currentZoomLevel < midZoom ?
-                        0.85f * mMap.getMaxZoomLevel() :
+                        0.58f * mMap.getMaxZoomLevel() :
                         mMap.getMinZoomLevel();
                 mMap.animateCamera(
                         CameraUpdateFactory.newLatLngZoom(marker.getPosition(), current),
