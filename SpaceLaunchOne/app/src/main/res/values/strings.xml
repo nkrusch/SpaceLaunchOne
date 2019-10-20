@@ -56,14 +56,16 @@
         <item>48</item>
     </string-array>
     <string-array name="credits_array">
-        <item>About this Project ; This app was created as a capstone project for Udacity android
-            developer nanodegree program. The goal of this project is to apply different concepts
-            and components learned across the Nanodegree program while creating and designing an
-            application of choice.&lt;br/>&lt;br/>This application is based on Launch Library service
-            (launchlibrary.net),
-            and the purpose of the app is to present that launch data in interesting ways.
-            This application is intended for astronomy enthusiasts looking for up-to-date information
-            about upcoming rocket launches.
+        <item>About this Project ; This app started as a capstone project for Udacity android
+            developer nanodegree program, where the goal was to apply different concepts
+            learned during the course by creating and designing an application of choice.
+            &lt;br/>&lt;br/>Over time it has become a standalone resource for tracking space flights
+            across the globe. This application is intended for astronomy enthusiasts looking
+            for up-to-date information about upcoming rocket launches.
+            &lt;br/>&lt;br/>The application data, i.e. information and details about each launch, is provided and
+            maintained by &lt;a href="http://launchlibrary.net/">Launch Library&lt;/a>. Any mistakes
+            in the data should be reported directly to the maintainers of Launch Library.
+            &lt;br/>&lt;br/>This application is open source and available for review on Github.
         </item>
         <item>Developer ; Neea Rusch (2018-2019)</item>
         <item>Source Code ; &lt;a href="https://github.com/nkrusch/SpaceLaunchOne">SpaceLaunchOne on Github&lt;/a></item>
@@ -88,7 +90,7 @@
     <string name="pref_sync_started">Synchronizing…</string>
     <string name="sync_frequency">Sync frequency</string>
     <string name="credits_array_separator" translatable="false">;</string>
-    <string name="version">Version</string>
+    <string name="version">Version Number</string>
     <string name="scroll_to_top">Scroll to top</string>
     <string name="search">Search...</string>
     <string name="dataset_last_sync" translatable="false">last_sync_timestamp</string>
