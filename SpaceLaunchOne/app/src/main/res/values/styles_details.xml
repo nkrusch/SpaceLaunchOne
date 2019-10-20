@@ -9,6 +9,7 @@
     <style name="details_layout" parent="matches_parent">
         <item name="android:paddingTop">@dimen/details_container_padding_top</item>
         <item name="android:background">@color/details_background</item>
+        <item name="android:paddingBottom">@dimen/details_container_padding_bottom</item>
     </style>
 
     <style name="details_timer_container">
