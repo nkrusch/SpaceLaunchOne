@@ -28,6 +28,7 @@ allprojects {
         appCompatVersion = "1.1.0"
         googleMapsVersion = "17.0.0"
         googlePlacesVersion="17.0.0"
+        googlegcmVersion= "17.0.0"
         picassoVersion="2.5.2"
         lifecycleVersion="2.1.0"
         roomVersion="2.2.2"

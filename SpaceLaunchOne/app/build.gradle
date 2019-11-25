@@ -54,7 +54,7 @@ android {
     }
     buildTypes {
         release {
-            minifyEnabled true
+            minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
             signingConfig signingConfigs.config
         }
@@ -83,6 +83,7 @@ dependencies {
     implementation "com.squareup.picasso:picasso:$picassoVersion"
     implementation "com.google.android.gms:play-services-maps:$googleMapsVersion"
     implementation "com.google.android.gms:play-services-places:$googlePlacesVersion"
+    implementation "com.google.android.gms:play-services-gcm:$googlegcmVersion"
     implementation "com.onesignal:OneSignal:$oneSignalVersion"
 
     // project modules
