@@ -6,9 +6,9 @@
 
     <!-- backgrounds -->
     <color name="list_item_background">@android:color/white</color>
-    <color name="photo_placeholder">#ccc</color>
+    <color name="photo_placeholder">#eee</color>
     <color name="photo_placeholder_inverse">#888</color>
-    <color name="photo_placeholder_tint">#ccc</color>
+    <color name="photo_placeholder_tint">#888</color>
     <color name="next_launch_bar">@color/details_timer_background</color>
     <color name="places_image_background">#EEE</color>
     <color name="maps_button_background">#B3FFFFFF</color>

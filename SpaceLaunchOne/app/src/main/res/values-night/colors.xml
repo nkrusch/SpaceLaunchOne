@@ -7,13 +7,13 @@
     <color name="photo_placeholder_inverse">#333</color>
     <color name="photo_placeholder_tint">#eee</color>
     <color name="places_image_background">#333</color>
-    <color name="details_background">#444</color>
+    <color name="details_background">#222</color>
     <color name="filter_divider_color">#777</color>
     <color name="menu_background">@color/colorPrimaryDark</color>
     <color name="menu_text">@android:color/white</color>
     <color name="default_activity_background">@android:color/black</color>
     <color name="list_item_divider">#333</color>
-    <color name="video_card_bg">#FFF</color>
+    <color name="video_card_bg">#888</color>
 
 
     <!-- text colors -->

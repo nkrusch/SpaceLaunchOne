@@ -24,7 +24,7 @@ This application is based on [Launch Library API](https://launchlibrary.net/docs
 | --- | --- |  --- | 
 | List of future launches | List of completed launches | View launch details | 
 | Daily space-themed imagery | Watch launches live on Youtube | Search launches by keyword |
-| Google Maps and Places | Push notifications | Automatic data synchronization | 
+| Google Maps and Places | Dark Mode Support  | Automatic data synchronization | 
 | Homescreen countdown widget | Responsive design | Works offline |
 | Filter launches by preference | RTL and accessibility support | Device support: >= Kitkat |
 

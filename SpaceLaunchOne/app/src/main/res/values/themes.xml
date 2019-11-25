@@ -33,10 +33,17 @@
         <item name="android:windowBackground">@drawable/ic_splash_background</item>
     </style>
 
-    <style name="CreditsTheme" parent="AppTheme">
-        <item name="android:windowBackground">@color/default_activity_background</item>
-        <item name="android:background">@color/default_activity_background</item>
+    <style name="CreditsTheme" parent="@style/Theme.AppCompat.Light.NoActionBar">
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="preferenceTheme">@style/PreferenceThemeOverlay.v14.Material</item>
         <item name="android:textColor">@color/primary_text</item>
+        <item name="android:itemBackground">@color/menu_background</item>
+        <item name="actionMenuTextColor">@color/primary_text</item>
+        <item name="android:actionMenuTextColor">@color/primary_text</item>
+        <item name="android:editTextColor">@color/primary_text</item>
+        <item name="colorControlNormal">@color/primary_text</item>
+        <item name="android:background">@color/default_activity_background</item>
         <item name="android:textColorSecondary">@color/secondary_text</item>
         <item name="colorAccent">@color/textLinkColor</item>
         <item name="android:alertDialogTheme">@style/AlertDialogCustom</item>
