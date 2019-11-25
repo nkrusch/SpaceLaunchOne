@@ -5,14 +5,21 @@
     <color name="colorAccent">#fdd835</color>
 
     <!-- backgrounds -->
+    <color name="list_item_background">@android:color/white</color>
     <color name="photo_placeholder">#ccc</color>
     <color name="photo_placeholder_inverse">#888</color>
+    <color name="photo_placeholder_tint">#ccc</color>
     <color name="next_launch_bar">@color/details_timer_background</color>
     <color name="places_image_background">#EEE</color>
     <color name="maps_button_background">#B3FFFFFF</color>
     <color name="details_background">#DDD</color>
     <color name="details_timer_background">#1976D2</color>
     <color name="filter_divider_color">#DDD</color>
+    <color name="menu_background">@android:color/white</color>
+    <color name="menu_text">@android:color/black</color>
+    <color name="default_activity_background">@android:color/white</color>
+    <color name="list_item_divider">#CCCCCC</color>
+    <color name="video_card_bg">@android:color/black</color>
 
     <!-- text colors -->
     <color name="textLinkColor">#03A9F4</color>
@@ -25,6 +32,6 @@
     <color name="bottom_drawer_dialog_title">#999</color>
     <color name="bullet_inactive">#DDD</color>
     <color name="bullet_active">@color/colorAccent</color>
-
+    <color name="icon_color">@android:color/black</color>
 
 </resources>

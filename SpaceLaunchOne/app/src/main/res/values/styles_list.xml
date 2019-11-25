@@ -18,6 +18,7 @@
     </style>
 
     <style name="list_item">
+        <item name="android:background">@color/list_item_background</item>
         <item name="android:layout_width">@dimen/match_parent</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:focusable">true</item>
@@ -84,7 +85,7 @@
         <item name="android:visibility">@integer/list_divider_visibility</item>
         <item name="android:layout_width">@dimen/match_parent</item>
         <item name="android:layout_height">1dp</item>
-        <item name="android:background">?attr/dividerVertical</item>
+        <item name="android:background">@color/list_item_divider</item>
         <item name="layout_constraintBottom_toBottomOf">parent</item>
         <item name="layout_constraintStart_toStartOf">parent</item>
         <item name="layout_constraintEnd_toEndOf">parent</item>

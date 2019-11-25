@@ -52,6 +52,7 @@
         <activity
             android:name=".features.SettingsActivity"
             android:label="@string/title_activity_settings"
+            android:theme="@style/CreditsTheme"
             android:parentActivityName=".features.MainActivity" />
         <activity
             android:name=".features.CreditsActivity"

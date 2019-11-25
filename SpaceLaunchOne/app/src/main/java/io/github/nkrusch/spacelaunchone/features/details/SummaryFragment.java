@@ -21,6 +21,7 @@ import com.squareup.picasso.Picasso;
 import java.util.Date;
 
 import io.github.nkrusch.spacelaunchone.R;
+import io.github.nkrusch.spacelaunchone.app.CircleTransform;
 import io.github.nkrusch.spacelaunchone.app.Utilities;
 import local.LaunchDetails;
 
@@ -218,7 +219,8 @@ public class SummaryFragment extends DetailsBaseFragment {
         final Context context = getContext();
         final String sizedImage = Utilities.roundImage(image, Utilities.dpToPixel(40, getResources()));
 
-        Picasso.with(context).load(sizedImage).noFade().into(target, new Callback() {
+        Picasso.with(context).load(sizedImage).noFade()
+                .transform(new CircleTransform()).into(target, new Callback() {
             @Override
             public void onSuccess() {
             }
@@ -237,7 +239,8 @@ public class SummaryFragment extends DetailsBaseFragment {
         WindowManager wm = getActivity().getWindowManager();
         final Context context = getContext();
         final String sizedImage = Utilities.sizedHeight(image, Utilities.display(wm).second);
-        Picasso.with(context).load(sizedImage)
+        Picasso.with(context)
+                .load(sizedImage)
                 .into(mRocketCardImage, new Callback() {
                     @Override
                     public void onSuccess() {

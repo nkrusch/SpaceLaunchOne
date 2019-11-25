@@ -34,6 +34,7 @@
         <item name="layout_constraintLeft_toLeftOf">parent</item>
         <item name="layout_constraintRight_toRightOf">parent</item>
         <item name="layout_constraintTop_toBottomOf">@id/timerContainer</item>
+        <item name="cardBackgroundColor">@color/default_activity_background</item>
     </style>
 
     <style name="details_rocket_image_card" parent="details_card">

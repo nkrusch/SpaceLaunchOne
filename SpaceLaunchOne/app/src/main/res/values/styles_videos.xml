@@ -58,7 +58,7 @@
     </style>
 
     <style name="video_card" parent="card">
-        <item name="cardBackgroundColor">@android:color/black</item>
+        <item name="cardBackgroundColor">@color/video_card_bg</item>
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:layout_marginTop">@dimen/video_card_horizontal_marginVertical</item>
