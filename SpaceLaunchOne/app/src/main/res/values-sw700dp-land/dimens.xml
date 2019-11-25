@@ -2,9 +2,9 @@
 <resources>
 
     <integer name="filter_rockets_column_count">4</integer>
-    <integer name="filter_agencies_column_count">2</integer>
-    <integer name="filter_locations_column_count">2</integer>
-    <integer name="list_column_count">4</integer>
+    <integer name="filter_agencies_column_count">3</integer>
+    <integer name="filter_locations_column_count">3</integer>
+    <integer name="list_column_count">6</integer>
     <dimen name="details_content_max_width">565dp</dimen>
 
     <bool name="next_launch_row_item">false</bool>

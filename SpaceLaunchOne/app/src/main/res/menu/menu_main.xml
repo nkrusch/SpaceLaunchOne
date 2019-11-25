@@ -22,7 +22,8 @@
         android:title="@string/title_activity_filters"
         app:showAsAction="ifRoom" />
     <item
+        android:icon="@drawable/ic_settings"
         android:id="@+id/settings"
         android:title="@string/title_activity_settings"
-        app:showAsAction="never" />
+        app:showAsAction="ifRoom" />
 </menu>

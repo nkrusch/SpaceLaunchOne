@@ -1,4 +1,5 @@
-<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+<PreferenceScreen
+    xmlns:android="http://schemas.android.com/apk/res/android">
     <ListPreference
         android:defaultValue="24"
         android:entries="@array/pref_sync_frequency_titles"

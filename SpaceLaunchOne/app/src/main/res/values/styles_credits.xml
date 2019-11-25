@@ -2,6 +2,7 @@
 <resources>
 
     <style name="credits_card">
+        <item name="cardBackgroundColor">@color/details_background</item>
         <item name="android:layout_width">@dimen/details_content_max_width</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="layout_constraintEnd_toEndOf">parent</item>

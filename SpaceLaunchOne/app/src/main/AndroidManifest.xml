@@ -52,13 +52,11 @@
         <activity
             android:name=".features.SettingsActivity"
             android:label="@string/title_activity_settings"
-            android:theme="@style/CreditsTheme"
             android:parentActivityName=".features.MainActivity" />
         <activity
-            android:name=".features.CreditsActivity"
             android:label="@string/title_activity_credits"
-            android:parentActivityName=".features.SettingsActivity"
-            android:theme="@style/CreditsTheme">
+            android:name=".features.CreditsActivity"
+            android:parentActivityName=".features.SettingsActivity">
             <intent-filter>
                 <action android:name="example.action.ACTION_ABOUT_ACTIVITY" />
 
@@ -72,8 +70,8 @@
             android:name=".features.SearchActivity"
             android:label="@string/title_activity_search" />
         <activity
-            android:name=".features.FilterActivity"
             android:label="@string/title_activity_filters"
+            android:name=".features.FilterActivity"
             android:parentActivityName=".features.MainActivity"
             android:theme="@style/TabbedActivityTheme" />
 

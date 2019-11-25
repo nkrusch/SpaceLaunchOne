@@ -3,9 +3,11 @@
     android:background="@color/details_background"
     style="@style/matches_parent">
 
-    <androidx.cardview.widget.CardView style="@style/credits_card">
+    <androidx.cardview.widget.CardView
+        style="@style/credits_card">
 
         <androidx.recyclerview.widget.RecyclerView
+            android:background="@color/default_activity_background"
             android:id="@+id/recyclerView"
             style="@style/matches_parent" />
     </androidx.cardview.widget.CardView>

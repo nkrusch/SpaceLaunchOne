@@ -12,6 +12,8 @@
 #   public *;
 #}
 
+-keep class * extends com.cloudinary.strategies.*
+
 # Uncomment this to preserve the line number information for
 # debugging stack traces.
 #-keepattributes SourceFile,LineNumberTable

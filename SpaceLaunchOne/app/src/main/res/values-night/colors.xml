@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
+    <color name="colorPrimary">#FFEB3B</color>
+    <color name="colorAccent">#fdd835</color>
+
     <!-- backgrounds -->
     <color name="list_item_background">@android:color/black</color>
     <color name="photo_placeholder">#111</color>
