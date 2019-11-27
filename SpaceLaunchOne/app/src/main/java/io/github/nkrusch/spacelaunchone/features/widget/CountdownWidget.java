@@ -11,13 +11,13 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.SystemClock;
-import androidx.annotation.RequiresApi;
 import android.widget.RemoteViews;
 
 import java.util.Calendar;
 import java.util.Date;
 import java.util.UUID;
 
+import androidx.annotation.RequiresApi;
 import api.AppExecutors;
 import io.github.nkrusch.spacelaunchone.R;
 import io.github.nkrusch.spacelaunchone.app.InitActivity;

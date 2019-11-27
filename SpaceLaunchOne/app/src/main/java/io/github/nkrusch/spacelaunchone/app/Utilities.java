@@ -6,7 +6,6 @@ import android.content.res.Resources;
 import android.graphics.Rect;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
-import androidx.annotation.Nullable;
 import android.util.DisplayMetrics;
 import android.util.Pair;
 import android.view.View;
@@ -25,6 +24,7 @@ import java.util.List;
 import java.util.Locale;
 import java.util.TimeZone;
 
+import androidx.annotation.Nullable;
 import io.github.nkrusch.spacelaunchone.R;
 
 /**
@@ -89,6 +89,20 @@ public class Utilities {
         Transformation t = new Transformation().gravity("face");
         t = (width > 0) ? t.width(width) : t.height(height);
         return MediaManager.get().url().transformation(t.crop("thumb")
+                .fetchFormat("auto")).type("fetch").generate(url);
+    }
+
+    /**
+     * Get image url transformed to desired width/height
+     *
+     * @param url    image url
+     * @param size   image width and height
+     * @return updated image url
+     */
+    public static String squareImage(String url, int size) {
+        if (url == null || url.length() == 0) return null;
+        Transformation t = new Transformation().gravity("face").width(size).height(size);
+        return MediaManager.get().url().transformation(t.crop("fill")
                 .fetchFormat("auto")).type("fetch").generate(url);
     }
 
@@ -287,5 +301,34 @@ public class Utilities {
         view.getGlobalVisibleRect(actualPosition);
         final Rect screen = new Rect(0, 0, screenWidth, screenHeight);
         return actualPosition.intersect(screen);
+    }
+
+    public static int countryIcon(String countryCode) {
+        String tmp = countryCode == null ? "" : countryCode;
+        if (countryCode.indexOf(",") > 0)
+            tmp = countryCode.substring(0, countryCode.indexOf(",")).trim();
+
+        switch (tmp.toUpperCase()) {
+            case "USA":
+                return R.drawable.flag_usa;
+            case "CHN":
+                return R.drawable.flag_chn;
+            case "IND":
+                return R.drawable.flag_ind;
+            case "FRA":
+                return R.drawable.flag_fra;
+            case "JPN":
+                return R.drawable.flag_jpn;
+            case "KOR":
+                return R.drawable.flag_kor;
+            case "NZL":
+                return R.drawable.flag_nzl;
+            case "RUS":
+                return R.drawable.flag_rus;
+            case "IRN":
+                return R.drawable.flag_irn;
+            default:
+                return R.drawable.ic_earth;
+        }
     }
 }

@@ -1,6 +1,7 @@
 package local;
 
 import androidx.room.ColumnInfo;
+import androidx.room.Ignore;
 
 @SuppressWarnings("SpellCheckingInspection")
 public class LocationLookup implements IFilter {
@@ -16,6 +17,8 @@ public class LocationLookup implements IFilter {
     @ColumnInfo(name = "pfid")
     private
     int pfid;
+
+
 
     public String getName() {
         return name;
@@ -43,5 +46,25 @@ public class LocationLookup implements IFilter {
 
     public boolean isFiltered() {
         return id == pfid;
+    }
+
+    @Ignore
+    public String getShortName() {
+        if (name != null) {
+            int splitAt = name.indexOf(",");
+            if (splitAt > 0)
+                return name.substring(0, splitAt).trim();
+        }
+        return name;
+    }
+
+    @Ignore
+    public String getPlaceName() {
+        if (name != null) {
+            int splitAt = name.indexOf(",");
+            if (splitAt > 0 && splitAt < name.length() - 1)
+                return name.substring(splitAt + 1).trim();
+        }
+        return "";
     }
 }

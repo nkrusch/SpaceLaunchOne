@@ -1,6 +1,7 @@
 package io.github.nkrusch.spacelaunchone.app;
 
 import android.os.Bundle;
+
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;

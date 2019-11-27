@@ -9,11 +9,11 @@ import android.content.SharedPreferences;
 import android.net.ConnectivityManager;
 import android.os.Build;
 import android.preference.PreferenceManager;
-import androidx.annotation.RequiresApi;
 import android.util.Log;
 
 import java.util.Date;
 
+import androidx.annotation.RequiresApi;
 import io.github.nkrusch.spacelaunchone.BuildConfig;
 import io.github.nkrusch.spacelaunchone.R;
 import service.UpdateJobService;

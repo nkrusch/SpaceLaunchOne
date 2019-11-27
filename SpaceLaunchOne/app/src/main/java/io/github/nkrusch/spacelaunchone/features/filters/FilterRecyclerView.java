@@ -1,13 +1,6 @@
 package io.github.nkrusch.spacelaunchone.features.filters;
 
-import androidx.lifecycle.AndroidViewModel;
-import androidx.lifecycle.Observer;
-import androidx.lifecycle.ViewModelProviders;
 import android.os.Bundle;
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.recyclerview.widget.GridLayoutManager;
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,13 +9,20 @@ import android.widget.CheckBox;
 import java.util.LinkedList;
 import java.util.List;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.lifecycle.AndroidViewModel;
+import androidx.lifecycle.Observer;
+import androidx.lifecycle.ViewModelProviders;
+import androidx.recyclerview.widget.GridLayoutManager;
 import io.github.nkrusch.spacelaunchone.R;
 import io.github.nkrusch.spacelaunchone.app.RecyclerViewFragment;
 import local.IFilter;
 import viewmodels.IFilterViewModel;
 
 @SuppressWarnings("SpellCheckingInspection")
-abstract class FilterRecyclerView<T extends IFilter, S extends AndroidViewModel & IFilterViewModel> extends RecyclerViewFragment {
+abstract class FilterRecyclerView<T extends IFilter, S extends
+        AndroidViewModel & IFilterViewModel> extends RecyclerViewFragment {
 
     private S vm;
 
@@ -57,7 +57,7 @@ abstract class FilterRecyclerView<T extends IFilter, S extends AndroidViewModel 
             @Override
             public void onClick(View v) {
                 boolean value = ((CheckBox) v).isChecked();
-                vm.setAll(value);
+                vm.setAll(!value);
             }
         };
     }

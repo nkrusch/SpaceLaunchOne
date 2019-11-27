@@ -3,18 +3,17 @@ package io.github.nkrusch.spacelaunchone.features;
 import android.app.Dialog;
 import android.content.DialogInterface;
 import android.os.Bundle;
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AlertDialog;
-import androidx.fragment.app.DialogFragment;
-import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
-
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 
 import com.google.android.material.tabs.TabLayout;
 
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
+import androidx.fragment.app.DialogFragment;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
 import io.github.nkrusch.spacelaunchone.R;
 import io.github.nkrusch.spacelaunchone.app.TabbedActivity;
 import io.github.nkrusch.spacelaunchone.app.TabsAdapter;

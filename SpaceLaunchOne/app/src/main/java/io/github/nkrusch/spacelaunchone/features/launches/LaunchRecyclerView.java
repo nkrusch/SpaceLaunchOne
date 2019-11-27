@@ -1,13 +1,6 @@
 package io.github.nkrusch.spacelaunchone.features.launches;
 
-import androidx.lifecycle.AndroidViewModel;
-import androidx.lifecycle.Observer;
-import androidx.lifecycle.ViewModelProviders;
 import android.os.Bundle;
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.recyclerview.widget.GridLayoutManager;
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,6 +10,12 @@ import android.widget.TextView;
 import java.util.LinkedList;
 import java.util.List;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.lifecycle.AndroidViewModel;
+import androidx.lifecycle.Observer;
+import androidx.lifecycle.ViewModelProviders;
+import androidx.recyclerview.widget.GridLayoutManager;
 import io.github.nkrusch.spacelaunchone.R;
 import io.github.nkrusch.spacelaunchone.app.RecyclerViewFragment;
 import io.github.nkrusch.spacelaunchone.features.DetailActivity;
@@ -39,7 +38,9 @@ abstract class LaunchRecyclerView<S extends AndroidViewModel & ILaunchesViewMode
 
     abstract Class<S> getType();
 
-    abstract boolean showNextLaunch();
+    protected boolean showNextLaunch(){
+        return false;
+    }
 
     /**
      * This method binds viewmodel observer.

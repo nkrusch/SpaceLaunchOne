@@ -76,6 +76,7 @@ dependencies {
 
     // viewModels
     implementation "androidx.lifecycle:lifecycle-extensions:$lifecycleVersion"
+    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
     annotationProcessor "androidx.lifecycle:lifecycle-compiler:$lifecycleVersion"
 
     // 3rd party libs

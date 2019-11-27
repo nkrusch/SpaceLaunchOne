@@ -1,16 +1,10 @@
 package io.github.nkrusch.spacelaunchone.features;
 
-import androidx.lifecycle.Observer;
-import androidx.lifecycle.ViewModelProviders;
 import android.content.Context;
 import android.content.Intent;
 import android.net.ConnectivityManager;
 import android.os.Build;
 import android.os.Bundle;
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.recyclerview.widget.RecyclerView;
-
 import android.util.DisplayMetrics;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -20,6 +14,11 @@ import com.google.android.material.appbar.AppBarLayout;
 
 import java.util.List;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.lifecycle.Observer;
+import androidx.lifecycle.ViewModelProviders;
+import androidx.recyclerview.widget.RecyclerView;
 import io.github.nkrusch.spacelaunchone.R;
 import io.github.nkrusch.spacelaunchone.app.InitActivity;
 import io.github.nkrusch.spacelaunchone.app.SyncActivity;

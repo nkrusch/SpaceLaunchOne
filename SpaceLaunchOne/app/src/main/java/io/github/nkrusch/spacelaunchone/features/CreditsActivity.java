@@ -4,14 +4,6 @@ import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.content.res.TypedArray;
 import android.os.Bundle;
-import androidx.annotation.NonNull;
-import androidx.core.util.Pair;
-import androidx.appcompat.app.ActionBar;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.DividerItemDecoration;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-
 import android.text.Html;
 import android.text.method.LinkMovementMethod;
 import android.view.LayoutInflater;
@@ -22,6 +14,13 @@ import android.widget.TextView;
 import java.util.LinkedList;
 import java.util.List;
 
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.ActionBar;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.util.Pair;
+import androidx.recyclerview.widget.DividerItemDecoration;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 import io.github.nkrusch.spacelaunchone.R;
 
 /**

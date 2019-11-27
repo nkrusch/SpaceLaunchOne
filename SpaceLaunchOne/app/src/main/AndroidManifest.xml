@@ -65,15 +65,28 @@
         </activity>
         <activity
             android:name=".features.HistoryActivity"
+            android:parentActivityName=".features.NewMainActivity"
             android:label="@string/title_activity_history" />
         <activity
             android:name=".features.SearchActivity"
             android:label="@string/title_activity_search" />
         <activity
+            android:windowSoftInputMode="adjustPan"
+            android:theme="@style/TabbedMainActivityTheme"
+            android:name=".features.NewMainActivity" />
+        <activity
             android:label="@string/title_activity_filters"
             android:name=".features.FilterActivity"
             android:parentActivityName=".features.MainActivity"
             android:theme="@style/TabbedActivityTheme" />
+        <activity
+            android:label="@string/title_agency_details"
+            android:name=".features.AgencyDetails"
+            android:parentActivityName=".features.NewMainActivity" />
+        <activity
+            android:label="@string/title_pad_details"
+            android:name=".features.PadDetails"
+            android:parentActivityName=".features.NewMainActivity" />
 
         <receiver
             android:name=".features.widget.CountdownWidget"

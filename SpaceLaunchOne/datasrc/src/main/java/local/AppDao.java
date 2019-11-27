@@ -7,6 +7,7 @@ import androidx.room.Insert;
 import androidx.room.OnConflictStrategy;
 import androidx.room.Query;
 import androidx.room.Transaction;
+import androidx.room.Update;
 
 import java.util.Date;
 import java.util.List;
@@ -36,6 +37,16 @@ public interface AppDao {
             "ORDER BY launchDateUTC DESC LIMIT :limit OFFSET :offset")
     LiveData<List<Launch>> pastLaunches(long cutoff, int limit, int offset);
 
+
+    @Query("SELECT id, name, image, launchDateUTC, locationName, status " +
+            "FROM Launch JOIN details ON id = uid JOIN FavoriteLaunch on id = fid " +
+            "ORDER BY launchDateUTC DESC LIMIT :limit OFFSET :offset")
+    LiveData<List<Launch>> favoriteLaunches(int limit, int offset);
+
+    @Query("SELECT id, name, image, launchDateUTC, locationName, status " +
+            "FROM Launch JOIN details ON id = uid WHERE agencyId = :aid " +
+            "ORDER BY launchDateUTC DESC LIMIT :limit OFFSET :offset")
+    List<Launch> launchesByAgency(int aid, int limit, int offset);
 
     @Query("SELECT id, name, image, launchDateUTC, locationName, status " +
             "FROM Launch JOIN details ON id = uid WHERE " +
@@ -80,6 +91,15 @@ public interface AppDao {
     @Query("SELECT launchDateUTC from launch WHERE id = :id")
     Long getLaunchDateUTC(int id);
 
+    @Query("SELECT * from favoritelaunch WHERE fid = :id")
+    LiveData<FavoriteLaunch> getFavorite(int id);
+
+    @Insert(onConflict = OnConflictStrategy.IGNORE)
+    void addFavorite(FavoriteLaunch f);
+
+    @Delete
+    void removeFavorite(FavoriteLaunch f);
+
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     void insertAll(Launch... launches);
 
@@ -96,8 +116,8 @@ public interface AppDao {
             "LEFT JOIN rocketFilter ON rfid=rocketId WHERE rocketName IS NOT NULL ORDER BY rocketName")
     LiveData<List<RocketLookup>> getRocketLookup();
 
-    @Query("SELECT DISTINCT agencyId, agencyName, afid from details " +
-            "LEFT JOIN agencyFilter ON afid=agencyId WHERE agencyName IS NOT NULL ORDER BY agencyName")
+    @Query("SELECT DISTINCT agencyId, agencyName, afid, agencyImage, agencyCountryCode from details " +
+            "LEFT JOIN agencyFilter ON afid=agencyId WHERE agencyName IS NOT NULL ORDER BY agencyName COLLATE NOCASE ASC")
     LiveData<List<AgencyLookup>> getAgencyLookup();
 
     @Query("SELECT DISTINCT locationId, locationName, pfid FROM Launch " +

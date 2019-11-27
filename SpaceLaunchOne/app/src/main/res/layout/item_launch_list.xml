@@ -1,16 +1,16 @@
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/list_item_container"
     style="@style/list_item">
 
     <androidx.cardview.widget.CardView
         android:id="@+id/thumbnail_card"
+        app:cardCornerRadius="4dp"
         style="@style/list_image_card">
 
         <ImageView
             android:id="@+id/thumbnail"
-            style="@style/list_image"
-            android:contentDescription="@string/launch_thumbnail" />
+            style="@style/list_image" />
     </androidx.cardview.widget.CardView>
 
     <TextView

@@ -2,10 +2,6 @@ package io.github.nkrusch.spacelaunchone.features.launches;
 
 import android.content.Context;
 import android.graphics.Color;
-import androidx.annotation.NonNull;
-import androidx.constraintlayout.widget.ConstraintLayout;
-import androidx.recyclerview.widget.RecyclerView;
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -19,6 +15,9 @@ import com.squareup.picasso.Picasso;
 import java.util.List;
 import java.util.Locale;
 
+import androidx.annotation.NonNull;
+import androidx.constraintlayout.widget.ConstraintLayout;
+import androidx.recyclerview.widget.RecyclerView;
 import io.github.nkrusch.spacelaunchone.R;
 import io.github.nkrusch.spacelaunchone.app.Utilities;
 import local.Launch;
@@ -89,13 +88,15 @@ public class ListAdapter<T extends Launch> extends
         holder.mStatus.setText(context.getString(R.string.bullet));
         holder.mStatus.setTextColor(Color.parseColor(item.getStatusColor()));
 
-        if (StringUtils.isEmpty(item.getImage()) || models.Launch.isPlaceholderImage(item.getImage())) {
-            holder.mImageView.setImageResource(R.drawable.ic_rocket_background);
-        } else {
-            String thumbnail = Utilities.sizedWidth(item.getImage(), thumbnailWidth);
+        if (!(StringUtils.isEmpty(item.getImage()) || models.Launch.isPlaceholderImage(item.getImage()))) {
+            holder.mImageView.setVisibility(View.VISIBLE);
+            final String thumbnail = Utilities.squareImage(item.getImage(), thumbnailWidth);
             Picasso.with(context).load(thumbnail).into(holder.mImageView, new Callback() {
                 @Override
                 public void onSuccess() {
+                    //Picasso.with(context).load(thumbnail)
+                    //        .transform(new BlurTransform(context, 25))
+                    //        .into(holder.mBackground);
                 }
 
                 @Override

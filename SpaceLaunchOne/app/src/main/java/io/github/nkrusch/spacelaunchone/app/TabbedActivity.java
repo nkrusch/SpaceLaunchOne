@@ -1,15 +1,17 @@
 package io.github.nkrusch.spacelaunchone.app;
 
 import android.os.Bundle;
+import android.view.MenuItem;
+import android.widget.ProgressBar;
+
+import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.android.material.tabs.TabLayout;
+
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.viewpager.widget.ViewPager;
-
-import android.widget.ProgressBar;
-
-import com.google.android.material.tabs.TabLayout;
-
 import io.github.nkrusch.spacelaunchone.R;
 
 /**
@@ -22,26 +24,34 @@ public abstract class TabbedActivity extends AppCompatActivity {
     private final String ACTIVE_TAB = "active_tab";
     protected ProgressBar mProgress;
     protected ViewPager mPager;
-    private Toolbar mToolbar;
-    private TabLayout tabLayout;
+    protected Toolbar mToolbar;
+    protected TabLayout tabLayout;
+    protected BottomNavigationView bottomNav;
+    protected FloatingActionButton mFab;
 
     /**
      * This title is displayed above the tabs in the actionbar
      */
-    protected abstract String getTitleText();
+    protected String getTitleText() {
+        return "";
+    }
 
     /**
      * Using this method, implementing class will define
      * number and text labels for tabs that appear in the
      * actionbar.
      */
-    protected abstract void addToolbarTabs(TabLayout tabLayout);
+    protected void addToolbarTabs(TabLayout tabLayout) {
+    }
 
     /**
      * Implementing class will return an adapter that is
      * responsible for providing content to the ViewPager
      */
     protected abstract TabsAdapter getAdapter();
+
+    protected void setupBottomNav() {
+    }
 
     /**
      * Override this function in the implementing activity to
@@ -72,6 +82,8 @@ public abstract class TabbedActivity extends AppCompatActivity {
                     t.select();
                     onTabChange(position);
                 }
+                MenuItem item = bottomNav.getMenu().getItem(position);
+                if (item != null) item.setChecked(true);
             }
 
             @Override
@@ -123,11 +135,14 @@ public abstract class TabbedActivity extends AppCompatActivity {
         tabLayout = findViewById(R.id.tabs);
         mProgress = findViewById(R.id.progress);
         mToolbar = findViewById(R.id.toolbar);
-        mPager.setOffscreenPageLimit(3);
+        bottomNav = findViewById(R.id.navigation);
+        mFab = findViewById(R.id.tabbed_fab);
+        mPager.setOffscreenPageLimit(1);
 
         setupToolbar();
         setupTabLayout(activeTab);
         setupPager();
+        setupBottomNav();
     }
 
     /**

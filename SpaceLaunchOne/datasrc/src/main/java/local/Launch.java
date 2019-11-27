@@ -21,7 +21,8 @@ public class Launch {
     private String locationName;
     private int status;
 
-    public Launch(){}
+    public Launch() {
+    }
 
     @NonNull
     public int getId() {
@@ -95,7 +96,7 @@ public class Launch {
     }
 
     @Ignore
-    public String getStatusColor(){
+    public String getStatusColor() {
         switch (status) {
             case 1:
                 return "#55D400";  // go

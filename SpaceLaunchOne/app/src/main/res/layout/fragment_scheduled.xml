@@ -1,0 +1,51 @@
+<androidx.coordinatorlayout.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    style="@style/matches_parent"
+    android:background="@color/default_activity_background">
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/list_appbar_layout"
+        style="@style/list_appbar_layout">
+
+        <com.google.android.material.appbar.CollapsingToolbarLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/next_launch_fragment_height"
+            android:minHeight="?attr/actionBarSize"
+            android:layout_gravity="top"
+            app:contentScrim="?attr/colorPrimary"
+            app:scrimAnimationDuration="250"
+            app:layout_scrollFlags="scroll|exitUntilCollapsed"
+            android:background="@color/colorPrimary"
+            app:titleEnabled="false">
+
+            <fragment
+                android:id="@+id/NextLaunch"
+                android:name="io.github.nkrusch.spacelaunchone.features.next.NextLaunchFragment"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/next_launch_fragment_height"
+                app:layout_collapseMode="parallax" />
+
+            <!--suppress AndroidDomInspection -->
+            <androidx.appcompat.widget.Toolbar
+                android:id="@+id/toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="?actionBarSize"
+                android:layout_gravity="top"
+                app:layout_collapseMode="pin"
+                app:theme="@style/ClearToolbar" />
+
+        </com.google.android.material.appbar.CollapsingToolbarLayout>
+
+
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <fragment
+        android:id="@+id/Launches"
+        android:name="io.github.nkrusch.spacelaunchone.features.launches.FutureLaunches"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior" />
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>
+

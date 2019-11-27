@@ -2,7 +2,6 @@ package io.github.nkrusch.spacelaunchone.features.launches;
 
 
 import androidx.fragment.app.Fragment;
-
 import viewmodels.CompletedLaunchesViewModel;
 
 /**
@@ -14,11 +13,6 @@ public class PastLaunches extends LaunchRecyclerView<CompletedLaunchesViewModel>
     @Override
     Class getType() {
         return CompletedLaunchesViewModel.class;
-    }
-
-    @Override
-    boolean showNextLaunch() {
-        return false;
     }
 
     public static Fragment newInstance() {

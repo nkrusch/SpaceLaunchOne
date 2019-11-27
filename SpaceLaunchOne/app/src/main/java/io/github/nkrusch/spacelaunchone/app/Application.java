@@ -1,7 +1,6 @@
 package io.github.nkrusch.spacelaunchone.app;
 
 import android.os.Build;
-import androidx.appcompat.app.AppCompatDelegate;
 
 import com.cloudinary.android.MediaManager;
 import com.onesignal.OneSignal;
@@ -9,6 +8,7 @@ import com.onesignal.OneSignal;
 import java.util.HashMap;
 import java.util.Map;
 
+import androidx.appcompat.app.AppCompatDelegate;
 import io.github.nkrusch.spacelaunchone.BuildConfig;
 
 @SuppressWarnings("SpellCheckingInspection")

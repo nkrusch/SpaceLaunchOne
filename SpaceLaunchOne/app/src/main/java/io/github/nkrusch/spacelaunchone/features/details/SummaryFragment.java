@@ -2,10 +2,6 @@ package io.github.nkrusch.spacelaunchone.features.details;
 
 import android.content.Context;
 import android.os.Bundle;
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.fragment.app.Fragment;
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -20,6 +16,9 @@ import com.squareup.picasso.Picasso;
 
 import java.util.Date;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.fragment.app.Fragment;
 import io.github.nkrusch.spacelaunchone.R;
 import io.github.nkrusch.spacelaunchone.app.CircleTransform;
 import io.github.nkrusch.spacelaunchone.app.Utilities;
@@ -112,29 +111,6 @@ public class SummaryFragment extends DetailsBaseFragment {
         }
     }
 
-    private int countryIcon(String countryCode) {
-        switch ((countryCode + "").toUpperCase()) {
-            case "USA":
-                return R.drawable.flag_usa;
-            case "CHN":
-                return R.drawable.flag_chn;
-            case "IND":
-                return R.drawable.flag_ind;
-            case "FRA":
-                return R.drawable.flag_fra;
-            case "JPN":
-                return R.drawable.flag_jpn;
-            case "KOR":
-                return R.drawable.flag_kor;
-            case "NZL":
-                return R.drawable.flag_nzl;
-            case "RUS":
-                return R.drawable.flag_rus;
-            default:
-                return R.drawable.ic_earth;
-        }
-    }
-
     private String countryName(String countryCode) {
         switch ((countryCode + "").toUpperCase()) {
             case "CHN":
@@ -201,7 +177,7 @@ public class SummaryFragment extends DetailsBaseFragment {
         mHashtag.setText(R.string.hashtag, coalesce(launch.getHashtag(), none));
         mEventChanged.setText(R.string.last_modified, changeDate);
         mAgencyName.setText(R.string.launch_service_provider, agencyNameValue);
-        mCountryImage.setImageResource(countryIcon(launch.getAgencyCountryCode()));
+        mCountryImage.setImageResource(Utilities.countryIcon(launch.getAgencyCountryCode()));
         mCountryCode.setText(R.string.agency_country_code, coalesce(launch.getAgencyCountryCode(), unknown));
         mRocketText.setText(R.string.rocket_summary_label,
                 coalesce(launch.getRocketName(), unknown) + " / " +

@@ -6,9 +6,9 @@
 
     <!-- backgrounds -->
     <color name="list_item_background">@android:color/white</color>
-    <color name="photo_placeholder">#eee</color>
+    <color name="photo_placeholder">#DDD</color>
     <color name="photo_placeholder_inverse">#eee</color>
-    <color name="photo_placeholder_tint">#555</color>
+    <color name="photo_placeholder_tint">#000</color>
     <color name="next_launch_bar">@color/details_timer_background</color>
     <color name="places_image_background">#EEE</color>
     <color name="maps_button_background">#B3FFFFFF</color>
@@ -33,5 +33,8 @@
     <color name="bullet_inactive">#DDD</color>
     <color name="bullet_active">@color/colorAccent</color>
     <color name="icon_color">@android:color/black</color>
+    <color name="fabTint">@android:color/white</color>
+    <color name="favoriteFabBgTint">#FF4081</color>
+    <color name="favoriteFabBgTintInactive">#263238</color>
 
 </resources>

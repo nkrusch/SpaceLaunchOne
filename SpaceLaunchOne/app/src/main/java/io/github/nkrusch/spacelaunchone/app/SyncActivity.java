@@ -5,9 +5,9 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.preference.PreferenceManager;
-import androidx.appcompat.app.AppCompatActivity;
 import android.util.Log;
 
+import androidx.appcompat.app.AppCompatActivity;
 import service.UpdateIntentService;
 import service.UpdateTime;
 

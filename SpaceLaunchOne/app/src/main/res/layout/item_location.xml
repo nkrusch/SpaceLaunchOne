@@ -1,0 +1,44 @@
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/list_item_container"
+    style="@style/list_item"
+    android:minHeight="68dp">
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/thumbnail_card"
+        android:layout_width="32dp"
+        android:layout_height="32dp"
+        app:cardCornerRadius="4dp"
+        style="@style/list_image_card">
+
+        <ImageView
+            android:id="@+id/thumbnail"
+            android:visibility="visible"
+            app:srcCompat="@drawable/ic_map_marker"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            style="@style/list_image" />
+
+    </androidx.cardview.widget.CardView>
+
+    <TextView
+        android:id="@+id/title"
+        android:paddingTop="10dp"
+        android:layout_height="wrap_content"
+        style="@style/list_primary_text_layout" />
+
+    <TextView
+        android:id="@+id/sub_line_1"
+        style="@style/list_seondary_text_line_1" />
+
+    <TextView
+        android:layout_marginTop="10dp"
+        app:layout_constraintBottom_toBottomOf="@null"
+        app:layout_constraintTop_toTopOf="parent"
+        android:id="@+id/list_number"
+        style="@style/list_number" />
+
+    <View style="@style/list_divider" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

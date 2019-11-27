@@ -1,15 +1,18 @@
 package viewmodels;
 
 import android.app.Application;
+
 import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
+
 import android.content.Context;
 
 import java.util.Date;
 
 import api.AppExecutors;
 import local.AppDatabase;
+import local.FavoriteLaunch;
 import local.LaunchDetails;
 import service.UpdateMethods;
 
@@ -22,6 +25,7 @@ public class LaunchDetailsViewModel extends AndroidViewModel {
     private static final int MIN_UPDATE = models.data.BuildConfig.MinCachePolicy;
     private static final int MIN_RECENT = models.data.BuildConfig.MinRecentLimit;
     private LiveData<LaunchDetails> launch;
+    private LiveData<FavoriteLaunch> favState;
     private final AppDatabase db;
 
     public LaunchDetailsViewModel(Application application) {
@@ -35,6 +39,7 @@ public class LaunchDetailsViewModel extends AndroidViewModel {
      */
     public LiveData<LaunchDetails> loadLaunch(final int id) {
         launch = db.dao().get(id, new Date().getTime());
+        favState = db.dao().getFavorite(id);
         conditionallyUpdate(id);
         return launch;
     }
@@ -44,6 +49,27 @@ public class LaunchDetailsViewModel extends AndroidViewModel {
      */
     public LiveData<LaunchDetails> get() {
         return launch;
+    }
+
+    public LiveData<FavoriteLaunch> favorite() {
+        return favState;
+    }
+
+    public void ToggleFavorite() {
+        if (launch.getValue() == null) return;
+        int id = launch.getValue().getId();
+        final FavoriteLaunch fl = new FavoriteLaunch(id);
+        final boolean isFavorite = favState.getValue() != null;
+
+        AppExecutors.getInstance().DiskIO().execute(
+                new Runnable() {
+                    @Override
+                    public void run() {
+                        if (isFavorite) db.dao().removeFavorite(fl);
+                        else db.dao().addFavorite(fl);
+                    }
+                }
+        );
     }
 
     /**

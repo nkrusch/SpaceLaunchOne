@@ -1,29 +1,35 @@
 package io.github.nkrusch.spacelaunchone.features;
 
-import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
-import androidx.lifecycle.Observer;
-import androidx.lifecycle.ViewModelProviders;
 import android.content.Context;
 import android.content.Intent;
+import android.content.res.ColorStateList;
 import android.os.Bundle;
-import androidx.annotation.Nullable;
-import androidx.core.app.NavUtils;
-import androidx.core.app.TaskStackBuilder;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.animation.AlphaAnimation;
 
 import com.google.android.material.appbar.AppBarLayout;
 import com.google.android.material.tabs.TabLayout;
 
+import androidx.annotation.Nullable;
+import androidx.core.app.NavUtils;
+import androidx.core.app.TaskStackBuilder;
+import androidx.core.content.ContextCompat;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.lifecycle.Observer;
+import androidx.lifecycle.ViewModelProviders;
 import io.github.nkrusch.spacelaunchone.R;
 import io.github.nkrusch.spacelaunchone.app.TabbedActivity;
 import io.github.nkrusch.spacelaunchone.app.TabsAdapter;
 import io.github.nkrusch.spacelaunchone.features.details.SummaryFragment;
 import io.github.nkrusch.spacelaunchone.features.map.MapFragment;
+import local.FavoriteLaunch;
 import local.LaunchDetails;
 import viewmodels.LaunchDetailsViewModel;
+
+import static android.view.View.GONE;
 
 /**
  * Details activity shows details about rocket launch event.
@@ -33,11 +39,13 @@ import viewmodels.LaunchDetailsViewModel;
  */
 public class DetailActivity extends TabbedActivity {
 
+    LaunchDetailsViewModel vm;
     public static final String EXTRA_WIDGET_LAUNCHER = "extra_widget_launch";
     private static final String EXTRA_LAUNCH = "extra_launch";
     private static final String EXTRA_NAME = "extra_name";
     private static final int TAB_COUNT = 2;
     private static final int MAP_TAB_INDEX = 1;
+    private static final int SUMMARY_TAB_INDEX = 0;
     private AppBarLayout mAppbar;
     private boolean widgetLaunch;
     private String title;
@@ -56,6 +64,7 @@ public class DetailActivity extends TabbedActivity {
         title = getIntent().getStringExtra(EXTRA_NAME);
         super.onCreate(savedInstanceState);
         mAppbar = findViewById(R.id.appbar_layout);
+        ToggleFabVisibility(true);
         setupViewModel(launchId);
     }
 
@@ -91,14 +100,29 @@ public class DetailActivity extends TabbedActivity {
      * Initialize view model with selected launch id
      */
     private void setupViewModel(final int launchId) {
-        LaunchDetailsViewModel vm = ViewModelProviders.of(this).get(LaunchDetailsViewModel.class);
+        vm = ViewModelProviders.of(this).get(LaunchDetailsViewModel.class);
         vm.loadLaunch(launchId).observe(this, new Observer<LaunchDetails>() {
             @Override
             public void onChanged(@Nullable LaunchDetails result) {
                 Log.d("VM", "result: " + result);
                 if (result != null) {
                     mPager.setVisibility(View.VISIBLE);
-                    mProgress.setVisibility(View.GONE);
+                    mProgress.setVisibility(GONE);
+                }
+            }
+        });
+        vm.favorite().observe(this, new Observer<FavoriteLaunch>() {
+            @Override
+            public void onChanged(@Nullable FavoriteLaunch result) {
+                if (result != null) {
+                    mFab.setImageResource(R.drawable.ic_heart);
+                    mFab.setBackgroundTintList(ColorStateList.valueOf(
+                            ContextCompat.getColor(getBaseContext(), R.color.favoriteFabBgTint)));
+                } else {
+                    mFab.setImageResource(R.drawable.ic_heart_outline);
+                    mFab.setBackgroundTintList(ColorStateList.valueOf(
+                            ContextCompat.getColor(getBaseContext(),
+                                    R.color.favoriteFabBgTintInactive)));
                 }
             }
         });
@@ -122,7 +146,29 @@ public class DetailActivity extends TabbedActivity {
     @Override
     protected void onTabChange(int position) {
         super.onTabChange(position);
+        ToggleFabVisibility(position == SUMMARY_TAB_INDEX);
         if (position == MAP_TAB_INDEX) mAppbar.setExpanded(false, false);
+    }
+
+    private void ToggleFabVisibility(boolean visible) {
+        if (visible) {
+            mFab.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    vm.ToggleFavorite();
+                }
+            });
+            mFab.setVisibility(View.VISIBLE);
+            AlphaAnimation animation1 = new AlphaAnimation(0f, 1f);
+            animation1.setDuration(400);
+            animation1.setStartOffset(300);
+            animation1.setFillAfter(true);
+            mFab.startAnimation(animation1);
+        } else {
+            mFab.setOnClickListener(null);
+            mFab.setVisibility(GONE);
+            mFab.setAnimation(null);
+        }
     }
 
     /**

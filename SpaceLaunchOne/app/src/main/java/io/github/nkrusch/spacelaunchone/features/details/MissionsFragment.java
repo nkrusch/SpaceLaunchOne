@@ -1,10 +1,6 @@
 package io.github.nkrusch.spacelaunchone.features.details;
 
 import android.content.res.Resources;
-import androidx.annotation.NonNull;
-import androidx.core.widget.NestedScrollView;
-import androidx.recyclerview.widget.RecyclerView;
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,6 +10,9 @@ import android.widget.TextView;
 import java.util.LinkedList;
 import java.util.List;
 
+import androidx.annotation.NonNull;
+import androidx.core.widget.NestedScrollView;
+import androidx.recyclerview.widget.RecyclerView;
 import io.github.nkrusch.spacelaunchone.BuildConfig;
 import io.github.nkrusch.spacelaunchone.R;
 import local.LaunchDetails;

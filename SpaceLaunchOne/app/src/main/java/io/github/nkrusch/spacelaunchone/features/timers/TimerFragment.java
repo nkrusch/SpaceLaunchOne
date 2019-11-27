@@ -2,11 +2,6 @@ package io.github.nkrusch.spacelaunchone.features.timers;
 
 import android.os.Bundle;
 import android.os.CountDownTimer;
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.constraintlayout.widget.Group;
-import androidx.fragment.app.Fragment;
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,6 +11,10 @@ import android.widget.TextView;
 
 import java.util.Locale;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.constraintlayout.widget.Group;
+import androidx.fragment.app.Fragment;
 import io.github.nkrusch.spacelaunchone.R;
 import io.github.nkrusch.spacelaunchone.app.Utilities;
 

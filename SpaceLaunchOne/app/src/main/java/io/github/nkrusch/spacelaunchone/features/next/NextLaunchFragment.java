@@ -1,15 +1,9 @@
 package io.github.nkrusch.spacelaunchone.features.next;
 
-import androidx.constraintlayout.widget.ConstraintLayout;
-import androidx.fragment.app.Fragment;
-import androidx.lifecycle.Observer;
-import androidx.lifecycle.ViewModelProviders;
 import android.content.res.TypedArray;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.os.Handler;
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -19,6 +13,12 @@ import android.widget.TextView;
 
 import java.util.Calendar;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.constraintlayout.widget.ConstraintLayout;
+import androidx.fragment.app.Fragment;
+import androidx.lifecycle.Observer;
+import androidx.lifecycle.ViewModelProviders;
 import io.github.nkrusch.spacelaunchone.R;
 import io.github.nkrusch.spacelaunchone.app.Utilities;
 import io.github.nkrusch.spacelaunchone.features.DetailActivity;
@@ -99,21 +99,25 @@ public class NextLaunchFragment extends Fragment {
      * @param launch next launch summary
      */
     private void PopulateViews(final Launch launch) {
-        if (launch == null) {
-            if (isRow) mLayout.setVisibility(GONE);
-            return;
-        }
-        mLayout.setVisibility(VISIBLE);
-        mTitle.setVisibility(VISIBLE);
-        mName.setText(launch.getName());
-        mDate.setText(Utilities.fullTimeLabel(launch.getLaunchDateUTC()));
-        mLayout.setOnClickListener(onClickListener(launch.getId(), launch.getName()));
-        mStatus.setText(getString(R.string.bullet));
-        mStatus.setTextColor(Color.parseColor(launch.getStatusColor()));
-        if (launch.getId() != launchId) {
-            addCountdown(launch.getLaunchDateUTC());
-            launchId = launch.getId();
-        }
+        if (getContext() == null) return;
+
+        try {
+            if (launch == null) {
+                if (isRow) mLayout.setVisibility(GONE);
+                return;
+            }
+            mLayout.setVisibility(VISIBLE);
+            mTitle.setVisibility(VISIBLE);
+            mName.setText(launch.getName());
+            mDate.setText(Utilities.fullTimeLabel(launch.getLaunchDateUTC()));
+            mLayout.setOnClickListener(onClickListener(launch.getId(), launch.getName()));
+            mStatus.setText(getString(R.string.bullet));
+            mStatus.setTextColor(Color.parseColor(launch.getStatusColor()));
+            if (launch.getId() != launchId) {
+                addCountdown(launch.getLaunchDateUTC());
+                launchId = launch.getId();
+            }
+        } catch (Exception ignored) { }
     }
 
     /**

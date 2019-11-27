@@ -27,4 +27,18 @@
         <item name="android:textSize">@dimen/bottom_dialog_header_textsize</item>
     </style>
 
+    <style name="fab_button">
+        <item name="fabSize">normal</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_alignParentBottom">true</item>
+        <item name="android:layout_alignParentRight">true</item>
+        <item name="android:layout_marginRight">@dimen/fab_margin</item>
+        <item name="android:layout_marginEnd">@dimen/fab_margin</item>
+        <item name="android:layout_marginBottom">@dimen/fab_margin</item>
+        <item name="tint">@color/fabTint</item>
+        <item name="android:visibility">@integer/visibility_gone</item>
+    </style>
+
+
 </resources>

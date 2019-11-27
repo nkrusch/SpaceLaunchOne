@@ -41,11 +41,18 @@
     </style>
 
     <style name="list_image">
+        <item name="android:contentDescription">@string/launch_thumbnail</item>
         <item name="srcCompat">@drawable/ic_rocket_background</item>
         <item name="android:layout_width">@dimen/list_image_width</item>
         <item name="android:layout_height">@dimen/list_image_height</item>
         <item name="android:background">@color/list_image_bg_color</item>
+        <item name="android:scaleType">centerInside</item>
+    </style>
+
+    <style name="list_image_background" parent="@style/matches_parent">
+        <item name="android:contentDescription">@string/image_background</item>
         <item name="android:scaleType">centerCrop</item>
+        <item name="android:background">@color/photo_placeholder</item>
     </style>
 
     <style name="list_primary_text" parent="list_threeline_text">

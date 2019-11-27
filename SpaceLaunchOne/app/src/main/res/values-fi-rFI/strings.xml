@@ -103,7 +103,7 @@
     <string name="filter_by_agency">Agentuurit</string>
     <string name="filter_by_location">Paikat</string>
     <string name="filter_instructions_title">Miten suodattimet toimivat</string>
-    <string name="filter_instructions">Suodattimien avulla voit rajoitaa appin listaamia laukaisuja.\n\nKun valitsen suodattimen, kaikki laukaisut jotka sisältävät valitsemasi ehdon piilotetaan.\n\nKun mitään suodattimia ei ole valittuna, appi listaa kaikki laukaisut.\n\nESIMERKKEJÄ\n\n1.) Jos haluat poissulkea tietyn raketin laukaisut, etsi sitä vastaava valitaruutu ja valitse ruutu.\n\n2.) Jos haluat nähdä laukaisuja vain tietystä paikasta, valitse ensin kaikki paikat, sitten poista valinta haluamastsi paikasta.</string>
+    <string name="filter_instructions">Suodattimien avulla voit rajoitaa appin listaamia laukaisuja.\n\nKun poistat valinnan, kaikki laukaisut jotka sisältävät kyseisen ehdon piilotetaan.\n\nKun mitään suodattimia ei ole valittuna, appi piilottaa kaikki laukaisut.\n\nESIMERKKEJÄ\n\n1.) Jos haluat poissulkea tietyn raketin laukaisut, etsi sitä vastaava valitaruutu ja poista kyseisen raketin valinta.\n\n2.) Jos haluat nähdä laukaisuja vain tietystä paikasta, poista ensin valinta kaikista paikoista, sitten valitse vain haluamasi paikka.</string>
     <string name="Help">Apua</string>
     <string name="space_themed_background">avaruus teemainen tausta</string>
     <string name="launch_status_icon">tilannekuvan kuvake</string>

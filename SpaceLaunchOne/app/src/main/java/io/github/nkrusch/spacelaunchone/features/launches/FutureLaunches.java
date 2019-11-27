@@ -2,7 +2,6 @@ package io.github.nkrusch.spacelaunchone.features.launches;
 
 
 import androidx.fragment.app.Fragment;
-
 import viewmodels.FutureLaunchesViewModel;
 
 /**
@@ -17,7 +16,7 @@ public class FutureLaunches extends LaunchRecyclerView<FutureLaunchesViewModel> 
     }
 
     @Override
-    boolean showNextLaunch() {
+    protected boolean showNextLaunch() {
         return true;
     }
 

@@ -13,6 +13,8 @@
     <dimen name="bullet_horizontal_padding">4dp</dimen>
     <dimen name="bullet_vertical_padding">16dp</dimen>
     <dimen name="bullet_textSize">18dp</dimen>
+    <dimen name="fab_margin">16dip</dimen>
+
 
 
     <!-- LAUNCH LIST: START -->
@@ -28,9 +30,9 @@
     <dimen name="list_item_margin">0dp</dimen>
     <dimen name="list_number_horz_padding">@dimen/toolbar_horz_margin</dimen>
     <integer name="list_image_width_int">100</integer>
-    <dimen name="list_image_width">100dp</dimen>
+    <dimen name="list_image_width">56dp</dimen>
     <dimen name="list_image_height">56dp</dimen>
-    <dimen name="list_image_margin_left">0dp</dimen>
+    <dimen name="list_image_margin_left">12dp</dimen>
     <dimen name="list_image_margin_right">0dp</dimen>
     <dimen name="list_image_vert_margin">16dp</dimen>
     <dimen name="list_grid_padding">0dp</dimen>
@@ -45,7 +47,7 @@
 
     <!-- NEXT LAUNCH: START -->
     <bool name="next_launch_row_item">false</bool>
-    <dimen name="next_launch_fragment_height">250dp</dimen>
+    <dimen name="next_launch_fragment_height">350dp</dimen>
     <color name="next_launch_bg_color">@color/next_launch_bar</color>
     <integer name="next_launch_img_visibility">@integer/visibility_visible</integer>
     <dimen name="next_launch_text_shadow_x">1</dimen>
@@ -60,7 +62,7 @@
     <integer name="next_launch_text_maxLines">1</integer>
     <dimen name="next_launch_timer_leftMargin">0dp</dimen>
     <dimen name="next_launch_timer_rightMargin">0dp</dimen>
-    <dimen name="next_launch_timer_topMargin">50dp</dimen>
+    <dimen name="next_launch_timer_topMargin">120dp</dimen>
     <integer-array name="next_launch_images">
         <item>@drawable/space_bg_00</item>
         <item>@drawable/space_bg_01</item>

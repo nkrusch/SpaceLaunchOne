@@ -42,11 +42,11 @@
     </plurals>
 
     <string-array name="pref_sync_frequency_titles">
-        <item>1 hour</item>
-        <item>6 hours</item>
-        <item>12 hours</item>
-        <item>24 hours</item>
-        <item>48 hours</item>
+        <item>every 1 hour</item>
+        <item>every 6 hours</item>
+        <item>every 12 hours</item>
+        <item>every 24 hours</item>
+        <item>every 48 hours</item>
     </string-array>
     <string-array name="pref_sync_frequency_values">
         <item>1</item>
@@ -85,7 +85,7 @@
     <string name="timer_divider" translatable="false">:</string>
     <string name="blastoff">blastoff</string>
     <string name="past">past event</string>
-    <string name="pref_title_sync_frequency">Data sync frequency</string>
+    <string name="pref_title_sync_frequency">Automatic data synchronization</string>
     <string name="timer">timer</string>
     <string name="pref_sync_started">Synchronizing…</string>
     <string name="sync_frequency">Sync frequency</string>
@@ -113,12 +113,12 @@
     <string name="filter_by_agency">Agencies</string>
     <string name="filter_by_location">Locations</string>
     <string name="filter_instructions_title">How filters work</string>
-    <string name="filter_instructions">Filters allow you to limit the list of launches displayed by this application.
-        \n\nBy checking filter property, you will exclude any launches that match that property from displaying.
-        \n\nHaving all options unchecked means all launches will be displayed.
+    <string name="filter_instructions">Filters allow you to limit the list of launches displayed in the scheduled launches list.
+        \n\nBy unchecking a filter property, you will exclude any launches that match that property from displaying.
+        \n\nHaving all options unchecked means no launches will be displayed.
         \n\nEXAMPLES
-        \n\n1.) to exclude launches by specific rocket, find rocket by name and check box next to it
-        \n\n2.) to view launches from specific location only, first check all locations, then uncheck the desired location
+        \n\n1.) to exclude launches by specific rocket, find rocket by name and uncheck box next to it
+        \n\n2.) to view launches from specific location only, first uncheck all locations, then check the desired location
     </string>
     <string name="Help">Help</string>
     <string name="space_themed_background">space themed background</string>
@@ -153,6 +153,19 @@
     <string name="enabled">Enabled</string>
     <string name="app_notifications">App Notifications</string>
     <string name="no_matches">No matches</string>
+    <string name="favorites_is_empty">No favorite launches yet.\n\nWhen you mark launches as favorites, they will appear here.</string>
     <string name="search_results">search results</string>
     <string name="launches">launches</string>
+    <string name="image_background">Image background</string>
+    <string name="favorites">Favorites</string>
+    <string name="future">Future</string>
+    <string name="past_launches">Past</string>
+    <string name="search_label">Search</string>
+    <string name="floating_action_button">Floating action button</string>
+    <string name="sort">Sort</string>
+    <string name="agency_empty_state">No agencies available</string>
+    <string name="location_empty_state">No locations available</string>
+    <string name="pref_about_label">About this app...</string>
+    <string name="title_agency_details">Agency Details</string>
+    <string name="title_pad_details">Launchpad Details</string>
 </resources>

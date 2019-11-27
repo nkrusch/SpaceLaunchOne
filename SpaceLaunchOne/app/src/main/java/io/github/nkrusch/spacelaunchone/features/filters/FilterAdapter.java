@@ -1,8 +1,5 @@
 package io.github.nkrusch.spacelaunchone.features.filters;
 
-import androidx.annotation.NonNull;
-import androidx.recyclerview.widget.RecyclerView;
-
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -12,6 +9,8 @@ import android.widget.TextView;
 
 import java.util.List;
 
+import androidx.annotation.NonNull;
+import androidx.recyclerview.widget.RecyclerView;
 import io.github.nkrusch.spacelaunchone.R;
 import local.IFilter;
 
@@ -47,7 +46,7 @@ public class FilterAdapter<T extends IFilter> extends RecyclerView.Adapter<Filte
     public void onBindViewHolder(@NonNull final FilterAdapter.ItemViewHolder holder, int position) {
         IFilter item = dataSource.get(position);
         holder.mName.setText(item.getName());
-        holder.mCheck.setChecked(item.isFiltered());
+        holder.mCheck.setChecked(!item.isFiltered());
     }
 
     @Override

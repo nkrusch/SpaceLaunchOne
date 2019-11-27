@@ -1,0 +1,23 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/scheduled"
+        android:icon="@drawable/ic_clock_outline"
+        android:title="Scheduled" />
+    <item
+        android:id="@+id/favorites"
+        android:icon="@drawable/ic_heart"
+        android:title="@string/favorites" />
+    <item
+        android:id="@+id/agencies"
+        android:icon="@drawable/ic_office_building"
+        android:title="LSPs" />
+    <item
+        android:id="@+id/location"
+        android:icon="@drawable/ic_map_marker"
+        android:title="Pads" />
+    <item
+        android:icon="@drawable/ic_settings"
+        android:id="@+id/settings"
+        android:title="@string/title_activity_settings" />
+</menu>

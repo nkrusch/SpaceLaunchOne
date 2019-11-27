@@ -1,0 +1,13 @@
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:background="@color/details_background"
+    style="@style/matches_parent">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:text="Agency Details!" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

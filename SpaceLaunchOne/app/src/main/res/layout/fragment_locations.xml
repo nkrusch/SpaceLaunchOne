@@ -1,0 +1,29 @@
+<androidx.coordinatorlayout.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/default_activity_background"
+    style="@style/matches_parent">
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/list_appbar_layout"
+        style="@style/list_appbar_layout">
+
+            <!--suppress AndroidDomInspection -->
+            <androidx.appcompat.widget.Toolbar
+                android:id="@+id/toolbar"
+                android:layout_width="match_parent"
+                app:theme="@style/ClearToolbar"
+                android:layout_height="?actionBarSize" />
+
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <fragment
+        android:id="@+id/Locations"
+        android:name="io.github.nkrusch.spacelaunchone.features.launchpads.PadRecyclerView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior"
+        android:layout_marginBottom="?actionBarSize" />
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>
+

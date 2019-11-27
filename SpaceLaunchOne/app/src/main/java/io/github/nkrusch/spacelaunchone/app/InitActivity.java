@@ -6,11 +6,11 @@ import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
-import androidx.appcompat.app.AppCompatActivity;
 import android.util.Log;
 
 import java.util.Date;
 
+import androidx.appcompat.app.AppCompatActivity;
 import service.InitIntentService;
 
 import static service.InitIntentService.ACTION_INITIALIZE;
