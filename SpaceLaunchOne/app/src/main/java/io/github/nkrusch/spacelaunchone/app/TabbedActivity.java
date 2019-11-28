@@ -137,7 +137,7 @@ public abstract class TabbedActivity extends AppCompatActivity {
         mToolbar = findViewById(R.id.toolbar);
         bottomNav = findViewById(R.id.navigation);
         mFab = findViewById(R.id.tabbed_fab);
-        mPager.setOffscreenPageLimit(1);
+        mPager.setOffscreenPageLimit(3);
 
         setupToolbar();
         setupTabLayout(activeTab);

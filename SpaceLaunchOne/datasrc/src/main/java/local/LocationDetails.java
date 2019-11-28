@@ -1,5 +1,7 @@
 package local;
 
+import java.util.Collection;
+import java.util.Collections;
 import java.util.List;
 
 import androidx.annotation.NonNull;
@@ -38,10 +40,12 @@ public class LocationDetails {
     }
 
     public List<Launch> getLaunches() {
+        Collections.sort(launches);
         return launches;
     }
 
     public List<Pad> getPads() {
+        Collections.sort(pads);
         return pads;
     }
 

@@ -11,7 +11,7 @@ import models.Agency;
 
 @Entity(tableName = "pads",
         indices = {@Index(value = {"locationId"})})
-public class Pad {
+public class Pad implements Comparable<Pad> {
 
     @NonNull
     @PrimaryKey()
@@ -74,6 +74,10 @@ public class Pad {
 
     public void setMapURL(String mapURL) {
         this.mapURL = mapURL;
+    }
+
+    public boolean isRetired() {
+        return this.retired == 1;
     }
 
     public int getRetired() {
@@ -157,5 +161,13 @@ public class Pad {
                 "wikiURL: " + wikiURL + "\n" +
                 "changed: " + changed + "\n" +
                 "lastModified: " + lastModified;
+    }
+
+    @Ignore
+    @Override
+    public int compareTo(Pad pad) {
+        if (isRetired() && !pad.isRetired()) return 1;
+        if (!isRetired() && pad.isRetired()) return -1;
+        return name.compareTo(pad.getName());
     }
 }

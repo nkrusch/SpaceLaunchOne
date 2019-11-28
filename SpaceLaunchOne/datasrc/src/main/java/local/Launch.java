@@ -10,7 +10,7 @@ import models.Location;
 
 @SuppressWarnings("NullableProblems")
 @Entity(tableName = "launch", indices = {@Index("launchDateUTC")})
-public class Launch {
+public class Launch implements Comparable<Launch> {
 
     @NonNull
     @PrimaryKey()
@@ -138,5 +138,10 @@ public class Launch {
                 "launchDateUTC: " + launchDateUTC + "\n" +
                 "locationName: " + locationName + "\n" +
                 "status: " + status;
+    }
+
+    @Override
+    public int compareTo(Launch launch) {
+        return this.launchDateUTC > launch.getLaunchDateUTC() ? -1 : 1;
     }
 }

@@ -2,7 +2,8 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/list_item_container"
-    style="@style/list_item" >
+    style="@style/list_item"
+    android:minHeight="68dp">
 
     <androidx.cardview.widget.CardView
         android:id="@+id/thumbnail_card"
@@ -22,7 +23,6 @@
     <TextView
         android:id="@+id/title"
         android:paddingTop="10dp"
-        android:maxLines="2"
         android:layout_height="wrap_content"
         style="@style/list_primary_text_layout" />
 

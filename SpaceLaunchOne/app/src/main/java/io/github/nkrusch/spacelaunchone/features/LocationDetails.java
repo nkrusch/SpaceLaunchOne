@@ -75,9 +75,10 @@ public class LocationDetails extends AppCompatActivity {
                     if (tabLayout.getTabCount() == 0) {
                         int padCount = locationDetails.getPads().size();
                         int launchCount = locationDetails.getLaunches().size();
-                        tabLayout.addTab(tabLayout.newTab().setText("Pads "+padCount));
-                        tabLayout.addTab(tabLayout.newTab().setText("Launches "+launchCount));
-                        //tabLayout.addTab(tabLayout.newTab().setIcon(R.drawable.ic_history).setText("Past "+launchCount));
+                        tabLayout.addTab(tabLayout.newTab().setText(
+                                getResources().getQuantityString(R.plurals.tab_pads, padCount, padCount)));
+                        tabLayout.addTab(tabLayout.newTab().setText(
+                                getResources().getQuantityString(R.plurals.tab_launches, launchCount, launchCount)));
                         TabLayout.Tab t = tabLayout.getTabAt(activeTab);
                         if (t != null) t.select();
                     }

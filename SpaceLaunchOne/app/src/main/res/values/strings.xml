@@ -41,6 +41,15 @@
         <item quantity="other">Learn more on Wikipedia</item>
     </plurals>
 
+    <plurals name="tab_pads">
+        <item quantity="one">%d pad</item>
+        <item quantity="other">%d pads</item>
+    </plurals>
+    <plurals name="tab_launches">
+        <item quantity="one">%d launch</item>
+        <item quantity="other">%d launches</item>
+    </plurals>
+
     <string-array name="pref_sync_frequency_titles">
         <item>every 1 hour</item>
         <item>every 6 hours</item>
@@ -172,7 +181,4 @@
     <string name="pref_about_label">About this app...</string>
     <string name="title_agency_details">Agency Details</string>
     <string name="title_pad_details">Launchpad Details</string>
-    <string name="pads">Pads</string>
-    <string name="tab_launches_future">Future Launches</string>
-    <string name="tab_launches_past">Past Launches</string>
 </resources>

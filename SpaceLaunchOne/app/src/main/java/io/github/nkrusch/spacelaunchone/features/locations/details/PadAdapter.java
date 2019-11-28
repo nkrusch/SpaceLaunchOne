@@ -13,6 +13,7 @@ import androidx.annotation.NonNull;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.RecyclerView;
 import io.github.nkrusch.spacelaunchone.R;
+import io.github.nkrusch.spacelaunchone.app.Utilities;
 import local.Pad;
 
 
@@ -54,8 +55,8 @@ public class PadAdapter extends RecyclerView.Adapter<PadAdapter.ItemViewHolder> 
     public void onBindViewHolder(@NonNull final PadAdapter.ItemViewHolder holder, int position) {
 
         Pad item = dataSource.get(position);
-        holder.mTextView.setText(item.getName());
-        holder.mSubText1.setText(item.getLatitude()+" "+item.getLongitude());
+        holder.mTextView.setText(Utilities.getLocationShortName(item.getName()));
+        holder.mSubText1.setText(item.isRetired() ? "Retired" : "Active");
         holder.mNumber.setText(String.format(Locale.getDefault(), "%02d", position + 1));
         holder.mImageView.setImageResource(R.drawable.ic_map_marker);
     }
