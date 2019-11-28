@@ -11,11 +11,11 @@
     <item
         android:id="@+id/agencies"
         android:icon="@drawable/ic_office_building"
-        android:title="LSPs" />
+        android:title="Agencies" />
     <item
         android:id="@+id/location"
         android:icon="@drawable/ic_map_marker"
-        android:title="Pads" />
+        android:title="Locations" />
     <item
         android:icon="@drawable/ic_settings"
         android:id="@+id/settings"

@@ -1,6 +1,7 @@
 package local;
 
 import androidx.room.ColumnInfo;
+import androidx.room.Ignore;
 
 @SuppressWarnings("SpellCheckingInspection")
 public class AgencyLookup implements IFilter {
@@ -8,10 +9,6 @@ public class AgencyLookup implements IFilter {
     @ColumnInfo(name = "agencyName")
     private
     String name;
-
-    @ColumnInfo(name = "agencyImage")
-    private
-    String agencyImage;
 
     @ColumnInfo(name = "agencyCountryCode")
     private
@@ -28,6 +25,7 @@ public class AgencyLookup implements IFilter {
     public AgencyLookup() {
     }
 
+    @Ignore
     public AgencyLookup(int id, String name) {
         this.name = name;
         this.id = id;
@@ -40,14 +38,6 @@ public class AgencyLookup implements IFilter {
 
     public void setName(String name) {
         this.name = name;
-    }
-
-    public String getAgencyImage() {
-        return agencyImage;
-    }
-
-    public void setAgencyImage(String agencyImage) {
-        this.agencyImage = agencyImage;
     }
 
     public String getAgencyCountryCode() {

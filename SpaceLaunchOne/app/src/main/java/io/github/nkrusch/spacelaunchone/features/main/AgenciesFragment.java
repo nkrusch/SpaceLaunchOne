@@ -16,7 +16,7 @@ public class AgenciesFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_agencies, container, false);
         final Toolbar mToolbar = view.findViewById(R.id.toolbar);
-        mToolbar.setTitle("Launch Service Providers");
+        mToolbar.setTitle("Space Agencies & ISPs");
         return view;
     }
 

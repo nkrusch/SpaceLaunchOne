@@ -8,6 +8,7 @@ import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import api.AppExecutors;
+import local.Agency;
 import local.AgencyFilter;
 import local.AgencyLookup;
 import local.AppDatabase;
@@ -20,7 +21,7 @@ public class AgencyListViewModel extends AndroidViewModel {
     public AgencyListViewModel(Application application) {
         super(application);
         AppDatabase db = AppDatabase.getInstance(this.getApplication());
-        agencies = db.dao().getAgencyLookup();
+        agencies = db.dao().agencies(Integer.MAX_VALUE, 0);
     }
 
     public LiveData<List<AgencyLookup>> getAll() {

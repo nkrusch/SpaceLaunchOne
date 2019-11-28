@@ -1,6 +1,5 @@
 package io.github.nkrusch.spacelaunchone.features.agencies;
 
-import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -38,7 +37,6 @@ public class AgencyAdapter extends RecyclerView.Adapter<AgencyAdapter.ItemViewHo
         dataSource = dataArgs;
     }
 
-
     /**
      * bind onclick listener to handle adapter item clicks
      *
@@ -58,16 +56,11 @@ public class AgencyAdapter extends RecyclerView.Adapter<AgencyAdapter.ItemViewHo
 
     @Override
     public void onBindViewHolder(@NonNull final AgencyAdapter.ItemViewHolder holder, int position) {
-
-        AgencyLookup item = dataSource.get(position);
-        final Context context = holder.mImageView.getContext();
-
+        final AgencyLookup item = dataSource.get(position);
         holder.mTextView.setText(item.getName());
-        holder.mSubText1.setText(item.getAgencyCountryCode());
         holder.mNumber.setText(String.format(Locale.getDefault(), "%02d", position + 1));
-
-        int imgRes = Utilities.countryIcon(item.getAgencyCountryCode());
-        holder.mImageView.setImageResource(imgRes);
+        holder.mImageView.setVisibility(View.VISIBLE);
+        holder.mImageView.setImageResource(Utilities.countryIcon(item.getAgencyCountryCode()));
     }
 
     @Override

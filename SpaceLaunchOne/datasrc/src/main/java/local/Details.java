@@ -14,10 +14,12 @@ import models.Pad;
 import models.Rocket;
 
 
+
 @SuppressWarnings({"NullableProblems", "SpellCheckingInspection"})
 @Entity(tableName = "details", indices = {
         @Index(value = {"rocketId", "rocketName"}),
         @Index(value = {"agencyId", "agencyName"}),
+        @Index(value = {"locationId"}),
         @Index(value = {"padId", "padName"})})
 public class Details {
 

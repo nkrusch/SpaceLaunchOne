@@ -19,9 +19,9 @@ public class CompletedLaunchesViewModel extends AndroidViewModel implements ILau
 
     public CompletedLaunchesViewModel(Application application) {
         super(application);
-        Long CUTOFF = new Date().getTime();
-        AppDatabase db = AppDatabase.getInstance(this.getApplication());
         int INIT_OFFSET = 0;
+        long CUTOFF = new Date().getTime();
+        AppDatabase db = AppDatabase.getInstance(this.getApplication());
         launches = db.dao().pastLaunches(CUTOFF, Integer.MAX_VALUE, INIT_OFFSET);
     }
 

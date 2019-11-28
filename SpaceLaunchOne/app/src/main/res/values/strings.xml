@@ -129,8 +129,8 @@
     <string name="video_play_icon">video play icon</string>
     <string name="event_name">Launch Name</string>
     <string name="launch_date">Launch Date</string>
-    <string name="launch_service_provider">Launch Service Provider</string>
-    <string name="agency_country_code">Agency Country Code</string>
+    <string name="launch_service_provider">Launch Service Provider (LSP)</string>
+    <string name="agency_country_code">LSP Country Code</string>
     <string name="hashtag" translatable="false">Hashtag</string>
     <string name="last_modified">Last modified</string>
     <string name="rocket">Rocket</string>
@@ -146,7 +146,9 @@
     <string name="show_more">Show more</string>
     <string name="status">Status</string>
     <string name="country">Country</string>
+    <string name="location">Launch Site</string>
     <string name="agency">Agency</string>
+    <string name="lsp">LSP</string>
     <string name="rocket_summary_label">Rocket Name / Family / Configuration</string>
     <string name="notifications_preference" translatable="false">notifications_preference</string>
     <string name="disabled">Disabled</string>
@@ -165,7 +167,12 @@
     <string name="sort">Sort</string>
     <string name="agency_empty_state">No agencies available</string>
     <string name="location_empty_state">No locations available</string>
+    <string name="pads_empty_state">No known pads at this location</string>
+    <string name="launches_empty_state">No known launches associated with this locations</string>
     <string name="pref_about_label">About this app...</string>
     <string name="title_agency_details">Agency Details</string>
     <string name="title_pad_details">Launchpad Details</string>
+    <string name="pads">Pads</string>
+    <string name="tab_launches_future">Future Launches</string>
+    <string name="tab_launches_past">Past Launches</string>
 </resources>

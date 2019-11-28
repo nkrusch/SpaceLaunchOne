@@ -85,7 +85,7 @@
             android:parentActivityName=".features.NewMainActivity" />
         <activity
             android:label="@string/title_pad_details"
-            android:name=".features.PadDetails"
+            android:name=".features.LocationDetails"
             android:parentActivityName=".features.NewMainActivity" />
 
         <receiver

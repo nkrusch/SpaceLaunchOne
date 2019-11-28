@@ -21,7 +21,6 @@ import io.github.nkrusch.spacelaunchone.features.AgencyDetails;
 import local.AgencyLookup;
 import viewmodels.AgencyListViewModel;
 
-
 public class AgencyRecyclerView extends RecyclerViewFragment implements IListClickHandler {
 
     private AgencyListViewModel vm;

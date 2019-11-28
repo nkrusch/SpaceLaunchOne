@@ -68,7 +68,7 @@
     <TextView
         android:id="@+id/event_agency_text"
         style="@style/event_snapshot_primary_text"
-        android:text="@string/agency"
+        android:text="@string/lsp"
         app:layout_constraintStart_toEndOf="@id/event_agency"
         app:layout_constraintTop_toTopOf="@id/event_agency" />
 
@@ -91,7 +91,7 @@
     <TextView
         android:id="@+id/event_country_text"
         style="@style/event_snapshot_primary_text"
-        android:text="@string/country"
+        android:text="@string/location"
         app:layout_constraintStart_toEndOf="@id/event_country"
         app:layout_constraintTop_toTopOf="@id/event_country" />
 

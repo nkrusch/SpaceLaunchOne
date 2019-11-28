@@ -1,4 +1,4 @@
-package io.github.nkrusch.spacelaunchone.features.launchpads;
+package io.github.nkrusch.spacelaunchone.features.locations.details;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -17,12 +17,13 @@ import androidx.lifecycle.ViewModelProviders;
 import androidx.recyclerview.widget.GridLayoutManager;
 import io.github.nkrusch.spacelaunchone.R;
 import io.github.nkrusch.spacelaunchone.app.RecyclerViewFragment;
-import io.github.nkrusch.spacelaunchone.features.PadDetails;
-import local.LocationLookup;
-import viewmodels.LocationListViewModel;
+import io.github.nkrusch.spacelaunchone.features.launches.ListAdapter;
+import io.github.nkrusch.spacelaunchone.features.locations.LocationAdapter;
+import local.Pad;
+import viewmodels.LocationDetailsViewModel;
 
 
-public class PadRecyclerView extends RecyclerViewFragment {
+public class PadRecyclerView extends RecyclerViewFragment  implements IListClickHandler {
 
     public static PadRecyclerView newInstance() {
         return new PadRecyclerView();
@@ -33,11 +34,13 @@ public class PadRecyclerView extends RecyclerViewFragment {
 
     protected void setupViewModel() {
         if (getActivity() != null) {
-            LocationListViewModel vm = ViewModelProviders.of(getActivity()).get(LocationListViewModel.class);
-            vm.getAll().observe(getActivity(), new Observer<List<LocationLookup>>() {
+            LocationDetailsViewModel vm = ViewModelProviders.of(getActivity())
+                    .get(LocationDetailsViewModel.class);
+            vm.get().observe(getActivity(), new Observer<local.LocationDetails>() {
                 @Override
-                public void onChanged(@Nullable List<LocationLookup> locations) {
-                    handleDataChange(locations);
+                public void onChanged(local.LocationDetails locationDetails) {
+                    if(locationDetails!=null && locationDetails.getLaunches()!=null)
+                        handleDataChange(locationDetails.getPads());
                 }
             });
         }
@@ -50,7 +53,7 @@ public class PadRecyclerView extends RecyclerViewFragment {
         return new PadAdapter.OnItemClickListener() {
             @Override
             public void onItemClick(int id, String name) {
-                startActivity(PadDetails.getIntent(getContext(), id, name));
+                // do something on pad click
             }
         };
     }
@@ -58,7 +61,7 @@ public class PadRecyclerView extends RecyclerViewFragment {
     /**
      * When viewmodel state changes, update the adapter
      */
-    private void handleDataChange(@Nullable List<LocationLookup> entries) {
+    private void handleDataChange(@Nullable List<Pad> entries) {
         if (mRecyclerView == null || entries == null) return;
         boolean hasEntries = entries.size() > 0;
         if (hasEntries) {
@@ -81,7 +84,7 @@ public class PadRecyclerView extends RecyclerViewFragment {
         View view = inflater.inflate(R.layout.fragment_list, container, false);
         int columns = getResources().getInteger(R.integer.list_column_count);
 
-        List<LocationLookup> data = new LinkedList<>();
+        List<Pad> data = new LinkedList<>();
         PadAdapter la = new PadAdapter(data);
         la.SetOnItemClickListener(this.onItemClick());
         GridLayoutManager glm = new GridLayoutManager(getContext(), columns);
@@ -91,8 +94,13 @@ public class PadRecyclerView extends RecyclerViewFragment {
         mRecyclerView.setAdapter(la);
         mEmptyState = view.findViewById(R.id.empty_state);
         mEmptyStateText = view.findViewById(R.id.list_empty_state_text);
-        mEmptyStateText.setText(R.string.location_empty_state);
+        mEmptyStateText.setText(R.string.pads_empty_state);
         restoreRecyclerViewState(savedInstanceState);
         return view;
+    }
+
+    @Override
+    public void setOnItemClickHandler(ListAdapter.OnItemClickListener handler) {
+
     }
 }

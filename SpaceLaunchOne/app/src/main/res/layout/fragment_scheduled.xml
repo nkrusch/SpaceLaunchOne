@@ -13,10 +13,9 @@
             android:layout_height="@dimen/next_launch_fragment_height"
             android:minHeight="?attr/actionBarSize"
             android:layout_gravity="top"
-            app:contentScrim="?attr/colorPrimary"
+            app:contentScrim="?attr/colorPrimaryDark"
             app:scrimAnimationDuration="250"
             app:layout_scrollFlags="scroll|exitUntilCollapsed"
-            android:background="@color/colorPrimary"
             app:titleEnabled="false">
 
             <fragment

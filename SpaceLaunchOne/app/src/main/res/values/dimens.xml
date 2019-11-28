@@ -29,7 +29,7 @@
     <integer name="list_number_visibility">@integer/visibility_visible</integer>
     <dimen name="list_item_margin">0dp</dimen>
     <dimen name="list_number_horz_padding">@dimen/toolbar_horz_margin</dimen>
-    <integer name="list_image_width_int">100</integer>
+    <integer name="list_image_width_int">56</integer>
     <dimen name="list_image_width">56dp</dimen>
     <dimen name="list_image_height">56dp</dimen>
     <dimen name="list_image_margin_left">12dp</dimen>

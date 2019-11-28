@@ -38,7 +38,7 @@ public class LaunchDetailsViewModel extends AndroidViewModel {
      * Initialize launch details viewModel
      */
     public LiveData<LaunchDetails> loadLaunch(final int id) {
-        launch = db.dao().get(id, new Date().getTime());
+        launch = db.dao().getLaunchDetails(id);
         favState = db.dao().getFavorite(id);
         conditionallyUpdate(id);
         return launch;

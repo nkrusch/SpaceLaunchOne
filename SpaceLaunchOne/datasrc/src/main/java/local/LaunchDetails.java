@@ -8,7 +8,7 @@ import java.util.Date;
 import java.util.List;
 
 @SuppressWarnings("SpellCheckingInspection")
-public class LaunchDetails {
+public class    LaunchDetails {
 
     @Embedded
     Launch summary;

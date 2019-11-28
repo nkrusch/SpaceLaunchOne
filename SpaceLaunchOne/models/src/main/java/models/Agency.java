@@ -44,8 +44,8 @@ public class Agency extends InfoObj {
         this.countryCode = countryCode;
     }
 
-    public boolean getIslsp() {
-        return islsp == 1;
+    public int getIslsp() {
+        return islsp;
     }
 
     public void setIslsp(int islsp) {

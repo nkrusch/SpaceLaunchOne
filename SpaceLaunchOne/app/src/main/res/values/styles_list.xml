@@ -43,8 +43,8 @@
     <style name="list_image">
         <item name="android:contentDescription">@string/launch_thumbnail</item>
         <item name="srcCompat">@drawable/ic_rocket_background</item>
-        <item name="android:layout_width">@dimen/list_image_width</item>
-        <item name="android:layout_height">@dimen/list_image_height</item>
+        <item name="android:layout_width">@dimen/match_parent</item>
+        <item name="android:layout_height">@dimen/match_parent</item>
         <item name="android:background">@color/list_image_bg_color</item>
         <item name="android:scaleType">centerInside</item>
     </style>

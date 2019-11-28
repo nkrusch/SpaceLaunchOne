@@ -95,8 +95,8 @@ public class Utilities {
     /**
      * Get image url transformed to desired width/height
      *
-     * @param url    image url
-     * @param size   image width and height
+     * @param url  image url
+     * @param size image width and height
      * @return updated image url
      */
     public static String squareImage(String url, int size) {
@@ -304,12 +304,21 @@ public class Utilities {
     }
 
     public static int countryIcon(String countryCode) {
-        String tmp = countryCode == null ? "" : countryCode;
-        if (countryCode.indexOf(",") > 0)
-            tmp = countryCode.substring(0, countryCode.indexOf(",")).trim();
+        if (countryCode == null || countryCode.isEmpty())
+            return R.drawable.ic_earth;
 
-        switch (tmp.toUpperCase()) {
+        if (countryCode.indexOf(",") > 0 || countryCode.indexOf("/") > 0) {
+            for (String c : countryCode.split(",|/")) {
+                int test = countryIcon(c);
+                if (test != R.drawable.ic_earth)
+                    return test;
+            }
+            return R.drawable.ic_earth;
+        }
+
+        switch (countryCode.toUpperCase()) {
             case "USA":
+            case "US":
                 return R.drawable.flag_usa;
             case "CHN":
                 return R.drawable.flag_chn;
@@ -327,8 +336,152 @@ public class Utilities {
                 return R.drawable.flag_rus;
             case "IRN":
                 return R.drawable.flag_irn;
+            case "GUF":
+                return R.drawable.flag_guf;
+            case "KAZ":
+                return R.drawable.flag_kaz;
+            case "ENG":
+            case "GBR":
+                return R.drawable.flag_gbr;
+            case "ITA":
+                return R.drawable.flag_ita;
+            case "CAN":
+            case "CA":
+                return R.drawable.flag_can;
+            case "THA":
+                return R.drawable.flag_tha;
+            case "TUR":
+                return R.drawable.flag_tur;
+            case "IDN":
+                return R.drawable.flag_idn;
+            case "ESP":
+                return R.drawable.flag_esp;
+            case "ARG":
+                return R.drawable.flag_arg;
+            case "UKR":
+                return R.drawable.flag_ukr;
+            case "AUT":
+                return R.drawable.flag_aut;
+            case "AUS":
+                return R.drawable.flag_aus;
+            case "ISR":
+                return R.drawable.flag_isr;
+            case "MEX":
+                return R.drawable.flag_mex;
+            case "MYS":
+                return R.drawable.flag_mys;
+            case "DNK":
+                return R.drawable.flag_dnk;
+            case "SAU":
+                return R.drawable.flag_sau;
+            case "SWE":
+                return R.drawable.flag_swe;
+            case "NLD":
+                return R.drawable.flag_nld;
+            case "BRA":
+                return R.drawable.flag_bra;
+            case "ALB":
+                return R.drawable.flag_alb;
+            case "ARE":
+            case "UAE":
+                return R.drawable.flag_uae;
+            case "VNM":
+                return R.drawable.flag_vnm;
+            case "CHE":
+                return R.drawable.flag_che;
+            case "NOR":
+                return R.drawable.flag_nor;
+            case "POL":
+                return R.drawable.flag_pol;
+            case "DEU":
+            case "GER":
+                return R.drawable.flag_deu;
+            case "BGD":
+                return R.drawable.flag_bgd;
+            case "PRK":
+                return R.drawable.flag_prk;
+            case "HRV":
+                return R.drawable.flag_hrv;
+            case "PRT":
+                return R.drawable.flag_prt;
+            case "BOL":
+                return R.drawable.flag_bol;
+            case "URY":
+                return R.drawable.flag_ury;
+            case "DZA":
+                return R.drawable.flag_dza;
+            case "VEN":
+                return R.drawable.flag_ven;
+            case "EGY":
+                return R.drawable.flag_egy;
+            case "BEL":
+                return R.drawable.flag_bel;
+            case "ZAF":
+                return R.drawable.flag_zaf;
+            case "SGP":
+                return R.drawable.flag_sin;
+            case "PAK":
+                return R.drawable.flag_pak;
+            case "PER":
+                return R.drawable.flag_per;
+            case "BGR":
+                return R.drawable.flag_bgr;
+            case "LUX":
+                return R.drawable.flag_lux;
+            case "COL":
+                return R.drawable.flag_col;
+            case "TUN":
+                return R.drawable.flag_tun;
+            case "HUN":
+                return R.drawable.flag_hun;
+            case "LTU":
+                return R.drawable.flag_ltu;
+            case "AZE":
+                return R.drawable.flag_aze;
+            case "LKA":
+                return R.drawable.flag_lka;
+            case "BMU":
+                return R.drawable.flag_bmu;
+            case "BLR":
+                return R.drawable.flag_blr;
+            case "MNG":
+                return R.drawable.flag_mng;
+            case "MAR":
+                return R.drawable.flag_mar;
+            case "GRC":
+                return R.drawable.flag_grc;
+            case "UZB":
+                return R.drawable.flag_uzb;
+            case "ROU":
+                return R.drawable.flag_rou;
+            case "TKM":
+                return R.drawable.flag_tkm;
+            case "CZE":
+                return R.drawable.flag_cze;
+            case "MUS":
+                return R.drawable.flag_mus;
+            case "TWN":
+                return R.drawable.flag_twn;
+            case "NGA":
+                return R.drawable.flag_nga;
+            case "FIN":
+                return R.drawable.flag_fin;
+            case "KEN":
+                return R.drawable.flag_ken;
+            case "MHL":
+                return R.drawable.flag_mhl;
             default:
                 return R.drawable.ic_earth;
         }
     }
+
+    public static String getLocationShortName(String name) {
+        if (name != null) {
+            int splitAt = name.indexOf(",");
+            if (splitAt > 0)
+                return name.substring(0, splitAt).trim();
+        }
+        return name;
+    }
+
 }

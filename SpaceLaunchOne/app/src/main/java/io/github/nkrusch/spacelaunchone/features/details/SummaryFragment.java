@@ -177,14 +177,16 @@ public class SummaryFragment extends DetailsBaseFragment {
         mHashtag.setText(R.string.hashtag, coalesce(launch.getHashtag(), none));
         mEventChanged.setText(R.string.last_modified, changeDate);
         mAgencyName.setText(R.string.launch_service_provider, agencyNameValue);
-        mCountryImage.setImageResource(Utilities.countryIcon(launch.getAgencyCountryCode()));
         mCountryCode.setText(R.string.agency_country_code, coalesce(launch.getAgencyCountryCode(), unknown));
         mRocketText.setText(R.string.rocket_summary_label,
                 coalesce(launch.getRocketName(), unknown) + " / " +
                         coalesce(launch.getRocketFamilyName(), unknown) + " / " +
                         coalesce(launch.getRocketConfiguration(), unknown));
-
         mStatusImage.setImageResource(statusImage(launch.getStatus()));
+
+        Picasso.with(getContext()).load(Utilities.countryIcon(launch.getLocationCountryCode()))
+                .noFade().transform(new CircleTransform()).into(mCountryImage);
+
         setImage(launch.getImage(), mRocketImage);
         setRocket(launch.getImage());
     }

@@ -9,7 +9,7 @@ public class Pad extends InfoObj {
     private Double longitude;
     private String mapURL;
     private int retired;
-    private int locationId;
+    private int locationid;
     private Agency[] agencies;
 
     public int getPadType() {
@@ -52,12 +52,12 @@ public class Pad extends InfoObj {
         this.retired = retired;
     }
 
-    public int getLocationId() {
-        return locationId;
+    public int getLocationid() {
+        return locationid;
     }
 
-    public void setLocationId(int locationId) {
-        this.locationId = locationId;
+    public void setLocationid(int locationid) {
+        this.locationid = locationid;
     }
 
     public Agency[] getAgencies() {

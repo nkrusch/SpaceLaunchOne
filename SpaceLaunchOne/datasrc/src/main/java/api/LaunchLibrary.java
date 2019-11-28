@@ -4,9 +4,12 @@ import androidx.annotation.NonNull;
 
 import java.io.IOException;
 
+import models.Agencies;
 import models.Launch;
 import models.Launches;
+import models.Locations;
 import models.Missions;
+import models.Pads;
 import models.data.BuildConfig;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
@@ -46,7 +49,7 @@ public class LaunchLibrary {
         }, callback);
     }
 
-    public static void allLaunches(final String start, final int count,  @NonNull final OnLoadCallback callback) {
+    public static void allLaunches(final String start, final int count, @NonNull final OnLoadCallback callback) {
         makeRequest(new methodRunner<Launches>() {
             @Override
             public Launches run(ILaunchLibrary service) throws IOException {
@@ -71,6 +74,33 @@ public class LaunchLibrary {
                 Launches result = service.launch(id).execute().body();
                 return (result != null && result.getCount() > 0) ?
                         result.getLaunches().get(0) : null;
+            }
+        }, callback);
+    }
+
+    public static void allAgencies(final int count, final int start, @NonNull final OnLoadCallback callback) {
+        makeRequest(new methodRunner<Agencies>() {
+            @Override
+            public Agencies run(ILaunchLibrary service) throws IOException {
+                return service.agencies(count, start).execute().body();
+            }
+        }, callback);
+    }
+
+    public static void allLocations(final int count, final int start, @NonNull final OnLoadCallback callback) {
+        makeRequest(new methodRunner<Locations>() {
+            @Override
+            public Locations run(ILaunchLibrary service) throws IOException {
+                return service.locations(count, start).execute().body();
+            }
+        }, callback);
+    }
+
+    public static void allPads(final int count, final int start, @NonNull final OnLoadCallback callback) {
+        makeRequest(new methodRunner<Pads>() {
+            @Override
+            public Pads run(ILaunchLibrary service) throws IOException {
+                return service.pads(count, start).execute().body();
             }
         }, callback);
     }

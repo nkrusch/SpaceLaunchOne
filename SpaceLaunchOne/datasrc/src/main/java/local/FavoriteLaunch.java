@@ -6,7 +6,7 @@ import androidx.room.Ignore;
 import androidx.room.PrimaryKey;
 
 @SuppressWarnings({"NullableProblems", "SpellCheckingInspection"})
-@Entity(tableName = "FavoriteLaunch")
+@Entity(tableName = "favorites")
 public class FavoriteLaunch {
 
     @NonNull

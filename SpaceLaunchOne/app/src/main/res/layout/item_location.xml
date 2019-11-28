@@ -16,8 +16,6 @@
             android:id="@+id/thumbnail"
             android:visibility="visible"
             app:srcCompat="@drawable/ic_map_marker"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
             style="@style/list_image" />
 
     </androidx.cardview.widget.CardView>

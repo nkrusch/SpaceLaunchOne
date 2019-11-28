@@ -10,6 +10,10 @@ public class LocationLookup implements IFilter {
     private
     String name;
 
+    @ColumnInfo(name = "locationCountryCode")
+    private
+    String locationCountryCode;
+
     @ColumnInfo(name = "locationId")
     private
     int id;
@@ -17,8 +21,6 @@ public class LocationLookup implements IFilter {
     @ColumnInfo(name = "pfid")
     private
     int pfid;
-
-
 
     public String getName() {
         return name;
@@ -46,6 +48,14 @@ public class LocationLookup implements IFilter {
 
     public boolean isFiltered() {
         return id == pfid;
+    }
+
+    public String getLocationCountryCode() {
+        return locationCountryCode;
+    }
+
+    public void setLocationCountryCode(String locationCountryCode) {
+        this.locationCountryCode = locationCountryCode;
     }
 
     @Ignore

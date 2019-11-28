@@ -83,7 +83,7 @@ public class ListAdapter<T extends Launch> extends
 
         holder.mTextView.setText(item.getName());
         holder.mSubText1.setText(String.format("%s · %s", timeLabel, timeDiff));
-        holder.mSubText2.setText(item.getLocationName());
+        holder.mSubText2.setText(Utilities.getLocationShortName(item.getLocationName()));
         holder.mNumber.setText(String.format(Locale.getDefault(), "%02d", position + 1));
         holder.mStatus.setText(context.getString(R.string.bullet));
         holder.mStatus.setTextColor(Color.parseColor(item.getStatusColor()));

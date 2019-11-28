@@ -19,7 +19,7 @@
 
     <fragment
         android:id="@+id/Locations"
-        android:name="io.github.nkrusch.spacelaunchone.features.launchpads.PadRecyclerView"
+        android:name="io.github.nkrusch.spacelaunchone.features.locations.LocationRecyclerView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layout_behavior="@string/appbar_scrolling_view_behavior"
