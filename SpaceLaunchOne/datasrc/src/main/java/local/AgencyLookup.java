@@ -32,6 +32,12 @@ public class AgencyLookup implements IFilter {
         afid = id;
     }
 
+    @Ignore
+    public AgencyLookup(int id, String name, String country) {
+        this(id, name);
+        this.agencyCountryCode = country;
+    }
+
     public String getName() {
         return name;
     }

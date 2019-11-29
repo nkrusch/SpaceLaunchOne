@@ -86,6 +86,7 @@
         <activity
             android:label="@string/title_pad_details"
             android:name=".features.LocationDetails"
+            android:theme="@style/TabbedActivityTheme"
             android:parentActivityName=".features.NewMainActivity" />
 
         <receiver

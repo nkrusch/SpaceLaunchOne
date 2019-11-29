@@ -2,7 +2,6 @@ package local;
 
 import androidx.annotation.NonNull;
 import androidx.room.Entity;
-import androidx.room.Ignore;
 import androidx.room.PrimaryKey;
 
 @SuppressWarnings({"NullableProblems", "SpellCheckingInspection"})

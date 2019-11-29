@@ -475,6 +475,27 @@ public class Utilities {
         }
     }
 
+    public static String countryName(String countryCode) {
+        switch ((countryCode + "").toUpperCase()) {
+            case "CHN":
+                return "China";
+            case "IND":
+                return "India";
+            case "FRA":
+                return "France";
+            case "JPN":
+                return "Japan";
+            case "KOR":
+                return "South Korea";
+            case "NZL":
+                return "New Zealand";
+            case "RUS":
+                return "Russia";
+            default:
+                return countryCode;
+        }
+    }
+
     public static String getLocationShortName(String name) {
         if (name != null) {
             int splitAt = name.indexOf(",");

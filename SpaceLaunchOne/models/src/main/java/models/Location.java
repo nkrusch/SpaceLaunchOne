@@ -5,8 +5,8 @@ import models.base.InfoObj;
 @SuppressWarnings("SpellCheckingInspection")
 public class Location extends InfoObj {
 
-    private String countryCode;
     private String countrycode;
+    private String countryCode;
     private Pad[] pads;
 
     public Pad[] getPads() {

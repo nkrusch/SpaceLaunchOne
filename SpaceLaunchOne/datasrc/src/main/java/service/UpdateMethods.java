@@ -20,6 +20,7 @@ import local.AppDatabase;
 import local.Details;
 import local.Launch;
 import local.Location;
+import local.LocationAgency;
 import local.Mission;
 import local.Pad;
 import models.Agencies;
@@ -148,11 +149,20 @@ public class UpdateMethods {
             return;
         }
         final List<models.Pad> padData = result.getPads();
+        final HashMap<Integer, LocationAgency> lax = new HashMap<>();
         final Pad[] pads = new Pad[padData.size()];
         for (int i = 0; i < padData.size(); i++) {
-            pads[i] = Pad.Map(padData.get(i));
+            models.Pad p = padData.get(i);
+            pads[i] = Pad.Map(p);
+            if (p.getAgencies() != null)
+                for (models.Agency a : p.getAgencies()) {
+                    if (!lax.containsKey(a.getId()))
+                        lax.put(a.getId(), new LocationAgency(p.getLocationid(), a.getId()));
+                }
         }
         db.dao().insertAll(pads);
+        if (lax.keySet().size() > 0)
+            db.dao().insertAll(lax.values().toArray(new LocationAgency[0]));
         if (callback != null) callback.call(true);
     }
 
@@ -186,30 +196,32 @@ public class UpdateMethods {
                     @Override
                     public void call(String result) {
                         if (result != null) resp.setImage(result);
-                        new ImageResolver().resolveImage(resp.getLsp(), new OnLoadCallback<String>() {
-                            @Override
-                            public void call(String result) {
-                                resp.getLsp().setImage(result);
-                                Details details = Details.Map(resp);
-                                local.Launch summary = local.Launch.Map(resp);
-                                List<Mission> missions = Mission.Map(id, resp.getMissions());
-                                db.dao().insertFullRecord(summary, details, missions);
-                            }
+                        Details details = Details.Map(resp);
+                        local.Launch summary = local.Launch.Map(resp);
+                        List<Mission> missions = Mission.Map(id, resp.getMissions());
+                        db.dao().insertFullRecord(summary, details, missions);
 
-                            @Override
-                            public void onError(Exception e) {
-                            }
-                        });
+                        final int locId = resp.getLocation().getId();
+                        List<LocationAgency> lax = new LinkedList<>();
+                        lax.add(new LocationAgency(locId, resp.getLsp().getId()));
+                        for (models.Pad p : resp.getLocation().getPads()) {
+                            for (models.Agency a : p.getAgencies())
+                                lax.add(new LocationAgency(locId, a.getId()));
+                        }
+                        db.dao().insertAll(lax.toArray(new LocationAgency[0]));
+                        if (callback != null) callback.call(true);
                     }
 
                     @Override
                     public void onError(Exception e) {
+                        if (callback != null) callback.call(false);
                     }
                 });
             }
 
             @Override
             public void onError(Exception e) {
+                if (callback != null) callback.call(false);
             }
         });
     }
@@ -284,7 +296,6 @@ public class UpdateMethods {
             public void call(Pads result) {
                 if (result.getPads() != null)
                     allPads.getPads().addAll(result.getPads());
-                Log.d("UPDATE", "" + (allPads.getPads().size()));
                 if (result.getCount() == 0 || maxAttempts < 0 || allPads.getPads().size() >= result.getTotal() ||
                         result.getCount() + result.getOffset() >= result.getTotal()) {
                     processPads(db, allPads, callback);

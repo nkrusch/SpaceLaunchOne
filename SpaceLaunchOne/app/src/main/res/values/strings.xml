@@ -42,12 +42,13 @@
     </plurals>
 
     <plurals name="tab_pads">
-        <item quantity="one">%d pad</item>
-        <item quantity="other">%d pads</item>
+        <item quantity="other">pads (%d)</item>
     </plurals>
     <plurals name="tab_launches">
-        <item quantity="one">%d launch</item>
-        <item quantity="other">%d launches</item>
+        <item quantity="other">launches (%d)</item>
+    </plurals>
+    <plurals name="tab_agencies">
+        <item quantity="other">agencies (%d)</item>
     </plurals>
 
     <string-array name="pref_sync_frequency_titles">
@@ -177,8 +178,17 @@
     <string name="agency_empty_state">No agencies available</string>
     <string name="location_empty_state">No locations available</string>
     <string name="pads_empty_state">No known pads at this location</string>
-    <string name="launches_empty_state">No known launches associated with this locations</string>
+    <string name="location_agencies_empty_state">No agencies associated with this location</string>
+    <string name="launches_empty_state">No launches associated with this location</string>
     <string name="pref_about_label">About this app...</string>
     <string name="title_agency_details">Agency Details</string>
     <string name="title_pad_details">Launchpad Details</string>
+    <string name="location_tab_info">Info</string>
+
+    <string name="location_pad_count">Pad count</string>
+    <string name="location_launch_count">Launch count</string>
+    <string name="location_agency_count">Agency count</string>
+    <string name="label_is_lsp">Launch Service Provider</string>
+
+
 </resources>

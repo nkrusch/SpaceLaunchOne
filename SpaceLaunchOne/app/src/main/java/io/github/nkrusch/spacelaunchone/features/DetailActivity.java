@@ -104,7 +104,6 @@ public class DetailActivity extends TabbedActivity {
         vm.loadLaunch(launchId).observe(this, new Observer<LaunchDetails>() {
             @Override
             public void onChanged(@Nullable LaunchDetails result) {
-                Log.d("VM", "result: " + result);
                 if (result != null) {
                     mPager.setVisibility(View.VISIBLE);
                     mProgress.setVisibility(GONE);

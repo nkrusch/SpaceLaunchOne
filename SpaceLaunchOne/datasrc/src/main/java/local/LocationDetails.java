@@ -2,6 +2,7 @@ package local;
 
 import java.util.Collection;
 import java.util.Collections;
+import java.util.LinkedList;
 import java.util.List;
 
 import androidx.annotation.NonNull;
@@ -15,6 +16,9 @@ public class LocationDetails {
     @Embedded
     Location location;
 
+    @Relation(parentColumn = "lid", entityColumn = "locationId")
+    List<Pad> pads;
+
     @Relation(
             parentColumn = "lid",
             entityColumn = "id",
@@ -22,17 +26,22 @@ public class LocationDetails {
             associateBy = @Junction(value = Details.class, parentColumn = "locationId", entityColumn = "uid"))
     List<Launch> launches;
 
-    @Relation(parentColumn = "lid", entityColumn = "locationId")
-    List<Pad> pads;
+    @Relation(
+            parentColumn = "lid",
+            entityColumn = "aid",
+            entity = Agency.class,
+            associateBy = @Junction(value = LocationAgency.class, parentColumn = "lid", entityColumn = "aid"))
+    List<Agency> agencies = new LinkedList<>();
 
     @Ignore
     public LocationDetails() {
     }
 
-    public LocationDetails(Location location, List<Launch> launches, List<Pad> pads) {
+    public LocationDetails(Location location, List<Launch> launches, List<Pad> pads, List<Agency> agencies) {
         this.location = location;
         this.launches = launches;
         this.pads = pads;
+        this.agencies = agencies;
     }
 
     public Location getLocation() {
@@ -49,9 +58,7 @@ public class LocationDetails {
         return pads;
     }
 
-    @NonNull
-    @Override
-    public String toString() {
-        return location.toString() + "\npads: " + pads.size() + "\nlaunches: " + launches.size();
+    public List<Agency> getAgencies() {
+        return agencies;
     }
 }

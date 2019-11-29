@@ -1,5 +1,6 @@
 package io.github.nkrusch.spacelaunchone.features.locations.details;
 
+import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -20,7 +21,7 @@ import local.Pad;
 /**
  * This adapter renders list of launchpads
  */
-public class PadAdapter extends RecyclerView.Adapter<PadAdapter.ItemViewHolder> {
+public class LocationPadsAdapter extends RecyclerView.Adapter<LocationPadsAdapter.ItemViewHolder> {
 
     private List<Pad> dataSource;
     private OnItemClickListener mItemClickListener;
@@ -29,7 +30,7 @@ public class PadAdapter extends RecyclerView.Adapter<PadAdapter.ItemViewHolder> 
         void onItemClick(int id, String name);
     }
 
-    PadAdapter(List<Pad> dataArgs) {
+    LocationPadsAdapter(List<Pad> dataArgs) {
         updateData(dataArgs);
     }
 
@@ -52,9 +53,11 @@ public class PadAdapter extends RecyclerView.Adapter<PadAdapter.ItemViewHolder> 
     }
 
     @Override
-    public void onBindViewHolder(@NonNull final PadAdapter.ItemViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull final LocationPadsAdapter.ItemViewHolder holder, int position) {
 
         Pad item = dataSource.get(position);
+        final Context context = holder.mImageView.getContext();
+
         holder.mTextView.setText(Utilities.getLocationShortName(item.getName()));
         holder.mSubText1.setText(item.isRetired() ? "Retired" : "Active");
         holder.mNumber.setText(String.format(Locale.getDefault(), "%02d", position + 1));
@@ -71,6 +74,7 @@ public class PadAdapter extends RecyclerView.Adapter<PadAdapter.ItemViewHolder> 
         private final ImageView mImageView;
         private final TextView mTextView;
         private final TextView mSubText1;
+        private final TextView mSubText2;
         private final TextView mNumber;
 
 
@@ -79,6 +83,7 @@ public class PadAdapter extends RecyclerView.Adapter<PadAdapter.ItemViewHolder> 
             mImageView = v.findViewById(R.id.thumbnail);
             mTextView = v.findViewById(R.id.title);
             mSubText1 = v.findViewById(R.id.sub_line_1);
+            mSubText2 = v.findViewById(R.id.sub_line_2);
             mNumber = v.findViewById(R.id.list_number);
             ConstraintLayout layout = (v.findViewById(R.id.list_item_container));
             if (layout != null) layout.setOnClickListener(this);

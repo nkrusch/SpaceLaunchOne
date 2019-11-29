@@ -329,7 +329,7 @@ public class Details {
 
         if (l != null) {
             r.setLocationId(l.getId());
-            r.setLocationCountryCode(l.getCountrycode());
+            r.setLocationCountryCode(l.getCountryCode());
             r.setLocationWikiURL(l.getWikiURL());
             r.setLocationURLs(l.getInfoURLs());
 

@@ -43,8 +43,7 @@ public class LocationMapFragment extends Fragment implements OnMapReadyCallback 
     private GoogleMap mMap;
     private LatLng[] locations;
     private String[] names;
-    LatLngBounds.Builder builder;
-    private final int mapCameraPadding = 100;
+    private LatLngBounds.Builder builder;
 
     public static Fragment newInstance() {
         return new LocationMapFragment();
@@ -66,7 +65,7 @@ public class LocationMapFragment extends Fragment implements OnMapReadyCallback 
                 .get().observe(this, new Observer<LocationDetails>() {
             @Override
             public void onChanged(@Nullable LocationDetails result) {
-                if (result != null && result.getPads() != null) {
+                if (result != null && result.getPads() != null && locations==null) {
                     locations = new LatLng[result.getPads().size()];
                     names = new String[result.getPads().size()];
                     for (int i = 0; i < result.getPads().size(); i++) {
@@ -117,6 +116,7 @@ public class LocationMapFragment extends Fragment implements OnMapReadyCallback 
             mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(locations[0], 10.0f));
         } else {
             LatLngBounds bounds = builder.build();
+            int mapCameraPadding = 100;
             mMap.animateCamera(com.google.android.gms.maps.CameraUpdateFactory.
                     newLatLngBounds(bounds, mapCameraPadding));
         }

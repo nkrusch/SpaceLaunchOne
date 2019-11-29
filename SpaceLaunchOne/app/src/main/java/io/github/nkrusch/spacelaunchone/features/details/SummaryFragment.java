@@ -111,26 +111,6 @@ public class SummaryFragment extends DetailsBaseFragment {
         }
     }
 
-    private String countryName(String countryCode) {
-        switch ((countryCode + "").toUpperCase()) {
-            case "CHN":
-                return "China";
-            case "IND":
-                return "India";
-            case "FRA":
-                return "France";
-            case "JPN":
-                return "Japan";
-            case "KOR":
-                return "South Korea";
-            case "NZL":
-                return "New Zealand";
-            case "RUS":
-                return "Russia";
-            default:
-                return countryCode;
-        }
-    }
 
     private void initCountdown(Long utc) {
         if (countdownInitialized) return;
@@ -158,9 +138,9 @@ public class SummaryFragment extends DetailsBaseFragment {
         String agencyNameValue = StringUtils.isEmpty(agency) ? agencyFullName :
                 String.format("%s (%s)", agencyFullName, agency);
         String rocketFamily = coalesce(launch.getRocketFamilyName(), unknown);
-        String country = coalesce(countryName(launch.getLocationCountryCode()),
-                countryName(launch.getAgencyCountryCode()), unknown);
-        String location = String.format("%s\n%s", launch.getPadName(), launch.getLocationName()).trim();
+        String country = coalesce(Utilities.countryName(launch.getLocationCountryCode()),
+                Utilities.countryName(launch.getAgencyCountryCode()), unknown);
+        String location = String.format("%s\n%s %s", launch.getPadName(), launch.getLocationName(), launch.getLocationCountryCode()).trim();
         String changeDate = StringUtils.isEmpty(launch.getChanged()) ? unknown : Utilities
                 .localTimeLabel(models.Launch.changeDate(launch.getChanged()), "MMMM d, yyyy HH:mm");
         initCountdown(launch.getLaunchDateUTC());
@@ -184,7 +164,8 @@ public class SummaryFragment extends DetailsBaseFragment {
                         coalesce(launch.getRocketConfiguration(), unknown));
         mStatusImage.setImageResource(statusImage(launch.getStatus()));
 
-        Picasso.with(getContext()).load(Utilities.countryIcon(launch.getLocationCountryCode()))
+        Picasso.with(getContext()).load(Utilities.countryIcon(coalesce(launch.getLocationCountryCode(),
+                launch.getAgencyCountryCode())))
                 .noFade().transform(new CircleTransform()).into(mCountryImage);
 
         setImage(launch.getImage(), mRocketImage);

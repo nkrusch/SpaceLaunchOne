@@ -121,6 +121,9 @@ public interface AppDao {
     void insertAll(Pad... pads);
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
+    void insertAll(LocationAgency... lax);
+
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
     void insertAll(List<Mission> missions);
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)

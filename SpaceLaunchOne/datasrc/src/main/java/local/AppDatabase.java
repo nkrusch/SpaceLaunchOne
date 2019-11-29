@@ -12,7 +12,7 @@ import android.util.Log;
 
 
 @Database(entities = {Launch.class, Details.class, Mission.class, RocketFilter.class, AgencyFilter.class,
-        LocationFilter.class, FavoriteLaunch.class, Agency.class, Location.class, Pad.class},
+        LocationFilter.class, FavoriteLaunch.class, Agency.class, Location.class, Pad.class, LocationAgency.class},
         version = 2, exportSchema = false)
 @TypeConverters({Converters.class})
 public abstract class AppDatabase extends RoomDatabase {
@@ -29,6 +29,7 @@ public abstract class AppDatabase extends RoomDatabase {
             database.execSQL("CREATE TABLE `agencies` (`aid` INTEGER NOT NULL, `name` TEXT, `countryCode` TEXT, `abbrev` TEXT, `islsp` INTEGER NOT NULL, `type` INTEGER NOT NULL, `image` TEXT, `infoURLs` TEXT, `wikiURL` TEXT, `changed` TEXT, `lastModified` INTEGER, PRIMARY KEY(`aid`))");
             database.execSQL("CREATE TABLE `locations` (`lid` INTEGER NOT NULL, `name` TEXT, `countryCode` TEXT, `infoURLs` TEXT, `wikiURL` TEXT, `changed` TEXT, `lastModified` INTEGER, PRIMARY KEY(`lid`))");
             database.execSQL("CREATE TABLE `pads` (`pid` INTEGER NOT NULL, `name` TEXT, `padType` INTEGER NOT NULL, `latitude` REAL, `longitude` REAL, `mapURL` TEXT, `retired` INTEGER NOT NULL, `locationId` INTEGER NOT NULL, `infoURLs` TEXT, `wikiURL` TEXT, `changed` TEXT, `lastModified` INTEGER, PRIMARY KEY(`pid`))");
+            database.execSQL("CREATE TABLE `locationagency` (`lid` INTEGER NOT NULL, `aid` INTEGER NOT NULL, PRIMARY KEY(`lid`, `aid`))");
 
             database.execSQL("CREATE INDEX `index_details_locationId` ON `details` (`locationId`)");
             database.execSQL("CREATE INDEX `index_pads_locationId` ON `pads` (`locationId`)");

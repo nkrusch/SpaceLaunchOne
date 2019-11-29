@@ -17,20 +17,18 @@ import androidx.lifecycle.ViewModelProviders;
 import androidx.recyclerview.widget.GridLayoutManager;
 import io.github.nkrusch.spacelaunchone.R;
 import io.github.nkrusch.spacelaunchone.app.RecyclerViewFragment;
+import io.github.nkrusch.spacelaunchone.features.AgencyDetails;
 import io.github.nkrusch.spacelaunchone.features.launches.ListAdapter;
-import io.github.nkrusch.spacelaunchone.features.locations.LocationAdapter;
-import local.Pad;
+import local.Agency;
 import viewmodels.LocationDetailsViewModel;
 
+public class LocationAgencyRecyclerView extends RecyclerViewFragment implements IListClickHandler {
 
-public class PadRecyclerView extends RecyclerViewFragment  implements IListClickHandler {
-
-    public static PadRecyclerView newInstance() {
-        return new PadRecyclerView();
+    public static LocationAgencyRecyclerView newInstance() {
+        return new LocationAgencyRecyclerView();
     }
 
     private LinearLayout mEmptyState;
-    private TextView mEmptyStateText;
 
     protected void setupViewModel() {
         if (getActivity() != null) {
@@ -40,7 +38,7 @@ public class PadRecyclerView extends RecyclerViewFragment  implements IListClick
                 @Override
                 public void onChanged(local.LocationDetails locationDetails) {
                     if(locationDetails!=null && locationDetails.getLaunches()!=null)
-                        handleDataChange(locationDetails.getPads());
+                        handleDataChange(locationDetails.getAgencies());
                 }
             });
         }
@@ -49,11 +47,11 @@ public class PadRecyclerView extends RecyclerViewFragment  implements IListClick
     /**
      * When user clicks on recyclerview items launch details view
      */
-    PadAdapter.OnItemClickListener onItemClick() {
-        return new PadAdapter.OnItemClickListener() {
+    LocationAgencyAdapter.OnItemClickListener onItemClick() {
+        return new LocationAgencyAdapter.OnItemClickListener() {
             @Override
             public void onItemClick(int id, String name) {
-                // do something on pad click
+                startActivity(AgencyDetails.getIntent(getContext(), id, name));
             }
         };
     }
@@ -61,13 +59,13 @@ public class PadRecyclerView extends RecyclerViewFragment  implements IListClick
     /**
      * When viewmodel state changes, update the adapter
      */
-    private void handleDataChange(@Nullable List<Pad> entries) {
+    private void handleDataChange(@Nullable List<Agency> entries) {
         if (mRecyclerView == null || entries == null) return;
         boolean hasEntries = entries.size() > 0;
         if (hasEntries) {
             mEmptyState.setVisibility(View.GONE);
             mRecyclerView.setVisibility(View.VISIBLE);
-            PadAdapter adapter = (PadAdapter) mRecyclerView.getAdapter();
+            LocationAgencyAdapter adapter = (LocationAgencyAdapter) mRecyclerView.getAdapter();
             adapter.updateData(entries);
             adapter.notifyDataSetChanged();
         } else {
@@ -84,8 +82,8 @@ public class PadRecyclerView extends RecyclerViewFragment  implements IListClick
         View view = inflater.inflate(R.layout.fragment_list, container, false);
         int columns = getResources().getInteger(R.integer.list_column_count);
 
-        List<Pad> data = new LinkedList<>();
-        PadAdapter la = new PadAdapter(data);
+        List<Agency> data = new LinkedList<>();
+        LocationAgencyAdapter la = new LocationAgencyAdapter(data);
         la.SetOnItemClickListener(this.onItemClick());
         GridLayoutManager glm = new GridLayoutManager(getContext(), columns);
 
@@ -93,8 +91,8 @@ public class PadRecyclerView extends RecyclerViewFragment  implements IListClick
         mRecyclerView.setLayoutManager(glm);
         mRecyclerView.setAdapter(la);
         mEmptyState = view.findViewById(R.id.empty_state);
-        mEmptyStateText = view.findViewById(R.id.list_empty_state_text);
-        mEmptyStateText.setText(R.string.pads_empty_state);
+        TextView mEmptyStateText = view.findViewById(R.id.list_empty_state_text);
+        mEmptyStateText.setText(R.string.location_agencies_empty_state);
         restoreRecyclerViewState(savedInstanceState);
         return view;
     }
