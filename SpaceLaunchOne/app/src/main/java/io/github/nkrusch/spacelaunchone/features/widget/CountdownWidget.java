@@ -21,12 +21,12 @@ import androidx.annotation.RequiresApi;
 import api.AppExecutors;
 import io.github.nkrusch.spacelaunchone.R;
 import io.github.nkrusch.spacelaunchone.app.InitActivity;
-import io.github.nkrusch.spacelaunchone.features.DetailActivity;
+import io.github.nkrusch.spacelaunchone.features.DetailaLaunchActivity;
 import io.github.nkrusch.spacelaunchone.features.MainActivity;
 import local.WidgetGetNextTask;
 
 import static android.view.View.VISIBLE;
-import static io.github.nkrusch.spacelaunchone.features.DetailActivity.EXTRA_WIDGET_LAUNCHER;
+import static io.github.nkrusch.spacelaunchone.features.DetailaLaunchActivity.EXTRA_WIDGET_LAUNCHER;
 
 /**
  * This app widget loads details about next upcomng launch and
@@ -166,7 +166,7 @@ public class CountdownWidget extends AppWidgetProvider {
      */
     private void bindClickAction(Context context, int appWidgetId, RemoteViews views) {
         Intent intent = launchId > 0 ?
-                DetailActivity.launchDetails(context, launchId, launchEventName) :
+                DetailaLaunchActivity.launchDetails(context, launchId, launchEventName) :
                 new Intent(context, MainActivity.class);
         intent.putExtra(EXTRA_WIDGET_LAUNCHER, 1);
         intent.setData(Uri.withAppendedPath(Uri.parse("myapp://widget/#id" + appWidgetId),

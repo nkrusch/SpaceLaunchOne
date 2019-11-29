@@ -1,4 +1,4 @@
-package io.github.nkrusch.spacelaunchone.features.locations.details;
+package io.github.nkrusch.spacelaunchone.features.pads;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -14,6 +14,7 @@ import androidx.annotation.NonNull;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.RecyclerView;
 import io.github.nkrusch.spacelaunchone.R;
+import io.github.nkrusch.spacelaunchone.app.OnItemClickListener;
 import io.github.nkrusch.spacelaunchone.app.Utilities;
 import local.Pad;
 
@@ -25,10 +26,6 @@ public class LocationPadsAdapter extends RecyclerView.Adapter<LocationPadsAdapte
 
     private List<Pad> dataSource;
     private OnItemClickListener mItemClickListener;
-
-    public interface OnItemClickListener {
-        void onItemClick(int id, String name);
-    }
 
     LocationPadsAdapter(List<Pad> dataArgs) {
         updateData(dataArgs);

@@ -175,12 +175,12 @@
     <string name="search_label">Search</string>
     <string name="floating_action_button">Floating action button</string>
     <string name="sort">Sort</string>
-    <string name="agency_empty_state">No agencies available</string>
-    <string name="location_empty_state">No locations available</string>
+    <string name="agency_empty_state">Loading agencies…</string>
+    <string name="location_empty_state">Loading locations…</string>
     <string name="pads_empty_state">No known pads at this location</string>
     <string name="location_agencies_empty_state">No agencies associated with this location</string>
     <string name="launches_empty_state">No launches associated with this location</string>
-    <string name="pref_about_label">About this app...</string>
+    <string name="pref_about_label">About this app…</string>
     <string name="title_agency_details">Agency Details</string>
     <string name="title_pad_details">Launchpad Details</string>
     <string name="location_tab_info">Info</string>
@@ -189,6 +189,7 @@
     <string name="location_launch_count">Launch count</string>
     <string name="location_agency_count">Agency count</string>
     <string name="label_is_lsp">Launch Service Provider</string>
+    <string name="title_more">More</string>
 
 
 </resources>

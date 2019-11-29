@@ -19,6 +19,7 @@ import androidx.annotation.NonNull;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.RecyclerView;
 import io.github.nkrusch.spacelaunchone.R;
+import io.github.nkrusch.spacelaunchone.app.OnItemClickListener;
 import io.github.nkrusch.spacelaunchone.app.Utilities;
 import local.Launch;
 
@@ -34,10 +35,6 @@ public class ListAdapter<T extends Launch> extends
     private int thumbnailWidth;
     private final boolean customFirstItem;
     private final int customFirstItemType = 1;
-
-    public interface OnItemClickListener {
-        void onItemClick(int id, String name);
-    }
 
     public ListAdapter(List<T> dataArgs, boolean customFirstItem) {
         updateData(dataArgs);
@@ -93,11 +90,7 @@ public class ListAdapter<T extends Launch> extends
             final String thumbnail = Utilities.squareImage(item.getImage(), thumbnailWidth);
             Picasso.with(context).load(thumbnail).into(holder.mImageView, new Callback() {
                 @Override
-                public void onSuccess() {
-                    //Picasso.with(context).load(thumbnail)
-                    //        .transform(new BlurTransform(context, 25))
-                    //        .into(holder.mBackground);
-                }
+                public void onSuccess() {}
 
                 @Override
                 public void onError() {

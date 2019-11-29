@@ -4,7 +4,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.res.ColorStateList;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.animation.AlphaAnimation;
@@ -23,7 +22,7 @@ import androidx.lifecycle.ViewModelProviders;
 import io.github.nkrusch.spacelaunchone.R;
 import io.github.nkrusch.spacelaunchone.app.TabbedActivity;
 import io.github.nkrusch.spacelaunchone.app.TabsAdapter;
-import io.github.nkrusch.spacelaunchone.features.details.SummaryFragment;
+import io.github.nkrusch.spacelaunchone.features.launchdetails.SummaryFragment;
 import io.github.nkrusch.spacelaunchone.features.map.MapFragment;
 import local.FavoriteLaunch;
 import local.LaunchDetails;
@@ -37,7 +36,7 @@ import static android.view.View.GONE;
  * what fragments get loaded by the viewpager. The actual
  * contents of the viewpager is managed by fragments.
  */
-public class DetailActivity extends TabbedActivity {
+public class DetailaLaunchActivity extends TabbedActivity {
 
     LaunchDetailsViewModel vm;
     public static final String EXTRA_WIDGET_LAUNCHER = "extra_widget_launch";
@@ -51,7 +50,7 @@ public class DetailActivity extends TabbedActivity {
     private String title;
 
     public static Intent launchDetails(Context ctx, int id, String name) {
-        Intent intent = new Intent(ctx, DetailActivity.class);
+        Intent intent = new Intent(ctx, DetailaLaunchActivity.class);
         intent.putExtra(EXTRA_LAUNCH, id);
         intent.putExtra(EXTRA_NAME, name);
         return intent;

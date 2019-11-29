@@ -17,7 +17,7 @@
         android:icon="@drawable/ic_map_marker"
         android:title="Locations" />
     <item
-        android:icon="@drawable/ic_settings"
+        android:icon="@drawable/ic_menu"
         android:id="@+id/settings"
-        android:title="@string/title_activity_settings" />
+        android:title="@string/title_more" />
 </menu>

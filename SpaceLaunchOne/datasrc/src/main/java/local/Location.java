@@ -1,6 +1,9 @@
 package local;
 
+import java.util.Arrays;
 import java.util.Date;
+import java.util.LinkedList;
+import java.util.List;
 
 import androidx.annotation.NonNull;
 import androidx.room.Entity;
@@ -16,7 +19,6 @@ public class Location {
     private String name;
     private String countryCode;
     private String[] infoURLs;
-    private String wikiURL;
     private String changed;
     private Date lastModified;
 
@@ -53,14 +55,6 @@ public class Location {
         this.infoURLs = infoURLs;
     }
 
-    public String getWikiURL() {
-        return wikiURL;
-    }
-
-    public void setWikiURL(String wikiURL) {
-        this.wikiURL = wikiURL;
-    }
-
     public String getChanged() {
         return changed;
     }
@@ -86,8 +80,13 @@ public class Location {
         a.setCountryCode(loc.getCountryCode());
         if(a.getCountryCode() == null)
             a.setCountryCode(loc.getCountrycode());
+        if (loc.getWikiURL() != null && !loc.getWikiURL().isEmpty()) {
+            List<String> tmp = new LinkedList<>();
+            tmp.add(loc.getWikiURL());
+            tmp.addAll(Arrays.asList(loc.getInfoURLs()));
+            a.setInfoURLs(tmp.toArray(new String[0]));
+        } else a.setInfoURLs(loc.getInfoURLs());
         a.setInfoURLs(loc.getInfoURLs());
-        a.setWikiURL(loc.getWikiURL());
         a.setChanged(loc.getChanged());
         a.setLastModified(new Date());
         return a;
@@ -99,8 +98,7 @@ public class Location {
         return "lid: " + lid + "\n" +
                 "name: " + name + "\n" +
                 "countryCode: " + countryCode + "\n" +
-                "infoURLs: " + infoURLs + "\n" +
-                "wikiURL: " + wikiURL + "\n" +
+                "infoURLs: " + Arrays.toString(infoURLs) + "\n" +
                 "changed: " + changed + "\n";
     }
 }

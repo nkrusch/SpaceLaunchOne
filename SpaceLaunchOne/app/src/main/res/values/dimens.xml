@@ -24,7 +24,7 @@
     <dimen name="secondary_text">14sp</dimen>
     <dimen name="secondary_text_height">21dp</dimen>
     <dimen name="list_image_card_elevation">0dp</dimen>
-    <dimen name="list_image_card_radius">0dp</dimen>
+    <dimen name="list_image_card_radius">4dp</dimen>
     <integer name="list_column_count">1</integer>
     <integer name="list_number_visibility">@integer/visibility_visible</integer>
     <dimen name="list_item_margin">0dp</dimen>

@@ -1,13 +1,10 @@
-package io.github.nkrusch.spacelaunchone.features.locations.details;
+package io.github.nkrusch.spacelaunchone.features.map;
 
-import android.content.Context;
-import android.net.ConnectivityManager;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.google.android.gms.maps.CameraUpdate;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
@@ -15,10 +12,7 @@ import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.UiSettings;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.LatLngBounds;
-import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
-import com.google.android.gms.maps.model.PointOfInterest;
-import com.google.android.material.snackbar.Snackbar;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -27,12 +21,8 @@ import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 import io.github.nkrusch.spacelaunchone.R;
-import io.github.nkrusch.spacelaunchone.app.Utilities;
-import io.github.nkrusch.spacelaunchone.features.map.PlacesFragment;
-import local.LaunchDetails;
 import local.LocationDetails;
 import local.Pad;
-import viewmodels.LaunchDetailsViewModel;
 import viewmodels.LocationDetailsViewModel;
 
 import static android.view.View.GONE;

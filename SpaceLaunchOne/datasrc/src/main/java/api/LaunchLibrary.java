@@ -49,15 +49,6 @@ public class LaunchLibrary {
         }, callback);
     }
 
-    public static void allLaunches(final String start, final int count, @NonNull final OnLoadCallback callback) {
-        makeRequest(new methodRunner<Launches>() {
-            @Override
-            public Launches run(ILaunchLibrary service) throws IOException {
-                return service.all_launches(start, count).execute().body();
-            }
-        }, callback);
-    }
-
     public static void loadMissions(final int count, @NonNull final OnLoadCallback callback) {
         makeRequest(new methodRunner<Missions>() {
             @Override
@@ -74,6 +65,15 @@ public class LaunchLibrary {
                 Launches result = service.launch(id).execute().body();
                 return (result != null && result.getCount() > 0) ?
                         result.getLaunches().get(0) : null;
+            }
+        }, callback);
+    }
+
+    public static void allLaunches(final String start, final int count, @NonNull final OnLoadCallback callback) {
+        makeRequest(new methodRunner<Launches>() {
+            @Override
+            public Launches run(ILaunchLibrary service) throws IOException {
+                return service.all_launches(start, count).execute().body();
             }
         }, callback);
     }

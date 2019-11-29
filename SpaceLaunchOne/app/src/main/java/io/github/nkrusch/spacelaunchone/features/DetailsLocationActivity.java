@@ -3,7 +3,6 @@ package io.github.nkrusch.spacelaunchone.features;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 
@@ -16,16 +15,15 @@ import androidx.lifecycle.ViewModelProviders;
 import io.github.nkrusch.spacelaunchone.R;
 import io.github.nkrusch.spacelaunchone.app.TabbedActivity;
 import io.github.nkrusch.spacelaunchone.app.TabsAdapter;
-import io.github.nkrusch.spacelaunchone.features.locations.details.InfoFragment;
-import io.github.nkrusch.spacelaunchone.features.locations.details.LocationAgencyRecyclerView;
-import io.github.nkrusch.spacelaunchone.features.locations.details.LocationLaunchRecyclerView;
-import io.github.nkrusch.spacelaunchone.features.locations.details.LocationPadsRecyclerView;
+import io.github.nkrusch.spacelaunchone.features.pads.LocationPadsFragment;
+import io.github.nkrusch.spacelaunchone.features.agencies.LocationAgencyRecyclerView;
+import io.github.nkrusch.spacelaunchone.features.launches.LocationLaunchRecyclerView;
 import viewmodels.LocationDetailsViewModel;
 
 import static android.view.View.GONE;
 
 
-public class LocationDetails extends TabbedActivity {
+public class DetailsLocationActivity extends TabbedActivity {
 
     private static final String EXTRA_ID = "extra_id";
     private static final String EXTRA_NAME = "extra_name";
@@ -38,7 +36,7 @@ public class LocationDetails extends TabbedActivity {
     private String title;
 
     public static Intent getIntent(Context ctx, int id, String name) {
-        Intent intent = new Intent(ctx, LocationDetails.class);
+        Intent intent = new Intent(ctx, DetailsLocationActivity.class);
         intent.putExtra(EXTRA_ID, id);
         intent.putExtra(EXTRA_NAME, name);
         return intent;
@@ -117,7 +115,7 @@ public class LocationDetails extends TabbedActivity {
                 case AGENCY_INDEX:
                     return LocationAgencyRecyclerView.newInstance();
                 default:
-                    return InfoFragment.newInstance();
+                    return LocationPadsFragment.newInstance();
             }
         }
     }

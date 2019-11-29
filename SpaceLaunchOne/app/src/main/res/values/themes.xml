@@ -44,4 +44,15 @@
         <item name="windowActionBarOverlay">true</item>
     </style>
 
+    <style name="FavToolbar" parent="@style/ClearToolbar">
+        <item name="android:textColorPrimary">@color/favoriteFabBgTint</item>
+        <item name="android:textColorSecondary">@color/favoriteFabBgTint</item>
+    </style>
+
+
+    <style name="ToolbarStyle" parent="@style/ClearToolbar">
+        <item name="android:textColorPrimary">@color/primary_text</item>
+        <item name="android:textColorSecondary">@color/primary_text</item>
+    </style>
+
 </resources>

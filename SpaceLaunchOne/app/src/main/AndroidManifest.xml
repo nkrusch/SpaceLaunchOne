@@ -41,7 +41,7 @@
             android:label="@string/title_activity_main"
             android:launchMode="singleTop" />
         <activity
-            android:name=".features.DetailActivity"
+            android:name=".features.DetailaLaunchActivity"
             android:label="@string/title_activity_details"
             android:parentActivityName=".features.MainActivity"
             android:theme="@style/TabbedActivityTheme">
@@ -81,11 +81,12 @@
             android:theme="@style/TabbedActivityTheme" />
         <activity
             android:label="@string/title_agency_details"
-            android:name=".features.AgencyDetails"
+            android:name=".features.DetailsAgencyActivity"
+            android:theme="@style/TabbedActivityTheme"
             android:parentActivityName=".features.NewMainActivity" />
         <activity
             android:label="@string/title_pad_details"
-            android:name=".features.LocationDetails"
+            android:name=".features.DetailsLocationActivity"
             android:theme="@style/TabbedActivityTheme"
             android:parentActivityName=".features.NewMainActivity" />
 

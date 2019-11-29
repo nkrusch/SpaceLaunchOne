@@ -21,7 +21,7 @@ import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 import io.github.nkrusch.spacelaunchone.R;
 import io.github.nkrusch.spacelaunchone.app.Utilities;
-import io.github.nkrusch.spacelaunchone.features.DetailActivity;
+import io.github.nkrusch.spacelaunchone.features.DetailaLaunchActivity;
 import io.github.nkrusch.spacelaunchone.features.timers.TimerFragment;
 import local.Launch;
 import viewmodels.NextLaunchViewModel;
@@ -128,7 +128,7 @@ public class NextLaunchFragment extends Fragment {
         return new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(DetailActivity.launchDetails(getContext(), id, name));
+                startActivity(DetailaLaunchActivity.launchDetails(getContext(), id, name));
             }
         };
     }

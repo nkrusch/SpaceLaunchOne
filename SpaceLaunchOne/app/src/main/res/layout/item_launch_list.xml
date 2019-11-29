@@ -5,7 +5,6 @@
 
     <androidx.cardview.widget.CardView
         android:id="@+id/thumbnail_card"
-        app:cardCornerRadius="4dp"
         style="@style/list_image_card">
 
         <ImageView

@@ -21,7 +21,7 @@
 
     <fragment
         android:id="@+id/VideosFragment"
-        android:name="io.github.nkrusch.spacelaunchone.features.details.VideosFragment"
+        android:name="io.github.nkrusch.spacelaunchone.features.launchdetails.VideosFragment"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layout_constraintEnd_toEndOf="parent"
@@ -37,7 +37,7 @@
 
     <fragment
         android:id="@+id/Missions"
-        android:name="io.github.nkrusch.spacelaunchone.features.details.MissionsFragment"
+        android:name="io.github.nkrusch.spacelaunchone.features.launchdetails.MissionsFragment"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layout_constraintTop_toBottomOf="@id/divider_videos" />
@@ -51,42 +51,42 @@
         android:visibility="gone"
         app:layout_constraintBottom_toBottomOf="@+id/Missions" />
 
-    <io.github.nkrusch.spacelaunchone.features.details.SummaryItem
+    <io.github.nkrusch.spacelaunchone.features.launchdetails.SummaryItem
         android:id="@+id/event_name"
         style="@style/event_summary_item"
         app:layout_constraintTop_toBottomOf="@id/mission_divider" />
 
-    <io.github.nkrusch.spacelaunchone.features.details.SummaryItem
+    <io.github.nkrusch.spacelaunchone.features.launchdetails.SummaryItem
         android:id="@+id/event_date"
         style="@style/event_summary_item"
         app:layout_constraintTop_toBottomOf="@id/event_name" />
 
-    <io.github.nkrusch.spacelaunchone.features.details.SummaryItem
+    <io.github.nkrusch.spacelaunchone.features.launchdetails.SummaryItem
         android:id="@+id/event_rocket_summary_text"
         style="@style/event_summary_item"
         app:layout_constraintTop_toBottomOf="@id/event_date" />
 
-    <io.github.nkrusch.spacelaunchone.features.details.SummaryItem
+    <io.github.nkrusch.spacelaunchone.features.launchdetails.SummaryItem
         android:id="@+id/event_location"
         style="@style/event_summary_item"
         app:layout_constraintTop_toBottomOf="@id/event_rocket_summary_text" />
 
-    <io.github.nkrusch.spacelaunchone.features.details.SummaryItem
+    <io.github.nkrusch.spacelaunchone.features.launchdetails.SummaryItem
         android:id="@+id/agency_name"
         style="@style/event_summary_item"
         app:layout_constraintTop_toBottomOf="@id/event_location" />
 
-    <io.github.nkrusch.spacelaunchone.features.details.SummaryItem
+    <io.github.nkrusch.spacelaunchone.features.launchdetails.SummaryItem
         android:id="@+id/agency_country_code"
         style="@style/event_summary_item"
         app:layout_constraintTop_toBottomOf="@id/agency_name" />
 
-    <io.github.nkrusch.spacelaunchone.features.details.SummaryItem
+    <io.github.nkrusch.spacelaunchone.features.launchdetails.SummaryItem
         android:id="@+id/event_hashtag"
         style="@style/event_summary_item"
         app:layout_constraintTop_toBottomOf="@id/agency_country_code" />
 
-    <io.github.nkrusch.spacelaunchone.features.details.SummaryItem
+    <io.github.nkrusch.spacelaunchone.features.launchdetails.SummaryItem
         android:id="@+id/event_change"
         style="@style/event_summary_item"
         app:layout_constraintTop_toBottomOf="@id/event_hashtag" />

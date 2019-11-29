@@ -1,6 +1,9 @@
 package local;
 
+import java.util.Arrays;
 import java.util.Date;
+import java.util.LinkedList;
+import java.util.List;
 
 import androidx.annotation.NonNull;
 import androidx.room.Entity;
@@ -17,14 +20,11 @@ public class Pad implements Comparable<Pad> {
     @PrimaryKey()
     private int pid;
     private String name;
-    private int padType;
     private Double latitude;
     private Double longitude;
-    private String mapURL;
     private int retired;
     private int locationId;
     private String[] infoURLs;
-    private String wikiURL;
     private String changed;
     private Date lastModified;
 
@@ -44,14 +44,6 @@ public class Pad implements Comparable<Pad> {
         this.name = name;
     }
 
-    public int getPadType() {
-        return padType;
-    }
-
-    public void setPadType(int padType) {
-        this.padType = padType;
-    }
-
     public Double getLatitude() {
         return latitude;
     }
@@ -66,14 +58,6 @@ public class Pad implements Comparable<Pad> {
 
     public void setLongitude(Double longitude) {
         this.longitude = longitude;
-    }
-
-    public String getMapURL() {
-        return mapURL;
-    }
-
-    public void setMapURL(String mapURL) {
-        this.mapURL = mapURL;
     }
 
     public boolean isRetired() {
@@ -104,14 +88,6 @@ public class Pad implements Comparable<Pad> {
         this.infoURLs = infoURLs;
     }
 
-    public String getWikiURL() {
-        return wikiURL;
-    }
-
-    public void setWikiURL(String wikiURL) {
-        this.wikiURL = wikiURL;
-    }
-
     public String getChanged() {
         return changed;
     }
@@ -133,14 +109,16 @@ public class Pad implements Comparable<Pad> {
         Pad a = new Pad();
         a.setPid(pad.getId());
         a.setName(pad.getName());
-        a.setPadType(pad.getPadType());
         a.setLatitude(pad.getLatitude());
         a.setLongitude(pad.getLongitude());
-        a.setMapURL(pad.getMapURL());
         a.setRetired(pad.getRetired());
         a.setLocationId(pad.getLocationid());
-        a.setInfoURLs(pad.getInfoURLs());
-        a.setWikiURL(pad.getWikiURL());
+        if (pad.getWikiURL() != null && !pad.getWikiURL().isEmpty()) {
+            List<String> tmp = new LinkedList<>();
+            tmp.add(pad.getWikiURL());
+            tmp.addAll(Arrays.asList(pad.getInfoURLs()));
+            a.setInfoURLs(tmp.toArray(new String[0]));
+        } else a.setInfoURLs(pad.getInfoURLs());
         a.setChanged(pad.getChanged());
         a.setLastModified(new Date());
         return a;
@@ -151,14 +129,11 @@ public class Pad implements Comparable<Pad> {
     public String toString() {
         return "pid: " + pid + "\n" +
                 "name: " + name + "\n" +
-                "padType: " + padType + "\n" +
                 "latitude: " + latitude + "\n" +
                 "longitude: " + longitude + "\n" +
-                "mapURL: " + mapURL + "\n" +
                 "retired: " + retired + "\n" +
                 "locationId: " + locationId + "\n" +
-                "infoURLs: " + infoURLs + "\n" +
-                "wikiURL: " + wikiURL + "\n" +
+                "infoURLs: " + Arrays.toString(infoURLs) + "\n" +
                 "changed: " + changed + "\n" +
                 "lastModified: " + lastModified;
     }

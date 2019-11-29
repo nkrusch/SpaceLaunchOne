@@ -1,4 +1,4 @@
-package io.github.nkrusch.spacelaunchone.features.locations.details;
+package io.github.nkrusch.spacelaunchone.features.pads;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -16,20 +16,19 @@ import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 import androidx.recyclerview.widget.GridLayoutManager;
 import io.github.nkrusch.spacelaunchone.R;
+import io.github.nkrusch.spacelaunchone.app.OnItemClickListener;
 import io.github.nkrusch.spacelaunchone.app.RecyclerViewFragment;
-import io.github.nkrusch.spacelaunchone.features.launches.ListAdapter;
 import local.Pad;
 import viewmodels.LocationDetailsViewModel;
 
 
-public class LocationPadsRecyclerView extends RecyclerViewFragment  implements IListClickHandler {
+public class LocationPadsRecyclerView extends RecyclerViewFragment {
 
     public static LocationPadsRecyclerView newInstance() {
         return new LocationPadsRecyclerView();
     }
 
     private LinearLayout mEmptyState;
-    private TextView mEmptyStateText;
 
     protected void setupViewModel() {
         if (getActivity() != null) {
@@ -38,7 +37,7 @@ public class LocationPadsRecyclerView extends RecyclerViewFragment  implements I
             vm.get().observe(getActivity(), new Observer<local.LocationDetails>() {
                 @Override
                 public void onChanged(local.LocationDetails locationDetails) {
-                    if(locationDetails!=null && locationDetails.getLaunches()!=null)
+                    if (locationDetails != null && locationDetails.getLaunches() != null)
                         handleDataChange(locationDetails.getPads());
                 }
             });
@@ -48,8 +47,8 @@ public class LocationPadsRecyclerView extends RecyclerViewFragment  implements I
     /**
      * When user clicks on recyclerview items launch details view
      */
-    LocationPadsAdapter.OnItemClickListener onItemClick() {
-        return new LocationPadsAdapter.OnItemClickListener() {
+    private OnItemClickListener onItemClick() {
+        return new OnItemClickListener() {
             @Override
             public void onItemClick(int id, String name) {
                 // do something on pad click
@@ -92,14 +91,9 @@ public class LocationPadsRecyclerView extends RecyclerViewFragment  implements I
         mRecyclerView.setLayoutManager(glm);
         mRecyclerView.setAdapter(la);
         mEmptyState = view.findViewById(R.id.empty_state);
-        mEmptyStateText = view.findViewById(R.id.list_empty_state_text);
+        TextView mEmptyStateText = view.findViewById(R.id.list_empty_state_text);
         mEmptyStateText.setText(R.string.pads_empty_state);
         restoreRecyclerViewState(savedInstanceState);
         return view;
-    }
-
-    @Override
-    public void setOnItemClickHandler(ListAdapter.OnItemClickListener handler) {
-
     }
 }

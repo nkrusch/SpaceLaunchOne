@@ -29,7 +29,7 @@
         <!--suppress AndroidUnknownAttribute -->
         <fragment
             android:id="@+id/ExternalLinks"
-            android:name="io.github.nkrusch.spacelaunchone.features.details.LinksFragment"
+            android:name="io.github.nkrusch.spacelaunchone.features.launchdetails.LinksFragment"
             style="@style/details_links_container" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>

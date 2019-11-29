@@ -150,17 +150,17 @@ public class UpdateMethods {
         }
         final List<models.Pad> padData = result.getPads();
         final HashMap<Integer, LocationAgency> lax = new HashMap<>();
-        final Pad[] pads = new Pad[padData.size()];
+        final List<Pad> pads = new LinkedList<>();
         for (int i = 0; i < padData.size(); i++) {
             models.Pad p = padData.get(i);
-            pads[i] = Pad.Map(p);
+            pads.add(Pad.Map(p));
             if (p.getAgencies() != null)
                 for (models.Agency a : p.getAgencies()) {
                     if (!lax.containsKey(a.getId()))
                         lax.put(a.getId(), new LocationAgency(p.getLocationid(), a.getId()));
                 }
         }
-        db.dao().insertAll(pads);
+        db.dao().insertAll(pads.toArray(new Pad[0]));
         if (lax.keySet().size() > 0)
             db.dao().insertAll(lax.values().toArray(new LocationAgency[0]));
         if (callback != null) callback.call(true);

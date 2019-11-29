@@ -6,15 +6,14 @@
 
     <com.google.android.material.appbar.AppBarLayout
         android:id="@+id/list_appbar_layout"
-        style="@style/list_appbar_layout">
+        style="@style/list_appbar_layout"
+        android:background="@android:color/transparent">
 
-            <!--suppress AndroidDomInspection -->
             <androidx.appcompat.widget.Toolbar
                 android:id="@+id/toolbar"
                 android:layout_width="match_parent"
-                app:theme="@style/ClearToolbar"
-                android:background="@color/favoriteFabBgTint"
-                android:layout_height="?actionBarSize" />
+                android:layout_height="?actionBarSize"
+                app:theme="@style/FavToolbar" />
 
     </com.google.android.material.appbar.AppBarLayout>
 

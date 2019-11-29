@@ -1,4 +1,4 @@
-package io.github.nkrusch.spacelaunchone.features.details;
+package io.github.nkrusch.spacelaunchone.features.launchdetails;
 
 import android.content.Intent;
 import android.net.Uri;

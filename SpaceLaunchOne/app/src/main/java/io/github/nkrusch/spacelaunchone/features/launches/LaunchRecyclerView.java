@@ -17,8 +17,9 @@ import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 import androidx.recyclerview.widget.GridLayoutManager;
 import io.github.nkrusch.spacelaunchone.R;
+import io.github.nkrusch.spacelaunchone.app.OnItemClickListener;
 import io.github.nkrusch.spacelaunchone.app.RecyclerViewFragment;
-import io.github.nkrusch.spacelaunchone.features.DetailActivity;
+import io.github.nkrusch.spacelaunchone.features.DetailaLaunchActivity;
 import local.Launch;
 import viewmodels.ILaunchesViewModel;
 
@@ -28,12 +29,10 @@ import viewmodels.ILaunchesViewModel;
  * saving state of the recyclerview.
  */
 abstract class LaunchRecyclerView<S extends AndroidViewModel & ILaunchesViewModel>
-        extends RecyclerViewFragment
-        implements IListClickHandler {
+        extends RecyclerViewFragment {
 
-    private ListAdapter.OnItemClickListener mCustomHandler;
     private LinearLayout mEmptyState;
-    protected TextView mEmptyStateText;
+    TextView mEmptyStateText;
     private boolean customFirstItem;
 
     abstract Class<S> getType();
@@ -61,20 +60,13 @@ abstract class LaunchRecyclerView<S extends AndroidViewModel & ILaunchesViewMode
     /**
      * When user clicks on recyclerview items launch details view
      */
-    ListAdapter.OnItemClickListener onItemClick() {
-        return new ListAdapter.OnItemClickListener() {
+    private OnItemClickListener onItemClick() {
+        return new OnItemClickListener() {
             @Override
             public void onItemClick(int id, String name) {
-                startActivity(DetailActivity.launchDetails(getContext(), id, name));
+                startActivity(DetailaLaunchActivity.launchDetails(getContext(), id, name));
             }
         };
-    }
-
-    /**
-     * Override the default click handler
-     */
-    public void setOnItemClickHandler(ListAdapter.OnItemClickListener handler) {
-        mCustomHandler = handler;
     }
 
     /**
@@ -108,7 +100,7 @@ abstract class LaunchRecyclerView<S extends AndroidViewModel & ILaunchesViewMode
 
         List<Launch> data = new LinkedList<>();
         ListAdapter la = new ListAdapter(data, customFirstItem);
-        la.SetOnItemClickListener(mCustomHandler == null ? this.onItemClick() : mCustomHandler);
+        la.SetOnItemClickListener(this.onItemClick());
         GridLayoutManager glm = new GridLayoutManager(getContext(), columns);
 
         if (customFirstItem) glm.setSpanSizeLookup(

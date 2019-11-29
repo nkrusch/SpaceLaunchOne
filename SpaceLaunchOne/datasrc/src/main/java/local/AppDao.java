@@ -48,12 +48,9 @@ public interface AppDao {
             "ORDER BY launchDateUTC DESC LIMIT :limit OFFSET :offset")
     List<Launch> searchLaunches(String q, int limit, int offset);
 
-    @Query("SELECT DISTINCT aid AS agencyId, aid as afid, name as agencyName, countryCode as agencyCountryCode " +
-            "FROM agencies WHERE name IS NOT NULL AND name <> 'Unknown' UNION " +
-            "SELECT DISTINCT agencyId, agencyId as afid, agencyName, agencyCountryCode " +
-            "from details WHERE agencyName IS NOT NULL AND agencyName <> 'Unknown' " +
-            "ORDER BY agencyName COLLATE NOCASE ASC LIMIT :limit OFFSET :offset")
-    LiveData<List<AgencyLookup>> agencies(int limit, int offset);
+    @Query("SELECT * FROM agencies WHERE name IS NOT NULL AND countryCode <> 'UNK' " +
+            "ORDER BY name COLLATE NOCASE ASC LIMIT :limit OFFSET :offset")
+    LiveData<List<Agency>> agencies(int limit, int offset);
 
     @Query("SELECT DISTINCT lid AS locationId, name as locationName, lid as pfid, countryCode as locationCountryCode " +
             "FROM locations WHERE name IS NOT NULL AND countryCode <> 'UNK' UNION " +
@@ -89,6 +86,10 @@ public interface AppDao {
     @Transaction
     @Query("SELECT * from locations WHERE lid = :id")
     LiveData<LocationDetails> getLocationDetails(int id);
+
+    @Transaction
+    @Query("SELECT * from agencies WHERE aid = :id")
+    LiveData<AgencyDetails> getAgencyDetails(int id);
 
     @Query("SELECT lastModified from details WHERE uid = :id")
     Date getLastModified(int id);

@@ -9,6 +9,13 @@ import android.renderscript.ScriptIntrinsicBlur;
 
 import com.squareup.picasso.Transformation;
 
+/**
+ * USAGE:
+ *
+ * Picasso.with(context).load(imageUri)
+ *   .transform(new BlurTransform(context, 25))
+ *   .into(mImageView);
+ */
 public class BlurTransform implements Transformation {
     private static final int UP_LIMIT = 25;
     private static final int LOW_LIMIT = 1;

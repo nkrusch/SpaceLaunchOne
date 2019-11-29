@@ -1,6 +1,5 @@
 package io.github.nkrusch.spacelaunchone.features.locations;
 
-import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,6 +13,7 @@ import androidx.annotation.NonNull;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.RecyclerView;
 import io.github.nkrusch.spacelaunchone.R;
+import io.github.nkrusch.spacelaunchone.app.OnItemClickListener;
 import io.github.nkrusch.spacelaunchone.app.Utilities;
 import local.LocationLookup;
 
@@ -25,10 +25,6 @@ public class LocationAdapter extends RecyclerView.Adapter<LocationAdapter.ItemVi
 
     private List<LocationLookup> dataSource;
     private OnItemClickListener mItemClickListener;
-
-    public interface OnItemClickListener {
-        void onItemClick(int id, String name);
-    }
 
     LocationAdapter(List<LocationLookup> dataArgs) {
         updateData(dataArgs);

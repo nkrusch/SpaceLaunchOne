@@ -5,15 +5,17 @@
     style="@style/matches_parent">
 
     <com.google.android.material.appbar.AppBarLayout
+        android:background="@android:color/transparent"
         android:id="@+id/list_appbar_layout"
         style="@style/list_appbar_layout">
 
             <!--suppress AndroidDomInspection -->
-            <androidx.appcompat.widget.Toolbar
-                android:id="@+id/toolbar"
-                android:layout_width="match_parent"
-                app:theme="@style/ClearToolbar"
-                android:layout_height="?actionBarSize" />
+        <androidx.appcompat.widget.Toolbar
+            app:theme="@style/ToolbarStyle"
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?actionBarSize"
+            app:layout_scrollFlags="scroll" />
 
     </com.google.android.material.appbar.AppBarLayout>
 

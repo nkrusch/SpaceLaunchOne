@@ -131,23 +131,6 @@ public class Agency {
     }
 
     @Ignore
-    public String getAgencyCountries() {
-        if (countryCode == null || countryCode.isEmpty()) return "";
-        if (!countryCode.contains(",")) return countryCode;
-        String[] countries = countryCode.split(",");
-        if (countries.length > 3)
-            return countries.length + " countries";
-
-        StringBuilder tmp = new StringBuilder();
-        int counter = 0;
-        for (String c : countries) {
-            if (counter++ > 0) tmp.append(", ");
-            tmp.append(c);
-        }
-        return tmp.toString();
-    }
-
-    @Ignore
     public static Agency Map(models.Agency agency) {
         Agency a = new Agency();
         a.setAid(agency.getId());

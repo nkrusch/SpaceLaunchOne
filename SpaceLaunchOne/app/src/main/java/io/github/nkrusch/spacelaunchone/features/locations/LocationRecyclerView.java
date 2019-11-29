@@ -16,8 +16,9 @@ import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 import androidx.recyclerview.widget.GridLayoutManager;
 import io.github.nkrusch.spacelaunchone.R;
+import io.github.nkrusch.spacelaunchone.app.OnItemClickListener;
 import io.github.nkrusch.spacelaunchone.app.RecyclerViewFragment;
-import io.github.nkrusch.spacelaunchone.features.LocationDetails;
+import io.github.nkrusch.spacelaunchone.features.DetailsLocationActivity;
 import local.LocationLookup;
 import viewmodels.LocationListViewModel;
 
@@ -29,7 +30,6 @@ public class LocationRecyclerView extends RecyclerViewFragment {
     }
 
     private LinearLayout mEmptyState;
-    private TextView mEmptyStateText;
 
     protected void setupViewModel() {
         if (getActivity() != null) {
@@ -43,14 +43,11 @@ public class LocationRecyclerView extends RecyclerViewFragment {
         }
     }
 
-    /**
-     * When user clicks on recyclerview items launch details view
-     */
-    LocationAdapter.OnItemClickListener onItemClick() {
-        return new LocationAdapter.OnItemClickListener() {
+    private OnItemClickListener onItemClick() {
+        return new OnItemClickListener() {
             @Override
             public void onItemClick(int id, String name) {
-                startActivity(LocationDetails.getIntent(getContext(), id, name));
+                startActivity(DetailsLocationActivity.getIntent(getContext(), id, name));
             }
         };
     }
@@ -90,7 +87,7 @@ public class LocationRecyclerView extends RecyclerViewFragment {
         mRecyclerView.setLayoutManager(glm);
         mRecyclerView.setAdapter(la);
         mEmptyState = view.findViewById(R.id.empty_state);
-        mEmptyStateText = view.findViewById(R.id.list_empty_state_text);
+        TextView mEmptyStateText = view.findViewById(R.id.list_empty_state_text);
         mEmptyStateText.setText(R.string.location_empty_state);
         restoreRecyclerViewState(savedInstanceState);
         return view;

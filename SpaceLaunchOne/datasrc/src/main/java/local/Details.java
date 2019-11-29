@@ -38,6 +38,7 @@ public class Details {
     private String agencyName;
     private String agencyCountryCode;
     private String agencyAbbrev;
+    private int agencyType;
     private String agencyWikiURL;
     private String agencyImage;
     private String[] agencyInfoURLs;
@@ -102,6 +103,14 @@ public class Details {
 
     public void setAgencyAbbrev(String agencyAbbrev) {
         this.agencyAbbrev = agencyAbbrev;
+    }
+
+    public int getAgencyType() {
+        return agencyType;
+    }
+
+    public void setAgencyType(int agencyType) {
+        this.agencyType = agencyType;
     }
 
     public String getAgencyWikiURL() {
@@ -348,6 +357,7 @@ public class Details {
             r.setAgencyName(a.getName());
             r.setAgencyCountryCode(a.getCountryCode());
             r.setAgencyAbbrev(a.getAbbrev());
+            r.setAgencyType(a.getType());
             r.setAgencyWikiURL(a.getWikiURL());
             r.setAgencyInfoURLs(a.getInfoURLs());
             r.setAgencyImage(a.getImage());
@@ -382,6 +392,7 @@ public class Details {
                 "agencyName:" + getAgencyName() + "\n" +
                 "agencyCountryCode:" + getAgencyCountryCode() + "\n" +
                 "agencyAbbrev:" + getAgencyAbbrev() + "\n" +
+                "agencyType:" + getAgencyType() + "\n" +
                 "agencyWikiURL:" + getAgencyWikiURL() + "\n" +
                 "rocketName:" + getRocketName() + "\n" +
                 "rocketFamilyName:" + getRocketFamilyName() + "\n" +

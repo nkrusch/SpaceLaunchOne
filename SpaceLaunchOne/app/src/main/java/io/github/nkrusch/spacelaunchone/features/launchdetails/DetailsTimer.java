@@ -1,4 +1,4 @@
-package io.github.nkrusch.spacelaunchone.features.details;
+package io.github.nkrusch.spacelaunchone.features.launchdetails;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;

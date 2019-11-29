@@ -1,4 +1,4 @@
-package io.github.nkrusch.spacelaunchone.features.locations.details;
+package io.github.nkrusch.spacelaunchone.features.launches;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -17,9 +17,9 @@ import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 import androidx.recyclerview.widget.GridLayoutManager;
 import io.github.nkrusch.spacelaunchone.R;
+import io.github.nkrusch.spacelaunchone.app.OnItemClickListener;
 import io.github.nkrusch.spacelaunchone.app.RecyclerViewFragment;
-import io.github.nkrusch.spacelaunchone.features.DetailActivity;
-import io.github.nkrusch.spacelaunchone.features.launches.ListAdapter;
+import io.github.nkrusch.spacelaunchone.features.DetailaLaunchActivity;
 import local.Launch;
 import local.LocationDetails;
 import viewmodels.LocationDetailsViewModel;
@@ -29,11 +29,9 @@ import viewmodels.LocationDetailsViewModel;
  * list of launches. This fragment takes care of initializing and
  * saving state of the recyclerview.
  */
-public class LocationLaunchRecyclerView extends RecyclerViewFragment implements IListClickHandler {
+public class LocationLaunchRecyclerView extends RecyclerViewFragment{
 
-    private ListAdapter.OnItemClickListener mCustomHandler;
     private LinearLayout mEmptyState;
-    private TextView mEmptyStateText;
 
     public static Fragment newInstance() {
         return new LocationLaunchRecyclerView();
@@ -55,20 +53,13 @@ public class LocationLaunchRecyclerView extends RecyclerViewFragment implements 
     /**
      * When user clicks on recyclerview items launch details view
      */
-    ListAdapter.OnItemClickListener onItemClick() {
-        return new ListAdapter.OnItemClickListener() {
+    private OnItemClickListener onItemClick() {
+        return new OnItemClickListener() {
             @Override
             public void onItemClick(int id, String name) {
-                startActivity(DetailActivity.launchDetails(getContext(), id, name));
+                startActivity(DetailaLaunchActivity.launchDetails(getContext(), id, name));
             }
         };
-    }
-
-    /**
-     * Override the default click handler
-     */
-    public void setOnItemClickHandler(ListAdapter.OnItemClickListener handler) {
-        mCustomHandler = handler;
     }
 
     /**
@@ -99,14 +90,14 @@ public class LocationLaunchRecyclerView extends RecyclerViewFragment implements 
 
         List<Launch> data = new LinkedList<>();
         ListAdapter la = new ListAdapter(data, false);
-        la.SetOnItemClickListener(mCustomHandler == null ? this.onItemClick() : mCustomHandler);
+        la.SetOnItemClickListener(this.onItemClick());
         GridLayoutManager glm = new GridLayoutManager(getContext(), columns);
 
         mRecyclerView = view.findViewById(R.id.recyclerView);
         mRecyclerView.setLayoutManager(glm);
         mRecyclerView.setAdapter(la);
         mEmptyState = view.findViewById(R.id.empty_state);
-        mEmptyStateText = view.findViewById(R.id.list_empty_state_text);
+        TextView mEmptyStateText = view.findViewById(R.id.list_empty_state_text);
         mEmptyStateText.setText(R.string.launches_empty_state);
         restoreRecyclerViewState(savedInstanceState);
         return view;

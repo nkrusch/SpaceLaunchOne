@@ -1,4 +1,4 @@
-package io.github.nkrusch.spacelaunchone.features.locations.details;
+package io.github.nkrusch.spacelaunchone.features.agencies;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -16,13 +16,13 @@ import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 import androidx.recyclerview.widget.GridLayoutManager;
 import io.github.nkrusch.spacelaunchone.R;
+import io.github.nkrusch.spacelaunchone.app.OnItemClickListener;
 import io.github.nkrusch.spacelaunchone.app.RecyclerViewFragment;
-import io.github.nkrusch.spacelaunchone.features.AgencyDetails;
-import io.github.nkrusch.spacelaunchone.features.launches.ListAdapter;
+import io.github.nkrusch.spacelaunchone.features.DetailsAgencyActivity;
 import local.Agency;
 import viewmodels.LocationDetailsViewModel;
 
-public class LocationAgencyRecyclerView extends RecyclerViewFragment implements IListClickHandler {
+public class LocationAgencyRecyclerView extends RecyclerViewFragment {
 
     public static LocationAgencyRecyclerView newInstance() {
         return new LocationAgencyRecyclerView();
@@ -44,14 +44,11 @@ public class LocationAgencyRecyclerView extends RecyclerViewFragment implements 
         }
     }
 
-    /**
-     * When user clicks on recyclerview items launch details view
-     */
-    LocationAgencyAdapter.OnItemClickListener onItemClick() {
-        return new LocationAgencyAdapter.OnItemClickListener() {
+    OnItemClickListener onItemClick() {
+        return new OnItemClickListener() {
             @Override
             public void onItemClick(int id, String name) {
-                startActivity(AgencyDetails.getIntent(getContext(), id, name));
+                startActivity(DetailsAgencyActivity.getIntent(getContext(), id, name));
             }
         };
     }
@@ -65,7 +62,7 @@ public class LocationAgencyRecyclerView extends RecyclerViewFragment implements 
         if (hasEntries) {
             mEmptyState.setVisibility(View.GONE);
             mRecyclerView.setVisibility(View.VISIBLE);
-            LocationAgencyAdapter adapter = (LocationAgencyAdapter) mRecyclerView.getAdapter();
+            AgencyAdapter adapter = (AgencyAdapter) mRecyclerView.getAdapter();
             adapter.updateData(entries);
             adapter.notifyDataSetChanged();
         } else {
@@ -83,7 +80,7 @@ public class LocationAgencyRecyclerView extends RecyclerViewFragment implements 
         int columns = getResources().getInteger(R.integer.list_column_count);
 
         List<Agency> data = new LinkedList<>();
-        LocationAgencyAdapter la = new LocationAgencyAdapter(data);
+        AgencyAdapter la = new AgencyAdapter(data);
         la.SetOnItemClickListener(this.onItemClick());
         GridLayoutManager glm = new GridLayoutManager(getContext(), columns);
 
@@ -95,10 +92,5 @@ public class LocationAgencyRecyclerView extends RecyclerViewFragment implements 
         mEmptyStateText.setText(R.string.location_agencies_empty_state);
         restoreRecyclerViewState(savedInstanceState);
         return view;
-    }
-
-    @Override
-    public void setOnItemClickHandler(ListAdapter.OnItemClickListener handler) {
-
     }
 }
