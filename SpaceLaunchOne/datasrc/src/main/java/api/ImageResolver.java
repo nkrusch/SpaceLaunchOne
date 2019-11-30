@@ -77,7 +77,11 @@ public class ImageResolver {
     }
 
     public static String resolveImage(final int agency) {
-        return "https://raw.githubusercontent.com/nkrusch/SpaceLaunchOne/master/docs/img/" + agency + ".jpg";
+        return String.format("https://raw.githubusercontent.com/nkrusch/SpaceLaunchOne/master/docs/img/agencies/%d.jpg", agency);
+    }
+
+    public static String resolveMissionImage(final String category) {
+        return String.format("https://raw.githubusercontent.com/nkrusch/SpaceLaunchOne/master/docs/img/missions/%d.png", category);
     }
 }
 

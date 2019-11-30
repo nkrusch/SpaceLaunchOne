@@ -7,6 +7,7 @@ import androidx.room.Ignore;
 import androidx.room.Index;
 import androidx.room.PrimaryKey;
 import androidx.annotation.NonNull;
+import api.ImageResolver;
 
 import java.util.LinkedList;
 import java.util.List;
@@ -74,6 +75,50 @@ public class Mission {
 
     public void setLaunchId(int launchId) {
         this.launchId = launchId;
+    }
+
+    public String getMissionImage() {
+        return ImageResolver.resolveMissionImage(category);
+    }
+
+    @Ignore
+    public String getIcon() {
+        switch (category) {
+            case "Astrophysics":
+                return "\uD83C\uDF0C";
+            case "Communications":
+                return "☎️";
+            case "Dedicated Rideshare":
+                return "\uD83D\uDE96";
+            case "Earth Science":
+                return "\uD83C\uDF31";
+            case "Government/Top Secret":
+                return "\uD83D\uDCBC";
+            case "Heliophysics":
+                return "\uD83C\uDF1E";
+            case "Human Exploration":
+                return "\uD83D\uDC63";
+            case "Planetary Science":
+                return "\uD83D\uDEF0️";
+            case "Resupply":
+                return "⛽";
+            case "Robotic Exploration":
+                return "\uD83E\uDD16";
+            case "Test Flight":
+                return "\uD83D\uDEA7";
+            case "Tourism":
+                return "\uD83C\uDFD6️";
+            case "Unknown":
+                return "\uD83D\uDD2E";
+            case "Navigation":
+                return "\uD83E\uDDED";
+            case "Microgravity Research":
+                return "⚗️";
+            case "Suborbital":
+                return "\uD83D\uDD2D";
+            default:
+                return "";
+        }
     }
 
     @Ignore

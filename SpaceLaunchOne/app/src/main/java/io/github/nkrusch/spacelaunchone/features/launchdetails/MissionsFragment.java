@@ -82,7 +82,7 @@ public class MissionsFragment extends HorizontalRecyclerViewFragment
             Resources res = holder.mMissionNo.getResources();
             holder.mMissionNo.setText(res.getQuantityString(R.plurals.mission_no, dataSource.size(),
                     dataSource.size() < 2 ? "" : position + 1, mission.getCategory()));
-            holder.mCategory.setText(getIcon(mission.getCategory()));
+            holder.mCategory.setText(mission.getIcon());
             holder.mDescription.setText(mission.getDescription());
             final int missionTextLen = mission.getDescription().length();
 
@@ -112,41 +112,6 @@ public class MissionsFragment extends HorizontalRecyclerViewFragment
                 holder.mExpandButton.setText(holder.isExpanded ? R.string.show_less : R.string.show_more);
                 int SNIPPET_LINES = 3;
                 holder.mDescription.setMaxLines(holder.isExpanded ? Integer.MAX_VALUE : SNIPPET_LINES);
-            }
-        }
-
-        private String getIcon(String description) {
-            switch (description) {
-                case "Astrophysics":
-                    return "\uD83C\uDF0C";
-                case "Communications":
-                    return "☎️";
-                case "Dedicated Rideshare":
-                    return "\uD83D\uDE96";
-                case "Earth Science":
-                    return "\uD83C\uDF31";
-                case "Government/Top Secret":
-                    return "\uD83D\uDCBC";
-                case "Heliophysics":
-                    return "\uD83C\uDF1E";
-                case "Human Exploration":
-                    return "\uD83D\uDC63";
-                case "Planetary Science":
-                    return "\uD83D\uDEF0️";
-                case "Resupply":
-                    return "⛽";
-                case "Robotic Exploration":
-                    return "\uD83E\uDD16";
-                case "Suborbital":
-                    return "\uD83D\uDD02";
-                case "Test Flight":
-                    return "\uD83D\uDEA7";
-                case "Tourism":
-                    return "\uD83C\uDFD6️";
-                case "Unknown":
-                    return "\uD83D\uDD2E";
-                default:
-                    return "";
             }
         }
 

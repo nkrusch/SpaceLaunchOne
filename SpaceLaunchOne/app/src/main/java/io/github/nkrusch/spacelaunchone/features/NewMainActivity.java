@@ -40,7 +40,7 @@ public class NewMainActivity extends TabbedActivity {
         tabLayout.setVisibility(GONE);
         bottomNav.setVisibility(VISIBLE);
 
-        // mPager.setCurrentItem(2);
+        mPager.setCurrentItem(2);
     }
 
     @Override

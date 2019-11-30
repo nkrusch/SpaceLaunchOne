@@ -7,6 +7,9 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.squareup.picasso.Callback;
+import com.squareup.picasso.Picasso;
+
 import java.util.List;
 import java.util.Locale;
 
@@ -55,9 +58,20 @@ public class MissionsAdapter extends RecyclerView.Adapter<MissionsAdapter.ItemVi
         Mission item = dataSource.get(position);
         final Context context = holder.mImageView.getContext();
         holder.mTextView.setText(Utilities.getLocationShortName(item.getName()));
-        holder.mSubText1.setText(item.getCategory());
+        holder.mSubText1.setText(String.format("%s %s", item.getCategory(), item.getIcon()));
         holder.mNumber.setText(String.format(Locale.getDefault(), "%02d", position + 1));
-        holder.mImageView.setImageResource(R.drawable.ic_earth);
+
+        holder.mImageView.setVisibility(View.VISIBLE);
+        Picasso.with(context).load(item.getMissionImage()).into(holder.mImageView, new Callback() {
+            @Override
+            public void onSuccess() {
+            }
+
+            @Override
+            public void onError() {
+                holder.mImageView.setImageResource(R.drawable.ic_information_outline);
+            }
+        });
     }
 
     @Override
