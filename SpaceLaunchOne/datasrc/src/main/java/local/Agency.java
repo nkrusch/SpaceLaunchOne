@@ -6,6 +6,7 @@ import androidx.annotation.NonNull;
 import androidx.room.Entity;
 import androidx.room.Ignore;
 import androidx.room.PrimaryKey;
+import api.ImageResolver;
 
 @Entity(tableName = "agencies")
 public class Agency {
@@ -18,7 +19,6 @@ public class Agency {
     private String abbrev;
     private int islsp;
     private int type;
-    private String image;
     private String[] infoURLs;
     private String wikiURL;
     private String changed;
@@ -73,11 +73,7 @@ public class Agency {
     }
 
     public String getImage() {
-        return image;
-    }
-
-    public void setImage(String image) {
-        this.image = image;
+        return ImageResolver.resolveImage(aid);
     }
 
     public String[] getInfoURLs() {
@@ -131,6 +127,23 @@ public class Agency {
     }
 
     @Ignore
+    public String getAgencyCountries() {
+        if (countryCode == null || countryCode.isEmpty()) return "";
+        if (!countryCode.contains(",")) return countryCode;
+        String[] countries = countryCode.split(",");
+        if (countries.length > 3)
+            return countries.length + " countries";
+
+        StringBuilder tmp = new StringBuilder();
+        int counter = 0;
+        for (String c : countries) {
+            if (counter++ > 0) tmp.append(", ");
+            tmp.append(c);
+        }
+        return tmp.toString();
+    }
+
+    @Ignore
     public static Agency Map(models.Agency agency) {
         Agency a = new Agency();
         a.setAid(agency.getId());
@@ -140,7 +153,6 @@ public class Agency {
         a.setCountryCode(agency.getCountryCode());
         a.setIslsp(agency.getIslsp());
         a.setType(agency.getType());
-        a.setImage(agency.getImage());
         a.setInfoURLs(agency.getInfoURLs());
         a.setWikiURL(agency.getWikiURL());
         a.setChanged(agency.getChanged());
@@ -157,7 +169,7 @@ public class Agency {
                 "abbrev: " + abbrev + "\n" +
                 "islsp: " + islsp + "\n" +
                 "type: " + type + "\n" +
-                "image: " + image + "\n" +
+                "image: " + getImage() + "\n" +
                 "infoURLs: " + infoURLs + "\n" +
                 "wikiURL: " + wikiURL + "\n" +
                 "changed: " + changed + "\n";

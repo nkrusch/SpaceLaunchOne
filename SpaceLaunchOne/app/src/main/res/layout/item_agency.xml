@@ -1,6 +1,5 @@
 <androidx.constraintlayout.widget.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/list_item_container"
     style="@style/list_item" >
 
@@ -16,9 +15,6 @@
 
     <TextView
         android:id="@+id/title"
-        android:paddingTop="10dp"
-        android:maxLines="2"
-        android:layout_height="wrap_content"
         style="@style/list_primary_text_layout" />
 
     <TextView
@@ -26,9 +22,10 @@
         style="@style/list_seondary_text_line_1" />
 
     <TextView
-        android:layout_marginTop="10dp"
-        app:layout_constraintBottom_toBottomOf="@null"
-        app:layout_constraintTop_toTopOf="parent"
+        android:id="@+id/sub_line_2"
+        style="@style/list_seondary_text_line_2" />
+
+    <TextView
         android:id="@+id/list_number"
         style="@style/list_number" />
 

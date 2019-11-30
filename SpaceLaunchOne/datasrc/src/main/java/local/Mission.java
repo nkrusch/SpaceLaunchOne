@@ -16,11 +16,11 @@ public class Mission {
     @NonNull
     @PrimaryKey()
     private int mid;
+    private int launchId;
+    private String name;
     private String description;
     private String category;
-    private int launchId;
     private String wikiURL;
-    private String name;
 
     public Mission() {
     }

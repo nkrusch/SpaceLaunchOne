@@ -48,17 +48,6 @@ public interface AppDao {
             "ORDER BY launchDateUTC DESC LIMIT :limit OFFSET :offset")
     List<Launch> searchLaunches(String q, int limit, int offset);
 
-    @Query("SELECT * FROM agencies WHERE name IS NOT NULL AND countryCode <> 'UNK' " +
-            "ORDER BY name COLLATE NOCASE ASC LIMIT :limit OFFSET :offset")
-    LiveData<List<Agency>> agencies(int limit, int offset);
-
-    @Query("SELECT DISTINCT lid AS locationId, name as locationName, lid as pfid, countryCode as locationCountryCode " +
-            "FROM locations WHERE name IS NOT NULL AND countryCode <> 'UNK' UNION " +
-            "SELECT DISTINCT locationId, locationName, locationId as pfid, locationCountryCode " +
-            "from launch JOIN details ON id = uid WHERE locationName IS NOT NULL AND locationCountryCode <> 'UNK' " +
-            "ORDER BY locationName COLLATE NOCASE ASC LIMIT :limit OFFSET :offset")
-    LiveData<List<LocationLookup>> locations(int limit, int offset);
-
     @Query("SELECT id, name, image, launchDateUTC, locationName, status " +
             "FROM Launch JOIN details ON id = uid WHERE status=1 AND launchDateUTC > :cutoff " +
             "AND rocketId NOT IN (SELECT rfid FROM rocketFilter) " +
@@ -74,6 +63,13 @@ public interface AppDao {
             "AND locationId NOT IN (SELECT pfid FROM locationFilter) " +
             "ORDER BY launchDateUTC ASC LIMIT 1")
     Launch getNextLaunch(long cutoff);
+
+    @Query("SELECT * FROM agencies where aid in (select agencyId from details) " +
+            "ORDER BY name COLLATE NOCASE ASC LIMIT :limit OFFSET :offset")
+    LiveData<List<Agency>> agencies(int limit, int offset);
+
+    @Query("SELECT * FROM locations WHERE countryCode <> 'UNK' ORDER BY name COLLATE NOCASE ASC LIMIT :limit OFFSET :offset")
+    LiveData<List<Location>> locations(int limit, int offset);
 
     @Transaction
     @Query("SELECT * from launch JOIN details ON id = uid WHERE id = :id")
@@ -137,11 +133,11 @@ public interface AppDao {
             "LEFT JOIN rocketFilter ON rfid=rocketId WHERE rocketName IS NOT NULL ORDER BY rocketName")
     LiveData<List<RocketLookup>> getRocketLookup();
 
-    @Query("SELECT DISTINCT agencyId, agencyName, afid, agencyImage, agencyCountryCode from details " +
+    @Query("SELECT DISTINCT agencyId, agencyName, afid from details " +
             "LEFT JOIN agencyFilter ON afid=agencyId WHERE agencyName IS NOT NULL ORDER BY agencyName COLLATE NOCASE ASC")
     LiveData<List<AgencyLookup>> getAgencyLookup();
 
-    @Query("SELECT DISTINCT locationId, locationName, pfid, locationCountryCode FROM details " +
+    @Query("SELECT DISTINCT locationId, locationName, pfid FROM details " +
             "JOIN launch ON id = uid LEFT JOIN locationFilter ON pfid=locationId " +
             "WHERE locationName IS NOT NULL ORDER BY locationName")
     LiveData<List<LocationLookup>> getLocationLookup();

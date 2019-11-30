@@ -1,5 +1,6 @@
-package io.github.nkrusch.spacelaunchone.features.locations;
+package io.github.nkrusch.spacelaunchone.features.missions;
 
+import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,22 +16,22 @@ import androidx.recyclerview.widget.RecyclerView;
 import io.github.nkrusch.spacelaunchone.R;
 import io.github.nkrusch.spacelaunchone.app.OnItemClickListener;
 import io.github.nkrusch.spacelaunchone.app.Utilities;
-import local.Location;
+import local.Mission;
 
 
 /**
- * This adapter renders list of launch locations
+ * This adapter renders list of launchpads
  */
-public class LocationAdapter extends RecyclerView.Adapter<LocationAdapter.ItemViewHolder> {
+public class MissionsAdapter extends RecyclerView.Adapter<MissionsAdapter.ItemViewHolder> {
 
-    private List<Location> dataSource;
+    private List<Mission> dataSource;
     private OnItemClickListener mItemClickListener;
 
-    LocationAdapter(List<Location> dataArgs) {
+    MissionsAdapter(List<Mission> dataArgs) {
         updateData(dataArgs);
     }
 
-    public void updateData(List<Location> dataArgs) {
+    public void updateData(List<Mission> dataArgs) {
         dataSource = dataArgs;
     }
 
@@ -45,18 +46,18 @@ public class LocationAdapter extends RecyclerView.Adapter<LocationAdapter.ItemVi
     @Override
     public ItemViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         return new ItemViewHolder(LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.item_location, parent, false));
+                .inflate(R.layout.item_mission, parent, false));
     }
 
     @Override
-    public void onBindViewHolder(@NonNull final LocationAdapter.ItemViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull final MissionsAdapter.ItemViewHolder holder, int position) {
 
-        Location item = dataSource.get(position);
+        Mission item = dataSource.get(position);
+        final Context context = holder.mImageView.getContext();
         holder.mTextView.setText(Utilities.getLocationShortName(item.getName()));
-        holder.mSubText1.setText(Utilities.getPlaceName(item.getName()));
+        holder.mSubText1.setText(item.getCategory());
         holder.mNumber.setText(String.format(Locale.getDefault(), "%02d", position + 1));
-        int imgRes = Utilities.countryIcon(item.getCountryCode());
-        holder.mImageView.setImageResource(imgRes);
+        holder.mImageView.setImageResource(R.drawable.ic_earth);
     }
 
     @Override
@@ -85,9 +86,8 @@ public class LocationAdapter extends RecyclerView.Adapter<LocationAdapter.ItemVi
         @Override
         public void onClick(View v) {
             try {
-                Location item = dataSource.get(getAdapterPosition());
-                if (item != null)
-                    mItemClickListener.onItemClick(item.getLid(), Utilities.getLocationShortName(item.getName()));
+                Mission item = dataSource.get(getAdapterPosition());
+                if (item != null) mItemClickListener.onItemClick(item.getMid(), item.getName());
             } catch (Exception e) {
                 e.printStackTrace();
             }

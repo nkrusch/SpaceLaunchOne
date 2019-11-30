@@ -19,7 +19,7 @@ import androidx.recyclerview.widget.GridLayoutManager;
 import io.github.nkrusch.spacelaunchone.R;
 import io.github.nkrusch.spacelaunchone.app.OnItemClickListener;
 import io.github.nkrusch.spacelaunchone.app.RecyclerViewFragment;
-import io.github.nkrusch.spacelaunchone.features.DetailaLaunchActivity;
+import io.github.nkrusch.spacelaunchone.features.DetailsLaunchActivity;
 import local.Launch;
 import local.LocationDetails;
 import viewmodels.LocationDetailsViewModel;
@@ -57,7 +57,7 @@ public class LocationLaunchRecyclerView extends RecyclerViewFragment{
         return new OnItemClickListener() {
             @Override
             public void onItemClick(int id, String name) {
-                startActivity(DetailaLaunchActivity.launchDetails(getContext(), id, name));
+                startActivity(DetailsLaunchActivity.launchDetails(getContext(), id, name));
             }
         };
     }

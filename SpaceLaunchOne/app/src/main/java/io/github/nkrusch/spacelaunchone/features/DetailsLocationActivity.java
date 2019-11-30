@@ -56,9 +56,9 @@ public class DetailsLocationActivity extends TabbedActivity {
                     tabLayout.getTabAt(PAD_INDEX).setText(getResources().getQuantityString(R.plurals.tab_pads,
                             locationDetails.getPads().size(), locationDetails.getPads().size()));
                     tabLayout.getTabAt(LAUNCH_INDEX).setText(getResources().getQuantityString(R.plurals.tab_launches,
-                            locationDetails.getPads().size(), locationDetails.getLaunches().size()));
+                            locationDetails.getLaunches().size(), locationDetails.getLaunches().size()));
                     tabLayout.getTabAt(AGENCY_INDEX).setText(getResources().getQuantityString(R.plurals.tab_agencies,
-                            locationDetails.getPads().size(), locationDetails.getAgencies().size()));
+                            locationDetails.getAgencies().size(), locationDetails.getAgencies().size()));
                     mPager.setVisibility(View.VISIBLE);
                     mProgress.setVisibility(GONE);
                 }

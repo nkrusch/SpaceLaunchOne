@@ -50,6 +50,13 @@
     <plurals name="tab_agencies">
         <item quantity="other">agencies (%d)</item>
     </plurals>
+    <plurals name="tab_missions">
+        <item quantity="other">missions (%d)</item>
+    </plurals>
+    <plurals name="many_countries">
+        <item quantity="other">%d countries</item>
+    </plurals>
+
 
     <string-array name="pref_sync_frequency_titles">
         <item>every 1 hour</item>
@@ -180,6 +187,7 @@
     <string name="pads_empty_state">No known pads at this location</string>
     <string name="location_agencies_empty_state">No agencies associated with this location</string>
     <string name="launches_empty_state">No launches associated with this location</string>
+    <string name="agency_launches_empty_state">No launches associated with this agency</string>
     <string name="pref_about_label">About this app…</string>
     <string name="title_agency_details">Agency Details</string>
     <string name="title_pad_details">Launchpad Details</string>

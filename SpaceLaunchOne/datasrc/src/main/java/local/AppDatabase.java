@@ -11,8 +11,8 @@ import android.content.Context;
 import android.util.Log;
 
 
-@Database(entities = {Launch.class, Details.class, Mission.class, RocketFilter.class, AgencyFilter.class,
-        LocationFilter.class, FavoriteLaunch.class, Agency.class, Location.class, Pad.class, LocationAgency.class},
+@Database(entities = {Launch.class, Details.class, Mission.class, RocketFilter.class, AgencyFilter.class, LocationFilter.class,
+        FavoriteLaunch.class, Agency.class, Location.class, Pad.class, LocationAgency.class, AgencyMission.class},
         version = 2, exportSchema = false)
 @TypeConverters({Converters.class})
 public abstract class AppDatabase extends RoomDatabase {
@@ -26,14 +26,16 @@ public abstract class AppDatabase extends RoomDatabase {
         @Override
         public void migrate(SupportSQLiteDatabase database) {
             database.execSQL("CREATE TABLE `favorites` (`fid` INTEGER NOT NULL, PRIMARY KEY(`fid`))");
-            database.execSQL("CREATE TABLE `agencies` (`aid` INTEGER NOT NULL, `name` TEXT, `countryCode` TEXT, `abbrev` TEXT, `islsp` INTEGER NOT NULL, `type` INTEGER NOT NULL, `image` TEXT, `infoURLs` TEXT, `wikiURL` TEXT, `changed` TEXT, `lastModified` INTEGER, PRIMARY KEY(`aid`))");
+            database.execSQL("CREATE TABLE `agencies` (`aid` INTEGER NOT NULL, `name` TEXT, `countryCode` TEXT, `abbrev` TEXT, `islsp` INTEGER NOT NULL, `type` INTEGER NOT NULL, `infoURLs` TEXT, `wikiURL` TEXT, `changed` TEXT, `lastModified` INTEGER, PRIMARY KEY(`aid`))");
             database.execSQL("CREATE TABLE `locations` (`lid` INTEGER NOT NULL, `name` TEXT, `countryCode` TEXT, `infoURLs` TEXT, `changed` TEXT, `lastModified` INTEGER, PRIMARY KEY(`lid`))");
             database.execSQL("CREATE TABLE `pads` (`pid` INTEGER NOT NULL, `name` TEXT, `latitude` REAL, `longitude` REAL, `retired` INTEGER NOT NULL, `locationId` INTEGER NOT NULL, `infoURLs` TEXT, `changed` TEXT, `lastModified` INTEGER, PRIMARY KEY(`pid`))");
             database.execSQL("CREATE TABLE `locationagency` (`lid` INTEGER NOT NULL, `aid` INTEGER NOT NULL, PRIMARY KEY(`lid`, `aid`))");
+            database.execSQL("CREATE TABLE `agencymission`  (`mid` INTEGER NOT NULL, `aid` INTEGER NOT NULL, PRIMARY KEY(`mid`, `aid`))");
 
             database.execSQL("CREATE INDEX `index_details_locationId` ON `details` (`locationId`)");
             database.execSQL("CREATE INDEX `index_pads_locationId` ON `pads` (`locationId`)");
             database.execSQL("CREATE INDEX `index_locationagency_aid` ON `locationagency` (`aid`)");
+            database.execSQL("CREATE INDEX `index_agencymission_mid` ON `agencymission` (`mid`)");
         }
     };
 

@@ -36,7 +36,7 @@ import static android.view.View.GONE;
  * what fragments get loaded by the viewpager. The actual
  * contents of the viewpager is managed by fragments.
  */
-public class DetailaLaunchActivity extends TabbedActivity {
+public class DetailsLaunchActivity extends TabbedActivity {
 
     LaunchDetailsViewModel vm;
     public static final String EXTRA_WIDGET_LAUNCHER = "extra_widget_launch";
@@ -50,7 +50,7 @@ public class DetailaLaunchActivity extends TabbedActivity {
     private String title;
 
     public static Intent launchDetails(Context ctx, int id, String name) {
-        Intent intent = new Intent(ctx, DetailaLaunchActivity.class);
+        Intent intent = new Intent(ctx, DetailsLaunchActivity.class);
         intent.putExtra(EXTRA_LAUNCH, id);
         intent.putExtra(EXTRA_NAME, name);
         return intent;

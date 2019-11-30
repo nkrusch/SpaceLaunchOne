@@ -40,8 +40,8 @@ public class LocationDetails {
     public LocationDetails(Location location, List<Launch> launches, List<Pad> pads, List<Agency> agencies) {
         this.location = location;
         this.launches = launches;
-        this.pads = pads;
         this.agencies = agencies;
+        this.pads = pads;
     }
 
     public Location getLocation() {

@@ -10,10 +10,6 @@ public class AgencyLookup implements IFilter {
     private
     String name;
 
-    @ColumnInfo(name = "agencyCountryCode")
-    private
-    String agencyCountryCode;
-
     @ColumnInfo(name = "agencyId")
     private
     int id;
@@ -32,26 +28,12 @@ public class AgencyLookup implements IFilter {
         afid = id;
     }
 
-    @Ignore
-    public AgencyLookup(int id, String name, String country) {
-        this(id, name);
-        this.agencyCountryCode = country;
-    }
-
     public String getName() {
         return name;
     }
 
     public void setName(String name) {
         this.name = name;
-    }
-
-    public String getAgencyCountryCode() {
-        return agencyCountryCode;
-    }
-
-    public void setAgencyCountryCode(String agencyCountryCode) {
-        this.agencyCountryCode = agencyCountryCode;
     }
 
     public void setAfid(int afid) {

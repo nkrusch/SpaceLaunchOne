@@ -7,7 +7,6 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.cloudinary.utils.StringUtils;
 import com.squareup.picasso.Callback;
 import com.squareup.picasso.Picasso;
 
@@ -17,7 +16,6 @@ import java.util.Locale;
 import androidx.annotation.NonNull;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.RecyclerView;
-import api.ImageResolver;
 import io.github.nkrusch.spacelaunchone.R;
 import io.github.nkrusch.spacelaunchone.app.OnItemClickListener;
 import io.github.nkrusch.spacelaunchone.app.Utilities;
@@ -60,33 +58,24 @@ public class AgencyAdapter extends RecyclerView.Adapter<AgencyAdapter.ItemViewHo
         final Agency item = dataSource.get(position);
         final Context context = holder.mImageView.getContext();
 
-        holder.mTextView.setText(String.format(Locale.getDefault(), "%s%s",
-                item.getName(), item.getAbbrev() == null || item.getName().equals(item.getAbbrev()) ?
-                        "" : " (" + item.getAbbrev() + ")"));
-        if (item.getIslsp() == 1) {
-            holder.mSubText1.setText(String.format("%s · %s", item.getAgencyType(),
-                    holder.mImageView.getContext().getResources().getString(R.string.label_is_lsp)));
-        } else holder.mSubText1.setText(item.getAgencyType());
+        holder.mTextView.setText(item.getAbbrev() == null ? item.getName() : String
+                .format(Locale.getDefault(), "%s (%s)", item.getName(), item.getAbbrev()));
+        holder.mSubText1.setText(item.getIslsp() == 1 ? String.format("%s · %s", item.getAgencyType(),
+                holder.mImageView.getContext().getResources().getString(R.string.label_is_lsp)) : item.getAgencyType());
+        holder.mSubText2.setText(Utilities.getAgencyCountries(item.getCountryCode(), 5, context.getResources()));
         holder.mNumber.setText(String.format(Locale.getDefault(), "%02d", position + 1));
 
         holder.mImageView.setVisibility(View.VISIBLE);
-        String image = ImageResolver.resolveImage(item.getAid());
-
-        if (image == null) {
-            holder.mImageView.setImageResource(Utilities.countryIcon(item.getCountryCode()));
-        } else {
-            Picasso.with(context).load(Utilities.squareImage(image,
-                    thumbnailWidth)).into(holder.mImageView, new Callback() {
-                @Override
-                public void onSuccess() {
-                }
-
-                @Override
-                public void onError() {
-                    holder.mImageView.setImageResource(Utilities.countryIcon(item.getCountryCode()));
-                }
-            });
-        }
+        Picasso.with(context).load(item.getImage()  //      Utilities.squareImage(image, thumbnailWidth)
+        ).into(holder.mImageView, new Callback() {
+            @Override
+            public void onSuccess() {
+            }
+            @Override
+            public void onError() {
+                holder.mImageView.setImageResource(Utilities.countryIcon(item.getCountryCode()));
+            }
+        });
     }
 
     @Override
@@ -99,6 +88,7 @@ public class AgencyAdapter extends RecyclerView.Adapter<AgencyAdapter.ItemViewHo
         private final ImageView mImageView;
         private final TextView mTextView;
         private final TextView mSubText1;
+        private final TextView mSubText2;
         private final TextView mNumber;
 
         ItemViewHolder(View v) {
@@ -107,6 +97,7 @@ public class AgencyAdapter extends RecyclerView.Adapter<AgencyAdapter.ItemViewHo
             mImageView = v.findViewById(R.id.thumbnail);
             mTextView = v.findViewById(R.id.title);
             mSubText1 = v.findViewById(R.id.sub_line_1);
+            mSubText2 = v.findViewById(R.id.sub_line_2);
             mNumber = v.findViewById(R.id.list_number);
             ConstraintLayout layout = (v.findViewById(R.id.list_item_container));
             if (layout != null) layout.setOnClickListener(this);

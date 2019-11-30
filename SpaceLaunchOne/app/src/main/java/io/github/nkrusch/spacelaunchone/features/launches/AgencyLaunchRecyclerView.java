@@ -1,4 +1,4 @@
-package io.github.nkrusch.spacelaunchone.features.locations;
+package io.github.nkrusch.spacelaunchone.features.launches;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -12,42 +12,48 @@ import java.util.List;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 import androidx.recyclerview.widget.GridLayoutManager;
 import io.github.nkrusch.spacelaunchone.R;
 import io.github.nkrusch.spacelaunchone.app.OnItemClickListener;
 import io.github.nkrusch.spacelaunchone.app.RecyclerViewFragment;
-import io.github.nkrusch.spacelaunchone.features.DetailsLocationActivity;
-import local.Location;
-import viewmodels.LocationListViewModel;
+import io.github.nkrusch.spacelaunchone.features.DetailsLaunchActivity;
+import local.AgencyDetails;
+import local.Launch;
+import viewmodels.AgencyDetailsViewModel;
 
 
-public class LocationRecyclerView extends RecyclerViewFragment {
-
-    public static LocationRecyclerView newInstance() {
-        return new LocationRecyclerView();
-    }
+public class AgencyLaunchRecyclerView extends RecyclerViewFragment{
 
     private LinearLayout mEmptyState;
 
+    public static Fragment newInstance() {
+        return new AgencyLaunchRecyclerView();
+    }
+
     protected void setupViewModel() {
         if (getActivity() != null) {
-            LocationListViewModel vm = ViewModelProviders.of(getActivity()).get(LocationListViewModel.class);
-            vm.getAll().observe(getActivity(), new Observer<List<Location>>() {
+            AgencyDetailsViewModel vm = ViewModelProviders.of(getActivity()).get(AgencyDetailsViewModel.class);
+            vm.get().observe(getActivity(), new Observer<AgencyDetails>() {
                 @Override
-                public void onChanged(@Nullable List<Location> locations) {
-                    handleDataChange(locations);
+                public void onChanged(AgencyDetails locationDetails) {
+                    if(locationDetails!=null && locationDetails.getLaunches()!=null)
+                        handleDataChange(locationDetails.getLaunches());
                 }
             });
         }
     }
 
+    /**
+     * When user clicks on recyclerview items launch details view
+     */
     private OnItemClickListener onItemClick() {
         return new OnItemClickListener() {
             @Override
             public void onItemClick(int id, String name) {
-                startActivity(DetailsLocationActivity.getIntent(getContext(), id, name));
+                startActivity(DetailsLaunchActivity.launchDetails(getContext(), id, name));
             }
         };
     }
@@ -55,13 +61,13 @@ public class LocationRecyclerView extends RecyclerViewFragment {
     /**
      * When viewmodel state changes, update the adapter
      */
-    private void handleDataChange(@Nullable List<Location> entries) {
+    private void handleDataChange(@Nullable List<Launch> entries) {
         if (mRecyclerView == null || entries == null) return;
         boolean hasEntries = entries.size() > 0;
         if (hasEntries) {
             mEmptyState.setVisibility(View.GONE);
             mRecyclerView.setVisibility(View.VISIBLE);
-            LocationAdapter adapter = (LocationAdapter) mRecyclerView.getAdapter();
+            ListAdapter adapter = (ListAdapter) mRecyclerView.getAdapter();
             adapter.updateData(entries);
             adapter.notifyDataSetChanged();
         } else {
@@ -78,8 +84,8 @@ public class LocationRecyclerView extends RecyclerViewFragment {
         View view = inflater.inflate(R.layout.fragment_list, container, false);
         int columns = getResources().getInteger(R.integer.list_column_count);
 
-        List<Location> data = new LinkedList<>();
-        LocationAdapter la = new LocationAdapter(data);
+        List<Launch> data = new LinkedList<>();
+        ListAdapter la = new ListAdapter(data, false);
         la.SetOnItemClickListener(this.onItemClick());
         GridLayoutManager glm = new GridLayoutManager(getContext(), columns);
 
@@ -88,7 +94,7 @@ public class LocationRecyclerView extends RecyclerViewFragment {
         mRecyclerView.setAdapter(la);
         mEmptyState = view.findViewById(R.id.empty_state);
         TextView mEmptyStateText = view.findViewById(R.id.list_empty_state_text);
-        mEmptyStateText.setText(R.string.location_empty_state);
+        mEmptyStateText.setText(R.string.agency_launches_empty_state);
         restoreRecyclerViewState(savedInstanceState);
         return view;
     }

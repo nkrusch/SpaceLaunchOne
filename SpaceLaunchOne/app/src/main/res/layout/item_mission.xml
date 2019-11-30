@@ -11,7 +11,7 @@
         <ImageView
             android:id="@+id/thumbnail"
             android:visibility="visible"
-            app:srcCompat="@drawable/ic_map_marker"
+            app:srcCompat="@drawable/ic_earth"
             style="@style/list_image" />
 
     </androidx.cardview.widget.CardView>
@@ -19,14 +19,10 @@
     <TextView
         android:id="@+id/title"
         android:paddingTop="10dp"
-        android:maxLines="2"
-        android:layout_height="wrap_content"
         style="@style/list_primary_text_layout" />
 
     <TextView
         android:id="@+id/sub_line_1"
-        android:maxLines="2"
-        android:layout_height="wrap_content"
         style="@style/list_seondary_text_line_1" />
 
     <TextView

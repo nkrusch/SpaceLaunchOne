@@ -505,4 +505,41 @@ public class Utilities {
         return name;
     }
 
+    public static String getAgencyCountries(String countryCode, int maxCount, Resources res) {
+
+        if (countryCode == null || countryCode.isEmpty()) return "";
+
+        if (!countryCode.contains(",") && !countryCode.contains("/"))
+            return countryCode;
+
+        String[] countries = countryCode.split(",|/");
+        if (countries.length > maxCount)
+            return res.getQuantityString(R.plurals.many_countries, countries.length, countries.length);
+
+        StringBuilder tmp = new StringBuilder();
+        int counter = 0;
+        for (String c : countries) {
+            if (counter++ > 0) tmp.append(", ");
+            tmp.append(c);
+        }
+        return tmp.toString();
+    }
+
+    public static String getShortName(String name) {
+        if (name != null) {
+            int splitAt = name.indexOf(",");
+            if (splitAt > 0)
+                return name.substring(0, splitAt).trim();
+        }
+        return name;
+    }
+
+    public static String getPlaceName(String name) {
+        if (name != null) {
+            int splitAt = name.indexOf(",");
+            if (splitAt > 0 && splitAt < name.length() - 1)
+                return name.substring(splitAt + 1).trim();
+        }
+        return "";
+    }
 }
