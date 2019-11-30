@@ -1,5 +1,10 @@
 package local;
 
+import android.util.ArrayMap;
+
+import java.util.LinkedList;
+import java.util.List;
+
 import androidx.annotation.NonNull;
 import androidx.room.Entity;
 import androidx.room.Ignore;
@@ -40,5 +45,24 @@ public class LocationAgency {
 
     public void setAid(int aid) {
         this.aid = aid;
+    }
+
+
+    @Ignore
+    public static void Map(ArrayMap<String, LocationAgency> ref, final int locationId, models.Pad[] pads, models.Agency ag) {
+        if (pads == null || pads.length == 0 || locationId < 1) return;
+        for (models.Pad pad : pads) {
+            if (pad.getAgencies() != null && pad.getAgencies().length > 0)
+                for (models.Agency agency : pad.getAgencies()) {
+                    String key = String.valueOf(locationId + ',' + agency.getId());
+                    if (ref.containsKey(key) || agency.getId() < 1) continue;
+                    ref.put(key, new LocationAgency(locationId, agency.getId()));
+                }
+        }
+        if (ag != null) {
+            String key = String.valueOf(locationId + ',' + ag.getId());
+            if (ref.containsKey(key) || ag.getId() < 1) return;
+            ref.put(key, new LocationAgency(locationId, ag.getId()));
+        }
     }
 }

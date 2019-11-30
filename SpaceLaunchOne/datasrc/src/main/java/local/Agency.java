@@ -148,7 +148,9 @@ public class Agency {
         Agency a = new Agency();
         a.setAid(agency.getId());
         a.setName(agency.getName());
-        if (!agency.getAbbrev().equals(agency.getName()))
+        if (agency.getAbbrev() != null &&
+                !agency.getAbbrev().isEmpty() &&
+                !agency.getAbbrev().equals(agency.getName()))
             a.setAbbrev(agency.getAbbrev());
         a.setCountryCode(agency.getCountryCode());
         a.setIslsp(agency.getIslsp());

@@ -1,5 +1,7 @@
 package local;
 
+import android.util.ArrayMap;
+
 import androidx.room.Entity;
 import androidx.room.Ignore;
 import androidx.room.Index;
@@ -75,27 +77,34 @@ public class Mission {
     }
 
     @Ignore
+    public static Mission Map(int launchId, models.Mission mission) {
+        Mission m = new Mission();
+        m.setMid(mission.getId());
+        m.setLaunchId(launchId);
+        m.setCategory(mission.getTypeName());
+        m.setDescription(mission.getDescription());
+        m.setWikiURL(mission.getWikiURL());
+        m.setName(mission.getName());
+        return m;
+    }
+
+    @Ignore
     public static List<Mission> Map(int launchId, models.Mission[] missions) {
         List<Mission> result = new LinkedList<>();
         if (missions != null) {
-            for (models.Mission mission : missions) {
-                Mission m = new Mission();
-                m.setMid(mission.getId());
-                m.setLaunchId(launchId);
-                m.setCategory(mission.getTypeName());
-                m.setDescription(mission.getDescription());
-                m.setWikiURL(mission.getWikiURL());
-                m.setName(mission.getName());
-                result.add(m);
-            }
+            for (models.Mission mission : missions)
+                result.add(Map(launchId, mission));
         }
         return result;
     }
 
     @Ignore
-    public static List<local.Mission> Map(int launchId, List<models.Mission> missions) {
-        models.Mission[] missionArray = missions.toArray(new models.Mission[missions.size()]);
-        return Map(launchId, missionArray);
+    public static void Map(ArrayMap<Integer, Mission> result, int launchId, models.Mission[] missions) {
+        if (missions == null || missions.length == 0) return;
+        for (models.Mission m : missions) {
+            if (result.containsKey(m.getId())) continue;
+            result.put(m.getId(), Map(launchId, m));
+        }
     }
 
     @Override

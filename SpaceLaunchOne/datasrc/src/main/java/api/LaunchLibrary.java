@@ -40,11 +40,11 @@ public class LaunchLibrary {
         });
     }
 
-    public static void loadLaunches(final int count, final int offset, @NonNull final OnLoadCallback callback) {
+    public static void loadLaunches(final int count, @NonNull final OnLoadCallback callback) {
         makeRequest(new methodRunner<Launches>() {
             @Override
             public Launches run(ILaunchLibrary service) throws IOException {
-                return service.launches(count, offset).execute().body();
+                return service.launches(count).execute().body();
             }
         }, callback);
     }

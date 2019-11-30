@@ -2,6 +2,7 @@ package service;
 
 import android.app.IntentService;
 import android.content.Intent;
+
 import androidx.annotation.Nullable;
 
 import api.OnLoadCallback;
@@ -25,7 +26,7 @@ public class UpdateIntentService extends IntentService {
     @Override
     protected void onHandleIntent(@Nullable Intent intent) {
         if (intent != null && SYNC_KEY.equals(intent.getAction()))
-            new UpdateMethods(getApplicationContext(), new OnLoadCallback() {
+            UpdateMethods.UpdateAppData(getApplicationContext(), new OnLoadCallback() {
                 @Override
                 public void call(Object result) {
                     onActionCompleted();

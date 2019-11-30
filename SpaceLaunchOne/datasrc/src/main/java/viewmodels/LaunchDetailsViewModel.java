@@ -92,7 +92,7 @@ public class LaunchDetailsViewModel extends AndroidViewModel {
                 boolean isStale = current - lastModMs > MIN_UPDATE;
                 if (!(occursSoon || isStale)) return;
                 final Context context = getApplication().getBaseContext();
-                UpdateMethods.UpdateDetails(context, id, null);
+                UpdateMethods.UpdateLaunchDetails(context, id, null);
             }
         });
     }

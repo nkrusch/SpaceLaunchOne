@@ -1,5 +1,7 @@
 package local;
 
+import android.util.ArrayMap;
+
 import java.util.Arrays;
 import java.util.Date;
 import java.util.LinkedList;
@@ -116,12 +118,22 @@ public class Pad implements Comparable<Pad> {
         if (pad.getWikiURL() != null && !pad.getWikiURL().isEmpty()) {
             List<String> tmp = new LinkedList<>();
             tmp.add(pad.getWikiURL());
-            tmp.addAll(Arrays.asList(pad.getInfoURLs()));
+            if (pad.getInfoURLs() != null && pad.getInfoURLs().length > 0)
+                tmp.addAll(Arrays.asList(pad.getInfoURLs()));
             a.setInfoURLs(tmp.toArray(new String[0]));
-        } else a.setInfoURLs(pad.getInfoURLs());
+        } else if (pad.getInfoURLs() != null && pad.getInfoURLs().length > 0)
+            a.setInfoURLs(pad.getInfoURLs());
         a.setChanged(pad.getChanged());
         a.setLastModified(new Date());
         return a;
+    }
+
+    public static void Map(ArrayMap<Integer, Pad> pads, models.Pad[] padArray) {
+        if (padArray != null && padArray.length > 0) {
+            for (models.Pad pad : padArray)
+                if (!pads.containsKey(pad.getId()))
+                    pads.put(pad.getId(), Map(pad));
+        }
     }
 
     @Ignore

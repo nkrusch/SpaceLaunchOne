@@ -26,7 +26,7 @@ public class UpdateJobService extends JobService {
     @Override
     public boolean onStartJob(JobParameters params) {
         Log.d("SYNC", "starting sync job service...");
-        new UpdateMethods(getApplicationContext(), new OnLoadCallback() {
+        UpdateMethods.UpdateAppData(getApplicationContext(), new OnLoadCallback() {
             @Override
             public void call(Object result) {
                 UpdateTime.updateSyncTimestamp(PreferenceManager.getDefaultSharedPreferences(getApplicationContext()));

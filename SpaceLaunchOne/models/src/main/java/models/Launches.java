@@ -16,4 +16,10 @@ public class Launches extends PagedResult {
     public void setLaunches(List<Launch> launches) {
         this.launches = launches;
     }
+
+    public Launches(){}
+
+    public Launches(Launch launch){
+        this.launches.add(launch);
+    }
 }

@@ -19,7 +19,6 @@ public class InitIntentService extends IntentService {
     public final static String ACTION_OUTCOME = "action_init_succeeded";
     public final static String ACTION_INITIALIZE = "action_initialize";
 
-
     public InitIntentService() {
         super("Initialization service");
     }
@@ -32,11 +31,12 @@ public class InitIntentService extends IntentService {
     protected void onHandleIntent(@Nullable Intent intent) {
         if (intent != null && ACTION_INITIALIZE.equals(intent.getAction())) {
             final AppDatabase db = AppDatabase.getInstance(this);
-            int initialLoadLimit = BuildConfig.InitialLoadSize;
-            LaunchLibrary.loadLaunches(initialLoadLimit, 0, new OnLoadCallback<Launches>() {
+            final boolean fetchImages = true;
+
+            LaunchLibrary.loadLaunches(BuildConfig.InitialLoadSize, new OnLoadCallback<Launches>() {
                 @Override
                 public void call(Launches result) {
-                    UpdateMethods.processLaunches(db, result, new OnLoadCallback<Boolean>() {
+                    UpdateMethods.LaunchData.processLaunches(db, result, new OnLoadCallback<Boolean>() {
                         @Override
                         public void call(Boolean result) {
                             onActionCompleted(ACTION_INITIALIZE, result);
@@ -46,7 +46,7 @@ public class InitIntentService extends IntentService {
                         public void onError(Exception e) {
                             onActionCompleted(ACTION_INITIALIZE, false);
                         }
-                    });
+                    }, fetchImages);
                 }
 
                 @Override

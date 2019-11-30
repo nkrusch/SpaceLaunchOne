@@ -16,7 +16,7 @@ interface ILaunchLibrary {
     Call<Launches> all_launches(@Query("startdate") String start, @Query("limit") int limit);
 
     @GET("launch?fields=id,name,rocket,location,net,status")
-    Call<Launches> launches(@Query("next") int next, @Query("offset") int offset);
+    Call<Launches> launches(@Query("next") int next);
 
     @GET("launch/{id}?mode=verbose")
     Call<Launches> launch(@Path("id") int id);

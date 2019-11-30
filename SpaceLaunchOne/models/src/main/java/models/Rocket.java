@@ -1,5 +1,9 @@
 package models;
 
+import java.util.LinkedList;
+import java.util.List;
+
+import jdk.nashorn.internal.ir.annotations.Ignore;
 import models.base.InfoObj;
 
 @SuppressWarnings("SpellCheckingInspection")
@@ -11,6 +15,9 @@ public class Rocket extends InfoObj {
     private String familyname;
     private String configuration;
     private int[] imageSizes;
+
+    // used internally while resolving images
+    private List<Integer> launchIds = new LinkedList<>();
 
     public String getConfiguration() {
         return configuration;
@@ -58,5 +65,16 @@ public class Rocket extends InfoObj {
 
     public void setImageSizes(int[] imageSizes) {
         this.imageSizes = imageSizes;
+    }
+
+    public List<Integer> getLaunchIds() {
+        return launchIds;
+    }
+
+    public void setLaunchIds(List<Integer> launchIds) {
+        this.launchIds = launchIds;
+    }
+    public void addLaunchId(Integer launchId){
+        this.launchIds.add(launchId);
     }
 }

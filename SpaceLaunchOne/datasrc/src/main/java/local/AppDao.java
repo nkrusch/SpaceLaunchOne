@@ -64,8 +64,7 @@ public interface AppDao {
             "ORDER BY launchDateUTC ASC LIMIT 1")
     Launch getNextLaunch(long cutoff);
 
-    @Query("SELECT * FROM agencies where aid in (select agencyId from details) " +
-            "ORDER BY name COLLATE NOCASE ASC LIMIT :limit OFFSET :offset")
+    @Query("SELECT * FROM agencies ORDER BY name COLLATE NOCASE ASC LIMIT :limit OFFSET :offset")
     LiveData<List<Agency>> agencies(int limit, int offset);
 
     @Query("SELECT * FROM locations WHERE countryCode <> 'UNK' ORDER BY name COLLATE NOCASE ASC LIMIT :limit OFFSET :offset")
@@ -87,9 +86,6 @@ public interface AppDao {
     @Query("SELECT * from agencies WHERE aid = :id")
     LiveData<AgencyDetails> getAgencyDetails(int id);
 
-    @Query("SELECT lastModified from details WHERE uid = :id")
-    Date getLastModified(int id);
-
     @Query("SELECT launchDateUTC from launch WHERE id = :id")
     Long getLaunchDateUTC(int id);
 
@@ -101,6 +97,10 @@ public interface AppDao {
 
     @Delete
     void removeFavorite(FavoriteLaunch f);
+
+    @Transaction
+    @Query("UPDATE launch set image = :image where id = :id")
+    void updateImage(int id, String image);
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     void insertAll(Launch... launches);
@@ -121,13 +121,10 @@ public interface AppDao {
     void insertAll(LocationAgency... lax);
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    void insertAll(List<Mission> missions);
+    void insertAll(AgencyMission... lax);
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    void insertFullRecord(Launch launch, Details details, List<Mission> missions);
-
-    @Insert(onConflict = OnConflictStrategy.REPLACE)
-    void insertFullRecord(Location location, List<Pad> pads);
+    void insertAll(Mission... missions);
 
     @Query("SELECT DISTINCT rocketId, rocketName, rfid from details " +
             "LEFT JOIN rocketFilter ON rfid=rocketId WHERE rocketName IS NOT NULL ORDER BY rocketName")
