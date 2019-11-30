@@ -118,7 +118,7 @@
     <string name="widget_unavailable">No confirmed launches</string>
     <string name="offline_message">No connection</string>
     <string name="next_launch_title">next launch</string>
-    <string name="list_empty">Application needs to initialize.\n\nMake sure you are connected to the Internet\nthen relaunch this app.</string>
+    <string name="list_empty">Application needs to initialize. Make sure you are connected to the Internet then relaunch app.</string>
     <string name="list_no_matches">There are no launches to show.\nThis is most likely caused by filters.\n\nUse menu in top right corner to adjust filters.</string>
     <string name="tab_event">Summary</string>
     <string name="tab_map">Map</string>

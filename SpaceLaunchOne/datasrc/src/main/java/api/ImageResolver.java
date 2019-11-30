@@ -81,7 +81,8 @@ public class ImageResolver {
     }
 
     public static String resolveMissionImage(final String category) {
-        return String.format("https://raw.githubusercontent.com/nkrusch/SpaceLaunchOne/master/docs/img/missions/%d.png", category);
+        return String.format("https://raw.githubusercontent.com/nkrusch/SpaceLaunchOne/master/docs/img/missions/%s.png",
+                category.toLowerCase().replaceAll("[ /]", "_"));
     }
 }
 

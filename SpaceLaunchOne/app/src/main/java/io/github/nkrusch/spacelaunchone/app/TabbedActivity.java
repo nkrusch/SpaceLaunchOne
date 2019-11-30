@@ -19,7 +19,7 @@ import io.github.nkrusch.spacelaunchone.R;
  * This base class handles setting up the layout components
  * and preserving the active tab during activity lifecycle.
  */
-public abstract class TabbedActivity extends AppCompatActivity {
+public abstract class TabbedActivity extends SyncActivity {
 
     private final String ACTIVE_TAB = "active_tab";
     protected ProgressBar mProgress;

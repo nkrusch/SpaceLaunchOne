@@ -28,7 +28,6 @@ public abstract class SyncActivity extends AppCompatActivity {
      */
     protected void onReceiveHandler() { }
 
-
     protected void onStop() {
         super.onStop();
         unregisterReceiver();
@@ -70,7 +69,7 @@ public abstract class SyncActivity extends AppCompatActivity {
     /**
      * Call this method to synchronize application data immediately
      */
-    protected void requestImmediateSync() {
+    protected void  requestImmediateSync() {
         if(syncReceiver != null){
             Log.d(TAG, "Pending sync already running, will not launch another");
             return;

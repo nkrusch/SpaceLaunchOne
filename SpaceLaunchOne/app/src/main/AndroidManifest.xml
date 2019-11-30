@@ -33,26 +33,22 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".features.MainActivity"
-            android:label="@string/title_activity_main"
-            android:launchMode="singleTop" />
-        <activity
             android:name=".features.ImageListActivity"
             android:label="@string/title_activity_main"
             android:launchMode="singleTop" />
         <activity
             android:name=".features.DetailsLaunchActivity"
             android:label="@string/title_activity_details"
-            android:parentActivityName=".features.MainActivity"
+            android:parentActivityName=".features.NewMainActivity"
             android:theme="@style/TabbedActivityTheme">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".features.MainActivity" />
+                android:value=".features.NewMainActivity" />
         </activity>
         <activity
             android:name=".features.SettingsActivity"
             android:label="@string/title_activity_settings"
-            android:parentActivityName=".features.MainActivity" />
+            android:parentActivityName=".features.NewMainActivity" />
         <activity
             android:label="@string/title_activity_credits"
             android:name=".features.CreditsActivity"
@@ -77,7 +73,7 @@
         <activity
             android:label="@string/title_activity_filters"
             android:name=".features.FilterActivity"
-            android:parentActivityName=".features.MainActivity"
+            android:parentActivityName=".features.NewMainActivity"
             android:theme="@style/TabbedActivityTheme" />
         <activity
             android:label="@string/title_agency_details"

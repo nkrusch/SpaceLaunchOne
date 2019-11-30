@@ -6,10 +6,13 @@
 
     <androidx.cardview.widget.CardView
         android:id="@+id/thumbnail_card"
+        android:layout_height="32dp"
         style="@style/list_image_card">
 
         <ImageView
             android:id="@+id/thumbnail"
+            android:layout_gravity="center_horizontal"
+            android:layout_width="32dp"
             android:background="@android:color/transparent"
             style="@style/list_image" />
 
@@ -18,6 +21,8 @@
     <TextView
         android:id="@+id/title"
         android:paddingTop="10dp"
+        android:maxLines="2"
+        android:layout_height="wrap_content"
         style="@style/list_primary_text_layout" />
 
     <TextView

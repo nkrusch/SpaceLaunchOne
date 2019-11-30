@@ -1,5 +1,6 @@
 package io.github.nkrusch.spacelaunchone.app;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.res.Configuration;
 import android.content.res.Resources;
@@ -14,6 +15,7 @@ import android.view.WindowManager;
 import com.cloudinary.Transformation;
 import com.cloudinary.android.MediaManager;
 import com.cloudinary.utils.StringUtils;
+import com.google.android.material.snackbar.Snackbar;
 
 import java.text.SimpleDateFormat;
 import java.util.Arrays;
@@ -52,6 +54,13 @@ public class Utilities {
         DisplayMetrics metrics = r.getDisplayMetrics();
         float px = dp * ((float) metrics.densityDpi / DisplayMetrics.DENSITY_DEFAULT);
         return Math.round(px);
+    }
+
+    public static void showSnackBar(Activity activity, int message, int length) {
+        Snackbar mySnackbar = Snackbar.make(
+                activity.findViewById(android.R.id.content),
+                message, length);
+        mySnackbar.show();
     }
 
     /**
