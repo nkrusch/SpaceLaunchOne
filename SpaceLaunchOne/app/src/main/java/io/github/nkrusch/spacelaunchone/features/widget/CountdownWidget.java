@@ -22,7 +22,7 @@ import api.AppExecutors;
 import io.github.nkrusch.spacelaunchone.R;
 import io.github.nkrusch.spacelaunchone.app.InitActivity;
 import io.github.nkrusch.spacelaunchone.features.DetailsLaunchActivity;
-import io.github.nkrusch.spacelaunchone.features.NewMainActivity;
+import io.github.nkrusch.spacelaunchone.features.MainActivity;
 import local.WidgetGetNextTask;
 
 import static android.view.View.VISIBLE;
@@ -167,7 +167,7 @@ public class CountdownWidget extends AppWidgetProvider {
     private void bindClickAction(Context context, int appWidgetId, RemoteViews views) {
         Intent intent = launchId > 0 ?
                 DetailsLaunchActivity.launchDetails(context, launchId, launchEventName) :
-                new Intent(context, NewMainActivity.class);
+                new Intent(context, MainActivity.class);
         intent.putExtra(EXTRA_WIDGET_LAUNCHER, 1);
         intent.setData(Uri.withAppendedPath(Uri.parse("myapp://widget/#id" + appWidgetId),
                 String.valueOf(UUID.randomUUID().toString())));

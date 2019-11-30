@@ -25,7 +25,7 @@ import io.github.nkrusch.spacelaunchone.features.launches.PastLaunches;
  * Next launch and list are independent fragments.
  * This activity manages activity toolbar and its options.
  * The ImageView grid is used by tablet devices.
- * See {@link NewMainActivity} for mobile & small tablet version that
+ * See {@link MainActivity} for mobile & small tablet version that
  * repalces this activity.
  */
 public class ImageListActivity extends SyncActivity {

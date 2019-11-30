@@ -10,8 +10,8 @@
 
         <ImageView
             android:id="@+id/thumbnail"
-            android:visibility="visible"
-            app:srcCompat="@drawable/ic_map_marker"
+            android:scaleType="fitCenter"
+            android:background="@android:color/transparent"
             style="@style/list_image" />
 
     </androidx.cardview.widget.CardView>

@@ -39,16 +39,16 @@
         <activity
             android:name=".features.DetailsLaunchActivity"
             android:label="@string/title_activity_details"
-            android:parentActivityName=".features.NewMainActivity"
+            android:parentActivityName=".features.MainActivity"
             android:theme="@style/TabbedActivityTheme">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".features.NewMainActivity" />
+                android:value=".features.MainActivity" />
         </activity>
         <activity
             android:name=".features.SettingsActivity"
             android:label="@string/title_activity_settings"
-            android:parentActivityName=".features.NewMainActivity" />
+            android:parentActivityName=".features.MainActivity" />
         <activity
             android:label="@string/title_activity_credits"
             android:name=".features.CreditsActivity"
@@ -61,7 +61,7 @@
         </activity>
         <activity
             android:name=".features.HistoryActivity"
-            android:parentActivityName=".features.NewMainActivity"
+            android:parentActivityName=".features.MainActivity"
             android:label="@string/title_activity_history" />
         <activity
             android:name=".features.SearchActivity"
@@ -69,22 +69,22 @@
         <activity
             android:windowSoftInputMode="adjustPan"
             android:theme="@style/TabbedMainActivityTheme"
-            android:name=".features.NewMainActivity" />
+            android:name=".features.MainActivity" />
         <activity
             android:label="@string/title_activity_filters"
             android:name=".features.FilterActivity"
-            android:parentActivityName=".features.NewMainActivity"
+            android:parentActivityName=".features.MainActivity"
             android:theme="@style/TabbedActivityTheme" />
         <activity
             android:label="@string/title_agency_details"
             android:name=".features.DetailsAgencyActivity"
             android:theme="@style/TabbedActivityTheme"
-            android:parentActivityName=".features.NewMainActivity" />
+            android:parentActivityName=".features.MainActivity" />
         <activity
             android:label="@string/title_pad_details"
             android:name=".features.DetailsLocationActivity"
             android:theme="@style/TabbedActivityTheme"
-            android:parentActivityName=".features.NewMainActivity" />
+            android:parentActivityName=".features.MainActivity" />
 
         <receiver
             android:name=".features.widget.CountdownWidget"

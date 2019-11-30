@@ -485,7 +485,10 @@ public class Utilities {
     }
 
     public static String countryName(String countryCode) {
-        switch ((countryCode + "").toUpperCase()) {
+        switch ((countryCode + "").trim().toUpperCase()) {
+            case "USA":
+            case "US":
+                return "United States";
             case "CHN":
                 return "China";
             case "IND":
@@ -496,10 +499,19 @@ public class Utilities {
                 return "Japan";
             case "KOR":
                 return "South Korea";
+            case "IRN":
+                return "Iran";
+            case "ITA":
+                return "Italy";
             case "NZL":
                 return "New Zealand";
             case "RUS":
                 return "Russia";
+            case "SAU":
+                return "Saudi Arabia";
+            case "ARE":
+            case "UAE":
+                return "United Arab Emirates";
             default:
                 return countryCode;
         }
@@ -519,7 +531,7 @@ public class Utilities {
         if (countryCode == null || countryCode.isEmpty()) return "";
 
         if (!countryCode.contains(",") && !countryCode.contains("/"))
-            return countryCode;
+            return countryName(countryCode);
 
         String[] countries = countryCode.split(",|/");
         if (countries.length > maxCount)
@@ -529,7 +541,7 @@ public class Utilities {
         int counter = 0;
         for (String c : countries) {
             if (counter++ > 0) tmp.append(", ");
-            tmp.append(c);
+            tmp.append(countryName(c));
         }
         return tmp.toString();
     }

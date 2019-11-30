@@ -34,7 +34,7 @@ import static android.view.View.GONE;
 import static android.view.View.VISIBLE;
 
 
-public class NewMainActivity extends TabbedActivity {
+public class MainActivity extends TabbedActivity {
 
     private final int SCHEDULED_FRAGMENT = 0;
     private final int FAV_FRAGMENT = 1;
