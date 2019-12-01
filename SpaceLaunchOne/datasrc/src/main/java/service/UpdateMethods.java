@@ -62,7 +62,7 @@ public class UpdateMethods {
          * Go through list of launches and update the database.
          * Provide callback method to get notified when this process completes
          */
-        static void processLaunches(final AppDatabase db, final Launches result, final OnLoadCallback<Boolean> callback, Boolean fetchImages) {
+        static void processLaunches(final AppDatabase db, final Launches result, final OnLoadCallback<Boolean> callback) {
 
             if (result == null || result.getLaunches() == null) {
                 if (callback != null) callback.call(false);
@@ -188,7 +188,7 @@ public class UpdateMethods {
             db.dao().insertAll(rockets.values().toArray(new Rocket[0]));
             db.dao().insertAll(pads.values().toArray(new Pad[0]));
 
-            if (rockets.size() == 0 || !fetchImages) {
+            if (rockets.size() == 0) {
                 if (callback != null) callback.call(true);
                 return;
             }
@@ -230,7 +230,7 @@ public class UpdateMethods {
             LaunchLibrary.allLaunches(start, size, new OnLoadCallback<Launches>() {
                 @Override
                 public void call(final Launches result) {
-                    processLaunches(db, result, callback, true);
+                    processLaunches(db, result, callback);
                 }
 
                 @Override
@@ -247,7 +247,7 @@ public class UpdateMethods {
             LaunchLibrary.getLaunch(id, new OnLoadCallback<models.Launch>() {
                 @Override
                 public void call(models.Launch result) {
-                    processLaunches(db, new Launches(result), callback, false);
+                    processLaunches(db, new Launches(result), callback);
                 }
 
                 @Override

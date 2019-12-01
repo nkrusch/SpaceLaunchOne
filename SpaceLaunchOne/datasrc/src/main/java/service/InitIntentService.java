@@ -31,7 +31,6 @@ public class InitIntentService extends IntentService {
     protected void onHandleIntent(@Nullable Intent intent) {
         if (intent != null && ACTION_INITIALIZE.equals(intent.getAction())) {
             final AppDatabase db = AppDatabase.getInstance(this);
-            final boolean fetchImages = true;
 
             LaunchLibrary.loadLaunches(BuildConfig.InitialLoadSize, new OnLoadCallback<Launches>() {
                 @Override
@@ -46,7 +45,7 @@ public class InitIntentService extends IntentService {
                         public void onError(Exception e) {
                             onActionCompleted(ACTION_INITIALIZE, false);
                         }
-                    }, fetchImages);
+                    });
                 }
 
                 @Override

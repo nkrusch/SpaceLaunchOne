@@ -19,6 +19,7 @@ public class AgencyDetails {
             entityColumn = "id",
             entity = Launch.class,
             associateBy = @Junction(value = Details.class, parentColumn = "agencyId", entityColumn = "uid"))
+    private
     List<Launch> launches;
 
     @Relation(
@@ -26,6 +27,7 @@ public class AgencyDetails {
             entityColumn = "mid",
             entity = Mission.class,
             associateBy = @Junction(value = AgencyMission.class, parentColumn = "aid", entityColumn = "mid"))
+    private
     List<Mission> missions;
 
     @Ignore

@@ -24,7 +24,7 @@ allprojects {
         androidxVersion = "1.1.0"
         materialVersion = "1.2.0-alpha02"
         cardViewVersion = "1.0.0"
-        recyclerViewVersion = "1.0.0"
+        recyclerViewVersion = "1.1.0"
         appCompatVersion = "1.1.0"
         googleMapsVersion = "17.0.0"
         googlePlacesVersion="17.0.0"

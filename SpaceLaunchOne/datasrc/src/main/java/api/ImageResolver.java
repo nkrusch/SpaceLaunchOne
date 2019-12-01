@@ -28,16 +28,19 @@ public class ImageResolver {
                         Elements metaOgImage = doc.select("meta[property=og:image]");
                         if (metaOgImage != null) {
                             imageUrl = metaOgImage.attr("content");
-                            if (imageUrl != null && imageUrl.length() > 0 && !imageUrl.contains(".svg")) {
+                            if (imageUrl != null && imageUrl.length() > 0 && !imageUrl.contains(".svg") &&
+                                    !imageUrl.contains("Japanese_sounding_rockets_shapes-01.jpg")) {
                                 callback.call(imageUrl);
                                 return;
                             }
                         }
-                        Elements metaIcon = doc.select(".infobox .image img");
+                        Elements metaIcon = doc.select("#content .image img[src]");
                         if (metaIcon != null) {
                             imageUrl = metaIcon.attr("src");
-                            callback.call(imageUrl);
-                            return;
+                            if (imageUrl != null && !imageUrl.contains(".svg")) {
+                                callback.call(imageUrl);
+                                return;
+                            }
                         }
                     }
                 } catch (Exception e) {

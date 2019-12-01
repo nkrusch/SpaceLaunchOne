@@ -1,6 +1,7 @@
 package local;
 
 import android.content.Context;
+import android.database.Cursor;
 import android.util.Log;
 
 import androidx.room.Database;
@@ -41,19 +42,19 @@ public abstract class AppDatabase extends RoomDatabase {
             database.execSQL("CREATE TABLE `locationagency` (`lid` INTEGER NOT NULL, `aid` INTEGER NOT NULL, PRIMARY KEY(`lid`, `aid`))");
             database.execSQL("CREATE TABLE `agencymission`  (`mid` INTEGER NOT NULL, `aid` INTEGER NOT NULL, PRIMARY KEY(`mid`, `aid`))");
 
-            database.execSQL("DROP INDEX `index_details_agencyId_agencyName`");
-            database.execSQL("DROP INDEX `index_details_padId_padName`");
-            database.execSQL("DROP INDEX `index_details_rocketId_rocketName`");
+            dropIndexes(database);
 
-            database.execSQL("CREATE INDEX `index_agencymission_aid` ON `agencymission` (`aid`)");
-            database.execSQL("CREATE INDEX `index_agencymission_mid` ON `agencymission` (`mid`)");
-            database.execSQL("CREATE INDEX `index_details_agencyId` ON `details` (`agencyId`)");
-            database.execSQL("CREATE INDEX `index_details_locationId` ON `details` (`locationId`)");
-            database.execSQL("CREATE INDEX `index_details_padId` ON `details` (`padId`)");
-            database.execSQL("CREATE INDEX `index_details_rocketId` ON `details` (`rocketId`)");
-            database.execSQL("CREATE INDEX `index_locationagency_aid` ON `locationagency` (`aid`)");
-            database.execSQL("CREATE INDEX `index_locationagency_lid` ON `locationagency` (`lid`)");
-            database.execSQL("CREATE INDEX `index_pads_locationId` ON `pads` (`locationId`)");
+            database.execSQL("CREATE INDEX `index_agencymission_aid` ON `agencymission` (`aid`)");          // 1
+            database.execSQL("CREATE INDEX `index_agencymission_mid` ON `agencymission` (`mid`)");          // 2
+            database.execSQL("CREATE INDEX `index_details_agencyId` ON `details` (`agencyId`)");            // 3
+            database.execSQL("CREATE INDEX `index_details_locationId` ON `details` (`locationId`)");        // 4
+            database.execSQL("CREATE INDEX `index_details_padId` ON `details` (`padId`)");                  // 5
+            database.execSQL("CREATE INDEX `index_details_rocketId` ON `details` (`rocketId`)");            // 6
+            database.execSQL("CREATE INDEX `index_launch_launchDateUTC` ON `launch` (`launchDateUTC`)");    // 7
+            database.execSQL("CREATE INDEX `index_locationagency_aid` ON `locationagency` (`aid`)");        // 8
+            database.execSQL("CREATE INDEX `index_locationagency_lid` ON `locationagency` (`lid`)");        // 9
+            database.execSQL("CREATE INDEX `index_mission_launchId` ON `mission` (`launchId`)");            // 10
+            database.execSQL("CREATE INDEX `index_pads_locationId` ON `pads` (`locationId`)");              // 11
         }
     };
 
@@ -72,4 +73,29 @@ public abstract class AppDatabase extends RoomDatabase {
     }
 
     public abstract AppDao dao();
+
+    private static void dropIndexes(SupportSQLiteDatabase db){
+
+        try {
+            Cursor cursor = db.query("SELECT name FROM sqlite_master WHERE type == 'index'", null);
+            int numIndexes = (cursor == null) ? 0 : cursor.getCount();
+            Log.d(LOG_TAG, "Num indexes to drop: " + numIndexes);
+            if (numIndexes > 0) {
+                String[] indexNames = new String[numIndexes];
+                int i = 0;
+                while (cursor.moveToNext()) {
+                    indexNames[i++] = cursor.getString(cursor.getColumnIndexOrThrow("name"));
+                }
+
+                for (i = 0; i < indexNames.length; i++) {
+                    Log.d(LOG_TAG, "Dropping index: " + indexNames[i] + "...");
+                    db.execSQL("DROP INDEX " + indexNames[i]);
+                    Log.e(LOG_TAG, "...index dropped!");
+                }
+            }
+        }
+        catch(Exception e) {
+            Log.e(LOG_TAG, "Error dropping index", e);
+        }
+    }
 }
