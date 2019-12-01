@@ -55,27 +55,17 @@ public class MainActivity extends TabbedActivity {
             Utilities.showSnackBar(this,
                     R.string.list_empty,
                     Snackbar.LENGTH_INDEFINITE);
-
         checkSyncStatus();
     }
 
     /**
-     * Check application data sync status
+     * Check application data sync status for old devices
      */
     private void checkSyncStatus() {
-        Long lastExecTime = getDataSyncTimeStamp();
-
-        /* if data sync has never executed, run it immediately */
-        if (lastExecTime < 1) {
-            if (Utilities.isNetworkAvailable((ConnectivityManager)
-                    this.getSystemService(Context.CONNECTIVITY_SERVICE)))
-                requestImmediateSync();
-        }
         /* if running on a pre-lollipop handle sync status here */
-        else if (Build.VERSION.SDK_INT < Build.VERSION_CODES.LOLLIPOP) {
+        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.LOLLIPOP)
             if (SyncUtility.shouldRunPeriodicSyncPreLollipop(this))
                 requestImmediateSync();
-        }
     }
 
     @Override

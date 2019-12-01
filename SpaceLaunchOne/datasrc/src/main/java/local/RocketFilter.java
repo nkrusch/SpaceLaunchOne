@@ -1,8 +1,8 @@
 package local;
 
+import androidx.annotation.NonNull;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
-import androidx.annotation.NonNull;
 
 @SuppressWarnings({"NullableProblems", "SpellCheckingInspection"})
 @Entity(tableName = "rocketFilter")

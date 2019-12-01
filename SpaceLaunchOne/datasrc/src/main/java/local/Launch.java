@@ -1,11 +1,10 @@
 package local;
 
+import androidx.annotation.NonNull;
 import androidx.room.Entity;
 import androidx.room.Ignore;
 import androidx.room.Index;
 import androidx.room.PrimaryKey;
-import androidx.annotation.NonNull;
-
 import models.Location;
 
 @SuppressWarnings("NullableProblems")

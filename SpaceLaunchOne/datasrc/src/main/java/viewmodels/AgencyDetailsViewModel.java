@@ -7,7 +7,6 @@ import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import local.AgencyDetails;
 import local.AppDatabase;
-import local.LocationDetails;
 
 /**
  * This viewmodel provides launch details data

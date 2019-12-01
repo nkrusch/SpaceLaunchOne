@@ -1,33 +1,48 @@
 package local;
 
+import java.util.Date;
+import java.util.List;
+
 import androidx.room.Embedded;
 import androidx.room.Ignore;
 import androidx.room.Relation;
 
-import java.util.Date;
-import java.util.List;
-
 @SuppressWarnings("SpellCheckingInspection")
-public class    LaunchDetails {
+public class LaunchDetails {
 
     @Embedded
-    Launch summary;
+    private Launch summary;
 
     @Embedded
-    Details detail;
+    private Details detail;
+
+    @Relation(parentColumn = "agencyId", entityColumn = "aid")
+    private Agency agency;
+
+    @Relation(parentColumn = "locationId", entityColumn = "lid")
+    private Location location;
+
+    @Relation(parentColumn = "padId", entityColumn = "pid")
+    private Pad pad;
+
+    @Relation(parentColumn = "rocketId", entityColumn = "rid")
+    private Rocket rocket;
 
     @Relation(parentColumn = "id", entityColumn = "launchId")
-    private
-    List<Mission> missions;
+    private List<Mission> missions;
 
     @Ignore
     public LaunchDetails() {
     }
 
-    public LaunchDetails(Launch summary, Details detail, List<Mission> missions) {
+    public LaunchDetails(Launch summary, Details detail, List<Mission> missions, Agency agency, Location location, Pad pad, Rocket rocket) {
         this.detail = detail;
         this.summary = summary;
         this.missions = missions;
+        this.agency = agency;
+        this.location = location;
+        this.rocket = rocket;
+        this.pad = pad;
     }
 
     public List<Mission> getMissions() {
@@ -67,51 +82,47 @@ public class    LaunchDetails {
     }
 
     public int getAgencyId() {
-        return detail.getAgencyId();
+        return agency == null ? 0 : agency.getAid();
     }
 
     public String getAgencyName() {
-        return detail.getAgencyName();
+        return agency == null ? null : agency.getName();
     }
 
     public String getAgencyCountryCode() {
-        return detail.getAgencyCountryCode();
+        return agency == null ? null : agency.getCountryCode();
     }
 
     public String getAgencyAbbrev() {
-        return detail.getAgencyAbbrev();
+        return agency == null ? null : agency.getAbbrev();
     }
 
     public String getAgencyWikiURL() {
-        return detail.getAgencyWikiURL();
+        return agency == null ? null : agency.getWikiURL();
     }
 
     public String[] getAgencyInfoURLs() {
-        return detail.getAgencyInfoURLs();
-    }
-
-    public int getRocketId() {
-        return detail.getRocketId();
+        return agency == null ? null : agency.getInfoURLs();
     }
 
     public String getRocketName() {
-        return detail.getRocketName();
+        return rocket == null ? null : rocket.getName();
     }
 
     public String getRocketFamilyName() {
-        return detail.getRocketFamilyName();
+        return rocket == null ? null : rocket.getFamilyName();
     }
 
     public String getRocketConfiguration() {
-        return detail.getRocketConfiguration();
+        return rocket == null ? null : rocket.getConfiguration();
     }
 
     public String getRocketWikiURL() {
-        return detail.getRocketWikiURL();
+        return rocket == null ? null : rocket.getWikiURL();
     }
 
     public String[] getRocketInfoURLs() {
-        return detail.getRocketInfoURLs();
+        return rocket == null ? null : rocket.getInfoURLs();
     }
 
     public int getLocationId() {
@@ -119,39 +130,23 @@ public class    LaunchDetails {
     }
 
     public String getLocationCountryCode() {
-        return detail.getLocationCountryCode();
-    }
-
-    public String getLocationWikiURL() {
-        return detail.getLocationWikiURL();
-    }
-
-    public String[] getLocationURLs() {
-        return detail.getLocationURLs();
-    }
-
-    public int getPadId() {
-        return detail.getPadId();
+        return location == null ? null : location.getCountryCode();
     }
 
     public String getPadName() {
-        return detail.getPadName();
-    }
-
-    public String getPadWikiURL() {
-        return detail.getPadWikiURL();
+        return pad == null ? null : pad.getName();
     }
 
     public String[] getPadInfoURLs() {
-        return detail.getPadInfoURLs();
+        return pad == null ? null : pad.getInfoURLs();
     }
 
     public Double getLatitude() {
-        return detail.getLatitude();
+        return pad == null ? 0 : pad.getLatitude();
     }
 
     public Double getLongitude() {
-        return detail.getLongitude();
+        return pad == null ? 0 : pad.getLongitude();
     }
 
     public String getChanged() {
@@ -162,14 +157,6 @@ public class    LaunchDetails {
         return detail.getVidURLs();
     }
 
-    public String[] getInfoURLs() {
-        return detail.getInfoURLs();
-    }
-
-    public String getWikiURL() {
-        return detail.getWikiURL();
-    }
-
     public String getHashtag() {
         return detail.getHashtag();
     }
@@ -178,34 +165,8 @@ public class    LaunchDetails {
         return detail.getNet();
     }
 
-    public String getAgencyImage() {
-        return detail.getAgencyImage();
-    }
-
     public Date getLasModified() {
         return detail.getLastModified();
     }
 
-    private String regexSplit(String value, String separator) {
-        if (value != null) {
-            String[] parts = value.split(separator);
-            if (parts.length > 0) return parts[0].trim();
-        }
-        return "";
-    }
-
-    public String getLaunchShortName() {
-        return regexSplit(getName(), "|");
-    }
-
-    public String getPadShortName() {
-        return regexSplit(getPadName(), ",");
-    }
-
-    public String getAgencyShortName() {
-        return (getAgencyName() == null ||
-                getAgencyName().length() < 1 ||
-                getAgencyName().length() > 30) ?
-                getAgencyAbbrev() : getAgencyName();
-    }
 }

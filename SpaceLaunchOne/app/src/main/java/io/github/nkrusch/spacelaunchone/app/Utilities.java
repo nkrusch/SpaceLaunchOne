@@ -5,6 +5,7 @@ import android.content.Context;
 import android.content.res.Configuration;
 import android.content.res.Resources;
 import android.graphics.Rect;
+import android.media.Image;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.util.DisplayMetrics;
@@ -27,6 +28,7 @@ import java.util.Locale;
 import java.util.TimeZone;
 
 import androidx.annotation.Nullable;
+import api.ImageResolver;
 import io.github.nkrusch.spacelaunchone.R;
 
 /**
@@ -312,180 +314,45 @@ public class Utilities {
         return actualPosition.intersect(screen);
     }
 
-    public static int countryIcon(String countryCode) {
-        if (countryCode == null || countryCode.isEmpty())
-            return R.drawable.ic_earth;
+    public static String countryIcon(String countryCode) {
+        if (countryCode == null || countryCode.trim().isEmpty()) return null;
 
         if (countryCode.indexOf(",") > 0 || countryCode.indexOf("/") > 0) {
-            for (String c : countryCode.split(",|/")) {
-                int test = countryIcon(c);
-                if (test != R.drawable.ic_earth)
-                    return test;
+            for (String c : countryCode.split("[,/]")) {
+                String test = countryIcon(c);
+                if (test != null) return test;
             }
-            return R.drawable.ic_earth;
+            return null;
         }
 
-        switch (countryCode.toUpperCase()) {
-            case "USA":
-            case "US":
-                return R.drawable.flag_usa;
-            case "CHN":
-                return R.drawable.flag_chn;
-            case "IND":
-                return R.drawable.flag_ind;
-            case "FRA":
-                return R.drawable.flag_fra;
-            case "JPN":
-                return R.drawable.flag_jpn;
-            case "KOR":
-                return R.drawable.flag_kor;
-            case "NZL":
-                return R.drawable.flag_nzl;
-            case "RUS":
-                return R.drawable.flag_rus;
-            case "IRN":
-                return R.drawable.flag_irn;
-            case "GUF":
-                return R.drawable.flag_guf;
-            case "KAZ":
-                return R.drawable.flag_kaz;
-            case "ENG":
-            case "GBR":
-                return R.drawable.flag_gbr;
-            case "ITA":
-                return R.drawable.flag_ita;
-            case "CAN":
-            case "CA":
-                return R.drawable.flag_can;
-            case "THA":
-                return R.drawable.flag_tha;
-            case "TUR":
-                return R.drawable.flag_tur;
-            case "IDN":
-                return R.drawable.flag_idn;
-            case "ESP":
-                return R.drawable.flag_esp;
-            case "ARG":
-                return R.drawable.flag_arg;
-            case "UKR":
-                return R.drawable.flag_ukr;
-            case "AUT":
-                return R.drawable.flag_aut;
-            case "AUS":
-                return R.drawable.flag_aus;
-            case "ISR":
-                return R.drawable.flag_isr;
-            case "MEX":
-                return R.drawable.flag_mex;
-            case "MYS":
-                return R.drawable.flag_mys;
-            case "DNK":
-                return R.drawable.flag_dnk;
-            case "SAU":
-                return R.drawable.flag_sau;
-            case "SWE":
-                return R.drawable.flag_swe;
-            case "NLD":
-                return R.drawable.flag_nld;
-            case "BRA":
-                return R.drawable.flag_bra;
-            case "ALB":
-                return R.drawable.flag_alb;
-            case "ARE":
-            case "UAE":
-                return R.drawable.flag_uae;
-            case "VNM":
-                return R.drawable.flag_vnm;
-            case "CHE":
-                return R.drawable.flag_che;
-            case "NOR":
-                return R.drawable.flag_nor;
-            case "POL":
-                return R.drawable.flag_pol;
-            case "DEU":
-            case "GER":
-                return R.drawable.flag_deu;
-            case "BGD":
-                return R.drawable.flag_bgd;
-            case "PRK":
-                return R.drawable.flag_prk;
-            case "HRV":
-                return R.drawable.flag_hrv;
-            case "PRT":
-                return R.drawable.flag_prt;
-            case "BOL":
-                return R.drawable.flag_bol;
-            case "URY":
-                return R.drawable.flag_ury;
-            case "DZA":
-                return R.drawable.flag_dza;
-            case "VEN":
-                return R.drawable.flag_ven;
-            case "EGY":
-                return R.drawable.flag_egy;
-            case "BEL":
-                return R.drawable.flag_bel;
-            case "ZAF":
-                return R.drawable.flag_zaf;
-            case "SGP":
-                return R.drawable.flag_sin;
-            case "PAK":
-                return R.drawable.flag_pak;
-            case "PER":
-                return R.drawable.flag_per;
-            case "BGR":
-                return R.drawable.flag_bgr;
-            case "LUX":
-                return R.drawable.flag_lux;
-            case "COL":
-                return R.drawable.flag_col;
-            case "TUN":
-                return R.drawable.flag_tun;
-            case "HUN":
-                return R.drawable.flag_hun;
-            case "LTU":
-                return R.drawable.flag_ltu;
-            case "AZE":
-                return R.drawable.flag_aze;
-            case "LKA":
-                return R.drawable.flag_lka;
-            case "BMU":
-                return R.drawable.flag_bmu;
-            case "BLR":
-                return R.drawable.flag_blr;
-            case "MNG":
-                return R.drawable.flag_mng;
-            case "MAR":
-                return R.drawable.flag_mar;
-            case "GRC":
-                return R.drawable.flag_grc;
-            case "UZB":
-                return R.drawable.flag_uzb;
-            case "ROU":
-                return R.drawable.flag_rou;
-            case "TKM":
-                return R.drawable.flag_tkm;
-            case "CZE":
-                return R.drawable.flag_cze;
-            case "MUS":
-                return R.drawable.flag_mus;
-            case "TWN":
-                return R.drawable.flag_twn;
-            case "NGA":
-                return R.drawable.flag_nga;
-            case "FIN":
-                return R.drawable.flag_fin;
-            case "KEN":
-                return R.drawable.flag_ken;
-            case "MHL":
-                return R.drawable.flag_mhl;
-            default:
-                return R.drawable.ic_earth;
+        String tmp = countryCode.trim().toLowerCase();
+        switch (tmp) {
+            case "us":
+                tmp = "usa";
+                break;
+            case "eng":
+                tmp = "gbr";
+                break;
+            case "ca":
+                tmp = "can";
+                break;
+            case "are":
+                tmp = "uae";
+                break;
+            case "ger":
+                tmp = "deu";
+                break;
+            case "sgp":
+                tmp = "sin";
+                break;
         }
+
+        return ImageResolver.countryFlag(tmp);
     }
 
     public static String countryName(String countryCode) {
         switch ((countryCode + "").trim().toUpperCase()) {
+
             case "USA":
             case "US":
                 return "United States";
@@ -512,6 +379,134 @@ public class Utilities {
             case "ARE":
             case "UAE":
                 return "United Arab Emirates";
+
+            case "GUF":
+                return "French Guiana";
+            case "KAZ":
+                return "Kazakhstan";
+            case "ENG":
+            case "GBR":
+                return "Great Britain";
+            case "CAN":
+            case "CA":
+                return "Canada";
+            case "THA":
+                return "Thailand";
+            case "TUR":
+                return "Turkey";
+            case "IDN":
+                return "Indonesia";
+            case "ESP":
+                return "Spain";
+            case "ARG":
+                return "Argentina";
+            case "UKR":
+                return "Ukraine";
+            case "AUT":
+                return "Austria";
+            case "AUS":
+                return "Australia";
+            case "ISR":
+                return "Israel";
+            case "MEX":
+                return "Mexico";
+            case "MYS":
+                return "Malaysia";
+            case "DNK":
+                return "Denmark";
+            case "SWE":
+                return "Sweden";
+            case "NLD":
+                return "Netherlands";
+            case "BRA":
+                return "Brazil";
+            case "ALB":
+                return "Albania";
+            case "VNM":
+                return "Vietnam";
+            case "CHE":
+                return "Switzerland";
+            case "NOR":
+                return "Norway";
+            case "POL":
+                return "Poland";
+            case "DEU":
+            case "GER":
+                return "Germany";
+            case "BGD":
+                return "Bangladesh";
+            case "PRK":
+                return "North Korea";
+            case "HRV":
+                return "Croatia";
+            case "PRT":
+                return "Portugal";
+            case "BOL":
+                return "Bolivia";
+            case "URY":
+                return "Uruguay";
+            case "DZA":
+                return "Algeria";
+            case "VEN":
+                return "Venezuela";
+            case "EGY":
+                return "Egypt";
+            case "BEL":
+                return "Belgium";
+            case "ZAF":
+                return "South Africa";
+            case "SGP":
+                return "Singapore";
+            case "PAK":
+                return "Pakistan";
+            case "PER":
+                return "Peru";
+            case "BGR":
+                return "Bulgaria";
+            case "LUX":
+                return "Luxembourg";
+            case "COL":
+                return "Colombia";
+            case "TUN":
+                return "Tunisia";
+            case "HUN":
+                return "Hungary";
+            case "LTU":
+                return "Lithuania";
+            case "AZE":
+                return "Azerbaijan";
+            case "LKA":
+                return "Sri Lanka";
+            case "BMU":
+                return "Bermuda";
+            case "BLR":
+                return "Belarus";
+            case "MNG":
+                return "Mongolia";
+            case "MAR":
+                return "Morocco";
+            case "GRC":
+                return "Greece";
+            case "UZB":
+                return "Uzbekistan";
+            case "ROU":
+                return "Romania";
+            case "TKM":
+                return "Turkmenistan";
+            case "CZE":
+                return "Czechia";
+            case "MUS":
+                return "Mauritius";
+            case "TWN":
+                return "Taiwan";
+            case "NGA":
+                return "Nigeria";
+            case "FIN":
+                return "Finland";
+            case "KEN":
+                return "Kenya";
+            case "MHL":
+                return "Marshall Islands";
             default:
                 return countryCode;
         }

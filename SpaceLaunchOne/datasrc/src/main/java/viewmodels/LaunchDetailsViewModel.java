@@ -1,15 +1,13 @@
 package viewmodels;
 
 import android.app.Application;
-
-import androidx.lifecycle.AndroidViewModel;
-import androidx.lifecycle.LiveData;
-import androidx.lifecycle.MutableLiveData;
-
 import android.content.Context;
 
 import java.util.Date;
 
+import androidx.lifecycle.AndroidViewModel;
+import androidx.lifecycle.LiveData;
+import androidx.lifecycle.MutableLiveData;
 import api.AppExecutors;
 import local.AppDatabase;
 import local.FavoriteLaunch;
@@ -90,7 +88,7 @@ public class LaunchDetailsViewModel extends AndroidViewModel {
                 long lastModMs = launch.getLasModified() == null ? 0 : launch.getLasModified().getTime();
                 boolean occursSoon = Math.abs(current - launchDate) < MIN_RECENT;
                 boolean isStale = current - lastModMs > MIN_UPDATE;
-                if (!(occursSoon || isStale)) return;
+                if (false &&!(occursSoon || isStale)) return;
                 final Context context = getApplication().getBaseContext();
                 UpdateMethods.UpdateLaunchDetails(context, id, null);
             }

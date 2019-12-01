@@ -70,9 +70,10 @@ public class AgencyAdapter extends RecyclerView.Adapter<AgencyAdapter.ItemViewHo
             @Override
             public void onSuccess() {
             }
+
             @Override
             public void onError() {
-                holder.mImageView.setImageResource(Utilities.countryIcon(item.getCountryCode()));
+                holder.mImageView.setImageResource(R.drawable.ic_office_building);
             }
         });
     }

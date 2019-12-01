@@ -3,12 +3,9 @@ package service;
 import android.annotation.TargetApi;
 import android.app.job.JobParameters;
 import android.app.job.JobService;
-import android.content.SharedPreferences;
 import android.os.Build;
 import android.preference.PreferenceManager;
 import android.util.Log;
-
-import java.util.Date;
 
 import api.OnLoadCallback;
 
@@ -18,7 +15,7 @@ import api.OnLoadCallback;
 @TargetApi(Build.VERSION_CODES.LOLLIPOP)
 public class UpdateJobService extends JobService {
 
-    public static final int UPDATE_DATA_JOB_ID = 1;
+    public static final int UPDATE_DATA_JOB_ID = 1896;
 
     /**
      * Run data synchronization using job service
@@ -32,7 +29,6 @@ public class UpdateJobService extends JobService {
                 UpdateTime.updateSyncTimestamp(PreferenceManager.getDefaultSharedPreferences(getApplicationContext()));
                 Log.d("SYNC", "completed sync job service!");
             }
-
             @Override
             public void onError(Exception e) {
             }

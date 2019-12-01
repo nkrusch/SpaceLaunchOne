@@ -1,5 +1,7 @@
 package models;
 
+import java.util.Arrays;
+
 import models.base.InfoObj;
 
 public class Mission extends InfoObj {
@@ -19,7 +21,6 @@ public class Mission extends InfoObj {
     public void setTypeName(String typeName) {
         this.typeName = typeName;
     }
-
 
     public String getDescription() {
         return description;

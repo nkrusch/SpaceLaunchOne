@@ -1,22 +1,16 @@
 package service;
 
 import android.content.Context;
-
-import androidx.annotation.Nullable;
-
 import android.util.ArrayMap;
 import android.util.Log;
-import android.util.SparseArray;
 
-import java.util.Dictionary;
+import java.util.Arrays;
 import java.util.HashMap;
-import java.util.HashSet;
 import java.util.LinkedList;
 import java.util.List;
-import java.util.Map;
 import java.util.Objects;
-import java.util.Set;
 
+import androidx.annotation.Nullable;
 import api.ImageResolver;
 import api.LaunchLibrary;
 import api.OnLoadCallback;
@@ -29,11 +23,11 @@ import local.Location;
 import local.LocationAgency;
 import local.Mission;
 import local.Pad;
+import local.Rocket;
 import models.Agencies;
 import models.Launches;
 import models.Locations;
 import models.Pads;
-import models.Rocket;
 import models.data.BuildConfig;
 
 /**
@@ -41,6 +35,8 @@ import models.data.BuildConfig;
  */
 @SuppressWarnings("SameParameterValue")
 public class UpdateMethods {
+
+    private static final String TAG = "UPDATE";
 
     public static void UpdateAppData(Context context, final OnLoadCallback callback) {
         Log.d("UPDATE", "updating app data....");
@@ -90,6 +86,7 @@ public class UpdateMethods {
                 final models.Rocket r = l.getRocket();
                 final models.Location loc = l.getLocation();
                 final models.Agency a = l.getLsp();
+                final boolean valid_agency = a != null && a.getId() > 0;
 
                 details[i] = Details.Map(l);
                 launches[i] = Launch.Map(l);
@@ -101,22 +98,26 @@ public class UpdateMethods {
                     if (rockets.containsKey(rocketId) && rockets.get(rocketId) != null) {
                         Objects.requireNonNull(rockets.get(rocketId)).addLaunchId(launchId);
                     } else {
-                        r.addLaunchId(launchId);
-                        rockets.put(rocketId, r);
+                        Rocket rocket = Rocket.Map(r);
+                        rocket.addLaunchId(launchId);
+                        rockets.put(rocketId, rocket);
                     }
                 }
 
-                if (a != null && a.getId() > 0 && !agencies.containsKey(a.getId())) {
-                    a.setIslsp(1);
-                    agencies.put(a.getId(), Agency.Map(a));
+                if (valid_agency) {
+                    if (!agencies.containsKey(a.getId())) {
+                        a.setIslsp(1);
+                        agencies.put(a.getId(), Agency.Map(a));
+                    } else if (Objects.requireNonNull(agencies.get(a.getId())).getIslsp() == 0) {
+                        Objects.requireNonNull(agencies.get(a.getId())).setIslsp(1);
+                    }
                 }
 
                 if (loc != null) {
-
                     if (!locations.containsKey(loc.getId()))
                         locations.put(loc.getId(), Location.Map(loc));
 
-                    Pad.Map(pads, loc.getPads());
+                    Pad.Map(pads, loc.getId(), loc.getPads());
 
                     LocationAgency.Map(laRefX, loc.getId(), loc.getPads(), a);
 
@@ -124,41 +125,68 @@ public class UpdateMethods {
                         for (models.Pad pad : loc.getPads())
                             if (pad.getAgencies() != null && pad.getAgencies().length > 0)
                                 for (models.Agency ag : pad.getAgencies())
-                                    if (ag != null && ag.getId() > 0 && !agencies.containsKey(ag.getId()))
+                                    if (valid_agency && !agencies.containsKey(ag.getId()))
                                         agencies.put(ag.getId(), Agency.Map(ag));
                 }
 
-                Mission.Map(missions, l.getId(), l.getMissions());
-                AgencyMission.Map(amRefX, l.getMissions());
-
                 if (l.getMissions() != null)
-                    for (models.Mission mis : l.getMissions())
-                        if (mis.getAgencies() != null && mis.getAgencies().length > 0)
-                            for (models.Agency ag : mis.getAgencies())
-                                if (ag != null && ag.getId() > 0 && !agencies.containsKey(ag.getId()))
-                                    agencies.put(ag.getId(), Agency.Map(ag));
+                    for (models.Mission _mission : l.getMissions()) {
+                        final int mid = _mission.getId();
+
+                        if (!missions.containsKey(mid)) {
+                            missions.put(mid, Mission.Map(l.getId(), _mission));
+                        }
+                        if (valid_agency) {
+                            String akey = AgencyMission.key(mid, a.getId());
+                            if (!amRefX.containsKey(akey))
+                                amRefX.put(akey, new AgencyMission(_mission.getId(), a.getId()));
+                        }
+                        if (_mission.getAgencies() == null) continue;
+                        for (models.Agency ag : _mission.getAgencies()) {
+                            String key = AgencyMission.key(_mission.getId(), ag.getId());
+                            if (!agencies.containsKey(ag.getId()))
+                                agencies.put(ag.getId(), Agency.Map(ag));
+                            if (!amRefX.containsKey(key)) {
+                                amRefX.put(key, new AgencyMission(_mission.getId(), ag.getId()));
+                            }
+                        }
+                    }
             }
 
-            Log.d("UPDATE",
-                    "\nlaunches: " + launches.length + "\n" +
-                            "details: " + details.length + "\n" +
-                            "missions: " + missions.size() + "\n" +
-                            "am ref X: " + amRefX.size() + "\n" +
-                            "la ref X: " + laRefX.size() + "\n" +
-                            "agencies: " + agencies.size() + "\n" +
-                            "locations: " + locations.size() + "\n" +
-                            "pads: " + pads.size() + "\n" +
-                            "rockets: " + rockets.size());
+            if (launches.length > 1) Log.d(TAG, " \n" +
+                    "========================\n" +
+                    "| Launches:  |  " + String.format("%5d  |\n", launches.length) +
+                    "| Details:   |  " + String.format("%5d  |\n", details.length) +
+                    "| Missions:  |  " + String.format("%5d  |\n", missions.size()) +
+                    "| Ag-x-mis:  |  " + String.format("%5d  |\n", amRefX.size()) +
+                    "| Loc-x-ag:  |  " + String.format("%5d  |\n", laRefX.size()) +
+                    "| Agencies:  |  " + String.format("%5d  |\n", agencies.size()) +
+                    "| Locations: |  " + String.format("%5d  |\n", locations.size()) +
+                    "| Pads:      |  " + String.format("%5d  |\n", pads.size()) +
+                    "| Rockets:   |  " + String.format("%5d  |\n", rockets.size()) +
+                    "========================");
+
+            else Log.d(TAG, " \n" +
+                    "\nLAUNCH\n==========\n" + Arrays.toString(launches).replaceAll("\\[|\\]", "") +
+                    "\n\nDETAILS\n==========\n" + Arrays.toString(details).replaceAll("\\[|\\]", "") +
+                    "\n\nMISSIONS\n==========\n" + Arrays.toString(missions.values().toArray()).replaceAll("\\[|\\]", "") +
+                    "\n\nAGENCY X MISSION\n==========\n" + Arrays.toString(amRefX.values().toArray()).replaceAll("\\[|\\]", "") +
+                    "\n\nLOCATION X AGENCY\n==========\n" + Arrays.toString(laRefX.values().toArray()).replaceAll("\\[|\\]", "") +
+                    "\n\nAGENCIES\n==========\n" + Arrays.toString(agencies.values().toArray()).replaceAll("\\[|\\]", "") +
+                    "\n\nLOCATIONS\n==========\n" + Arrays.toString(locations.values().toArray()).replaceAll("\\[|\\]", "") +
+                    "\n\nPADS\n==========\n" + Arrays.toString((pads.values().toArray())).replaceAll("\\[|\\]", "") +
+                    "\n\nROCKETS\n==========\n" + Arrays.toString(rockets.values().toArray()).replaceAll("\\[|\\]", "") + "\n");
 
             // save
             db.dao().insertAll(launches);
             db.dao().insertAll(details);
             db.dao().insertAll(missions.values().toArray(new Mission[0]));
             db.dao().insertAll(amRefX.values().toArray(new AgencyMission[0]));
-            db.dao().insertAll(agencies.values().toArray(new Agency[0]));
-            db.dao().insertAll(locations.values().toArray(new Location[0]));
-            db.dao().insertAll(pads.values().toArray(new Pad[0]));
             db.dao().insertAll(laRefX.values().toArray(new LocationAgency[0]));
+            db.dao().insertAll(locations.values().toArray(new Location[0]));
+            db.dao().insertAll(agencies.values().toArray(new Agency[0]));
+            db.dao().insertAll(rockets.values().toArray(new Rocket[0]));
+            db.dao().insertAll(pads.values().toArray(new Pad[0]));
 
             if (rockets.size() == 0 || !fetchImages) {
                 if (callback != null) callback.call(true);
@@ -182,7 +210,7 @@ public class UpdateMethods {
                                 db.dao().updateImage(launchId, image);
                         }
                         if (images.size() == rocketCount && callback != null) {
-                            Log.d("UPDATE", "done fetching images... " + rocketCount);
+                            Log.d(TAG, "done!");
                             callback.call(true);
                         }
                     }

@@ -1,8 +1,8 @@
 package viewmodels;
 
-import androidx.lifecycle.LiveData;
-
 import java.util.List;
+
+import androidx.lifecycle.LiveData;
 
 public interface IFilterViewModel<T> {
 

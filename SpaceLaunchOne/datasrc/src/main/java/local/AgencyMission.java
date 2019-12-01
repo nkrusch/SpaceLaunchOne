@@ -2,9 +2,6 @@ package local;
 
 import android.util.ArrayMap;
 
-import java.util.LinkedList;
-import java.util.List;
-
 import androidx.annotation.NonNull;
 import androidx.room.Entity;
 import androidx.room.Ignore;
@@ -13,7 +10,10 @@ import androidx.room.Index;
 @SuppressWarnings({"NullableProblems", "SpellCheckingInspection"})
 @Entity(tableName = "agencymission",
         primaryKeys = {"mid", "aid"},
-        indices = {@Index(value = {"mid"})})
+        indices = {
+                @Index(value = {"mid"}),
+                @Index(value = {"aid"})
+        })
 public class AgencyMission {
 
 
@@ -47,18 +47,13 @@ public class AgencyMission {
         this.aid = aid;
     }
 
-    @Ignore
-    public static void Map(ArrayMap<String, AgencyMission> ref, models.Mission[] missions) {
-        if (missions == null || missions.length == 0) return;
+    public static String key(int mid, int aid) {
+        return String.format("%d,%d", mid, aid);
+    }
 
-        for (models.Mission mission : missions) {
-            int mid = mission.getId();
-            if (mission.getAgencies() != null && mission.getAgencies().length > 0)
-                for (models.Agency agency : mission.getAgencies()) {
-                    String key = String.valueOf(mid + ',' + agency.getId());
-                    if (ref.containsKey(key) || mid < 1 || agency.getId() < 1) continue;
-                    ref.put(key, new AgencyMission(mid, agency.getId()));
-                }
-        }
+    @NonNull
+    @Override
+    public String toString() {
+        return String.format("mission: %d agency: %d", mid, aid);
     }
 }

@@ -1,7 +1,6 @@
 package local;
 
 import androidx.room.ColumnInfo;
-import androidx.room.Ignore;
 
 @SuppressWarnings("SpellCheckingInspection")
 public class LocationLookup implements IFilter {

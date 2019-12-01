@@ -5,7 +5,6 @@ import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.select.Elements;
 
-import models.Agency;
 import models.Launch;
 import models.Rocket;
 
@@ -52,7 +51,7 @@ public class ImageResolver {
         });
     }
 
-    public void resolveImage(final Rocket rocket, final OnLoadCallback callback) {
+    public void resolveImage(final local.Rocket rocket, final OnLoadCallback callback) {
 
         final String defaultImage = rocket.getImageURL();
         final String wikiUrl = rocket.getWikiURL();
@@ -83,6 +82,10 @@ public class ImageResolver {
     public static String resolveMissionImage(final String category) {
         return String.format("https://raw.githubusercontent.com/nkrusch/SpaceLaunchOne/master/docs/img/missions/%s.png",
                 category.toLowerCase().replaceAll("[ /]", "_"));
+    }
+
+    public static String countryFlag(final String countryAbbrev) {
+        return String.format("https://raw.githubusercontent.com/nkrusch/SpaceLaunchOne/master/docs/img/flags/flag_%s.webp", countryAbbrev);
     }
 }
 

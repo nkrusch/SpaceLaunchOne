@@ -57,8 +57,8 @@ public class MissionsAdapter extends RecyclerView.Adapter<MissionsAdapter.ItemVi
 
         Mission item = dataSource.get(position);
         final Context context = holder.mImageView.getContext();
-        holder.mTextView.setText(Utilities.getLocationShortName(item.getName()));
-        holder.mSubText1.setText(String.format("%s", item.getCategory()));
+        holder.mTextView.setText(item.getName());
+        holder.mSubText1.setText(item.getCategory());
         holder.mNumber.setText(String.format(Locale.getDefault(), "%02d", position + 1));
 
         holder.mImageView.setVisibility(View.VISIBLE);

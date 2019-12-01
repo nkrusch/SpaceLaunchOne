@@ -19,9 +19,7 @@ public class Location {
     private String name;
     private String countryCode;
     private String[] infoURLs;
-    private String changed;
     private Date lastModified;
-
 
     public int getLid() {
         return lid;
@@ -55,14 +53,6 @@ public class Location {
         this.infoURLs = infoURLs;
     }
 
-    public String getChanged() {
-        return changed;
-    }
-
-    public void setChanged(String changed) {
-        this.changed = changed;
-    }
-
     public Date getLastModified() {
         return lastModified;
     }
@@ -87,7 +77,6 @@ public class Location {
             a.setInfoURLs(tmp.toArray(new String[0]));
         } else a.setInfoURLs(loc.getInfoURLs());
         a.setInfoURLs(loc.getInfoURLs());
-        a.setChanged(loc.getChanged());
         a.setLastModified(new Date());
         return a;
     }
@@ -98,7 +87,6 @@ public class Location {
         return "lid: " + lid + "\n" +
                 "name: " + name + "\n" +
                 "countryCode: " + countryCode + "\n" +
-                "infoURLs: " + Arrays.toString(infoURLs) + "\n" +
-                "changed: " + changed + "\n";
+                "infoURLs: " + Arrays.toString(infoURLs);
     }
 }

@@ -1,5 +1,6 @@
 package local;
 
+import java.util.Arrays;
 import java.util.Date;
 
 import androidx.annotation.NonNull;
@@ -172,7 +173,7 @@ public class Agency {
                 "islsp: " + islsp + "\n" +
                 "type: " + type + "\n" +
                 "image: " + getImage() + "\n" +
-                "infoURLs: " + infoURLs + "\n" +
+                "infoURLs: " + Arrays.toString(infoURLs) + "\n" +
                 "wikiURL: " + wikiURL + "\n" +
                 "changed: " + changed + "\n";
     }

@@ -2,9 +2,6 @@ package local;
 
 import android.util.ArrayMap;
 
-import java.util.LinkedList;
-import java.util.List;
-
 import androidx.annotation.NonNull;
 import androidx.room.Entity;
 import androidx.room.Ignore;
@@ -13,7 +10,10 @@ import androidx.room.Index;
 @SuppressWarnings({"NullableProblems", "SpellCheckingInspection"})
 @Entity(tableName = "locationagency",
         primaryKeys = {"lid", "aid"},
-        indices = {@Index(value = {"aid"})})
+        indices = {
+                @Index(value = {"aid"}),
+                @Index(value = {"lid"})
+        })
 public class LocationAgency {
 
 
@@ -47,22 +47,33 @@ public class LocationAgency {
         this.aid = aid;
     }
 
+    public static String key(int lid, int aid) {
+        return String.format("%d,%d", lid, aid);
+    }
 
     @Ignore
     public static void Map(ArrayMap<String, LocationAgency> ref, final int locationId, models.Pad[] pads, models.Agency ag) {
-        if (pads == null || pads.length == 0 || locationId < 1) return;
+        if (locationId < 1) return;
+
+        if (ag != null && ag.getId() > 0) {
+            String key = key(locationId, ag.getId());
+            if (!ref.containsKey(key)) ref.put(key, new LocationAgency(locationId, ag.getId()));
+        }
+        if (pads == null) return;
+
         for (models.Pad pad : pads) {
-            if (pad.getAgencies() != null && pad.getAgencies().length > 0)
-                for (models.Agency agency : pad.getAgencies()) {
-                    String key = String.valueOf(locationId + ',' + agency.getId());
-                    if (ref.containsKey(key) || agency.getId() < 1) continue;
-                    ref.put(key, new LocationAgency(locationId, agency.getId()));
-                }
+            if (pad.getAgencies() == null) continue;
+            for (models.Agency agency : pad.getAgencies()) {
+                String k = key(locationId, agency.getId());
+                if (!ref.containsKey(k) && agency.getId() > 0)
+                    ref.put(k, new LocationAgency(locationId, agency.getId()));
+            }
         }
-        if (ag != null) {
-            String key = String.valueOf(locationId + ',' + ag.getId());
-            if (ref.containsKey(key) || ag.getId() < 1) return;
-            ref.put(key, new LocationAgency(locationId, ag.getId()));
-        }
+    }
+
+    @NonNull
+    @Override
+    public String toString() {
+        return String.format("location: %d agency: %d", lid, aid);
     }
 }

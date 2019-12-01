@@ -8,7 +8,6 @@ import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.LiveData;
 import local.AppDatabase;
 import local.Location;
-import local.LocationLookup;
 
 public class LocationListViewModel extends AndroidViewModel {
 

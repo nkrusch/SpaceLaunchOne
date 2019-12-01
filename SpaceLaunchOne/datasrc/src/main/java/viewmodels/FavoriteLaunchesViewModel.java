@@ -2,7 +2,6 @@ package viewmodels;
 
 import android.app.Application;
 
-import java.util.Date;
 import java.util.List;
 
 import androidx.lifecycle.AndroidViewModel;

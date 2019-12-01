@@ -2,14 +2,10 @@ package viewmodels;
 
 import android.app.Application;
 
-import java.util.List;
-import java.util.Objects;
-
 import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import local.AppDatabase;
-import local.Launch;
 import local.LocationDetails;
 
 /**

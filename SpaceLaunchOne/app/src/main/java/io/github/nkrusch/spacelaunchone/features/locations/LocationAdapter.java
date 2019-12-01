@@ -1,10 +1,14 @@
 package io.github.nkrusch.spacelaunchone.features.locations;
 
+import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import com.squareup.picasso.Callback;
+import com.squareup.picasso.Picasso;
 
 import java.util.List;
 import java.util.Locale;
@@ -52,11 +56,24 @@ public class LocationAdapter extends RecyclerView.Adapter<LocationAdapter.ItemVi
     public void onBindViewHolder(@NonNull final LocationAdapter.ItemViewHolder holder, int position) {
 
         Location item = dataSource.get(position);
+        final Context context = holder.mImageView.getContext();
+
         holder.mTextView.setText(Utilities.getLocationShortName(item.getName()));
-        holder.mSubText1.setText(Utilities.getPlaceName(item.getName()));
+        holder.mSubText1.setText(Utilities.countryName(item.getCountryCode()));
         holder.mNumber.setText(String.format(Locale.getDefault(), "%02d", position + 1));
-        int imgRes = Utilities.countryIcon(item.getCountryCode());
-        holder.mImageView.setImageResource(imgRes);
+
+        holder.mImageView.setVisibility(View.VISIBLE);
+        Picasso.with(context).load(Utilities.countryIcon(item.getCountryCode()))
+                .into(holder.mImageView, new Callback() {
+                    @Override
+                    public void onSuccess() {
+                    }
+
+                    @Override
+                    public void onError() {
+                        holder.mImageView.setImageResource(R.drawable.ic_earth);
+                    }
+                });
     }
 
     @Override

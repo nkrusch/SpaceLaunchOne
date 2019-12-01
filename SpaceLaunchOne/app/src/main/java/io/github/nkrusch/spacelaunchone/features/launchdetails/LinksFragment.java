@@ -66,9 +66,10 @@ public class LinksFragment extends HorizontalRecyclerViewFragment
         if (launch == null) return;
         List<LinkItem> tmp = new LinkedList<>();
         addLinks(tmp, launch.getRocketName(), merge(launch.getRocketInfoURLs(), launch.getRocketWikiURL()));
-        if (launch.getMissions() != null) for (Mission m : launch.getMissions())
-            addLinks(tmp, m.getName() + " mission", merge(null, m.getWikiURL()));
-        addLinks(tmp, launch.getPadName(), merge(launch.getPadInfoURLs(), launch.getPadWikiURL()));
+        if (launch.getMissions() != null)
+            for (Mission m : launch.getMissions())
+                addLinks(tmp, m.getName() + " mission", merge(null, m.getWikiURL()));
+        addLinks(tmp, launch.getPadName(), merge(launch.getPadInfoURLs(), null));
         addLinks(tmp, launch.getAgencyName(), merge(launch.getAgencyInfoURLs(), launch.getAgencyWikiURL()));
         handleDataChange(tmp);
     }
@@ -83,25 +84,7 @@ public class LinksFragment extends HorizontalRecyclerViewFragment
 
             if (host.contains("wikipedia")) {
                 tmp.add(new LinkItem(String.format("%s", name), u));
-                //                host = "wikipedia";
-//                icon = R.drawable.ic_wikipedia;
             }
-            //            else if (host.contains("facebook")) {
-//                host = "facebook";
-//                icon = R.drawable.ic_facebook_box;
-//            } else if (u.contains("twitter")) {
-//                host = "twitter";
-//                icon = R.drawable.ic_twitter;
-//            } else if (u.contains("linkedin")) {
-//                host = "linkedid";
-//                icon = R.drawable.ic_linkedin_box;
-//            } else if (u.contains("instagram")) {
-//                host = "instagram";
-//                icon = R.drawable.ic_instagram;
-//            } else if (u.contains("youtube")) {
-//                host = "youtube";
-//                icon = R.drawable.ic_youtube;
-//            }
         }
     }
 

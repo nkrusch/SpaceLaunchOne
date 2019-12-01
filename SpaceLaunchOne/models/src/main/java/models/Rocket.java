@@ -16,8 +16,6 @@ public class Rocket extends InfoObj {
     private String configuration;
     private int[] imageSizes;
 
-    // used internally while resolving images
-    private List<Integer> launchIds = new LinkedList<>();
 
     public String getConfiguration() {
         return configuration;
@@ -67,14 +65,4 @@ public class Rocket extends InfoObj {
         this.imageSizes = imageSizes;
     }
 
-    public List<Integer> getLaunchIds() {
-        return launchIds;
-    }
-
-    public void setLaunchIds(List<Integer> launchIds) {
-        this.launchIds = launchIds;
-    }
-    public void addLaunchId(Integer launchId){
-        this.launchIds.add(launchId);
-    }
 }

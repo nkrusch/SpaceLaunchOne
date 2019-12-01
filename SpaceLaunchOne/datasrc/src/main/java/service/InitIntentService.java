@@ -2,8 +2,8 @@ package service;
 
 import android.app.IntentService;
 import android.content.Intent;
-import androidx.annotation.Nullable;
 
+import androidx.annotation.Nullable;
 import api.LaunchLibrary;
 import api.OnLoadCallback;
 import local.AppDatabase;

@@ -19,6 +19,7 @@ import java.util.Date;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import api.ImageResolver;
 import io.github.nkrusch.spacelaunchone.R;
 import io.github.nkrusch.spacelaunchone.app.CircleTransform;
 import io.github.nkrusch.spacelaunchone.app.Utilities;
@@ -37,6 +38,7 @@ public class SummaryFragment extends DetailsBaseFragment {
     private ImageView mRocketImage;
     private ImageView mStatusImage;
     private ImageView mCountryImage;
+    private ImageView mAgencyImage;
     private TextView mStatus;
     private TextView mAgency;
     private TextView mRocket;
@@ -77,6 +79,7 @@ public class SummaryFragment extends DetailsBaseFragment {
         mCountryImage = view.findViewById(R.id.event_country);
         mRocketImage = view.findViewById(R.id.event_rocket);
         mStatusImage = view.findViewById(R.id.event_status);
+        mAgencyImage = view.findViewById(R.id.event_agency);
         mRocketCardImage = view.findViewById(R.id.details_rocket_image);
 
         mEventName = view.findViewById(R.id.event_name);
@@ -138,8 +141,7 @@ public class SummaryFragment extends DetailsBaseFragment {
         String agencyNameValue = StringUtils.isEmpty(agency) ? agencyFullName :
                 String.format("%s (%s)", agencyFullName, agency);
         String rocketFamily = coalesce(launch.getRocketFamilyName(), unknown);
-        String country = coalesce(Utilities.countryName(launch.getLocationCountryCode()),
-                Utilities.countryName(launch.getAgencyCountryCode()), unknown);
+        String country = coalesce(Utilities.countryName(launch.getLocationCountryCode()), unknown);
         String location = String.format("%s\n%s %s", launch.getPadName(), launch.getLocationName(), launch.getLocationCountryCode()).trim();
         String changeDate = StringUtils.isEmpty(launch.getChanged()) ? unknown : Utilities
                 .localTimeLabel(models.Launch.changeDate(launch.getChanged()), "MMMM d, yyyy HH:mm");
@@ -162,11 +164,14 @@ public class SummaryFragment extends DetailsBaseFragment {
                 coalesce(launch.getRocketName(), unknown) + " / " +
                         coalesce(launch.getRocketFamilyName(), unknown) + " / " +
                         coalesce(launch.getRocketConfiguration(), unknown));
+
         mStatusImage.setImageResource(statusImage(launch.getStatus()));
 
-        Picasso.with(getContext()).load(Utilities.countryIcon(coalesce(launch.getLocationCountryCode(),
-                launch.getAgencyCountryCode())))
+        Picasso.with(getContext()).load(Utilities.countryIcon(launch.getLocationCountryCode()))
                 .noFade().transform(new CircleTransform()).into(mCountryImage);
+
+        Picasso.with(getContext()).load(ImageResolver.resolveImage(launch.getAgencyId()))
+                .noFade().transform(new CircleTransform()).into(mAgencyImage);
 
         setImage(launch.getImage(), mRocketImage);
         setRocket(launch.getImage());

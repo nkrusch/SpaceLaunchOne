@@ -6,13 +6,8 @@ import java.util.List;
 
 import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.LiveData;
-import androidx.lifecycle.MutableLiveData;
-import api.AppExecutors;
-import local.Agency;
-import local.AgencyFilter;
 import local.Agency;
 import local.AppDatabase;
-import local.Launch;
 
 public class AgencyListViewModel extends AndroidViewModel {
 

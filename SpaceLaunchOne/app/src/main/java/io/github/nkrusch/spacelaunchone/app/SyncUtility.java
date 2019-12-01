@@ -36,14 +36,14 @@ public class SyncUtility {
     private static Long getSyncInterval(Context context) {
         SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences(context);
         String pref = sharedPref.getString(context.getResources().getString(R.string.sync_frequency), null);
-        Integer SYNC_INTERVAL_HOURS = (pref == null) ? BuildConfig.UpdateInterval : Integer.parseInt(pref);
+        int SYNC_INTERVAL_HOURS = (pref == null) ? BuildConfig.UpdateInterval : Integer.parseInt(pref);
         final long interval_milliseconds = SYNC_INTERVAL_HOURS * MS_IN_HOUR;
         Log.d(TAG, "sync interval: " + SYNC_INTERVAL_HOURS);
         return interval_milliseconds;
     }
 
     @RequiresApi(Build.VERSION_CODES.LOLLIPOP)
-    public static void scheduleJob(Context context) {
+    static void scheduleJob(Context context) {
         scheduleJob(context, false, -1);
     }
 

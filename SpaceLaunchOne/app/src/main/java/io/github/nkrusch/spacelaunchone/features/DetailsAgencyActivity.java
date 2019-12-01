@@ -28,8 +28,8 @@ public class DetailsAgencyActivity extends TabbedActivity {
     private static final String EXTRA_ID = "extra_id";
     private static final String EXTRA_NAME = "extra_name";
     private final int tabCount = 2;
-    private final int LAUNCH_INDEX = 0;
-    private final int MISSIONS_INDEX = 1;
+    private final int LAUNCH_INDEX = 1;
+    private final int MISSIONS_INDEX = 0;
 
     AgencyDetailsViewModel vm;
     private String title;

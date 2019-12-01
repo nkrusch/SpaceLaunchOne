@@ -12,7 +12,6 @@ import androidx.room.Entity;
 import androidx.room.Ignore;
 import androidx.room.Index;
 import androidx.room.PrimaryKey;
-import models.Agency;
 
 @Entity(tableName = "pads",
         indices = {@Index(value = {"locationId"})})
@@ -27,7 +26,6 @@ public class Pad implements Comparable<Pad> {
     private int retired;
     private int locationId;
     private String[] infoURLs;
-    private String changed;
     private Date lastModified;
 
     public int getPid() {
@@ -90,14 +88,6 @@ public class Pad implements Comparable<Pad> {
         this.infoURLs = infoURLs;
     }
 
-    public String getChanged() {
-        return changed;
-    }
-
-    public void setChanged(String changed) {
-        this.changed = changed;
-    }
-
     public Date getLastModified() {
         return lastModified;
     }
@@ -107,32 +97,36 @@ public class Pad implements Comparable<Pad> {
     }
 
     @Ignore
-    public static Pad Map(models.Pad pad) {
+    public static Pad Map(models.Pad pad, int locationId) {
         Pad a = new Pad();
         a.setPid(pad.getId());
         a.setName(pad.getName());
         a.setLatitude(pad.getLatitude());
         a.setLongitude(pad.getLongitude());
         a.setRetired(pad.getRetired());
-        a.setLocationId(pad.getLocationid());
+        a.setLocationId(locationId);
         if (pad.getWikiURL() != null && !pad.getWikiURL().isEmpty()) {
             List<String> tmp = new LinkedList<>();
             tmp.add(pad.getWikiURL());
             if (pad.getInfoURLs() != null && pad.getInfoURLs().length > 0)
                 tmp.addAll(Arrays.asList(pad.getInfoURLs()));
             a.setInfoURLs(tmp.toArray(new String[0]));
-        } else if (pad.getInfoURLs() != null && pad.getInfoURLs().length > 0)
-            a.setInfoURLs(pad.getInfoURLs());
-        a.setChanged(pad.getChanged());
+        } else a.setInfoURLs(pad.getInfoURLs());
         a.setLastModified(new Date());
         return a;
     }
 
-    public static void Map(ArrayMap<Integer, Pad> pads, models.Pad[] padArray) {
+    @Ignore
+    public static Pad Map(models.Pad pad) {
+        return Map(pad, pad.getLocationid());
+    }
+
+    @Ignore
+    public static void Map(ArrayMap<Integer, Pad> pads, final int locationId, models.Pad[] padArray) {
         if (padArray != null && padArray.length > 0) {
             for (models.Pad pad : padArray)
                 if (!pads.containsKey(pad.getId()))
-                    pads.put(pad.getId(), Map(pad));
+                    pads.put(pad.getId(), Map(pad, locationId));
         }
     }
 
@@ -146,7 +140,6 @@ public class Pad implements Comparable<Pad> {
                 "retired: " + retired + "\n" +
                 "locationId: " + locationId + "\n" +
                 "infoURLs: " + Arrays.toString(infoURLs) + "\n" +
-                "changed: " + changed + "\n" +
                 "lastModified: " + lastModified;
     }
 
