@@ -1,5 +1,7 @@
 package api;
 
+import android.util.Log;
+
 import org.jsoup.Connection;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
@@ -7,6 +9,7 @@ import org.jsoup.select.Elements;
 
 import models.Launch;
 import models.Rocket;
+import models.data.BuildConfig;
 
 /**
  * This class provides image utilities for finding the best image of a rocket
@@ -30,17 +33,11 @@ public class ImageResolver {
                                 return;
                             }
                         }
-                        if (!urlStr.contains("wikipedia")) {
-                            Elements metaIcon = doc.select("link[rel*='icon']");
-                            if (metaIcon != null) {
-                                imageUrl = metaIcon.attr("href");
-                                if (!imageUrl.contains(".ico")) {
-                                    if (!imageUrl.startsWith("http"))
-                                        imageUrl = (urlStr + imageUrl).replaceAll("//", "/");
-                                    callback.call(imageUrl);
-                                    return;
-                                }
-                            }
+                        Elements metaIcon = doc.select(".infobox .image img");
+                        if (metaIcon != null) {
+                            imageUrl = metaIcon.attr("src");
+                            callback.call(imageUrl);
+                            return;
                         }
                     }
                 } catch (Exception e) {
@@ -57,16 +54,18 @@ public class ImageResolver {
         final String wikiUrl = rocket.getWikiURL();
 
         // if image is non-placeholder provided by API -> use it!
-        if (!Launch.isPlaceholderImage(defaultImage) || wikiUrl == null || wikiUrl.length() == 0) {
+        if ((!Launch.isPlaceholderImage(defaultImage) && defaultImage.startsWith("http")) ||
+                wikiUrl == null || wikiUrl.length() == 0) {
             callback.call(defaultImage);
             return;
         }
+
         // if wikipedia article about rocket exists try to get image from there
         get(wikiUrl, new OnLoadCallback<String>() {
             @Override
             public void call(final String result) {
-                boolean isValid = result != null && result.length() > 0;
-                callback.call(isValid ? result : defaultImage);
+                boolean isValid = result != null && result.length() > 0 && result.startsWith("http");
+                callback.call(isValid ? result : null);
             }
 
             @Override
@@ -76,16 +75,16 @@ public class ImageResolver {
     }
 
     public static String resolveImage(final int agency) {
-        return String.format("https://raw.githubusercontent.com/nkrusch/SpaceLaunchOne/master/docs/img/agencies/%d.jpg", agency);
+        return String.format(BuildConfig.ImageAssetPath + "agencies/%s.jpg", agency);
     }
 
     public static String resolveMissionImage(final String category) {
-        return String.format("https://raw.githubusercontent.com/nkrusch/SpaceLaunchOne/master/docs/img/missions/%s.png",
+        return String.format(BuildConfig.ImageAssetPath + "missions/%s.png",
                 category.toLowerCase().replaceAll("[ /]", "_"));
     }
 
     public static String countryFlag(final String countryAbbrev) {
-        return String.format("https://raw.githubusercontent.com/nkrusch/SpaceLaunchOne/master/docs/img/flags/flag_%s.webp", countryAbbrev);
+        return String.format(BuildConfig.ImageAssetPath + "flags/flag_%s.webp", countryAbbrev);
     }
 }
 

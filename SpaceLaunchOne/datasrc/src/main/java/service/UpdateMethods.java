@@ -41,7 +41,7 @@ public class UpdateMethods {
     public static void UpdateAppData(Context context, final OnLoadCallback callback) {
         Log.d("UPDATE", "updating app data....");
         final AppDatabase db = AppDatabase.getInstance(context);
-        LaunchData.updateAllLaunches(db, Integer.MAX_VALUE, 0, callback);
+        LaunchData.updateAllLaunches(db, BuildConfig.HistoryStart, Integer.MAX_VALUE, callback);
         //AgencyData.updateAgencies(new Agencies(), db, Integer.MAX_VALUE, 0, 50, callback);
         //LocationData.updateLocations(new Locations(), db, Integer.MAX_VALUE, 0, 50, callback);
         //PadData.updatePads(new Pads(), db, Integer.MAX_VALUE, 0, 50, callback);
@@ -226,8 +226,8 @@ public class UpdateMethods {
         /**
          * Fetch list of launches from the API endpoint
          */
-        private static void updateAllLaunches(final AppDatabase db, int size, int offset, final OnLoadCallback<Boolean> callback) {
-            LaunchLibrary.allLaunches(BuildConfig.HistoryStart, size, new OnLoadCallback<Launches>() {
+        private static void updateAllLaunches(final AppDatabase db, String start, int size, final OnLoadCallback<Boolean> callback) {
+            LaunchLibrary.allLaunches(start, size, new OnLoadCallback<Launches>() {
                 @Override
                 public void call(final Launches result) {
                     processLaunches(db, result, callback, true);

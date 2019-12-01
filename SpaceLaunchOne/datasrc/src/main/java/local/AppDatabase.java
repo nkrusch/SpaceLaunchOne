@@ -26,6 +26,13 @@ public abstract class AppDatabase extends RoomDatabase {
         @Override
         public void migrate(SupportSQLiteDatabase database) {
 
+            String columns = "`uid`, `net`, `hashtag`, `changed`, `vidURLs`, `infoURLs`, `lastModified`, `agencyId`, `locationId`, `padId`, `rocketId`";
+
+            database.execSQL("ALTER TABLE `details` RENAME TO `details_old`;");
+            database.execSQL("CREATE TABLE `details` (`uid` INTEGER NOT NULL, `net` TEXT, `hashtag` TEXT, `changed` TEXT, `vidURLs` TEXT, `infoURLs` TEXT, `lastModified` INTEGER, `agencyId` INTEGER NOT NULL, `locationId` INTEGER NOT NULL, `padId` INTEGER NOT NULL, `rocketId` INTEGER NOT NULL, PRIMARY KEY(`uid`))");
+            database.execSQL("INSERT INTO `details` (" + columns + ") SELECT " + columns + " FROM `details_old`");
+            database.execSQL("DROP TABLE `details_old`");
+
             database.execSQL("CREATE TABLE `favorites` (`fid` INTEGER NOT NULL, PRIMARY KEY(`fid`))");
             database.execSQL("CREATE TABLE `agencies` (`aid` INTEGER NOT NULL, `name` TEXT, `countryCode` TEXT, `abbrev` TEXT, `islsp` INTEGER NOT NULL, `type` INTEGER NOT NULL, `infoURLs` TEXT, `wikiURL` TEXT, `changed` TEXT, `lastModified` INTEGER, PRIMARY KEY(`aid`))");
             database.execSQL("CREATE TABLE `locations` (`lid` INTEGER NOT NULL, `name` TEXT, `countryCode` TEXT, `infoURLs` TEXT, `lastModified` INTEGER, PRIMARY KEY(`lid`))");

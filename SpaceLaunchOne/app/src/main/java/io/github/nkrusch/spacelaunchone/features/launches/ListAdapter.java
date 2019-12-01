@@ -85,10 +85,12 @@ public class ListAdapter<T extends Launch> extends
         holder.mStatus.setText(context.getString(R.string.bullet));
         holder.mStatus.setTextColor(Color.parseColor(item.getStatusColor()));
 
-        if (!(StringUtils.isEmpty(item.getImage()) || models.Launch.isPlaceholderImage(item.getImage()))) {
-            holder.mImageView.setVisibility(View.VISIBLE);
-            final String thumbnail = Utilities.squareImage(item.getImage(), thumbnailWidth);
-            Picasso.with(context).load(thumbnail).into(holder.mImageView, new Callback() {
+        holder.mImageView.setVisibility(View.VISIBLE);
+        holder.mImageView.setImageResource(R.drawable.ic_rocket_background);
+
+        if (item.getImage()!=null) {
+            Picasso.with(context).load(Utilities.squareImage(item.getImage(), thumbnailWidth))
+                    .into(holder.mImageView, new Callback() {
                 @Override
                 public void onSuccess() {}
 

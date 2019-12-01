@@ -10,6 +10,7 @@ android {
         versionName "1.0"
         buildConfigField 'String', "ApiBasepath", API_Basepath
         buildConfigField 'String', "HistoryStart", History_Start
+        buildConfigField 'String', "ImageAssetPath", Image_Asset_Path
         buildConfigField 'int', "InitialLoadSize", Initial_Load_Size
         buildConfigField 'int', "MinCachePolicy", Min_Cache_Policy
         buildConfigField 'int', "MinRecentLimit", Min_Recent_Limit

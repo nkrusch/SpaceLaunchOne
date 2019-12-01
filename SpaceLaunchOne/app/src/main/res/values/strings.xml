@@ -111,7 +111,7 @@
     <string name="scroll_to_top">Scroll to top</string>
     <string name="search">Search...</string>
     <string name="dataset_last_sync" translatable="false">last_sync_timestamp</string>
-    <string name="last_sync_never_occurred">has not run</string>
+    <string name="last_sync_never_occurred" translatable="false">has not run</string>
     <string name="last_sync_timestamp">Last synced %s</string>
     <string name="widget_loading">Loading</string>
     <string name="widget_image">widget image</string>
@@ -163,18 +163,18 @@
     <string name="show_more">Show more</string>
     <string name="status">Status</string>
     <string name="country">Country</string>
-    <string name="location">Launch Site</string>
     <string name="agency">Agency</string>
-    <string name="lsp">LSP</string>
     <string name="rocket_summary_label">Rocket Name / Family / Configuration</string>
     <string name="notifications_preference" translatable="false">notifications_preference</string>
     <string name="disabled">Disabled</string>
     <string name="enabled">Enabled</string>
     <string name="app_notifications">App Notifications</string>
     <string name="no_matches">No matches</string>
-    <string name="favorites_is_empty">No favorite launches\n\nWhen you mark launches as favorites,\nthey will appear here.</string>
     <string name="search_results">search results</string>
     <string name="launches">launches</string>
+    <string name="location">Launch Site</string>
+    <string name="lsp">LSP</string>
+    <string name="favorites_is_empty">No favorite launches\n\nWhen you mark launches as favorites,\nthey will appear here.</string>
     <string name="image_background">Image background</string>
     <string name="favorites">Favorites</string>
     <string name="future">Future</string>
@@ -192,12 +192,12 @@
     <string name="title_agency_details">Agency Details</string>
     <string name="title_pad_details">Launchpad Details</string>
     <string name="location_tab_info">Info</string>
-
     <string name="location_pad_count">Pad count</string>
     <string name="location_launch_count">Launch count</string>
     <string name="location_agency_count">Agency count</string>
     <string name="label_is_lsp">Launch Service Provider</string>
     <string name="title_more">More</string>
-
-
+    <string name="scheduled">Scheduled</string>
+    <string name="agencies">Agencies</string>
+    <string name="locations">Locations</string>
 </resources>

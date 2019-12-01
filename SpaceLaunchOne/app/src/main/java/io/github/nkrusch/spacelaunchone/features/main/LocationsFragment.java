@@ -17,14 +17,7 @@ public class LocationsFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_locations, container, false);
         Toolbar mToolbar = view.findViewById(R.id.toolbar);
-        mToolbar.inflateMenu(R.menu.menu_favorites);
         mToolbar.setTitle("Launch Locations");
-        mToolbar.setOnMenuItemClickListener(new Toolbar.OnMenuItemClickListener() {
-            @Override
-            public boolean onMenuItemClick(MenuItem item) {
-                return false;
-            }
-        });
         return view;
     }
 

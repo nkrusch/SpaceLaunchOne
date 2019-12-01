@@ -3,7 +3,7 @@
     <item
         android:id="@+id/scheduled"
         android:icon="@drawable/ic_clock_outline"
-        android:title="Scheduled" />
+        android:title="@string/scheduled" />
     <item
         android:id="@+id/favorites"
         android:icon="@drawable/ic_heart"
@@ -11,11 +11,11 @@
     <item
         android:id="@+id/agencies"
         android:icon="@drawable/ic_office_building"
-        android:title="Agencies" />
+        android:title="@string/agencies" />
     <item
         android:id="@+id/location"
         android:icon="@drawable/ic_map_marker"
-        android:title="Locations" />
+        android:title="@string/locations" />
     <item
         android:icon="@drawable/ic_menu"
         android:id="@+id/settings"
