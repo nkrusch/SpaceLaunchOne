@@ -6,7 +6,7 @@ android:
   - tools
   - platform-tools
   - build-tools-29.0.2
-  - android-28
+  - android-29
 notifications:
   email: false
 before_script:
