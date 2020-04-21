@@ -23,6 +23,7 @@ This application is based on [Launch Library API](https://launchlibrary.net/docs
 | * * * * * | * * * * * | * * * * * | 
 | --- | --- |  --- | 
 | List of future launches | List of completed launches | View launch details | 
+| Explore launch sites | Browse agensies and LSPs | View agency missions |
 | Daily space-themed imagery | Watch launches live on Youtube | Search launches by keyword |
 | Google Maps and Places | Dark Mode Support  | Automatic data synchronization | 
 | Homescreen countdown widget | Responsive design | Works offline |
