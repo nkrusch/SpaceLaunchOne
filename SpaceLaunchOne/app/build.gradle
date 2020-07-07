@@ -20,7 +20,7 @@ android {
 
     def major = 2
     def minor = 0
-    def patch = 0
+    def patch = 1
     def code = versionProps['VERSION_CODE'].toInteger() + 1
     versionProps['VERSION_CODE'] = code.toString()
     versionProps.store(versionPropsFile.newWriter(), null)
@@ -40,7 +40,7 @@ android {
         minSdkVersion 19
         targetSdkVersion 29
         versionCode code
-        versionName major + "." + minor + "." + patch + "." + code
+        versionName major + "." + minor + "." + patch
         vectorDrawables.useSupportLibrary = true
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         buildConfigField 'int', "UpdateInterval", Min_Update_Interval
@@ -92,7 +92,7 @@ dependencies {
     implementation project(':models')
 
     // testing
-    testImplementation 'junit:junit:4.12'
+    testImplementation 'junit:junit:4.13'
     androidTestImplementation 'androidx.test:runner:1.2.0'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
 }

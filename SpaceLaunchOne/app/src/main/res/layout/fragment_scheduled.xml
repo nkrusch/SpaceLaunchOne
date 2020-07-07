@@ -44,7 +44,8 @@
         android:name="io.github.nkrusch.spacelaunchone.features.launches.FutureLaunches"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:layout_behavior="@string/appbar_scrolling_view_behavior" />
+        app:layout_behavior="@string/appbar_scrolling_view_behavior"
+        android:layout_marginBottom="?actionBarSize" />
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
 

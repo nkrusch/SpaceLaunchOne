@@ -13,7 +13,8 @@
                 android:id="@+id/toolbar"
                 android:layout_width="match_parent"
                 android:layout_height="?actionBarSize"
-                app:theme="@style/FavToolbar" />
+                app:theme="@style/FavToolbar"
+                app:layout_scrollFlags="scroll" />
 
     </com.google.android.material.appbar.AppBarLayout>
 
@@ -22,7 +23,8 @@
         android:name="io.github.nkrusch.spacelaunchone.features.launches.FavoriteLaunches"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:layout_behavior="@string/appbar_scrolling_view_behavior" />
+        app:layout_behavior="@string/appbar_scrolling_view_behavior"
+        android:layout_marginBottom="?actionBarSize"/>
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
 
