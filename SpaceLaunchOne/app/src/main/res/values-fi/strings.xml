@@ -84,7 +84,7 @@
     <string name="sync_frequency">sykronisointi frekvenssi</string>
     <string name="version">Versio</string>
     <string name="scroll_to_top">alkuun</string>
-    <string name="search">Etsi...</string>
+    <string name="search">Etsi…</string>
     <string name="last_sync_never_occurred"> </string>
     <string name="last_sync_timestamp">Viimeisin synkronisointi %s</string>
     <string name="widget_loading">Latautuu</string>
@@ -162,4 +162,7 @@
     <string name="title_agency_details">Agentuurin tiedot</string>
     <string name="title_more">Lisää</string>
     <string name="title_pad_details">Alustan tiedot</string>
+    <string name="agencies">Agentuurit</string>
+    <string name="locations">Paikat</string>
+    <string name="scheduled">Suunniteltut</string>
 </resources>

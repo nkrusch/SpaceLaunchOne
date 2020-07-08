@@ -109,7 +109,7 @@
     <string name="credits_array_separator" translatable="false">;</string>
     <string name="version">Version Number</string>
     <string name="scroll_to_top">Scroll to top</string>
-    <string name="search">Search...</string>
+    <string name="search">Search…</string>
     <string name="dataset_last_sync" translatable="false">last_sync_timestamp</string>
     <string name="last_sync_never_occurred" translatable="false">has not run</string>
     <string name="last_sync_timestamp">Last synced %s</string>

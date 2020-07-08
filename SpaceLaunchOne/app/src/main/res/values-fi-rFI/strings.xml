@@ -161,4 +161,7 @@
     <string name="title_agency_details">Agentuurin tiedot</string>
     <string name="title_more">Lisää</string>
     <string name="title_pad_details">Alustan tiedot</string>
+    <string name="agencies">Agentuurit</string>
+    <string name="locations">Paikat</string>
+    <string name="scheduled">Suunniteltut</string>
 </resources>
