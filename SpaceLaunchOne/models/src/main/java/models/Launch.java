@@ -3,6 +3,9 @@ package models;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.time.ZonedDateTime;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.Locale;
 import java.util.TimeZone;
 
@@ -10,9 +13,6 @@ import models.base.InfoObj;
 
 @SuppressWarnings("SpellCheckingInspection")
 public class Launch extends InfoObj {
-
-    private static final String dateFormatPattern = "MMM dd, yyyy HH:mm:ss 'UTC'";
-    private static final String chagedFormatPattern = "yyyy-MM-dd HH:mm:ss";
 
     private String hashtag;
     private String net;
@@ -232,23 +232,18 @@ public class Launch extends InfoObj {
     }
 
     public Long getLaunchDateUTC() {
-        DateFormat format = new SimpleDateFormat(dateFormatPattern, Locale.ENGLISH);
-        format.setTimeZone(TimeZone.getTimeZone("UTC"));
         try {
-            return format.parse(this.net).getTime();
+            String isoString = this.net.replace("Z", "+00:00");
+            Date date = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ssZ", Locale.US).parse(isoString);
+            return date.getTime();
         } catch (ParseException e) {
             e.printStackTrace();
         }
         return 2696400000L; // 1-1-1970
     }
 
+    @Deprecated
     public static Long changeDate(String changed) {
-        DateFormat format = new SimpleDateFormat(chagedFormatPattern, Locale.ENGLISH);
-        try {
-            return format.parse(changed).getTime();
-        } catch (ParseException e) {
-            e.printStackTrace();
-        }
         return 2696400000L; // 1-1-1970
     }
 

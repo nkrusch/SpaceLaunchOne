@@ -66,6 +66,8 @@ public class LaunchLibrary {
                 Log.d("UPDATE", "URL: " + service.all_launches(offset, count).request().url().toString());
                 Response<Launches> temp = service.all_launches(offset, count).execute();
                 Log.d("UPDATE", "SUCCESS?: " + temp.isSuccessful());
+                if(!temp.isSuccessful())
+                Log.d("UPDATE", "ERROR BODY: " + temp.errorBody().string());
                 Log.d("UPDATE", "RAW BODY: " +
                         temp.body().getCount() + "\n" +
                         temp.body().getResults().size() + "\n" +
@@ -76,39 +78,4 @@ public class LaunchLibrary {
         }, callback);
     }
 
-    /*    public static void loadMissions(final int count, @NonNull final OnLoadCallback callback) {
-        makeRequest(new methodRunner<Missions>() {
-            @Override
-            public Missions run(ILaunchLibrary service) throws IOException {
-                return service.missions(count).execute().body();
-            }
-        }, callback);
-    }
-
-        public static void allAgencies(final int count, final int start, @NonNull final OnLoadCallback callback) {
-            makeRequest(new methodRunner<Agencies>() {
-                @Override
-                public Agencies run(ILaunchLibrary service) throws IOException {
-                    return service.agencies(count, start).execute().body();
-                }
-            }, callback);
-        }
-
-        public static void allLocations(final int count, final int start, @NonNull final OnLoadCallback callback) {
-            makeRequest(new methodRunner<Locations>() {
-                @Override
-                public Locations run(ILaunchLibrary service) throws IOException {
-                    return service.locations(count, start).execute().body();
-                }
-            }, callback);
-        }
-
-        public static void allPads(final int count, final int start, @NonNull final OnLoadCallback callback) {
-            makeRequest(new methodRunner<Pads>() {
-                @Override
-                public Pads run(ILaunchLibrary service) throws IOException {
-                    return service.pads(count, start).execute().body();
-                }
-            }, callback);
-        } */
 }

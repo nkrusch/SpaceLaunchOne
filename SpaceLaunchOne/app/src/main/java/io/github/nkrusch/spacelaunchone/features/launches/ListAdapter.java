@@ -19,6 +19,7 @@ import androidx.annotation.NonNull;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.RecyclerView;
 import io.github.nkrusch.spacelaunchone.R;
+import io.github.nkrusch.spacelaunchone.app.AppImage;
 import io.github.nkrusch.spacelaunchone.app.OnItemClickListener;
 import io.github.nkrusch.spacelaunchone.app.Utilities;
 import local.Launch;
@@ -89,7 +90,15 @@ public class ListAdapter<T extends Launch> extends
         holder.mImageView.setImageResource(R.drawable.ic_rocket_background);
 
         if (item.getImage()!=null) {
+            AppImage.LoadSquareImageFromURL(
+                    item.getImage(),
+                    thumbnailWidth,
+                    holder.mImageView,
+                    R.drawable.ic_rocket_background
+            );
+
             // TODO: update this image loading syntax!
+
 //            Picasso.with(context).load(Utilities.squareImage(item.getImage(), thumbnailWidth))
 //                    .into(holder.mImageView, new Callback() {
 //                @Override

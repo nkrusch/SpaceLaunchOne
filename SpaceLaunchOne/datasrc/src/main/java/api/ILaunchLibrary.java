@@ -33,7 +33,4 @@ interface ILaunchLibrary {
     @GET("pad?format=json&mode=verbose")
     Call<Pads> pads(@Query("next") int next, @Query("offset") int offset);
 
-    @GET("pad?format=json&locationid={id}&mode=verbose")
-    Call<Pads> locationPads(@Path("id") int id);
-
 }
