@@ -134,9 +134,11 @@ public class Details {
     public static Details Map(models.Launch launch) {
 
         Details details = new Details();
-        Location location = launch.getLocation();
+        // TODO: fix this
+        Location location = new Location();// launch.getLocation();
         Rocket rocket = launch.getRocket();
-        Agency agency = launch.getLsp();
+        // TODO: fix this
+        Agency agency = new Agency(); // launch.getLsp();
 
         details.setUid(launch.getId());
         details.setHashtag(launch.getHashtag());

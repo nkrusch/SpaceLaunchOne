@@ -119,13 +119,14 @@ public class Launch implements Comparable<Launch> {
     @Ignore
     public static Launch Map(models.Launch launch) {
         Launch r = new Launch();
-        Location l = launch.getLocation();
+        // TODO: fix this
+        Location l = new Location(); //launch.getLocation();
         r.setId(launch.getId());
         r.setName(launch.getName());
         r.setImage(launch.getImage());
         r.setLaunchDateUTC(launch.getLaunchDateUTC());
         r.setLocationName(l != null ? l.getName() : null);
-        r.setStatus(launch.getStatus());
+        r.setStatus(launch.getStatus().getId());
         return r;
     }
 

@@ -167,11 +167,12 @@ public class SummaryFragment extends DetailsBaseFragment {
 
         mStatusImage.setImageResource(statusImage(launch.getStatus()));
 
-        Picasso.with(getContext()).load(Utilities.countryIcon(launch.getLocationCountryCode()))
-                .noFade().transform(new CircleTransform()).into(mCountryImage);
-
-        Picasso.with(getContext()).load(ImageResolver.resolveImage(launch.getAgencyId()))
-                .noFade().transform(new CircleTransform()).into(mAgencyImage);
+//        TODO: update this image loading syntax
+//        Picasso.with(getContext()).load(Utilities.countryIcon(launch.getLocationCountryCode()))
+//                .noFade().transform(new CircleTransform()).into(mCountryImage);
+//
+//        Picasso.with(getContext()).load(ImageResolver.resolveImage(launch.getAgencyId()))
+//                .noFade().transform(new CircleTransform()).into(mAgencyImage);
 
         setImage(launch.getImage(), mRocketImage);
         setRocket(launch.getImage());
@@ -183,17 +184,18 @@ public class SummaryFragment extends DetailsBaseFragment {
         final Context context = getContext();
         final String sizedImage = Utilities.roundImage(image, Utilities.dpToPixel(40, getResources()));
 
-        Picasso.with(context).load(sizedImage).noFade()
-                .transform(new CircleTransform()).into(target, new Callback() {
-            @Override
-            public void onSuccess() {
-            }
-
-            @Override
-            public void onError() {
-                target.setImageDrawable(getResources().getDrawable(R.drawable.ic_rocket));
-            }
-        });
+        // TODO: update this image loading syntax
+//        Picasso.with(context).load(sizedImage).noFade()
+//                .transform(new CircleTransform()).into(target, new Callback() {
+//            @Override
+//            public void onSuccess() {
+//            }
+//
+//            @Override
+//            public void onError() {
+//                target.setImageDrawable(getResources().getDrawable(R.drawable.ic_rocket));
+//            }
+//        });
     }
 
     private void setRocket(final String image) {
@@ -203,18 +205,19 @@ public class SummaryFragment extends DetailsBaseFragment {
         WindowManager wm = getActivity().getWindowManager();
         final Context context = getContext();
         final String sizedImage = Utilities.sizedHeight(image, Utilities.display(wm).second);
-        Picasso.with(context)
-                .load(sizedImage)
-                .into(mRocketCardImage, new Callback() {
-                    @Override
-                    public void onSuccess() {
-                        ((View) mRocketCardImage.getParent()).setVisibility(VISIBLE);
-                    }
-
-                    @Override
-                    public void onError() {
-                    }
-                });
+        // TODO: update this image loading syntax
+//        Picasso.with(context)
+//                .load(sizedImage)
+//                .into(mRocketCardImage, new Callback() {
+//                    @Override
+//                    public void onSuccess() {
+//                        ((View) mRocketCardImage.getParent()).setVisibility(VISIBLE);
+//                    }
+//
+//                    @Override
+//                    public void onError() {
+//                    }
+//                });
     }
 
     @Override

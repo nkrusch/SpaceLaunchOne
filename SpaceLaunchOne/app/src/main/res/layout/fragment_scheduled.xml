@@ -32,7 +32,7 @@
                 android:layout_height="?actionBarSize"
                 android:layout_gravity="top"
                 app:layout_collapseMode="pin"
-                app:theme="@style/ClearToolbar" />
+                android:theme="@style/ClearToolbar" />
 
         </com.google.android.material.appbar.CollapsingToolbarLayout>
 

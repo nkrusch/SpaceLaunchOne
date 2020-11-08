@@ -21,7 +21,7 @@
             android:layout_height="?actionBarSize"
             android:layout_gravity="top"
             app:layout_scrollFlags="scroll|enterAlways"
-            app:theme="@style/ClearToolbar" />
+            android:theme="@style/ClearToolbar" />
 
     </com.google.android.material.appbar.AppBarLayout>
 

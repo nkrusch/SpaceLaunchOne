@@ -62,16 +62,17 @@ public class MissionsAdapter extends RecyclerView.Adapter<MissionsAdapter.ItemVi
         holder.mNumber.setText(String.format(Locale.getDefault(), "%02d", position + 1));
 
         holder.mImageView.setVisibility(View.VISIBLE);
-        Picasso.with(context).load(item.getMissionImage()).into(holder.mImageView, new Callback() {
-            @Override
-            public void onSuccess() {
-            }
-
-            @Override
-            public void onError() {
-                holder.mImageView.setImageResource(R.drawable.ic_information_outline);
-            }
-        });
+        // TODO: update this image loading syntax
+//        Picasso.with(context).load(item.getMissionImage()).into(holder.mImageView, new Callback() {
+//            @Override
+//            public void onSuccess() {
+//            }
+//
+//            @Override
+//            public void onError() {
+//                holder.mImageView.setImageResource(R.drawable.ic_information_outline);
+//            }
+//        });
     }
 
     @Override

@@ -104,7 +104,8 @@ public class VideosFragment extends HorizontalRecyclerViewFragment<VideosFragmen
                 String videoId = videoUrl.split("=", 2)[1];
                 String YOUTUBE_IMG = "https://i.ytimg.com/vi/{:id}/sddefault.jpg";
                 String imageUrl = YOUTUBE_IMG.replace("{:id}", videoId);
-                Picasso.with(holder.mVideoImage.getContext()).load(imageUrl).into(holder.mVideoImage);
+                // TODO: update this image loading syntax
+//                Picasso.with(holder.mVideoImage.getContext()).load(imageUrl).into(holder.mVideoImage);
             }
         }
 
