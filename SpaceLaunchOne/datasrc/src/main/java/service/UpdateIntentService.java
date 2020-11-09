@@ -4,7 +4,6 @@ import android.app.IntentService;
 import android.content.Intent;
 
 import androidx.annotation.Nullable;
-import api.OnLoadCallback;
 
 import static service.UpdateTime.SYNC_KEY;
 

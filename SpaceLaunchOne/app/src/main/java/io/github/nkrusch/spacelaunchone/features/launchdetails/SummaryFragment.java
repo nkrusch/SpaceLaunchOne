@@ -1,6 +1,5 @@
 package io.github.nkrusch.spacelaunchone.features.launchdetails;
 
-import android.content.Context;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -11,8 +10,6 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.cloudinary.utils.StringUtils;
-import com.squareup.picasso.Callback;
-import com.squareup.picasso.Picasso;
 
 import java.util.Date;
 
@@ -22,7 +19,6 @@ import androidx.fragment.app.Fragment;
 import api.ImageResolver;
 import io.github.nkrusch.spacelaunchone.R;
 import io.github.nkrusch.spacelaunchone.app.AppImage;
-import io.github.nkrusch.spacelaunchone.app.CircleTransform;
 import io.github.nkrusch.spacelaunchone.app.Utilities;
 import local.LaunchDetails;
 

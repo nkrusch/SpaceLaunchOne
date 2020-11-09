@@ -7,9 +7,6 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.squareup.picasso.Callback;
-import com.squareup.picasso.Picasso;
-
 import java.util.List;
 import java.util.Locale;
 
@@ -19,7 +16,6 @@ import androidx.recyclerview.widget.RecyclerView;
 import io.github.nkrusch.spacelaunchone.R;
 import io.github.nkrusch.spacelaunchone.app.AppImage;
 import io.github.nkrusch.spacelaunchone.app.OnItemClickListener;
-import io.github.nkrusch.spacelaunchone.app.Utilities;
 import local.Mission;
 
 

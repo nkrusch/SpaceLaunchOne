@@ -15,7 +15,6 @@ import androidx.lifecycle.ViewModelProviders;
 import io.github.nkrusch.spacelaunchone.R;
 import io.github.nkrusch.spacelaunchone.app.TabbedActivity;
 import io.github.nkrusch.spacelaunchone.app.TabsAdapter;
-import io.github.nkrusch.spacelaunchone.features.agencies.AgencyRecyclerView;
 import io.github.nkrusch.spacelaunchone.features.launches.AgencyLaunchRecyclerView;
 import io.github.nkrusch.spacelaunchone.features.missions.MissionsRecyclerView;
 import viewmodels.AgencyDetailsViewModel;

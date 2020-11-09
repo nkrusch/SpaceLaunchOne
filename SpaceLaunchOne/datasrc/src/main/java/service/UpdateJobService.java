@@ -4,10 +4,6 @@ import android.annotation.TargetApi;
 import android.app.job.JobParameters;
 import android.app.job.JobService;
 import android.os.Build;
-import android.preference.PreferenceManager;
-import android.util.Log;
-
-import api.OnLoadCallback;
 
 /**
  * The purpose of this service is to periodically sync local app data with external API data.

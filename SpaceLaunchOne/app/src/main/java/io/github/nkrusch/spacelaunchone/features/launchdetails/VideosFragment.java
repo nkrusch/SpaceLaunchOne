@@ -10,8 +10,6 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.squareup.picasso.Picasso;
-
 import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.List;

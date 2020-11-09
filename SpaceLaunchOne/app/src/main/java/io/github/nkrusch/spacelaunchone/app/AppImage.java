@@ -1,7 +1,5 @@
 package io.github.nkrusch.spacelaunchone.app;
 
-import android.content.Context;
-import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 

@@ -5,7 +5,6 @@ import android.util.ArrayMap;
 import android.util.Log;
 
 import java.util.Arrays;
-import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Objects;
@@ -24,11 +23,7 @@ import local.LocationAgency;
 import local.Mission;
 import local.Pad;
 import local.Rocket;
-import models.Agencies;
 import models.Launches;
-import models.Locations;
-import models.Pads;
-import models.data.BuildConfig;
 
 /**
  * Update application database

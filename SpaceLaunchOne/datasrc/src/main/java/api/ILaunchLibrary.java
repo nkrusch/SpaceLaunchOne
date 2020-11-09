@@ -21,16 +21,16 @@ interface ILaunchLibrary {
     @GET("launch/{id}?format=json&mode=verbose")
     Call<Launches> launch(@Path("id") int id);
 
-    @GET("mission/?format=json&mode=verbose")
+    @GET("mission/?format=json&mode=list")
     Call<Missions> missions(@Query("limit") int limit);
 
-    @GET("agency?format=json&mode=verbose")
+    @GET("agency?format=json&mode=list")
     Call<Agencies> agencies(@Query("next") int next, @Query("offset") int offset);
 
-    @GET("location?format=json&mode=verbose")
+    @GET("location?format=json&mode=list")
     Call<Locations> locations(@Query("next") int next, @Query("offset") int offset);
 
-    @GET("pad?format=json&mode=verbose")
+    @GET("pad?format=json&mode=list")
     Call<Pads> pads(@Query("next") int next, @Query("offset") int offset);
 
 }

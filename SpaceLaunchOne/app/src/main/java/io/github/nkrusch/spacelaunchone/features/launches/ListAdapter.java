@@ -8,10 +8,6 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.cloudinary.utils.StringUtils;
-import com.squareup.picasso.Callback;
-import com.squareup.picasso.Picasso;
-
 import java.util.List;
 import java.util.Locale;
 

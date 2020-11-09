@@ -5,7 +5,6 @@ import android.content.Context;
 import android.content.res.Configuration;
 import android.content.res.Resources;
 import android.graphics.Rect;
-import android.media.Image;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.util.DisplayMetrics;

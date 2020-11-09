@@ -2,9 +2,9 @@ package models;
 
 import com.google.gson.annotations.SerializedName;
 
-import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
+
 import models.base.PagedResult;
 
 public class Launches extends PagedResult {

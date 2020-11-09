@@ -1,9 +1,5 @@
 package models;
 
-import java.util.LinkedList;
-import java.util.List;
-
-import jdk.nashorn.internal.ir.annotations.Ignore;
 import models.base.InfoObj;
 
 @SuppressWarnings("SpellCheckingInspection")
