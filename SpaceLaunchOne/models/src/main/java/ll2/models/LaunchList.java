@@ -20,7 +20,7 @@ import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 
 @ApiModel(description = "")
-public class InlineResponse2007 {
+public class LaunchList {
   
   @SerializedName("count")
   private Integer count = null;
@@ -80,7 +80,7 @@ public class InlineResponse2007 {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    InlineResponse2007 inlineResponse2007 = (InlineResponse2007) o;
+    LaunchList inlineResponse2007 = (LaunchList) o;
     return (this.count == null ? inlineResponse2007.count == null : this.count.equals(inlineResponse2007.count)) &&
         (this.next == null ? inlineResponse2007.next == null : this.next.equals(inlineResponse2007.next)) &&
         (this.previous == null ? inlineResponse2007.previous == null : this.previous.equals(inlineResponse2007.previous)) &&

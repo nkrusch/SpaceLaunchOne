@@ -5,6 +5,8 @@ import androidx.room.Entity;
 import androidx.room.Ignore;
 import androidx.room.Index;
 import androidx.room.PrimaryKey;
+import ll2.models.LaunchSerializerCommon;
+import ll2.models.Pad;
 import models.Location;
 
 @SuppressWarnings("NullableProblems")
@@ -117,14 +119,13 @@ public class Launch implements Comparable<Launch> {
     }
 
     @Ignore
-    public static Launch Map(models.Launch launch) {
+    public static Launch Map(LaunchSerializerCommon launch) {
         Launch r = new Launch();
-        // TODO: fix this
-        Location l = new Location(); //launch.getLocation();
-        r.setId(launch.getId());
+        Pad l = launch.getPad();
+        r.setId(launch.getLaunchLibraryId());
         r.setName(launch.getName());
         r.setImage(launch.getImage());
-        r.setLaunchDateUTC(launch.getLaunchDateUTC());
+        r.setLaunchDateUTC(launch.getNet().getTime());
         r.setLocationName(l != null ? l.getName() : null);
         r.setStatus(launch.getStatus().getId());
         return r;

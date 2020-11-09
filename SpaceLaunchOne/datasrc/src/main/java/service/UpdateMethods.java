@@ -13,6 +13,10 @@ import androidx.annotation.Nullable;
 import api.ImageResolver;
 import api.LaunchLibrary;
 import api.OnLoadCallback;
+import ll2.models.AgencySerializerMini;
+import ll2.models.LaunchList;
+import ll2.models.LaunchSerializerCommon;
+import ll2.models.RocketSerializerCommon;
 import local.Agency;
 import local.AgencyMission;
 import local.AppDatabase;
@@ -31,7 +35,7 @@ import models.Launches;
 @SuppressWarnings("SameParameterValue")
 public class UpdateMethods {
 
-    private static final String TAG = "UPDATE";
+    private static final String TAG = "API/UPDATE";
 
     public static void UpdateAppData(Context context, final OnLoadCallback callback) {
         Log.d("UPDATE", "updating app data....");
@@ -55,7 +59,11 @@ public class UpdateMethods {
          * Go through list of launches and update the database.
          * Provide callback method to get notified when this process completes
          */
-        static void processLaunches(final AppDatabase db, final Launches result, final OnLoadCallback<Boolean> callback) {
+        static void processLaunches(
+                final AppDatabase db,
+                final LaunchList result,
+                final OnLoadCallback<Boolean> callback
+        ) {
 
             if (result == null || result.getResults() == null) {
                 if (callback != null) callback.call(false);
@@ -76,25 +84,23 @@ public class UpdateMethods {
             // map data
             for (int i = 0; i < result.getResults().size(); i++) {
 
-                final models.Launch l = result.getResults().get(i);
-                final models.Rocket r = l.getRocket();
-                // TODO: fix this
-                final models.Location loc = new models.Location(); // l.getLocation();
-                // TODO: fix this
-                final models.Agency a = new models.Agency(); // l.getLsp();
-                final boolean valid_agency = a != null && a.getId() > 0;
+                final LaunchSerializerCommon l = result.getResults().get(i);
+                final RocketSerializerCommon r = l.getRocket();
+                final ll2.models.Pad loc = l.getPad();
+                final AgencySerializerMini a = l.getLaunchServiceProvider();
+                final boolean valid_agency = a != null;
 
                 details[i] = Details.Map(l);
                 launches[i] = Launch.Map(l);
 
                 if (r != null) {
                     int rocketId = r.getId();
-                    int launchId = l.getId();
+                    int launchId = l.getLaunchLibraryId();
 
                     if (rockets.containsKey(rocketId) && rockets.get(rocketId) != null) {
                         Objects.requireNonNull(rockets.get(rocketId)).addLaunchId(launchId);
                     } else {
-                        Rocket rocket = Rocket.Map(r);
+                        Rocket rocket = Rocket.Map(r, l.getImage());
                         rocket.addLaunchId(launchId);
                         rockets.put(rocketId, rocket);
                     }
@@ -102,7 +108,6 @@ public class UpdateMethods {
 
                 if (valid_agency) {
                     if (!agencies.containsKey(a.getId())) {
-                        a.setIslsp(1);
                         agencies.put(a.getId(), Agency.Map(a));
                     } else if (Objects.requireNonNull(agencies.get(a.getId())).getIslsp() == 0) {
                         Objects.requireNonNull(agencies.get(a.getId())).setIslsp(1);
@@ -110,45 +115,27 @@ public class UpdateMethods {
                 }
 
                 if (loc != null) {
-                    if (!locations.containsKey(loc.getId()))
-                        locations.put(loc.getId(), Location.Map(loc));
+                    if (!locations.containsKey(loc.getLocation().getId()))
+                        locations.put(loc.getId(), Location.Map(loc.getLocation()));
 
-                    Pad.Map(pads, loc.getId(), loc.getPads());
+                    Pad.Map(pads, loc.getLocation().getId(), loc);
 
-                    LocationAgency.Map(laRefX, loc.getId(), loc.getPads(), a);
-
-                    if (loc.getPads() != null)
-                        for (models.Pad pad : loc.getPads())
-                            if (pad.getAgencies() != null && pad.getAgencies().length > 0)
-                                for (models.Agency ag : pad.getAgencies())
-                                    if (valid_agency && !agencies.containsKey(ag.getId()))
-                                        agencies.put(ag.getId(), Agency.Map(ag));
+                    LocationAgency.Map(laRefX, loc.getLocation().getId(), loc, a);
+                    if (valid_agency && !agencies.containsKey(loc.getAgencyId()))
+                        agencies.put(loc.getAgencyId(), Agency.Map(a));
                 }
 
-                continue;
-                // TODO: fix this block
-//                if (l.getMissions() != null)
-//                    for (models.Mission _mission : l.getMissions()) {
-//                        final int mid = _mission.getId();
-//
-//                        if (!missions.containsKey(mid)) {
-//                            missions.put(mid, Mission.Map(l.getId(), _mission));
-//                        }
-//                        if (valid_agency) {
-//                            String akey = AgencyMission.key(mid, a.getId());
-//                            if (!amRefX.containsKey(akey))
-//                                amRefX.put(akey, new AgencyMission(_mission.getId(), a.getId()));
-//                        }
-//                        if (_mission.getAgencies() == null) continue;
-//                        for (models.Agency ag : _mission.getAgencies()) {
-//                            String key = AgencyMission.key(_mission.getId(), ag.getId());
-//                            if (!agencies.containsKey(ag.getId()))
-//                                agencies.put(ag.getId(), Agency.Map(ag));
-//                            if (!amRefX.containsKey(key)) {
-//                                amRefX.put(key, new AgencyMission(_mission.getId(), ag.getId()));
-//                            }
-//                        }
-//                    }
+                if (l.getMission() != null) {
+                    final int mid = l.getMission().getId();
+                    if (!missions.containsKey(mid)) {
+                        missions.put(mid, Mission.Map(l.getLaunchLibraryId(), l.getMission()));
+                    }
+                    if (valid_agency) {
+                        String akey = AgencyMission.key(mid, a.getId());
+                        if (!amRefX.containsKey(akey))
+                            amRefX.put(akey, new AgencyMission(l.getMission().getId(), a.getId()));
+                    }
+                }
             }
 
             if (launches.length > 1) Log.d(TAG, " \n" +
@@ -226,11 +213,13 @@ public class UpdateMethods {
          */
         private static void updateAllLaunches(final AppDatabase db, int size, final OnLoadCallback<Boolean> callback) {
             // TODO: iterate over pages
-            LaunchLibrary.allLaunches(0, size, new OnLoadCallback<Launches>() {
+            LaunchLibrary.allLaunches(0, size, new OnLoadCallback<LaunchList>() {
                 @Override
-                public void call(final Launches result) {
+                public void call(final LaunchList result) {
+
                     processLaunches(db, result, callback);
                 }
+
                 @Override
                 public void onError(Exception e) {
                     handleError(e, callback);
@@ -245,7 +234,8 @@ public class UpdateMethods {
             LaunchLibrary.getLaunch(id, new OnLoadCallback<models.Launch>() {
                 @Override
                 public void call(models.Launch result) {
-                    processLaunches(db, new Launches(result), callback);
+                    // TODO: fix this
+                    //processLaunches(db, new Launches(result), callback);
                 }
 
                 @Override

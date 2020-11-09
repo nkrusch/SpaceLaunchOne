@@ -1,5 +1,6 @@
 package api;
 
+import ll2.models.LaunchList;
 import models.Agencies;
 import models.Launches;
 import models.Locations;
@@ -16,7 +17,7 @@ interface ILaunchLibrary {
     Call<Launches> all_launches(@Query("offset") int offset, @Query("limit") int limit);
 
     @GET("launch/upcoming?format=json&offset=0&ordering=net")
-    Call<Launches> upcoming_launches(@Query("limit") int next);
+    Call<LaunchList> upcoming_launches(@Query("limit") int next);
 
     @GET("launch/{id}?format=json&mode=verbose")
     Call<Launches> launch(@Path("id") int id);

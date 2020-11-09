@@ -9,6 +9,7 @@ import androidx.annotation.NonNull;
 import androidx.room.Entity;
 import androidx.room.Ignore;
 import androidx.room.PrimaryKey;
+import ll2.models.Pad;
 
 @Entity(tableName = "locations")
 public class Location {
@@ -62,21 +63,12 @@ public class Location {
     }
 
     @Ignore
-    public static Location Map(models.Location loc) {
+    public static Location Map(ll2.models.Location loc) {
         Location a = new Location();
-
         a.setLid(loc.getId());
         a.setName(loc.getName());
         a.setCountryCode(loc.getCountryCode());
-        if(a.getCountryCode() == null)
-            a.setCountryCode(loc.getCountrycode());
-        if (loc.getWikiURL() != null && !loc.getWikiURL().isEmpty()) {
-            List<String> tmp = new LinkedList<>();
-            tmp.add(loc.getWikiURL());
-            tmp.addAll(Arrays.asList(loc.getInfoURLs()));
-            a.setInfoURLs(tmp.toArray(new String[0]));
-        } else a.setInfoURLs(loc.getInfoURLs());
-        a.setInfoURLs(loc.getInfoURLs());
+        a.setInfoURLs(new String[]{loc.getUrl()});
         a.setLastModified(new Date());
         return a;
     }

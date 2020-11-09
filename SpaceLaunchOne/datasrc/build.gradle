@@ -21,9 +21,11 @@ android {
     buildTypes {
         debug{
             buildConfigField 'String', "ApiBasepath", DEV_API_Basepath
+            buildConfigField 'boolean', "AppDebug", "true"
         }
         release {
             buildConfigField 'String', "ApiBasepath", PROD_API_Basepath
+            buildConfigField 'boolean', "AppDebug", "false"
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }

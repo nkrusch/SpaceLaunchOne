@@ -6,6 +6,7 @@ import android.content.Intent;
 import androidx.annotation.Nullable;
 import api.LaunchLibrary;
 import api.OnLoadCallback;
+import ll2.models.LaunchList;
 import local.AppDatabase;
 import models.Launches;
 import models.data.BuildConfig;
@@ -33,9 +34,9 @@ public class InitIntentService extends IntentService {
 
             final AppDatabase db = AppDatabase.getInstance(this);
 
-            LaunchLibrary.initialLaunches(BuildConfig.InitialLoadSize, new OnLoadCallback<Launches>() {
+            LaunchLibrary.initialLaunches(BuildConfig.InitialLoadSize, new OnLoadCallback<LaunchList>() {
                 @Override
-                public void call(Launches result) {
+                public void call(LaunchList result) {
                     UpdateMethods.LaunchData.processLaunches(db, result, new OnLoadCallback<Boolean>() {
                         @Override
                         public void call(Boolean result) {

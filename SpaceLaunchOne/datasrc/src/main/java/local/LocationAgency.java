@@ -6,6 +6,8 @@ import androidx.annotation.NonNull;
 import androidx.room.Entity;
 import androidx.room.Ignore;
 import androidx.room.Index;
+import ll2.models.AgencySerializerMini;
+import ll2.models.Pad;
 
 @SuppressWarnings({"NullableProblems", "SpellCheckingInspection"})
 @Entity(tableName = "locationagency",
@@ -52,23 +54,16 @@ public class LocationAgency {
     }
 
     @Ignore
-    public static void Map(ArrayMap<String, LocationAgency> ref, final int locationId, models.Pad[] pads, models.Agency ag) {
+    public static void Map(ArrayMap<String, LocationAgency> ref, final int locationId, Pad pad, AgencySerializerMini ag) {
         if (locationId < 1) return;
-
         if (ag != null && ag.getId() > 0) {
             String key = key(locationId, ag.getId());
             if (!ref.containsKey(key)) ref.put(key, new LocationAgency(locationId, ag.getId()));
         }
-        if (pads == null) return;
-
-        for (models.Pad pad : pads) {
-            if (pad.getAgencies() == null) continue;
-            for (models.Agency agency : pad.getAgencies()) {
-                String k = key(locationId, agency.getId());
-                if (!ref.containsKey(k) && agency.getId() > 0)
-                    ref.put(k, new LocationAgency(locationId, agency.getId()));
-            }
-        }
+        if (pad == null || pad.getAgencyId() == null) return;
+        String k = key(locationId, pad.getAgencyId());
+        if (!ref.containsKey(k) && pad.getAgencyId() > 0)
+            ref.put(k, new LocationAgency(locationId, pad.getAgencyId()));
     }
 
     @NonNull

@@ -10,6 +10,9 @@ import androidx.room.Entity;
 import androidx.room.Ignore;
 import androidx.room.Index;
 import androidx.room.PrimaryKey;
+import ll2.models.AgencySerializerMini;
+import ll2.models.LaunchSerializerCommon;
+import ll2.models.RocketSerializerCommon;
 import models.Agency;
 import models.Location;
 import models.Rocket;
@@ -131,28 +134,19 @@ public class Details {
     }
 
     @Ignore
-    public static Details Map(models.Launch launch) {
+    public static Details Map(LaunchSerializerCommon launch) {
 
         Details details = new Details();
-        // TODO: fix this
-        Location location = new Location();// launch.getLocation();
-        Rocket rocket = launch.getRocket();
-        // TODO: fix this
-        Agency agency = new Agency(); // launch.getLsp();
+        final RocketSerializerCommon rocket = launch.getRocket();
+        final AgencySerializerMini agency = launch.getLaunchServiceProvider();
+        final ll2.models.Pad location = launch.getPad();
 
-        details.setUid(launch.getId());
+        details.setUid(launch.getLaunchLibraryId());
         details.setHashtag(launch.getHashtag());
-        details.setChanged(launch.getChanged());
-        details.setNet(launch.getNet());
-        details.setVidURLs(launch.getVidURLs());
-
-        if (launch.getWikiURL() != null && !launch.getWikiURL().isEmpty()) {
-            List<String> tmp = new LinkedList<>();
-            tmp.add(launch.getWikiURL());
-            if (launch.getInfoURLs() != null && launch.getInfoURLs().length > 0)
-                tmp.addAll(Arrays.asList(launch.getInfoURLs()));
-            details.setInfoURLs(tmp.toArray(new String[0]));
-        } else details.setInfoURLs(launch.getInfoURLs());
+        details.setChanged(launch.getNet().toString());
+        details.setNet(launch.getNet().toString());
+        details.setVidURLs(new String[]{launch.getVidURLs()});
+        details.setInfoURLs(new String[]{launch.getInfoURLs()});
 
         if (agency != null)
             details.setAgencyId(agency.getId());
@@ -160,8 +154,8 @@ public class Details {
         if (location != null)
             details.setLocationId(location.getId());
 
-        if (location != null && location.getPad() != null)
-            details.setPadId(location.getPad().getId());
+        if (location != null)
+            details.setPadId(location.getId());
 
         if (rocket != null)
             details.setRocketId(rocket.getId());

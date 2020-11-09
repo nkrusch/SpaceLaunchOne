@@ -8,6 +8,7 @@ import androidx.room.Entity;
 import androidx.room.Ignore;
 import androidx.room.PrimaryKey;
 import api.ImageResolver;
+import ll2.models.AgencySerializerMini;
 
 @Entity(tableName = "agencies")
 public class Agency {
@@ -145,20 +146,12 @@ public class Agency {
     }
 
     @Ignore
-    public static Agency Map(models.Agency agency) {
+    public static Agency Map(AgencySerializerMini agency) {
         Agency a = new Agency();
         a.setAid(agency.getId());
         a.setName(agency.getName());
-        if (agency.getAbbrev() != null &&
-                !agency.getAbbrev().isEmpty() &&
-                !agency.getAbbrev().equals(agency.getName()))
-            a.setAbbrev(agency.getAbbrev());
-        a.setCountryCode(agency.getCountryCode());
-        a.setIslsp(agency.getIslsp());
-        a.setType(agency.getType());
-        a.setInfoURLs(agency.getInfoURLs());
-        a.setWikiURL(agency.getWikiURL());
-        a.setChanged(agency.getChanged());
+        a.setInfoURLs(new String[]{agency.getUrl()});
+        // TODO: capture agency type
         a.setLastModified(new Date());
         return a;
     }
