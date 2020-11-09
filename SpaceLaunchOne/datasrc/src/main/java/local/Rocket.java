@@ -111,7 +111,7 @@ public class Rocket {
         r.setRid(rocket.getId());
         r.setName(rocket.getName());
         r.setFamilyName(rocket.getFamilyName());
-        r.setConfiguration(rocket.getConfiguration());
+        r.setConfiguration(rocket.getConfiguration().getFullName());
         r.setImageURL(rocket.getImageURL());
         r.setWikiURL(rocket.getWikiURL());
         r.setInfoURLs(rocket.getInfoURLs());

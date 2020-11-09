@@ -13,15 +13,15 @@ public class Rocket extends InfoObj {
     private String defaultPads;
     private String imageURL;
     private String familyname;
-    private String configuration;
+    private Configuration configuration;
     private int[] imageSizes;
 
 
-    public String getConfiguration() {
+    public Configuration getConfiguration() {
         return configuration;
     }
 
-    public void setConfiguration(String configuration) {
+    public void setConfiguration(Configuration configuration) {
         this.configuration = configuration;
     }
 

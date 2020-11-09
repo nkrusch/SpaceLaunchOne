@@ -26,7 +26,8 @@ public abstract class SyncActivity extends AppCompatActivity {
     /**
      * Implement this method to perform some actions after sync finishes.
      */
-    protected void onReceiveHandler() { }
+    protected void onReceiveHandler() {
+    }
 
     protected void onStop() {
         super.onStop();
@@ -36,7 +37,7 @@ public abstract class SyncActivity extends AppCompatActivity {
     /**
      * Unregister broadcast receiver
      */
-    private void unregisterReceiver(){
+    private void unregisterReceiver() {
         if (syncReceiver == null || !receiverRegistered) return;
         try {
             unregisterReceiver(syncReceiver);
@@ -69,8 +70,12 @@ public abstract class SyncActivity extends AppCompatActivity {
     /**
      * Call this method to synchronize application data immediately
      */
-    protected void  requestImmediateSync() {
-        if(syncReceiver != null){
+    protected void requestImmediateSync() {
+        if (!InitActivity.isInitialized(this)) {
+            Log.d(TAG, "Initializing, will not launch another");
+            return;
+        }
+        if (syncReceiver != null) {
             Log.d(TAG, "Pending sync already running, will not launch another");
             return;
         }

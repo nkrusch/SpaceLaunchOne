@@ -8,17 +8,22 @@ android {
         targetSdkVersion 29
         versionCode 1
         versionName "1.0"
-        buildConfigField 'String', "ApiBasepath", API_Basepath
-        buildConfigField 'String', "HistoryStart", History_Start
         buildConfigField 'String', "ImageAssetPath", Image_Asset_Path
         buildConfigField 'int', "InitialLoadSize", Initial_Load_Size
         buildConfigField 'int', "MinCachePolicy", Min_Cache_Policy
         buildConfigField 'int', "MinRecentLimit", Min_Recent_Limit
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
-
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
     buildTypes {
+        debug{
+            buildConfigField 'String', "ApiBasepath", DEV_API_Basepath
+        }
         release {
+            buildConfigField 'String', "ApiBasepath", PROD_API_Basepath
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }

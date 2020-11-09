@@ -29,13 +29,13 @@ allprojects {
         googleMapsVersion = "17.0.0"
         googlePlacesVersion="17.0.0"
         googlegcmVersion= "17.0.0"
-        picassoVersion="2.5.2"
+        picassoVersion="2.71828"
         lifecycleVersion="2.2.0"
         roomVersion="2.2.5"
         constraintLayoutVersion="2.0.4"
         retrofitVersion= '2.9.0'
-        cloudinaryVersion="1.24.0"
-        oneSignalVersion="[3.9.1, 3.99.99]"
+        cloudinaryVersion="1.30.0"
+        oneSignalVersion="3.15.4"
         vectorVersion = "1.1.0"
         gsonVersion = '2.8.6'
     }

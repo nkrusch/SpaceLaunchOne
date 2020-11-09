@@ -22,17 +22,18 @@ public class UpdateJobService extends JobService {
      */
     @Override
     public boolean onStartJob(JobParameters params) {
-        Log.d("SYNC", "starting sync job service...");
-        UpdateMethods.UpdateAppData(getApplicationContext(), new OnLoadCallback() {
-            @Override
-            public void call(Object result) {
-                UpdateTime.updateSyncTimestamp(PreferenceManager.getDefaultSharedPreferences(getApplicationContext()));
-                Log.d("SYNC", "completed sync job service!");
-            }
-            @Override
-            public void onError(Exception e) {
-            }
-        });
+        // TODO: fix this -- should not run at the same time as init!
+//        Log.d("SYNC", "starting sync job service...");
+//        UpdateMethods.UpdateAppData(getApplicationContext(), new OnLoadCallback() {
+//            @Override
+//            public void call(Object result) {
+//                UpdateTime.updateSyncTimestamp(PreferenceManager.getDefaultSharedPreferences(getApplicationContext()));
+//                Log.d("SYNC", "completed sync job service!");
+//            }
+//            @Override
+//            public void onError(Exception e) {
+//            }
+//        });
         return true;
     }
 

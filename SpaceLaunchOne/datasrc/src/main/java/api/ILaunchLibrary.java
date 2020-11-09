@@ -15,8 +15,8 @@ interface ILaunchLibrary {
     @GET("launch?format=json&mode=list")
     Call<Launches> all_launches(@Query("offset") int offset, @Query("limit") int limit);
 
-    @GET("launch?format=json&fields=id,name,rocket,location,net,status")
-    Call<Launches> launches(@Query("next") int next);
+    @GET("launch/upcoming?format=json&offset=0&ordering=net")
+    Call<Launches> upcoming_launches(@Query("limit") int next);
 
     @GET("launch/{id}?format=json&mode=verbose")
     Call<Launches> launch(@Path("id") int id);

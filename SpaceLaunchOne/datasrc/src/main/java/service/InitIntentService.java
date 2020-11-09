@@ -30,9 +30,10 @@ public class InitIntentService extends IntentService {
     @Override
     protected void onHandleIntent(@Nullable Intent intent) {
         if (intent != null && ACTION_INITIALIZE.equals(intent.getAction())) {
+
             final AppDatabase db = AppDatabase.getInstance(this);
 
-            LaunchLibrary.loadLaunches(BuildConfig.InitialLoadSize, new OnLoadCallback<Launches>() {
+            LaunchLibrary.initialLaunches(BuildConfig.InitialLoadSize, new OnLoadCallback<Launches>() {
                 @Override
                 public void call(Launches result) {
                     UpdateMethods.LaunchData.processLaunches(db, result, new OnLoadCallback<Boolean>() {
@@ -40,7 +41,6 @@ public class InitIntentService extends IntentService {
                         public void call(Boolean result) {
                             onActionCompleted(ACTION_INITIALIZE, result);
                         }
-
                         @Override
                         public void onError(Exception e) {
                             onActionCompleted(ACTION_INITIALIZE, false);

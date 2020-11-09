@@ -66,6 +66,8 @@ public class UpdateMethods {
                 if (callback != null) callback.call(false);
                 return;
             }
+            Log.d(TAG, "PROCESSING: " + result.getResults().size());
+
             final Details[] details = new Details[result.getResults().size()];
             final Launch[] launches = new Launch[result.getResults().size()];
             final ArrayMap<Integer, Rocket> rockets = new ArrayMap<>();
@@ -232,10 +234,8 @@ public class UpdateMethods {
             LaunchLibrary.allLaunches(0, size, new OnLoadCallback<Launches>() {
                 @Override
                 public void call(final Launches result) {
-                    Log.d(TAG, "Result: " + result);
                     processLaunches(db, result, callback);
                 }
-
                 @Override
                 public void onError(Exception e) {
                     handleError(e, callback);
