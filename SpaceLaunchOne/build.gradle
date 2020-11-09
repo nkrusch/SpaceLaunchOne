@@ -38,6 +38,15 @@ allprojects {
         oneSignalVersion="3.15.4"
         vectorVersion = "1.1.0"
         gsonVersion = '2.8.6'
+
+        swagger_annotations_version = "1.5.0"
+        httpmime_version = "4.5.2"
+        httpcore_version = "4.4.4"
+        httpclient_version = "4.3.3"
+        volley_version = "1.0.0"
+        junit_version = "4.12"
+        robolectric_version = "3.0"
+        concurrent_unit_version = "0.4.2"
     }
 }
 
