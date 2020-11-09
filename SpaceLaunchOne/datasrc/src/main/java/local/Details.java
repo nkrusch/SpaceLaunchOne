@@ -140,12 +140,15 @@ public class Details {
         final RocketSerializerCommon rocket = launch.getRocket();
         final AgencySerializerMini agency = launch.getLaunchServiceProvider();
         final ll2.models.Pad location = launch.getPad();
+        final int videoCount = launch.getVidURLs() != null ? launch.getVidURLs().length() : 0;
+        final String[] videos = new String[videoCount];
+        if (videoCount > 0) videos[0] = launch.getVidURLs();
 
         details.setUid(launch.getLaunchLibraryId());
         details.setHashtag(launch.getHashtag());
         details.setChanged(launch.getNet().toString());
         details.setNet(launch.getNet().toString());
-        details.setVidURLs(new String[]{launch.getVidURLs()});
+        details.setVidURLs(videos);
         details.setInfoURLs(new String[]{launch.getInfoURLs()});
 
         if (agency != null)
