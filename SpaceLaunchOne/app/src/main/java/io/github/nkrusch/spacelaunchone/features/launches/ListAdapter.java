@@ -89,26 +89,13 @@ public class ListAdapter<T extends Launch> extends
         holder.mImageView.setVisibility(View.VISIBLE);
         holder.mImageView.setImageResource(R.drawable.ic_rocket_background);
 
-        if (item.getImage()!=null) {
+        if (item.getImage() != null) {
             AppImage.LoadSquareImageFromURL(
                     item.getImage(),
                     thumbnailWidth,
                     holder.mImageView,
                     R.drawable.ic_rocket_background
             );
-
-            // TODO: update this image loading syntax!
-
-//            Picasso.with(context).load(Utilities.squareImage(item.getImage(), thumbnailWidth))
-//                    .into(holder.mImageView, new Callback() {
-//                @Override
-//                public void onSuccess() {}
-//
-//                @Override
-//                public void onError() {
-//                    holder.mImageView.setImageResource(R.drawable.ic_rocket_background);
-//                }
-//            });
         }
     }
 

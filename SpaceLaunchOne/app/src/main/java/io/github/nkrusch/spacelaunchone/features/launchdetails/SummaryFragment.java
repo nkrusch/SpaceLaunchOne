@@ -21,6 +21,7 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import api.ImageResolver;
 import io.github.nkrusch.spacelaunchone.R;
+import io.github.nkrusch.spacelaunchone.app.AppImage;
 import io.github.nkrusch.spacelaunchone.app.CircleTransform;
 import io.github.nkrusch.spacelaunchone.app.Utilities;
 import local.LaunchDetails;
@@ -167,12 +168,8 @@ public class SummaryFragment extends DetailsBaseFragment {
 
         mStatusImage.setImageResource(statusImage(launch.getStatus()));
 
-//        TODO: update this image loading syntax
-//        Picasso.with(getContext()).load(Utilities.countryIcon(launch.getLocationCountryCode()))
-//                .noFade().transform(new CircleTransform()).into(mCountryImage);
-//
-//        Picasso.with(getContext()).load(ImageResolver.resolveImage(launch.getAgencyId()))
-//                .noFade().transform(new CircleTransform()).into(mAgencyImage);
+        AppImage.LoadCircleImage(Utilities.countryIcon(launch.getLocationCountryCode()), mCountryImage);
+        AppImage.LoadCircleImage(ImageResolver.resolveImage(launch.getAgencyId()), mAgencyImage);
 
         setImage(launch.getImage(), mRocketImage);
         setRocket(launch.getImage());
@@ -181,21 +178,8 @@ public class SummaryFragment extends DetailsBaseFragment {
     private void setImage(final String image, final ImageView target) {
         if (StringUtils.isEmpty(image) || models.Launch.isPlaceholderImage(image) || target == null)
             return;
-        final Context context = getContext();
         final String sizedImage = Utilities.roundImage(image, Utilities.dpToPixel(40, getResources()));
-
-        // TODO: update this image loading syntax
-//        Picasso.with(context).load(sizedImage).noFade()
-//                .transform(new CircleTransform()).into(target, new Callback() {
-//            @Override
-//            public void onSuccess() {
-//            }
-//
-//            @Override
-//            public void onError() {
-//                target.setImageDrawable(getResources().getDrawable(R.drawable.ic_rocket));
-//            }
-//        });
+        AppImage.LoadCircleImage(sizedImage, target, R.drawable.ic_rocket);
     }
 
     private void setRocket(final String image) {
@@ -203,21 +187,8 @@ public class SummaryFragment extends DetailsBaseFragment {
                 mRocketCardImage == null || getActivity() == null)
             return;
         WindowManager wm = getActivity().getWindowManager();
-        final Context context = getContext();
         final String sizedImage = Utilities.sizedHeight(image, Utilities.display(wm).second);
-        // TODO: update this image loading syntax
-//        Picasso.with(context)
-//                .load(sizedImage)
-//                .into(mRocketCardImage, new Callback() {
-//                    @Override
-//                    public void onSuccess() {
-//                        ((View) mRocketCardImage.getParent()).setVisibility(VISIBLE);
-//                    }
-//
-//                    @Override
-//                    public void onError() {
-//                    }
-//                });
+        AppImage.LoadAndDisplay(sizedImage, mRocketCardImage, (View) mRocketCardImage.getParent());
     }
 
     @Override
