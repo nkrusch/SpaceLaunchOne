@@ -25,6 +25,10 @@ android {
     versionProps['VERSION_CODE'] = code.toString()
     versionProps.store(versionPropsFile.newWriter(), null)
 
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
     signingConfigs {
         config {
             storeFile file(properties.getProperty('storeFile'))
@@ -90,11 +94,6 @@ dependencies {
     // project modules
     implementation project(':datasrc')
     implementation project(':models')
-
-    // testing
-    testImplementation 'junit:junit:4.13'
-    androidTestImplementation 'androidx.test:runner:1.2.0'
-    androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
 }
 
 task javadoc(type: Javadoc) {

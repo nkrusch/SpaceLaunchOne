@@ -1,5 +1,7 @@
 package models;
 
+import com.google.gson.annotations.SerializedName;
+
 import java.util.LinkedList;
 import java.util.List;
 
@@ -7,19 +9,19 @@ import models.base.PagedResult;
 
 public class Launches extends PagedResult {
 
-    private List<Launch> launches = new LinkedList<>();
+    @SerializedName("results")
+    private List<Launch> results = new LinkedList<>();
 
-    public List<Launch> getLaunches() {
-        return launches;
+    public List<Launch> getResults() {
+        return this.results;
     }
 
-    public void setLaunches(List<Launch> launches) {
-        this.launches = launches;
+    public void setResults(List<Launch> results) {
+        this.results.addAll(results);
     }
 
-    public Launches(){}
-
-    public Launches(Launch launch){
-        this.launches.add(launch);
+    public Launches() {
     }
+
+    public Launches(Launch launch) { this.results.add(launch); }
 }

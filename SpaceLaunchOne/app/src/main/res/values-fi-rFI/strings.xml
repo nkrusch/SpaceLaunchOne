@@ -130,7 +130,7 @@
     <string name="status">Status</string>
     <string name="country">Maa</string>
     <string name="agency">Agentuuri</string>
-    <string name="rocket_summary_label">Raketin Nimi / Ryhmä / Rakenne</string>
+    <string name="rocket_summary_label">Raketin Nimi / Ryhmä</string>
     <string name="enabled">Päällä</string>
     <string name="disabled">Pois päältä</string>
     <string name="app_notifications">Push ilmoitukset</string>

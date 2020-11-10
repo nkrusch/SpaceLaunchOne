@@ -1,14 +1,11 @@
 package api;
 
-import android.util.Log;
-
 import org.jsoup.Connection;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.select.Elements;
 
 import models.Launch;
-import models.Rocket;
 import models.data.BuildConfig;
 
 /**

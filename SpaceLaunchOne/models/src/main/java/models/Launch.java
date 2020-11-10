@@ -1,25 +1,21 @@
 package models;
 
-import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.Locale;
-import java.util.TimeZone;
 
 import models.base.InfoObj;
 
 @SuppressWarnings("SpellCheckingInspection")
 public class Launch extends InfoObj {
 
-    private static final String dateFormatPattern = "MMM dd, yyyy HH:mm:ss 'UTC'";
-    private static final String chagedFormatPattern = "yyyy-MM-dd HH:mm:ss";
-
     private String hashtag;
     private String net;
     private int probability;
-    private int status;
-    private int tbddate;
-    private int tbdtime;
+    private Status status;
+    private boolean tbddate;
+    private boolean tbdtime;
     private String windowend;
     private String windowstart;
     private String isostart;
@@ -32,10 +28,11 @@ public class Launch extends InfoObj {
     private String failreason;
     private String image;
     private String[] vidURLs;
-    private Agency lsp = new Agency();
     private Rocket rocket = new Rocket();
-    private Mission[] missions = new Mission[]{};
-    private Location location = new Location();
+
+//    private Agency lsp = new Agency();
+//    private Mission[] missions = new Mission[]{};
+//    private Location location = new Location();
 
     public Launch() {
     }
@@ -54,34 +51,13 @@ public class Launch extends InfoObj {
         this.vidURLs = vidURLs;
     }
 
-    public Location getLocation() {
-        return location;
-    }
-
-    public void setLocation(Location location) {
-        this.location = location;
-    }
-
-    public String getStatusText() {
-        switch (status) {
-            case 1:
-                return "Go";
-            case 2:
-                return "No-Go";
-            case 3:
-                return "Success";
-            case 4:
-                return "Failed";
-            case 5:
-                return "Hold";
-            case 6:
-                return "In Flight";
-            case 7:
-                return "Partial Failure";
-            default:
-                return "Unknown";
-        }
-    }
+//    public Location getLocation() {
+//        return location;
+//    }
+//
+//    public void setLocation(Location location) {
+//        this.location = location;
+//    }
 
     public String getIsonet() {
         return isonet;
@@ -143,20 +119,20 @@ public class Launch extends InfoObj {
         this.rocket = rocket;
     }
 
-    public Mission[] getMissions() {
-        return missions;
-    }
-
-    public void setMissions(Mission[] missions) {
-        this.missions = missions;
-    }
+//    public Mission[] getMissions() {
+//        return missions;
+//    }
+//
+//    public void setMissions(Mission[] missions) {
+//        this.missions = missions;
+//    }
 
     public boolean isProjectedLaunchDate() {
-        return tbddate == 1;
+        return !tbddate;
     }
 
     public boolean isProjectedLaunchTime() {
-        return tbdtime == 1;
+        return !tbdtime;
     }
 
     public boolean isUnknownProbability() {
@@ -171,13 +147,13 @@ public class Launch extends InfoObj {
         this.hashtag = hashtag;
     }
 
-    public Agency getLsp() {
-        return lsp;
-    }
-
-    public void setLsp(Agency lsp) {
-        this.lsp = lsp;
-    }
+//    public Agency getLsp() {
+//        return lsp;
+//    }
+//
+//    public void setLsp(Agency lsp) {
+//        this.lsp = lsp;
+//    }
 
     public String getNet() {
         return net;
@@ -195,27 +171,27 @@ public class Launch extends InfoObj {
         this.probability = probability;
     }
 
-    public int getStatus() {
+    public Status getStatus() {
         return status;
     }
 
-    public void setStatus(int status) {
+    public void setStatus(Status status) {
         this.status = status;
     }
 
-    public int getTbddate() {
+    public boolean getTbddate() {
         return tbddate;
     }
 
-    public void setTbddate(int tbddate) {
+    public void setTbddate(boolean tbddate) {
         this.tbddate = tbddate;
     }
 
-    public int getTbdtime() {
+    public boolean getTbdtime() {
         return tbdtime;
     }
 
-    public void setTbdtime(int tbdtime) {
+    public void setTbdtime(boolean tbdtime) {
         this.tbdtime = tbdtime;
     }
 
@@ -252,23 +228,18 @@ public class Launch extends InfoObj {
     }
 
     public Long getLaunchDateUTC() {
-        DateFormat format = new SimpleDateFormat(dateFormatPattern, Locale.ENGLISH);
-        format.setTimeZone(TimeZone.getTimeZone("UTC"));
         try {
-            return format.parse(this.net).getTime();
+            String isoString = this.net.replace("Z", "+00:00");
+            Date date = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ssZ", Locale.US).parse(isoString);
+            return date.getTime();
         } catch (ParseException e) {
             e.printStackTrace();
         }
         return 2696400000L; // 1-1-1970
     }
 
+    @Deprecated
     public static Long changeDate(String changed) {
-        DateFormat format = new SimpleDateFormat(chagedFormatPattern, Locale.ENGLISH);
-        try {
-            return format.parse(changed).getTime();
-        } catch (ParseException e) {
-            e.printStackTrace();
-        }
         return 2696400000L; // 1-1-1970
     }
 

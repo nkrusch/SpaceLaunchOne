@@ -15,9 +15,9 @@ import androidx.lifecycle.ViewModelProviders;
 import io.github.nkrusch.spacelaunchone.R;
 import io.github.nkrusch.spacelaunchone.app.TabbedActivity;
 import io.github.nkrusch.spacelaunchone.app.TabsAdapter;
-import io.github.nkrusch.spacelaunchone.features.pads.LocationPadsFragment;
 import io.github.nkrusch.spacelaunchone.features.agencies.LocationAgencyRecyclerView;
 import io.github.nkrusch.spacelaunchone.features.launches.LocationLaunchRecyclerView;
+import io.github.nkrusch.spacelaunchone.features.pads.LocationPadsFragment;
 import viewmodels.LocationDetailsViewModel;
 
 import static android.view.View.GONE;

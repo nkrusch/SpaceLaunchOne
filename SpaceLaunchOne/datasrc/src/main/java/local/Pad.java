@@ -97,37 +97,27 @@ public class Pad implements Comparable<Pad> {
     }
 
     @Ignore
-    public static Pad Map(models.Pad pad, int locationId) {
+    public static Pad Map(ll2.models.Pad pad, int locationId) {
         Pad a = new Pad();
         a.setPid(pad.getId());
         a.setName(pad.getName());
-        a.setLatitude(pad.getLatitude());
-        a.setLongitude(pad.getLongitude());
-        a.setRetired(pad.getRetired());
+        a.setLatitude(Double.parseDouble(pad.getLatitude()));
+        a.setLongitude(Double.parseDouble(pad.getLongitude()));
         a.setLocationId(locationId);
-        if (pad.getWikiURL() != null && !pad.getWikiURL().isEmpty()) {
-            List<String> tmp = new LinkedList<>();
-            tmp.add(pad.getWikiURL());
-            if (pad.getInfoURLs() != null && pad.getInfoURLs().length > 0)
-                tmp.addAll(Arrays.asList(pad.getInfoURLs()));
-            a.setInfoURLs(tmp.toArray(new String[0]));
-        } else a.setInfoURLs(pad.getInfoURLs());
+        a.setInfoURLs(new String[]{pad.getUrl()});
         a.setLastModified(new Date());
         return a;
     }
 
     @Ignore
-    public static Pad Map(models.Pad pad) {
-        return Map(pad, pad.getLocationid());
+    public static Pad Map(ll2.models.Pad pad) {
+        return Map(pad, pad.getLocation().getId());
     }
 
     @Ignore
-    public static void Map(ArrayMap<Integer, Pad> pads, final int locationId, models.Pad[] padArray) {
-        if (padArray != null && padArray.length > 0) {
-            for (models.Pad pad : padArray)
-                if (!pads.containsKey(pad.getId()))
-                    pads.put(pad.getId(), Map(pad, locationId));
-        }
+    public static void Map(ArrayMap<Integer, Pad> pads, final int locationId, ll2.models.Pad pad) {
+        if (!pads.containsKey(pad.getId()))
+            pads.put(pad.getId(), Map(pad, locationId));
     }
 
     @Ignore

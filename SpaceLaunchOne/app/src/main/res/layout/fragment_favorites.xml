@@ -13,7 +13,7 @@
                 android:id="@+id/toolbar"
                 android:layout_width="match_parent"
                 android:layout_height="?actionBarSize"
-                app:theme="@style/FavToolbar"
+                android:theme="@style/FavToolbar"
                 app:layout_scrollFlags="scroll" />
 
     </com.google.android.material.appbar.AppBarLayout>

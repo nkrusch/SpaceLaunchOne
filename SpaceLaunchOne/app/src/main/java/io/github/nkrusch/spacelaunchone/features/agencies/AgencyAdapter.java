@@ -7,9 +7,6 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.squareup.picasso.Callback;
-import com.squareup.picasso.Picasso;
-
 import java.util.List;
 import java.util.Locale;
 
@@ -17,6 +14,7 @@ import androidx.annotation.NonNull;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.RecyclerView;
 import io.github.nkrusch.spacelaunchone.R;
+import io.github.nkrusch.spacelaunchone.app.AppImage;
 import io.github.nkrusch.spacelaunchone.app.OnItemClickListener;
 import io.github.nkrusch.spacelaunchone.app.Utilities;
 import local.Agency;
@@ -66,16 +64,7 @@ public class AgencyAdapter extends RecyclerView.Adapter<AgencyAdapter.ItemViewHo
         holder.mNumber.setText(String.format(Locale.getDefault(), "%02d", position + 1));
 
         holder.mImageView.setVisibility(View.VISIBLE);
-        Picasso.with(context).load(item.getImage()).into(holder.mImageView, new Callback() {
-            @Override
-            public void onSuccess() {
-            }
-
-            @Override
-            public void onError() {
-                holder.mImageView.setImageResource(R.drawable.ic_office_building);
-            }
-        });
+        AppImage.LoadImageFromURL(item.getImage(), holder.mImageView, R.drawable.ic_office_building);
     }
 
     @Override

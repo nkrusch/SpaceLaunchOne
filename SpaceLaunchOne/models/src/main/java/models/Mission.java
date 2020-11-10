@@ -1,7 +1,5 @@
 package models;
 
-import java.util.Arrays;
-
 import models.base.InfoObj;
 
 public class Mission extends InfoObj {

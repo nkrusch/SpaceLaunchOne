@@ -2,8 +2,24 @@ package models.base;
 
 public abstract class PagedResult {
     private int count;
-    private int offset;
-    private int total;
+    private String next;
+    private String previous;
+
+    public String getNext() {
+        return next;
+    }
+
+    public void setNext(String next) {
+        this.next = next;
+    }
+
+    public String getPrevious() {
+        return previous;
+    }
+
+    public void setPrevious(String previous) {
+        this.previous = previous;
+    }
 
     public int getCount() {
         return count;
@@ -13,19 +29,4 @@ public abstract class PagedResult {
         this.count = count;
     }
 
-    public int getOffset() {
-        return offset;
-    }
-
-    public void setOffset(int offset) {
-        this.offset = offset;
-    }
-
-    public int getTotal() {
-        return total;
-    }
-
-    public void setTotal(int total) {
-        this.total = total;
-    }
 }

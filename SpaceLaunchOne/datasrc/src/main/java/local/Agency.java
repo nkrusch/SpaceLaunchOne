@@ -8,6 +8,7 @@ import androidx.room.Entity;
 import androidx.room.Ignore;
 import androidx.room.PrimaryKey;
 import api.ImageResolver;
+import ll2.models.AgencySerializerMini;
 
 @Entity(tableName = "agencies")
 public class Agency {
@@ -128,6 +129,25 @@ public class Agency {
     }
 
     @Ignore
+    private static int getAgencyType(String input) {
+        if (input == null) return -1;
+        switch (input) {
+            case "Government":
+                return 1;
+            case "Multinational":
+                return 2;
+            case "Commercial":
+                return 3;
+            case "Educational":
+                return 4;
+            case "Private":
+                return 5;
+            default:
+                return -1;
+        }
+    }
+
+    @Ignore
     public String getAgencyCountries() {
         if (countryCode == null || countryCode.isEmpty()) return "";
         if (!countryCode.contains(",")) return countryCode;
@@ -145,20 +165,12 @@ public class Agency {
     }
 
     @Ignore
-    public static Agency Map(models.Agency agency) {
+    public static Agency Map(AgencySerializerMini agency) {
         Agency a = new Agency();
         a.setAid(agency.getId());
         a.setName(agency.getName());
-        if (agency.getAbbrev() != null &&
-                !agency.getAbbrev().isEmpty() &&
-                !agency.getAbbrev().equals(agency.getName()))
-            a.setAbbrev(agency.getAbbrev());
-        a.setCountryCode(agency.getCountryCode());
-        a.setIslsp(agency.getIslsp());
-        a.setType(agency.getType());
-        a.setInfoURLs(agency.getInfoURLs());
-        a.setWikiURL(agency.getWikiURL());
-        a.setChanged(agency.getChanged());
+        a.setInfoURLs(new String[]{agency.getUrl()});
+        a.setType(getAgencyType(agency.getType()));
         a.setLastModified(new Date());
         return a;
     }

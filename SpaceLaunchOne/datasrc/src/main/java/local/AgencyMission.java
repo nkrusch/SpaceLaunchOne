@@ -1,7 +1,5 @@
 package local;
 
-import android.util.ArrayMap;
-
 import androidx.annotation.NonNull;
 import androidx.room.Entity;
 import androidx.room.Ignore;

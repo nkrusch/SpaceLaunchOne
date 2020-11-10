@@ -8,6 +8,7 @@ import androidx.annotation.NonNull;
 import androidx.room.Entity;
 import androidx.room.Ignore;
 import androidx.room.PrimaryKey;
+import ll2.models.RocketSerializerCommon;
 
 
 @Entity(tableName = "rockets")
@@ -106,15 +107,14 @@ public class Rocket {
     }
 
     @Ignore
-    public static Rocket Map(models.Rocket rocket) {
+    public static Rocket Map(RocketSerializerCommon rocket, String image) {
         Rocket r = new Rocket();
         r.setRid(rocket.getId());
-        r.setName(rocket.getName());
-        r.setFamilyName(rocket.getFamilyName());
-        r.setConfiguration(rocket.getConfiguration());
-        r.setImageURL(rocket.getImageURL());
-        r.setWikiURL(rocket.getWikiURL());
-        r.setInfoURLs(rocket.getInfoURLs());
+        r.setName(rocket.getConfiguration().getName());
+        r.setFamilyName(rocket.getConfiguration().getFamily());
+        r.setConfiguration(rocket.getConfiguration().getFullName());
+        r.setImageURL(image);
+        r.setInfoURLs(new String[]{rocket.getConfiguration().getUrl()});
         r.setLastModified(new Date());
         return r;
     }

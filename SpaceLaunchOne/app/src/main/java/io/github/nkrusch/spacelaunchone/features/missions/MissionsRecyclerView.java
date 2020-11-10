@@ -21,7 +21,6 @@ import io.github.nkrusch.spacelaunchone.app.RecyclerViewFragment;
 import local.AgencyDetails;
 import local.Mission;
 import viewmodels.AgencyDetailsViewModel;
-import viewmodels.LocationDetailsViewModel;
 
 
 public class MissionsRecyclerView extends RecyclerViewFragment {

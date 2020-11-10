@@ -10,8 +10,6 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.squareup.picasso.Picasso;
-
 import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.List;
@@ -22,6 +20,7 @@ import androidx.annotation.NonNull;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.RecyclerView;
 import io.github.nkrusch.spacelaunchone.R;
+import io.github.nkrusch.spacelaunchone.app.AppImage;
 import local.LaunchDetails;
 
 import static android.view.View.GONE;
@@ -104,7 +103,7 @@ public class VideosFragment extends HorizontalRecyclerViewFragment<VideosFragmen
                 String videoId = videoUrl.split("=", 2)[1];
                 String YOUTUBE_IMG = "https://i.ytimg.com/vi/{:id}/sddefault.jpg";
                 String imageUrl = YOUTUBE_IMG.replace("{:id}", videoId);
-                Picasso.with(holder.mVideoImage.getContext()).load(imageUrl).into(holder.mVideoImage);
+                AppImage.LoadImageFromURL(imageUrl, holder.mVideoImage);
             }
         }
 

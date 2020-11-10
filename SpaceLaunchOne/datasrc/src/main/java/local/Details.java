@@ -1,5 +1,6 @@
 package local;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Date;
 import java.util.LinkedList;
@@ -10,6 +11,10 @@ import androidx.room.Entity;
 import androidx.room.Ignore;
 import androidx.room.Index;
 import androidx.room.PrimaryKey;
+import ll2.models.AgencySerializerMini;
+import ll2.models.LaunchSerializerCommon;
+import ll2.models.Program;
+import ll2.models.RocketSerializerCommon;
 import models.Agency;
 import models.Location;
 import models.Rocket;
@@ -131,35 +136,40 @@ public class Details {
     }
 
     @Ignore
-    public static Details Map(models.Launch launch) {
+    public static Details Map(LaunchSerializerCommon launch) {
 
         Details details = new Details();
-        Location location = launch.getLocation();
-        Rocket rocket = launch.getRocket();
-        Agency agency = launch.getLsp();
+        final RocketSerializerCommon rocket = launch.getRocket();
+        final AgencySerializerMini agency = launch.getLaunchServiceProvider();
+        final ll2.models.Pad pad = launch.getPad();
+        final List<String> videos = new ArrayList<>();
+        final List<String> infoURLs = new ArrayList<>();
+        if (launch.getVidURLs() != null) videos.add(launch.getVidURLs());
+        if (launch.getProgram() != null && launch.getProgram().size() > 0)
+            for (Program p : launch.getProgram()) {
+                if (p.getWikiUrl() != null) infoURLs.add(p.getWikiUrl());
+                if (p.getInfoUrl() != null) infoURLs.add(p.getInfoUrl());
+            }
+        if (launch.getPad() != null) {
+            if (launch.getPad().getInfoUrl() != null) infoURLs.add(launch.getPad().getInfoUrl());
+            if (launch.getPad().getWikiUrl() != null) infoURLs.add(launch.getPad().getWikiUrl());
+        }
 
-        details.setUid(launch.getId());
+        details.setUid(launch.getLaunchLibraryId());
         details.setHashtag(launch.getHashtag());
-        details.setChanged(launch.getChanged());
-        details.setNet(launch.getNet());
-        details.setVidURLs(launch.getVidURLs());
-
-        if (launch.getWikiURL() != null && !launch.getWikiURL().isEmpty()) {
-            List<String> tmp = new LinkedList<>();
-            tmp.add(launch.getWikiURL());
-            if (launch.getInfoURLs() != null && launch.getInfoURLs().length > 0)
-                tmp.addAll(Arrays.asList(launch.getInfoURLs()));
-            details.setInfoURLs(tmp.toArray(new String[0]));
-        } else details.setInfoURLs(launch.getInfoURLs());
+        details.setChanged(new Date().toString());
+        details.setNet(launch.getNet().toString());
+        details.setVidURLs(videos.toArray(new String[0]));
+        details.setInfoURLs(infoURLs.toArray(new String[0]));
 
         if (agency != null)
             details.setAgencyId(agency.getId());
 
-        if (location != null)
-            details.setLocationId(location.getId());
+        if (pad != null && pad.getLocation() != null)
+            details.setLocationId(pad.getLocation().getId());
 
-        if (location != null && location.getPad() != null)
-            details.setPadId(location.getPad().getId());
+        if (pad != null)
+            details.setPadId(pad.getId());
 
         if (rocket != null)
             details.setRocketId(rocket.getId());

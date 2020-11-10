@@ -10,19 +10,14 @@ import android.view.ViewGroup;
 
 import com.google.android.material.appbar.AppBarLayout;
 
-import java.util.List;
-
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
-import androidx.lifecycle.Observer;
 import io.github.nkrusch.spacelaunchone.R;
 import io.github.nkrusch.spacelaunchone.app.Utilities;
 import io.github.nkrusch.spacelaunchone.features.FilterActivity;
 import io.github.nkrusch.spacelaunchone.features.HistoryActivity;
 import io.github.nkrusch.spacelaunchone.features.SearchActivity;
-import local.Launch;
 
 public class ScheduledFragment extends Fragment {
 

@@ -122,31 +122,21 @@ public class Mission {
     }
 
     @Ignore
-    public static Mission Map(int launchId, models.Mission mission) {
+    public static Mission Map(int launchId, ll2.models.Mission mission) {
         Mission m = new Mission();
         m.setMid(mission.getId());
         m.setLaunchId(launchId);
-        m.setCategory(mission.getTypeName());
+        m.setCategory(mission.getType());
         m.setDescription(mission.getDescription());
-        m.setWikiURL(mission.getWikiURL());
         m.setName(mission.getName());
         return m;
     }
 
-    @Ignore
-    public static List<Mission> Map(int launchId, models.Mission[] missions) {
-        List<Mission> result = new LinkedList<>();
-        if (missions != null) {
-            for (models.Mission mission : missions)
-                result.add(Map(launchId, mission));
-        }
-        return result;
-    }
 
     @Ignore
-    public static void Map(ArrayMap<Integer, Mission> result, int launchId, models.Mission[] missions) {
+    public static void Map(ArrayMap<Integer, Mission> result, int launchId, ll2.models.Mission[] missions) {
         if (missions == null || missions.length == 0) return;
-        for (models.Mission m : missions) {
+        for (ll2.models.Mission m : missions) {
             if (result.containsKey(m.getId())) continue;
             result.put(m.getId(), Map(launchId, m));
         }

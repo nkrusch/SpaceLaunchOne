@@ -5,7 +5,6 @@ import android.util.ArrayMap;
 import android.util.Log;
 
 import java.util.Arrays;
-import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Objects;
@@ -14,6 +13,10 @@ import androidx.annotation.Nullable;
 import api.ImageResolver;
 import api.LaunchLibrary;
 import api.OnLoadCallback;
+import ll2.models.AgencySerializerMini;
+import ll2.models.LaunchList;
+import ll2.models.LaunchSerializerCommon;
+import ll2.models.RocketSerializerCommon;
 import local.Agency;
 import local.AgencyMission;
 import local.AppDatabase;
@@ -24,11 +27,7 @@ import local.LocationAgency;
 import local.Mission;
 import local.Pad;
 import local.Rocket;
-import models.Agencies;
 import models.Launches;
-import models.Locations;
-import models.Pads;
-import models.data.BuildConfig;
 
 /**
  * Update application database
@@ -36,15 +35,12 @@ import models.data.BuildConfig;
 @SuppressWarnings("SameParameterValue")
 public class UpdateMethods {
 
-    private static final String TAG = "UPDATE";
+    private static final String TAG = "API/UPDATE";
 
     public static void UpdateAppData(Context context, final OnLoadCallback callback) {
         Log.d("UPDATE", "updating app data....");
         final AppDatabase db = AppDatabase.getInstance(context);
-        LaunchData.updateAllLaunches(db, BuildConfig.HistoryStart, Integer.MAX_VALUE, callback);
-        //AgencyData.updateAgencies(new Agencies(), db, Integer.MAX_VALUE, 0, 50, callback);
-        //LocationData.updateLocations(new Locations(), db, Integer.MAX_VALUE, 0, 50, callback);
-        //PadData.updatePads(new Pads(), db, Integer.MAX_VALUE, 0, 50, callback);
+        LaunchData.updateAllLaunches(db, Integer.MAX_VALUE, callback);
     }
 
     public static void UpdateLaunchDetails(Context context, final int id, @Nullable final OnLoadCallback callback) {
@@ -53,6 +49,7 @@ public class UpdateMethods {
     }
 
     private static void handleError(Exception e, @Nullable final OnLoadCallback callback) {
+        Log.d(TAG, "ERROR: " + e.getMessage());
         if (callback != null) callback.call(false);
     }
 
@@ -62,15 +59,20 @@ public class UpdateMethods {
          * Go through list of launches and update the database.
          * Provide callback method to get notified when this process completes
          */
-        static void processLaunches(final AppDatabase db, final Launches result, final OnLoadCallback<Boolean> callback) {
+        static void processLaunches(
+                final AppDatabase db,
+                final LaunchList result,
+                final OnLoadCallback<Boolean> callback
+        ) {
 
-            if (result == null || result.getLaunches() == null) {
+            if (result == null || result.getResults() == null) {
                 if (callback != null) callback.call(false);
                 return;
             }
+            Log.d(TAG, "PROCESSING: " + result.getResults().size());
 
-            final Details[] details = new Details[result.getLaunches().size()];
-            final Launch[] launches = new Launch[result.getLaunches().size()];
+            final Details[] details = new Details[result.getResults().size()];
+            final Launch[] launches = new Launch[result.getResults().size()];
             final ArrayMap<Integer, Rocket> rockets = new ArrayMap<>();
             final ArrayMap<Integer, Agency> agencies = new ArrayMap<>();
             final ArrayMap<Integer, Location> locations = new ArrayMap<>();
@@ -80,25 +82,25 @@ public class UpdateMethods {
             final ArrayMap<String, LocationAgency> laRefX = new ArrayMap<>();
 
             // map data
-            for (int i = 0; i < result.getLaunches().size(); i++) {
+            for (int i = 0; i < result.getResults().size(); i++) {
 
-                final models.Launch l = result.getLaunches().get(i);
-                final models.Rocket r = l.getRocket();
-                final models.Location loc = l.getLocation();
-                final models.Agency a = l.getLsp();
-                final boolean valid_agency = a != null && a.getId() > 0;
+                final LaunchSerializerCommon l = result.getResults().get(i);
+                final RocketSerializerCommon r = l.getRocket();
+                final ll2.models.Pad loc = l.getPad();
+                final AgencySerializerMini a = l.getLaunchServiceProvider();
+                final boolean valid_agency = a != null;
 
                 details[i] = Details.Map(l);
                 launches[i] = Launch.Map(l);
 
                 if (r != null) {
                     int rocketId = r.getId();
-                    int launchId = l.getId();
+                    int launchId = l.getLaunchLibraryId();
 
                     if (rockets.containsKey(rocketId) && rockets.get(rocketId) != null) {
                         Objects.requireNonNull(rockets.get(rocketId)).addLaunchId(launchId);
                     } else {
-                        Rocket rocket = Rocket.Map(r);
+                        Rocket rocket = Rocket.Map(r, l.getImage());
                         rocket.addLaunchId(launchId);
                         rockets.put(rocketId, rocket);
                     }
@@ -106,7 +108,6 @@ public class UpdateMethods {
 
                 if (valid_agency) {
                     if (!agencies.containsKey(a.getId())) {
-                        a.setIslsp(1);
                         agencies.put(a.getId(), Agency.Map(a));
                     } else if (Objects.requireNonNull(agencies.get(a.getId())).getIslsp() == 0) {
                         Objects.requireNonNull(agencies.get(a.getId())).setIslsp(1);
@@ -114,43 +115,27 @@ public class UpdateMethods {
                 }
 
                 if (loc != null) {
-                    if (!locations.containsKey(loc.getId()))
-                        locations.put(loc.getId(), Location.Map(loc));
+                    if (!locations.containsKey(loc.getLocation().getId()))
+                        locations.put(loc.getId(), Location.Map(loc.getLocation()));
 
-                    Pad.Map(pads, loc.getId(), loc.getPads());
+                    Pad.Map(pads, loc.getLocation().getId(), loc);
 
-                    LocationAgency.Map(laRefX, loc.getId(), loc.getPads(), a);
-
-                    if (loc.getPads() != null)
-                        for (models.Pad pad : loc.getPads())
-                            if (pad.getAgencies() != null && pad.getAgencies().length > 0)
-                                for (models.Agency ag : pad.getAgencies())
-                                    if (valid_agency && !agencies.containsKey(ag.getId()))
-                                        agencies.put(ag.getId(), Agency.Map(ag));
+                    LocationAgency.Map(laRefX, loc.getLocation().getId(), loc, a);
+                    if (valid_agency && !agencies.containsKey(loc.getAgencyId()))
+                        agencies.put(loc.getAgencyId(), Agency.Map(a));
                 }
 
-                if (l.getMissions() != null)
-                    for (models.Mission _mission : l.getMissions()) {
-                        final int mid = _mission.getId();
-
-                        if (!missions.containsKey(mid)) {
-                            missions.put(mid, Mission.Map(l.getId(), _mission));
-                        }
-                        if (valid_agency) {
-                            String akey = AgencyMission.key(mid, a.getId());
-                            if (!amRefX.containsKey(akey))
-                                amRefX.put(akey, new AgencyMission(_mission.getId(), a.getId()));
-                        }
-                        if (_mission.getAgencies() == null) continue;
-                        for (models.Agency ag : _mission.getAgencies()) {
-                            String key = AgencyMission.key(_mission.getId(), ag.getId());
-                            if (!agencies.containsKey(ag.getId()))
-                                agencies.put(ag.getId(), Agency.Map(ag));
-                            if (!amRefX.containsKey(key)) {
-                                amRefX.put(key, new AgencyMission(_mission.getId(), ag.getId()));
-                            }
-                        }
+                if (l.getMission() != null) {
+                    final int mid = l.getMission().getId();
+                    if (!missions.containsKey(mid)) {
+                        missions.put(mid, Mission.Map(l.getLaunchLibraryId(), l.getMission()));
                     }
+                    if (valid_agency) {
+                        String akey = AgencyMission.key(mid, a.getId());
+                        if (!amRefX.containsKey(akey))
+                            amRefX.put(akey, new AgencyMission(l.getMission().getId(), a.getId()));
+                    }
+                }
             }
 
             if (launches.length > 1) Log.d(TAG, " \n" +
@@ -226,10 +211,12 @@ public class UpdateMethods {
         /**
          * Fetch list of launches from the API endpoint
          */
-        private static void updateAllLaunches(final AppDatabase db, String start, int size, final OnLoadCallback<Boolean> callback) {
-            LaunchLibrary.allLaunches(start, size, new OnLoadCallback<Launches>() {
+        private static void updateAllLaunches(final AppDatabase db, int size, final OnLoadCallback<Boolean> callback) {
+            // TODO: iterate over pages
+            LaunchLibrary.allLaunches(0, size, new OnLoadCallback<LaunchList>() {
                 @Override
-                public void call(final Launches result) {
+                public void call(final LaunchList result) {
+
                     processLaunches(db, result, callback);
                 }
 
@@ -247,163 +234,8 @@ public class UpdateMethods {
             LaunchLibrary.getLaunch(id, new OnLoadCallback<models.Launch>() {
                 @Override
                 public void call(models.Launch result) {
-                    processLaunches(db, new Launches(result), callback);
-                }
-
-                @Override
-                public void onError(Exception e) {
-                    handleError(e, callback);
-                }
-            });
-        }
-    }
-
-    static class AgencyData {
-
-        /**
-         * Update agency data in the database
-         */
-        private static void processAgencies(final AppDatabase db, final Agencies result, final OnLoadCallback<Boolean> callback) {
-            if (result == null || result.getAgencies() == null || result.getAgencies().size() == 0) {
-                if (callback != null) callback.call(false);
-                return;
-            }
-            final List<models.Agency> agencyData = result.getAgencies();
-            final Agency[] agencies = new Agency[agencyData.size()];
-            for (int i = 0; i < agencyData.size(); i++) {
-                agencies[i] = Agency.Map(agencyData.get(i));
-            }
-            db.dao().insertAll(agencies);
-            if (callback != null) callback.call(true);
-        }
-
-        /**
-         * These results are paged so recursively iterate over all agencies, or until:
-         * all data has been fetched OR no more new data is available OR max number of attempts have been exhausted
-         */
-        private static void updateAgencies(final Agencies allAgencies, final AppDatabase db,
-                                           final int size, final int offset, final int maxAttempts,
-                                           final OnLoadCallback<Boolean> callback) {
-            LaunchLibrary.allAgencies(size, offset, new OnLoadCallback<Agencies>() {
-                @Override
-                public void call(Agencies result) {
-                    if (result.getAgencies() != null)
-                        allAgencies.getAgencies().addAll(result.getAgencies());
-
-                    if (result.getCount() == 0 || maxAttempts < 0 || allAgencies.getAgencies().size() >= result.getTotal() ||
-                            result.getCount() + result.getOffset() >= result.getTotal()) {
-                        processAgencies(db, allAgencies, callback);
-                    } else {
-                        updateAgencies(allAgencies, db, size, result.getOffset() + result.getCount(),
-                                maxAttempts - 1, callback);
-                    }
-                }
-
-                @Override
-                public void onError(Exception e) {
-                    handleError(e, callback);
-                }
-            });
-        }
-    }
-
-    static class LocationData {
-
-        /**
-         * Update location data in the database
-         */
-        private static void processLocations(final AppDatabase db, final Locations result, final OnLoadCallback<Boolean> callback) {
-            if (result == null || result.getLocations() == null || result.getLocations().size() == 0) {
-                if (callback != null) callback.call(false);
-                return;
-            }
-            final List<models.Location> locData = result.getLocations();
-            final Location[] locations = new Location[locData.size()];
-            for (int i = 0; i < locData.size(); i++) {
-                locations[i] = Location.Map(locData.get(i));
-            }
-            db.dao().insertAll(locations);
-            if (callback != null) callback.call(true);
-        }
-
-        /**
-         * These results are paged so recursively iterate over all locations, or until:
-         * all data has been fetched OR no more new data is available OR max number of attempts have been exhausted
-         */
-        private static void updateLocations(final Locations allLocations, final AppDatabase db,
-                                            final int size, final int offset, final int maxAttempts,
-                                            final OnLoadCallback<Boolean> callback) {
-            LaunchLibrary.allLocations(size, offset, new OnLoadCallback<Locations>() {
-                @Override
-                public void call(Locations result) {
-                    if (result.getLocations() != null)
-                        allLocations.getLocations().addAll(result.getLocations());
-
-                    if (result.getCount() == 0 || maxAttempts < 0 || allLocations.getLocations().size() >= result.getTotal() ||
-                            result.getCount() + result.getOffset() >= result.getTotal()) {
-                        processLocations(db, allLocations, callback);
-                    } else {
-                        updateLocations(allLocations, db, size, result.getOffset() + result.getCount(),
-                                maxAttempts - 1, callback);
-                    }
-                }
-
-                @Override
-                public void onError(Exception e) {
-                    handleError(e, callback);
-                }
-            });
-        }
-
-    }
-
-    static class PadData {
-
-        /**
-         * Update pad data in the database
-         */
-        private static void processPads(final AppDatabase db, final Pads result, final OnLoadCallback<Boolean> callback) {
-            if (result == null || result.getPads() == null || result.getPads().size() == 0) {
-                if (callback != null) callback.call(false);
-                return;
-            }
-            final List<models.Pad> padData = result.getPads();
-            final HashMap<Integer, LocationAgency> lax = new HashMap<>();
-            final List<Pad> pads = new LinkedList<>();
-            for (int i = 0; i < padData.size(); i++) {
-                models.Pad p = padData.get(i);
-                pads.add(Pad.Map(p));
-                if (p.getAgencies() != null)
-                    for (models.Agency a : p.getAgencies()) {
-                        if (!lax.containsKey(a.getId()))
-                            lax.put(a.getId(), new LocationAgency(p.getLocationid(), a.getId()));
-                    }
-            }
-            db.dao().insertAll(pads.toArray(new Pad[0]));
-            if (lax.keySet().size() > 0)
-                db.dao().insertAll(lax.values().toArray(new LocationAgency[0]));
-            if (callback != null) callback.call(true);
-        }
-
-        /**
-         * These results are paged so recursively iterate over all pads, or until:
-         * all data has been fetched OR no more new data is available OR max number of attempts have been exhausted
-         */
-        private static void updatePads(final Pads allPads, final AppDatabase db,
-                                       final int size, final int offset, final int maxAttempts,
-                                       final OnLoadCallback<Boolean> callback) {
-            LaunchLibrary.allPads(size, offset, new OnLoadCallback<Pads>() {
-                @Override
-                public void call(Pads result) {
-                    if (result.getPads() != null)
-                        allPads.getPads().addAll(result.getPads());
-                    if (result.getCount() == 0 || maxAttempts < 0 || allPads.getPads().size() >= result.getTotal() ||
-                            result.getCount() + result.getOffset() >= result.getTotal()) {
-                        processPads(db, allPads, callback);
-                    } else {
-                        updatePads(allPads, db, size, result.getOffset() + result.getCount(),
-                                maxAttempts - 1, callback);
-                    }
+                    // TODO: fix this
+                    //processLaunches(db, new Launches(result), callback);
                 }
 
                 @Override

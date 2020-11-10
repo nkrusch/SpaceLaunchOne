@@ -1,106 +1,84 @@
 package api;
 
+import android.util.Log;
+
 import java.io.IOException;
 
 import androidx.annotation.NonNull;
-import models.Agencies;
+import ll2.models.LaunchList;
 import models.Launch;
 import models.Launches;
-import models.Locations;
-import models.Missions;
-import models.Pads;
 import models.data.BuildConfig;
+import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 public class LaunchLibrary {
 
     private static final String RESOURCE_BASE = BuildConfig.ApiBasepath;
+    private static final boolean DEBUG = BuildConfig.AppDebug;
+    private static final String TAG = "API";
 
     private interface methodRunner<T> {
         T run(ILaunchLibrary service) throws IOException;
     }
 
+    private static void d(String msg) {
+        if (DEBUG) Log.d(TAG, msg);
+    }
+
     private static void makeRequest(@NonNull final methodRunner exec, @NonNull final OnLoadCallback callback) {
-        AppExecutors.getInstance().networkIO().execute(new Runnable() {
-            @Override
-            public void run() {
-                ILaunchLibrary service = new Retrofit.Builder()
-                        .baseUrl(RESOURCE_BASE)
-                        .addConverterFactory(GsonConverterFactory.create())
-                        .build().create(ILaunchLibrary.class);
-                try {
-                    callback.call(exec.run(service));
-                } catch (Exception e) {
-                    e.printStackTrace();
-                    callback.onError(e);
-                }
+        AppExecutors.getInstance().networkIO().execute(() -> {
+            ILaunchLibrary request = new Retrofit.Builder()
+                    .baseUrl(RESOURCE_BASE)
+                    .addConverterFactory(GsonConverterFactory.create())
+                    .build()
+                    .create(ILaunchLibrary.class);
+            try {
+                callback.call(exec.run(request));
+            } catch (Exception e) {
+                e.printStackTrace();
+                callback.onError(e);
             }
         });
     }
 
-    public static void loadLaunches(final int count, @NonNull final OnLoadCallback callback) {
-        makeRequest(new methodRunner<Launches>() {
-            @Override
-            public Launches run(ILaunchLibrary service) throws IOException {
-                return service.launches(count).execute().body();
+    public static void initialLaunches(final int count, @NonNull final OnLoadCallback callback) {
+        makeRequest((methodRunner<LaunchList>) service -> {
+            d("INIT URL: " + service.upcoming_launches(count).request().url());
+            Response<LaunchList> res = service.upcoming_launches(count).execute();
+            if (res.isSuccessful() && res.body() != null) {
+                d("SUCCESS\nCOUNT: " + res.body().getCount() +
+                        "\nSIZE:" + res.body().getResults().size());
+            } else {
+                d("ERROR BODY: " + res.errorBody());
             }
-        }, callback);
-    }
-
-    public static void loadMissions(final int count, @NonNull final OnLoadCallback callback) {
-        makeRequest(new methodRunner<Missions>() {
-            @Override
-            public Missions run(ILaunchLibrary service) throws IOException {
-                return service.missions(count).execute().body();
-            }
+            return res.body();
         }, callback);
     }
 
     public static void getLaunch(final int id, @NonNull final OnLoadCallback callback) {
-        makeRequest(new methodRunner<Launch>() {
-            @Override
-            public Launch run(ILaunchLibrary service) throws IOException {
-                Launches result = service.launch(id).execute().body();
-                return (result != null && result.getCount() > 0) ?
-                        result.getLaunches().get(0) : null;
-            }
+        makeRequest((methodRunner<Launch>) service -> {
+            Launches result = service.launch(id).execute().body();
+            return (result != null && result.getCount() > 0) ?
+                    result.getResults().get(0) : null;
         }, callback);
     }
 
-    public static void allLaunches(final String start, final int count, @NonNull final OnLoadCallback callback) {
-        makeRequest(new methodRunner<Launches>() {
-            @Override
-            public Launches run(ILaunchLibrary service) throws IOException {
-                return service.all_launches(start, count).execute().body();
-            }
+    public static void allLaunches(final int offset, final int count, @NonNull final OnLoadCallback callback) {
+        makeRequest((methodRunner<Launches>) service -> {
+            Log.d("UPDATE", "URL: " + service.all_launches(offset, count).request().url().toString());
+            Response<Launches> temp = service.all_launches(offset, count).execute();
+            Log.d("UPDATE", "SUCCESS?: " + temp.isSuccessful());
+            if (!temp.isSuccessful())
+                Log.d("UPDATE", "ERROR BODY: " + temp.errorBody().string());
+            Log.d("UPDATE", "RAW BODY: " +
+                    temp.body().getCount() + "\n" +
+                    temp.body().getResults().size() + "\n" +
+                    temp.body().getNext() + "\n" +
+                    temp.body().getPrevious());
+            return temp.body();
         }, callback);
     }
 
-    public static void allAgencies(final int count, final int start, @NonNull final OnLoadCallback callback) {
-        makeRequest(new methodRunner<Agencies>() {
-            @Override
-            public Agencies run(ILaunchLibrary service) throws IOException {
-                return service.agencies(count, start).execute().body();
-            }
-        }, callback);
-    }
-
-    public static void allLocations(final int count, final int start, @NonNull final OnLoadCallback callback) {
-        makeRequest(new methodRunner<Locations>() {
-            @Override
-            public Locations run(ILaunchLibrary service) throws IOException {
-                return service.locations(count, start).execute().body();
-            }
-        }, callback);
-    }
-
-    public static void allPads(final int count, final int start, @NonNull final OnLoadCallback callback) {
-        makeRequest(new methodRunner<Pads>() {
-            @Override
-            public Pads run(ILaunchLibrary service) throws IOException {
-                return service.pads(count, start).execute().body();
-            }
-        }, callback);
-    }
 }
