@@ -129,6 +129,25 @@ public class Agency {
     }
 
     @Ignore
+    private static int getAgencyType(String input) {
+        if (input == null) return -1;
+        switch (input) {
+            case "Government":
+                return 1;
+            case "Multinational":
+                return 2;
+            case "Commercial":
+                return 3;
+            case "Educational":
+                return 4;
+            case "Private":
+                return 5;
+            default:
+                return -1;
+        }
+    }
+
+    @Ignore
     public String getAgencyCountries() {
         if (countryCode == null || countryCode.isEmpty()) return "";
         if (!countryCode.contains(",")) return countryCode;
@@ -151,7 +170,7 @@ public class Agency {
         a.setAid(agency.getId());
         a.setName(agency.getName());
         a.setInfoURLs(new String[]{agency.getUrl()});
-        // TODO: capture agency type
+        a.setType(getAgencyType(agency.getType()));
         a.setLastModified(new Date());
         return a;
     }

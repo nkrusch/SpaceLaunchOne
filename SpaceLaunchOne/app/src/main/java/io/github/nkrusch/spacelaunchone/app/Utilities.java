@@ -378,7 +378,6 @@ public class Utilities {
             case "ARE":
             case "UAE":
                 return "United Arab Emirates";
-
             case "GUF":
                 return "French Guiana";
             case "KAZ":
@@ -506,6 +505,8 @@ public class Utilities {
                 return "Kenya";
             case "MHL":
                 return "Marshall Islands";
+            case "UNK":
+                return "Unknown";
             default:
                 return countryCode;
         }

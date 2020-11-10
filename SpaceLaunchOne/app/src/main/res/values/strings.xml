@@ -164,7 +164,7 @@
     <string name="status">Status</string>
     <string name="country">Country</string>
     <string name="agency">Agency</string>
-    <string name="rocket_summary_label">Rocket Name / Family / Configuration</string>
+    <string name="rocket_summary_label">Rocket Name / Family</string>
     <string name="notifications_preference" translatable="false">notifications_preference</string>
     <string name="disabled">Disabled</string>
     <string name="enabled">Enabled</string>

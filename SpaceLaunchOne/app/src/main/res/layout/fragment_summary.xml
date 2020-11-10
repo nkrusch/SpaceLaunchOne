@@ -1,6 +1,8 @@
 <androidx.constraintlayout.widget.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:ignore="MissingConstraints"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:paddingBottom="16dp">
@@ -85,10 +87,5 @@
         android:id="@+id/event_hashtag"
         style="@style/event_summary_item"
         app:layout_constraintTop_toBottomOf="@id/agency_country_code" />
-
-    <io.github.nkrusch.spacelaunchone.features.launchdetails.SummaryItem
-        android:id="@+id/event_change"
-        style="@style/event_summary_item"
-        app:layout_constraintTop_toBottomOf="@id/event_hashtag" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

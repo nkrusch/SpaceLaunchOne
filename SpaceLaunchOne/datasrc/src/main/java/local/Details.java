@@ -1,5 +1,6 @@
 package local;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Date;
 import java.util.LinkedList;
@@ -12,6 +13,7 @@ import androidx.room.Index;
 import androidx.room.PrimaryKey;
 import ll2.models.AgencySerializerMini;
 import ll2.models.LaunchSerializerCommon;
+import ll2.models.Program;
 import ll2.models.RocketSerializerCommon;
 import models.Agency;
 import models.Location;
@@ -139,26 +141,35 @@ public class Details {
         Details details = new Details();
         final RocketSerializerCommon rocket = launch.getRocket();
         final AgencySerializerMini agency = launch.getLaunchServiceProvider();
-        final ll2.models.Pad location = launch.getPad();
-        final int videoCount = launch.getVidURLs() != null ? launch.getVidURLs().length() : 0;
-        final String[] videos = new String[videoCount];
-        if (videoCount > 0) videos[0] = launch.getVidURLs();
+        final ll2.models.Pad pad = launch.getPad();
+        final List<String> videos = new ArrayList<>();
+        final List<String> infoURLs = new ArrayList<>();
+        if (launch.getVidURLs() != null) videos.add(launch.getVidURLs());
+        if (launch.getProgram() != null && launch.getProgram().size() > 0)
+            for (Program p : launch.getProgram()) {
+                if (p.getWikiUrl() != null) infoURLs.add(p.getWikiUrl());
+                if (p.getInfoUrl() != null) infoURLs.add(p.getInfoUrl());
+            }
+        if (launch.getPad() != null) {
+            if (launch.getPad().getInfoUrl() != null) infoURLs.add(launch.getPad().getInfoUrl());
+            if (launch.getPad().getWikiUrl() != null) infoURLs.add(launch.getPad().getWikiUrl());
+        }
 
         details.setUid(launch.getLaunchLibraryId());
         details.setHashtag(launch.getHashtag());
-        details.setChanged(launch.getNet().toString());
+        details.setChanged(new Date().toString());
         details.setNet(launch.getNet().toString());
-        details.setVidURLs(videos);
-        details.setInfoURLs(new String[]{launch.getInfoURLs()});
+        details.setVidURLs(videos.toArray(new String[0]));
+        details.setInfoURLs(infoURLs.toArray(new String[0]));
 
         if (agency != null)
             details.setAgencyId(agency.getId());
 
-        if (location != null)
-            details.setLocationId(location.getId());
+        if (pad != null && pad.getLocation() != null)
+            details.setLocationId(pad.getLocation().getId());
 
-        if (location != null)
-            details.setPadId(location.getId());
+        if (pad != null)
+            details.setPadId(pad.getId());
 
         if (rocket != null)
             details.setRocketId(rocket.getId());

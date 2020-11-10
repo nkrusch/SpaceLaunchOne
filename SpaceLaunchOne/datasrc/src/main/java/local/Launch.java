@@ -118,15 +118,20 @@ public class Launch implements Comparable<Launch> {
         }
     }
 
+    private static String locationName(Pad pad){
+        if(pad == null) return null;
+        if(pad.getLocation()!=null) return pad.getLocation().getName();
+        return pad.getName();
+    }
+
     @Ignore
     public static Launch Map(LaunchSerializerCommon launch) {
         Launch r = new Launch();
-        Pad l = launch.getPad();
         r.setId(launch.getLaunchLibraryId());
         r.setName(launch.getName());
         r.setImage(launch.getImage());
         r.setLaunchDateUTC(launch.getNet().getTime());
-        r.setLocationName(l != null ? l.getName() : null);
+        r.setLocationName(locationName(launch.getPad()));
         r.setStatus(launch.getStatus().getId());
         return r;
     }

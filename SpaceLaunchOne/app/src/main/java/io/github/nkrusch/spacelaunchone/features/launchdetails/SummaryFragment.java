@@ -43,7 +43,6 @@ public class SummaryFragment extends DetailsBaseFragment {
     private SummaryItem mEventName;
     private SummaryItem mEventDate;
     private SummaryItem mRocketText;
-    private SummaryItem mEventChanged;
     private SummaryItem mHashtag;
     private SummaryItem mLocation;
     private SummaryItem mAgencyName;
@@ -84,7 +83,6 @@ public class SummaryFragment extends DetailsBaseFragment {
         mRocketText = view.findViewById(R.id.event_rocket_summary_text);
         mHashtag = view.findViewById(R.id.event_hashtag);
         mLocation = view.findViewById(R.id.event_location);
-        mEventChanged = view.findViewById(R.id.event_change);
         mAgencyName = view.findViewById(R.id.agency_name);
         mCountryCode = view.findViewById(R.id.agency_country_code);
         return view;
@@ -110,7 +108,6 @@ public class SummaryFragment extends DetailsBaseFragment {
                 return R.drawable.ic_status;
         }
     }
-
 
     private void initCountdown(Long utc) {
         if (countdownInitialized) return;
@@ -140,8 +137,6 @@ public class SummaryFragment extends DetailsBaseFragment {
         String rocketFamily = coalesce(launch.getRocketFamilyName(), unknown);
         String country = coalesce(Utilities.countryName(launch.getLocationCountryCode()), unknown);
         String location = String.format("%s\n%s %s", launch.getPadName(), launch.getLocationName(), launch.getLocationCountryCode()).trim();
-        String changeDate = StringUtils.isEmpty(launch.getChanged()) ? unknown : Utilities
-                .localTimeLabel(models.Launch.changeDate(launch.getChanged()), "MMMM d, yyyy HH:mm");
         initCountdown(launch.getLaunchDateUTC());
         adjustDividers(launch);
 
@@ -154,13 +149,11 @@ public class SummaryFragment extends DetailsBaseFragment {
         mEventDate.setText(R.string.launch_date, launch.getNet());
         mLocation.setText(R.string.launch_site, coalesce(location, unknown));
         mHashtag.setText(R.string.hashtag, coalesce(launch.getHashtag(), none));
-        mEventChanged.setText(R.string.last_modified, changeDate);
         mAgencyName.setText(R.string.launch_service_provider, agencyNameValue);
         mCountryCode.setText(R.string.agency_country_code, coalesce(launch.getAgencyCountryCode(), unknown));
         mRocketText.setText(R.string.rocket_summary_label,
                 coalesce(launch.getRocketName(), unknown) + " / " +
-                        coalesce(launch.getRocketFamilyName(), unknown) + " / " +
-                        coalesce(launch.getRocketConfiguration(), unknown));
+                        coalesce(launch.getRocketFamilyName(), unknown));
 
         mStatusImage.setImageResource(statusImage(launch.getStatus()));
 
@@ -172,16 +165,13 @@ public class SummaryFragment extends DetailsBaseFragment {
     }
 
     private void setImage(final String image, final ImageView target) {
-        if (StringUtils.isEmpty(image) || models.Launch.isPlaceholderImage(image) || target == null)
-            return;
+        if (StringUtils.isEmpty(image) || models.Launch.isPlaceholderImage(image) || target == null) return;
         final String sizedImage = Utilities.roundImage(image, Utilities.dpToPixel(40, getResources()));
         AppImage.LoadCircleImage(sizedImage, target, R.drawable.ic_rocket);
     }
 
     private void setRocket(final String image) {
-        if (StringUtils.isEmpty(image) || models.Launch.isPlaceholderImage(image) ||
-                mRocketCardImage == null || getActivity() == null)
-            return;
+        if (StringUtils.isEmpty(image) || models.Launch.isPlaceholderImage(image) || mRocketCardImage == null || getActivity() == null) return;
         WindowManager wm = getActivity().getWindowManager();
         final String sizedImage = Utilities.sizedHeight(image, Utilities.display(wm).second);
         AppImage.LoadAndDisplay(sizedImage, mRocketCardImage, (View) mRocketCardImage.getParent());
