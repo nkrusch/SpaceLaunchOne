@@ -29,7 +29,7 @@
     <TextView
         android:id="@+id/event_status_text2"
         style="@style/event_snapshot_secondary_text"
-        app:layout_constraintEnd_toStartOf="@style/snapshot_guideline_vert"
+        app:layout_constraintEnd_toStartOf="@+id/center_guideline_vert"
         app:layout_constraintStart_toEndOf="@+id/event_status"
         app:layout_constraintTop_toBottomOf="@+id/event_status_text" />
 
@@ -75,7 +75,7 @@
     <TextView
         android:id="@+id/event_agency_text2"
         style="@style/event_snapshot_secondary_text"
-        app:layout_constraintEnd_toStartOf="@style/snapshot_guideline_vert"
+        app:layout_constraintEnd_toStartOf="@+id/center_guideline_vert"
         app:layout_constraintStart_toEndOf="@+id/event_agency"
         app:layout_constraintTop_toBottomOf="@+id/event_agency_text" />
 

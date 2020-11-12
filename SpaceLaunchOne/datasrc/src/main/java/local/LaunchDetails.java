@@ -130,7 +130,8 @@ public class LaunchDetails {
     }
 
     public String getLocationCountryCode() {
-        return location == null ? null : location.getCountryCode();
+        return location == null ? null :
+                location.getCountryCode().replace("UNK", "");
     }
 
     public String getPadName() {

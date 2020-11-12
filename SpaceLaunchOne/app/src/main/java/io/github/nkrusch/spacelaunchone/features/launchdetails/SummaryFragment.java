@@ -46,7 +46,6 @@ public class SummaryFragment extends DetailsBaseFragment {
     private SummaryItem mHashtag;
     private SummaryItem mLocation;
     private SummaryItem mAgencyName;
-    private SummaryItem mCountryCode;
     private View mMissionDivider;
     private View mVideoDivider;
 
@@ -84,7 +83,6 @@ public class SummaryFragment extends DetailsBaseFragment {
         mHashtag = view.findViewById(R.id.event_hashtag);
         mLocation = view.findViewById(R.id.event_location);
         mAgencyName = view.findViewById(R.id.agency_name);
-        mCountryCode = view.findViewById(R.id.agency_country_code);
         return view;
     }
 
@@ -130,18 +128,23 @@ public class SummaryFragment extends DetailsBaseFragment {
     protected void PopulateViews(LaunchDetails launch) {
         if (launch == null) return;
 
-        String agency = coalesce(launch.getAgencyAbbrev());
         String agencyFullName = coalesce(launch.getAgencyName(), unknown);
+        String agency = coalesce(launch.getAgencyAbbrev(), agencyFullName);
         String agencyNameValue = StringUtils.isEmpty(agency) ? agencyFullName :
-                String.format("%s (%s)", agencyFullName, agency);
+                StringUtils.isEmpty(launch.getAgencyCountryCode()) ?
+                        agencyFullName : String.format("%s (%s)", agencyFullName, launch.getAgencyCountryCode());
         String rocketFamily = coalesce(launch.getRocketFamilyName(), unknown);
         String country = coalesce(Utilities.countryName(launch.getLocationCountryCode()), unknown);
-        String location = String.format("%s\n%s %s", launch.getPadName(), launch.getLocationName(), launch.getLocationCountryCode()).trim();
+        String location = String.format("%s\n%s %s",
+                launch.getPadName(),
+                launch.getLocationName(),
+                launch.getLocationCountryCode()).trim();
         initCountdown(launch.getLaunchDateUTC());
         adjustDividers(launch);
 
         mStatus.setText(launch.getStatusText());
         mRocket.setText(rocketFamily);
+        // add overflow ellipsis to this field
         mAgency.setText(agency);
         mCountry.setText(country);
 
@@ -150,7 +153,6 @@ public class SummaryFragment extends DetailsBaseFragment {
         mLocation.setText(R.string.launch_site, coalesce(location, unknown));
         mHashtag.setText(R.string.hashtag, coalesce(launch.getHashtag(), none));
         mAgencyName.setText(R.string.launch_service_provider, agencyNameValue);
-        mCountryCode.setText(R.string.agency_country_code, coalesce(launch.getAgencyCountryCode(), unknown));
         mRocketText.setText(R.string.rocket_summary_label,
                 coalesce(launch.getRocketName(), unknown) + " / " +
                         coalesce(launch.getRocketFamilyName(), unknown));
@@ -165,13 +167,15 @@ public class SummaryFragment extends DetailsBaseFragment {
     }
 
     private void setImage(final String image, final ImageView target) {
-        if (StringUtils.isEmpty(image) || models.Launch.isPlaceholderImage(image) || target == null) return;
+        if (StringUtils.isEmpty(image) || models.Launch.isPlaceholderImage(image) || target == null)
+            return;
         final String sizedImage = Utilities.roundImage(image, Utilities.dpToPixel(40, getResources()));
         AppImage.LoadCircleImage(sizedImage, target, R.drawable.ic_rocket);
     }
 
     private void setRocket(final String image) {
-        if (StringUtils.isEmpty(image) || models.Launch.isPlaceholderImage(image) || mRocketCardImage == null || getActivity() == null) return;
+        if (StringUtils.isEmpty(image) || models.Launch.isPlaceholderImage(image) || mRocketCardImage == null || getActivity() == null)
+            return;
         WindowManager wm = getActivity().getWindowManager();
         final String sizedImage = Utilities.sizedHeight(image, Utilities.display(wm).second);
         AppImage.LoadAndDisplay(sizedImage, mRocketCardImage, (View) mRocketCardImage.getParent());

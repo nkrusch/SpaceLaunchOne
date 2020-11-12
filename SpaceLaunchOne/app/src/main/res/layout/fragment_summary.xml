@@ -79,13 +79,8 @@
         app:layout_constraintTop_toBottomOf="@id/event_location" />
 
     <io.github.nkrusch.spacelaunchone.features.launchdetails.SummaryItem
-        android:id="@+id/agency_country_code"
-        style="@style/event_summary_item"
-        app:layout_constraintTop_toBottomOf="@id/agency_name" />
-
-    <io.github.nkrusch.spacelaunchone.features.launchdetails.SummaryItem
         android:id="@+id/event_hashtag"
         style="@style/event_summary_item"
-        app:layout_constraintTop_toBottomOf="@id/agency_country_code" />
+        app:layout_constraintTop_toBottomOf="@id/agency_name" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

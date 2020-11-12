@@ -169,7 +169,6 @@ public class Agency {
         Agency a = new Agency();
         a.setAid(agency.getId());
         a.setName(agency.getName());
-        a.setInfoURLs(new String[]{agency.getUrl()});
         a.setType(getAgencyType(agency.getType()));
         a.setLastModified(new Date());
         return a;
