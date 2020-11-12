@@ -10,20 +10,20 @@ public class FavoriteLaunch {
 
     @NonNull
     @PrimaryKey
-    private int fid;
+    private String fid;
 
     public FavoriteLaunch() {
     }
 
-    public FavoriteLaunch(int id) {
+    public FavoriteLaunch(String id) {
         this.fid = id;
     }
 
-    public int getFid() {
+    public String getFid() {
         return fid;
     }
 
-    public void setFid(int id) {
+    public void setFid(String id) {
         this.fid = id;
     }
 }

@@ -20,7 +20,7 @@ android {
     }
     buildTypes {
         debug{
-            buildConfigField 'String', "ApiBasepath", PROD_API_Basepath
+            buildConfigField 'String', "ApiBasepath", DEV_API_Basepath
             buildConfigField 'boolean', "AppDebug", "true"
         }
         release {

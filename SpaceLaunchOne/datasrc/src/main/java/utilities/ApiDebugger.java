@@ -1,9 +1,8 @@
-package api;
+package utilities;
 
 import android.util.Log;
 
 import models.data.BuildConfig;
-import retrofit2.Response;
 
 public class ApiDebugger {
 
@@ -14,12 +13,8 @@ public class ApiDebugger {
         if (DEBUG) e.printStackTrace();
     }
 
-    private static void Log(String msg) {
+    public static void Log(String msg) {
         final String DIV = "\n========================\n";
         Log.d(TAG, "\n" + DIV + msg + DIV);
-    }
-
-    protected static void httpRequestDetails(String url) {
-        Log("URL: " + url);
     }
 }

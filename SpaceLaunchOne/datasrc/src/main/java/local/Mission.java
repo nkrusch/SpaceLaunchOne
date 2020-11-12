@@ -7,7 +7,7 @@ import androidx.room.Entity;
 import androidx.room.Ignore;
 import androidx.room.Index;
 import androidx.room.PrimaryKey;
-import api.ImageResolver;
+import utilities.ImageResolver;
 
 @SuppressWarnings("NullableProblems")
 @Entity(tableName = "mission", indices = {@Index("launchId")})

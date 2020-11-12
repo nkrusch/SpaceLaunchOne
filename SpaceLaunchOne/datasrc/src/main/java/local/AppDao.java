@@ -35,12 +35,12 @@ public interface AppDao {
             "ORDER BY launchDateUTC DESC LIMIT :limit OFFSET :offset")
     LiveData<List<Launch>> pastLaunches(long cutoff, int limit, int offset);
 
-    @Query("SELECT  luuid, name, image, launchDateUTC, locationName, status " +
-            "FROM Launch JOIN details ON  luuid = UUID JOIN favorites on  luuid = fid " +
+    @Query("SELECT luuid, name, image, launchDateUTC, locationName, status " +
+            "FROM Launch JOIN details ON luuid = UUID JOIN favorites F on luuid = F.fid " +
             "ORDER BY launchDateUTC DESC LIMIT :limit OFFSET :offset")
     LiveData<List<Launch>> favoriteLaunches(int limit, int offset);
 
-    @Query("SELECT  luuid, L.name as name, image, launchDateUTC, locationName, status " +
+    @Query("SELECT luuid, L.name as name, image, launchDateUTC, locationName, status " +
             "FROM launch AS L JOIN details ON  luuid = UUID " +
             "JOIN agencies AS A on agencyId = aid " +
             "JOIN locations as O on locationId=lid WHERE " +
@@ -89,7 +89,8 @@ public interface AppDao {
     @Query("SELECT launchDateUTC from launch WHERE  luuid = :id")
     Long getLaunchDateUTC(String id);
 
-    @Query("SELECT * from favorites WHERE fid = :id")
+    @Query("SELECT F.fid from favorites F JOIN details on F.fid=UUID " +
+            "WHERE F.fid = :id")
     LiveData<FavoriteLaunch> getFavorite(String id);
 
     @Insert(onConflict = OnConflictStrategy.IGNORE)

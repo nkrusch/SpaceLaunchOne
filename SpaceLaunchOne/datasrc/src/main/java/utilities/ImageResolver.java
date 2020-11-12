@@ -1,15 +1,16 @@
-package api;
+package utilities;
 
 import org.jsoup.Connection;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.select.Elements;
 
+import api.OnLoadCallback;
 import models.Launch;
 import models.data.BuildConfig;
 
 /**
- * This class provides image utilities for finding the best image of a rocket
+ * This class provides image utilities for finding the best image of some resource
  */
 public class ImageResolver {
 

@@ -36,6 +36,9 @@ public abstract class AppDatabase extends RoomDatabase {
             database.execSQL("DROP TABLE `mission`");
             database.execSQL("CREATE TABLE `mission` (`mid` INTEGER NOT NULL, `launchId` TEXT, `name` TEXT, `description` TEXT, `category` TEXT, `wikiURL` TEXT, PRIMARY KEY(`mid`))");
 
+            database.execSQL("DROP TABLE `favorites`");
+            database.execSQL("CREATE TABLE `favorites` (`fid` TEXT NOT NULL, PRIMARY KEY(`fid`))");
+
             dropIndexes(database);
 
             database.execSQL("CREATE INDEX `index_agencymission_aid` ON `agencymission` (`aid`)");          // 1

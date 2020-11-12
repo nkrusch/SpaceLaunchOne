@@ -27,7 +27,7 @@ import java.util.Locale;
 import java.util.TimeZone;
 
 import androidx.annotation.Nullable;
-import api.ImageResolver;
+import utilities.ImageResolver;
 import io.github.nkrusch.spacelaunchone.R;
 
 /**

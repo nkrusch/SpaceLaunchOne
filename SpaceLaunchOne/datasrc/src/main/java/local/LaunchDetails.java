@@ -102,10 +102,6 @@ public class LaunchDetails {
         this.rocket = rocket;
     }
 
-    public int getId() {
-        return summary.getId();
-    }
-
     public String getName() {
         return summary.getName();
     }

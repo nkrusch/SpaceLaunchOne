@@ -1,9 +1,7 @@
 package local;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Date;
-import java.util.LinkedList;
 import java.util.List;
 
 import androidx.annotation.NonNull;
@@ -15,9 +13,6 @@ import ll2.models.AgencySerializerMini;
 import ll2.models.LaunchSerializerCommon;
 import ll2.models.Program;
 import ll2.models.RocketSerializerCommon;
-import models.Agency;
-import models.Location;
-import models.Rocket;
 
 
 @SuppressWarnings({"NullableProblems", "SpellCheckingInspection"})
@@ -143,9 +138,19 @@ public class Details {
         final RocketSerializerCommon rocket = launch.getRocket();
         final AgencySerializerMini agency = launch.getLaunchServiceProvider();
         final ll2.models.Pad pad = launch.getPad();
-        final List<String> videos = new ArrayList<>();
+
+        details.setUUID(launch.getId().toString());
+        details.setHashtag(launch.getHashtag());
+        details.setChanged(new Date().toString());
+        details.setNet(launch.getNet().toString());
+        if (launch.getVidURLs() != null) details.setVidURLs(new String[]{launch.getVidURLs()});
+        if (agency != null) details.setAgencyId(agency.getId());
+        if (pad != null && pad.getLocation() != null) details.setLocationId(pad.getLocation().getId());
+        if (pad != null) details.setPadId(pad.getId());
+        if (rocket != null) details.setRocketId(rocket.getId());
+         details.setLastModified(new Date());
+
         final List<String> infoURLs = new ArrayList<>();
-        if (launch.getVidURLs() != null) videos.add(launch.getVidURLs());
         if (launch.getProgram() != null && launch.getProgram().size() > 0)
             for (Program p : launch.getProgram()) {
                 if (p.getWikiUrl() != null) infoURLs.add(p.getWikiUrl());
@@ -156,27 +161,7 @@ public class Details {
             if (launch.getPad().getWikiUrl() != null) infoURLs.add(launch.getPad().getWikiUrl());
         }
 
-        details.setUUID(launch.getId().toString());
-        details.setHashtag(launch.getHashtag());
-        details.setChanged(new Date().toString());
-        details.setNet(launch.getNet().toString());
-        details.setVidURLs(videos.toArray(new String[0]));
         details.setInfoURLs(infoURLs.toArray(new String[0]));
-
-        if (agency != null)
-            details.setAgencyId(agency.getId());
-
-        if (pad != null && pad.getLocation() != null)
-            details.setLocationId(pad.getLocation().getId());
-
-        if (pad != null)
-            details.setPadId(pad.getId());
-
-        if (rocket != null)
-            details.setRocketId(rocket.getId());
-
-        if (details.getLocationId() > 0 && details.getAgencyId() > 0 && details.getRocketId() > 0)
-            details.setLastModified(new Date());
 
         return details;
     }

@@ -8,7 +8,7 @@ import java.util.Date;
 import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
-import api.AppExecutors;
+import utilities.AppExecutors;
 import local.AppDatabase;
 import local.FavoriteLaunch;
 import local.LaunchDetails;
@@ -55,17 +55,14 @@ public class LaunchDetailsViewModel extends AndroidViewModel {
 
     public void ToggleFavorite() {
         if (launch.getValue() == null) return;
-        int id = launch.getValue().getId();
+        String id = launch.getValue().getDetail().getUUID();
         final FavoriteLaunch fl = new FavoriteLaunch(id);
         final boolean isFavorite = favState.getValue() != null;
 
         AppExecutors.getInstance().DiskIO().execute(
-                new Runnable() {
-                    @Override
-                    public void run() {
-                        if (isFavorite) db.dao().removeFavorite(fl);
-                        else db.dao().addFavorite(fl);
-                    }
+                () -> {
+                    if (isFavorite) db.dao().removeFavorite(fl);
+                    else db.dao().addFavorite(fl);
                 }
         );
     }

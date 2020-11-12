@@ -1,7 +1,5 @@
 package api;
 
-import android.util.Log;
-
 import java.io.IOException;
 import java.util.LinkedList;
 import java.util.List;
@@ -24,6 +22,8 @@ import retrofit2.Call;
 import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
+import utilities.ApiDebugger;
+import utilities.AppExecutors;
 
 public class LaunchLibrary extends ApiDebugger {
 
@@ -33,7 +33,7 @@ public class LaunchLibrary extends ApiDebugger {
         T run(ILaunchLibrary service) throws IOException;
     }
 
-    public static OkHttpClient.Builder getUnsafeOkHttpClient() {
+    private static OkHttpClient.Builder getUnsafeOkHttpClient() {
         try {
             // Create a trust manager that does not validate certificate chains
             final TrustManager[] trustAllCerts = new TrustManager[]{
@@ -110,11 +110,16 @@ public class LaunchLibrary extends ApiDebugger {
         } catch (IOException e) {
             displayError(e);
         }
-        httpRequestDetails(request.request().url().toString());
-        if (resp != null &&
-                resp.isSuccessful() &&
-                resp.body() != null &&
-                resp.body().getResults() != null) {
+        try {
+            Log("URL:" + request.request().url().toString() +
+                    "\nSUCCESS: " + (resp != null && resp.isSuccessful()) +
+                    "\nMESSAGE: " + (resp != null ? resp.errorBody() != null ?
+                    resp.errorBody().string() : resp.message() : resp.message())
+            );
+        } catch (IOException e) {
+            displayError(e);
+        }
+        if (resp.isSuccessful() && resp.body() != null && resp.body().getResults() != null) {
             List<LaunchSerializerCommon> list = new LinkedList<>();
             list.addAll(result.getResults());
             list.addAll(resp.body().getResults());
@@ -139,26 +144,37 @@ public class LaunchLibrary extends ApiDebugger {
         }, callback);
     }
 
+    /**
+     * Get information about a single launch
+     *
+     * @param id       - launch id
+     * @param callback
+     */
     public static void getLaunch(final String id, @NonNull final OnLoadCallback callback) {
         makeRequest((methodRunner<Launch>) service -> {
-            Launches result = service.launch(id).execute().body();
-            return (result != null && result.getCount() > 0) ?
-                    result.getResults().get(0) : null;
+            Call<Launches> request = service.launch(id);
+            Response<Launches> resp = request.execute();
+            Log("URL: " + request.request().url().toString() +
+                    "\nSUCCESS: " + resp.isSuccessful() +
+                    "\nERROR: " + (resp.errorBody() != null ? resp.errorBody().string() : "None"));
+            return (resp.body() != null &&
+                    resp.body().getResults().size() > 0) ?
+                    resp.body().getResults().get(0) : null;
         }, callback);
     }
 
+    /**
+     * Get updates on launch data
+     *
+     * @param offset   - offset from start of results
+     * @param count    - number of records to get
+     * @param callback
+     */
     public static void allLaunches(final int offset, final int count, @NonNull final OnLoadCallback callback) {
         makeRequest((methodRunner<Launches>) service -> {
-            Log.d("UPDATE", "URL: " + service.all_launches(offset, count).request().url().toString());
+            // TODO: this needs to keep track of paging;
+            // TODO: also pull agency and location details with this
             Response<Launches> temp = service.all_launches(offset, count).execute();
-            Log.d("UPDATE", "SUCCESS?: " + temp.isSuccessful());
-            if (!temp.isSuccessful())
-                Log.d("UPDATE", "ERROR BODY: " + temp.errorBody().string());
-            Log.d("UPDATE", "RAW BODY: " +
-                    temp.body().getCount() + "\n" +
-                    temp.body().getResults().size() + "\n" +
-                    temp.body().getNext() + "\n" +
-                    temp.body().getPrevious());
             return temp.body();
         }, callback);
     }

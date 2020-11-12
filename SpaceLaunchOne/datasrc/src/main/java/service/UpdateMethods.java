@@ -10,7 +10,7 @@ import java.util.List;
 import java.util.Objects;
 
 import androidx.annotation.Nullable;
-import api.ImageResolver;
+import utilities.ImageResolver;
 import api.LaunchLibrary;
 import api.OnLoadCallback;
 import ll2.models.AgencySerializerMini;
