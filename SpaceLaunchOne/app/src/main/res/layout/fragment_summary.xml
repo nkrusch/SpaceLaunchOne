@@ -21,7 +21,7 @@
         android:layout_height="1dp"
         app:layout_constraintTop_toBottomOf="@+id/snapshot" />
 
-    <fragment
+    <androidx.fragment.app.FragmentContainerView
         android:id="@+id/VideosFragment"
         android:name="io.github.nkrusch.spacelaunchone.features.launchdetails.VideosFragment"
         android:layout_width="match_parent"
@@ -37,7 +37,7 @@
         android:visibility="gone"
         app:layout_constraintTop_toBottomOf="@+id/VideosFragment" />
 
-    <fragment
+    <androidx.fragment.app.FragmentContainerView
         android:id="@+id/Missions"
         android:name="io.github.nkrusch.spacelaunchone.features.launchdetails.MissionsFragment"
         android:layout_width="match_parent"

@@ -1,4 +1,5 @@
 <androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/scrollview"
     style="@style/details_nested_scroll">
 
@@ -26,10 +27,11 @@
         </androidx.cardview.widget.CardView>
 
         <!--suppress AndroidUnknownAttribute -->
-        <fragment
+        <androidx.fragment.app.FragmentContainerView
             android:id="@+id/ExternalLinks"
             android:name="io.github.nkrusch.spacelaunchone.features.launchdetails.LinksFragment"
-            style="@style/details_links_container" />
+            style="@style/details_links_container"
+            />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.core.widget.NestedScrollView>
