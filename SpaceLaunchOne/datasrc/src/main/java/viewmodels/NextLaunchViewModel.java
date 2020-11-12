@@ -6,9 +6,9 @@ import java.util.Date;
 
 import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.LiveData;
-import utilities.AppExecutors;
 import local.AppDatabase;
 import local.Launch;
+import utilities.AppExecutors;
 
 /**
  * This view model provides the next upcoming launch

@@ -7,7 +7,6 @@ import androidx.room.Index;
 import androidx.room.PrimaryKey;
 import ll2.models.LaunchSerializerCommon;
 import ll2.models.Pad;
-import models.Location;
 
 @SuppressWarnings("NullableProblems")
 @Entity(tableName = "launch", indices = {@Index("launchDateUTC")})

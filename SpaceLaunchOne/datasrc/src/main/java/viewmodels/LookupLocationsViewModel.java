@@ -6,10 +6,10 @@ import java.util.List;
 
 import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.LiveData;
-import utilities.AppExecutors;
 import local.AppDatabase;
 import local.LocationFilter;
 import local.LocationLookup;
+import utilities.AppExecutors;
 
 public class LookupLocationsViewModel extends AndroidViewModel implements IFilterViewModel<LocationLookup> {
 

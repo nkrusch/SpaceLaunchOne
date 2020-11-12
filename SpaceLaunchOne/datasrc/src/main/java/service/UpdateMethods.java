@@ -10,10 +10,10 @@ import java.util.List;
 import java.util.Objects;
 
 import androidx.annotation.Nullable;
-import utilities.ImageResolver;
 import api.LaunchLibrary;
 import api.OnLoadCallback;
 import ll2.models.AgencySerializerMini;
+import ll2.models.LaunchDetailed;
 import ll2.models.LaunchList;
 import ll2.models.LaunchSerializerCommon;
 import ll2.models.RocketSerializerCommon;
@@ -27,6 +27,7 @@ import local.LocationAgency;
 import local.Mission;
 import local.Pad;
 import local.Rocket;
+import utilities.ImageResolver;
 
 /**
  * Update application database
@@ -236,13 +237,12 @@ public class UpdateMethods {
          * Fetch the latest launch details for single launch from the API endpoint
          */
         private static void updateSingleLaunchDetails(final AppDatabase db, final String id, final OnLoadCallback<Boolean> callback) {
-            LaunchLibrary.getLaunch(id, new OnLoadCallback<models.Launch>() {
+            LaunchLibrary.getLaunch(id, new OnLoadCallback<LaunchDetailed>() {
                 @Override
-                public void call(models.Launch result) {
+                public void call(LaunchDetailed result) {
                     // TODO: fix this
                     //processLaunches(db, new Launches(result), callback);
                 }
-
                 @Override
                 public void onError(Exception e) {
                     handleError(e, callback);

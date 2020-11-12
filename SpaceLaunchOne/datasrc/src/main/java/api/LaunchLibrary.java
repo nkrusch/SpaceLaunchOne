@@ -12,10 +12,9 @@ import javax.net.ssl.TrustManager;
 import javax.net.ssl.X509TrustManager;
 
 import androidx.annotation.NonNull;
+import ll2.models.LaunchDetailed;
 import ll2.models.LaunchList;
 import ll2.models.LaunchSerializerCommon;
-import models.Launch;
-import models.Launches;
 import models.data.BuildConfig;
 import okhttp3.OkHttpClient;
 import retrofit2.Call;
@@ -151,15 +150,13 @@ public class LaunchLibrary extends ApiDebugger {
      * @param callback
      */
     public static void getLaunch(final String id, @NonNull final OnLoadCallback callback) {
-        makeRequest((methodRunner<Launch>) service -> {
-            Call<Launches> request = service.launch(id);
-            Response<Launches> resp = request.execute();
+        makeRequest((methodRunner<LaunchDetailed>) service -> {
+            Call<LaunchDetailed> request = service.launch(id);
+            Response<LaunchDetailed> resp = request.execute();
             Log("URL: " + request.request().url().toString() +
                     "\nSUCCESS: " + resp.isSuccessful() +
                     "\nERROR: " + (resp.errorBody() != null ? resp.errorBody().string() : "None"));
-            return (resp.body() != null &&
-                    resp.body().getResults().size() > 0) ?
-                    resp.body().getResults().get(0) : null;
+            return resp.body();
         }, callback);
     }
 
@@ -171,10 +168,10 @@ public class LaunchLibrary extends ApiDebugger {
      * @param callback
      */
     public static void allLaunches(final int offset, final int count, @NonNull final OnLoadCallback callback) {
-        makeRequest((methodRunner<Launches>) service -> {
+        makeRequest((methodRunner<LaunchList>) service -> {
             // TODO: this needs to keep track of paging;
-            // TODO: also pull agency and location details with this
-            Response<Launches> temp = service.all_launches(offset, count).execute();
+            // TODO: also pull agency and location details -- maybe separate methods?
+            Response<LaunchList> temp = service.all_launches(offset, count).execute();
             return temp.body();
         }, callback);
     }

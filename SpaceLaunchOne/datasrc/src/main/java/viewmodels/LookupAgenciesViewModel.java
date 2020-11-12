@@ -6,10 +6,10 @@ import java.util.List;
 
 import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.LiveData;
-import utilities.AppExecutors;
 import local.AgencyFilter;
 import local.AgencyLookup;
 import local.AppDatabase;
+import utilities.AppExecutors;
 
 public class LookupAgenciesViewModel extends AndroidViewModel implements IFilterViewModel<AgencyLookup> {
 

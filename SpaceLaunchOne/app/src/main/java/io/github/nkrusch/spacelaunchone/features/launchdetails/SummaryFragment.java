@@ -167,14 +167,14 @@ public class SummaryFragment extends DetailsBaseFragment {
     }
 
     private void setImage(final String image, final ImageView target) {
-        if (StringUtils.isEmpty(image) || models.Launch.isPlaceholderImage(image) || target == null)
+        if (StringUtils.isEmpty(image) || target == null)
             return;
         final String sizedImage = Utilities.roundImage(image, Utilities.dpToPixel(40, getResources()));
         AppImage.LoadCircleImage(sizedImage, target, R.drawable.ic_rocket);
     }
 
     private void setRocket(final String image) {
-        if (StringUtils.isEmpty(image) || models.Launch.isPlaceholderImage(image) || mRocketCardImage == null || getActivity() == null)
+        if (StringUtils.isEmpty(image) || mRocketCardImage == null || getActivity() == null)
             return;
         WindowManager wm = getActivity().getWindowManager();
         final String sizedImage = Utilities.sizedHeight(image, Utilities.display(wm).second);

@@ -8,11 +8,11 @@ import java.util.Date;
 import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
-import utilities.AppExecutors;
 import local.AppDatabase;
 import local.FavoriteLaunch;
 import local.LaunchDetails;
 import service.UpdateMethods;
+import utilities.AppExecutors;
 
 /**
  * This viewmodel provides launch details data

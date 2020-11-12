@@ -2,14 +2,11 @@ package local;
 
 import java.util.Arrays;
 import java.util.Date;
-import java.util.LinkedList;
-import java.util.List;
 
 import androidx.annotation.NonNull;
 import androidx.room.Entity;
 import androidx.room.Ignore;
 import androidx.room.PrimaryKey;
-import ll2.models.Pad;
 
 @Entity(tableName = "locations")
 public class Location {

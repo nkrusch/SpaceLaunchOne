@@ -6,7 +6,6 @@ import org.jsoup.nodes.Document;
 import org.jsoup.select.Elements;
 
 import api.OnLoadCallback;
-import models.Launch;
 import models.data.BuildConfig;
 
 /**
@@ -55,8 +54,7 @@ public class ImageResolver {
         final String wikiUrl = rocket.getWikiURL();
 
         // if image is non-placeholder provided by API -> use it!
-        if ((!Launch.isPlaceholderImage(defaultImage) && defaultImage.startsWith("http")) ||
-                wikiUrl == null || wikiUrl.length() == 0) {
+        if ((defaultImage.startsWith("http")) || wikiUrl == null || wikiUrl.length() == 0) {
             callback.call(defaultImage);
             return;
         }
