@@ -73,25 +73,23 @@
         <item>48</item>
     </string-array>
     <string-array name="credits_array">
-        <item>About this Project ; This app started as a capstone project for Udacity android
-            developer nanodegree program, where the goal was to apply different concepts
-            learned during the course by creating and designing an application of choice.
-            &lt;br/>&lt;br/>Over time it has become a standalone resource for tracking space flights
-            across the globe. This application is intended for astronomy enthusiasts looking
+        <item>About this Project ; This app was originally created as a capstone project for Udacity Android
+            developer nanodegree program. Since then it has become a standalone resource for
+            tracking space flights. This application is intended for astronomy enthusiasts looking
             for up-to-date information about upcoming rocket launches.
-            &lt;br/>&lt;br/>The application data, i.e. information and details about each launch, is provided and
-            maintained by &lt;a href="http://launchlibrary.net/">Launch Library&lt;/a>. Any mistakes
-            in the data should be reported directly to the maintainers of Launch Library.
-            &lt;br/>&lt;br/>This application is open source and available for review on Github.
+            &lt;br/>&lt;br/>Application data is provided and maintained by &lt;a href="https://thespacedevs.com/">the Space Devs&lt;/a>.
+            They continuously work on updating the data and share this resource with the world for free.
+            If you appreciate the effort and wish to see it continue, consider supporting the Space Devs.
+            &lt;br/>&lt;br/>This application is open source and available on Github.
         </item>
-        <item>Developer ; Neea Rusch (2018-2019)</item>
+        <item>Developer ; Neea Rusch</item>
         <item>Source Code ; &lt;a href="https://github.com/nkrusch/SpaceLaunchOne">SpaceLaunchOne on Github&lt;/a></item>
         <item>Rate this app ; &lt;a href="https://play.google.com/store/apps/details?id=io.github.nkrusch.spacelaunchone">Rate at Google Play Store&lt;/a></item>
-        <item>Launch Data ; &lt;a href="http://launchlibrary.net/docs/1.4/api.html">Launch Library API&lt;/a></item>
-        <item>Image Credits ; &lt;a href="http://launchlibrary.net">Launch Library&lt;/a>&lt;br/>
+        <item>Application Data ; &lt;a href="https://thespacedevs.com/llapi">Launch Library 2 API&lt;/a></item>
+        <item>Image Credits ; &lt;a href="http://launchlibrary.net">Launch Library 2 &lt;/a>&lt;br/>
             &lt;a href="https://en.wikipedia.org">Wikipedia&lt;/a>&lt;br/>
             &lt;a href="https://www.nasa.gov/multimedia/imagegallery/iotd.html">NASA image of the day&lt;/a></item>
-        <item>Maps ; &lt;a href="https://developers.google.com/maps/documentation/android-sdk/intro">Google Maps Android SDK&lt;/a></item>
+        <item>Maps ; &lt;a href="https://developers.google.com/maps/documentation/android-sdk/intro">Google Maps&lt;/a></item>
     </string-array>
 
     <string name="sec">sec</string>
