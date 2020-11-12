@@ -94,15 +94,15 @@ public class Rocket {
 
     // used internally while resolving images
     @Ignore
-    private List<Integer> launchIds = new LinkedList<>();
+    private List<String> launchIds = new LinkedList<String>();
 
     @Ignore
-    public List<Integer> getLaunchIds() {
+    public List<String> getLaunchIds() {
         return launchIds;
     }
 
     @Ignore
-    public void addLaunchId(Integer launchId) {
+    public void addLaunchId(String launchId) {
         this.launchIds.add(launchId);
     }
 

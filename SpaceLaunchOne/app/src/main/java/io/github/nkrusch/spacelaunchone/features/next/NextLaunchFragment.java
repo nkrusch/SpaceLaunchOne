@@ -110,7 +110,7 @@ public class NextLaunchFragment extends Fragment {
             mTitle.setVisibility(VISIBLE);
             mName.setText(launch.getName());
             mDate.setText(Utilities.fullTimeLabel(launch.getLaunchDateUTC()));
-            mLayout.setOnClickListener(onClickListener(launch.getId(), launch.getName()));
+            mLayout.setOnClickListener(onClickListener(launch.getLuuid(), launch.getName()));
             mStatus.setText(getString(R.string.bullet));
             mStatus.setTextColor(Color.parseColor(launch.getStatusColor()));
             if (launch.getId() != launchId) {
@@ -124,7 +124,7 @@ public class NextLaunchFragment extends Fragment {
      * Handler when user clicks anywhere on this fragment
      * -> will launch details on that launch event
      */
-    private View.OnClickListener onClickListener(final int id, final String name) {
+    private View.OnClickListener onClickListener(final String id, final String name) {
         return new View.OnClickListener() {
             @Override
             public void onClick(View v) {

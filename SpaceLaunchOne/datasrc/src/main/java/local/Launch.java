@@ -13,9 +13,13 @@ import models.Location;
 @Entity(tableName = "launch", indices = {@Index("launchDateUTC")})
 public class Launch implements Comparable<Launch> {
 
+    @Ignore
+    @Deprecated
+    private int id;
+
     @NonNull
     @PrimaryKey()
-    private int id;
+    private String luuid;
     private String name;
     private String image;
     private Long launchDateUTC;
@@ -25,13 +29,25 @@ public class Launch implements Comparable<Launch> {
     public Launch() {
     }
 
-    @NonNull
+    @Deprecated
+    @Ignore
     public int getId() {
         return id;
     }
 
-    public void setId(@NonNull int id) {
+    @Deprecated
+    @Ignore
+    public void setId(int id) {
         this.id = id;
+    }
+
+    @NonNull
+    public String getLuuid() {
+        return luuid;
+    }
+
+    public void setLuuid(@NonNull String luuid) {
+        this.luuid = luuid;
     }
 
     public String getName() {
@@ -118,16 +134,16 @@ public class Launch implements Comparable<Launch> {
         }
     }
 
-    private static String locationName(Pad pad){
-        if(pad == null) return null;
-        if(pad.getLocation()!=null) return pad.getLocation().getName();
+    private static String locationName(Pad pad) {
+        if (pad == null) return null;
+        if (pad.getLocation() != null) return pad.getLocation().getName();
         return pad.getName();
     }
 
     @Ignore
     public static Launch Map(LaunchSerializerCommon launch) {
         Launch r = new Launch();
-        r.setId(launch.getLaunchLibraryId());
+        r.setLuuid(launch.getId().toString());
         r.setName(launch.getName());
         r.setImage(launch.getImage());
         r.setLaunchDateUTC(launch.getNet().getTime());

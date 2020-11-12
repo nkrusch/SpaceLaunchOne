@@ -16,6 +16,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import io.github.nkrusch.spacelaunchone.R;
 import io.github.nkrusch.spacelaunchone.app.AppImage;
 import io.github.nkrusch.spacelaunchone.app.OnItemClickListener;
+import io.github.nkrusch.spacelaunchone.app.OnItemListener;
 import io.github.nkrusch.spacelaunchone.app.Utilities;
 import local.Agency;
 
@@ -26,7 +27,7 @@ import local.Agency;
 public class AgencyAdapter extends RecyclerView.Adapter<AgencyAdapter.ItemViewHolder> {
 
     private List<Agency> dataSource;
-    private OnItemClickListener mItemClickListener;
+    private OnItemListener mItemClickListener;
     private int thumbnailWidth;
 
     public AgencyAdapter(List<Agency> dataArgs) {
@@ -37,7 +38,7 @@ public class AgencyAdapter extends RecyclerView.Adapter<AgencyAdapter.ItemViewHo
         dataSource = dataArgs;
     }
 
-    public void SetOnItemClickListener(final OnItemClickListener mItemClickListener) {
+    public void SetOnItemClickListener(final OnItemListener mItemClickListener) {
         this.mItemClickListener = mItemClickListener;
     }
 

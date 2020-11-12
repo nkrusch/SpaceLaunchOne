@@ -2,9 +2,6 @@ package local;
 
 import android.util.ArrayMap;
 
-import java.util.LinkedList;
-import java.util.List;
-
 import androidx.annotation.NonNull;
 import androidx.room.Entity;
 import androidx.room.Ignore;
@@ -19,7 +16,7 @@ public class Mission {
     @NonNull
     @PrimaryKey()
     private int mid;
-    private int launchId;
+    private String launchId;
     private String name;
     private String description;
     private String category;
@@ -69,11 +66,11 @@ public class Mission {
         this.category = category;
     }
 
-    public int getLaunchId() {
+    public String getLaunchId() {
         return launchId;
     }
 
-    public void setLaunchId(int launchId) {
+    public void setLaunchId(String launchId) {
         this.launchId = launchId;
     }
 
@@ -122,7 +119,7 @@ public class Mission {
     }
 
     @Ignore
-    public static Mission Map(int launchId, ll2.models.Mission mission) {
+    public static Mission Map(String launchId, ll2.models.Mission mission) {
         Mission m = new Mission();
         m.setMid(mission.getId());
         m.setLaunchId(launchId);
@@ -134,7 +131,7 @@ public class Mission {
 
 
     @Ignore
-    public static void Map(ArrayMap<Integer, Mission> result, int launchId, ll2.models.Mission[] missions) {
+    public static void Map(ArrayMap<Integer, Mission> result, String launchId, ll2.models.Mission[] missions) {
         if (missions == null || missions.length == 0) return;
         for (ll2.models.Mission m : missions) {
             if (result.containsKey(m.getId())) continue;

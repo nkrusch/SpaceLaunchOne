@@ -16,6 +16,7 @@ public class LaunchDetails {
     @Embedded
     private Details detail;
 
+
     @Relation(parentColumn = "agencyId", entityColumn = "aid")
     private Agency agency;
 
@@ -28,7 +29,7 @@ public class LaunchDetails {
     @Relation(parentColumn = "rocketId", entityColumn = "rid")
     private Rocket rocket;
 
-    @Relation(parentColumn = "id", entityColumn = "launchId")
+    @Relation(parentColumn = "luuid", entityColumn = "launchId")
     private List<Mission> missions;
 
     @Ignore
@@ -51,6 +52,54 @@ public class LaunchDetails {
 
     public void setMissions(List<Mission> missions) {
         this.missions = missions;
+    }
+
+    public Launch getSummary() {
+        return summary;
+    }
+
+    public void setSummary(Launch summary) {
+        this.summary = summary;
+    }
+
+    public Details getDetail() {
+        return detail;
+    }
+
+    public void setDetail(Details detail) {
+        this.detail = detail;
+    }
+
+    public Agency getAgency() {
+        return agency;
+    }
+
+    public void setAgency(Agency agency) {
+        this.agency = agency;
+    }
+
+    public Location getLocation() {
+        return location;
+    }
+
+    public void setLocation(Location location) {
+        this.location = location;
+    }
+
+    public Pad getPad() {
+        return pad;
+    }
+
+    public void setPad(Pad pad) {
+        this.pad = pad;
+    }
+
+    public Rocket getRocket() {
+        return rocket;
+    }
+
+    public void setRocket(Rocket rocket) {
+        this.rocket = rocket;
     }
 
     public int getId() {

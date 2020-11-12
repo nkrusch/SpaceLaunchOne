@@ -63,7 +63,7 @@ abstract class LaunchRecyclerView<S extends AndroidViewModel & ILaunchesViewMode
     private OnItemClickListener onItemClick() {
         return new OnItemClickListener() {
             @Override
-            public void onItemClick(int id, String name) {
+            public void onItemClick(String id, String name) {
                 startActivity(DetailsLaunchActivity.launchDetails(getContext(), id, name));
             }
         };

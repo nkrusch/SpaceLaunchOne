@@ -37,7 +37,7 @@ import static io.github.nkrusch.spacelaunchone.features.DetailsLaunchActivity.EX
 @RequiresApi(24)
 public class CountdownWidget extends AppWidgetProvider {
 
-    private int launchId = -1;
+    private String launchId = null;
     private Long TargetDate = null;
     private String launchEventName;
     private boolean isLoading = false;
@@ -100,11 +100,11 @@ public class CountdownWidget extends AppWidgetProvider {
             new WidgetGetNextTask(new WidgetGetNextTask.onLoadComplete() {
                 @Override
                 public void call(local.Launch result) {
-                    if (launchId < 0 && result == null) {
+                    if (launchId == null && result == null) {
                         launchEventName = unavailable;
                         onUpdate(context);
                     } else {
-                        launchId = result.getId();
+                        launchId = result.getLuuid();
                         launchEventName = result.getName();
                         TargetDate = result.getLaunchDateUTC();
                         onUpdate(context);
@@ -165,7 +165,7 @@ public class CountdownWidget extends AppWidgetProvider {
      * Set action that happens when user clicks widget
      */
     private void bindClickAction(Context context, int appWidgetId, RemoteViews views) {
-        Intent intent = launchId > 0 ?
+        Intent intent = launchId != null ?
                 DetailsLaunchActivity.launchDetails(context, launchId, launchEventName) :
                 new Intent(context, MainActivity.class);
         intent.putExtra(EXTRA_WIDGET_LAUNCHER, 1);

@@ -31,7 +31,7 @@ public class Details {
 
     @NonNull
     @PrimaryKey()
-    private int uid;
+    private String UUID;
     private String net;
     private String hashtag;
     private String changed;
@@ -47,12 +47,13 @@ public class Details {
     public Details() {
     }
 
-    public int getUid() {
-        return uid;
+    @NonNull
+    public String getUUID() {
+        return UUID;
     }
 
-    public void setUid(int uid) {
-        this.uid = uid;
+    public void setUUID(@NonNull String UUID) {
+        this.UUID = UUID;
     }
 
     public int getAgencyId() {
@@ -155,7 +156,7 @@ public class Details {
             if (launch.getPad().getWikiUrl() != null) infoURLs.add(launch.getPad().getWikiUrl());
         }
 
-        details.setUid(launch.getLaunchLibraryId());
+        details.setUUID(launch.getId().toString());
         details.setHashtag(launch.getHashtag());
         details.setChanged(new Date().toString());
         details.setNet(launch.getNet().toString());
@@ -183,7 +184,7 @@ public class Details {
     @Ignore
     @Override
     public String toString() {
-        return "id:" + getUid() + "\n" +
+        return "id:" + getUUID() + "\n" +
                 "hashtag:" + getHashtag() + "\n" +
                 "changed:" + getChanged() + "\n" +
                 "net:" + getNet() + "\n" +

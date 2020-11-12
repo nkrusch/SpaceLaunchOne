@@ -17,6 +17,7 @@ import androidx.lifecycle.ViewModelProviders;
 import androidx.recyclerview.widget.GridLayoutManager;
 import io.github.nkrusch.spacelaunchone.R;
 import io.github.nkrusch.spacelaunchone.app.OnItemClickListener;
+import io.github.nkrusch.spacelaunchone.app.OnItemListener;
 import io.github.nkrusch.spacelaunchone.app.RecyclerViewFragment;
 import io.github.nkrusch.spacelaunchone.features.DetailsLocationActivity;
 import local.Location;
@@ -43,8 +44,8 @@ public class LocationRecyclerView extends RecyclerViewFragment {
         }
     }
 
-    private OnItemClickListener onItemClick() {
-        return new OnItemClickListener() {
+    private OnItemListener onItemClick() {
+        return new OnItemListener() {
             @Override
             public void onItemClick(int id, String name) {
                 startActivity(DetailsLocationActivity.getIntent(getContext(), id, name));

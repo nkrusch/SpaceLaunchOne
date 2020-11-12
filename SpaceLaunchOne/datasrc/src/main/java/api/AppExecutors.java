@@ -44,7 +44,6 @@ public class AppExecutors {
         return diskIO;
     }
 
-
     private static class MainThreadExecutor implements Executor {
         private final Handler mainThreadHandler = new Handler(Looper.getMainLooper());
 

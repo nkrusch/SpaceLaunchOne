@@ -19,9 +19,9 @@ public class LocationDetails {
 
     @Relation(
             parentColumn = "lid",
-            entityColumn = "id",
+            entityColumn = "luuid",
             entity = Launch.class,
-            associateBy = @Junction(value = Details.class, parentColumn = "locationId", entityColumn = "uid"))
+            associateBy = @Junction(value = Details.class, parentColumn = "locationId", entityColumn = "UUID"))
     List<Launch> launches;
 
     @Relation(

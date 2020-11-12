@@ -13,12 +13,12 @@ import androidx.room.Transaction;
 @Dao
 public interface AppDao {
 
-    @Query("SELECT id, name, image, launchDateUTC, locationName, status " +
-            "FROM Launch JOIN details ON id = uid WHERE (launchDateUTC > :cutoff OR status = 5) " +
+    @Query("SELECT  luuid, name, image, launchDateUTC, locationName, status " +
+            "FROM Launch JOIN details ON  luuid = UUID WHERE (launchDateUTC > :cutoff OR status = 5) " +
             "AND rocketId NOT IN (SELECT rfid FROM rocketFilter) " +
             "AND agencyId NOT IN (SELECT afid FROM agencyFilter) " +
             "AND locationId NOT IN (SELECT pfid FROM locationFilter) " +
-            "AND id NOT IN (SELECT id FROM Launch JOIN details ON id = uid " +
+            "AND  luuid NOT IN (SELECT  luuid FROM Launch JOIN details ON  luuid = UUID " +
             "WHERE status=1 AND launchDateUTC > :cutoff " +
             "AND rocketId NOT IN (SELECT rfid FROM rocketFilter) " +
             "AND agencyId NOT IN (SELECT afid FROM agencyFilter) " +
@@ -27,37 +27,37 @@ public interface AppDao {
             "ORDER BY launchDateUTC ASC LIMIT :limit OFFSET :offset")
     LiveData<List<Launch>> loadLaunches(long cutoff, int limit, int offset);
 
-    @Query("SELECT id, name, image, launchDateUTC, locationName, status " +
-            "FROM Launch JOIN details ON id = uid WHERE (launchDateUTC <= :cutoff AND status != 5) " +
+    @Query("SELECT  luuid, name, image, launchDateUTC, locationName, status " +
+            "FROM Launch JOIN details ON  luuid = UUID WHERE (launchDateUTC <= :cutoff AND status != 5) " +
             "AND rocketId NOT IN (SELECT rfid FROM rocketFilter) " +
             "AND agencyId NOT IN (SELECT afid FROM agencyFilter) " +
             "AND locationId NOT IN (SELECT pfid FROM locationFilter) " +
             "ORDER BY launchDateUTC DESC LIMIT :limit OFFSET :offset")
     LiveData<List<Launch>> pastLaunches(long cutoff, int limit, int offset);
 
-    @Query("SELECT id, name, image, launchDateUTC, locationName, status " +
-            "FROM Launch JOIN details ON id = uid JOIN favorites on id = fid " +
+    @Query("SELECT  luuid, name, image, launchDateUTC, locationName, status " +
+            "FROM Launch JOIN details ON  luuid = UUID JOIN favorites on  luuid = fid " +
             "ORDER BY launchDateUTC DESC LIMIT :limit OFFSET :offset")
     LiveData<List<Launch>> favoriteLaunches(int limit, int offset);
 
-    @Query("SELECT id, L.name as name, image, launchDateUTC, locationName, status " +
-            "FROM launch AS L JOIN details ON id = uid " +
+    @Query("SELECT  luuid, L.name as name, image, launchDateUTC, locationName, status " +
+            "FROM launch AS L JOIN details ON  luuid = UUID " +
             "JOIN agencies AS A on agencyId = aid " +
             "JOIN locations as O on locationId=lid WHERE " +
             "(L.name LIKE :q OR A.name LIKE :q OR O.name LIKE :q) " +
             "ORDER BY launchDateUTC DESC LIMIT :limit OFFSET :offset")
     List<Launch> searchLaunches(String q, int limit, int offset);
 
-    @Query("SELECT id, name, image, launchDateUTC, locationName, status " +
-            "FROM Launch JOIN details ON id = uid WHERE status=1 AND launchDateUTC > :cutoff " +
+    @Query("SELECT  luuid, name, image, launchDateUTC, locationName, status " +
+            "FROM Launch JOIN details ON  luuid = UUID WHERE status=1 AND launchDateUTC > :cutoff " +
             "AND rocketId NOT IN (SELECT rfid FROM rocketFilter) " +
             "AND agencyId NOT IN (SELECT afid FROM agencyFilter) " +
             "AND locationId NOT IN (SELECT pfid FROM locationFilter) " +
             "ORDER BY launchDateUTC ASC LIMIT 1")
     LiveData<Launch> getNext(long cutoff);
 
-    @Query("SELECT id, name, image, launchDateUTC, locationName, status " +
-            "FROM Launch JOIN details ON id = uid WHERE status=1 AND launchDateUTC > :cutoff " +
+    @Query("SELECT  luuid, name, image, launchDateUTC, locationName, status " +
+            "FROM Launch JOIN details ON  luuid = UUID WHERE status=1 AND launchDateUTC > :cutoff " +
             "AND rocketId NOT IN (SELECT rfid FROM rocketFilter) " +
             "AND agencyId NOT IN (SELECT afid FROM agencyFilter) " +
             "AND locationId NOT IN (SELECT pfid FROM locationFilter) " +
@@ -71,12 +71,12 @@ public interface AppDao {
     LiveData<List<Location>> locations(int limit, int offset);
 
     @Transaction
-    @Query("SELECT * from launch JOIN details ON id = uid WHERE id = :id")
-    LaunchDetails get(int id);
+    @Query("SELECT * from launch JOIN details ON  luuid = UUID WHERE  luuid = :id")
+    LaunchDetails get(String id);
 
     @Transaction
-    @Query("SELECT * from launch JOIN details ON id = uid WHERE id = :id")
-    LiveData<LaunchDetails> getLaunchDetails(int id);
+    @Query("SELECT * from launch JOIN details ON  luuid = UUID WHERE  luuid = :id")
+    LiveData<LaunchDetails> getLaunchDetails(String id);
 
     @Transaction
     @Query("SELECT * from locations WHERE lid = :id")
@@ -86,11 +86,11 @@ public interface AppDao {
     @Query("SELECT * from agencies WHERE aid = :id")
     LiveData<AgencyDetails> getAgencyDetails(int id);
 
-    @Query("SELECT launchDateUTC from launch WHERE id = :id")
-    Long getLaunchDateUTC(int id);
+    @Query("SELECT launchDateUTC from launch WHERE  luuid = :id")
+    Long getLaunchDateUTC(String id);
 
     @Query("SELECT * from favorites WHERE fid = :id")
-    LiveData<FavoriteLaunch> getFavorite(int id);
+    LiveData<FavoriteLaunch> getFavorite(String id);
 
     @Insert(onConflict = OnConflictStrategy.IGNORE)
     void addFavorite(FavoriteLaunch f);
@@ -99,8 +99,8 @@ public interface AppDao {
     void removeFavorite(FavoriteLaunch f);
 
     @Transaction
-    @Query("UPDATE launch set image = :image where id = :id")
-    void updateImage(int id, String image);
+    @Query("UPDATE launch set image = :image where  luuid = :id")
+    void updateImage(String id, String image);
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     void insertAll(Launch... launches);

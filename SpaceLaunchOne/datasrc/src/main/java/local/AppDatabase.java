@@ -14,7 +14,7 @@ import androidx.sqlite.db.SupportSQLiteDatabase;
 
 @Database(entities = {Launch.class, Details.class, Mission.class, RocketFilter.class, AgencyFilter.class, LocationFilter.class,
         FavoriteLaunch.class, Agency.class, Location.class, Pad.class, Rocket.class, LocationAgency.class, AgencyMission.class},
-        version = 2, exportSchema = false)
+        version = 3, exportSchema = false)
 @TypeConverters({Converters.class})
 public abstract class AppDatabase extends RoomDatabase {
 
@@ -22,6 +22,35 @@ public abstract class AppDatabase extends RoomDatabase {
     private static final Object LOCK = new Object();
     private static final String DATABASE_NAME = "launchData";
     private static AppDatabase sInstance;
+
+    private static final Migration MIGRATION_2_3 = new Migration(2, 3) {
+        @Override
+        public void migrate(SupportSQLiteDatabase database) {
+
+            database.execSQL("DROP TABLE `details`");
+            database.execSQL("CREATE TABLE `details` (`UUID` TEXT NOT NULL, `net` TEXT, `hashtag` TEXT, `changed` TEXT, `vidURLs` TEXT, `infoURLs` TEXT, `lastModified` INTEGER, `agencyId` INTEGER NOT NULL, `locationId` INTEGER NOT NULL, `padId` INTEGER NOT NULL, `rocketId` INTEGER NOT NULL, PRIMARY KEY(`UUID`))");
+
+            database.execSQL("DROP TABLE `launch`");
+            database.execSQL("CREATE TABLE `launch` (`luuid` TEXT NOT NULL, `name` TEXT, `image` TEXT, `launchDateUTC` INTEGER, `locationName` TEXT, `status` INTEGER NOT NULL, PRIMARY KEY(`luuid`))");
+
+            database.execSQL("DROP TABLE `mission`");
+            database.execSQL("CREATE TABLE `mission` (`mid` INTEGER NOT NULL, `launchId` TEXT, `name` TEXT, `description` TEXT, `category` TEXT, `wikiURL` TEXT, PRIMARY KEY(`mid`))");
+
+            dropIndexes(database);
+
+            database.execSQL("CREATE INDEX `index_agencymission_aid` ON `agencymission` (`aid`)");          // 1
+            database.execSQL("CREATE INDEX `index_agencymission_mid` ON `agencymission` (`mid`)");          // 2
+            database.execSQL("CREATE INDEX `index_details_agencyId` ON `details` (`agencyId`)");            // 3
+            database.execSQL("CREATE INDEX `index_details_locationId` ON `details` (`locationId`)");        // 4
+            database.execSQL("CREATE INDEX `index_details_padId` ON `details` (`padId`)");                  // 5
+            database.execSQL("CREATE INDEX `index_details_rocketId` ON `details` (`rocketId`)");            // 6
+            database.execSQL("CREATE INDEX `index_launch_launchDateUTC` ON `launch` (`launchDateUTC`)");    // 7
+            database.execSQL("CREATE INDEX `index_locationagency_aid` ON `locationagency` (`aid`)");        // 8
+            database.execSQL("CREATE INDEX `index_locationagency_lid` ON `locationagency` (`lid`)");        // 9
+            database.execSQL("CREATE INDEX `index_mission_launchId` ON `mission` (`launchId`)");            // 10
+            database.execSQL("CREATE INDEX `index_pads_locationId` ON `pads` (`locationId`)");              // 11
+        }
+    };
 
     private static final Migration MIGRATION_1_2 = new Migration(1, 2) {
         @Override
@@ -64,7 +93,7 @@ public abstract class AppDatabase extends RoomDatabase {
                 Log.d(LOG_TAG, "Creating new database instance");
                 sInstance = Room.databaseBuilder(context.getApplicationContext(),
                         AppDatabase.class, AppDatabase.DATABASE_NAME)
-                        .addMigrations(MIGRATION_1_2)
+                        .addMigrations(MIGRATION_1_2, MIGRATION_2_3)
                         .build();
             }
         }
@@ -74,7 +103,7 @@ public abstract class AppDatabase extends RoomDatabase {
 
     public abstract AppDao dao();
 
-    private static void dropIndexes(SupportSQLiteDatabase db){
+    private static void dropIndexes(SupportSQLiteDatabase db) {
 
         try {
             Cursor cursor = db.query("SELECT name FROM sqlite_master WHERE type == 'index'", null);
@@ -89,12 +118,15 @@ public abstract class AppDatabase extends RoomDatabase {
 
                 for (i = 0; i < indexNames.length; i++) {
                     Log.d(LOG_TAG, "Dropping index: " + indexNames[i] + "...");
-                    db.execSQL("DROP INDEX " + indexNames[i]);
-                    Log.e(LOG_TAG, "...index dropped!");
+                    try {
+                        db.execSQL("DROP INDEX " + indexNames[i]);
+                        Log.e(LOG_TAG, "...index dropped!");
+                    } catch (Exception e) {
+                        Log.e(LOG_TAG, "Error dropping index", e);
+                    }
                 }
             }
-        }
-        catch(Exception e) {
+        } catch (Exception e) {
             Log.e(LOG_TAG, "Error dropping index", e);
         }
     }

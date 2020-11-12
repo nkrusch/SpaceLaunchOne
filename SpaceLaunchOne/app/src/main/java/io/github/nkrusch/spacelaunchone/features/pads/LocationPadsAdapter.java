@@ -15,6 +15,7 @@ import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.RecyclerView;
 import io.github.nkrusch.spacelaunchone.R;
 import io.github.nkrusch.spacelaunchone.app.OnItemClickListener;
+import io.github.nkrusch.spacelaunchone.app.OnItemListener;
 import io.github.nkrusch.spacelaunchone.app.Utilities;
 import local.Pad;
 
@@ -25,7 +26,7 @@ import local.Pad;
 public class LocationPadsAdapter extends RecyclerView.Adapter<LocationPadsAdapter.ItemViewHolder> {
 
     private List<Pad> dataSource;
-    private OnItemClickListener mItemClickListener;
+    private OnItemListener mItemClickListener;
 
     LocationPadsAdapter(List<Pad> dataArgs) {
         updateData(dataArgs);
@@ -38,7 +39,7 @@ public class LocationPadsAdapter extends RecyclerView.Adapter<LocationPadsAdapte
     /**
      * bind onclick listener to handle adapter item clicks
      */
-    void SetOnItemClickListener(final OnItemClickListener mItemClickListener) {
+    void SetOnItemClickListener(final OnItemListener mItemClickListener) {
         this.mItemClickListener = mItemClickListener;
     }
 

@@ -27,7 +27,6 @@ import local.LocationAgency;
 import local.Mission;
 import local.Pad;
 import local.Rocket;
-import models.Launches;
 
 /**
  * Update application database
@@ -43,7 +42,7 @@ public class UpdateMethods {
         LaunchData.updateAllLaunches(db, Integer.MAX_VALUE, callback);
     }
 
-    public static void UpdateLaunchDetails(Context context, final int id, @Nullable final OnLoadCallback callback) {
+    public static void UpdateLaunchDetails(Context context, final String id, @Nullable final OnLoadCallback callback) {
         Log.d("UPDATE", "updating launch details...." + id);
         LaunchData.updateSingleLaunchDetails(AppDatabase.getInstance(context), id, callback);
     }
@@ -95,7 +94,7 @@ public class UpdateMethods {
 
                 if (r != null) {
                     int rocketId = r.getId();
-                    int launchId = l.getLaunchLibraryId();
+                    String launchId = l.getLaunchLibraryId();
 
                     if (rockets.containsKey(rocketId) && rockets.get(rocketId) != null) {
                         Objects.requireNonNull(rockets.get(rocketId)).addLaunchId(launchId);
@@ -151,7 +150,7 @@ public class UpdateMethods {
                     "| Rockets:   |  " + String.format("%5d  |\n", rockets.size()) +
                     "========================");
 
-            else Log.d(TAG, " \n" +
+            else if (launches.length == 1) Log.d(TAG, " \n" +
                     "\nLAUNCH\n==========\n" + Arrays.toString(launches).replaceAll("\\[|\\]", "") +
                     "\n\nDETAILS\n==========\n" + Arrays.toString(details).replaceAll("\\[|\\]", "") +
                     "\n\nMISSIONS\n==========\n" + Arrays.toString(missions.values().toArray()).replaceAll("\\[|\\]", "") +
@@ -161,6 +160,11 @@ public class UpdateMethods {
                     "\n\nLOCATIONS\n==========\n" + Arrays.toString(locations.values().toArray()).replaceAll("\\[|\\]", "") +
                     "\n\nPADS\n==========\n" + Arrays.toString((pads.values().toArray())).replaceAll("\\[|\\]", "") +
                     "\n\nROCKETS\n==========\n" + Arrays.toString(rockets.values().toArray()).replaceAll("\\[|\\]", "") + "\n");
+            else
+                Log.d(TAG, " \n" +
+                        "========================\n" +
+                        "No launches!\n" +
+                        "========================");
 
             // save
             db.dao().insertAll(launches);
@@ -191,7 +195,7 @@ public class UpdateMethods {
 
                         images.add(rocketId);
                         if (!(image == null || image.isEmpty())) {
-                            for (int launchId : rocket.getLaunchIds())
+                            for (String launchId : rocket.getLaunchIds())
                                 db.dao().updateImage(launchId, image);
                         }
                         if (images.size() == rocketCount && callback != null) {
@@ -213,6 +217,7 @@ public class UpdateMethods {
          */
         private static void updateAllLaunches(final AppDatabase db, int size, final OnLoadCallback<Boolean> callback) {
             // TODO: iterate over pages
+            // TODO: fetch agencies
             LaunchLibrary.allLaunches(0, size, new OnLoadCallback<LaunchList>() {
                 @Override
                 public void call(final LaunchList result) {
@@ -230,7 +235,7 @@ public class UpdateMethods {
         /**
          * Fetch the latest launch details for single launch from the API endpoint
          */
-        private static void updateSingleLaunchDetails(final AppDatabase db, final int id, final OnLoadCallback<Boolean> callback) {
+        private static void updateSingleLaunchDetails(final AppDatabase db, final String id, final OnLoadCallback<Boolean> callback) {
             LaunchLibrary.getLaunch(id, new OnLoadCallback<models.Launch>() {
                 @Override
                 public void call(models.Launch result) {

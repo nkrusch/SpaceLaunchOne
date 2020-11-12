@@ -49,7 +49,7 @@ public class DetailsLaunchActivity extends TabbedActivity {
     private boolean widgetLaunch;
     private String title;
 
-    public static Intent launchDetails(Context ctx, int id, String name) {
+    public static Intent launchDetails(Context ctx, String id, String name) {
         Intent intent = new Intent(ctx, DetailsLaunchActivity.class);
         intent.putExtra(EXTRA_LAUNCH, id);
         intent.putExtra(EXTRA_NAME, name);
@@ -58,7 +58,7 @@ public class DetailsLaunchActivity extends TabbedActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        int launchId = getIntent().getIntExtra(EXTRA_LAUNCH, -1);
+        String launchId = getIntent().getStringExtra(EXTRA_LAUNCH);
         widgetLaunch = getIntent().getIntExtra(EXTRA_WIDGET_LAUNCHER, -1) > 0;
         title = getIntent().getStringExtra(EXTRA_NAME);
         super.onCreate(savedInstanceState);
@@ -98,7 +98,7 @@ public class DetailsLaunchActivity extends TabbedActivity {
     /**
      * Initialize view model with selected launch id
      */
-    private void setupViewModel(final int launchId) {
+    private void setupViewModel(final String launchId) {
         vm = ViewModelProviders.of(this).get(LaunchDetailsViewModel.class);
         vm.loadLaunch(launchId).observe(this, new Observer<LaunchDetails>() {
             @Override

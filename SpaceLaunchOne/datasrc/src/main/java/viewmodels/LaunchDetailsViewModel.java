@@ -35,7 +35,7 @@ public class LaunchDetailsViewModel extends AndroidViewModel {
     /**
      * Initialize launch details viewModel
      */
-    public LiveData<LaunchDetails> loadLaunch(final int id) {
+    public LiveData<LaunchDetails> loadLaunch(final String id) {
         launch = db.dao().getLaunchDetails(id);
         favState = db.dao().getFavorite(id);
         conditionallyUpdate(id);
@@ -77,7 +77,7 @@ public class LaunchDetailsViewModel extends AndroidViewModel {
      * - If enough time has elapsed since last read, update record.
      * - If launch date occurs today always update because that record is likely to get udpated often
      */
-    private void conditionallyUpdate(final int id) {
+    private void conditionallyUpdate(final String id) {
         AppExecutors.getInstance().DiskIO().execute(new Runnable() {
             @Override
             public void run() {

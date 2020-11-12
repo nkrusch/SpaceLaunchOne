@@ -126,7 +126,7 @@ public class ListAdapter<T extends Launch> extends
         public void onClick(View v) {
             try {
                 T item = dataSource.get(getAdapterPosition());
-                if (item != null) mItemClickListener.onItemClick(item.getId(), item.getName());
+                if (item != null) mItemClickListener.onItemClick(item.getLuuid(), item.getName());
             } catch (Exception e) {
                 e.printStackTrace();
             }

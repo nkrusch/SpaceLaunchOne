@@ -16,9 +16,9 @@ public class AgencyDetails {
 
     @Relation(
             parentColumn = "aid",
-            entityColumn = "id",
+            entityColumn = "luuid",
             entity = Launch.class,
-            associateBy = @Junction(value = Details.class, parentColumn = "agencyId", entityColumn = "uid"))
+            associateBy = @Junction(value = Details.class, parentColumn = "agencyId", entityColumn = "UUID"))
     private
     List<Launch> launches;
 
@@ -53,5 +53,9 @@ public class AgencyDetails {
     public List<Mission> getMissions(){
         return missions;
     }
+    public void setMissions(List<Mission> missions) {
+        this.missions = missions;
+    }
+
 
 }

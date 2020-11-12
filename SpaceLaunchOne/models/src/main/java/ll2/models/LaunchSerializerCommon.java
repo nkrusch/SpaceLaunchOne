@@ -29,7 +29,7 @@ public class LaunchSerializerCommon {
   @SerializedName("url")
   private String url = null;
   @SerializedName("launch_library_id")
-  private Integer launchLibraryId = null;
+  private String launchLibraryId = null;
   @SerializedName("slug")
   private String slug = null;
   @SerializedName("name")
@@ -102,10 +102,10 @@ public class LaunchSerializerCommon {
    * maximum: 2147483647
    **/
   @ApiModelProperty(value = "")
-  public Integer getLaunchLibraryId() {
+  public String getLaunchLibraryId() {
     return launchLibraryId;
   }
-  public void setLaunchLibraryId(Integer launchLibraryId) {
+  public void setLaunchLibraryId(String launchLibraryId) {
     this.launchLibraryId = launchLibraryId;
   }
 

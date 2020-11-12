@@ -17,6 +17,7 @@ import androidx.lifecycle.ViewModelProviders;
 import androidx.recyclerview.widget.GridLayoutManager;
 import io.github.nkrusch.spacelaunchone.R;
 import io.github.nkrusch.spacelaunchone.app.OnItemClickListener;
+import io.github.nkrusch.spacelaunchone.app.OnItemListener;
 import io.github.nkrusch.spacelaunchone.app.RecyclerViewFragment;
 import local.Pad;
 import viewmodels.LocationDetailsViewModel;
@@ -45,10 +46,10 @@ public class LocationPadsRecyclerView extends RecyclerViewFragment {
     }
 
     /**
-     * When user clicks on recyclerview items launch details view
+     * When user clicks on pad item in a list
      */
-    private OnItemClickListener onItemClick() {
-        return new OnItemClickListener() {
+    private OnItemListener onItemClick() {
+        return new OnItemListener() {
             @Override
             public void onItemClick(int id, String name) {
                 // do something on pad click

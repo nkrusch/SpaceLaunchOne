@@ -16,6 +16,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import io.github.nkrusch.spacelaunchone.R;
 import io.github.nkrusch.spacelaunchone.app.AppImage;
 import io.github.nkrusch.spacelaunchone.app.OnItemClickListener;
+import io.github.nkrusch.spacelaunchone.app.OnItemListener;
 import local.Mission;
 
 
@@ -25,7 +26,7 @@ import local.Mission;
 public class MissionsAdapter extends RecyclerView.Adapter<MissionsAdapter.ItemViewHolder> {
 
     private List<Mission> dataSource;
-    private OnItemClickListener mItemClickListener;
+    private OnItemListener mItemClickListener;
 
     MissionsAdapter(List<Mission> dataArgs) {
         updateData(dataArgs);
@@ -38,7 +39,7 @@ public class MissionsAdapter extends RecyclerView.Adapter<MissionsAdapter.ItemVi
     /**
      * bind onclick listener to handle adapter item clicks
      */
-    void SetOnItemClickListener(final OnItemClickListener mItemClickListener) {
+    void SetOnItemClickListener(final OnItemListener mItemClickListener) {
         this.mItemClickListener = mItemClickListener;
     }
 
