@@ -54,7 +54,7 @@ public class ImageResolver {
         final String wikiUrl = rocket.getWikiURL();
 
         // if image is non-placeholder provided by API -> use it!
-        if ((defaultImage.startsWith("http")) || wikiUrl == null || wikiUrl.length() == 0) {
+        if ((defaultImage != null && defaultImage.startsWith("http")) || wikiUrl == null || wikiUrl.length() == 0) {
             callback.call(defaultImage);
             return;
         }
