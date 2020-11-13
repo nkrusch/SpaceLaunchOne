@@ -176,7 +176,7 @@ public class LaunchDetails {
 
     public String getLocationCountryCode() {
         return location == null ? null :
-                location.getCountryCode().replace("UNK", "");
+                location.getCountryCode();
     }
 
     public String getPadName() {

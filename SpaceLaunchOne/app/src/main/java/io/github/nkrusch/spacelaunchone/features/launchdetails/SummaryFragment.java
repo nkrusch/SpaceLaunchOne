@@ -135,16 +135,12 @@ public class SummaryFragment extends DetailsBaseFragment {
                         agencyFullName : String.format("%s (%s)", agencyFullName, launch.getAgencyCountryCode());
         String rocketFamily = coalesce(launch.getRocketFamilyName(), unknown);
         String country = coalesce(Utilities.countryName(launch.getLocationCountryCode()), unknown);
-        String location = String.format("%s\n%s %s",
-                launch.getPadName(),
-                launch.getLocationName(),
-                launch.getLocationCountryCode()).trim();
+        String location = String.format("%s\n%s", launch.getPadName(), launch.getLocationName()).trim();
         initCountdown(launch.getLaunchDateUTC());
         adjustDividers(launch);
 
         mStatus.setText(launch.getStatusText());
         mRocket.setText(rocketFamily);
-        // add overflow ellipsis to this field
         mAgency.setText(agency);
         mCountry.setText(country);
 
