@@ -18,12 +18,14 @@ import androidx.annotation.Nullable;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
+import androidx.lifecycle.ViewModelProvider;
 import androidx.lifecycle.ViewModelProviders;
 import io.github.nkrusch.spacelaunchone.R;
 import io.github.nkrusch.spacelaunchone.app.Utilities;
 import io.github.nkrusch.spacelaunchone.features.DetailsLaunchActivity;
 import io.github.nkrusch.spacelaunchone.features.timers.TimerFragment;
 import local.Launch;
+import viewmodels.LaunchDetailsViewModel;
 import viewmodels.NextLaunchViewModel;
 
 import static android.view.View.GONE;
@@ -43,7 +45,7 @@ public class NextLaunchFragment extends Fragment {
     private ConstraintLayout mLayout;
     private NextLaunchViewModel vm;
     private boolean isRow;
-    private int launchId;
+    private String launchId;
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -63,7 +65,7 @@ public class NextLaunchFragment extends Fragment {
         imgs.recycle();
 
         if (getActivity() != null)
-            vm = ViewModelProviders.of(getActivity()).get(NextLaunchViewModel.class);
+            vm = new ViewModelProvider(getActivity()).get(NextLaunchViewModel.class);
         return view;
     }
 
@@ -84,12 +86,7 @@ public class NextLaunchFragment extends Fragment {
      */
     private void setupViewModel() {
         if (getActivity() != null) {
-            vm.getNext().observe(getActivity(), new Observer<Launch>() {
-                @Override
-                public void onChanged(@Nullable Launch launch) {
-                    PopulateViews(launch);
-                }
-            });
+            vm.getNext().observe(getActivity(), launch -> PopulateViews(launch));
         }
     }
 
@@ -113,11 +110,12 @@ public class NextLaunchFragment extends Fragment {
             mLayout.setOnClickListener(onClickListener(launch.getLuuid(), launch.getName()));
             mStatus.setText(getString(R.string.bullet));
             mStatus.setTextColor(Color.parseColor(launch.getStatusColor()));
-            if (launch.getId() != launchId) {
+            if (!launch.getLuuid().equals(launchId)) {
                 addCountdown(launch.getLaunchDateUTC());
-                launchId = launch.getId();
+                launchId = launch.getLuuid();
             }
-        } catch (Exception ignored) { }
+        } catch (Exception ignored) {
+        }
     }
 
     /**

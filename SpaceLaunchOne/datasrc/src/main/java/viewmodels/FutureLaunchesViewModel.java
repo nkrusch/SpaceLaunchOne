@@ -19,7 +19,7 @@ public class FutureLaunchesViewModel extends AndroidViewModel implements ILaunch
 
     public FutureLaunchesViewModel(Application application) {
         super(application);
-        Long CUTOFF = new Date().getTime();
+        long CUTOFF = new Date().getTime();
         AppDatabase db = AppDatabase.getInstance(this.getApplication());
         int INIT_OFFSET = 0;
         launches = db.dao().loadLaunches(CUTOFF, Integer.MAX_VALUE, INIT_OFFSET);
