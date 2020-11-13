@@ -1,6 +1,7 @@
 package io.github.nkrusch.spacelaunchone.features.launchdetails;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,6 +14,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
+import androidx.lifecycle.ViewModelProvider;
 import androidx.lifecycle.ViewModelProviders;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -37,28 +39,15 @@ abstract class DetailsBaseFragment extends Fragment {
         super.onCreate(savedInstanceState);
         none = getString(R.string.none);
         unknown = getString(R.string.unknown);
-
+        if (getActivity() == null) return;
+        new ViewModelProvider(getActivity())
+                .get(LaunchDetailsViewModel.class)
+                .get().observe(this, result -> {
+            if (result != null) PopulateViews(result);
+        });
     }
 
     protected abstract void PopulateViews(LaunchDetails launch);
-
-    @Override
-    public void onStart() {
-        super.onStart();
-        setupViewModel();
-    }
-
-    private void setupViewModel() {
-        if (getActivity() != null) {
-            ViewModelProviders.of(getActivity()).get(LaunchDetailsViewModel.class)
-                    .get().observe(this, new Observer<LaunchDetails>() {
-                @Override
-                public void onChanged(@Nullable LaunchDetails result) {
-                    if (result != null) PopulateViews(result);
-                }
-            });
-        }
-    }
 
     String coalesce(String... values) {
         return Utilities.coalesce(values);
@@ -93,7 +82,7 @@ abstract class HorizontalRecyclerViewFragment<T extends RecyclerView.Adapter & B
 
     abstract int layoutRes();
 
-    void setGridLayoutManager(){
+    void setGridLayoutManager() {
         final GridLayoutManager lm = new GridLayoutManager(getContext(), getPageSize(),
                 LinearLayoutManager.HORIZONTAL, false);
         mRecyclerView.setLayoutManager(lm);
@@ -102,7 +91,6 @@ abstract class HorizontalRecyclerViewFragment<T extends RecyclerView.Adapter & B
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(layoutRes(), container, false);
-
 
         //noinspection ConstantConditions
         smoothScroller = new LinearSmoothScroller(getActivity()) {
@@ -168,13 +156,10 @@ abstract class HorizontalRecyclerViewFragment<T extends RecyclerView.Adapter & B
             bullets[n].setTextColor(n == activeBullet ? active : inactive);
             final int currentIndex = n;
             if (!bullets[n].hasOnClickListeners())
-                bullets[n].setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        smoothScroller.setTargetPosition(currentIndex * pagesize);
-                        (mRecyclerView.getLayoutManager()).startSmoothScroll(smoothScroller);
-                        setupBullets(currentIndex);
-                    }
+                bullets[n].setOnClickListener(v -> {
+                    smoothScroller.setTargetPosition(currentIndex * pagesize);
+                    (mRecyclerView.getLayoutManager()).startSmoothScroll(smoothScroller);
+                    setupBullets(currentIndex);
                 });
         }
     }

@@ -3,6 +3,7 @@ package io.github.nkrusch.spacelaunchone.features.launchdetails;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,6 +12,7 @@ import android.widget.TextView;
 
 import com.cloudinary.utils.StringUtils;
 
+import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -19,7 +21,6 @@ import androidx.annotation.Nullable;
 import androidx.recyclerview.widget.RecyclerView;
 import io.github.nkrusch.spacelaunchone.R;
 import local.LaunchDetails;
-import local.Mission;
 
 import static io.github.nkrusch.spacelaunchone.app.Utilities.merge;
 
@@ -42,7 +43,7 @@ public class LinksFragment extends HorizontalRecyclerViewFragment
 
     @Override
     ExternalLinksAdapter getAdapter() {
-        return new ExternalLinksAdapter(new LinkedList<LinkItem>());
+        return new ExternalLinksAdapter(new LinkedList<>());
     }
 
     @Override
@@ -66,11 +67,8 @@ public class LinksFragment extends HorizontalRecyclerViewFragment
         if (launch == null) return;
         List<LinkItem> tmp = new LinkedList<>();
         addLinks(tmp, launch.getRocketName(), merge(launch.getRocketInfoURLs(), launch.getRocketWikiURL()));
-        if (launch.getMissions() != null)
-            for (Mission m : launch.getMissions())
-                addLinks(tmp, m.getName() + " mission", merge(null, m.getWikiURL()));
-        addLinks(tmp, launch.getPadName(), merge(launch.getPadInfoURLs(), null));
         addLinks(tmp, launch.getAgencyName(), merge(launch.getAgencyInfoURLs(), launch.getAgencyWikiURL()));
+        addLinks(tmp, launch.getPadName(), Arrays.asList(launch.getPadInfoURLs()));
         handleDataChange(tmp);
     }
 

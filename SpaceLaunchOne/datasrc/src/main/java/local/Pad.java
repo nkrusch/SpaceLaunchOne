@@ -4,6 +4,8 @@ import android.util.ArrayMap;
 
 import java.util.Arrays;
 import java.util.Date;
+import java.util.LinkedList;
+import java.util.List;
 
 import androidx.annotation.NonNull;
 import androidx.room.Entity;
@@ -102,14 +104,12 @@ public class Pad implements Comparable<Pad> {
         a.setLatitude(Double.parseDouble(pad.getLatitude()));
         a.setLongitude(Double.parseDouble(pad.getLongitude()));
         a.setLocationId(locationId);
-        a.setInfoURLs(new String[]{pad.getUrl()});
+        List<String> urls = new LinkedList<>();
+        if (pad.getInfoUrl() != null) urls.add(pad.getInfoUrl());
+        if (pad.getWikiUrl() != null) urls.add(pad.getWikiUrl());
+        if (urls.size() > 0) a.setInfoURLs(urls.toArray(new String[0]));
         a.setLastModified(new Date());
         return a;
-    }
-
-    @Ignore
-    public static Pad Map(ll2.models.Pad pad) {
-        return Map(pad, pad.getLocation().getId());
     }
 
     @Ignore

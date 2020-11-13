@@ -65,7 +65,6 @@ public class Location {
         a.setLid(loc.getId());
         a.setName(loc.getName());
         a.setCountryCode(loc.getCountryCode());
-        a.setInfoURLs(new String[]{loc.getUrl()});
         a.setLastModified(new Date());
         return a;
     }

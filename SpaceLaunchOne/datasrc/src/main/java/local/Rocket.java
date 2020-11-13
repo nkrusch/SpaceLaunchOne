@@ -114,7 +114,7 @@ public class Rocket {
         r.setFamilyName(rocket.getConfiguration().getFamily());
         r.setConfiguration(rocket.getConfiguration().getFullName());
         r.setImageURL(image);
-        r.setInfoURLs(new String[]{rocket.getConfiguration().getUrl()});
+        r.setInfoURLs(null);
         r.setLastModified(new Date());
         return r;
     }

@@ -143,26 +143,18 @@ public class Details {
         details.setHashtag(launch.getHashtag());
         details.setChanged(new Date().toString());
         details.setNet(launch.getNet().toString());
-        if (launch.getVidURLs() != null) details.setVidURLs(new String[]{launch.getVidURLs()});
-        if (agency != null) details.setAgencyId(agency.getId());
-        if (pad != null && pad.getLocation() != null) details.setLocationId(pad.getLocation().getId());
-        if (pad != null) details.setPadId(pad.getId());
-        if (rocket != null) details.setRocketId(rocket.getId());
-         details.setLastModified(new Date());
-
-        final List<String> infoURLs = new ArrayList<>();
-        if (launch.getProgram() != null && launch.getProgram().size() > 0)
-            for (Program p : launch.getProgram()) {
-                if (p.getWikiUrl() != null) infoURLs.add(p.getWikiUrl());
-                if (p.getInfoUrl() != null) infoURLs.add(p.getInfoUrl());
-            }
-        if (launch.getPad() != null) {
-            if (launch.getPad().getInfoUrl() != null) infoURLs.add(launch.getPad().getInfoUrl());
-            if (launch.getPad().getWikiUrl() != null) infoURLs.add(launch.getPad().getWikiUrl());
+        if (launch.getVidURLs() != null && launch.getVidURLs().length() > 0) {
+            String[] videos = new String[1];
+            videos[0] = launch.getVidURLs();
+            details.setVidURLs(videos);
         }
+        if (agency != null) details.setAgencyId(agency.getId());
+        if (pad != null && pad.getLocation() != null)
+            details.setLocationId(pad.getLocation().getId());
+        if (pad != null) details.setPadId(pad.getId());
+        if (rocket != null) { details.setRocketId(rocket.getId()); }
 
-        details.setInfoURLs(infoURLs.toArray(new String[0]));
-
+        details.setLastModified(new Date());
         return details;
     }
 

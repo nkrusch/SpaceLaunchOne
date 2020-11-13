@@ -32,6 +32,7 @@ allprojects {
         picassoVersion="2.71828"
         lifecycleVersion="2.2.0"
         roomVersion="2.2.5"
+        fragmentVersion="1.2.5"
         constraintLayoutVersion="2.0.4"
         retrofitVersion= '2.9.0'
         cloudinaryVersion="1.30.0"

@@ -215,4 +215,16 @@ public class LaunchDetails {
         return detail.getLastModified();
     }
 
+    @Override
+    public String toString() {
+        return "LaunchDetails{" +
+                "summary=" + summary +
+                ", detail=" + detail +
+                ", agency=" + agency +
+                ", location=" + location +
+                ", pad=" + pad +
+                ", rocket=" + rocket +
+                ", missions=" + missions +
+                '}';
+    }
 }

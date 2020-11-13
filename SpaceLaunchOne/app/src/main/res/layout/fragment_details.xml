@@ -21,17 +21,16 @@
             style="@style/details_rocket_image_card">
 
             <ImageView
-                android:contentDescription="@string/rocket"
                 android:id="@+id/details_rocket_image"
-                style="@style/details_rocket_image" />
+                style="@style/details_rocket_image"
+                android:contentDescription="@string/rocket" />
         </androidx.cardview.widget.CardView>
 
         <!--suppress AndroidUnknownAttribute -->
         <androidx.fragment.app.FragmentContainerView
             android:id="@+id/ExternalLinks"
             android:name="io.github.nkrusch.spacelaunchone.features.launchdetails.LinksFragment"
-            style="@style/details_links_container"
-            />
+            style="@style/details_links_container" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.core.widget.NestedScrollView>
