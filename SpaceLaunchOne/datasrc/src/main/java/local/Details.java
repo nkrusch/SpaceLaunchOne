@@ -1,8 +1,6 @@
 package local;
 
-import java.util.ArrayList;
 import java.util.Date;
-import java.util.List;
 
 import androidx.annotation.NonNull;
 import androidx.room.Entity;
@@ -11,7 +9,6 @@ import androidx.room.Index;
 import androidx.room.PrimaryKey;
 import ll2.models.AgencySerializerMini;
 import ll2.models.LaunchSerializerCommon;
-import ll2.models.Program;
 import ll2.models.RocketSerializerCommon;
 
 

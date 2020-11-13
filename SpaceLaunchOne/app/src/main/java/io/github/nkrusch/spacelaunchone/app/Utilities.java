@@ -27,8 +27,8 @@ import java.util.Locale;
 import java.util.TimeZone;
 
 import androidx.annotation.Nullable;
-import utilities.ImageResolver;
 import io.github.nkrusch.spacelaunchone.R;
+import utilities.ImageResolver;
 
 /**
  * This class provides different utility methods for the app activities and fragments

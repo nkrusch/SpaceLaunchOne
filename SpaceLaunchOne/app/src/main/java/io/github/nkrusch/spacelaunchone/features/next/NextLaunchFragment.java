@@ -14,18 +14,14 @@ import android.widget.TextView;
 import java.util.Calendar;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.fragment.app.Fragment;
-import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
-import androidx.lifecycle.ViewModelProviders;
 import io.github.nkrusch.spacelaunchone.R;
 import io.github.nkrusch.spacelaunchone.app.Utilities;
 import io.github.nkrusch.spacelaunchone.features.DetailsLaunchActivity;
 import io.github.nkrusch.spacelaunchone.features.timers.TimerFragment;
 import local.Launch;
-import viewmodels.LaunchDetailsViewModel;
 import viewmodels.NextLaunchViewModel;
 
 import static android.view.View.GONE;

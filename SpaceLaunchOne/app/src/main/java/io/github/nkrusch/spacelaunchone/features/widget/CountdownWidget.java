@@ -18,12 +18,12 @@ import java.util.Date;
 import java.util.UUID;
 
 import androidx.annotation.RequiresApi;
-import utilities.AppExecutors;
 import io.github.nkrusch.spacelaunchone.R;
 import io.github.nkrusch.spacelaunchone.app.InitActivity;
 import io.github.nkrusch.spacelaunchone.features.DetailsLaunchActivity;
 import io.github.nkrusch.spacelaunchone.features.MainActivity;
 import local.WidgetGetNextTask;
+import utilities.AppExecutors;
 
 import static android.view.View.VISIBLE;
 import static io.github.nkrusch.spacelaunchone.features.DetailsLaunchActivity.EXTRA_WIDGET_LAUNCHER;

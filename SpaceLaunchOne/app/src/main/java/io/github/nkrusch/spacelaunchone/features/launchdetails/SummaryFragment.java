@@ -16,11 +16,11 @@ import java.util.Date;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import utilities.ImageResolver;
 import io.github.nkrusch.spacelaunchone.R;
 import io.github.nkrusch.spacelaunchone.app.AppImage;
 import io.github.nkrusch.spacelaunchone.app.Utilities;
 import local.LaunchDetails;
+import utilities.ImageResolver;
 
 import static android.view.View.VISIBLE;
 
