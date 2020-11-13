@@ -30,7 +30,7 @@ public class MissionsFragment extends HorizontalRecyclerViewFragment
 
     @Override
     MissionAdapter getAdapter() {
-        return new MissionAdapter(new LinkedList<Mission>());
+        return new MissionAdapter(new LinkedList<>());
     }
 
     @Override

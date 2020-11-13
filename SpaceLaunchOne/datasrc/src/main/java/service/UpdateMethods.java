@@ -128,7 +128,7 @@ public class UpdateMethods {
                 if (l.getMission() != null) {
                     final int mid = l.getMission().getId();
                     if (!missions.containsKey(mid)) {
-                        missions.put(mid, Mission.Map(l.getLaunchLibraryId(), l.getMission()));
+                        missions.put(mid, Mission.Map(l.getId().toString(), l.getMission()));
                     }
                     if (valid_agency) {
                         String akey = AgencyMission.key(mid, a.getId());
