@@ -67,7 +67,8 @@ public class LinksFragment extends HorizontalRecyclerViewFragment
         List<LinkItem> tmp = new LinkedList<>();
         addLinks(tmp, launch.getRocketName(), merge(launch.getRocketInfoURLs(), launch.getRocketWikiURL()));
         addLinks(tmp, launch.getAgencyName(), merge(launch.getAgencyInfoURLs(), launch.getAgencyWikiURL()));
-        addLinks(tmp, launch.getPadName(), Arrays.asList(launch.getPadInfoURLs()));
+        if (launch.getPadInfoURLs() != null)
+            addLinks(tmp, launch.getPadName(), Arrays.asList(launch.getPadInfoURLs()));
         handleDataChange(tmp);
     }
 
