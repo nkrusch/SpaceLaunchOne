@@ -36,7 +36,7 @@ public class InitIntentService extends IntentService {
             LaunchLibrary.initialLaunches(BuildConfig.InitialLoadSize, new OnLoadCallback<LaunchList>() {
                 @Override
                 public void call(LaunchList result) {
-                    UpdateMethods.LaunchData.processLaunches(db, result, new OnLoadCallback<Boolean>() {
+                    UpdateMethods.processLaunches(db, result, new OnLoadCallback<Boolean>() {
                         @Override
                         public void call(Boolean result) {
                             onActionCompleted(ACTION_INITIALIZE, result);

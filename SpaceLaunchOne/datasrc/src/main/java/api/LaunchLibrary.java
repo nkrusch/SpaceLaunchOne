@@ -21,10 +21,10 @@ import retrofit2.Call;
 import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
-import utilities.ApiDebugger;
+import utilities.Logger;
 import utilities.AppExecutors;
 
-public class LaunchLibrary extends ApiDebugger {
+public class LaunchLibrary extends Logger {
 
     private static final String RESOURCE_BASE = BuildConfig.ApiBasepath;
 

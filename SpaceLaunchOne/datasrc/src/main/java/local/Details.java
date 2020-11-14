@@ -1,6 +1,8 @@
 package local;
 
 import java.util.Date;
+import java.util.LinkedList;
+import java.util.List;
 
 import androidx.annotation.NonNull;
 import androidx.room.Entity;
@@ -8,8 +10,10 @@ import androidx.room.Ignore;
 import androidx.room.Index;
 import androidx.room.PrimaryKey;
 import ll2.models.AgencySerializerMini;
+import ll2.models.LaunchDetailed;
 import ll2.models.LaunchSerializerCommon;
 import ll2.models.RocketSerializerCommon;
+import ll2.models.VidURL;
 
 
 @SuppressWarnings({"NullableProblems", "SpellCheckingInspection"})
@@ -149,11 +153,46 @@ public class Details {
         if (pad != null && pad.getLocation() != null)
             details.setLocationId(pad.getLocation().getId());
         if (pad != null) details.setPadId(pad.getId());
-        if (rocket != null) { details.setRocketId(rocket.getId()); }
+        if (rocket != null) {
+            details.setRocketId(rocket.getId());
+        }
 
         details.setLastModified(new Date());
         return details;
     }
+
+    @Ignore
+    public static Details Map(LaunchDetailed launch) {
+
+        Details details = new Details();
+        details.setUUID(launch.getId().toString());
+        details.setHashtag(launch.getHashtag());
+        details.setChanged(new Date().toString());
+        details.setNet(launch.getNet().toString());
+
+        if (launch.getVidURLs() != null && launch.getVidURLs().size() > 0) {
+            List<String> videos = new LinkedList<>();
+            for (VidURL v : launch.getVidURLs()) {
+                videos.add(v.getUrl());
+            }
+            details.setVidURLs(videos.toArray(new String[0]));
+        }
+        if (launch.getLaunchServiceProvider() != null) {
+            details.setAgencyId(launch.getLaunchServiceProvider().getId());
+        }
+        if (launch.getPad() != null && launch.getPad().getLocation() != null) {
+            details.setLocationId(launch.getPad().getLocation().getId());
+        }
+        if (launch.getPad() != null) {
+            details.setPadId(launch.getPad().getId());
+        }
+        if (launch.getRocket() != null) {
+            details.setRocketId(launch.getRocket().getId());
+        }
+        details.setLastModified(new Date());
+        return details;
+    }
+
 
     @Ignore
     @Override

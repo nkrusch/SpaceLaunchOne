@@ -4,7 +4,7 @@ import android.util.Log;
 
 import models.data.BuildConfig;
 
-public class ApiDebugger {
+public class Logger {
 
     private static final boolean DEBUG = BuildConfig.AppDebug;
     private static String TAG = "API";
