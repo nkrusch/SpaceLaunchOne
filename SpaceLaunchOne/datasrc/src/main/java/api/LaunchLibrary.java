@@ -21,8 +21,8 @@ import retrofit2.Call;
 import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
-import utilities.Logger;
 import utilities.AppExecutors;
+import utilities.Logger;
 
 public class LaunchLibrary extends Logger {
 

@@ -12,9 +12,9 @@ import androidx.room.PrimaryKey;
 import apimodels.AgencySerializerMini;
 import apimodels.LaunchDetailed;
 import apimodels.LaunchSerializerCommon;
+import apimodels.Pad;
 import apimodels.RocketSerializerCommon;
 import apimodels.VidURL;
-import apimodels.Pad;
 
 
 @SuppressWarnings({"NullableProblems", "SpellCheckingInspection"})
