@@ -158,10 +158,6 @@ public class LaunchDetails {
         return rocket == null ? null : rocket.getFamilyName();
     }
 
-    public String getRocketConfiguration() {
-        return rocket == null ? null : rocket.getConfiguration();
-    }
-
     public String getRocketWikiURL() {
         return rocket == null ? null : rocket.getWikiURL();
     }

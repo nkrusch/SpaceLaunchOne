@@ -149,20 +149,21 @@ public class Details {
             videos[0] = launch.getVidURLs();
             details.setVidURLs(videos);
         }
-        if (agency != null) details.setAgencyId(agency.getId());
+        if (agency != null)
+            details.setAgencyId(agency.getId());
         if (pad != null && pad.getLocation() != null)
             details.setLocationId(pad.getLocation().getId());
-        if (pad != null) details.setPadId(pad.getId());
-        if (rocket != null) {
-            details.setRocketId(rocket.getId());
-        }
+        if (pad != null)
+            details.setPadId(pad.getId());
+        if (rocket != null)
+            details.setRocketId(rocket.getConfiguration().getId());
 
         details.setLastModified(new Date());
         return details;
     }
 
     @Ignore
-    public static Details Map(LaunchDetailed launch) {
+    public static Details Map(@NonNull LaunchDetailed launch) {
 
         Details details = new Details();
         details.setUUID(launch.getId().toString());
@@ -187,7 +188,7 @@ public class Details {
             details.setPadId(launch.getPad().getId());
         }
         if (launch.getRocket() != null) {
-            details.setRocketId(launch.getRocket().getId());
+            details.setRocketId(launch.getRocket().getConfiguration().getId());
         }
         details.setLastModified(new Date());
         return details;

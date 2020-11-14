@@ -86,27 +86,6 @@ public class SummaryFragment extends DetailsBaseFragment {
         return view;
     }
 
-    private int statusImage(int status) {
-        switch (status) {
-            case 1:
-                return R.drawable.ic_status_green;
-            case 2:
-                return R.drawable.ic_status_red;
-            case 3:
-                return R.drawable.ic_status_success;
-            case 4:
-                return R.drawable.ic_status_fail;
-            case 5:
-                return R.drawable.ic_status_on_hold;
-            case 6:
-                return R.drawable.ic_status_in_flight;
-            case 7:
-                return R.drawable.ic_status_partial_fail;
-            default:
-                return R.drawable.ic_status;
-        }
-    }
-
     private void initCountdown(Long utc) {
         if (countdownInitialized) return;
         countdownInitialized = true;
@@ -138,6 +117,10 @@ public class SummaryFragment extends DetailsBaseFragment {
         String location = String.format("%s\n%s", launch.getPadName(), launch.getLocationName()).trim();
         initCountdown(launch.getLaunchDateUTC());
         adjustDividers(launch);
+        String featureImage = coalesce(launch.getRocket() != null ?
+                launch.getRocket().getImageURL() : null, launch.getImage());
+        String rocketImage = coalesce(launch.getRocket() != null ?
+                launch.getRocket().getImageURL() : null, launch.getImage());
 
         mStatus.setText(launch.getStatusText());
         mRocket.setText(rocketFamily);
@@ -153,25 +136,22 @@ public class SummaryFragment extends DetailsBaseFragment {
                 coalesce(launch.getRocketName(), unknown) + " / " +
                         coalesce(launch.getRocketFamilyName(), unknown));
 
-        mStatusImage.setImageResource(statusImage(launch.getStatus()));
-
+        // set summary images
+        mStatusImage.setImageResource(Utilities.statusImage(launch.getStatus()));
         AppImage.LoadCircleImage(Utilities.countryIcon(launch.getLocationCountryCode()), mCountryImage);
         AppImage.LoadCircleImage(ImageResolver.resolveImage(launch.getAgencyId()), mAgencyImage);
-
-        setImage(launch.getImage(), mRocketImage);
-        setRocket(launch.getImage());
+        setRocketImage(rocketImage, mRocketImage);
+        setLargeFeatureImage(featureImage);
     }
 
-    private void setImage(final String image, final ImageView target) {
-        if (StringUtils.isEmpty(image) || target == null)
-            return;
+    private void setRocketImage(final String image, final ImageView target) {
+        if (StringUtils.isEmpty(image) || target == null) return;
         final String sizedImage = Utilities.roundImage(image, Utilities.dpToPixel(40, getResources()));
         AppImage.LoadCircleImage(sizedImage, target, R.drawable.ic_rocket);
     }
 
-    private void setRocket(final String image) {
-        if (StringUtils.isEmpty(image) || mRocketCardImage == null || getActivity() == null)
-            return;
+    private void setLargeFeatureImage(final String image) {
+        if (StringUtils.isEmpty(image) || mRocketCardImage == null || getActivity() == null) return;
         WindowManager wm = getActivity().getWindowManager();
         final String sizedImage = Utilities.sizedHeight(image, Utilities.display(wm).second);
         AppImage.LoadAndDisplay(sizedImage, mRocketCardImage, (View) mRocketCardImage.getParent());

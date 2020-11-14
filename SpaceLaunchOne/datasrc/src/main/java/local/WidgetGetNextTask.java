@@ -36,7 +36,7 @@ public class WidgetGetNextTask extends AsyncTask<Context, Void, Launch> {
         Long launchDate = db.dao().getLaunchDateUTC(launch.getLuuid());
         Long current = new Date().getTime();
         boolean isRecent = Math.abs(current - launchDate) < MIN_RECENT;
-        if (isRecent) UpdateMethods.UpdateLaunchDetails(ctx, launch.getLuuid(), null);
+        if (isRecent) UpdateMethods.updateLaunchDetails(ctx, launch.getLuuid(), null);
         return launch;
     }
 

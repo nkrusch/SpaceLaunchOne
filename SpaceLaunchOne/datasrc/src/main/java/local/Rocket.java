@@ -8,6 +8,9 @@ import androidx.annotation.NonNull;
 import androidx.room.Entity;
 import androidx.room.Ignore;
 import androidx.room.PrimaryKey;
+import ll2.models.LaunchDetailed;
+import ll2.models.LauncherConfigDetail;
+import ll2.models.LauncherConfigList;
 import ll2.models.RocketSerializerCommon;
 
 
@@ -94,7 +97,7 @@ public class Rocket {
 
     // used internally while resolving images
     @Ignore
-    private List<String> launchIds = new LinkedList<String>();
+    private List<String> launchIds = new LinkedList<>();
 
     @Ignore
     public List<String> getLaunchIds() {
@@ -107,14 +110,31 @@ public class Rocket {
     }
 
     @Ignore
-    public static Rocket Map(RocketSerializerCommon rocket, String image) {
+    public static Rocket Map(RocketSerializerCommon rocket) {
         Rocket r = new Rocket();
-        r.setRid(rocket.getId());
-        r.setName(rocket.getConfiguration().getName());
-        r.setFamilyName(rocket.getConfiguration().getFamily());
-        r.setConfiguration(rocket.getConfiguration().getFullName());
-        r.setImageURL(image);
-        r.setInfoURLs(null);
+        LauncherConfigList c = rocket.getConfiguration();
+        r.setRid(c.getId());
+        r.setName(c.getName());
+        r.setFamilyName(c.getFamily());
+        r.setConfiguration(c.getFullName());
+        r.setLastModified(new Date());
+        return r;
+    }
+
+    @Ignore
+    public static Rocket Map(@NonNull LauncherConfigDetail c) {
+        Rocket r = new Rocket();
+        r.setRid(c.getId());
+        r.setName(c.getName());
+        r.setFamilyName(c.getFamily());
+        r.setConfiguration(c.getFullName());
+        r.setImageURL(c.getImageUrl());
+        if (c.getWikiUrl() != null) {
+            r.setWikiURL(c.getWikiUrl());
+        }
+        if (c.getInfoUrl() != null) {
+            r.setInfoURLs(new String[]{c.getInfoUrl()});
+        }
         r.setLastModified(new Date());
         return r;
     }

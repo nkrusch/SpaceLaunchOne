@@ -558,4 +558,25 @@ public class Utilities {
         }
         return "";
     }
+
+    public static int statusImage(int status) {
+        switch (status) {
+            case 1:
+                return R.drawable.ic_status_green;
+            case 2:
+                return R.drawable.ic_status_red;
+            case 3:
+                return R.drawable.ic_status_success;
+            case 4:
+                return R.drawable.ic_status_fail;
+            case 5:
+                return R.drawable.ic_status_on_hold;
+            case 6:
+                return R.drawable.ic_status_in_flight;
+            case 7:
+                return R.drawable.ic_status_partial_fail;
+            default:
+                return R.drawable.ic_status;
+        }
+    }
 }

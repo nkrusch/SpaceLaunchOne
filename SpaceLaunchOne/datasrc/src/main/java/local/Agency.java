@@ -7,7 +7,9 @@ import androidx.annotation.NonNull;
 import androidx.room.Entity;
 import androidx.room.Ignore;
 import androidx.room.PrimaryKey;
+import ll2.models.AgencySerializerDetailedCommon;
 import ll2.models.AgencySerializerMini;
+import ll2.models.LaunchDetailed;
 import utilities.ImageResolver;
 
 @Entity(tableName = "agencies")
@@ -165,11 +167,25 @@ public class Agency {
     }
 
     @Ignore
-    public static Agency Map(AgencySerializerMini agency) {
+    public static Agency Map(@NonNull AgencySerializerMini agency) {
         Agency a = new Agency();
         a.setAid(agency.getId());
         a.setName(agency.getName());
         a.setType(getAgencyType(agency.getType()));
+        a.setLastModified(new Date());
+        return a;
+    }
+
+    @Ignore
+    public static Agency Map(@NonNull AgencySerializerDetailedCommon agency) {
+        Agency a = new Agency();
+        a.setAid(agency.getId());
+        a.setAbbrev(agency.getAbbrev());
+        a.setName(agency.getName());
+        a.setCountryCode(agency.getCountryCode());
+        a.setType(getAgencyType(agency.getType()));
+        if (agency.getInfoUrl() != null) a.setInfoURLs(new String[]{agency.getInfoUrl()});
+        if (agency.getWikiUrl() != null) a.setWikiURL(agency.getWikiUrl());
         a.setLastModified(new Date());
         return a;
     }
@@ -181,7 +197,7 @@ public class Agency {
                 "name: " + name + "\n" +
                 "countryCode: " + countryCode + "\n" +
                 "abbrev: " + abbrev + "\n" +
-                "islsp: " + islsp + "\n" +
+                "is LSP: " + islsp + "\n" +
                 "type: " + type + "\n" +
                 "image: " + getImage() + "\n" +
                 "infoURLs: " + Arrays.toString(infoURLs) + "\n" +

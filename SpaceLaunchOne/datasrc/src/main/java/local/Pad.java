@@ -12,6 +12,7 @@ import androidx.room.Entity;
 import androidx.room.Ignore;
 import androidx.room.Index;
 import androidx.room.PrimaryKey;
+import ll2.models.LaunchDetailed;
 
 @Entity(tableName = "pads",
         indices = {@Index(value = {"locationId"})})
@@ -99,12 +100,17 @@ public class Pad implements Comparable<Pad> {
     @Ignore
     public static Pad Map(ll2.models.Pad pad, int locationId) {
         Pad a = new Pad();
+        List<String> urls = new LinkedList<>();
         a.setPid(pad.getId());
         a.setName(pad.getName());
-        a.setLatitude(Double.parseDouble(pad.getLatitude()));
-        a.setLongitude(Double.parseDouble(pad.getLongitude()));
         a.setLocationId(locationId);
-        List<String> urls = new LinkedList<>();
+        try {
+            a.setLatitude(Double.parseDouble(pad.getLatitude()));
+            a.setLongitude(Double.parseDouble(pad.getLongitude()));
+        } catch (NumberFormatException e) {
+            a.setLatitude(0d);
+            a.setLongitude(0d);
+        }
         if (pad.getInfoUrl() != null) urls.add(pad.getInfoUrl());
         if (pad.getWikiUrl() != null) urls.add(pad.getWikiUrl());
         if (urls.size() > 0) a.setInfoURLs(urls.toArray(new String[0]));

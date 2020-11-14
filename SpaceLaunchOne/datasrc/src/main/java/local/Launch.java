@@ -13,10 +13,6 @@ import ll2.models.Pad;
 @Entity(tableName = "launch", indices = {@Index("launchDateUTC")})
 public class Launch implements Comparable<Launch> {
 
-    @Ignore
-    @Deprecated
-    private int id;
-
     @NonNull
     @PrimaryKey()
     private String luuid;
@@ -27,18 +23,6 @@ public class Launch implements Comparable<Launch> {
     private int status;
 
     public Launch() {
-    }
-
-    @Deprecated
-    @Ignore
-    public int getId() {
-        return id;
-    }
-
-    @Deprecated
-    @Ignore
-    public void setId(int id) {
-        this.id = id;
     }
 
     @NonNull
@@ -153,7 +137,7 @@ public class Launch implements Comparable<Launch> {
     }
 
     @Ignore
-    public static Launch Map(LaunchDetailed launch) {
+    public static Launch Map(@NonNull LaunchDetailed launch) {
         Launch r = new Launch();
         r.setLuuid(launch.getId().toString());
         r.setName(launch.getName());
@@ -166,7 +150,7 @@ public class Launch implements Comparable<Launch> {
 
     @Override
     public String toString() {
-        return "id: " + id + "\n" +
+        return "id: " + getLuuid() + "\n" +
                 "name: " + name + "\n" +
                 "image: " + image + "\n" +
                 "launchDateUTC: " + launchDateUTC + "\n" +

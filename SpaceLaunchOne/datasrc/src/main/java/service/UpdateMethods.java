@@ -39,7 +39,7 @@ public class UpdateMethods extends Logger {
         if (callback != null) callback.call(false);
     }
 
-    public static void UpdateAppData(Context context, final OnLoadCallback callback) {
+    public static void updateAppData(Context context, final OnLoadCallback callback) {
         Log("updating app data....");
         final AppDatabase db = AppDatabase.getInstance(context);
         // TODO: iterate over pages
@@ -47,7 +47,7 @@ public class UpdateMethods extends Logger {
         updateAllLaunches(db, Integer.MAX_VALUE, callback);
     }
 
-    public static void UpdateLaunchDetails(Context context, final String id, @Nullable final OnLoadCallback callback) {
+    public static void updateLaunchDetails(Context context, final String id, @Nullable final OnLoadCallback callback) {
         Log("Getting launch id: " + id);
         final AppDatabase db = AppDatabase.getInstance(context);
         LaunchLibrary.getLaunch(id, new OnLoadCallback<LaunchDetailed>() {
@@ -78,14 +78,14 @@ public class UpdateMethods extends Logger {
     }
 
     public static void processSingleLaunch(
-            final AppDatabase db, final LaunchDetailed launch,
+            final AppDatabase db,
+            final LaunchDetailed launch,
             final OnLoadCallback<Boolean> callback) {
 
         if (launch == null) {
             if (callback != null) callback.call(false);
             return;
         }
-        Log("PROCESSING: " + launch.getName());
 
         Details details = Details.Map(launch);
         Launch launches = Launch.Map(launch);
@@ -95,23 +95,21 @@ public class UpdateMethods extends Logger {
         Agency agency = null;
         Pad pad = null;
 
-//        if (launch.getRocket() != null) {
-//            rocket = Rocket.Map(launch);
-//        }
-//        if (launch.getLaunchServiceProvider() != null) {
-//            agency = Agency.Map(launch);
-//        }
-//        if (launch.getPad() != null) {
-//            pad = Pad.Map(launch);
-//        }
-//        if (launch.getPad() != null && launch.getPad().getLocation() != null) {
-//            location = Location.Map(launch);
-//        }
-//        if (location != null && agency != null) {
-//            laRefX = new LocationAgency(location.getLid(), agency.getAid());
-//        }
+        if (launch.getRocket() != null && launch.getRocket().getConfiguration() != null) {
+            rocket = Rocket.Map(launch.getRocket().getConfiguration());
+        }
+        if (launch.getLaunchServiceProvider() != null) {
+            agency = Agency.Map(launch.getLaunchServiceProvider());
+        }
+        if (launch.getPad() != null && launch.getPad().getLocation() != null) {
+            pad = Pad.Map(launch.getPad(), launch.getPad().getLocation().getId());
+            location = Location.Map(launch.getPad().getLocation());
+        }
+        if (location != null && agency != null) {
+            laRefX = new LocationAgency(location.getLid(), agency.getAid());
+        }
 
-        Log("\n\nLAUNCH\n==========\n" + launches +
+        Log("\nLAUNCH\n==========\n" + launches +
                 "\n\nDETAILS\n==========\n" + details +
                 "\n\nAGENCY\n==========\n" + agency +
                 "\n\nROCKET\n==========\n" + rocket +
@@ -122,11 +120,11 @@ public class UpdateMethods extends Logger {
         // save
         db.dao().insertAll(launches);
         db.dao().insertAll(details);
-//        db.dao().insertAll(laRefX);
-//        db.dao().insertAll(location);
-//        db.dao().insertAll(agency);
-//        db.dao().insertAll(rocket);
-//        db.dao().insertAll(pad);
+        db.dao().insertAll(laRefX);
+        db.dao().insertAll(location);
+        db.dao().insertAll(agency);
+        db.dao().insertAll(rocket);
+        db.dao().insertAll(pad);
 
     }
 
@@ -163,12 +161,12 @@ public class UpdateMethods extends Logger {
             launches[i] = Launch.Map(l);
 
             if (r != null) {
-                int rocketId = r.getId();
+                int rocketId = r.getConfiguration().getId();
                 String launchId = l.getId().toString();
                 if (rockets.containsKey(rocketId) && rockets.get(rocketId) != null) {
                     Objects.requireNonNull(rockets.get(rocketId)).addLaunchId(launchId);
                 } else {
-                    Rocket rocket = Rocket.Map(r, l.getImage());
+                    Rocket rocket = Rocket.Map(r);
                     rocket.addLaunchId(launchId);
                     rockets.put(rocketId, rocket);
                 }
