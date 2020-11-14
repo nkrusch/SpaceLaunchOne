@@ -60,7 +60,7 @@ public class Location {
     }
 
     @Ignore
-    public static Location Map(ll2.models.Location loc) {
+    public static Location Map(apimodels.Location loc) {
         Location a = new Location();
         a.setLid(loc.getId());
         a.setName(loc.getName());

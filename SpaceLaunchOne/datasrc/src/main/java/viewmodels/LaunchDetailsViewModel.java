@@ -20,8 +20,8 @@ import utilities.AppExecutors;
 @SuppressWarnings("SpellCheckingInspection")
 public class LaunchDetailsViewModel extends AndroidViewModel {
 
-    private static final int MIN_UPDATE = models.data.BuildConfig.MinCachePolicy;
-    private static final int MIN_RECENT = models.data.BuildConfig.MinRecentLimit;
+    private static final int MIN_UPDATE = apimodels.data.BuildConfig.MinCachePolicy;
+    private static final int MIN_RECENT = apimodels.data.BuildConfig.MinRecentLimit;
     private LiveData<LaunchDetails> launch;
     private LiveData<FavoriteLaunch> favState;
     private final AppDatabase db;

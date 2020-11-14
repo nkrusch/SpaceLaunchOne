@@ -6,8 +6,8 @@ import androidx.annotation.NonNull;
 import androidx.room.Entity;
 import androidx.room.Ignore;
 import androidx.room.Index;
-import ll2.models.AgencySerializerMini;
-import ll2.models.Pad;
+import apimodels.AgencySerializerMini;
+import apimodels.Pad;
 
 @SuppressWarnings({"NullableProblems", "SpellCheckingInspection"})
 @Entity(tableName = "locationagency",

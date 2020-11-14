@@ -8,10 +8,9 @@ import androidx.annotation.NonNull;
 import androidx.room.Entity;
 import androidx.room.Ignore;
 import androidx.room.PrimaryKey;
-import ll2.models.LaunchDetailed;
-import ll2.models.LauncherConfigDetail;
-import ll2.models.LauncherConfigList;
-import ll2.models.RocketSerializerCommon;
+import apimodels.LauncherConfigDetail;
+import apimodels.LauncherConfigList;
+import apimodels.RocketSerializerCommon;
 
 
 @Entity(tableName = "rockets")

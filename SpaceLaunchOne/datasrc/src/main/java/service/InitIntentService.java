@@ -6,9 +6,9 @@ import android.content.Intent;
 import androidx.annotation.Nullable;
 import api.LaunchLibrary;
 import api.OnLoadCallback;
-import ll2.models.LaunchList;
+import apimodels.LaunchList;
 import local.AppDatabase;
-import models.data.BuildConfig;
+import apimodels.data.BuildConfig;
 
 /**
  * This intent service fetches remote data one time when application first runs.

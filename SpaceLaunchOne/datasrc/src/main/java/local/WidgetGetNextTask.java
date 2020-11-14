@@ -12,7 +12,7 @@ import service.UpdateMethods;
  */
 public class WidgetGetNextTask extends AsyncTask<Context, Void, Launch> {
 
-    private static final int MIN_RECENT = models.data.BuildConfig.MinRecentLimit;
+    private static final int MIN_RECENT = apimodels.data.BuildConfig.MinRecentLimit;
 
     public interface onLoadComplete {
         void call(Launch result);

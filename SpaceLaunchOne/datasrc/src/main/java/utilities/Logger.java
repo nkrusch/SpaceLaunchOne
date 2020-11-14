@@ -2,7 +2,7 @@ package utilities;
 
 import android.util.Log;
 
-import models.data.BuildConfig;
+import apimodels.data.BuildConfig;
 
 public class Logger {
 

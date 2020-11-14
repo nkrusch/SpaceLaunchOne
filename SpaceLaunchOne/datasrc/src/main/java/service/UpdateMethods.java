@@ -10,11 +10,11 @@ import java.util.Objects;
 import androidx.annotation.Nullable;
 import api.LaunchLibrary;
 import api.OnLoadCallback;
-import ll2.models.AgencySerializerMini;
-import ll2.models.LaunchDetailed;
-import ll2.models.LaunchList;
-import ll2.models.LaunchSerializerCommon;
-import ll2.models.RocketSerializerCommon;
+import apimodels.AgencySerializerMini;
+import apimodels.LaunchDetailed;
+import apimodels.LaunchList;
+import apimodels.LaunchSerializerCommon;
+import apimodels.RocketSerializerCommon;
 import local.Agency;
 import local.AgencyMission;
 import local.AppDatabase;
@@ -129,7 +129,8 @@ public class UpdateMethods extends Logger {
     }
 
     public static void processLaunches(
-            final AppDatabase db, final LaunchList result,
+            final AppDatabase db,
+            final LaunchList result,
             final OnLoadCallback<Boolean> callback) {
 
         if (result == null || result.getResults() == null) {
@@ -153,7 +154,7 @@ public class UpdateMethods extends Logger {
 
             final LaunchSerializerCommon l = result.getResults().get(i);
             final RocketSerializerCommon r = l.getRocket();
-            final ll2.models.Pad loc = l.getPad();
+            final apimodels.Pad loc = l.getPad();
             final AgencySerializerMini a = l.getLaunchServiceProvider();
             final boolean valid_agency = a != null && a.getId() != null && a.getId() > 0;
 

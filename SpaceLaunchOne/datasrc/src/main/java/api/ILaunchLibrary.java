@@ -1,10 +1,10 @@
 package api;
 
-import ll2.models.Agency;
-import ll2.models.LaunchDetailed;
-import ll2.models.LaunchList;
-import ll2.models.Location;
-import ll2.models.Pad;
+import apimodels.Agency;
+import apimodels.LaunchDetailed;
+import apimodels.LaunchList;
+import apimodels.Location;
+import apimodels.Pad;
 import retrofit2.Call;
 import retrofit2.http.GET;
 import retrofit2.http.Path;

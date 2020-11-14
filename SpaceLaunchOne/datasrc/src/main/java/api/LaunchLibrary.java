@@ -12,10 +12,10 @@ import javax.net.ssl.TrustManager;
 import javax.net.ssl.X509TrustManager;
 
 import androidx.annotation.NonNull;
-import ll2.models.LaunchDetailed;
-import ll2.models.LaunchList;
-import ll2.models.LaunchSerializerCommon;
-import models.data.BuildConfig;
+import apimodels.LaunchDetailed;
+import apimodels.LaunchList;
+import apimodels.LaunchSerializerCommon;
+import apimodels.data.BuildConfig;
 import okhttp3.OkHttpClient;
 import retrofit2.Call;
 import retrofit2.Response;

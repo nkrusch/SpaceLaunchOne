@@ -5,9 +5,9 @@ import androidx.room.Entity;
 import androidx.room.Ignore;
 import androidx.room.Index;
 import androidx.room.PrimaryKey;
-import ll2.models.LaunchDetailed;
-import ll2.models.LaunchSerializerCommon;
-import ll2.models.Pad;
+import apimodels.LaunchDetailed;
+import apimodels.LaunchSerializerCommon;
+import apimodels.Pad;
 
 @SuppressWarnings("NullableProblems")
 @Entity(tableName = "launch", indices = {@Index("launchDateUTC")})

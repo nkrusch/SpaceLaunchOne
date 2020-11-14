@@ -9,11 +9,12 @@ import androidx.room.Entity;
 import androidx.room.Ignore;
 import androidx.room.Index;
 import androidx.room.PrimaryKey;
-import ll2.models.AgencySerializerMini;
-import ll2.models.LaunchDetailed;
-import ll2.models.LaunchSerializerCommon;
-import ll2.models.RocketSerializerCommon;
-import ll2.models.VidURL;
+import apimodels.AgencySerializerMini;
+import apimodels.LaunchDetailed;
+import apimodels.LaunchSerializerCommon;
+import apimodels.RocketSerializerCommon;
+import apimodels.VidURL;
+import apimodels.Pad;
 
 
 @SuppressWarnings({"NullableProblems", "SpellCheckingInspection"})
@@ -138,7 +139,7 @@ public class Details {
         Details details = new Details();
         final RocketSerializerCommon rocket = launch.getRocket();
         final AgencySerializerMini agency = launch.getLaunchServiceProvider();
-        final ll2.models.Pad pad = launch.getPad();
+        final Pad pad = launch.getPad();
 
         details.setUUID(launch.getId().toString());
         details.setHashtag(launch.getHashtag());

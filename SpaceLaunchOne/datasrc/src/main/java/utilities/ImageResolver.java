@@ -6,7 +6,7 @@ import org.jsoup.nodes.Document;
 import org.jsoup.select.Elements;
 
 import api.OnLoadCallback;
-import models.data.BuildConfig;
+import apimodels.data.BuildConfig;
 
 /**
  * This class provides image utilities for finding the best image of some resource

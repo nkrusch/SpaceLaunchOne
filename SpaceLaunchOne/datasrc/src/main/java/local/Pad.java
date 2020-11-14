@@ -12,7 +12,6 @@ import androidx.room.Entity;
 import androidx.room.Ignore;
 import androidx.room.Index;
 import androidx.room.PrimaryKey;
-import ll2.models.LaunchDetailed;
 
 @Entity(tableName = "pads",
         indices = {@Index(value = {"locationId"})})
@@ -98,7 +97,7 @@ public class Pad implements Comparable<Pad> {
     }
 
     @Ignore
-    public static Pad Map(ll2.models.Pad pad, int locationId) {
+    public static Pad Map(apimodels.Pad pad, int locationId) {
         Pad a = new Pad();
         List<String> urls = new LinkedList<>();
         a.setPid(pad.getId());
@@ -119,7 +118,7 @@ public class Pad implements Comparable<Pad> {
     }
 
     @Ignore
-    public static void Map(ArrayMap<Integer, Pad> pads, final int locationId, ll2.models.Pad pad) {
+    public static void Map(ArrayMap<Integer, Pad> pads, final int locationId, apimodels.Pad pad) {
         if (!pads.containsKey(pad.getId()))
             pads.put(pad.getId(), Map(pad, locationId));
     }
