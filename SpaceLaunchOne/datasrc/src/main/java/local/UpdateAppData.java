@@ -1,4 +1,4 @@
-package service;
+package local;
 
 import android.content.Context;
 import android.util.ArrayMap;
@@ -14,16 +14,6 @@ import apimodels.LaunchDetailed;
 import apimodels.LaunchList;
 import apimodels.LaunchSerializerCommon;
 import apimodels.RocketSerializerCommon;
-import local.Agency;
-import local.AgencyMission;
-import local.AppDatabase;
-import local.Details;
-import local.Launch;
-import local.Location;
-import local.LocationAgency;
-import local.Mission;
-import local.Pad;
-import local.Rocket;
 import utilities.ImageResolver;
 import utilities.Logger;
 
@@ -31,14 +21,30 @@ import utilities.Logger;
  * Update application database
  */
 @SuppressWarnings("SameParameterValue")
-public class UpdateMethods extends Logger {
+public class UpdateAppData extends Logger {
 
     private static void handleError(Exception e, @Nullable final OnLoadCallback callback) {
         displayError(e);
         if (callback != null) callback.call(false);
     }
 
-    public static void updateAppData(Context context, final OnLoadCallback callback) {
+    public static void init(Context context, int count, final OnLoadCallback<Boolean> callback) {
+        Log("Initializing app data...");
+        final AppDatabase db = AppDatabase.getInstance(context);
+        LaunchLibrary.initialLaunches(count, new OnLoadCallback<LaunchList>() {
+            @Override
+            public void call(LaunchList result) {
+                UpdateAppData.processLaunches(db, result, callback);
+            }
+
+            @Override
+            public void onError(Exception e) {
+                callback.onError(e);
+            }
+        });
+    }
+
+    public static void sync(Context context, final OnLoadCallback callback) {
         Log("updating app data....");
         final AppDatabase db = AppDatabase.getInstance(context);
         // TODO: iterate over pages
@@ -76,7 +82,7 @@ public class UpdateMethods extends Logger {
         });
     }
 
-    public static void processSingleLaunch(
+    private static void processSingleLaunch(
             final AppDatabase db,
             final LaunchDetailed launch,
             final OnLoadCallback<Boolean> callback) {
@@ -128,7 +134,7 @@ public class UpdateMethods extends Logger {
 
     }
 
-    public static void processLaunches(
+    private static void processLaunches(
             final AppDatabase db,
             final LaunchList result,
             final OnLoadCallback<Boolean> callback) {

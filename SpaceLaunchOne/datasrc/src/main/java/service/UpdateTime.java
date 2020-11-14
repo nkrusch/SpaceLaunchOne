@@ -1,11 +1,12 @@
 package service;
 
 import android.content.SharedPreferences;
-import android.util.Log;
 
 import java.util.Date;
 
-public class UpdateTime {
+import utilities.Logger;
+
+public class UpdateTime extends Logger {
 
     public static final String SYNC_KEY = "application_data_sync";
 
@@ -14,7 +15,7 @@ public class UpdateTime {
      */
     public static void updateSyncTimestamp(SharedPreferences sharedPref) {
         sharedPref.edit().putLong(SYNC_KEY, new Date().getTime()).apply();
-        Log.d("SYNC", "marked sync completed");
+        Log("sync completed");
     }
 
     /**

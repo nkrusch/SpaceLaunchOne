@@ -5,8 +5,6 @@ import android.os.AsyncTask;
 
 import java.util.Date;
 
-import service.UpdateMethods;
-
 /**
  * This task is used by the application widget to get the next upcoming launch from the local database
  */
@@ -36,7 +34,7 @@ public class WidgetGetNextTask extends AsyncTask<Context, Void, Launch> {
         Long launchDate = db.dao().getLaunchDateUTC(launch.getLuuid());
         Long current = new Date().getTime();
         boolean isRecent = Math.abs(current - launchDate) < MIN_RECENT;
-        if (isRecent) UpdateMethods.updateLaunchDetails(ctx, launch.getLuuid(), null);
+        if (isRecent) UpdateAppData.updateLaunchDetails(ctx, launch.getLuuid(), null);
         return launch;
     }
 

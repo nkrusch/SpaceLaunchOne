@@ -10,6 +10,7 @@ import android.util.Log;
 import androidx.appcompat.app.AppCompatActivity;
 import service.UpdateIntentService;
 import service.UpdateTime;
+import utilities.Logger;
 
 import static service.UpdateTime.SYNC_KEY;
 

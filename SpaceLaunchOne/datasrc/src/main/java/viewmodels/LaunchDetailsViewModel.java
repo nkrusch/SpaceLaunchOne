@@ -11,7 +11,7 @@ import androidx.lifecycle.MutableLiveData;
 import local.AppDatabase;
 import local.FavoriteLaunch;
 import local.LaunchDetails;
-import service.UpdateMethods;
+import local.UpdateAppData;
 import utilities.AppExecutors;
 
 /**
@@ -87,7 +87,7 @@ public class LaunchDetailsViewModel extends AndroidViewModel {
                 boolean isStale = current - lastModMs > MIN_UPDATE;
                 if (false &&!(occursSoon || isStale)) return;
                 final Context context = getApplication().getBaseContext();
-                UpdateMethods.updateLaunchDetails(context, id, null);
+                UpdateAppData.updateLaunchDetails(context, id, null);
             }
         });
     }

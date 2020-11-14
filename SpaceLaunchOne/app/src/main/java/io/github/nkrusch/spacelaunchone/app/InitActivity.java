@@ -12,6 +12,7 @@ import java.util.Date;
 
 import androidx.appcompat.app.AppCompatActivity;
 import service.InitIntentService;
+import service.InitTime;
 
 import static service.InitIntentService.ACTION_INITIALIZE;
 import static service.InitIntentService.ACTION_OUTCOME;
@@ -22,7 +23,6 @@ import static service.InitIntentService.ACTION_OUTCOME;
  */
 public abstract class InitActivity extends AppCompatActivity {
 
-    private final static String INIT_KEY = "application_dataset_initialized";
     private DataInitReceiver serviceReciver;
     private boolean registeredReceiver;
 
@@ -40,7 +40,7 @@ public abstract class InitActivity extends AppCompatActivity {
             if (!ACTION_INITIALIZE.equals(intent.getAction())) return;
             SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences(context);
             boolean success = intent.getBooleanExtra(ACTION_OUTCOME, false);
-            if (success) sharedPref.edit().putLong(INIT_KEY, new Date().getTime()).apply();
+            if (success) InitTime.setInitTimestamp(sharedPref);
             onReceiveHandler();
         }
     }
@@ -59,13 +59,10 @@ public abstract class InitActivity extends AppCompatActivity {
     }
 
     /**
-     * Get timestamp (UTC) when init was completed
+     * Check if init has completed t/f
      */
     public static boolean isInitialized(Context context) {
-        SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences(context);
-        Long ts = sharedPref.getLong(INIT_KEY, 0);
-        Log.d("INIT", ts + "");
-        return ts > 0;
+        return InitTime.getInitTimestamp(PreferenceManager.getDefaultSharedPreferences(context)) > 0;
     }
 
     /**

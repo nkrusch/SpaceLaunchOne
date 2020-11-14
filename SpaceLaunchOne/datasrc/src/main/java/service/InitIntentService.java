@@ -4,15 +4,14 @@ import android.app.IntentService;
 import android.content.Intent;
 
 import androidx.annotation.Nullable;
-import api.LaunchLibrary;
 import api.OnLoadCallback;
-import apimodels.LaunchList;
 import apimodels.data.BuildConfig;
-import local.AppDatabase;
+import local.UpdateAppData;
 
 /**
  * This intent service fetches remote data one time when application first runs.
  * This service fetches just enough data to render the main activity.
+ * When complete, it broadcasts the result as either true/false
  */
 public class InitIntentService extends IntentService {
 
@@ -30,22 +29,10 @@ public class InitIntentService extends IntentService {
     @Override
     protected void onHandleIntent(@Nullable Intent intent) {
         if (intent != null && ACTION_INITIALIZE.equals(intent.getAction())) {
-
-            final AppDatabase db = AppDatabase.getInstance(this);
-
-            LaunchLibrary.initialLaunches(BuildConfig.InitialLoadSize, new OnLoadCallback<LaunchList>() {
+            UpdateAppData.init(this, BuildConfig.InitialLoadSize, new OnLoadCallback<Boolean>() {
                 @Override
-                public void call(LaunchList result) {
-                    UpdateMethods.processLaunches(db, result, new OnLoadCallback<Boolean>() {
-                        @Override
-                        public void call(Boolean result) {
-                            onActionCompleted(ACTION_INITIALIZE, result);
-                        }
-                        @Override
-                        public void onError(Exception e) {
-                            onActionCompleted(ACTION_INITIALIZE, false);
-                        }
-                    });
+                public void call(Boolean result) {
+                    onActionCompleted(ACTION_INITIALIZE, result);
                 }
 
                 @Override
