@@ -73,22 +73,22 @@
         <item>48</item>
     </string-array>
     <string-array name="credits_array">
-        <item>About this Project ; This app was originally created as a capstone project for Udacity Android
+        <item>What is Space Launch 1? ; This app was originally created as a capstone project for Udacity Android
             developer nanodegree program. Since then it has become a standalone resource for
-            tracking space flights. This application is intended for astronomy enthusiasts looking
-            for up-to-date information about upcoming rocket launches.
+            tracking space flights. This application is open source and available on Github.
+            You are welcome to contribute to the improvement of this app.
             &lt;br/>&lt;br/>Application data is provided and maintained by &lt;a href="https://thespacedevs.com/">the Space Devs&lt;/a>.
             They continuously work on updating the data and share this resource with the world for free.
             If you appreciate the effort and wish to see it continue, consider supporting the Space Devs.
-            &lt;br/>&lt;br/>This application is open source and available on Github.
         </item>
-        <item>Developer ; Neea Rusch (GA, USA)</item>
-        <item>Source Code ; &lt;a href="https://github.com/nkrusch/SpaceLaunchOne">SpaceLaunchOne on Github&lt;/a></item>
+        <item>App Developer ; Neea Rusch (GA, USA)</item>
+        <item>Source Code ; &lt;a href="https://github.com/nkrusch/SpaceLaunchOne">Space Launch 1 on Github&lt;/a></item>
+        <item>Beta Version; &lt;a href="https://play.google.com/apps/testing/io.github.nkrusch.spacelaunchone">Join beta program to get early updates&lt;a></item>
         <item>Rate this app ; &lt;a href="https://play.google.com/store/apps/details?id=io.github.nkrusch.spacelaunchone">Rate at Google Play Store&lt;/a></item>
         <item>Application Data ; &lt;a href="https://thespacedevs.com/llapi">Launch Library 2 API&lt;/a></item>
-        <item>Image Credits ; &lt;a href="http://launchlibrary.net">Launch Library 2 &lt;/a>&lt;br/>
-            &lt;a href="https://en.wikipedia.org">Wikipedia&lt;/a>&lt;br/>
-            &lt;a href="https://www.nasa.gov/multimedia/imagegallery/iotd.html">NASA image of the day&lt;/a></item>
+        <item>Image Credits ; &lt;a href="https://thespacedevs.com/llapi">Launch Library 2 &lt;/a>&lt;br/>
+            &lt;a href="https://www.nasa.gov/multimedia/imagegallery/iotd.html">NASA image of the day&lt;/a>&lt;br/>
+            &lt;a href="https://en.wikipedia.org">Wikipedia&lt;/a></item>
         <item>Maps ; &lt;a href="https://developers.google.com/maps/documentation/android-sdk/intro">Google Maps&lt;/a></item>
     </string-array>
 
@@ -195,7 +195,7 @@
     <string name="location_agency_count">Agency count</string>
     <string name="label_is_lsp">Launch Service Provider</string>
     <string name="title_more">More</string>
-    <string name="scheduled">Scheduled</string>
+    <string name="scheduled">Launches</string>
     <string name="agencies">Agencies</string>
     <string name="locations">Locations</string>
 </resources>

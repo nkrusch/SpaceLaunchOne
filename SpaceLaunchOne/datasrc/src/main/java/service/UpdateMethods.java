@@ -102,20 +102,21 @@ public class UpdateMethods extends Logger {
             agency = Agency.Map(launch.getLaunchServiceProvider());
         }
         if (launch.getPad() != null && launch.getPad().getLocation() != null) {
-            pad = Pad.Map(launch.getPad(), launch.getPad().getLocation().getId());
+            pad = Pad.Map(launch.getPad());
             location = Location.Map(launch.getPad().getLocation());
         }
         if (location != null && agency != null) {
             laRefX = new LocationAgency(location.getLid(), agency.getAid());
         }
 
-        Log("\nLAUNCH\n==========\n" + launches +
-                "\n\nDETAILS\n==========\n" + details +
-                "\n\nAGENCY\n==========\n" + agency +
-                "\n\nROCKET\n==========\n" + rocket +
-                "\n\nLOCATION\n==========\n" + location +
-                "\n\nLOCATION X AGENCY\n==========\n" + laRefX +
-                "\n\nPAD\n==========\n" + pad + "\n");
+        Log(String.format("" +
+                "\nLAUNCH\n%s\n" +
+                "\nDETAILS\n%s\n" +
+                "\nAGENCY\n%s\n" +
+                "\nROCKET\n%s\n" +
+                "\nLOCATION\n%s\n" +
+                "\nLOCATION X AGENCY\n%s\n" +
+                "\nPAD\n%s\n", launches, details, agency, rocket, location, laRefX, pad));
 
         // save
         db.dao().insertAll(launches);
@@ -154,59 +155,61 @@ public class UpdateMethods extends Logger {
 
             final LaunchSerializerCommon l = result.getResults().get(i);
             final RocketSerializerCommon r = l.getRocket();
-            final apimodels.Pad loc = l.getPad();
+            final apimodels.Pad p = l.getPad();
             final AgencySerializerMini a = l.getLaunchServiceProvider();
-            final boolean valid_agency = a != null && a.getId() != null && a.getId() > 0;
+            final String launchId = l.getId().toString();
 
             details[i] = Details.Map(l);
             launches[i] = Launch.Map(l);
 
-            if (r != null) {
-                int rocketId = r.getConfiguration().getId();
-                String launchId = l.getId().toString();
-                if (rockets.containsKey(rocketId) && rockets.get(rocketId) != null) {
-                    Objects.requireNonNull(rockets.get(rocketId)).addLaunchId(launchId);
-                } else {
+            if (r != null && r.getConfiguration() != null) {
+                final int rocketId = r.getConfiguration().getId();
+                if (!rockets.containsKey(rocketId)) {
                     Rocket rocket = Rocket.Map(r);
                     rocket.addLaunchId(launchId);
                     rockets.put(rocketId, rocket);
+                } else {
+                    rockets.get(rocketId).addLaunchId(launchId);
                 }
             }
 
-            if (valid_agency) {
-                if (!agencies.containsKey(a.getId())) {
-                    agencies.put(a.getId(), Agency.Map(a));
-                } else if (Objects.requireNonNull(agencies.get(a.getId())).getIslsp() == 0) {
-                    Objects.requireNonNull(agencies.get(a.getId())).setIslsp(1);
+            if (a != null) {
+                final int agencyId = a.getId();
+                if (!agencies.containsKey(agencyId)) {
+                    agencies.put(agencyId, Agency.Map(a));
+                } else {
+                    agencies.get(agencyId).setIslsp(1);
                 }
             }
 
-            if (loc != null) {
-                if (!locations.containsKey(loc.getLocation().getId()))
-                    locations.put(loc.getId(), Location.Map(loc.getLocation()));
-
-                Pad.Map(pads, loc.getLocation().getId(), loc);
-                LocationAgency.Map(laRefX, loc.getLocation().getId(), loc, a);
-
-                if (valid_agency && !agencies.containsKey(loc.getAgencyId()))
-                    agencies.put(loc.getAgencyId(), Agency.Map(a));
+            if (p != null && p.getLocation() != null) {
+                final int padId = p.getId();
+                final int locationId = p.getLocation().getId();
+                if (!locations.containsKey(locationId)) {
+                    locations.put(locationId, Location.Map(p.getLocation()));
+                }
+                if (!pads.containsKey(padId)) {
+                    pads.put(padId, Pad.Map(p));
+                }
+                if (a != null) {
+                    LocationAgency.Map(laRefX, locationId, a.getId());
+                }
             }
 
             if (l.getMission() != null) {
                 final int mid = l.getMission().getId();
                 if (!missions.containsKey(mid)) {
-                    missions.put(mid, Mission.Map(l.getId().toString(), l.getMission()));
+                    missions.put(mid, Mission.Map(launchId, l.getMission()));
                 }
-                if (valid_agency) {
-                    String aKey = AgencyMission.key(mid, a.getId());
-                    if (!amRefX.containsKey(aKey))
-                        amRefX.put(aKey, new AgencyMission(l.getMission().getId(), a.getId()));
+                if (a != null) {
+                    String amKey = AgencyMission.key(mid, a.getId());
+                    if (!amRefX.containsKey(amKey))
+                        amRefX.put(amKey, new AgencyMission(mid, a.getId()));
                 }
             }
         }
 
-        Log(" \n" +
-                "========================\n" +
+        Log("" +
                 "| Launches:  |  " + String.format("%5d  |\n", launches.length) +
                 "| Details:   |  " + String.format("%5d  |\n", details.length) +
                 "| Missions:  |  " + String.format("%5d  |\n", missions.size()) +
@@ -215,8 +218,7 @@ public class UpdateMethods extends Logger {
                 "| Agencies:  |  " + String.format("%5d  |\n", agencies.size()) +
                 "| Locations: |  " + String.format("%5d  |\n", locations.size()) +
                 "| Pads:      |  " + String.format("%5d  |\n", pads.size()) +
-                "| Rockets:   |  " + String.format("%5d  |\n", rockets.size()) +
-                "========================");
+                "| Rockets:   |  " + String.format("%5d  |", rockets.size()));
 
         // save
         db.dao().insertAll(launches);

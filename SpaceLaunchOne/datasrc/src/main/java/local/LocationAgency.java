@@ -54,16 +54,10 @@ public class LocationAgency {
     }
 
     @Ignore
-    public static void Map(ArrayMap<String, LocationAgency> ref, final int locationId, Pad pad, AgencySerializerMini ag) {
-        if (locationId < 1) return;
-        if (ag != null && ag.getId() > 0) {
-            String key = key(locationId, ag.getId());
-            if (!ref.containsKey(key)) ref.put(key, new LocationAgency(locationId, ag.getId()));
-        }
-        if (pad == null || pad.getAgencyId() == null) return;
-        String k = key(locationId, pad.getAgencyId());
-        if (!ref.containsKey(k) && pad.getAgencyId() > 0)
-            ref.put(k, new LocationAgency(locationId, pad.getAgencyId()));
+    public static void Map(ArrayMap<String, LocationAgency> ref, final int locationId, int agencyId) {
+        if (locationId < 1 || agencyId < 1) return;
+        String key = key(locationId, agencyId);
+        if (!ref.containsKey(key)) ref.put(key, new LocationAgency(locationId, agencyId));
     }
 
     @NonNull

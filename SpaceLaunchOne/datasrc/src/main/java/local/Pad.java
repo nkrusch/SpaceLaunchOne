@@ -97,12 +97,12 @@ public class Pad implements Comparable<Pad> {
     }
 
     @Ignore
-    public static Pad Map(apimodels.Pad pad, int locationId) {
+    public static Pad Map(apimodels.Pad pad) {
         Pad a = new Pad();
         List<String> urls = new LinkedList<>();
         a.setPid(pad.getId());
         a.setName(pad.getName());
-        a.setLocationId(locationId);
+        a.setLocationId(pad.getLocation().getId());
         try {
             a.setLatitude(Double.parseDouble(pad.getLatitude()));
             a.setLongitude(Double.parseDouble(pad.getLongitude()));
@@ -115,12 +115,6 @@ public class Pad implements Comparable<Pad> {
         if (urls.size() > 0) a.setInfoURLs(urls.toArray(new String[0]));
         a.setLastModified(new Date());
         return a;
-    }
-
-    @Ignore
-    public static void Map(ArrayMap<Integer, Pad> pads, final int locationId, apimodels.Pad pad) {
-        if (!pads.containsKey(pad.getId()))
-            pads.put(pad.getId(), Map(pad, locationId));
     }
 
     @Ignore
