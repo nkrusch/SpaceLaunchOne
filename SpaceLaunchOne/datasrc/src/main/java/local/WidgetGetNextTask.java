@@ -6,7 +6,8 @@ import android.os.AsyncTask;
 import java.util.Date;
 
 /**
- * This task is used by the application widget to get the next upcoming launch from the local database
+ * This task is used by the application widget to get the next
+ * upcoming launch from the local database
  */
 public class WidgetGetNextTask extends AsyncTask<Context, Void, Launch> {
 

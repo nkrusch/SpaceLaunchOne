@@ -262,7 +262,6 @@ public class AppDataMethods extends Logger {
                             db.dao().updateImage(launchId, image);
                     }
                     if (images.size() == rocketCount && callback != null) {
-                        Log("done!");
                         out.setResult(true, result, offset);
                         callback.call(out);
                     }

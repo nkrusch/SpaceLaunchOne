@@ -85,7 +85,7 @@ public class LaunchDetailsViewModel extends AndroidViewModel {
                 long lastModMs = launch.getLasModified() == null ? 0 : launch.getLasModified().getTime();
                 boolean occursSoon = Math.abs(current - launchDate) < MIN_RECENT;
                 boolean isStale = current - lastModMs > MIN_UPDATE;
-                if (false &&!(occursSoon || isStale)) return;
+                if (!(occursSoon || isStale)) return;
                 final Context context = getApplication().getBaseContext();
                 AppDataMethods.updateLaunchDetails(context, id, null);
             }

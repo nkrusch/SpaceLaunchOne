@@ -15,7 +15,6 @@ public class SyncTime extends Logger {
     public static void updateSyncData(SharedPreferences sharedPref, int offset) {
         sharedPref.edit().putLong(SYNC_KEY, new Date().getTime()).apply();
         sharedPref.edit().putInt(SYNC_OFFSET, Math.max(offset, 0)).apply();
-        Log("sync completed");
     }
 
     public static Long getDataSyncTimestamp(SharedPreferences sharedPref) {
