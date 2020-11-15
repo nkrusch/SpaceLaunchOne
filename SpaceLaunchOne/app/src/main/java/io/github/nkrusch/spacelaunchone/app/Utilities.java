@@ -215,6 +215,9 @@ public class Utilities {
     public static String fullTimeLabel(Long utc) {
         return fullTimeLabel(utc, null);
     }
+    public static String fullTimeLabelwithYear(Long utc) {
+        return fullTimeLabel(utc, "dd MMMM YYYY, HH:mm 'UTC'");
+    }
 
     /**
      * Convert utc timestamp to UTC datetime string

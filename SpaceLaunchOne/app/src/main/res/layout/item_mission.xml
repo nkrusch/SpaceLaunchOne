@@ -7,13 +7,14 @@
     <androidx.cardview.widget.CardView
         android:id="@+id/thumbnail_card"
         android:layout_height="32dp"
+        app:cardBackgroundColor="@color/transparent"
         style="@style/list_image_card">
 
         <ImageView
             android:id="@+id/thumbnail"
             android:layout_gravity="center_horizontal"
             android:layout_width="32dp"
-            android:background="@android:color/transparent"
+            android:background="@color/transparent"
             style="@style/list_image" />
 
     </androidx.cardview.widget.CardView>

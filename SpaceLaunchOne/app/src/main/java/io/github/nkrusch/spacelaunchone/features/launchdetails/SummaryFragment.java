@@ -128,7 +128,7 @@ public class SummaryFragment extends DetailsBaseFragment {
         mCountry.setText(country);
 
         mEventName.setText(R.string.event_name, launch.getName());
-        mEventDate.setText(R.string.launch_date, launch.getNet());
+        mEventDate.setText(R.string.launch_date, Utilities.fullTimeLabelwithYear(launch.getLaunchDateUTC()));
         mLocation.setText(R.string.launch_site, coalesce(location, unknown));
         mHashtag.setText(R.string.hashtag, coalesce(launch.getHashtag(), none));
         mAgencyName.setText(R.string.launch_service_provider, agencyNameValue);

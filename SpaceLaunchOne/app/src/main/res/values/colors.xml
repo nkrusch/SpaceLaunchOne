@@ -4,6 +4,8 @@
     <color name="colorPrimaryDark">#111</color>
     <color name="colorAccent">#1976D2</color>
 
+    <color name="transparent">#0FFF</color>
+
     <!-- backgrounds -->
     <color name="list_item_background">@android:color/white</color>
     <color name="photo_placeholder">#DDD</color>

@@ -143,7 +143,7 @@
     <string name="image_background_gradient">image background gradient</string>
     <string name="video_play_icon">video play icon</string>
     <string name="event_name">Launch Name</string>
-    <string name="launch_date">Launch Date</string>
+    <string name="launch_date">Launch Date and Time</string>
     <string name="launch_service_provider">Launch Service Provider</string>
     <string name="agency_country_code">LSP Country Code</string>
     <string name="hashtag" translatable="false">Hashtag</string>
