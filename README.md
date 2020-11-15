@@ -24,13 +24,44 @@ This application uses [Launch Library API](https://ll.thespacedevs.com/2.0.0/swa
 
 ## App Features
 
-| <h3>🛰️</h3> | <h3>🚀</h3> | <h3>👩‍🚀</h3> | <h3>☄️</h3> | 
-| --- | --- |  --- | --- |
-| <h4 align="center">Future launches</h4> | <h4 align="center">Past launches</h4> | <h4 align="center">Launch details</h4> | <h4 align="center">Filter launches</h4> |
-| <h4 align="center">Search for launches</h4> | <h4 align="center">Watch live launch videos</h4> | <h4 align="center">Explore Launch sites</h4> | <h4 align="center">Space agensies</h4> | 
-| <h4 align="center">Agency missions</h4> | <h4 align="center">Save favorites</h4> | <h4 align="center">Homescreen widget</h4> | <h4 align="center">Space-themed imagery</h4> | 
-| <h4 align="center">Dark mode support</h4> | <h4 align="center">Offline enabled</h4> | <h4 align="center">RTL layout support</h4> | <h4 align="center">API >= Kitkat</h4> | 
-| <h3 align="center">👨‍🚀</h3> | <h3 align="center">🪐</h3> | <h3 align="center">📡</h3> | <h3 align="center">🔭</h3> | 
+<table width="100%">
+  <tr>  
+    <td><h3 align="center">🛰️</h3></td>
+    <td><h3 align="center">🚀</h3></td>
+    <td><h3 align="center">👩‍🚀</h3></td>
+    <td><h3 align="center">☄️</h3></td>
+  </tr>
+  <tr>
+    <td><h4 align="center">Future launches</h4></td>
+    <td><h4 align="center">Past launches</h4></td>
+    <td><h4 align="center">Launch details</h4></td>
+    <td><h4 align="center">Filter launches</h4></td>
+  </tr>
+  <tr>
+    <td><h4 align="center">Search for launches</h4></td>
+    <td><h4 align="center">Watch live launch videos</h4></td>
+    <td><h4 align="center">Explore Launch sites</h4></td>
+    <td><h4 align="center">Space agensies</h4></td>
+  </tr>
+  <tr>  
+    <td><h4 align="center">Agency missions</h4></td>
+    <td><h4 align="center">Save favorites</h4></td>
+    <td><h4 align="center">Homescreen widget</h4></td>
+    <td><h4 align="center">Space-themed imagery</h4></td> 
+  </tr>
+  <tr>  
+    <td><h4 align="center">Dark mode support</h4></td>
+    <td><h4 align="center">Offline enabled</h4></td>
+    <td><h4 align="center">RTL layout support</h4></td>
+    <td><h4 align="center">API >= Kitkat</h4></td> 
+  </tr>
+  <tr>  
+    <td><h3 align="center">👨‍🚀</h3></td>
+    <td><h3 align="center">🪐</h3></td>
+    <td><h3 align="center">📡</h3></td>
+    <td><h3 align="center">🔭</h3></td> 
+  </tr>
+</table>
 
 
 ## License 
