@@ -20,6 +20,8 @@ This application uses [Launch Library API](https://ll.thespacedevs.com/2.0.0/swa
 
 **Stage 1**: design proposal is [here &raquo;](https://github.com/nkrusch/SpaceLaunchOne/tree/master/docs)
 
+**Privacy Policy**: Read it [here &raquo;](https://github.com/nkrusch/SpaceLaunchOne/blob/master/docs/privacy_policy.md)
+
 ## App Features
 
 | ☆ | ☆ | ☆ | 
@@ -30,12 +32,6 @@ This application uses [Launch Library API](https://ll.thespacedevs.com/2.0.0/swa
 | Save favorites | Homescreen widget | Space-themed imagery | 
 | Dark mode support | Offline enabled |  Responsive design |
 | RTL layout support | API >= Kitkat | Translations: 2 | 
-
-
-
-## Privacy Policy
-
-[Read it here &raquo;](https://github.com/nkrusch/SpaceLaunchOne/blob/master/docs/privacy_policy.md)
 
 ## License 
 
