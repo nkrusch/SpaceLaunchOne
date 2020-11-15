@@ -11,6 +11,8 @@ import android.os.Bundle;
 
 import io.github.nkrusch.spacelaunchone.R;
 import io.github.nkrusch.spacelaunchone.app.InitActivity;
+import io.github.nkrusch.spacelaunchone.app.Utilities;
+import service.InitTime;
 
 /**
  * This activity shows an animated loading screen when initializing dataset
@@ -26,7 +28,7 @@ public class SplashActivity extends InitActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if (isInitialized(this)) launchApp();
+        if (InitTime.isInitDone(Utilities.pref(this))) launchApp();
         else initializeApp();
     }
 
@@ -78,5 +80,4 @@ public class SplashActivity extends InitActivity {
             anim.start();
         }
     }
-
 }

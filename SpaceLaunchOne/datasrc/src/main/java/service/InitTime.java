@@ -22,8 +22,11 @@ public class InitTime extends Logger {
      * Get the last sync timestamp
      */
     public static Long getInitTimestamp(SharedPreferences sharedPref) {
-        Long timestamp = sharedPref.getLong(INIT_KEY, 0);
-        Log("init time: "+timestamp);
-        return timestamp;
+        return sharedPref.getLong(INIT_KEY, 0);
     }
+
+    public static boolean isInitDone(SharedPreferences sharedPref) {
+        return getInitTimestamp(sharedPref) > 0;
+    }
+
 }

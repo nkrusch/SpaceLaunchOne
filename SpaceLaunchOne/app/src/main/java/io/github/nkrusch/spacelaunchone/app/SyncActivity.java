@@ -4,9 +4,10 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
-import android.preference.PreferenceManager;
+import android.content.SharedPreferences;
 
 import androidx.appcompat.app.AppCompatActivity;
+import service.InitTime;
 import service.UpdateIntentService;
 import service.UpdateTime;
 import utilities.Logger;
@@ -19,7 +20,6 @@ import static service.UpdateTime.SYNC_KEY;
  */
 public abstract class SyncActivity extends AppCompatActivity {
 
-    private final String TAG = SyncActivity.class.getSimpleName();
     private DataSyncReceiver syncReceiver;
     private boolean receiverRegistered;
 
@@ -32,6 +32,10 @@ public abstract class SyncActivity extends AppCompatActivity {
     protected void onStop() {
         super.onStop();
         unregisterReceiver();
+    }
+
+    private SharedPreferences pref() {
+        return Utilities.pref(this);
     }
 
     /**
@@ -50,7 +54,7 @@ public abstract class SyncActivity extends AppCompatActivity {
      * Get timestamp (UTC) when sync last occurred
      */
     protected Long getDataSyncTimeStamp() {
-        return UpdateTime.getDataSyncTimestamp(PreferenceManager.getDefaultSharedPreferences(this));
+        return UpdateTime.getDataSyncTimestamp(pref());
     }
 
     /**
@@ -60,7 +64,7 @@ public abstract class SyncActivity extends AppCompatActivity {
         @Override
         public void onReceive(Context context, Intent intent) {
             if (SYNC_KEY.equals(intent.getAction())) {
-                UpdateTime.updateSyncTimestamp(PreferenceManager.getDefaultSharedPreferences(context));
+                UpdateTime.updateSyncTimestamp(pref());
                 unregisterReceiver();
                 onReceiveHandler();
             }
@@ -71,21 +75,20 @@ public abstract class SyncActivity extends AppCompatActivity {
      * Call this method to synchronize application data immediately
      */
     protected void requestImmediateSync() {
-        if (!InitActivity.isInitialized(this)) {
-            Logger.Log("Initializing, will not launch another");
+        if (InitTime.getInitTimestamp(pref()) == 0) {
+            Logger.Log("Uninitialized - will not sync");
             return;
         }
         if (syncReceiver != null) {
-            Logger.Log("Pending sync already running, will not launch another");
+            Logger.Log("Sync in progress - will not launch another");
             return;
         }
-        Logger.Log( "Starting immediate sync...");
+        Logger.Log("Starting sync...");
         syncReceiver = new DataSyncReceiver();
         IntentFilter intentFilter = new IntentFilter();
         intentFilter.addAction(SYNC_KEY);
         registerReceiver(syncReceiver, intentFilter);
         receiverRegistered = true;
-
         Intent initIntent = new Intent();
         initIntent.setAction(SYNC_KEY);
         initIntent.setClass(this, UpdateIntentService.class);

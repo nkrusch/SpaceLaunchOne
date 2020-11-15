@@ -4,8 +4,6 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
-import android.content.SharedPreferences;
-import android.preference.PreferenceManager;
 
 import androidx.appcompat.app.AppCompatActivity;
 import service.InitIntentService;
@@ -35,9 +33,8 @@ public abstract class InitActivity extends AppCompatActivity {
         @Override
         public void onReceive(Context context, Intent intent) {
             if (!ACTION_INITIALIZE.equals(intent.getAction())) return;
-            SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences(context);
             boolean success = intent.getBooleanExtra(ACTION_OUTCOME, false);
-            if (success) InitTime.setInitTimestamp(sharedPref);
+            if (success) InitTime.setInitTimestamp(Utilities.pref(context));
             onReceiveHandler();
         }
     }
@@ -53,13 +50,6 @@ public abstract class InitActivity extends AppCompatActivity {
         } catch (Exception e) {
             e.printStackTrace();
         }
-    }
-
-    /**
-     * Check if init has completed t/f
-     */
-    public static boolean isInitialized(Context context) {
-        return InitTime.getInitTimestamp(PreferenceManager.getDefaultSharedPreferences(context)) > 0;
     }
 
     /**

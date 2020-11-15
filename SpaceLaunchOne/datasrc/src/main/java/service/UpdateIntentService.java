@@ -5,7 +5,8 @@ import android.content.Intent;
 
 import androidx.annotation.Nullable;
 import api.OnLoadCallback;
-import local.UpdateAppData;
+import utilities.DataUtilities;
+import utilities.Logger;
 
 import static service.UpdateTime.SYNC_KEY;
 
@@ -25,17 +26,22 @@ public class UpdateIntentService extends IntentService {
 
     @Override
     protected void onHandleIntent(@Nullable Intent intent) {
-        if (intent != null && SYNC_KEY.equals(intent.getAction()))
-            UpdateAppData.sync(getApplicationContext(), new OnLoadCallback() {
-                @Override
-                public void call(Object result) {
-                    onActionCompleted();
-                }
-                @Override
-                public void onError(Exception e) {
+        if (intent != null && SYNC_KEY.equals(intent.getAction())) {
+            Runnable r = () -> DataUtilities.waitAndUpdate(
+                    getApplicationContext(),
+                    new OnLoadCallback() {
+                        @Override
+                        public void call(Object result) {
+                            onActionCompleted();
+                        }
 
-                }
-            });
+                        @Override
+                        public void onError(Exception e) {
+                            Logger.displayError(e);
+                        }
+                    });
+            new Thread(r).start();
+        }
     }
 
     /**

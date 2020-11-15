@@ -13,7 +13,6 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import io.github.nkrusch.spacelaunchone.R;
-import io.github.nkrusch.spacelaunchone.app.InitActivity;
 import io.github.nkrusch.spacelaunchone.app.SyncUtility;
 import io.github.nkrusch.spacelaunchone.app.TabbedActivity;
 import io.github.nkrusch.spacelaunchone.app.TabsAdapter;
@@ -23,6 +22,7 @@ import io.github.nkrusch.spacelaunchone.features.main.AgenciesFragment;
 import io.github.nkrusch.spacelaunchone.features.main.FavoriteFragment;
 import io.github.nkrusch.spacelaunchone.features.main.LocationsFragment;
 import io.github.nkrusch.spacelaunchone.features.main.ScheduledFragment;
+import service.InitTime;
 
 import static android.view.View.GONE;
 import static android.view.View.VISIBLE;
@@ -45,7 +45,7 @@ public class MainActivity extends TabbedActivity {
         tabLayout.setVisibility(GONE);
         bottomNav.setVisibility(VISIBLE);
 
-        if (!InitActivity.isInitialized(this))
+        if (!InitTime.isInitDone(Utilities.pref(this)))
             Utilities.showSnackBar(this,
                     R.string.list_empty,
                     Snackbar.LENGTH_INDEFINITE);

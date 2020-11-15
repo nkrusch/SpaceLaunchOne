@@ -19,10 +19,11 @@ import java.util.UUID;
 
 import androidx.annotation.RequiresApi;
 import io.github.nkrusch.spacelaunchone.R;
-import io.github.nkrusch.spacelaunchone.app.InitActivity;
+import io.github.nkrusch.spacelaunchone.app.Utilities;
 import io.github.nkrusch.spacelaunchone.features.DetailsLaunchActivity;
 import io.github.nkrusch.spacelaunchone.features.MainActivity;
 import local.WidgetGetNextTask;
+import service.InitTime;
 import utilities.AppExecutors;
 
 import static android.view.View.VISIBLE;
@@ -93,24 +94,21 @@ public class CountdownWidget extends AppWidgetProvider {
     private void loadNextLaunchDetails(final Context context) {
         final String unavailable = context.getResources().getString(R.string.widget_unavailable);
 
-        if (InitActivity.isInitialized(context)) {
+        if (InitTime.isInitDone(Utilities.pref(context))) {
             launchEventName = context.getResources().getString(R.string.widget_loading);
             isLoading = true;
             onUpdate(context);
-            new WidgetGetNextTask(new WidgetGetNextTask.onLoadComplete() {
-                @Override
-                public void call(local.Launch result) {
-                    if (launchId == null && result == null) {
-                        launchEventName = unavailable;
-                        onUpdate(context);
-                    } else {
-                        launchId = result.getLuuid();
-                        launchEventName = result.getName();
-                        TargetDate = result.getLaunchDateUTC();
-                        onUpdate(context);
-                    }
-                    isLoading = false;
+            new WidgetGetNextTask(result -> {
+                if (launchId == null && result == null) {
+                    launchEventName = unavailable;
+                    onUpdate(context);
+                } else {
+                    launchId = result.getLuuid();
+                    launchEventName = result.getName();
+                    TargetDate = result.getLaunchDateUTC();
+                    onUpdate(context);
                 }
+                isLoading = false;
             }).execute(context);
         } else {
             launchEventName = unavailable;

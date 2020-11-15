@@ -2,6 +2,7 @@ package io.github.nkrusch.spacelaunchone.app;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.content.res.Configuration;
 import android.content.res.Resources;
 import android.graphics.Rect;
@@ -215,6 +216,7 @@ public class Utilities {
     public static String fullTimeLabel(Long utc) {
         return fullTimeLabel(utc, null);
     }
+
     public static String fullTimeLabelwithYear(Long utc) {
         return fullTimeLabel(utc, "dd MMMM YYYY, HH:mm 'UTC'");
     }
@@ -581,5 +583,9 @@ public class Utilities {
             default:
                 return R.drawable.ic_status;
         }
+    }
+
+    public static SharedPreferences pref(Context ctx) {
+        return androidx.preference.PreferenceManager.getDefaultSharedPreferences(ctx);
     }
 }
