@@ -2,7 +2,6 @@ package local;
 
 import android.content.Context;
 import android.database.Cursor;
-import android.util.Log;
 
 import androidx.room.Database;
 import androidx.room.Room;
@@ -10,6 +9,7 @@ import androidx.room.RoomDatabase;
 import androidx.room.TypeConverters;
 import androidx.room.migration.Migration;
 import androidx.sqlite.db.SupportSQLiteDatabase;
+import utilities.Logger;
 
 
 @Database(entities = {Launch.class, Details.class, Mission.class, RocketFilter.class, AgencyFilter.class, LocationFilter.class,
@@ -93,14 +93,12 @@ public abstract class AppDatabase extends RoomDatabase {
     public static AppDatabase getInstance(Context context) {
         if (sInstance == null) {
             synchronized (LOCK) {
-                Log.d(LOG_TAG, "Creating new database instance");
                 sInstance = Room.databaseBuilder(context.getApplicationContext(),
                         AppDatabase.class, AppDatabase.DATABASE_NAME)
                         .addMigrations(MIGRATION_1_2, MIGRATION_2_3)
                         .build();
             }
         }
-        Log.d(LOG_TAG, "Getting the database instance");
         return sInstance;
     }
 
@@ -111,7 +109,7 @@ public abstract class AppDatabase extends RoomDatabase {
         try {
             Cursor cursor = db.query("SELECT name FROM sqlite_master WHERE type == 'index'", null);
             int numIndexes = (cursor == null) ? 0 : cursor.getCount();
-            Log.d(LOG_TAG, "Num indexes to drop: " + numIndexes);
+            Logger.Log("Num indexes to drop: " + numIndexes);
             if (numIndexes > 0) {
                 String[] indexNames = new String[numIndexes];
                 int i = 0;
@@ -120,17 +118,17 @@ public abstract class AppDatabase extends RoomDatabase {
                 }
 
                 for (i = 0; i < indexNames.length; i++) {
-                    Log.d(LOG_TAG, "Dropping index: " + indexNames[i] + "...");
+                    Logger.Log("Dropping index: " + indexNames[i] + "...");
                     try {
                         db.execSQL("DROP INDEX " + indexNames[i]);
-                        Log.e(LOG_TAG, "...index dropped!");
+                        Logger.Log( "...index dropped!");
                     } catch (Exception e) {
-                        Log.e(LOG_TAG, "Error dropping index", e);
+                        Logger.displayError(e);
                     }
                 }
             }
         } catch (Exception e) {
-            Log.e(LOG_TAG, "Error dropping index", e);
+            Logger.displayError(e);
         }
     }
 }

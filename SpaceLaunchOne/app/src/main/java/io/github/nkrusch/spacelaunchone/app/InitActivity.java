@@ -6,9 +6,6 @@ import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
-import android.util.Log;
-
-import java.util.Date;
 
 import androidx.appcompat.app.AppCompatActivity;
 import service.InitIntentService;

@@ -1,6 +1,5 @@
 package io.github.nkrusch.spacelaunchone.features.filters;
 
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -70,7 +69,6 @@ public class FilterAdapter<T extends IFilter> extends RecyclerView.Adapter<Filte
         public void onClick(View v) {
             try {
                 IFilter item = dataSource.get(getAdapterPosition());
-                Log.d("FILTER", "fired click on item " + item.getName());
                 mItemClickListener.onItemClick(item);
             } catch (Exception e) {
                 e.printStackTrace();

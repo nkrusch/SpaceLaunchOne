@@ -77,7 +77,7 @@ public class LaunchLibrary extends Logger {
      * Perform network call
      *
      * @param exec     - method to execute
-     * @param callback
+     * @param callback - handler to process result
      */
     private static void makeRequest(@NonNull final methodRunner exec, @NonNull final OnLoadCallback callback) {
         AppExecutors.getInstance().networkIO().execute(() -> {
@@ -131,7 +131,7 @@ public class LaunchLibrary extends Logger {
      * single request, so getting data over two individual requests, then merging.
      *
      * @param count    - number of launches to fetch when initializing
-     * @param callback
+     * @param callback - handler to process result
      */
     public static void initialLaunches(final int count, @NonNull final OnLoadCallback callback) {
         makeRequest((methodRunner<LaunchList>) service -> {
@@ -147,9 +147,9 @@ public class LaunchLibrary extends Logger {
      * Get information about a single launch
      *
      * @param id       - launch id
-     * @param callback
+     * @param callback - handler to process result
      */
-    public static void getLaunch(final String id, @NonNull final OnLoadCallback callback) {
+    public static void getSingleLaunch(final String id, @NonNull final OnLoadCallback callback) {
         makeRequest((methodRunner<LaunchDetailed>) service -> {
             Call<LaunchDetailed> request = service.launch(id);
             Response<LaunchDetailed> resp = request.execute();
@@ -165,14 +165,16 @@ public class LaunchLibrary extends Logger {
      *
      * @param offset   - offset from start of results
      * @param count    - number of records to get
-     * @param callback
+     * @param callback - handler to process result
      */
     public static void allLaunches(final int offset, final int count, @NonNull final OnLoadCallback callback) {
         makeRequest((methodRunner<LaunchList>) service -> {
-            // TODO: this needs to keep track of paging;
-            // TODO: also pull agency and location details -- maybe separate methods?
-            Response<LaunchList> temp = service.all_launches(offset, count).execute();
-            return temp.body();
+            Call<LaunchList> request = service.all_launches(offset, count);
+            Response<LaunchList> resp = service.all_launches(offset, count).execute();
+            Log("URL: " + request.request().url().toString() +
+                    "\nSUCCESS: " + resp.isSuccessful() +
+                    "\nERROR: " + (resp.errorBody() != null ? resp.errorBody().string() : "None"));
+            return resp.body();
         }, callback);
     }
 

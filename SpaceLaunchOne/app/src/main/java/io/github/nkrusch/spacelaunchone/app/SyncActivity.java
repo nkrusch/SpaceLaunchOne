@@ -5,7 +5,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.preference.PreferenceManager;
-import android.util.Log;
 
 import androidx.appcompat.app.AppCompatActivity;
 import service.UpdateIntentService;
@@ -73,14 +72,14 @@ public abstract class SyncActivity extends AppCompatActivity {
      */
     protected void requestImmediateSync() {
         if (!InitActivity.isInitialized(this)) {
-            Log.d(TAG, "Initializing, will not launch another");
+            Logger.Log("Initializing, will not launch another");
             return;
         }
         if (syncReceiver != null) {
-            Log.d(TAG, "Pending sync already running, will not launch another");
+            Logger.Log("Pending sync already running, will not launch another");
             return;
         }
-        Log.d(TAG, "Starting immediate sync...");
+        Logger.Log( "Starting immediate sync...");
         syncReceiver = new DataSyncReceiver();
         IntentFilter intentFilter = new IntentFilter();
         intentFilter.addAction(SYNC_KEY);

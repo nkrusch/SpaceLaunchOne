@@ -8,13 +8,13 @@ public class Logger {
 
     private static final boolean DEBUG = BuildConfig.AppDebug;
 
-    protected static void displayError(Exception e) {
+    public static void displayError(Exception e) {
         if (DEBUG) e.printStackTrace();
     }
 
     public static void Log(String msg) {
         final String DIV = "\n========================\n";
-        final String TAG = "DATA";
+        final String TAG = "SL-1";
         Log.d(TAG, ("  " + DIV + msg + DIV));
     }
 }

@@ -45,17 +45,18 @@ public class UpdateAppData extends Logger {
     }
 
     public static void sync(Context context, final OnLoadCallback callback) {
-        Log("updating app data....");
+        Log("SYNC HANDLER! updating app data....");
         final AppDatabase db = AppDatabase.getInstance(context);
         // TODO: iterate over pages
         // TODO: fetch agencies
-        updateAllLaunches(db, Integer.MAX_VALUE, callback);
+        // TODO: fetch locations
+        // updateAllLaunches(db, Integer.MAX_VALUE, callback);
     }
 
     public static void updateLaunchDetails(Context context, final String id, @Nullable final OnLoadCallback callback) {
         Log("Getting launch id: " + id);
         final AppDatabase db = AppDatabase.getInstance(context);
-        LaunchLibrary.getLaunch(id, new OnLoadCallback<LaunchDetailed>() {
+        LaunchLibrary.getSingleLaunch(id, new OnLoadCallback<LaunchDetailed>() {
             @Override
             public void call(LaunchDetailed result) {
                 processSingleLaunch(db, result, callback);

@@ -9,7 +9,6 @@ import android.content.SharedPreferences;
 import android.net.ConnectivityManager;
 import android.os.Build;
 import android.preference.PreferenceManager;
-import android.util.Log;
 
 import java.util.Date;
 
@@ -18,6 +17,7 @@ import io.github.nkrusch.spacelaunchone.BuildConfig;
 import io.github.nkrusch.spacelaunchone.R;
 import service.UpdateJobService;
 import service.UpdateTime;
+import utilities.Logger;
 
 import static service.UpdateJobService.UPDATE_DATA_JOB_ID;
 
@@ -27,7 +27,6 @@ import static service.UpdateJobService.UPDATE_DATA_JOB_ID;
  */
 public class SyncUtility {
 
-    private static final String TAG = "SYNC";
     private static final int MS_IN_HOUR = 60 * 60 * 1000;
 
     /**
@@ -38,7 +37,7 @@ public class SyncUtility {
         String pref = sharedPref.getString(context.getResources().getString(R.string.sync_frequency), null);
         int SYNC_INTERVAL_HOURS = (pref == null) ? BuildConfig.UpdateInterval : Integer.parseInt(pref);
         final long interval_milliseconds = SYNC_INTERVAL_HOURS * MS_IN_HOUR;
-        Log.d(TAG, "sync interval: " + SYNC_INTERVAL_HOURS);
+        Logger.Log("Sync interval is: " + SYNC_INTERVAL_HOURS + " hours");
         return interval_milliseconds;
     }
 
@@ -65,7 +64,7 @@ public class SyncUtility {
             }
         }
         if (previous != null && !overridePrevious) {
-            Log.d(TAG, "already scheduled, will not reschedule");
+            Logger.Log("already scheduled, will not reschedule");
             return;
         }
         jobScheduler.cancel(UPDATE_DATA_JOB_ID);
@@ -75,7 +74,8 @@ public class SyncUtility {
                 .setPeriodic(interval_milliseconds)
                 .build();
         int resultCode = jobScheduler.schedule(jobInfo);
-        Log.d(TAG, resultCode == JobScheduler.RESULT_SUCCESS ? "Job scheduled!" : "Job not scheduled");
+        Logger.Log(resultCode == JobScheduler.RESULT_SUCCESS ?
+                "Sync job has been scheduled!" : " Sync job was not scheduled!");
     }
 
     /**
@@ -85,7 +85,7 @@ public class SyncUtility {
     public static boolean shouldRunPeriodicSyncPreLollipop(Context context) {
         Long intervalMilliseconds = getSyncInterval(context);
         Long lastSync = UpdateTime.getDataSyncTimestamp(PreferenceManager.getDefaultSharedPreferences(context));
-        Long elapsedTimeSinceLastCheck = new Date().getTime() - lastSync;
+        long elapsedTimeSinceLastCheck = new Date().getTime() - lastSync;
 
         ConnectivityManager cm = (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
         return elapsedTimeSinceLastCheck > intervalMilliseconds && Utilities.isNetworkAvailable(cm);

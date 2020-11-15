@@ -4,32 +4,36 @@ import android.annotation.TargetApi;
 import android.app.job.JobParameters;
 import android.app.job.JobService;
 import android.os.Build;
+import android.preference.PreferenceManager;
+
+import api.OnLoadCallback;
+import local.UpdateAppData;
+import utilities.Logger;
 
 /**
- * The purpose of this service is to periodically sync local app data with external API data.
+ * The purpose of this service is to periodically
+ * update local app data by requesting updates from external API.
+ * This is 1-way operation where external is always correct and
+ * local maybe stale.
  */
 @TargetApi(Build.VERSION_CODES.LOLLIPOP)
 public class UpdateJobService extends JobService {
 
     public static final int UPDATE_DATA_JOB_ID = 1896;
 
-    /**
-     * Run data synchronization using job service
-     */
     @Override
     public boolean onStartJob(JobParameters params) {
-        // TODO: fix this -- should not run at the same time as init!
-//        Log.d("SYNC", "starting sync job service...");
-//        UpdateMethods.UpdateAppData(getApplicationContext(), new OnLoadCallback() {
-//            @Override
-//            public void call(Object result) {
-//                UpdateTime.updateSyncTimestamp(PreferenceManager.getDefaultSharedPreferences(getApplicationContext()));
-//                Log.d("SYNC", "completed sync job service!");
-//            }
-//            @Override
-//            public void onError(Exception e) {
-//            }
-//        });
+        UpdateAppData.sync(getApplicationContext(), new OnLoadCallback() {
+            @Override
+            public void call(Object result) {
+                UpdateTime.updateSyncTimestamp(PreferenceManager
+                        .getDefaultSharedPreferences(getApplicationContext()));
+                Logger.Log("completed sync job service!");
+            }
+            @Override
+            public void onError(Exception e) {
+            }
+        });
         return true;
     }
 
