@@ -7,6 +7,7 @@ import androidx.annotation.Nullable;
 import api.OnLoadCallback;
 import apimodels.data.BuildConfig;
 import local.AppDataMethods;
+import utilities.ProcessResult;
 
 /**
  * This intent service fetches remote data one time when application first runs.
@@ -29,10 +30,10 @@ public class InitIntentService extends IntentService {
     @Override
     protected void onHandleIntent(@Nullable Intent intent) {
         if (intent != null && ACTION_INITIALIZE.equals(intent.getAction())) {
-            AppDataMethods.init(this, BuildConfig.InitialLoadSize, new OnLoadCallback<Boolean>() {
+            AppDataMethods.init(this, BuildConfig.InitialLoadSize, new OnLoadCallback<ProcessResult>() {
                 @Override
-                public void call(Boolean result) {
-                    onActionCompleted(ACTION_INITIALIZE, result);
+                public void call(ProcessResult result) {
+                    onActionCompleted(ACTION_INITIALIZE, result.isSuccess());
                 }
 
                 @Override

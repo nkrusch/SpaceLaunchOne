@@ -16,6 +16,7 @@ import apimodels.LauncherConfigDetail;
 import apimodels.RocketDetailed;
 import utilities.ImageResolver;
 import utilities.Logger;
+import utilities.ProcessResult;
 
 /**
  * Update application database
@@ -28,14 +29,15 @@ public class AppDataMethods extends Logger {
         if (callback != null) callback.call(false);
     }
 
-    public static void init(Context context, int count, final OnLoadCallback<Boolean> callback) {
+    public static void init(Context context, int count, final OnLoadCallback<ProcessResult> callback) {
         Log("Initializing app data...");
         final AppDatabase db = AppDatabase.getInstance(context);
         LaunchLibrary.initialLaunches(count, new OnLoadCallback<LaunchListDetailed>() {
             @Override
             public void call(LaunchListDetailed result) {
-                AppDataMethods.processLaunches(db, result, callback);
+                AppDataMethods.processLaunches(db, result, 0, callback);
             }
+
             @Override
             public void onError(Exception e) {
                 callback.onError(e);
@@ -43,11 +45,10 @@ public class AppDataMethods extends Logger {
         });
     }
 
-    public static void sync(Context context, final OnLoadCallback callback) {
+    public static void sync(Context context, int offset, final OnLoadCallback<ProcessResult> callback) {
         Log("SYNC HANDLER! updating app data....");
         final AppDatabase db = AppDatabase.getInstance(context);
-        // TODO: iterate over pages
-        // updateAllLaunches(db, Integer.MAX_VALUE, callback);
+        updateAllLaunches(db, offset, callback);
     }
 
     public static void updateLaunchDetails(Context context, final String id, @Nullable final OnLoadCallback callback) {
@@ -66,12 +67,13 @@ public class AppDataMethods extends Logger {
         });
     }
 
-    private static void updateAllLaunches(final AppDatabase db, int offset, int size, final OnLoadCallback<Boolean> callback) {
-        LaunchLibrary.allLaunches(offset, size, new OnLoadCallback<LaunchListDetailed>() {
+    private static void updateAllLaunches(final AppDatabase db, final int offset, final OnLoadCallback<ProcessResult> callback) {
+        LaunchLibrary.allLaunches(offset, new OnLoadCallback<LaunchListDetailed>() {
             @Override
             public void call(final LaunchListDetailed result) {
-                processLaunches(db, result, callback);
+                processLaunches(db, result, offset, callback);
             }
+
             @Override
             public void onError(Exception e) {
                 handleError(e, callback);
@@ -134,10 +136,13 @@ public class AppDataMethods extends Logger {
     private static void processLaunches(
             final AppDatabase db,
             final LaunchListDetailed result,
-            final OnLoadCallback<Boolean> callback) {
+            final int offset,
+            final OnLoadCallback<ProcessResult> callback) {
 
+        ProcessResult out = new ProcessResult();
         if (result == null || result.getResults() == null) {
-            if (callback != null) callback.call(false);
+            out.setResult(false, result, offset);
+            if (callback != null) callback.call(out);
             return;
         }
         Log("PROCESSING: " + result.getResults().size());
@@ -234,8 +239,10 @@ public class AppDataMethods extends Logger {
         db.dao().insertAll(rockets.values().toArray(new Rocket[0]));
         db.dao().insertAll(pads.values().toArray(new Pad[0]));
 
+
         if (rockets.size() == 0) {
-            if (callback != null) callback.call(true);
+            out.setResult(true, result, offset);
+            if (callback != null) callback.call(out);
             return;
         }
 
@@ -256,10 +263,10 @@ public class AppDataMethods extends Logger {
                     }
                     if (images.size() == rocketCount && callback != null) {
                         Log("done!");
-                        callback.call(true);
+                        out.setResult(true, result, offset);
+                        callback.call(out);
                     }
                 }
-
                 @Override
                 public void onError(Exception e) {
                     handleError(e, callback);

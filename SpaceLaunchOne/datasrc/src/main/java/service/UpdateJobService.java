@@ -3,9 +3,7 @@ package service;
 import android.annotation.TargetApi;
 import android.app.job.JobParameters;
 import android.app.job.JobService;
-import android.content.SharedPreferences;
 import android.os.Build;
-import android.preference.PreferenceManager;
 
 import api.OnLoadCallback;
 import utilities.DataUtilities;
@@ -24,17 +22,13 @@ public class UpdateJobService extends JobService {
 
     @Override
     public boolean onStartJob(JobParameters params) {
-        final SharedPreferences pref = PreferenceManager
-                .getDefaultSharedPreferences(getApplicationContext());
         Runnable r = () -> DataUtilities.waitAndUpdate(
                 getApplicationContext(),
-                new OnLoadCallback() {
+                new OnLoadCallback<Boolean>() {
                     @Override
-                    public void call(Object result) {
-                        UpdateTime.updateSyncTimestamp(pref);
+                    public void call(Boolean result) {
                         Logger.Log("completed sync job service!");
                     }
-
                     @Override
                     public void onError(Exception e) {
                         Logger.displayError(e);

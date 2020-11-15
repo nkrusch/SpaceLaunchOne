@@ -106,18 +106,6 @@ public class Rocket {
         this.launchIds.add(launchId);
     }
 
-//    @Ignore
-//    public static Rocket Map(RocketSerializerCommon rocket) {
-//        Rocket r = new Rocket();
-//        LauncherConfigList c = rocket.getConfiguration();
-//        r.setRid(c.getId());
-//        r.setName(c.getName());
-//        r.setFamilyName(c.getFamily());
-//        r.setConfiguration(c.getFullName());
-//        r.setLastModified(new Date());
-//        return r;
-//    }
-
     @Ignore
     public static Rocket Map(@NonNull LauncherConfigDetail c) {
         Rocket r = new Rocket();

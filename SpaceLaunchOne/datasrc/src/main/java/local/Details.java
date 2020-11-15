@@ -9,11 +9,8 @@ import androidx.room.Entity;
 import androidx.room.Ignore;
 import androidx.room.Index;
 import androidx.room.PrimaryKey;
-import apimodels.AgencySerializerMini;
+import apimodels.InfoURL;
 import apimodels.LaunchDetailed;
-import apimodels.LaunchSerializerCommon;
-import apimodels.Pad;
-import apimodels.RocketSerializerCommon;
 import apimodels.VidURL;
 
 
@@ -134,36 +131,6 @@ public class Details {
     }
 
     @Ignore
-    public static Details Map(LaunchSerializerCommon launch) {
-
-        Details details = new Details();
-        final RocketSerializerCommon rocket = launch.getRocket();
-        final AgencySerializerMini agency = launch.getLaunchServiceProvider();
-        final Pad pad = launch.getPad();
-
-        details.setUUID(launch.getId().toString());
-        details.setHashtag(launch.getHashtag());
-        details.setChanged(new Date().toString());
-        details.setNet(launch.getNet().toString());
-        if (launch.getVidURLs() != null && launch.getVidURLs().length() > 0) {
-            String[] videos = new String[1];
-            videos[0] = launch.getVidURLs();
-            details.setVidURLs(videos);
-        }
-        if (agency != null)
-            details.setAgencyId(agency.getId());
-        if (pad != null && pad.getLocation() != null)
-            details.setLocationId(pad.getLocation().getId());
-        if (pad != null)
-            details.setPadId(pad.getId());
-        if (rocket != null)
-            details.setRocketId(rocket.getConfiguration().getId());
-
-        details.setLastModified(new Date());
-        return details;
-    }
-
-    @Ignore
     public static Details Map(@NonNull LaunchDetailed launch) {
 
         Details details = new Details();
@@ -172,6 +139,13 @@ public class Details {
         details.setChanged(new Date().toString());
         details.setNet(launch.getNet().toString());
 
+        if (launch.getInfoURLs() != null && launch.getInfoURLs().size() > 0) {
+            List<String> info = new LinkedList<>();
+            for (InfoURL i : launch.getInfoURLs()) {
+                info.add(i.getUrl());
+            }
+            details.setInfoURLs(info.toArray(new String[0]));
+        }
         if (launch.getVidURLs() != null && launch.getVidURLs().size() > 0) {
             List<String> videos = new LinkedList<>();
             for (VidURL v : launch.getVidURLs()) {
@@ -194,7 +168,6 @@ public class Details {
         details.setLastModified(new Date());
         return details;
     }
-
 
     @Ignore
     @Override

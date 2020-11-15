@@ -147,16 +147,6 @@ public class Agency {
         }
     }
 
-//    @Ignore
-//    public static Agency Map(@NonNull AgencySerializerMini agency) {
-//        Agency a = new Agency();
-//        a.setAid(agency.getId());
-//        a.setName(agency.getName());
-//        a.setType(getAgencyType(agency.getType()));
-//        a.setLastModified(new Date());
-//        return a;
-//    }
-
     @Ignore
     public static Agency Map(@NonNull AgencySerializerDetailedCommon agency) {
         Agency a = new Agency();

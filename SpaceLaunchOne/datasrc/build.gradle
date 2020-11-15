@@ -9,6 +9,8 @@ android {
         versionCode 1
         versionName "1.0"
         buildConfigField 'String', "ImageAssetPath", Image_Asset_Path
+        buildConfigField 'String', "HistoryStartDate", History_start_date
+        buildConfigField 'int', "PageSize", Page_Size
         buildConfigField 'int', "InitialLoadSize", Initial_Load_Size
         buildConfigField 'int', "MinCachePolicy", Min_Cache_Policy
         buildConfigField 'int', "MinRecentLimit", Min_Recent_Limit
@@ -46,5 +48,4 @@ dependencies {
 
     implementation 'org.jsoup:jsoup:1.13.1'
     implementation project(':models')
-//    implementation project(':launchlib')
 }

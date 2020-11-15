@@ -8,11 +8,11 @@ import android.content.SharedPreferences;
 
 import androidx.appcompat.app.AppCompatActivity;
 import service.InitTime;
+import service.SyncTime;
 import service.UpdateIntentService;
-import service.UpdateTime;
 import utilities.Logger;
 
-import static service.UpdateTime.SYNC_KEY;
+import static service.SyncTime.SYNC_KEY;
 
 /**
  * This class provides necessary methods for activities
@@ -54,7 +54,7 @@ public abstract class SyncActivity extends AppCompatActivity {
      * Get timestamp (UTC) when sync last occurred
      */
     protected Long getDataSyncTimeStamp() {
-        return UpdateTime.getDataSyncTimestamp(pref());
+        return SyncTime.getDataSyncTimestamp(pref());
     }
 
     /**
@@ -64,7 +64,6 @@ public abstract class SyncActivity extends AppCompatActivity {
         @Override
         public void onReceive(Context context, Intent intent) {
             if (SYNC_KEY.equals(intent.getAction())) {
-                UpdateTime.updateSyncTimestamp(pref());
                 unregisterReceiver();
                 onReceiveHandler();
             }

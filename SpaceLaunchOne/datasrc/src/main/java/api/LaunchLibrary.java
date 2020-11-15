@@ -163,13 +163,12 @@ public class LaunchLibrary extends Logger {
      * Get updates on launch data
      *
      * @param offset   - offset from start of results
-     * @param count    - number of records to get
      * @param callback - handler to process result
      */
-    public static void allLaunches(final int offset, final int count, @NonNull final OnLoadCallback callback) {
+    public static void allLaunches(final int offset, @NonNull final OnLoadCallback callback) {
         makeRequest((methodRunner<LaunchListDetailed>) service -> {
-            Call<LaunchListDetailed> request = service.all_launches(offset, count);
-            Response<LaunchListDetailed> resp = service.all_launches(offset, count).execute();
+            Call<LaunchListDetailed> request = service.all_launches(offset);
+            Response<LaunchListDetailed> resp = service.all_launches(offset).execute();
             Log("URL: " + request.request().url().toString() +
                     "\nSUCCESS: " + resp.isSuccessful() +
                     "\nERROR: " + (resp.errorBody() != null ? resp.errorBody().string() : "None"));

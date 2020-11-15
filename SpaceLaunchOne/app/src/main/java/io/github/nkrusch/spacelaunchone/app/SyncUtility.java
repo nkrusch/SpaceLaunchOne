@@ -14,8 +14,8 @@ import java.util.Date;
 import androidx.annotation.RequiresApi;
 import io.github.nkrusch.spacelaunchone.BuildConfig;
 import io.github.nkrusch.spacelaunchone.R;
+import service.SyncTime;
 import service.UpdateJobService;
-import service.UpdateTime;
 import utilities.Logger;
 
 import static service.UpdateJobService.UPDATE_DATA_JOB_ID;
@@ -86,7 +86,7 @@ public class SyncUtility {
     @TargetApi(Build.VERSION_CODES.KITKAT)
     public static boolean shouldRunPeriodicSyncPreLollipop(Context context) {
         Long intervalMilliseconds = getSyncInterval(context);
-        Long lastSync = UpdateTime.getDataSyncTimestamp(Utilities.pref(context));
+        Long lastSync = SyncTime.getDataSyncTimestamp(Utilities.pref(context));
         long elapsedTimeSinceLastCheck = new Date().getTime() - lastSync;
         final ConnectivityManager cm = (ConnectivityManager) context
                 .getSystemService(Context.CONNECTIVITY_SERVICE);
