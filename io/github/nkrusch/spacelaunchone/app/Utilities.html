@@ -18,7 +18,7 @@
     catch(err) {
     }
 //-->
-var methods = {"i0":9,"i1":9,"i2":9,"i3":9,"i4":9,"i5":9,"i6":9,"i7":9,"i8":9,"i9":9,"i10":9,"i11":9,"i12":9,"i13":9,"i14":9,"i15":9,"i16":9,"i17":9,"i18":9,"i19":9,"i20":9,"i21":9,"i22":9,"i23":9,"i24":9,"i25":9,"i26":9};
+var methods = {"i0":9,"i1":9,"i2":9,"i3":9,"i4":9,"i5":9,"i6":9,"i7":9,"i8":9,"i9":9,"i10":9,"i11":9,"i12":9,"i13":9,"i14":9,"i15":9,"i16":9,"i17":9,"i18":9,"i19":9,"i20":9,"i21":9,"i22":9,"i23":9,"i24":9,"i25":9,"i26":9,"i27":9};
 var tabs = {65535:["t0","All Methods"],1:["t1","Static Methods"],8:["t4","Concrete Methods"]};
 var altColor = "altColor";
 var rowColor = "rowColor";
@@ -254,13 +254,17 @@ extends java.lang.Object</pre>
 </td>
 </tr>
 <tr id="i19" class="rowColor">
+<td class="colFirst"><code>static android.content.SharedPreferences</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../io/github/nkrusch/spacelaunchone/app/Utilities.html#pref-android.content.Context-">pref</a></span>(android.content.Context&nbsp;ctx)</code>&nbsp;</td>
+</tr>
+<tr id="i20" class="altColor">
 <td class="colFirst"><code>static java.lang.String</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../../io/github/nkrusch/spacelaunchone/app/Utilities.html#roundImage-java.lang.String-int-">roundImage</a></span>(java.lang.String&nbsp;url,
           int&nbsp;radius)</code>
 <div class="block">Generate rounded image optimized to specified size</div>
 </td>
 </tr>
-<tr id="i20" class="altColor">
+<tr id="i21" class="rowColor">
 <td class="colFirst"><code>static java.lang.String</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../../io/github/nkrusch/spacelaunchone/app/Utilities.html#shortTimeDiff-java.lang.Long-android.content.res.Resources-">shortTimeDiff</a></span>(java.lang.Long&nbsp;utc,
              android.content.res.Resources&nbsp;r)</code>
@@ -268,38 +272,38 @@ extends java.lang.Object</pre>
  for example: 1 year, 3 days, 2 months etc.</div>
 </td>
 </tr>
-<tr id="i21" class="rowColor">
+<tr id="i22" class="altColor">
 <td class="colFirst"><code>static void</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../../io/github/nkrusch/spacelaunchone/app/Utilities.html#showSnackBar-android.app.Activity-int-int-">showSnackBar</a></span>(android.app.Activity&nbsp;activity,
             int&nbsp;message,
             int&nbsp;length)</code>&nbsp;</td>
 </tr>
-<tr id="i22" class="altColor">
+<tr id="i23" class="rowColor">
 <td class="colFirst"><code>static java.lang.String</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../../io/github/nkrusch/spacelaunchone/app/Utilities.html#sizedHeight-java.lang.String-int-">sizedHeight</a></span>(java.lang.String&nbsp;url,
            int&nbsp;height)</code>
 <div class="block">Get image url matching specified height</div>
 </td>
 </tr>
-<tr id="i23" class="rowColor">
+<tr id="i24" class="altColor">
 <td class="colFirst"><code>static java.lang.String</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../../io/github/nkrusch/spacelaunchone/app/Utilities.html#sizedWidth-java.lang.String-int-">sizedWidth</a></span>(java.lang.String&nbsp;url,
           int&nbsp;width)</code>
 <div class="block">Get image url matching specified width</div>
 </td>
 </tr>
-<tr id="i24" class="altColor">
+<tr id="i25" class="rowColor">
 <td class="colFirst"><code>static java.lang.String</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../../io/github/nkrusch/spacelaunchone/app/Utilities.html#squareImage-java.lang.String-int-">squareImage</a></span>(java.lang.String&nbsp;url,
            int&nbsp;size)</code>
 <div class="block">Get image url transformed to desired width/height</div>
 </td>
 </tr>
-<tr id="i25" class="rowColor">
+<tr id="i26" class="altColor">
 <td class="colFirst"><code>static int</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../../io/github/nkrusch/spacelaunchone/app/Utilities.html#statusImage-int-">statusImage</a></span>(int&nbsp;status)</code>&nbsp;</td>
 </tr>
-<tr id="i26" class="altColor">
+<tr id="i27" class="rowColor">
 <td class="colFirst"><code>static java.lang.String</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../../io/github/nkrusch/spacelaunchone/app/Utilities.html#timeLabel-java.lang.Long-">timeLabel</a></span>(java.lang.Long&nbsp;utc)</code>
 <div class="block">Convert utc timestamp to date string</div>
@@ -691,10 +695,19 @@ extends java.lang.Object</pre>
 <a name="statusImage-int-">
 <!--   -->
 </a>
-<ul class="blockListLast">
+<ul class="blockList">
 <li class="blockList">
 <h4>statusImage</h4>
 <pre>public static&nbsp;int&nbsp;statusImage(int&nbsp;status)</pre>
+</li>
+</ul>
+<a name="pref-android.content.Context-">
+<!--   -->
+</a>
+<ul class="blockListLast">
+<li class="blockList">
+<h4>pref</h4>
+<pre>public static&nbsp;android.content.SharedPreferences&nbsp;pref(android.content.Context&nbsp;ctx)</pre>
 </li>
 </ul>
 </li>
