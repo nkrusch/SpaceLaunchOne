@@ -1,7 +1,5 @@
 package local;
 
-import android.util.ArrayMap;
-
 import androidx.annotation.NonNull;
 import androidx.room.Entity;
 import androidx.room.Ignore;
@@ -127,16 +125,6 @@ public class Mission {
         m.setDescription(mission.getDescription());
         m.setName(mission.getName());
         return m;
-    }
-
-
-    @Ignore
-    public static void Map(ArrayMap<Integer, Mission> result, String launchId, apimodels.Mission[] missions) {
-        if (missions == null || missions.length == 0) return;
-        for (apimodels.Mission m : missions) {
-            if (result.containsKey(m.getId())) continue;
-            result.put(m.getId(), Map(launchId, m));
-        }
     }
 
     @Override

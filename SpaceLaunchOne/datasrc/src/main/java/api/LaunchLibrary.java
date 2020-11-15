@@ -13,8 +13,7 @@ import javax.net.ssl.X509TrustManager;
 
 import androidx.annotation.NonNull;
 import apimodels.LaunchDetailed;
-import apimodels.LaunchList;
-import apimodels.LaunchSerializerCommon;
+import apimodels.LaunchListDetailed;
 import apimodels.data.BuildConfig;
 import okhttp3.OkHttpClient;
 import retrofit2.Call;
@@ -102,8 +101,8 @@ public class LaunchLibrary extends Logger {
      * @param request - specified API endpoint
      * @param result  - LaunchList for appending results if successful
      */
-    private static void getLaunches(Call<LaunchList> request, @NonNull LaunchList result) {
-        Response<LaunchList> resp = null;
+    private static void getLaunches(Call<LaunchListDetailed> request, @NonNull LaunchListDetailed result) {
+        Response<LaunchListDetailed> resp = null;
         try {
             resp = request.execute();
         } catch (IOException e) {
@@ -119,7 +118,7 @@ public class LaunchLibrary extends Logger {
             displayError(e);
         }
         if (resp.isSuccessful() && resp.body() != null && resp.body().getResults() != null) {
-            List<LaunchSerializerCommon> list = new LinkedList<>();
+            List<LaunchDetailed> list = new LinkedList<>();
             list.addAll(result.getResults());
             list.addAll(resp.body().getResults());
             result.setResults(list);
@@ -134,8 +133,8 @@ public class LaunchLibrary extends Logger {
      * @param callback - handler to process result
      */
     public static void initialLaunches(final int count, @NonNull final OnLoadCallback callback) {
-        makeRequest((methodRunner<LaunchList>) service -> {
-            LaunchList result = new LaunchList();
+        makeRequest((methodRunner<LaunchListDetailed>) service -> {
+            LaunchListDetailed result = new LaunchListDetailed();
             result.setResults(new LinkedList<>());
             getLaunches(service.upcoming_launches(count), result);
             getLaunches(service.past_launches(count), result);
@@ -168,9 +167,9 @@ public class LaunchLibrary extends Logger {
      * @param callback - handler to process result
      */
     public static void allLaunches(final int offset, final int count, @NonNull final OnLoadCallback callback) {
-        makeRequest((methodRunner<LaunchList>) service -> {
-            Call<LaunchList> request = service.all_launches(offset, count);
-            Response<LaunchList> resp = service.all_launches(offset, count).execute();
+        makeRequest((methodRunner<LaunchListDetailed>) service -> {
+            Call<LaunchListDetailed> request = service.all_launches(offset, count);
+            Response<LaunchListDetailed> resp = service.all_launches(offset, count).execute();
             Log("URL: " + request.request().url().toString() +
                     "\nSUCCESS: " + resp.isSuccessful() +
                     "\nERROR: " + (resp.errorBody() != null ? resp.errorBody().string() : "None"));

@@ -9,11 +9,11 @@ import java.util.List;
 import androidx.annotation.Nullable;
 import api.LaunchLibrary;
 import api.OnLoadCallback;
-import apimodels.AgencySerializerMini;
+import apimodels.AgencySerializerDetailedCommon;
 import apimodels.LaunchDetailed;
-import apimodels.LaunchList;
-import apimodels.LaunchSerializerCommon;
-import apimodels.RocketSerializerCommon;
+import apimodels.LaunchListDetailed;
+import apimodels.LauncherConfigDetail;
+import apimodels.RocketDetailed;
 import utilities.ImageResolver;
 import utilities.Logger;
 
@@ -21,7 +21,7 @@ import utilities.Logger;
  * Update application database
  */
 @SuppressWarnings("SameParameterValue")
-public class UpdateAppData extends Logger {
+public class AppDataMethods extends Logger {
 
     private static void handleError(Exception e, @Nullable final OnLoadCallback callback) {
         displayError(e);
@@ -31,12 +31,11 @@ public class UpdateAppData extends Logger {
     public static void init(Context context, int count, final OnLoadCallback<Boolean> callback) {
         Log("Initializing app data...");
         final AppDatabase db = AppDatabase.getInstance(context);
-        LaunchLibrary.initialLaunches(count, new OnLoadCallback<LaunchList>() {
+        LaunchLibrary.initialLaunches(count, new OnLoadCallback<LaunchListDetailed>() {
             @Override
-            public void call(LaunchList result) {
-                UpdateAppData.processLaunches(db, result, callback);
+            public void call(LaunchListDetailed result) {
+                AppDataMethods.processLaunches(db, result, callback);
             }
-
             @Override
             public void onError(Exception e) {
                 callback.onError(e);
@@ -48,8 +47,6 @@ public class UpdateAppData extends Logger {
         Log("SYNC HANDLER! updating app data....");
         final AppDatabase db = AppDatabase.getInstance(context);
         // TODO: iterate over pages
-        // TODO: fetch agencies
-        // TODO: fetch locations
         // updateAllLaunches(db, Integer.MAX_VALUE, callback);
     }
 
@@ -69,13 +66,12 @@ public class UpdateAppData extends Logger {
         });
     }
 
-    private static void updateAllLaunches(final AppDatabase db, int size, final OnLoadCallback<Boolean> callback) {
-        LaunchLibrary.allLaunches(0, size, new OnLoadCallback<LaunchList>() {
+    private static void updateAllLaunches(final AppDatabase db, int offset, int size, final OnLoadCallback<Boolean> callback) {
+        LaunchLibrary.allLaunches(offset, size, new OnLoadCallback<LaunchListDetailed>() {
             @Override
-            public void call(final LaunchList result) {
-                // processLaunches(db, result, callback);
+            public void call(final LaunchListDetailed result) {
+                processLaunches(db, result, callback);
             }
-
             @Override
             public void onError(Exception e) {
                 handleError(e, callback);
@@ -137,7 +133,7 @@ public class UpdateAppData extends Logger {
 
     private static void processLaunches(
             final AppDatabase db,
-            final LaunchList result,
+            final LaunchListDetailed result,
             final OnLoadCallback<Boolean> callback) {
 
         if (result == null || result.getResults() == null) {
@@ -159,19 +155,20 @@ public class UpdateAppData extends Logger {
         // map data
         for (int i = 0; i < result.getResults().size(); i++) {
 
-            final LaunchSerializerCommon l = result.getResults().get(i);
-            final RocketSerializerCommon r = l.getRocket();
+            final LaunchDetailed l = result.getResults().get(i);
+            final RocketDetailed r = l.getRocket();
+            final AgencySerializerDetailedCommon a = l.getLaunchServiceProvider();
             final apimodels.Pad p = l.getPad();
-            final AgencySerializerMini a = l.getLaunchServiceProvider();
             final String launchId = l.getId().toString();
 
             details[i] = Details.Map(l);
             launches[i] = Launch.Map(l);
 
             if (r != null && r.getConfiguration() != null) {
-                final int rocketId = r.getConfiguration().getId();
+                final LauncherConfigDetail c = r.getConfiguration();
+                final int rocketId = c.getId();
                 if (!rockets.containsKey(rocketId)) {
-                    Rocket rocket = Rocket.Map(r);
+                    Rocket rocket = Rocket.Map(c);
                     rocket.addLaunchId(launchId);
                     rockets.put(rocketId, rocket);
                 } else {

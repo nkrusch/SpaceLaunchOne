@@ -8,7 +8,6 @@ import androidx.room.Entity;
 import androidx.room.Ignore;
 import androidx.room.PrimaryKey;
 import apimodels.AgencySerializerDetailedCommon;
-import apimodels.AgencySerializerMini;
 import utilities.ImageResolver;
 
 @Entity(tableName = "agencies")
@@ -148,15 +147,15 @@ public class Agency {
         }
     }
 
-    @Ignore
-    public static Agency Map(@NonNull AgencySerializerMini agency) {
-        Agency a = new Agency();
-        a.setAid(agency.getId());
-        a.setName(agency.getName());
-        a.setType(getAgencyType(agency.getType()));
-        a.setLastModified(new Date());
-        return a;
-    }
+//    @Ignore
+//    public static Agency Map(@NonNull AgencySerializerMini agency) {
+//        Agency a = new Agency();
+//        a.setAid(agency.getId());
+//        a.setName(agency.getName());
+//        a.setType(getAgencyType(agency.getType()));
+//        a.setLastModified(new Date());
+//        return a;
+//    }
 
     @Ignore
     public static Agency Map(@NonNull AgencySerializerDetailedCommon agency) {

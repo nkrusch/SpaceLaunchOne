@@ -8,10 +8,10 @@ import java.util.Date;
 import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
+import local.AppDataMethods;
 import local.AppDatabase;
 import local.FavoriteLaunch;
 import local.LaunchDetails;
-import local.UpdateAppData;
 import utilities.AppExecutors;
 
 /**
@@ -87,7 +87,7 @@ public class LaunchDetailsViewModel extends AndroidViewModel {
                 boolean isStale = current - lastModMs > MIN_UPDATE;
                 if (false &&!(occursSoon || isStale)) return;
                 final Context context = getApplication().getBaseContext();
-                UpdateAppData.updateLaunchDetails(context, id, null);
+                AppDataMethods.updateLaunchDetails(context, id, null);
             }
         });
     }

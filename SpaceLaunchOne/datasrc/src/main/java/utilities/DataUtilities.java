@@ -4,7 +4,7 @@ import android.content.Context;
 import android.content.SharedPreferences;
 
 import api.OnLoadCallback;
-import local.UpdateAppData;
+import local.AppDataMethods;
 import service.InitTime;
 
 public class DataUtilities {
@@ -27,6 +27,6 @@ public class DataUtilities {
 
     public static void waitAndUpdate(Context ctx, OnLoadCallback callback) {
         DataUtilities.waitForInit(ctx);
-        UpdateAppData.sync(ctx, callback);
+        AppDataMethods.sync(ctx, callback);
     }
 }

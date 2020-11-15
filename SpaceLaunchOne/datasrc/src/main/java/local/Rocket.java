@@ -9,8 +9,6 @@ import androidx.room.Entity;
 import androidx.room.Ignore;
 import androidx.room.PrimaryKey;
 import apimodels.LauncherConfigDetail;
-import apimodels.LauncherConfigList;
-import apimodels.RocketSerializerCommon;
 
 
 @Entity(tableName = "rockets")
@@ -108,17 +106,17 @@ public class Rocket {
         this.launchIds.add(launchId);
     }
 
-    @Ignore
-    public static Rocket Map(RocketSerializerCommon rocket) {
-        Rocket r = new Rocket();
-        LauncherConfigList c = rocket.getConfiguration();
-        r.setRid(c.getId());
-        r.setName(c.getName());
-        r.setFamilyName(c.getFamily());
-        r.setConfiguration(c.getFullName());
-        r.setLastModified(new Date());
-        return r;
-    }
+//    @Ignore
+//    public static Rocket Map(RocketSerializerCommon rocket) {
+//        Rocket r = new Rocket();
+//        LauncherConfigList c = rocket.getConfiguration();
+//        r.setRid(c.getId());
+//        r.setName(c.getName());
+//        r.setFamilyName(c.getFamily());
+//        r.setConfiguration(c.getFullName());
+//        r.setLastModified(new Date());
+//        return r;
+//    }
 
     @Ignore
     public static Rocket Map(@NonNull LauncherConfigDetail c) {
