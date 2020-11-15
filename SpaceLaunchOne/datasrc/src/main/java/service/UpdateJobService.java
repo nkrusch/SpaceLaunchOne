@@ -6,7 +6,7 @@ import android.app.job.JobService;
 import android.os.Build;
 
 import api.OnLoadCallback;
-import utilities.DataUtilities;
+import utilities.SyncUtilities;
 import utilities.Logger;
 
 /**
@@ -22,7 +22,7 @@ public class UpdateJobService extends JobService {
 
     @Override
     public boolean onStartJob(JobParameters params) {
-        Runnable r = () -> DataUtilities.waitAndUpdate(
+        Runnable r = () -> SyncUtilities.waitAndUpdate(
                 getApplicationContext(),
                 new OnLoadCallback<Boolean>() {
                     @Override

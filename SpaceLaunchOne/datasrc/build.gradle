@@ -11,6 +11,7 @@ android {
         buildConfigField 'String', "ImageAssetPath", Image_Asset_Path
         buildConfigField 'String', "HistoryStartDate", History_start_date
         buildConfigField 'int', "PageSize", Page_Size
+        buildConfigField 'int', "PageCount", Page_Count
         buildConfigField 'int', "InitialLoadSize", Initial_Load_Size
         buildConfigField 'int', "MinCachePolicy", Min_Cache_Policy
         buildConfigField 'int', "MinRecentLimit", Min_Recent_Limit

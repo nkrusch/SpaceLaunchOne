@@ -46,7 +46,7 @@ public class AppDataMethods extends Logger {
     }
 
     public static void sync(Context context, int offset, final OnLoadCallback<ProcessResult> callback) {
-        Log("SYNC HANDLER! updating app data....");
+        Log("Updating app data.... offset: " + offset);
         final AppDatabase db = AppDatabase.getInstance(context);
         updateAllLaunches(db, offset, callback);
     }
@@ -267,6 +267,7 @@ public class AppDataMethods extends Logger {
                         callback.call(out);
                     }
                 }
+
                 @Override
                 public void onError(Exception e) {
                     handleError(e, callback);

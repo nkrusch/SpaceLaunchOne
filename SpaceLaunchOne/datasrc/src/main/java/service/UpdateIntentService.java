@@ -5,7 +5,7 @@ import android.content.Intent;
 
 import androidx.annotation.Nullable;
 import api.OnLoadCallback;
-import utilities.DataUtilities;
+import utilities.SyncUtilities;
 import utilities.Logger;
 
 import static service.SyncTime.SYNC_KEY;
@@ -27,7 +27,7 @@ public class UpdateIntentService extends IntentService {
     @Override
     protected void onHandleIntent(@Nullable Intent intent) {
         if (intent != null && SYNC_KEY.equals(intent.getAction())) {
-            Runnable r = () -> DataUtilities.waitAndUpdate(
+            Runnable r = () -> SyncUtilities.waitAndUpdate(
                     getApplicationContext(),
                     new OnLoadCallback<Boolean>() {
                         @Override
