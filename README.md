@@ -25,7 +25,7 @@ This application uses [Launch Library API](https://ll.thespacedevs.com/2.0.0/swa
 | List of future launches | List of completed launches | View launch details | 
 | Explore launch sites | Browse agensies and LSPs | View agency missions |
 | Daily space-themed imagery | Watch launches live on Youtube | Search launches by keyword |
-| Google Maps and Places | Dark Mode Support  | Automatic data synchronization | 
+| Explore maps of launch sites | Dark mode support  | Automatic data synchronization | 
 | Homescreen countdown widget | Responsive design | Works offline |
 | Filter launches by preference | RTL and accessibility support | Device support: >= Kitkat |
 
