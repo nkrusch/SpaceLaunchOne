@@ -25,7 +25,7 @@ This application uses [Launch Library API](https://ll.thespacedevs.com/2.0.0/swa
 | ☆ | ☆ | ☆ | 
 | --- | --- |  --- | 
 | Future launches | Past launches | Launch details | 
-| Filter launches | Search for launches | Watch live launched | 
+| Filter launches | Search for launches | Watch live launch videos | 
 | Explore Launch sites | Space agensies | Agency missions |
 | Save favorites | Homescreen widget | Space-themed imagery | 
 | Dark mode support | Offline enabled |  Responsive design |
