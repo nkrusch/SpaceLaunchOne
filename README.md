@@ -22,14 +22,16 @@ This application uses [Launch Library API](https://ll.thespacedevs.com/2.0.0/swa
 
 ## App Features
 
-| * * * * * | * * * * * | * * * * * | 
+| ☆ | ☆ | ☆ | 
 | --- | --- |  --- | 
-| List of future launches | List of completed launches | View launch details | 
-| Explore launch sites | Browse agensies and LSPs | View agency missions |
-| Daily space-themed imagery | Watch launches live on Youtube | Search launches by keyword |
-| Explore maps of launch sites | Dark mode support  | Automatic data synchronization | 
-| Homescreen countdown widget | Responsive design | Works offline |
-| Filter launches by preference | RTL and accessibility support | Device support: >= Kitkat |
+| Future launches | Past launches | Launch details | 
+| Filter launches | Search for launches | Watch live launched | 
+| Explore Launch sites | Space agensies | Agency missions |
+| Save favorites | Homescreen widget | Space-themed imagery | 
+| Dark mode support | Offline enabled |  Responsive design |
+| RTL layout support | API >= Kitkat | Translations: 2 | 
+
+
 
 ## Privacy Policy
 
