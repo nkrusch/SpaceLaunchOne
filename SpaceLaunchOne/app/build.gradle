@@ -18,9 +18,9 @@ android {
     def versionPropsFile = project.rootProject.file('version.properties')
     versionProps.load(new FileInputStream(versionPropsFile))
 
-    def major = 2
+    def major = 3
     def minor = 0
-    def patch = 1
+    def patch = 0
     def code = versionProps['VERSION_CODE'].toInteger() + 1
     versionProps['VERSION_CODE'] = code.toString()
     versionProps.store(versionPropsFile.newWriter(), null)

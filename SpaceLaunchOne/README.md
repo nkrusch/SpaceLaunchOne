@@ -73,9 +73,10 @@ Library/Package | Purpose
 └─── api | External network methods
 └─── local | Local database methods
 └─── service | Services for initializing and synchronizing data over time
+└─── utilities | Data utitlity methods
 └─── viewmodels | ViewModels provide assess to data to the UI layer
 └ **models** | API models
-└─── base | abstract base classes for API models
+└─── apimodels | Launch library API models
 
 -----
 

@@ -16,7 +16,6 @@
     <dimen name="fab_margin">16dip</dimen>
 
 
-
     <!-- LAUNCH LIST: START -->
     <dimen name="list_item_minHeight">88dp</dimen>
     <dimen name="primary_text">15sp</dimen>
@@ -116,6 +115,15 @@
         <item>@drawable/space_bg_49</item>
         <item>@drawable/space_bg_50</item>
         <item>@drawable/space_bg_51</item>
+        <item>@drawable/space_bg_52</item>
+        <item>@drawable/space_bg_53</item>
+        <item>@drawable/space_bg_54</item>
+        <item>@drawable/space_bg_55</item>
+        <item>@drawable/space_bg_56</item>
+        <item>@drawable/space_bg_57</item>
+        <item>@drawable/space_bg_58</item>
+        <item>@drawable/space_bg_59</item>
+        <item>@drawable/space_bg_60</item>
     </integer-array>
     <!-- NEXT LAUNCH: END -->
 
