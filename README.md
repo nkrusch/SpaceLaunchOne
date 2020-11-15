@@ -25,11 +25,12 @@ This application uses [Launch Library API](https://ll.thespacedevs.com/2.0.0/swa
 ## App Features
 
 <table width="100%">
+  <tbody>
   <tr>  
-    <td><h3 align="center">🛰️</h3></td>
-    <td><h3 align="center">🚀</h3></td>
-    <td><h3 align="center">👩‍🚀</h3></td>
-    <td><h3 align="center">☄️</h3></td>
+    <td width="228px"><h3 align="center">🛰️</h3></td>
+    <td width="228px"><h3 align="center">🚀</h3></td>
+    <td width="228px"><h3 align="center">👩‍🚀</h3></td>
+    <td width="228px"><h3 align="center">☄️</h3></td>
   </tr>
   <tr>
     <td><h4 align="center">Future launches</h4></td>
@@ -61,8 +62,8 @@ This application uses [Launch Library API](https://ll.thespacedevs.com/2.0.0/swa
     <td><h3 align="center">📡</h3></td>
     <td><h3 align="center">🔭</h3></td> 
   </tr>
+  </tbody>
 </table>
-
 
 ## License 
 
