@@ -24,7 +24,7 @@ This application uses [Launch Library API](https://ll.thespacedevs.com/2.0.0/swa
 
 ## App Features
 
-| ☆ | ☆ | ☆ | 
+| <h3>🛰️</h3> | <h3>🚀</h3> | <h3>☄️</h3> | 
 | --- | --- |  --- | 
 | Future launches | Past launches | Launch details | 
 | Filter launches | Search for launches | Watch live launch videos | 
@@ -32,6 +32,8 @@ This application uses [Launch Library API](https://ll.thespacedevs.com/2.0.0/swa
 | Save favorites | Homescreen widget | Space-themed imagery | 
 | Dark mode support | Offline enabled |  Responsive design |
 | RTL layout support | API >= Kitkat | Translations: 2 | 
+| <h3 align="center">🔭</h3> | <h3 align="center">🪐</h3> | <h3 align="center">📡</h3> | 
+
 
 ## License 
 
