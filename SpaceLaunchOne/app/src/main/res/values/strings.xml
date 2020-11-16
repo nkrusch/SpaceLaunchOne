@@ -198,4 +198,10 @@
     <string name="scheduled">Launches</string>
     <string name="agencies">Agencies</string>
     <string name="locations">Locations</string>
+    <string name="no_missions">No missions</string>
+    <string name="space_agency">space agency</string>
+    <string name="space_launch">space launch</string>
+    <string name="launch_location">launch location</string>
+    <string name="mission">mission</string>
+    <string name="launch_pad">launch pad</string>
 </resources>

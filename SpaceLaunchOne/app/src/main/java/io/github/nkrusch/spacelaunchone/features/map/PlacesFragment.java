@@ -42,9 +42,9 @@ import io.github.nkrusch.spacelaunchone.R;
  */
 public class PlacesFragment extends BottomSheetDialogFragment {
 
-    private final String EXTRA_RVSTATE = "recyclerview_state";
-    private static final String EXTRA_PLACENAME = "place_name";
-    private static final String EXTRA_PLACEID = "place_id";
+    private final String EXTRA_RV_STATE = "recyclerview_state";
+    private static final String EXTRA_PLACE_NAME = "place_name";
+    private static final String EXTRA_PLACE_ID = "place_id";
     private GeoDataClient mGeoDataClient;
     private String placeId;
     private String placeName;
@@ -58,8 +58,8 @@ public class PlacesFragment extends BottomSheetDialogFragment {
     public static PlacesFragment newInstance(String id, String name) {
         PlacesFragment f = new PlacesFragment();
         Bundle args = new Bundle();
-        args.putString(EXTRA_PLACEID, id);
-        args.putString(EXTRA_PLACENAME, name);
+        args.putString(EXTRA_PLACE_ID, id);
+        args.putString(EXTRA_PLACE_NAME, name);
         f.setArguments(args);
         return f;
     }
@@ -72,21 +72,18 @@ public class PlacesFragment extends BottomSheetDialogFragment {
         super.onCreate(savedInstanceState);
         Bundle bundle = this.getArguments();
         if (bundle != null) {
-            placeId = bundle.getString(EXTRA_PLACEID);
-            placeName = bundle.getString(EXTRA_PLACENAME);
+            placeId = bundle.getString(EXTRA_PLACE_ID);
+            placeName = bundle.getString(EXTRA_PLACE_NAME);
         }
     }
 
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {
         Dialog psf = super.onCreateDialog(savedInstanceState);
-        psf.setOnShowListener(new DialogInterface.OnShowListener() {
-            @Override
-            public void onShow(DialogInterface dialog) {
-                BottomSheetDialog d = (BottomSheetDialog) dialog;
-                FrameLayout bottomSheet = d.findViewById(R.id.design_bottom_sheet);
-                BottomSheetBehavior.from(bottomSheet).setState(BottomSheetBehavior.STATE_EXPANDED);
-            }
+        psf.setOnShowListener(dialog -> {
+            BottomSheetDialog d = (BottomSheetDialog) dialog;
+            FrameLayout bottomSheet = d.findViewById(R.id.design_bottom_sheet);
+            BottomSheetBehavior.from(bottomSheet).setState(BottomSheetBehavior.STATE_EXPANDED);
         });
         return psf;
     }
@@ -96,7 +93,9 @@ public class PlacesFragment extends BottomSheetDialogFragment {
      */
     @Nullable
     @Override
-    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+    public View onCreateView(@NonNull LayoutInflater inflater,
+                             @Nullable ViewGroup container,
+                             @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_places, container, false);
         mHeading = view.findViewById(R.id.places_heading);
         if (placeName != null && !placeName.isEmpty()) mHeading.setText(placeName);
@@ -105,8 +104,8 @@ public class PlacesFragment extends BottomSheetDialogFragment {
         mRecyclerView.setLayoutManager(new GridLayoutManager(getContext(), 1,
                 LinearLayoutManager.HORIZONTAL, false));
         mRecyclerView.setAdapter(new PlacesImageAdapter(new LinkedList()));
-        if (savedInstanceState != null && savedInstanceState.containsKey(EXTRA_RVSTATE))
-            mRecyclerView.scrollToPosition(savedInstanceState.getInt(EXTRA_RVSTATE));
+        if (savedInstanceState != null && savedInstanceState.containsKey(EXTRA_RV_STATE))
+            mRecyclerView.scrollToPosition(savedInstanceState.getInt(EXTRA_RV_STATE));
 
         placeLookup();
         return view;
@@ -123,7 +122,7 @@ public class PlacesFragment extends BottomSheetDialogFragment {
                     ((LinearLayoutManager) mRecyclerView.getLayoutManager());
             scrollPosition = lm.findFirstCompletelyVisibleItemPosition();
         }
-        outState.putInt(EXTRA_RVSTATE, scrollPosition);
+        outState.putInt(EXTRA_RV_STATE, scrollPosition);
         super.onSaveInstanceState(outState);
     }
 
@@ -133,18 +132,15 @@ public class PlacesFragment extends BottomSheetDialogFragment {
     private void placeLookup() {
         if (getContext() == null) return;
         mGeoDataClient = Places.getGeoDataClient(getContext());
-        mGeoDataClient.getPlaceById(placeId).addOnCompleteListener(new OnCompleteListener<PlaceBufferResponse>() {
-            @Override
-            public void onComplete(@NonNull Task<PlaceBufferResponse> task) {
-                if (task.isSuccessful()) {
-                    PlaceBufferResponse places = task.getResult();
-                    Place myPlace = places.get(0);
-                    mHeading.setText(myPlace.getName());
-                    getPhotos(placeId);
-                    places.release();
-                } else {
-                    mHeading.setText(R.string.place_not_found);
-                }
+        mGeoDataClient.getPlaceById(placeId).addOnCompleteListener(task -> {
+            if (task.isSuccessful()) {
+                PlaceBufferResponse places = task.getResult();
+                Place myPlace = places.get(0);
+                mHeading.setText(myPlace.getName());
+                getPhotos(placeId);
+                places.release();
+            } else {
+                mHeading.setText(R.string.place_not_found);
             }
         });
     }
@@ -157,31 +153,28 @@ public class PlacesFragment extends BottomSheetDialogFragment {
      */
     private void getPhotos(final String placeId) {
         final Task<PlacePhotoMetadataResponse> photoMetadataResponse = mGeoDataClient.getPlacePhotos(placeId);
-        photoMetadataResponse.addOnCompleteListener(new OnCompleteListener<PlacePhotoMetadataResponse>() {
-            @Override
-            public void onComplete(@NonNull Task<PlacePhotoMetadataResponse> task) {
-                PlacePhotoMetadataResponse photos = task.getResult();
-                final PlacePhotoMetadataBuffer photoMetadataBuffer = photos.getPhotoMetadata();
-                final List<Bitmap> tmp = new LinkedList();
-                final List<Bitmap> images = new LinkedList();
-                final List<Integer> progressCounter = new LinkedList<>();
+        photoMetadataResponse.addOnCompleteListener(task -> {
+            PlacePhotoMetadataResponse photos = task.getResult();
+            final PlacePhotoMetadataBuffer photoMetadataBuffer = photos.getPhotoMetadata();
+            final List<Bitmap> tmp = new LinkedList();
+            final List<Bitmap> images = new LinkedList();
+            final List<Integer> progressCounter = new LinkedList<>();
 
-                for (PlacePhotoMetadata ppmd : photoMetadataBuffer) {
-                    tmp.add(null);
-                    final Task<PlacePhotoResponse> photoResponse = mGeoDataClient.getPhoto(ppmd);
-                    photoResponse.addOnCompleteListener(new OnCompleteListener<PlacePhotoResponse>() {
-                        @Override
-                        public void onComplete(@NonNull Task<PlacePhotoResponse> task) {
-                            PlacePhotoResponse photo = task.getResult();
-                            if (task.isSuccessful()) images.add(photo.getBitmap());
-                            progressCounter.add(1);
-                            if (progressCounter.size() == photoMetadataBuffer.getCount())
-                                handleDataChange(images);
-                        }
-                    });
-                }
-                handleDataChange(tmp);
+            for (PlacePhotoMetadata ppmd : photoMetadataBuffer) {
+                tmp.add(null);
+                final Task<PlacePhotoResponse> photoResponse = mGeoDataClient.getPhoto(ppmd);
+                photoResponse.addOnCompleteListener(new OnCompleteListener<PlacePhotoResponse>() {
+                    @Override
+                    public void onComplete(@NonNull Task<PlacePhotoResponse> task) {
+                        PlacePhotoResponse photo = task.getResult();
+                        if (task.isSuccessful()) images.add(photo.getBitmap());
+                        progressCounter.add(1);
+                        if (progressCounter.size() == photoMetadataBuffer.getCount())
+                            handleDataChange(images);
+                    }
+                });
             }
+            handleDataChange(tmp);
         });
     }
 

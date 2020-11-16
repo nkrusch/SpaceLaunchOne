@@ -7,6 +7,7 @@
         style="@style/list_image_card">
 
         <ImageView
+            android:contentDescription="@string/space_launch"
             android:id="@+id/thumbnail"
             style="@style/list_image" />
     </androidx.cardview.widget.CardView>

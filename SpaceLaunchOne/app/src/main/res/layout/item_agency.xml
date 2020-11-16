@@ -11,7 +11,8 @@
             android:id="@+id/thumbnail"
             style="@style/list_image"
             android:scaleType="fitCenter"
-            android:background="@android:color/transparent" />
+            android:contentDescription="@string/space_agency"
+            android:background="@color/transparent" />
     </androidx.cardview.widget.CardView>
 
     <TextView

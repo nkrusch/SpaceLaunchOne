@@ -40,5 +40,4 @@
         <item name="android:visibility">@integer/visibility_gone</item>
     </style>
 
-
 </resources>

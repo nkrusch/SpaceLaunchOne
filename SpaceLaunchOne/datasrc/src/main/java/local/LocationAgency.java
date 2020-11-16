@@ -1,5 +1,6 @@
 package local;
 
+import android.annotation.SuppressLint;
 import android.util.ArrayMap;
 
 import androidx.annotation.NonNull;
@@ -47,6 +48,7 @@ public class LocationAgency {
         this.aid = aid;
     }
 
+    @SuppressLint("DefaultLocale")
     public static String key(int lid, int aid) {
         return String.format("%d,%d", lid, aid);
     }
@@ -58,6 +60,7 @@ public class LocationAgency {
         if (!ref.containsKey(key)) ref.put(key, new LocationAgency(locationId, agencyId));
     }
 
+    @SuppressLint("DefaultLocale")
     @NonNull
     @Override
     public String toString() {

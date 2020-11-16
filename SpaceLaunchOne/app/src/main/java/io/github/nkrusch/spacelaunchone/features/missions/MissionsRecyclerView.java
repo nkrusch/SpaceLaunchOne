@@ -93,7 +93,7 @@ public class MissionsRecyclerView extends RecyclerViewFragment {
         mRecyclerView.setAdapter(la);
         mEmptyState = view.findViewById(R.id.empty_state);
         TextView mEmptyStateText = view.findViewById(R.id.list_empty_state_text);
-        mEmptyStateText.setText("No missions");
+        mEmptyStateText.setText(R.string.no_missions);
         restoreRecyclerViewState(savedInstanceState);
         return view;
     }

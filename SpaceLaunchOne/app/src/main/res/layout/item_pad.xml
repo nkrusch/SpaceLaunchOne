@@ -1,29 +1,29 @@
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/list_item_container"
     style="@style/list_item">
 
     <androidx.cardview.widget.CardView
         android:id="@+id/thumbnail_card"
+        style="@style/list_image_card"
         android:layout_width="32dp"
         android:layout_height="32dp"
-        app:cardCornerRadius="4dp"
-        style="@style/list_image_card">
+        app:cardCornerRadius="4dp">
 
         <ImageView
             android:id="@+id/thumbnail"
+            style="@style/list_image"
+            android:contentDescription="@string/launch_pad"
             android:visibility="visible"
-            app:srcCompat="@drawable/ic_map_marker"
-            style="@style/list_image" />
+            app:srcCompat="@drawable/ic_map_marker" />
 
     </androidx.cardview.widget.CardView>
 
     <TextView
         android:id="@+id/title"
-        android:paddingTop="10dp"
+        style="@style/list_primary_text_layout"
         android:layout_height="wrap_content"
-        style="@style/list_primary_text_layout" />
+        android:paddingTop="10dp" />
 
     <TextView
         android:id="@+id/sub_line_1"
@@ -34,11 +34,11 @@
         style="@style/list_seondary_text_line_2" />
 
     <TextView
+        android:id="@+id/list_number"
+        style="@style/list_number"
         android:layout_marginTop="10dp"
         app:layout_constraintBottom_toBottomOf="@null"
-        app:layout_constraintTop_toTopOf="parent"
-        android:id="@+id/list_number"
-        style="@style/list_number" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <View style="@style/list_divider" />
 

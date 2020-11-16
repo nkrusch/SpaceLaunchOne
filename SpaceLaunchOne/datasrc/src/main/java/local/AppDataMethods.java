@@ -1,5 +1,6 @@
 package local;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.util.ArrayMap;
 
@@ -133,6 +134,7 @@ public class AppDataMethods extends Logger {
 
     }
 
+    @SuppressLint("DefaultLocale")
     private static void processLaunches(
             final AppDatabase db,
             final LaunchListDetailed result,

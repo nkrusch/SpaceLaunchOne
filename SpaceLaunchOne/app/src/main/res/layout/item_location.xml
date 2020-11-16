@@ -9,9 +9,10 @@
         style="@style/list_image_card">
 
         <ImageView
+            android:contentDescription="@string/launch_location"
             android:id="@+id/thumbnail"
             android:scaleType="fitCenter"
-            android:background="@android:color/transparent"
+            android:background="@color/transparent"
             style="@style/list_image" />
 
     </androidx.cardview.widget.CardView>

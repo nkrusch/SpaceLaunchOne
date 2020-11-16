@@ -14,6 +14,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
+import androidx.lifecycle.ViewModelProvider;
 import androidx.lifecycle.ViewModelProviders;
 import androidx.recyclerview.widget.GridLayoutManager;
 import io.github.nkrusch.spacelaunchone.R;
@@ -23,6 +24,7 @@ import io.github.nkrusch.spacelaunchone.features.DetailsLaunchActivity;
 import local.AgencyDetails;
 import local.Launch;
 import viewmodels.AgencyDetailsViewModel;
+import viewmodels.LaunchDetailsViewModel;
 
 
 public class AgencyLaunchRecyclerView extends RecyclerViewFragment{
@@ -35,13 +37,11 @@ public class AgencyLaunchRecyclerView extends RecyclerViewFragment{
 
     protected void setupViewModel() {
         if (getActivity() != null) {
-            AgencyDetailsViewModel vm = ViewModelProviders.of(getActivity()).get(AgencyDetailsViewModel.class);
-            vm.get().observe(getActivity(), new Observer<AgencyDetails>() {
-                @Override
-                public void onChanged(AgencyDetails locationDetails) {
-                    if(locationDetails!=null && locationDetails.getLaunches()!=null)
-                        handleDataChange(locationDetails.getLaunches());
-                }
+            AgencyDetailsViewModel vm = new ViewModelProvider(getActivity())
+                    .get(AgencyDetailsViewModel.class);
+            vm.get().observe(getActivity(), locationDetails -> {
+                if(locationDetails!=null && locationDetails.getLaunches()!=null)
+                    handleDataChange(locationDetails.getLaunches());
             });
         }
     }
@@ -50,12 +50,8 @@ public class AgencyLaunchRecyclerView extends RecyclerViewFragment{
      * When user clicks on recyclerview items launch details view
      */
     private OnItemClickListener onItemClick() {
-        return new OnItemClickListener() {
-            @Override
-            public void onItemClick(String id, String name) {
-                startActivity(DetailsLaunchActivity.launchDetails(getContext(), id, name));
-            }
-        };
+        return (id, name) -> startActivity(DetailsLaunchActivity
+                .launchDetails(getContext(), id, name));
     }
 
     /**
@@ -77,7 +73,8 @@ public class AgencyLaunchRecyclerView extends RecyclerViewFragment{
     }
 
     /**
-     * initialize recyclerview and bind adapter; bind item click listener; restore previous recyclerview state (if any)
+     * initialize recyclerview and bind adapter; bind item click listener;
+     * restore previous recyclerview state (if any)
      */
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {

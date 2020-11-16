@@ -11,6 +11,7 @@
         style="@style/list_image_card">
 
         <ImageView
+            android:contentDescription="@string/mission"
             android:id="@+id/thumbnail"
             android:layout_gravity="center_horizontal"
             android:layout_width="32dp"

@@ -166,4 +166,10 @@
     <string name="agencies">Agentuurit</string>
     <string name="locations">Paikat</string>
     <string name="scheduled">Laukaisut</string>
+    <string name="no_missions">Ei missioita</string>
+    <string name="space_agency">Agentuuri</string>
+    <string name="space_launch">Laukaisu</string>
+    <string name="launch_location">Paikka</string>
+    <string name="mission">Missio</string>
+    <string name="launch_pad">Alusta</string>
 </resources>

@@ -5,7 +5,7 @@
     style="@style/matches_parent">
 
     <com.google.android.material.appbar.AppBarLayout
-        android:background="@android:color/transparent"
+        android:background="@color/transparent"
         android:id="@+id/list_appbar_layout"
         style="@style/list_appbar_layout">
 

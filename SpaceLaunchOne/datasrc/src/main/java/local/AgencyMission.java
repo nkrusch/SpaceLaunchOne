@@ -1,5 +1,7 @@
 package local;
 
+import android.annotation.SuppressLint;
+
 import androidx.annotation.NonNull;
 import androidx.room.Entity;
 import androidx.room.Ignore;
@@ -45,10 +47,12 @@ public class AgencyMission {
         this.aid = aid;
     }
 
+    @SuppressLint("DefaultLocale")
     public static String key(int mid, int aid) {
         return String.format("%d,%d", mid, aid);
     }
 
+    @SuppressLint("DefaultLocale")
     @NonNull
     @Override
     public String toString() {

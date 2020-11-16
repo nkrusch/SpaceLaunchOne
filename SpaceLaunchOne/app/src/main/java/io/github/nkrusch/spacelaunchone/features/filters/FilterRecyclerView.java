@@ -13,12 +13,14 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.Observer;
+import androidx.lifecycle.ViewModelProvider;
 import androidx.lifecycle.ViewModelProviders;
 import androidx.recyclerview.widget.GridLayoutManager;
 import io.github.nkrusch.spacelaunchone.R;
 import io.github.nkrusch.spacelaunchone.app.RecyclerViewFragment;
 import local.IFilter;
 import viewmodels.IFilterViewModel;
+import viewmodels.LaunchDetailsViewModel;
 
 @SuppressWarnings("SpellCheckingInspection")
 abstract class FilterRecyclerView<T extends IFilter, S extends
@@ -33,32 +35,19 @@ abstract class FilterRecyclerView<T extends IFilter, S extends
     @Override
     protected void setupViewModel() {
         if (getActivity() != null) {
-            vm = ViewModelProviders.of(getActivity()).get(getType());
-            vm.getAll().observe(getActivity(), new Observer<List<T>>() {
-                @Override
-                public void onChanged(@Nullable List<T> launches) {
-                    handleDataChange(launches);
-                }
-            });
+            vm = new ViewModelProvider(getActivity()).get(getType());
+            vm.getAll().observe(getActivity(), (Observer<List<T>>) launches -> handleDataChange(launches));
         }
     }
 
     private FilterAdapter.OnItemClickListener onItemClick() {
-        return new FilterAdapter.OnItemClickListener() {
-            @Override
-            public void onItemClick(IFilter item) {
-                vm.toggle(item);
-            }
-        };
+        return item -> vm.toggle(item);
     }
 
     private View.OnClickListener onCheckAllClick(){
-        return new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                boolean value = ((CheckBox) v).isChecked();
-                vm.setAll(!value);
-            }
+        return v -> {
+            boolean value = ((CheckBox) v).isChecked();
+            vm.setAll(!value);
         };
     }
 

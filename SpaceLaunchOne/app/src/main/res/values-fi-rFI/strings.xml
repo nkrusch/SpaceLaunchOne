@@ -85,7 +85,7 @@
     <string name="sync_frequency">sykronisointi frekvenssi</string>
     <string name="version">Versio</string>
     <string name="scroll_to_top">alkuun</string>
-    <string name="search">Etsi...</string>
+    <string name="search">Etsi…</string>
     <string name="last_sync_never_occurred"> </string>
     <string name="last_sync_timestamp">Viimeisin synkronisointi %s</string>
     <string name="widget_loading">Latautuu</string>
@@ -165,4 +165,10 @@
     <string name="agencies">Agentuurit</string>
     <string name="locations">Paikat</string>
     <string name="scheduled">Laukaisut</string>
+    <string name="no_missions">Ei missioita</string>
+    <string name="space_agency">Agentuuri</string>
+    <string name="space_launch">Laukaisu</string>
+    <string name="launch_location">Paikka</string>
+    <string name="mission">Missio</string>
+    <string name="launch_pad">Alusta</string>
 </resources>

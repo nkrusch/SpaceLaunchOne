@@ -533,7 +533,7 @@ public class Utilities {
         if (!countryCode.contains(",") && !countryCode.contains("/"))
             return countryName(countryCode);
 
-        String[] countries = countryCode.split(",|/");
+        String[] countries = countryCode.split("[,/]");
         if (countries.length > maxCount)
             return res.getQuantityString(R.plurals.many_countries, countries.length, countries.length);
 

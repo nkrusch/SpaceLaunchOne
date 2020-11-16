@@ -17,7 +17,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true"
-        tools:ignore="GoogleAppIndexingWarning"
+        tools:ignore="GoogleAppIndexingWarning,UnusedAttribute"
         tools:replace="android:fullBackupContent">
         <meta-data
             android:name="com.google.android.geo.API_KEY"
@@ -107,7 +107,7 @@
         <service
             android:name="service.UpdateJobService"
             android:exported="true"
-            android:label="Data syncronization service"
+            android:label="Data synchronization service"
             android:permission="android.permission.BIND_JOB_SERVICE" />
 
     </application>
