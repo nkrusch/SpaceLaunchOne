@@ -32,14 +32,11 @@ public class SettingsActivity extends SyncActivity {
         final ConnectivityManager cm = (ConnectivityManager) this.getSystemService(Context.CONNECTIVITY_SERVICE);
         final View view = findViewById(android.R.id.content);
 
-        s.setSyncHandler(new SettingsFragment.onSyncRequest() {
-            @Override
-            public void run() {
-                boolean canSync = Utilities.isNetworkAvailable(cm);
-                int messageRes = canSync ? R.string.pref_sync_started : R.string.offline_message;
-                if (canSync) requestImmediateSync();
-                Snackbar.make(view, messageRes, Snackbar.LENGTH_LONG).show();
-            }
+        s.setSyncHandler(() -> {
+            boolean canSync = Utilities.isNetworkAvailable(cm);
+            int messageRes = canSync ? R.string.pref_sync_started : R.string.offline_message;
+            if (canSync) requestImmediateSync();
+            Snackbar.make(view, messageRes, Snackbar.LENGTH_LONG).show();
         });
         getFragmentManager().beginTransaction()
                 .replace(android.R.id.content, s)

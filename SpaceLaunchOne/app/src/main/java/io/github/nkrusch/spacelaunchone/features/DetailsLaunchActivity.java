@@ -113,11 +113,11 @@ public class DetailsLaunchActivity extends TabbedActivity {
             @Override
             public void onChanged(@Nullable FavoriteLaunch result) {
                 if (result != null) {
-                    mFab.setImageResource(R.drawable.ic_heart);
+                    mFab.setImageResource(R.drawable.ic_star);
                     mFab.setBackgroundTintList(ColorStateList.valueOf(
                             ContextCompat.getColor(getBaseContext(), R.color.favoriteFabBgTint)));
                 } else {
-                    mFab.setImageResource(R.drawable.ic_heart_outline);
+                    mFab.setImageResource(R.drawable.ic_star_outline);
                     mFab.setBackgroundTintList(ColorStateList.valueOf(
                             ContextCompat.getColor(getBaseContext(),
                                     R.color.favoriteFabBgTintInactive)));
