@@ -1,5 +1,7 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/list_item_container"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:ignore="MissingConstraints"
     style="@style/list_item">
 
     <androidx.cardview.widget.CardView
@@ -18,11 +20,11 @@
 
     <TextView
         android:id="@+id/sub_line_1"
-        style="@style/list_seondary_text_line_1" />
+        style="@style/list_secondary_text_line_1" />
 
     <TextView
         android:id="@+id/sub_line_2"
-        style="@style/list_seondary_text_line_2" />
+        style="@style/list_secondary_text_line_2" />
 
     <TextView
         android:id="@+id/list_number"

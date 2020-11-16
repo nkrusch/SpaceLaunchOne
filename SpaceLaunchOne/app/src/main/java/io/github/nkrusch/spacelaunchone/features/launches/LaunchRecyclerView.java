@@ -42,7 +42,7 @@ abstract class LaunchRecyclerView<S extends AndroidViewModel & ILaunchesViewMode
     }
 
     /**
-     * This method binds viewmodel observer.
+     * This method binds viewModel observer.
      * When observer detects a change it calls {@link LaunchRecyclerView<Launch>{@link #handleDataChange}}
      */
     protected void setupViewModel() {
@@ -70,7 +70,7 @@ abstract class LaunchRecyclerView<S extends AndroidViewModel & ILaunchesViewMode
     }
 
     /**
-     * When viewmodel state changes, update the adapter
+     * When viewModel state changes, update the adapter
      */
     private void handleDataChange(@Nullable List<Launch> entries) {
         if (mRecyclerView == null || entries == null) return;

@@ -6,8 +6,8 @@ import android.app.job.JobService;
 import android.os.Build;
 
 import api.OnLoadCallback;
-import utilities.SyncUtilities;
 import utilities.Logger;
+import utilities.SyncUtilities;
 
 /**
  * The purpose of this service is to periodically

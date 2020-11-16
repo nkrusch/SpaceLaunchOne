@@ -7,7 +7,6 @@ import androidx.room.Embedded;
 import androidx.room.Ignore;
 import androidx.room.Relation;
 
-@SuppressWarnings("SpellCheckingInspection")
 public class LaunchDetails {
 
     @Embedded

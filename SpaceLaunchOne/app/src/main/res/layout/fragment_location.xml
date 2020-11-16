@@ -18,7 +18,7 @@
             app:layout_scrollFlags="scroll"
             app:titleEnabled="false">
 
-            <fragment
+            <androidx.fragment.app.FragmentContainerView
                 android:id="@+id/LocationMap"
                 android:name="io.github.nkrusch.spacelaunchone.features.map.LocationMapFragment"
                 android:layout_width="match_parent"
@@ -27,7 +27,7 @@
         </com.google.android.material.appbar.CollapsingToolbarLayout>
     </com.google.android.material.appbar.AppBarLayout>
 
-    <fragment
+    <androidx.fragment.app.FragmentContainerView
         android:id="@+id/Pads"
         android:name="io.github.nkrusch.spacelaunchone.features.pads.LocationPadsRecyclerView"
         android:layout_width="match_parent"

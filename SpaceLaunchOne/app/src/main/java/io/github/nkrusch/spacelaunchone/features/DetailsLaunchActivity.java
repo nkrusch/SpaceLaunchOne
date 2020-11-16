@@ -11,21 +11,17 @@ import android.view.animation.AlphaAnimation;
 import com.google.android.material.appbar.AppBarLayout;
 import com.google.android.material.tabs.TabLayout;
 
-import androidx.annotation.Nullable;
 import androidx.core.app.NavUtils;
 import androidx.core.app.TaskStackBuilder;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
-import androidx.lifecycle.Observer;
-import androidx.lifecycle.ViewModelProviders;
+import androidx.lifecycle.ViewModelProvider;
 import io.github.nkrusch.spacelaunchone.R;
 import io.github.nkrusch.spacelaunchone.app.TabbedActivity;
 import io.github.nkrusch.spacelaunchone.app.TabsAdapter;
 import io.github.nkrusch.spacelaunchone.features.launchdetails.SummaryFragment;
 import io.github.nkrusch.spacelaunchone.features.map.MapFragment;
-import local.FavoriteLaunch;
-import local.LaunchDetails;
 import viewmodels.LaunchDetailsViewModel;
 
 import static android.view.View.GONE;
@@ -74,21 +70,20 @@ public class DetailsLaunchActivity extends TabbedActivity {
      */
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()) {
-            case android.R.id.home:
-                Intent upIntent = NavUtils.getParentActivityIntent(this);
-                if (widgetLaunch && upIntent != null)
-                    TaskStackBuilder.create(this)
-                            .addNextIntentWithParentStack(upIntent)
-                            .startActivities();
-                else finish();
-                return true;
+        if (item.getItemId() == android.R.id.home) {
+            Intent upIntent = NavUtils.getParentActivityIntent(this);
+            if (widgetLaunch && upIntent != null)
+                TaskStackBuilder.create(this)
+                        .addNextIntentWithParentStack(upIntent)
+                        .startActivities();
+            else finish();
+            return true;
         }
         return super.onOptionsItemSelected(item);
     }
 
     /**
-     * ACtivity title to display in the toolbar
+     * Activity title to display in the toolbar
      */
     @Override
     public String getTitleText() {
@@ -99,35 +94,29 @@ public class DetailsLaunchActivity extends TabbedActivity {
      * Initialize view model with selected launch id
      */
     private void setupViewModel(final String launchId) {
-        vm = ViewModelProviders.of(this).get(LaunchDetailsViewModel.class);
-        vm.loadLaunch(launchId).observe(this, new Observer<LaunchDetails>() {
-            @Override
-            public void onChanged(@Nullable LaunchDetails result) {
-                if (result != null) {
-                    mPager.setVisibility(View.VISIBLE);
-                    mProgress.setVisibility(GONE);
-                }
+        vm = new ViewModelProvider(this).get(LaunchDetailsViewModel.class);
+        vm.loadLaunch(launchId).observe(this, result -> {
+            if (result != null) {
+                mPager.setVisibility(View.VISIBLE);
+                mProgress.setVisibility(GONE);
             }
         });
-        vm.favorite().observe(this, new Observer<FavoriteLaunch>() {
-            @Override
-            public void onChanged(@Nullable FavoriteLaunch result) {
-                if (result != null) {
-                    mFab.setImageResource(R.drawable.ic_star);
-                    mFab.setBackgroundTintList(ColorStateList.valueOf(
-                            ContextCompat.getColor(getBaseContext(), R.color.favoriteFabBgTint)));
-                } else {
-                    mFab.setImageResource(R.drawable.ic_star_outline);
-                    mFab.setBackgroundTintList(ColorStateList.valueOf(
-                            ContextCompat.getColor(getBaseContext(),
-                                    R.color.favoriteFabBgTintInactive)));
-                }
+        vm.favorite().observe(this, result -> {
+            if (result != null) {
+                mFab.setImageResource(R.drawable.ic_star);
+                mFab.setBackgroundTintList(ColorStateList.valueOf(
+                        ContextCompat.getColor(getBaseContext(), R.color.favoriteFabBgTint)));
+            } else {
+                mFab.setImageResource(R.drawable.ic_star_outline);
+                mFab.setBackgroundTintList(ColorStateList.valueOf(
+                        ContextCompat.getColor(getBaseContext(),
+                                R.color.favoriteFabBgTintInactive)));
             }
         });
     }
 
     /**
-     * Steup details tabs toolbar options
+     * Setup details tabs toolbar options
      */
     public void addToolbarTabs(TabLayout tabLayout) {
         tabLayout.addTab(tabLayout.newTab().setText(getString(R.string.tab_event)));
@@ -135,9 +124,9 @@ public class DetailsLaunchActivity extends TabbedActivity {
     }
 
     /**
-     * When switching to maps fragment make sure the appbar is in collpased mode
+     * When switching to maps fragment make sure the appbar is in collapsed mode
      * because the map buttons are positioned based on the available space when
-     * appbar is in collpased state.
+     * appbar is in collapsed state.
      *
      * @param position active tab index
      */
@@ -150,12 +139,7 @@ public class DetailsLaunchActivity extends TabbedActivity {
 
     private void ToggleFabVisibility(boolean visible) {
         if (visible) {
-            mFab.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    vm.ToggleFavorite();
-                }
-            });
+            mFab.setOnClickListener(view -> vm.ToggleFavorite());
             mFab.setVisibility(View.VISIBLE);
             AlphaAnimation animation1 = new AlphaAnimation(0f, 1f);
             animation1.setDuration(400);
@@ -180,7 +164,7 @@ public class DetailsLaunchActivity extends TabbedActivity {
     /**
      * Details tabs adapter
      */
-    public class MyAdapter extends TabsAdapter {
+    public static class MyAdapter extends TabsAdapter {
 
         MyAdapter(FragmentManager fm) {
             super(TAB_COUNT, fm);
@@ -188,14 +172,10 @@ public class DetailsLaunchActivity extends TabbedActivity {
 
         @Override
         public Fragment getItem(int position) {
-            switch (position) {
-                case 0:
-                    return SummaryFragment.newInstance();
-                case 1:
-                    return MapFragment.newInstance();
-                default:
-                    return null;
+            if (position == 1) {
+                return MapFragment.newInstance();
             }
+            return SummaryFragment.newInstance();
         }
     }
 }

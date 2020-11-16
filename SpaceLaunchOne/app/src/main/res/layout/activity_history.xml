@@ -2,7 +2,7 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     style="@style/matches_parent">
 
-    <fragment
+    <androidx.fragment.app.FragmentContainerView
         android:id="@+id/Launches"
         android:name="io.github.nkrusch.spacelaunchone.features.launches.PastLaunches"
         android:layout_width="match_parent"

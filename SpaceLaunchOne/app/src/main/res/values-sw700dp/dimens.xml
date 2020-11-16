@@ -45,7 +45,7 @@
         <item name="layout_constraintRight_toRightOf">@id/thumbnail_card</item>
     </style>
 
-    <style name="list_seondary_text_line_1" parent="list_secondary_text">
+    <style name="list_secondary_text_line_1" parent="list_secondary_text">
         <item name="android:textColor">@android:color/white</item>
         <item name="android:layout_height">30dp</item>
         <item name="android:gravity">left|top</item>
@@ -54,7 +54,7 @@
         <item name="layout_constraintRight_toRightOf">@id/thumbnail_card</item>
     </style>
 
-    <style name="list_seondary_text_line_2" parent="list_secondary_text">
+    <style name="list_secondary_text_line_2" parent="list_secondary_text">
         <item name="android:visibility">@integer/visibility_gone</item>
     </style>
 

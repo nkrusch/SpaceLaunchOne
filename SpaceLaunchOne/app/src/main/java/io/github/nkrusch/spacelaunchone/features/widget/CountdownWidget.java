@@ -101,13 +101,12 @@ public class CountdownWidget extends AppWidgetProvider {
             new WidgetGetNextTask(result -> {
                 if (launchId == null && result == null) {
                     launchEventName = unavailable;
-                    onUpdate(context);
                 } else {
                     launchId = result.getLuuid();
                     launchEventName = result.getName();
                     TargetDate = result.getLaunchDateUTC();
-                    onUpdate(context);
                 }
+                onUpdate(context);
                 isLoading = false;
             }).execute(context);
         } else {
@@ -168,7 +167,7 @@ public class CountdownWidget extends AppWidgetProvider {
                 new Intent(context, MainActivity.class);
         intent.putExtra(EXTRA_WIDGET_LAUNCHER, 1);
         intent.setData(Uri.withAppendedPath(Uri.parse("myapp://widget/#id" + appWidgetId),
-                String.valueOf(UUID.randomUUID().toString())));
+                UUID.randomUUID().toString()));
         views.setOnClickPendingIntent(R.id.widget_container, PendingIntent.getActivity(
                 context, 0, intent, PendingIntent.FLAG_UPDATE_CURRENT));
     }

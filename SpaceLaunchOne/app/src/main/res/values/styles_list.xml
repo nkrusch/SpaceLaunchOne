@@ -76,13 +76,13 @@
         <item name="android:gravity">left|bottom</item>
     </style>
 
-    <style name="list_seondary_text_line_1" parent="list_secondary_text">
+    <style name="list_secondary_text_line_1" parent="list_secondary_text">
         <item name="layout_constraintTop_toBottomOf">@id/title</item>
         <item name="layout_constraintStart_toEndOf">@id/thumbnail_card</item>
         <item name="layout_constraintEnd_toStartOf">@id/list_number</item>
     </style>
 
-    <style name="list_seondary_text_line_2" parent="list_secondary_text">
+    <style name="list_secondary_text_line_2" parent="list_secondary_text">
         <item name="layout_constraintTop_toBottomOf">@id/sub_line_1</item>
         <item name="layout_constraintStart_toEndOf">@id/thumbnail_card</item>
         <item name="layout_constraintEnd_toStartOf">@id/list_number</item>

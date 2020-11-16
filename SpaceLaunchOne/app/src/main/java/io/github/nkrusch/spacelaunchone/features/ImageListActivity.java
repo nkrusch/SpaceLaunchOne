@@ -26,11 +26,11 @@ import io.github.nkrusch.spacelaunchone.features.launches.PastLaunches;
  * This activity manages activity toolbar and its options.
  * The ImageView grid is used by tablet devices.
  * See {@link MainActivity} for mobile & small tablet version that
- * repalces this activity.
+ * replaces this activity.
  */
 public class ImageListActivity extends SyncActivity {
 
-    private final String EXTRA_LISTVIEW = "extra_list_view";
+    private final String EXTRA_LIST_VIEW = "extra_list_view";
     private FrameLayout launchesContainer;
     private boolean currentLaunchState = false;
 
@@ -40,7 +40,7 @@ public class ImageListActivity extends SyncActivity {
         setContentView(R.layout.activity_image_lists);
         launchesContainer = findViewById(R.id.launches_container);
         if (savedInstanceState != null) {
-            currentLaunchState = savedInstanceState.getBoolean(EXTRA_LISTVIEW, false);
+            currentLaunchState = savedInstanceState.getBoolean(EXTRA_LIST_VIEW, false);
         }
         setLaunchesFragment(currentLaunchState);
         checkSyncStatus();
@@ -75,7 +75,7 @@ public class ImageListActivity extends SyncActivity {
     }
 
     /**
-     * Handle menu opion clicks
+     * Handle menu item clicks
      *
      * @param item selected item
      */
@@ -135,7 +135,7 @@ public class ImageListActivity extends SyncActivity {
      */
     @Override
     public void onSaveInstanceState(@NonNull Bundle outState) {
-        outState.putBoolean(EXTRA_LISTVIEW, currentLaunchState);
+        outState.putBoolean(EXTRA_LIST_VIEW, currentLaunchState);
         super.onSaveInstanceState(outState);
     }
 

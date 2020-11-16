@@ -1,6 +1,7 @@
 <androidx.constraintlayout.widget.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     style="@style/matches_parent"
     android:background="@color/default_activity_background">
 
@@ -15,9 +16,10 @@
     <View
         android:id="@+id/divider"
         style="@style/filter_checkall_divider"
-        app:layout_constraintTop_toBottomOf="@id/search_view" />
+        app:layout_constraintTop_toBottomOf="@id/search_view"
+        tools:ignore="MissingConstraints" />
 
-    <fragment
+    <androidx.fragment.app.FragmentContainerView
         android:id="@+id/Launches"
         android:name="io.github.nkrusch.spacelaunchone.features.launches.SearchLaunches"
         android:layout_width="match_parent"

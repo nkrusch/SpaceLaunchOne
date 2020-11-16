@@ -8,10 +8,11 @@ import android.view.View;
 
 import com.google.android.material.tabs.TabLayout;
 
+import java.util.Objects;
+
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
-import androidx.lifecycle.Observer;
-import androidx.lifecycle.ViewModelProviders;
+import androidx.lifecycle.ViewModelProvider;
 import io.github.nkrusch.spacelaunchone.R;
 import io.github.nkrusch.spacelaunchone.app.TabbedActivity;
 import io.github.nkrusch.spacelaunchone.app.TabsAdapter;
@@ -46,20 +47,17 @@ public class DetailsAgencyActivity extends TabbedActivity {
         title = getIntent().getStringExtra(EXTRA_NAME);
         super.onCreate(savedInstanceState);
 
-        vm = ViewModelProviders.of(this).get(AgencyDetailsViewModel.class);
-        vm.loadDetails(agencyId).observe(this, new Observer<local.AgencyDetails>() {
-            @Override
-            public void onChanged(local.AgencyDetails agencyDetails) {
-                if (agencyDetails != null) {
-                    tabLayout.getTabAt(LAUNCH_INDEX).setText(
-                            getResources().getQuantityString(R.plurals.tab_launches,
-                                    agencyDetails.getLaunches().size(), agencyDetails.getLaunches().size()));
-                    tabLayout.getTabAt(MISSIONS_INDEX).setText(
-                            getResources().getQuantityString(R.plurals.tab_missions,
-                                    agencyDetails.getMissions().size(), agencyDetails.getMissions().size()));
-                    mPager.setVisibility(View.VISIBLE);
-                    mProgress.setVisibility(GONE);
-                }
+        vm = new ViewModelProvider(this).get(AgencyDetailsViewModel.class);
+        vm.loadDetails(agencyId).observe(this, agencyDetails -> {
+            if (agencyDetails != null) {
+                Objects.requireNonNull(tabLayout.getTabAt(LAUNCH_INDEX)).setText(
+                        getResources().getQuantityString(R.plurals.tab_launches,
+                                agencyDetails.getLaunches().size(), agencyDetails.getLaunches().size()));
+                Objects.requireNonNull(tabLayout.getTabAt(MISSIONS_INDEX)).setText(
+                        getResources().getQuantityString(R.plurals.tab_missions,
+                                agencyDetails.getMissions().size(), agencyDetails.getMissions().size()));
+                mPager.setVisibility(View.VISIBLE);
+                mProgress.setVisibility(GONE);
             }
         });
     }
@@ -83,10 +81,9 @@ public class DetailsAgencyActivity extends TabbedActivity {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()) {
-            case android.R.id.home:
-                finish();
-                return true;
+        if (item.getItemId() == android.R.id.home) {
+            finish();
+            return true;
         }
         return super.onOptionsItemSelected(item);
     }
@@ -99,12 +96,10 @@ public class DetailsAgencyActivity extends TabbedActivity {
 
         @Override
         public Fragment getItem(int position) {
-            switch (position) {
-                case MISSIONS_INDEX:
-                    return MissionsRecyclerView.newInstance();
-                default:
-                    return AgencyLaunchRecyclerView.newInstance();
+            if (position == MISSIONS_INDEX) {
+                return MissionsRecyclerView.newInstance();
             }
+            return AgencyLaunchRecyclerView.newInstance();
         }
     }
 

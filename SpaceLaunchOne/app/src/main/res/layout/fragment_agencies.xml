@@ -19,7 +19,7 @@
 
     </com.google.android.material.appbar.AppBarLayout>
 
-    <fragment
+    <androidx.fragment.app.FragmentContainerView
         android:id="@+id/Agencies"
         android:name="io.github.nkrusch.spacelaunchone.features.agencies.AgencyRecyclerView"
         android:layout_width="match_parent"

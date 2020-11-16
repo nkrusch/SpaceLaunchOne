@@ -71,7 +71,6 @@ public class LocationPadsAdapter extends RecyclerView.Adapter<LocationPadsAdapte
         private final ImageView mImageView;
         private final TextView mTextView;
         private final TextView mSubText1;
-        private final TextView mSubText2;
         private final TextView mNumber;
 
 
@@ -80,7 +79,6 @@ public class LocationPadsAdapter extends RecyclerView.Adapter<LocationPadsAdapte
             mImageView = v.findViewById(R.id.thumbnail);
             mTextView = v.findViewById(R.id.title);
             mSubText1 = v.findViewById(R.id.sub_line_1);
-            mSubText2 = v.findViewById(R.id.sub_line_2);
             mNumber = v.findViewById(R.id.list_number);
             ConstraintLayout layout = (v.findViewById(R.id.list_item_container));
             if (layout != null) layout.setOnClickListener(this);

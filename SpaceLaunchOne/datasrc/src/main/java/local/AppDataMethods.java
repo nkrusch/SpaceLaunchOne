@@ -6,6 +6,7 @@ import android.util.ArrayMap;
 
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Objects;
 
 import androidx.annotation.Nullable;
 import api.LaunchLibrary;
@@ -179,7 +180,7 @@ public class AppDataMethods extends Logger {
                     rocket.addLaunchId(launchId);
                     rockets.put(rocketId, rocket);
                 } else {
-                    rockets.get(rocketId).addLaunchId(launchId);
+                    Objects.requireNonNull(rockets.get(rocketId)).addLaunchId(launchId);
                 }
             }
 
@@ -188,7 +189,7 @@ public class AppDataMethods extends Logger {
                 if (!agencies.containsKey(agencyId)) {
                     agencies.put(agencyId, Agency.Map(a));
                 } else {
-                    agencies.get(agencyId).setIslsp(1);
+                    Objects.requireNonNull(agencies.get(agencyId)).setIslsp(1);
                 }
             }
 

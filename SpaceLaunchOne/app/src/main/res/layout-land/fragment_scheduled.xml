@@ -8,7 +8,7 @@
         android:id="@+id/list_appbar_layout"
         style="@style/list_appbar_layout">
 
-        <fragment
+        <androidx.fragment.app.FragmentContainerView
             android:id="@+id/NextLaunch"
             android:name="io.github.nkrusch.spacelaunchone.features.next.NextLaunchFragment"
             android:layout_width="match_parent"
@@ -25,7 +25,7 @@
 
     </com.google.android.material.appbar.AppBarLayout>
 
-    <fragment
+    <androidx.fragment.app.FragmentContainerView
         android:id="@+id/Launches"
         android:name="io.github.nkrusch.spacelaunchone.features.launches.FutureLaunches"
         android:layout_width="match_parent"

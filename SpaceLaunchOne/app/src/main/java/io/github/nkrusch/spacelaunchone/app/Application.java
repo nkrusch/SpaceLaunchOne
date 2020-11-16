@@ -11,7 +11,6 @@ import java.util.Map;
 import androidx.appcompat.app.AppCompatDelegate;
 import io.github.nkrusch.spacelaunchone.BuildConfig;
 
-@SuppressWarnings("SpellCheckingInspection")
 public class Application extends android.app.Application {
 
     @Override
@@ -20,7 +19,7 @@ public class Application extends android.app.Application {
         AppCompatDelegate.setCompatVectorFromResourcesEnabled(true);
 
         // setup cloudinary images
-        Map config = new HashMap<>();
+        Map<String, String> config = new HashMap<>();
         config.put("cloud_name", BuildConfig.CloudinaryClound);
         MediaManager.init(this, config);
 

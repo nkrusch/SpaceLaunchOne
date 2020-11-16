@@ -1,6 +1,8 @@
 <androidx.constraintlayout.widget.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/video_container"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:ignore="MissingConstraints"
     style="@style/video_layout">
 
     <ImageView

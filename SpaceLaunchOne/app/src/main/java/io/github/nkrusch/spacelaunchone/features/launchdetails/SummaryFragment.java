@@ -24,7 +24,6 @@ import utilities.ImageResolver;
 
 import static android.view.View.VISIBLE;
 
-@SuppressWarnings("SpellCheckingInspection")
 public class SummaryFragment extends DetailsBaseFragment {
 
     private final String EXTRA_INIT = "countdown_initialized";

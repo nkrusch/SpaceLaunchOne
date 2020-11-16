@@ -52,7 +52,7 @@ public class AgencyRecyclerView extends RecyclerViewFragment{
     }
 
     /**
-     * When viewmodel state changes, update the adapter
+     * When viewModel state changes, update the adapter
      */
     private void handleDataChange(@Nullable List<Agency> entries) {
         if (mRecyclerView == null || entries == null) return;

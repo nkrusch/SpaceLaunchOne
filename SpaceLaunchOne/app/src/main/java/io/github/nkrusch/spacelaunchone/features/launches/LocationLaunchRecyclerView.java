@@ -63,7 +63,7 @@ public class LocationLaunchRecyclerView extends RecyclerViewFragment{
     }
 
     /**
-     * When viewmodel state changes, update the adapter
+     * When viewModel state changes, update the adapter
      */
     private void handleDataChange(@Nullable List<Launch> entries) {
         if (mRecyclerView == null || entries == null) return;

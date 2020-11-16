@@ -27,19 +27,19 @@ import io.github.nkrusch.spacelaunchone.R;
  * This activity shows information about this app
  * such as image credits and version number.
  * The text content of this activity is defined in res/values
- * as a string-array. That array is laoded into a recyclerView for display.
+ * as a string-array. That array is loaded into a recyclerView for display.
  */
 public class CreditsActivity extends AppCompatActivity {
 
-    private final String EXTRA_RVSTATE = "recyclerview_state";
+    private final String EXTRA_RV_STATE = "recyclerview_state";
     private RecyclerView mRecyclerView;
 
     /**
      * On lifecycle changes, restore the previous state
      */
     private void restoreRecyclerViewState(Bundle savedInstanceState) {
-        if (savedInstanceState != null && mRecyclerView != null && savedInstanceState.containsKey(EXTRA_RVSTATE))
-            mRecyclerView.scrollToPosition(savedInstanceState.getInt(EXTRA_RVSTATE));
+        if (savedInstanceState != null && mRecyclerView != null && savedInstanceState.containsKey(EXTRA_RV_STATE))
+            mRecyclerView.scrollToPosition(savedInstanceState.getInt(EXTRA_RV_STATE));
     }
 
     /**
@@ -53,7 +53,7 @@ public class CreditsActivity extends AppCompatActivity {
                     ((LinearLayoutManager) mRecyclerView.getLayoutManager());
             scrollPosition = lm.findFirstCompletelyVisibleItemPosition();
         }
-        outState.putInt(EXTRA_RVSTATE, scrollPosition);
+        outState.putInt(EXTRA_RV_STATE, scrollPosition);
         super.onSaveInstanceState(outState);
     }
 
@@ -142,7 +142,7 @@ public class CreditsActivity extends AppCompatActivity {
             Pair<String, String> entry = dataSource.get(position);
             holder.label.setText(entry.first);
             holder.value.setText(Html.fromHtml(entry.second));
-            if (entry.second.contains("href")) {
+            if (entry.second != null && entry.second.contains("href")) {
                 holder.value.setMovementMethod(LinkMovementMethod.getInstance());
                 holder.value.setPadding(0, 20, 0, 20);
             }

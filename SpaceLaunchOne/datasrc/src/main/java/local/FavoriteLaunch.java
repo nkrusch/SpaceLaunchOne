@@ -4,7 +4,7 @@ import androidx.annotation.NonNull;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
-@SuppressWarnings({"NullableProblems", "SpellCheckingInspection"})
+@SuppressWarnings({"NullableProblems"})
 @Entity(tableName = "favorites")
 public class FavoriteLaunch {
 
@@ -13,6 +13,7 @@ public class FavoriteLaunch {
     private String fid;
 
     public FavoriteLaunch() {
+        fid = "";
     }
 
     public FavoriteLaunch(String id) {

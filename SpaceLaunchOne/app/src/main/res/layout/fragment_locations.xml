@@ -19,7 +19,7 @@
 
     </com.google.android.material.appbar.AppBarLayout>
 
-    <fragment
+    <androidx.fragment.app.FragmentContainerView
         android:id="@+id/Locations"
         android:name="io.github.nkrusch.spacelaunchone.features.locations.LocationRecyclerView"
         android:layout_width="match_parent"

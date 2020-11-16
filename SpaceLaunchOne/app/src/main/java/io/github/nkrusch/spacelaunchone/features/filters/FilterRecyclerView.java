@@ -14,15 +14,12 @@ import androidx.annotation.Nullable;
 import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
-import androidx.lifecycle.ViewModelProviders;
 import androidx.recyclerview.widget.GridLayoutManager;
 import io.github.nkrusch.spacelaunchone.R;
 import io.github.nkrusch.spacelaunchone.app.RecyclerViewFragment;
 import local.IFilter;
 import viewmodels.IFilterViewModel;
-import viewmodels.LaunchDetailsViewModel;
 
-@SuppressWarnings("SpellCheckingInspection")
 abstract class FilterRecyclerView<T extends IFilter, S extends
         AndroidViewModel & IFilterViewModel> extends RecyclerViewFragment {
 

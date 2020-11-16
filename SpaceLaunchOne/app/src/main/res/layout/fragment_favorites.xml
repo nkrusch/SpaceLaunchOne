@@ -18,7 +18,7 @@
 
     </com.google.android.material.appbar.AppBarLayout>
 
-    <fragment
+    <androidx.fragment.app.FragmentContainerView
         android:id="@+id/Launches"
         android:name="io.github.nkrusch.spacelaunchone.features.launches.FavoriteLaunches"
         android:layout_width="match_parent"

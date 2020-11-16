@@ -1,5 +1,7 @@
 <androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/scrollview"
+    tools:ignore="MissingConstraints"
     style="@style/details_nested_scroll">
 
     <androidx.constraintlayout.widget.ConstraintLayout style="@style/details_layout">

@@ -86,7 +86,6 @@
     <string name="version">Versio</string>
     <string name="scroll_to_top">alkuun</string>
     <string name="search">Etsi…</string>
-    <string name="last_sync_never_occurred"> </string>
     <string name="last_sync_timestamp">Viimeisin synkronisointi %s</string>
     <string name="widget_loading">Latautuu</string>
     <string name="widget_image">kuva</string>

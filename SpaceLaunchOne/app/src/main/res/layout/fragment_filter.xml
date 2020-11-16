@@ -1,6 +1,8 @@
 <androidx.constraintlayout.widget.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:background="@color/default_activity_background"
+    tools:ignore="MissingConstraints"
     style="@style/matches_parent">
 
     <CheckBox

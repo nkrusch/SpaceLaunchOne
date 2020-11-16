@@ -1,7 +1,6 @@
 package io.github.nkrusch.spacelaunchone.features.map;
 
 import android.app.Dialog;
-import android.content.DialogInterface;
 import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -19,7 +18,6 @@ import com.google.android.gms.location.places.PlacePhotoMetadataBuffer;
 import com.google.android.gms.location.places.PlacePhotoMetadataResponse;
 import com.google.android.gms.location.places.PlacePhotoResponse;
 import com.google.android.gms.location.places.Places;
-import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.bottomsheet.BottomSheetBehavior;
 import com.google.android.material.bottomsheet.BottomSheetDialog;
@@ -89,7 +87,7 @@ public class PlacesFragment extends BottomSheetDialogFragment {
     }
 
     /**
-     * Setup RecyclerView and initialize place loopup
+     * Setup RecyclerView and initialize place lookup
      */
     @Nullable
     @Override
@@ -148,7 +146,7 @@ public class PlacesFragment extends BottomSheetDialogFragment {
     /**
      * Load images about selected place
      * This method first gets image metadata to find out if there are images;
-     * If there are some imager, first update adapter to show placeholder images until
+     * If there are some images, first update adapter to show placeholder images until
      * image loading has completed. Once image bitmaps have loaded update the adapter to show images.
      */
     private void getPhotos(final String placeId) {
@@ -160,18 +158,15 @@ public class PlacesFragment extends BottomSheetDialogFragment {
             final List<Bitmap> images = new LinkedList();
             final List<Integer> progressCounter = new LinkedList<>();
 
-            for (PlacePhotoMetadata ppmd : photoMetadataBuffer) {
+            for (PlacePhotoMetadata meta : photoMetadataBuffer) {
                 tmp.add(null);
-                final Task<PlacePhotoResponse> photoResponse = mGeoDataClient.getPhoto(ppmd);
-                photoResponse.addOnCompleteListener(new OnCompleteListener<PlacePhotoResponse>() {
-                    @Override
-                    public void onComplete(@NonNull Task<PlacePhotoResponse> task) {
-                        PlacePhotoResponse photo = task.getResult();
-                        if (task.isSuccessful()) images.add(photo.getBitmap());
-                        progressCounter.add(1);
-                        if (progressCounter.size() == photoMetadataBuffer.getCount())
-                            handleDataChange(images);
-                    }
+                final Task<PlacePhotoResponse> photoResponse = mGeoDataClient.getPhoto(meta);
+                photoResponse.addOnCompleteListener(task1 -> {
+                    PlacePhotoResponse photo = task1.getResult();
+                    if (task1.isSuccessful()) images.add(photo.getBitmap());
+                    progressCounter.add(1);
+                    if (progressCounter.size() == photoMetadataBuffer.getCount())
+                        handleDataChange(images);
                 });
             }
             handleDataChange(tmp);

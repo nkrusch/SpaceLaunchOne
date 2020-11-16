@@ -14,7 +14,7 @@ import androidx.recyclerview.widget.RecyclerView;
  */
 public abstract class RecyclerViewFragment extends Fragment {
 
-    private final String EXTRA_RVSTATE = "recyclerview_state";
+    private final String EXTRA_RV_STATE = "recyclerview_state";
     protected RecyclerView mRecyclerView;
 
     protected abstract void setupViewModel();
@@ -26,8 +26,8 @@ public abstract class RecyclerViewFragment extends Fragment {
         setupViewModel();
     }
     protected void restoreRecyclerViewState(Bundle savedInstanceState) {
-        if (savedInstanceState != null && mRecyclerView != null && savedInstanceState.containsKey(EXTRA_RVSTATE))
-            mRecyclerView.scrollToPosition(savedInstanceState.getInt(EXTRA_RVSTATE));
+        if (savedInstanceState != null && mRecyclerView != null && savedInstanceState.containsKey(EXTRA_RV_STATE))
+            mRecyclerView.scrollToPosition(savedInstanceState.getInt(EXTRA_RV_STATE));
     }
 
     @Override
@@ -38,7 +38,7 @@ public abstract class RecyclerViewFragment extends Fragment {
                     ((LinearLayoutManager) mRecyclerView.getLayoutManager());
             scrollPosition = lm.findFirstCompletelyVisibleItemPosition();
         }
-        outState.putInt(EXTRA_RVSTATE, scrollPosition);
+        outState.putInt(EXTRA_RV_STATE, scrollPosition);
         super.onSaveInstanceState(outState);
     }
 }

@@ -5,8 +5,8 @@ import android.content.Intent;
 
 import androidx.annotation.Nullable;
 import api.OnLoadCallback;
-import utilities.SyncUtilities;
 import utilities.Logger;
+import utilities.SyncUtilities;
 
 import static service.SyncTime.SYNC_KEY;
 

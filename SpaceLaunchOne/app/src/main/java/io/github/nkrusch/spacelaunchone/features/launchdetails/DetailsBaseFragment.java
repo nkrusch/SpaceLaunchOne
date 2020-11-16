@@ -25,7 +25,6 @@ import viewmodels.LaunchDetailsViewModel;
 import static android.view.View.GONE;
 import static android.view.View.VISIBLE;
 
-@SuppressWarnings("SpellCheckingInspection")
 abstract class DetailsBaseFragment extends Fragment {
 
     String none;
@@ -59,7 +58,7 @@ abstract class DetailsBaseFragment extends Fragment {
  */
 abstract class HorizontalRecyclerViewFragment<T extends RecyclerView.Adapter & BaseRecyclerViewAdapter<S>, S> extends DetailsBaseFragment {
 
-    private final String EXTRA_RVSTATE = "recyclerview_state";
+    private final String EXTRA_RV_STATE = "recyclerview_state";
     private BaseRecyclerViewAdapter<S> mAdapter;
     private RecyclerView.SmoothScroller smoothScroller;
     private RecyclerView mRecyclerView;
@@ -108,8 +107,8 @@ abstract class HorizontalRecyclerViewFragment<T extends RecyclerView.Adapter & B
         mBullet4 = view.findViewById(R.id.bullet_4);
         mBullet5 = view.findViewById(R.id.bullet_5);
 
-        if (savedInstanceState != null && savedInstanceState.containsKey(EXTRA_RVSTATE))
-            mRecyclerView.scrollToPosition(savedInstanceState.getInt(EXTRA_RVSTATE));
+        if (savedInstanceState != null && savedInstanceState.containsKey(EXTRA_RV_STATE))
+            mRecyclerView.scrollToPosition(savedInstanceState.getInt(EXTRA_RV_STATE));
 
         return view;
     }
@@ -122,7 +121,7 @@ abstract class HorizontalRecyclerViewFragment<T extends RecyclerView.Adapter & B
                     ((GridLayoutManager) mRecyclerView.getLayoutManager());
             scrollPosition = lm.findFirstCompletelyVisibleItemPosition();
         }
-        outState.putInt(EXTRA_RVSTATE, scrollPosition);
+        outState.putInt(EXTRA_RV_STATE, scrollPosition);
         super.onSaveInstanceState(outState);
     }
 
@@ -139,13 +138,13 @@ abstract class HorizontalRecyclerViewFragment<T extends RecyclerView.Adapter & B
 
     private void setupBullets(int selected) {
         if (mBullets == null) return;
-        final int pagesize = getPageSize();
-        int pageCount = (int) Math.ceil((float) mRecyclerView.getAdapter().getItemCount() / pagesize);
+        final int pageSize = getPageSize();
+        int pageCount = (int) Math.ceil((float) mRecyclerView.getAdapter().getItemCount() / pageSize);
         final int total = Utilities.clamp(0, 5, pageCount);
         TextView[] bullets = new TextView[]{mBullet1, mBullet2, mBullet3, mBullet4, mBullet5};
         int inactive = getResources().getColor(R.color.bullet_inactive);
         int active = getResources().getColor(R.color.bullet_active);
-        int activeBullet = Math.min(bullets.length - 1, Math.max(0, (int) Math.floor(selected / pagesize)));
+        int activeBullet = Math.min(bullets.length - 1, Math.max(0, (int) Math.floor(selected / pageSize)));
 
         mBullets.setVisibility(total > 1 ? VISIBLE : GONE);
         for (int n = 0; n < bullets.length; n++) {
@@ -154,7 +153,7 @@ abstract class HorizontalRecyclerViewFragment<T extends RecyclerView.Adapter & B
             final int currentIndex = n;
             if (!bullets[n].hasOnClickListeners())
                 bullets[n].setOnClickListener(v -> {
-                    smoothScroller.setTargetPosition(currentIndex * pagesize);
+                    smoothScroller.setTargetPosition(currentIndex * pageSize);
                     (mRecyclerView.getLayoutManager()).startSmoothScroll(smoothScroller);
                     setupBullets(currentIndex);
                 });

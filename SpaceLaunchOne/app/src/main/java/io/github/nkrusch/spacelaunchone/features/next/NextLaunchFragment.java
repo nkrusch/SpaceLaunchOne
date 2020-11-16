@@ -55,10 +55,10 @@ public class NextLaunchFragment extends Fragment {
         isRow = getResources().getBoolean(R.bool.next_launch_row_item);
 
         ImageView launchImage = view.findViewById(R.id.image);
-        TypedArray imgs = getResources().obtainTypedArray(R.array.next_launch_images);
-        int dailyImageIndex = (Calendar.getInstance().get(Calendar.DAY_OF_YEAR)) % imgs.length();
-        launchImage.setImageResource(imgs.getResourceId(dailyImageIndex, -1));
-        imgs.recycle();
+        TypedArray images = getResources().obtainTypedArray(R.array.next_launch_images);
+        int dailyImageIndex = (Calendar.getInstance().get(Calendar.DAY_OF_YEAR)) % images.length();
+        launchImage.setImageResource(images.getResourceId(dailyImageIndex, -1));
+        images.recycle();
 
         if (getActivity() != null)
             vm = new ViewModelProvider(getActivity()).get(NextLaunchViewModel.class);

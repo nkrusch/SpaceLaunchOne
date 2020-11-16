@@ -129,7 +129,7 @@
     <string name="filter_by_location">Locations</string>
     <string name="filter_instructions_title">How filters work</string>
     <string name="filter_instructions">Filters allow you to limit the list of launches displayed in the scheduled launches list.
-        \n\nBy unchecking a filter property, you will exclude any launches that match that property from displaying.
+        \n\nUncheck filter property and you will exclude any launches that match that property from displaying.
         \n\nHaving all options unchecked means no launches will be displayed.
         \n\nEXAMPLES
         \n\n1.) to exclude launches by specific rocket, find rocket by name and uncheck box next to it

@@ -27,7 +27,6 @@ public class AgencyAdapter extends RecyclerView.Adapter<AgencyAdapter.ItemViewHo
 
     private List<Agency> dataSource;
     private OnItemListener mItemClickListener;
-    private int thumbnailWidth;
 
     public AgencyAdapter(List<Agency> dataArgs) {
         updateData(dataArgs);
@@ -44,8 +43,6 @@ public class AgencyAdapter extends RecyclerView.Adapter<AgencyAdapter.ItemViewHo
     @NonNull
     @Override
     public ItemViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        thumbnailWidth = Utilities.dpToPixel(parent.getContext().getResources().getInteger(
-                R.integer.list_image_width_int), parent.getContext().getResources());
         return new ItemViewHolder(LayoutInflater.from(parent.getContext())
                 .inflate(R.layout.item_agency, parent, false));
     }

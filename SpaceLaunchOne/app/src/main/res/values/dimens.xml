@@ -153,7 +153,7 @@
     <!-- MAP+PLACES: START -->
     <dimen name="places_layout_horizontal_margin">0dp</dimen>
     <dimen name="places_layout_vertical_margin">8dp</dimen>
-    <dimen name="places_recycerview_bottom_margin">20dp</dimen>
+    <dimen name="places_recyclerview_bottom_margin">20dp</dimen>
     <dimen name="places_card_horizontal_margin">8dp</dimen>
     <dimen name="places_card_vertical_margin">8dp</dimen>
     <dimen name="places_card_width">220dp</dimen>
@@ -177,7 +177,7 @@
     <integer name="filter_agencies_column_count">1</integer>
     <integer name="filter_locations_column_count">1</integer>
     <dimen name="filter_label_text_size">13sp</dimen>
-    <dimen name="fitler_checkbox_gap">8dp</dimen>
+    <dimen name="filter_checkbox_gap">8dp</dimen>
     <dimen name="filter_item_margin_end">16dp</dimen>
     <dimen name="filter_item_margin_start">16dp</dimen>
     <!-- FILTERS: END -->

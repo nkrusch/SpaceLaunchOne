@@ -13,18 +13,14 @@ import java.util.List;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
-import androidx.lifecycle.ViewModelProviders;
 import androidx.recyclerview.widget.GridLayoutManager;
 import io.github.nkrusch.spacelaunchone.R;
 import io.github.nkrusch.spacelaunchone.app.OnItemClickListener;
 import io.github.nkrusch.spacelaunchone.app.RecyclerViewFragment;
 import io.github.nkrusch.spacelaunchone.features.DetailsLaunchActivity;
-import local.AgencyDetails;
 import local.Launch;
 import viewmodels.AgencyDetailsViewModel;
-import viewmodels.LaunchDetailsViewModel;
 
 
 public class AgencyLaunchRecyclerView extends RecyclerViewFragment{
@@ -55,7 +51,7 @@ public class AgencyLaunchRecyclerView extends RecyclerViewFragment{
     }
 
     /**
-     * When viewmodel state changes, update the adapter
+     * When viewModel state changes, update the adapter
      */
     private void handleDataChange(@Nullable List<Launch> entries) {
         if (mRecyclerView == null || entries == null) return;
@@ -64,8 +60,10 @@ public class AgencyLaunchRecyclerView extends RecyclerViewFragment{
             mEmptyState.setVisibility(View.GONE);
             mRecyclerView.setVisibility(View.VISIBLE);
             ListAdapter adapter = (ListAdapter) mRecyclerView.getAdapter();
-            adapter.updateData(entries);
-            adapter.notifyDataSetChanged();
+            if (adapter != null) {
+                adapter.updateData(entries);
+                adapter.notifyDataSetChanged();
+            }
         } else {
             mRecyclerView.setVisibility(View.GONE);
             mEmptyState.setVisibility(View.VISIBLE);
