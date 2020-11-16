@@ -16,7 +16,7 @@ This application gets its data from [Launch Library API](https://ll.thespacedevs
 <a href='https://play.google.com/store/apps/details?id=io.github.nkrusch.spacelaunchone&utm_source=github&utm_campaign=github&pcampaignid=MKT-Other-global-all-co-prtnr-py-PartBadge-Mar2515-1'><img alt='Get it on Google Play' height="72" src='https://play.google.com/intl/en_us/badges/images/generic/en_badge_web_generic.png'/></a>
 </p>
 
-**Stage 1**: design proposal is [here &raquo;](https://github.com/nkrusch/SpaceLaunchOne/tree/master/docs)
+**Stage 1**: design proposal is [here &raquo;](https://github.com/nkrusch/SpaceLaunchOne/tree/master/docs/Capstone_Stage1.pdf)
 
 **Stage 2**: source code is [here &raquo;](https://github.com/nkrusch/SpaceLaunchOne/tree/master/SpaceLaunchOne)
 
