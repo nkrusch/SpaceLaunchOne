@@ -16,10 +16,11 @@ public class AppImage {
 
     /**
      * Load image from URL into square target; if it display default res image instead
-     * @param imageURL
-     * @param width
-     * @param target
-     * @param errorResource
+     *
+     * @param imageURL      - URL o image to load
+     * @param width         - image size
+     * @param target        - view where to load image
+     * @param errorResource - local resource that will be displayed if loading fails
      */
     public static void LoadSquareImageFromURL(
             String imageURL,
@@ -44,8 +45,9 @@ public class AppImage {
 
     /**
      * Load image from URL into circular target; if it fails do nothing
-     * @param res
-     * @param target
+     *
+     * @param res    - local resource id to load
+     * @param target - view where to load image
      */
     public static void LoadCircleImage(String res, ImageView target) {
         Picasso.get()
@@ -56,9 +58,10 @@ public class AppImage {
 
     /**
      * Load image from URL into circular target; if it display default res image instead
-     * @param res
-     * @param target
-     * @param errorResource
+     *
+     * @param res           - local resource id
+     * @param target        - view where to load image
+     * @param errorResource - local resource that will be displayed if loading fails
      */
     public static void LoadCircleImage(String res, ImageView target, int errorResource) {
         Picasso.get()
@@ -78,8 +81,9 @@ public class AppImage {
 
     /**
      * Load image from URL into some target; if it fails do nothing
-     * @param imageURL
-     * @param target
+     *
+     * @param imageURL - URL o image to load
+     * @param target   - view where to load image
      */
     public static void LoadImageFromURL(
             String imageURL,
@@ -92,9 +96,10 @@ public class AppImage {
 
     /**
      * Load image from URL into some target; if it fails display default res image instead
-     * @param imageURL
-     * @param target
-     * @param errorResource
+     *
+     * @param imageURL      - URL o image to load
+     * @param target        - view where to load image
+     * @param errorResource - local resource that will be displayed if loading fails
      */
     public static void LoadImageFromURL(
             String imageURL,
@@ -118,8 +123,9 @@ public class AppImage {
 
     /**
      * Attempt to load image into hidden view, and if successful, make that view visible
-     * @param imageURL
-     * @param target
+     *
+     * @param imageURL - URL o image to load
+     * @param target   - view where to load image
      */
     public static void LoadAndDisplay(
             String imageURL,
@@ -131,7 +137,7 @@ public class AppImage {
                 .into(target, new Callback() {
                     @Override
                     public void onSuccess() {
-                        ((View)  visibleTarget).setVisibility(VISIBLE);
+                        ((View) visibleTarget).setVisibility(VISIBLE);
                     }
 
                     @Override
@@ -139,6 +145,4 @@ public class AppImage {
                     }
                 });
     }
-
-
 }

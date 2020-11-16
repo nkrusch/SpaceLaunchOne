@@ -82,7 +82,7 @@ public class SettingsFragment extends PreferenceFragment {
      */
     private static void bindPreferenceSummaryToValue(Preference preference) {
         Preference.OnPreferenceChangeListener mSummaryToValueListener =
-                (preference1, newValue) -> handlePreferenceChange(preference1, newValue);
+                SettingsFragment::handlePreferenceChange;
         Object value = PreferenceManager
                 .getDefaultSharedPreferences(preference.getContext())
                 .getString(preference.getKey(), "");

@@ -7,9 +7,9 @@
     <integer name="visibility_invisible">1</integer>
     <integer name="visibility_gone">2</integer>
     <dimen name="toolbar_horz_margin">16dp</dimen>
-    <dimen name="bottom_dialog_header_textsize">16sp</dimen>
-    <dimen name="bottom_dialog_header_height">56dp</dimen>
-    <dimen name="bottom_dialog_header_horizontal_margin">16dp</dimen>
+<!--    <dimen name="bottom_dialog_header_textsize">16sp</dimen>-->
+<!--    <dimen name="bottom_dialog_header_height">56dp</dimen>-->
+<!--    <dimen name="bottom_dialog_header_horizontal_margin">16dp</dimen>-->
     <dimen name="bullet_horizontal_padding">4dp</dimen>
     <dimen name="bullet_vertical_padding">16dp</dimen>
     <dimen name="bullet_textSize">18dp</dimen>
@@ -151,13 +151,13 @@
 
 
     <!-- MAP+PLACES: START -->
-    <dimen name="places_layout_horizontal_margin">0dp</dimen>
-    <dimen name="places_layout_vertical_margin">8dp</dimen>
-    <dimen name="places_recyclerview_bottom_margin">20dp</dimen>
-    <dimen name="places_card_horizontal_margin">8dp</dimen>
-    <dimen name="places_card_vertical_margin">8dp</dimen>
-    <dimen name="places_card_width">220dp</dimen>
-    <dimen name="places_card_height">220dp</dimen>
+<!--    <dimen name="places_layout_horizontal_margin">0dp</dimen>-->
+<!--    <dimen name="places_layout_vertical_margin">8dp</dimen>-->
+<!--    <dimen name="places_recyclerview_bottom_margin">20dp</dimen>-->
+<!--    <dimen name="places_card_horizontal_margin">8dp</dimen>-->
+<!--    <dimen name="places_card_vertical_margin">8dp</dimen>-->
+<!--    <dimen name="places_card_width">220dp</dimen>-->
+<!--    <dimen name="places_card_height">220dp</dimen>-->
     <!-- MAP+PLACES: END -->
 
 

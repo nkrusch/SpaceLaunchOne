@@ -87,7 +87,7 @@ public class LinksFragment extends HorizontalRecyclerViewFragment
         }
     }
 
-    class LinkItem {
+    static class LinkItem {
         private final String label;
         private final String url;
 

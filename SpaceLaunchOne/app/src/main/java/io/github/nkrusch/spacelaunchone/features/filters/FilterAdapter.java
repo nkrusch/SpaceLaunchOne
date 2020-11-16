@@ -46,6 +46,7 @@ public class FilterAdapter<T extends IFilter> extends RecyclerView.Adapter<Filte
         IFilter item = dataSource.get(position);
         holder.mName.setText(item.getName());
         holder.mCheck.setChecked(!item.isFiltered());
+        holder.mCheck.setContentDescription(item.getName());
     }
 
     @Override

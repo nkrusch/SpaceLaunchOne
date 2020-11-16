@@ -111,7 +111,7 @@ public class CreditsActivity extends AppCompatActivity {
     /**
      * Simple adapter for rendering key value pairs
      */
-    public class CreditsAdapter extends RecyclerView.Adapter<CreditsAdapter.ItemViewHolder> {
+    public static class CreditsAdapter extends RecyclerView.Adapter<CreditsAdapter.ItemViewHolder> {
 
         private final List<Pair<String, String>> dataSource;
 
@@ -127,15 +127,12 @@ public class CreditsActivity extends AppCompatActivity {
         @NonNull
         @Override
         public CreditsAdapter.ItemViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-            return new CreditsAdapter.ItemViewHolder(LayoutInflater.from(parent.getContext())
+            return new ItemViewHolder(LayoutInflater.from(parent.getContext())
                     .inflate(R.layout.item_credit_list, parent, false));
         }
 
         /**
          * Bind the view data; make links clickable
-         *
-         * @param holder
-         * @param position
          */
         @Override
         public void onBindViewHolder(@NonNull final CreditsAdapter.ItemViewHolder holder, int position) {
@@ -148,7 +145,7 @@ public class CreditsActivity extends AppCompatActivity {
             }
         }
 
-        public class ItemViewHolder extends RecyclerView.ViewHolder {
+        public static class ItemViewHolder extends RecyclerView.ViewHolder {
 
             private final TextView label;
             private final TextView value;

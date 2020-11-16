@@ -12,7 +12,7 @@ import java.util.List;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.lifecycle.ViewModelProviders;
+import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.GridLayoutManager;
 import io.github.nkrusch.spacelaunchone.R;
 import io.github.nkrusch.spacelaunchone.app.OnItemListener;
@@ -32,8 +32,8 @@ public class LocationRecyclerView extends RecyclerViewFragment {
 
     protected void setupViewModel() {
         if (getActivity() != null) {
-            LocationListViewModel vm = ViewModelProviders.of(getActivity()).get(LocationListViewModel.class);
-            vm.getAll().observe(getActivity(), locations -> handleDataChange(locations));
+            LocationListViewModel vm = new ViewModelProvider(getActivity()).get(LocationListViewModel.class);
+            vm.getAll().observe(getActivity(), this::handleDataChange);
         }
     }
 

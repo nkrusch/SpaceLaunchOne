@@ -12,7 +12,7 @@ import java.util.List;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.lifecycle.ViewModelProviders;
+import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.GridLayoutManager;
 import io.github.nkrusch.spacelaunchone.R;
 import io.github.nkrusch.spacelaunchone.app.OnItemListener;
@@ -31,8 +31,8 @@ public class AgencyRecyclerView extends RecyclerViewFragment {
 
     protected void setupViewModel() {
         if (getActivity() != null) {
-            AgencyListViewModel vm = ViewModelProviders.of(getActivity()).get(AgencyListViewModel.class);
-            vm.getAll().observe(getActivity(), agencies -> handleDataChange(agencies));
+            AgencyListViewModel vm = new ViewModelProvider(getActivity()).get(AgencyListViewModel.class);
+            vm.getAll().observe(getActivity(), this::handleDataChange);
         }
     }
 

@@ -15,17 +15,17 @@
 
     <style name="card" />
 
-    <style name="bottom_dialog_fragment_heading">
-        <item name="android:layout_width">wrap_content</item>
-        <item name="android:layout_height">@dimen/bottom_dialog_header_height</item>
-        <item name="android:layout_marginEnd">@dimen/bottom_dialog_header_horizontal_margin</item>
-        <item name="android:layout_marginStart">@dimen/bottom_dialog_header_horizontal_margin</item>
-        <item name="android:ellipsize">end</item>
-        <item name="android:gravity">start|center_vertical</item>
-        <item name="android:maxLines">1</item>
-        <item name="android:textColor">@color/bottom_drawer_dialog_title</item>
-        <item name="android:textSize">@dimen/bottom_dialog_header_textsize</item>
-    </style>
+<!--    <style name="bottom_dialog_fragment_heading">-->
+<!--        <item name="android:layout_width">wrap_content</item>-->
+<!--        <item name="android:layout_height">@dimen/bottom_dialog_header_height</item>-->
+<!--        <item name="android:layout_marginEnd">@dimen/bottom_dialog_header_horizontal_margin</item>-->
+<!--        <item name="android:layout_marginStart">@dimen/bottom_dialog_header_horizontal_margin</item>-->
+<!--        <item name="android:ellipsize">end</item>-->
+<!--        <item name="android:gravity">start|center_vertical</item>-->
+<!--        <item name="android:maxLines">1</item>-->
+<!--        <item name="android:textColor">@color/bottom_drawer_dialog_title</item>-->
+<!--        <item name="android:textSize">@dimen/bottom_dialog_header_textsize</item>-->
+<!--    </style>-->
 
     <style name="fab_button">
         <item name="fabSize">normal</item>

@@ -86,7 +86,7 @@ public class FilterActivity extends TabbedActivity {
     /**
      * Filter tabs adapter controls the viewpager content
      */
-    public class FilterAdapter extends TabsAdapter {
+    public static class FilterAdapter extends TabsAdapter {
 
         FilterAdapter(FragmentManager fm) {
             super(3, fm);

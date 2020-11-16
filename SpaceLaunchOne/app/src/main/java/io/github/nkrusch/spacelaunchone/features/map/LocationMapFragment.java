@@ -17,7 +17,7 @@ import com.google.android.gms.maps.model.MarkerOptions;
 import androidx.annotation.NonNull;
 import androidx.appcompat.widget.AppCompatImageButton;
 import androidx.fragment.app.Fragment;
-import androidx.lifecycle.ViewModelProviders;
+import androidx.lifecycle.ViewModelProvider;
 import io.github.nkrusch.spacelaunchone.R;
 import local.Pad;
 import viewmodels.LocationDetailsViewModel;
@@ -48,7 +48,7 @@ public class LocationMapFragment extends Fragment implements OnMapReadyCallback 
 
     private void setupViewModel() {
         if (getActivity() == null) return;
-        ViewModelProviders.of(getActivity()).get(LocationDetailsViewModel.class)
+        new ViewModelProvider(getActivity()).get(LocationDetailsViewModel.class)
                 .get().observe(this, result -> {
                     if (result != null && result.getPads() != null && locations==null) {
                         locations = new LatLng[result.getPads().size()];
@@ -86,7 +86,7 @@ public class LocationMapFragment extends Fragment implements OnMapReadyCallback 
                 mMap.addMarker(new MarkerOptions().position(location).title(name));
                 builder.include(location);
             }
-            mMap.setOnMapLoadedCallback(() -> centerMap());
+            mMap.setOnMapLoadedCallback(this::centerMap);
         }
     }
 

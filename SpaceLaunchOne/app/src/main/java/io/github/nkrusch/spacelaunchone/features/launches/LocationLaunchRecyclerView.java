@@ -13,7 +13,7 @@ import java.util.List;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import androidx.lifecycle.ViewModelProviders;
+import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.GridLayoutManager;
 import io.github.nkrusch.spacelaunchone.R;
 import io.github.nkrusch.spacelaunchone.app.OnItemClickListener;
@@ -37,7 +37,8 @@ public class LocationLaunchRecyclerView extends RecyclerViewFragment {
 
     protected void setupViewModel() {
         if (getActivity() != null) {
-            LocationDetailsViewModel vm = ViewModelProviders.of(getActivity()).get(LocationDetailsViewModel.class);
+            LocationDetailsViewModel vm = new ViewModelProvider(getActivity())
+                    .get(LocationDetailsViewModel.class);
             vm.get().observe(getActivity(), locationDetails -> {
                 if (locationDetails != null && locationDetails.getLaunches() != null)
                     handleDataChange(locationDetails.getLaunches());

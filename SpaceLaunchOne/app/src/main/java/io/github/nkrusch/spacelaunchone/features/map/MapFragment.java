@@ -1,7 +1,5 @@
 package io.github.nkrusch.spacelaunchone.features.map;
 
-import android.content.Context;
-import android.net.ConnectivityManager;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -16,14 +14,12 @@ import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.gms.maps.model.PointOfInterest;
-import com.google.android.material.snackbar.Snackbar;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.widget.AppCompatImageButton;
 import androidx.fragment.app.Fragment;
-import androidx.lifecycle.ViewModelProviders;
+import androidx.lifecycle.ViewModelProvider;
 import io.github.nkrusch.spacelaunchone.R;
-import io.github.nkrusch.spacelaunchone.app.Utilities;
 import viewmodels.LaunchDetailsViewModel;
 
 import static android.view.View.GONE;
@@ -64,7 +60,7 @@ public class MapFragment extends Fragment implements OnMapReadyCallback, GoogleM
      */
     private void setupViewModel() {
         if (getActivity() == null) return;
-        ViewModelProviders.of(getActivity()).get(LaunchDetailsViewModel.class)
+        new ViewModelProvider(getActivity()).get(LaunchDetailsViewModel.class)
                 .get().observe(this, result -> {
             if (result != null) {
                 location = new LatLng(result.getLatitude(), result.getLongitude());
@@ -112,18 +108,20 @@ public class MapFragment extends Fragment implements OnMapReadyCallback, GoogleM
      * This will attempt to load places images for the selected location
      */
     public void onPoiClick(PointOfInterest poi) {
-        if (getActivity() == null) return;
-        final ConnectivityManager cm = (ConnectivityManager) getActivity()
-                .getSystemService(Context.CONNECTIVITY_SERVICE);
+        // TODO: reimplement this or remove
 
-        boolean canLoadPlaces = Utilities.isNetworkAvailable(cm);
-        if (canLoadPlaces) {
-            if (getFragmentManager() != null) {
-                PlacesFragment psf = PlacesFragment.newInstance(poi.placeId, poi.name);
-                psf.show(getFragmentManager(), null);
-            }
-        } else Snackbar.make(getActivity().findViewById(android.R.id.content),
-                R.string.offline_message, Snackbar.LENGTH_LONG).show();
+        //        if (getActivity() == null) return;
+        //        final ConnectivityManager cm = (ConnectivityManager) getActivity()
+        //                .getSystemService(Context.CONNECTIVITY_SERVICE);
+        //
+        //        boolean canLoadPlaces = Utilities.isNetworkAvailable(cm);
+        //        if (canLoadPlaces) {
+        //            if (getFragmentManager() != null) {
+        //                PlacesFragment psf = PlacesFragment.newInstance(poi.placeId, poi.name);
+        //                psf.show(getFragmentManager(), null);
+        //            }
+        //        } else Snackbar.make(getActivity().findViewById(android.R.id.content),
+        //                R.string.offline_message, Snackbar.LENGTH_LONG).show();
     }
 
     /**

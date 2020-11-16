@@ -13,7 +13,7 @@ import java.util.List;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.lifecycle.AndroidViewModel;
-import androidx.lifecycle.ViewModelProviders;
+import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.GridLayoutManager;
 import io.github.nkrusch.spacelaunchone.R;
 import io.github.nkrusch.spacelaunchone.app.OnItemClickListener;
@@ -46,8 +46,8 @@ abstract class LaunchRecyclerView<S extends AndroidViewModel & ILaunchesViewMode
      */
     protected void setupViewModel() {
         if (getActivity() != null) {
-            S vm = ViewModelProviders.of(getActivity()).get(getType());
-            vm.getLaunches().observe(getActivity(), launches -> handleDataChange(launches));
+            S vm = new ViewModelProvider(getActivity()).get(getType());
+            vm.getLaunches().observe(getActivity(), this::handleDataChange);
         }
     }
 

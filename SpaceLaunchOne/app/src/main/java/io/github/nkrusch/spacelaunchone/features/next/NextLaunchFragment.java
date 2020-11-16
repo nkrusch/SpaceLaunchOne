@@ -148,6 +148,6 @@ public class NextLaunchFragment extends Fragment {
                     .setCustomAnimations(R.animator.slide_down, R.animator.slide_up)
                     .replace(mTimer.getId(), f)
                     .commit();
-        f.registerOnFinishCallback(() -> onTimerEnd());
+        f.registerOnFinishCallback(this::onTimerEnd);
     }
 }

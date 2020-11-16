@@ -26,11 +26,6 @@ import utilities.ProcessResult;
 @SuppressWarnings("SameParameterValue")
 public class AppDataMethods extends Logger {
 
-    private static void handleError(Exception e, @Nullable final OnLoadCallback callback) {
-        displayError(e);
-        if (callback != null) callback.call(false);
-    }
-
     public static void init(Context context, int count, final OnLoadCallback<ProcessResult> callback) {
         Log("Initializing app data...");
         final AppDatabase db = AppDatabase.getInstance(context);
@@ -53,7 +48,7 @@ public class AppDataMethods extends Logger {
         updateAllLaunches(db, offset, callback);
     }
 
-    public static void updateLaunchDetails(Context context, final String id, @Nullable final OnLoadCallback callback) {
+    public static void updateLaunchDetails(Context context, final String id, @Nullable final OnLoadCallback<Boolean> callback) {
         Log("Getting launch id: " + id);
         final AppDatabase db = AppDatabase.getInstance(context);
         LaunchLibrary.getSingleLaunch(id, new OnLoadCallback<LaunchDetailed>() {
@@ -64,7 +59,8 @@ public class AppDataMethods extends Logger {
 
             @Override
             public void onError(Exception e) {
-                handleError(e, callback);
+                displayError(e);
+                if (callback != null) callback.onError(e);
             }
         });
     }
@@ -78,7 +74,8 @@ public class AppDataMethods extends Logger {
 
             @Override
             public void onError(Exception e) {
-                handleError(e, callback);
+                displayError(e);
+                callback.onError(e);
             }
         });
     }
@@ -272,7 +269,8 @@ public class AppDataMethods extends Logger {
 
                 @Override
                 public void onError(Exception e) {
-                    handleError(e, callback);
+                    displayError(e);
+                    callback.onError(e);
                 }
             });
         }
