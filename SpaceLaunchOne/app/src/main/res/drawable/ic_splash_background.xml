@@ -3,11 +3,10 @@
 
     <item android:drawable="@android:color/black" />
 
-
     <item>
         <bitmap
             android:gravity="center"
-            android:src="@drawable/ic_splash_icon"/>
+            android:src="@drawable/ic_splash_icon" />
     </item>
 
 

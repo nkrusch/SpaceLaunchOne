@@ -64,19 +64,17 @@ public class SplashActivity extends InitActivity {
     /**
      * Animate splash icon
      */
-    @TargetApi(21)
+    @TargetApi(23)
     private void animateSplashIcon() {
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
             LayerDrawable drawable = (LayerDrawable) getWindow().getDecorView().getBackground();
             final AnimatedVectorDrawable anim = (AnimatedVectorDrawable) drawable.getDrawable(1);
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-                anim.registerAnimationCallback(new Animatable2.AnimationCallback() {
-                    @Override
-                    public void onAnimationEnd(Drawable drawable) {
-                        anim.start();
-                    }
-                });
-            }
+            anim.registerAnimationCallback(new Animatable2.AnimationCallback() {
+                @Override
+                public void onAnimationEnd(Drawable drawable) {
+                    anim.start();
+                }
+            });
             anim.start();
         }
     }

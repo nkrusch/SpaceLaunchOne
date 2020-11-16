@@ -2,7 +2,7 @@
 <animated-vector xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:aapt="http://schemas.android.com/aapt">
     <aapt:attr name="android:drawable">
-        <vector xmlns:android="http://schemas.android.com/apk/res/android"
+        <vector
             android:width="128dp"
             android:height="128dp"
             android:viewportHeight="600"

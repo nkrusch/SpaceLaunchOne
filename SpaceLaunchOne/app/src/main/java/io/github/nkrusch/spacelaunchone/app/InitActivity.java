@@ -18,7 +18,7 @@ import static service.InitIntentService.ACTION_OUTCOME;
  */
 public abstract class InitActivity extends AppCompatActivity {
 
-    private DataInitReceiver serviceReciver;
+    private DataInitReceiver dataInitReceiver;
     private boolean registeredReceiver;
 
     /**
@@ -44,9 +44,9 @@ public abstract class InitActivity extends AppCompatActivity {
      */
     protected void onStop() {
         super.onStop();
-        if (serviceReciver == null || !registeredReceiver) return;
+        if (dataInitReceiver == null || !registeredReceiver) return;
         try {
-            unregisterReceiver(serviceReciver);
+            unregisterReceiver(dataInitReceiver);
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -56,10 +56,10 @@ public abstract class InitActivity extends AppCompatActivity {
      * Run app initialization service
      */
     protected void initAppData() {
-        serviceReciver = new DataInitReceiver();
+        dataInitReceiver = new DataInitReceiver();
         IntentFilter intentFilter = new IntentFilter();
         intentFilter.addAction(ACTION_INITIALIZE);
-        registerReceiver(serviceReciver, intentFilter);
+        registerReceiver(dataInitReceiver, intentFilter);
         registeredReceiver = true;
 
         Intent initIntent = new Intent();

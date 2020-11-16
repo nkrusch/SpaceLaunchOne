@@ -218,7 +218,7 @@ public class Utilities {
     }
 
     public static String fullTimeLabelwithYear(Long utc) {
-        return fullTimeLabel(utc, "dd MMMM YYYY, HH:mm 'UTC'");
+        return fullTimeLabel(utc, "dd MMMM yyyy, HH:mm 'UTC'");
     }
 
     /**
