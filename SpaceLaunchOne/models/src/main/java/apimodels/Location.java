@@ -14,10 +14,12 @@ package apimodels;
 
 import com.google.gson.annotations.SerializedName;
 
+import java.util.Objects;
+
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 
-@ApiModel(description = "")
+@ApiModel()
 public class Location {
   
   @SerializedName("id")
@@ -37,7 +39,7 @@ public class Location {
 
   /**
    **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty()
   public Integer getId() {
     return id;
   }
@@ -47,7 +49,7 @@ public class Location {
 
   /**
    **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty()
   public String getUrl() {
     return url;
   }
@@ -57,7 +59,7 @@ public class Location {
 
   /**
    **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty()
   public String getName() {
     return name;
   }
@@ -67,7 +69,7 @@ public class Location {
 
   /**
    **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty()
   public String getCountryCode() {
     return countryCode;
   }
@@ -77,7 +79,7 @@ public class Location {
 
   /**
    **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty()
   public String getMapImage() {
     return mapImage;
   }
@@ -87,7 +89,7 @@ public class Location {
 
   /**
    **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty()
   public String getTotalLaunchCount() {
     return totalLaunchCount;
   }
@@ -97,7 +99,7 @@ public class Location {
 
   /**
    **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty()
   public String getTotalLandingCount() {
     return totalLandingCount;
   }
@@ -115,13 +117,13 @@ public class Location {
       return false;
     }
     Location location = (Location) o;
-    return (this.id == null ? location.id == null : this.id.equals(location.id)) &&
-        (this.url == null ? location.url == null : this.url.equals(location.url)) &&
-        (this.name == null ? location.name == null : this.name.equals(location.name)) &&
-        (this.countryCode == null ? location.countryCode == null : this.countryCode.equals(location.countryCode)) &&
-        (this.mapImage == null ? location.mapImage == null : this.mapImage.equals(location.mapImage)) &&
-        (this.totalLaunchCount == null ? location.totalLaunchCount == null : this.totalLaunchCount.equals(location.totalLaunchCount)) &&
-        (this.totalLandingCount == null ? location.totalLandingCount == null : this.totalLandingCount.equals(location.totalLandingCount));
+    return (Objects.equals(this.id, location.id)) &&
+        (Objects.equals(this.url, location.url)) &&
+        (Objects.equals(this.name, location.name)) &&
+        (Objects.equals(this.countryCode, location.countryCode)) &&
+        (Objects.equals(this.mapImage, location.mapImage)) &&
+        (Objects.equals(this.totalLaunchCount, location.totalLaunchCount)) &&
+        (Objects.equals(this.totalLandingCount, location.totalLandingCount));
   }
 
   @Override
@@ -139,17 +141,16 @@ public class Location {
 
   @Override
   public String toString()  {
-    StringBuilder sb = new StringBuilder();
-    sb.append("class Location {\n");
-    
-    sb.append("  id: ").append(id).append("\n");
-    sb.append("  url: ").append(url).append("\n");
-    sb.append("  name: ").append(name).append("\n");
-    sb.append("  countryCode: ").append(countryCode).append("\n");
-    sb.append("  mapImage: ").append(mapImage).append("\n");
-    sb.append("  totalLaunchCount: ").append(totalLaunchCount).append("\n");
-    sb.append("  totalLandingCount: ").append(totalLandingCount).append("\n");
-    sb.append("}\n");
-    return sb.toString();
+
+      String sb = "class Location {\n" +
+              "  id: " + id + "\n" +
+              "  url: " + url + "\n" +
+              "  name: " + name + "\n" +
+              "  countryCode: " + countryCode + "\n" +
+              "  mapImage: " + mapImage + "\n" +
+              "  totalLaunchCount: " + totalLaunchCount + "\n" +
+              "  totalLandingCount: " + totalLandingCount + "\n" +
+              "}\n";
+      return sb;
   }
 }

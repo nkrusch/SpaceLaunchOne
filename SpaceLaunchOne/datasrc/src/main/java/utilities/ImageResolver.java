@@ -14,37 +14,34 @@ import apimodels.data.BuildConfig;
 public class ImageResolver {
 
     private void get(final String urlStr, final OnLoadCallback callback) {
-        AppExecutors.getInstance().networkIO().execute(new Runnable() {
-            @Override
-            public void run() {
-                String imageUrl;
-                try {
-                    Connection con = Jsoup.connect(urlStr);
-                    Document doc = con.get();
-                    if (doc != null) {
-                        Elements metaOgImage = doc.select("meta[property=og:image]");
-                        if (metaOgImage != null) {
-                            imageUrl = metaOgImage.attr("content");
-                            if (imageUrl != null && imageUrl.length() > 0 && !imageUrl.contains(".svg") &&
-                                    !imageUrl.contains("Japanese_sounding_rockets_shapes-01.jpg")) {
-                                callback.call(imageUrl);
-                                return;
-                            }
-                        }
-                        Elements metaIcon = doc.select("#content .image img[src]");
-                        if (metaIcon != null) {
-                            imageUrl = metaIcon.attr("src");
-                            if (imageUrl != null && !imageUrl.contains(".svg")) {
-                                callback.call(imageUrl);
-                                return;
-                            }
+        AppExecutors.getInstance().networkIO().execute(() -> {
+            String imageUrl;
+            try {
+                Connection con = Jsoup.connect(urlStr);
+                Document doc = con.get();
+                if (doc != null) {
+                    Elements metaOgImage = doc.select("meta[property=og:image]");
+                    if (metaOgImage != null) {
+                        imageUrl = metaOgImage.attr("content");
+                        if (imageUrl != null && imageUrl.length() > 0 && !imageUrl.contains(".svg") &&
+                                !imageUrl.contains("Japanese_sounding_rockets_shapes-01.jpg")) {
+                            callback.call(imageUrl);
+                            return;
                         }
                     }
-                } catch (Exception e) {
-                    e.printStackTrace();
+                    Elements metaIcon = doc.select("#content .image img[src]");
+                    if (metaIcon != null) {
+                        imageUrl = metaIcon.attr("src");
+                        if (imageUrl != null && !imageUrl.contains(".svg")) {
+                            callback.call(imageUrl);
+                            return;
+                        }
+                    }
                 }
-                callback.call(null);
+            } catch (Exception e) {
+                e.printStackTrace();
             }
+            callback.call(null);
         });
     }
 

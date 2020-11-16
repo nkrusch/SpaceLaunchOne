@@ -14,7 +14,6 @@ import apimodels.LauncherConfigDetail;
 @Entity(tableName = "rockets")
 public class Rocket {
 
-    @NonNull
     @PrimaryKey()
     private int rid;
     private String name;
@@ -94,7 +93,7 @@ public class Rocket {
 
     // used internally while resolving images
     @Ignore
-    private List<String> launchIds = new LinkedList<>();
+    private final List<String> launchIds = new LinkedList<>();
 
     @Ignore
     public List<String> getLaunchIds() {
@@ -124,6 +123,7 @@ public class Rocket {
         return r;
     }
 
+    @NonNull
     @Ignore
     @Override
     public String toString() {

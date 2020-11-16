@@ -15,11 +15,12 @@ package apimodels;
 import com.google.gson.annotations.SerializedName;
 
 import java.util.List;
+import java.util.Objects;
 
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 
-@ApiModel(description = "")
+@ApiModel()
 public class RocketDetailed {
   
   @SerializedName("id")
@@ -33,7 +34,7 @@ public class RocketDetailed {
 
   /**
    **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty()
   public Integer getId() {
     return id;
   }
@@ -43,7 +44,7 @@ public class RocketDetailed {
 
   /**
    **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty()
   public LauncherConfigDetail getConfiguration() {
     return configuration;
   }
@@ -53,7 +54,7 @@ public class RocketDetailed {
 
   /**
    **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty()
   public List<FirstStage> getLauncherStage() {
     return launcherStage;
   }
@@ -63,7 +64,7 @@ public class RocketDetailed {
 
   /**
    **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty()
   public SpacecraftFlightDetailedSerializerForLaunch getSpacecraftStage() {
     return spacecraftStage;
   }
@@ -81,10 +82,10 @@ public class RocketDetailed {
       return false;
     }
     RocketDetailed rocketDetailed = (RocketDetailed) o;
-    return (this.id == null ? rocketDetailed.id == null : this.id.equals(rocketDetailed.id)) &&
-        (this.configuration == null ? rocketDetailed.configuration == null : this.configuration.equals(rocketDetailed.configuration)) &&
-        (this.launcherStage == null ? rocketDetailed.launcherStage == null : this.launcherStage.equals(rocketDetailed.launcherStage)) &&
-        (this.spacecraftStage == null ? rocketDetailed.spacecraftStage == null : this.spacecraftStage.equals(rocketDetailed.spacecraftStage));
+    return (Objects.equals(this.id, rocketDetailed.id)) &&
+        (Objects.equals(this.configuration, rocketDetailed.configuration)) &&
+        (Objects.equals(this.launcherStage, rocketDetailed.launcherStage)) &&
+        (Objects.equals(this.spacecraftStage, rocketDetailed.spacecraftStage));
   }
 
   @Override
@@ -99,14 +100,13 @@ public class RocketDetailed {
 
   @Override
   public String toString()  {
-    StringBuilder sb = new StringBuilder();
-    sb.append("class RocketDetailed {\n");
-    
-    sb.append("  id: ").append(id).append("\n");
-    sb.append("  configuration: ").append(configuration).append("\n");
-    sb.append("  launcherStage: ").append(launcherStage).append("\n");
-    sb.append("  spacecraftStage: ").append(spacecraftStage).append("\n");
-    sb.append("}\n");
-    return sb.toString();
+
+      String sb = "class RocketDetailed {\n" +
+              "  id: " + id + "\n" +
+              "  configuration: " + configuration + "\n" +
+              "  launcherStage: " + launcherStage + "\n" +
+              "  spacecraftStage: " + spacecraftStage + "\n" +
+              "}\n";
+      return sb;
   }
 }

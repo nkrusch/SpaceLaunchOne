@@ -14,10 +14,12 @@ package apimodels;
 
 import com.google.gson.annotations.SerializedName;
 
+import java.util.Objects;
+
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 
-@ApiModel(description = "")
+@ApiModel()
 public class EventType {
   
   @SerializedName("id")
@@ -29,7 +31,7 @@ public class EventType {
    * minimum: -2147483648
    * maximum: 2147483647
    **/
-  @ApiModelProperty(required = true, value = "")
+  @ApiModelProperty(required = true)
   public Integer getId() {
     return id;
   }
@@ -39,7 +41,7 @@ public class EventType {
 
   /**
    **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty()
   public String getName() {
     return name;
   }
@@ -57,8 +59,8 @@ public class EventType {
       return false;
     }
     EventType eventType = (EventType) o;
-    return (this.id == null ? eventType.id == null : this.id.equals(eventType.id)) &&
-        (this.name == null ? eventType.name == null : this.name.equals(eventType.name));
+    return (Objects.equals(this.id, eventType.id)) &&
+        (Objects.equals(this.name, eventType.name));
   }
 
   @Override
@@ -71,12 +73,11 @@ public class EventType {
 
   @Override
   public String toString()  {
-    StringBuilder sb = new StringBuilder();
-    sb.append("class EventType {\n");
-    
-    sb.append("  id: ").append(id).append("\n");
-    sb.append("  name: ").append(name).append("\n");
-    sb.append("}\n");
-    return sb.toString();
+
+      String sb = "class EventType {\n" +
+              "  id: " + id + "\n" +
+              "  name: " + name + "\n" +
+              "}\n";
+      return sb;
   }
 }

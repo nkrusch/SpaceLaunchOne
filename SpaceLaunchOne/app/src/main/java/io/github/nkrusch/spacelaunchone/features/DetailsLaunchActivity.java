@@ -11,6 +11,7 @@ import android.view.animation.AlphaAnimation;
 import com.google.android.material.appbar.AppBarLayout;
 import com.google.android.material.tabs.TabLayout;
 
+import androidx.annotation.NonNull;
 import androidx.core.app.NavUtils;
 import androidx.core.app.TaskStackBuilder;
 import androidx.core.content.ContextCompat;
@@ -170,6 +171,7 @@ public class DetailsLaunchActivity extends TabbedActivity {
             super(TAB_COUNT, fm);
         }
 
+        @NonNull
         @Override
         public Fragment getItem(int position) {
             if (position == 1) {

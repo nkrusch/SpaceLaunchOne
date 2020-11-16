@@ -14,10 +14,12 @@ package apimodels;
 
 import com.google.gson.annotations.SerializedName;
 
+import java.util.Objects;
+
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 
-@ApiModel(description = "")
+@ApiModel()
 public class SpacecraftFlightForDockingEvent {
   
   @SerializedName("id")
@@ -31,7 +33,7 @@ public class SpacecraftFlightForDockingEvent {
 
   /**
    **/
-  @ApiModelProperty(required = true, value = "")
+  @ApiModelProperty(required = true)
   public Integer getId() {
     return id;
   }
@@ -41,7 +43,7 @@ public class SpacecraftFlightForDockingEvent {
 
   /**
    **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty()
   public String getUrl() {
     return url;
   }
@@ -51,7 +53,7 @@ public class SpacecraftFlightForDockingEvent {
 
   /**
    **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty()
   public SpacecraftDetailedNoFlights getSpacecraft() {
     return spacecraft;
   }
@@ -61,7 +63,7 @@ public class SpacecraftFlightForDockingEvent {
 
   /**
    **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty()
   public LaunchSerializerCommon getLaunch() {
     return launch;
   }
@@ -79,10 +81,10 @@ public class SpacecraftFlightForDockingEvent {
       return false;
     }
     SpacecraftFlightForDockingEvent spacecraftFlightForDockingEvent = (SpacecraftFlightForDockingEvent) o;
-    return (this.id == null ? spacecraftFlightForDockingEvent.id == null : this.id.equals(spacecraftFlightForDockingEvent.id)) &&
-        (this.url == null ? spacecraftFlightForDockingEvent.url == null : this.url.equals(spacecraftFlightForDockingEvent.url)) &&
-        (this.spacecraft == null ? spacecraftFlightForDockingEvent.spacecraft == null : this.spacecraft.equals(spacecraftFlightForDockingEvent.spacecraft)) &&
-        (this.launch == null ? spacecraftFlightForDockingEvent.launch == null : this.launch.equals(spacecraftFlightForDockingEvent.launch));
+    return (Objects.equals(this.id, spacecraftFlightForDockingEvent.id)) &&
+        (Objects.equals(this.url, spacecraftFlightForDockingEvent.url)) &&
+        (Objects.equals(this.spacecraft, spacecraftFlightForDockingEvent.spacecraft)) &&
+        (Objects.equals(this.launch, spacecraftFlightForDockingEvent.launch));
   }
 
   @Override
@@ -97,14 +99,13 @@ public class SpacecraftFlightForDockingEvent {
 
   @Override
   public String toString()  {
-    StringBuilder sb = new StringBuilder();
-    sb.append("class SpacecraftFlightForDockingEvent {\n");
-    
-    sb.append("  id: ").append(id).append("\n");
-    sb.append("  url: ").append(url).append("\n");
-    sb.append("  spacecraft: ").append(spacecraft).append("\n");
-    sb.append("  launch: ").append(launch).append("\n");
-    sb.append("}\n");
-    return sb.toString();
+
+      String sb = "class SpacecraftFlightForDockingEvent {\n" +
+              "  id: " + id + "\n" +
+              "  url: " + url + "\n" +
+              "  spacecraft: " + spacecraft + "\n" +
+              "  launch: " + launch + "\n" +
+              "}\n";
+      return sb;
   }
 }

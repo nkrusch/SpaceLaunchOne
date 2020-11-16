@@ -14,10 +14,12 @@ package apimodels;
 
 import com.google.gson.annotations.SerializedName;
 
+import java.util.Objects;
+
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 
-@ApiModel(description = "")
+@ApiModel()
 public class VidURL {
   
   @SerializedName("priority")
@@ -35,7 +37,7 @@ public class VidURL {
    * minimum: -2147483648
    * maximum: 2147483647
    **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty()
   public Integer getPriority() {
     return priority;
   }
@@ -45,7 +47,7 @@ public class VidURL {
 
   /**
    **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty()
   public String getTitle() {
     return title;
   }
@@ -55,7 +57,7 @@ public class VidURL {
 
   /**
    **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty()
   public String getDescription() {
     return description;
   }
@@ -65,7 +67,7 @@ public class VidURL {
 
   /**
    **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty()
   public String getFeatureImage() {
     return featureImage;
   }
@@ -75,7 +77,7 @@ public class VidURL {
 
   /**
    **/
-  @ApiModelProperty(required = true, value = "")
+  @ApiModelProperty(required = true)
   public String getUrl() {
     return url;
   }
@@ -93,11 +95,11 @@ public class VidURL {
       return false;
     }
     VidURL vidURL = (VidURL) o;
-    return (this.priority == null ? vidURL.priority == null : this.priority.equals(vidURL.priority)) &&
-        (this.title == null ? vidURL.title == null : this.title.equals(vidURL.title)) &&
-        (this.description == null ? vidURL.description == null : this.description.equals(vidURL.description)) &&
-        (this.featureImage == null ? vidURL.featureImage == null : this.featureImage.equals(vidURL.featureImage)) &&
-        (this.url == null ? vidURL.url == null : this.url.equals(vidURL.url));
+    return (Objects.equals(this.priority, vidURL.priority)) &&
+        (Objects.equals(this.title, vidURL.title)) &&
+        (Objects.equals(this.description, vidURL.description)) &&
+        (Objects.equals(this.featureImage, vidURL.featureImage)) &&
+        (Objects.equals(this.url, vidURL.url));
   }
 
   @Override
@@ -113,15 +115,14 @@ public class VidURL {
 
   @Override
   public String toString()  {
-    StringBuilder sb = new StringBuilder();
-    sb.append("class VidURL {\n");
-    
-    sb.append("  priority: ").append(priority).append("\n");
-    sb.append("  title: ").append(title).append("\n");
-    sb.append("  description: ").append(description).append("\n");
-    sb.append("  featureImage: ").append(featureImage).append("\n");
-    sb.append("  url: ").append(url).append("\n");
-    sb.append("}\n");
-    return sb.toString();
+
+      String sb = "class VidURL {\n" +
+              "  priority: " + priority + "\n" +
+              "  title: " + title + "\n" +
+              "  description: " + description + "\n" +
+              "  featureImage: " + featureImage + "\n" +
+              "  url: " + url + "\n" +
+              "}\n";
+      return sb;
   }
 }

@@ -15,7 +15,6 @@ import androidx.room.PrimaryKey;
         indices = {@Index(value = {"locationId"})})
 public class Pad implements Comparable<Pad> {
 
-    @NonNull
     @PrimaryKey()
     private int pid;
     private String name;
@@ -115,6 +114,7 @@ public class Pad implements Comparable<Pad> {
         return a;
     }
 
+    @NonNull
     @Ignore
     @Override
     public String toString() {
@@ -130,7 +130,7 @@ public class Pad implements Comparable<Pad> {
 
     @Ignore
     @Override
-    public int compareTo(Pad pad) {
+    public int compareTo(@NonNull Pad pad) {
         if (isRetired() && !pad.isRetired()) return 1;
         if (!isRetired() && pad.isRetired()) return -1;
         return name.compareTo(pad.getName());

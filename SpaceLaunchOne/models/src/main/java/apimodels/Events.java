@@ -16,11 +16,12 @@ import com.google.gson.annotations.SerializedName;
 
 import java.util.Date;
 import java.util.List;
+import java.util.Objects;
 
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 
-@ApiModel(description = "")
+@ApiModel()
 public class Events {
   
   @SerializedName("id")
@@ -56,7 +57,7 @@ public class Events {
 
   /**
    **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty()
   public Integer getId() {
     return id;
   }
@@ -66,7 +67,7 @@ public class Events {
 
   /**
    **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty()
   public String getUrl() {
     return url;
   }
@@ -76,7 +77,7 @@ public class Events {
 
   /**
    **/
-  @ApiModelProperty(required = true, value = "")
+  @ApiModelProperty(required = true)
   public String getSlug() {
     return slug;
   }
@@ -86,7 +87,7 @@ public class Events {
 
   /**
    **/
-  @ApiModelProperty(required = true, value = "")
+  @ApiModelProperty(required = true)
   public String getName() {
     return name;
   }
@@ -96,7 +97,7 @@ public class Events {
 
   /**
    **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty()
   public EventType getType() {
     return type;
   }
@@ -106,7 +107,7 @@ public class Events {
 
   /**
    **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty()
   public String getDescription() {
     return description;
   }
@@ -116,7 +117,7 @@ public class Events {
 
   /**
    **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty()
   public String getLocation() {
     return location;
   }
@@ -126,7 +127,7 @@ public class Events {
 
   /**
    **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty()
   public String getNewsUrl() {
     return newsUrl;
   }
@@ -136,7 +137,7 @@ public class Events {
 
   /**
    **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty()
   public String getVideoUrl() {
     return videoUrl;
   }
@@ -146,7 +147,7 @@ public class Events {
 
   /**
    **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty()
   public String getFeatureImage() {
     return featureImage;
   }
@@ -156,7 +157,7 @@ public class Events {
 
   /**
    **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty()
   public Date getDate() {
     return date;
   }
@@ -166,7 +167,7 @@ public class Events {
 
   /**
    **/
-  @ApiModelProperty(required = true, value = "")
+  @ApiModelProperty(required = true)
   public List<LaunchSerializerCommon> getLaunches() {
     return launches;
   }
@@ -176,7 +177,7 @@ public class Events {
 
   /**
    **/
-  @ApiModelProperty(required = true, value = "")
+  @ApiModelProperty(required = true)
   public List<Expedition> getExpeditions() {
     return expeditions;
   }
@@ -186,7 +187,7 @@ public class Events {
 
   /**
    **/
-  @ApiModelProperty(required = true, value = "")
+  @ApiModelProperty(required = true)
   public List<SpaceStationSerializerForCommon> getSpacestations() {
     return spacestations;
   }
@@ -196,7 +197,7 @@ public class Events {
 
   /**
    **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty()
   public List<Program> getProgram() {
     return program;
   }
@@ -214,21 +215,21 @@ public class Events {
       return false;
     }
     Events events = (Events) o;
-    return (this.id == null ? events.id == null : this.id.equals(events.id)) &&
-        (this.url == null ? events.url == null : this.url.equals(events.url)) &&
-        (this.slug == null ? events.slug == null : this.slug.equals(events.slug)) &&
-        (this.name == null ? events.name == null : this.name.equals(events.name)) &&
-        (this.type == null ? events.type == null : this.type.equals(events.type)) &&
-        (this.description == null ? events.description == null : this.description.equals(events.description)) &&
-        (this.location == null ? events.location == null : this.location.equals(events.location)) &&
-        (this.newsUrl == null ? events.newsUrl == null : this.newsUrl.equals(events.newsUrl)) &&
-        (this.videoUrl == null ? events.videoUrl == null : this.videoUrl.equals(events.videoUrl)) &&
-        (this.featureImage == null ? events.featureImage == null : this.featureImage.equals(events.featureImage)) &&
-        (this.date == null ? events.date == null : this.date.equals(events.date)) &&
-        (this.launches == null ? events.launches == null : this.launches.equals(events.launches)) &&
-        (this.expeditions == null ? events.expeditions == null : this.expeditions.equals(events.expeditions)) &&
-        (this.spacestations == null ? events.spacestations == null : this.spacestations.equals(events.spacestations)) &&
-        (this.program == null ? events.program == null : this.program.equals(events.program));
+    return (Objects.equals(this.id, events.id)) &&
+        (Objects.equals(this.url, events.url)) &&
+        (Objects.equals(this.slug, events.slug)) &&
+        (Objects.equals(this.name, events.name)) &&
+        (Objects.equals(this.type, events.type)) &&
+        (Objects.equals(this.description, events.description)) &&
+        (Objects.equals(this.location, events.location)) &&
+        (Objects.equals(this.newsUrl, events.newsUrl)) &&
+        (Objects.equals(this.videoUrl, events.videoUrl)) &&
+        (Objects.equals(this.featureImage, events.featureImage)) &&
+        (Objects.equals(this.date, events.date)) &&
+        (Objects.equals(this.launches, events.launches)) &&
+        (Objects.equals(this.expeditions, events.expeditions)) &&
+        (Objects.equals(this.spacestations, events.spacestations)) &&
+        (Objects.equals(this.program, events.program));
   }
 
   @Override
@@ -254,25 +255,24 @@ public class Events {
 
   @Override
   public String toString()  {
-    StringBuilder sb = new StringBuilder();
-    sb.append("class Events {\n");
-    
-    sb.append("  id: ").append(id).append("\n");
-    sb.append("  url: ").append(url).append("\n");
-    sb.append("  slug: ").append(slug).append("\n");
-    sb.append("  name: ").append(name).append("\n");
-    sb.append("  type: ").append(type).append("\n");
-    sb.append("  description: ").append(description).append("\n");
-    sb.append("  location: ").append(location).append("\n");
-    sb.append("  newsUrl: ").append(newsUrl).append("\n");
-    sb.append("  videoUrl: ").append(videoUrl).append("\n");
-    sb.append("  featureImage: ").append(featureImage).append("\n");
-    sb.append("  date: ").append(date).append("\n");
-    sb.append("  launches: ").append(launches).append("\n");
-    sb.append("  expeditions: ").append(expeditions).append("\n");
-    sb.append("  spacestations: ").append(spacestations).append("\n");
-    sb.append("  program: ").append(program).append("\n");
-    sb.append("}\n");
-    return sb.toString();
+
+      String sb = "class Events {\n" +
+              "  id: " + id + "\n" +
+              "  url: " + url + "\n" +
+              "  slug: " + slug + "\n" +
+              "  name: " + name + "\n" +
+              "  type: " + type + "\n" +
+              "  description: " + description + "\n" +
+              "  location: " + location + "\n" +
+              "  newsUrl: " + newsUrl + "\n" +
+              "  videoUrl: " + videoUrl + "\n" +
+              "  featureImage: " + featureImage + "\n" +
+              "  date: " + date + "\n" +
+              "  launches: " + launches + "\n" +
+              "  expeditions: " + expeditions + "\n" +
+              "  spacestations: " + spacestations + "\n" +
+              "  program: " + program + "\n" +
+              "}\n";
+      return sb;
   }
 }

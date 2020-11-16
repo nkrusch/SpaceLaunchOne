@@ -14,10 +14,12 @@ package apimodels;
 
 import com.google.gson.annotations.SerializedName;
 
+import java.util.Objects;
+
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 
-@ApiModel(description = "")
+@ApiModel()
 public class Mission {
   
   @SerializedName("id")
@@ -37,7 +39,7 @@ public class Mission {
 
   /**
    **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty()
   public Integer getId() {
     return id;
   }
@@ -49,7 +51,7 @@ public class Mission {
    * minimum: -2147483648
    * maximum: 2147483647
    **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty()
   public Integer getLaunchLibraryId() {
     return launchLibraryId;
   }
@@ -59,7 +61,7 @@ public class Mission {
 
   /**
    **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty()
   public String getName() {
     return name;
   }
@@ -69,7 +71,7 @@ public class Mission {
 
   /**
    **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty()
   public String getDescription() {
     return description;
   }
@@ -79,7 +81,7 @@ public class Mission {
 
   /**
    **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty()
   public String getLaunchDesignator() {
     return launchDesignator;
   }
@@ -89,7 +91,7 @@ public class Mission {
 
   /**
    **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty()
   public String getType() {
     return type;
   }
@@ -99,7 +101,7 @@ public class Mission {
 
   /**
    **/
-  @ApiModelProperty(required = true, value = "")
+  @ApiModelProperty(required = true)
   public Orbit getOrbit() {
     return orbit;
   }
@@ -117,13 +119,13 @@ public class Mission {
       return false;
     }
     Mission mission = (Mission) o;
-    return (this.id == null ? mission.id == null : this.id.equals(mission.id)) &&
-        (this.launchLibraryId == null ? mission.launchLibraryId == null : this.launchLibraryId.equals(mission.launchLibraryId)) &&
-        (this.name == null ? mission.name == null : this.name.equals(mission.name)) &&
-        (this.description == null ? mission.description == null : this.description.equals(mission.description)) &&
-        (this.launchDesignator == null ? mission.launchDesignator == null : this.launchDesignator.equals(mission.launchDesignator)) &&
-        (this.type == null ? mission.type == null : this.type.equals(mission.type)) &&
-        (this.orbit == null ? mission.orbit == null : this.orbit.equals(mission.orbit));
+    return (Objects.equals(this.id, mission.id)) &&
+        (Objects.equals(this.launchLibraryId, mission.launchLibraryId)) &&
+        (Objects.equals(this.name, mission.name)) &&
+        (Objects.equals(this.description, mission.description)) &&
+        (Objects.equals(this.launchDesignator, mission.launchDesignator)) &&
+        (Objects.equals(this.type, mission.type)) &&
+        (Objects.equals(this.orbit, mission.orbit));
   }
 
   @Override
@@ -141,17 +143,16 @@ public class Mission {
 
   @Override
   public String toString()  {
-    StringBuilder sb = new StringBuilder();
-    sb.append("class Mission {\n");
-    
-    sb.append("  id: ").append(id).append("\n");
-    sb.append("  launchLibraryId: ").append(launchLibraryId).append("\n");
-    sb.append("  name: ").append(name).append("\n");
-    sb.append("  description: ").append(description).append("\n");
-    sb.append("  launchDesignator: ").append(launchDesignator).append("\n");
-    sb.append("  type: ").append(type).append("\n");
-    sb.append("  orbit: ").append(orbit).append("\n");
-    sb.append("}\n");
-    return sb.toString();
+
+      String sb = "class Mission {\n" +
+              "  id: " + id + "\n" +
+              "  launchLibraryId: " + launchLibraryId + "\n" +
+              "  name: " + name + "\n" +
+              "  description: " + description + "\n" +
+              "  launchDesignator: " + launchDesignator + "\n" +
+              "  type: " + type + "\n" +
+              "  orbit: " + orbit + "\n" +
+              "}\n";
+      return sb;
   }
 }

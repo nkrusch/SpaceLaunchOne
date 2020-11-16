@@ -14,10 +14,12 @@ package apimodels;
 
 import com.google.gson.annotations.SerializedName;
 
+import java.util.Objects;
+
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 
-@ApiModel(description = "")
+@ApiModel()
 public class SpacecraftConfig {
   
   @SerializedName("id")
@@ -37,7 +39,7 @@ public class SpacecraftConfig {
 
   /**
    **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty()
   public Integer getId() {
     return id;
   }
@@ -47,7 +49,7 @@ public class SpacecraftConfig {
 
   /**
    **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty()
   public String getUrl() {
     return url;
   }
@@ -57,7 +59,7 @@ public class SpacecraftConfig {
 
   /**
    **/
-  @ApiModelProperty(required = true, value = "")
+  @ApiModelProperty(required = true)
   public String getName() {
     return name;
   }
@@ -67,7 +69,7 @@ public class SpacecraftConfig {
 
   /**
    **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty()
   public SpacecraftConfigType getType() {
     return type;
   }
@@ -77,7 +79,7 @@ public class SpacecraftConfig {
 
   /**
    **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty()
   public AgencySerializerMini getAgency() {
     return agency;
   }
@@ -87,7 +89,7 @@ public class SpacecraftConfig {
 
   /**
    **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty()
   public Boolean getInUse() {
     return inUse;
   }
@@ -97,7 +99,7 @@ public class SpacecraftConfig {
 
   /**
    **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty()
   public String getImageUrl() {
     return imageUrl;
   }
@@ -115,13 +117,13 @@ public class SpacecraftConfig {
       return false;
     }
     SpacecraftConfig spacecraftConfig = (SpacecraftConfig) o;
-    return (this.id == null ? spacecraftConfig.id == null : this.id.equals(spacecraftConfig.id)) &&
-        (this.url == null ? spacecraftConfig.url == null : this.url.equals(spacecraftConfig.url)) &&
-        (this.name == null ? spacecraftConfig.name == null : this.name.equals(spacecraftConfig.name)) &&
-        (this.type == null ? spacecraftConfig.type == null : this.type.equals(spacecraftConfig.type)) &&
-        (this.agency == null ? spacecraftConfig.agency == null : this.agency.equals(spacecraftConfig.agency)) &&
-        (this.inUse == null ? spacecraftConfig.inUse == null : this.inUse.equals(spacecraftConfig.inUse)) &&
-        (this.imageUrl == null ? spacecraftConfig.imageUrl == null : this.imageUrl.equals(spacecraftConfig.imageUrl));
+    return (Objects.equals(this.id, spacecraftConfig.id)) &&
+        (Objects.equals(this.url, spacecraftConfig.url)) &&
+        (Objects.equals(this.name, spacecraftConfig.name)) &&
+        (Objects.equals(this.type, spacecraftConfig.type)) &&
+        (Objects.equals(this.agency, spacecraftConfig.agency)) &&
+        (Objects.equals(this.inUse, spacecraftConfig.inUse)) &&
+        (Objects.equals(this.imageUrl, spacecraftConfig.imageUrl));
   }
 
   @Override
@@ -139,17 +141,16 @@ public class SpacecraftConfig {
 
   @Override
   public String toString()  {
-    StringBuilder sb = new StringBuilder();
-    sb.append("class SpacecraftConfig {\n");
-    
-    sb.append("  id: ").append(id).append("\n");
-    sb.append("  url: ").append(url).append("\n");
-    sb.append("  name: ").append(name).append("\n");
-    sb.append("  type: ").append(type).append("\n");
-    sb.append("  agency: ").append(agency).append("\n");
-    sb.append("  inUse: ").append(inUse).append("\n");
-    sb.append("  imageUrl: ").append(imageUrl).append("\n");
-    sb.append("}\n");
-    return sb.toString();
+
+      String sb = "class SpacecraftConfig {\n" +
+              "  id: " + id + "\n" +
+              "  url: " + url + "\n" +
+              "  name: " + name + "\n" +
+              "  type: " + type + "\n" +
+              "  agency: " + agency + "\n" +
+              "  inUse: " + inUse + "\n" +
+              "  imageUrl: " + imageUrl + "\n" +
+              "}\n";
+      return sb;
   }
 }

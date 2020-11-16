@@ -104,13 +104,13 @@ public class LaunchLibrary extends Logger {
         try {
             Log("URL:" + request.request().url().toString() +
                     "\nSUCCESS: " + (resp != null && resp.isSuccessful()) +
-                    "\nMESSAGE: " + (resp != null ? resp.errorBody() != null ?
-                    resp.errorBody().string() : resp.message() : resp.message())
-            );
+                    "\nMESSAGE: " + (resp != null && resp.errorBody() != null ?
+                    resp.errorBody().string() : ""));
         } catch (IOException e) {
             displayError(e);
         }
-        if (resp.isSuccessful() && resp.body() != null && resp.body().getResults() != null) {
+        if (resp != null && resp.isSuccessful() && resp.body() != null &&
+                resp.body().getResults() != null) {
             List<LaunchDetailed> list = new LinkedList<>();
             list.addAll(result.getResults());
             list.addAll(resp.body().getResults());

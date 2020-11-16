@@ -12,7 +12,6 @@ import java.util.List;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 import androidx.recyclerview.widget.GridLayoutManager;
 import io.github.nkrusch.spacelaunchone.R;
@@ -34,22 +33,12 @@ public class LocationRecyclerView extends RecyclerViewFragment {
     protected void setupViewModel() {
         if (getActivity() != null) {
             LocationListViewModel vm = ViewModelProviders.of(getActivity()).get(LocationListViewModel.class);
-            vm.getAll().observe(getActivity(), new Observer<List<Location>>() {
-                @Override
-                public void onChanged(@Nullable List<Location> locations) {
-                    handleDataChange(locations);
-                }
-            });
+            vm.getAll().observe(getActivity(), locations -> handleDataChange(locations));
         }
     }
 
     private OnItemListener onItemClick() {
-        return new OnItemListener() {
-            @Override
-            public void onItemClick(int id, String name) {
-                startActivity(DetailsLocationActivity.getIntent(getContext(), id, name));
-            }
-        };
+        return (id, name) -> startActivity(DetailsLocationActivity.getIntent(getContext(), id, name));
     }
 
     /**
@@ -62,8 +51,10 @@ public class LocationRecyclerView extends RecyclerViewFragment {
             mEmptyState.setVisibility(View.GONE);
             mRecyclerView.setVisibility(View.VISIBLE);
             LocationAdapter adapter = (LocationAdapter) mRecyclerView.getAdapter();
-            adapter.updateData(entries);
-            adapter.notifyDataSetChanged();
+            if (adapter != null) {
+                adapter.updateData(entries);
+                adapter.notifyDataSetChanged();
+            }
         } else {
             mRecyclerView.setVisibility(View.GONE);
             mEmptyState.setVisibility(View.VISIBLE);

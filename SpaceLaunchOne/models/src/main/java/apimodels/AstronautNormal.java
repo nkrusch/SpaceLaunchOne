@@ -15,11 +15,12 @@ package apimodels;
 import com.google.gson.annotations.SerializedName;
 
 import java.util.Date;
+import java.util.Objects;
 
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 
-@ApiModel(description = "")
+@ApiModel()
 public class AstronautNormal {
   
   @SerializedName("id")
@@ -59,7 +60,7 @@ public class AstronautNormal {
 
   /**
    **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty()
   public Integer getId() {
     return id;
   }
@@ -69,7 +70,7 @@ public class AstronautNormal {
 
   /**
    **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty()
   public String getUrl() {
     return url;
   }
@@ -79,7 +80,7 @@ public class AstronautNormal {
 
   /**
    **/
-  @ApiModelProperty(required = true, value = "")
+  @ApiModelProperty(required = true)
   public String getName() {
     return name;
   }
@@ -89,7 +90,7 @@ public class AstronautNormal {
 
   /**
    **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty()
   public AstronautStatus getStatus() {
     return status;
   }
@@ -99,7 +100,7 @@ public class AstronautNormal {
 
   /**
    **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty()
   public AstronautType getType() {
     return type;
   }
@@ -109,7 +110,7 @@ public class AstronautNormal {
 
   /**
    **/
-  @ApiModelProperty(required = true, value = "")
+  @ApiModelProperty(required = true)
   public Date getDateOfBirth() {
     return dateOfBirth;
   }
@@ -119,7 +120,7 @@ public class AstronautNormal {
 
   /**
    **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty()
   public Date getDateOfDeath() {
     return dateOfDeath;
   }
@@ -129,7 +130,7 @@ public class AstronautNormal {
 
   /**
    **/
-  @ApiModelProperty(required = true, value = "")
+  @ApiModelProperty(required = true)
   public String getNationality() {
     return nationality;
   }
@@ -139,7 +140,7 @@ public class AstronautNormal {
 
   /**
    **/
-  @ApiModelProperty(required = true, value = "")
+  @ApiModelProperty(required = true)
   public String getBio() {
     return bio;
   }
@@ -149,7 +150,7 @@ public class AstronautNormal {
 
   /**
    **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty()
   public String getTwitter() {
     return twitter;
   }
@@ -159,7 +160,7 @@ public class AstronautNormal {
 
   /**
    **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty()
   public String getInstagram() {
     return instagram;
   }
@@ -169,7 +170,7 @@ public class AstronautNormal {
 
   /**
    **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty()
   public String getWiki() {
     return wiki;
   }
@@ -179,7 +180,7 @@ public class AstronautNormal {
 
   /**
    **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty()
   public Agency getAgency() {
     return agency;
   }
@@ -189,7 +190,7 @@ public class AstronautNormal {
 
   /**
    **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty()
   public String getProfileImage() {
     return profileImage;
   }
@@ -199,7 +200,7 @@ public class AstronautNormal {
 
   /**
    **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty()
   public String getProfileImageThumbnail() {
     return profileImageThumbnail;
   }
@@ -209,7 +210,7 @@ public class AstronautNormal {
 
   /**
    **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty()
   public String getLastFlight() {
     return lastFlight;
   }
@@ -219,7 +220,7 @@ public class AstronautNormal {
 
   /**
    **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty()
   public String getFirstFlight() {
     return firstFlight;
   }
@@ -237,23 +238,23 @@ public class AstronautNormal {
       return false;
     }
     AstronautNormal astronautNormal = (AstronautNormal) o;
-    return (this.id == null ? astronautNormal.id == null : this.id.equals(astronautNormal.id)) &&
-        (this.url == null ? astronautNormal.url == null : this.url.equals(astronautNormal.url)) &&
-        (this.name == null ? astronautNormal.name == null : this.name.equals(astronautNormal.name)) &&
-        (this.status == null ? astronautNormal.status == null : this.status.equals(astronautNormal.status)) &&
-        (this.type == null ? astronautNormal.type == null : this.type.equals(astronautNormal.type)) &&
-        (this.dateOfBirth == null ? astronautNormal.dateOfBirth == null : this.dateOfBirth.equals(astronautNormal.dateOfBirth)) &&
-        (this.dateOfDeath == null ? astronautNormal.dateOfDeath == null : this.dateOfDeath.equals(astronautNormal.dateOfDeath)) &&
-        (this.nationality == null ? astronautNormal.nationality == null : this.nationality.equals(astronautNormal.nationality)) &&
-        (this.bio == null ? astronautNormal.bio == null : this.bio.equals(astronautNormal.bio)) &&
-        (this.twitter == null ? astronautNormal.twitter == null : this.twitter.equals(astronautNormal.twitter)) &&
-        (this.instagram == null ? astronautNormal.instagram == null : this.instagram.equals(astronautNormal.instagram)) &&
-        (this.wiki == null ? astronautNormal.wiki == null : this.wiki.equals(astronautNormal.wiki)) &&
-        (this.agency == null ? astronautNormal.agency == null : this.agency.equals(astronautNormal.agency)) &&
-        (this.profileImage == null ? astronautNormal.profileImage == null : this.profileImage.equals(astronautNormal.profileImage)) &&
-        (this.profileImageThumbnail == null ? astronautNormal.profileImageThumbnail == null : this.profileImageThumbnail.equals(astronautNormal.profileImageThumbnail)) &&
-        (this.lastFlight == null ? astronautNormal.lastFlight == null : this.lastFlight.equals(astronautNormal.lastFlight)) &&
-        (this.firstFlight == null ? astronautNormal.firstFlight == null : this.firstFlight.equals(astronautNormal.firstFlight));
+    return (Objects.equals(this.id, astronautNormal.id)) &&
+        (Objects.equals(this.url, astronautNormal.url)) &&
+        (Objects.equals(this.name, astronautNormal.name)) &&
+        (Objects.equals(this.status, astronautNormal.status)) &&
+        (Objects.equals(this.type, astronautNormal.type)) &&
+        (Objects.equals(this.dateOfBirth, astronautNormal.dateOfBirth)) &&
+        (Objects.equals(this.dateOfDeath, astronautNormal.dateOfDeath)) &&
+        (Objects.equals(this.nationality, astronautNormal.nationality)) &&
+        (Objects.equals(this.bio, astronautNormal.bio)) &&
+        (Objects.equals(this.twitter, astronautNormal.twitter)) &&
+        (Objects.equals(this.instagram, astronautNormal.instagram)) &&
+        (Objects.equals(this.wiki, astronautNormal.wiki)) &&
+        (Objects.equals(this.agency, astronautNormal.agency)) &&
+        (Objects.equals(this.profileImage, astronautNormal.profileImage)) &&
+        (Objects.equals(this.profileImageThumbnail, astronautNormal.profileImageThumbnail)) &&
+        (Objects.equals(this.lastFlight, astronautNormal.lastFlight)) &&
+        (Objects.equals(this.firstFlight, astronautNormal.firstFlight));
   }
 
   @Override
@@ -281,27 +282,26 @@ public class AstronautNormal {
 
   @Override
   public String toString()  {
-    StringBuilder sb = new StringBuilder();
-    sb.append("class AstronautNormal {\n");
-    
-    sb.append("  id: ").append(id).append("\n");
-    sb.append("  url: ").append(url).append("\n");
-    sb.append("  name: ").append(name).append("\n");
-    sb.append("  status: ").append(status).append("\n");
-    sb.append("  type: ").append(type).append("\n");
-    sb.append("  dateOfBirth: ").append(dateOfBirth).append("\n");
-    sb.append("  dateOfDeath: ").append(dateOfDeath).append("\n");
-    sb.append("  nationality: ").append(nationality).append("\n");
-    sb.append("  bio: ").append(bio).append("\n");
-    sb.append("  twitter: ").append(twitter).append("\n");
-    sb.append("  instagram: ").append(instagram).append("\n");
-    sb.append("  wiki: ").append(wiki).append("\n");
-    sb.append("  agency: ").append(agency).append("\n");
-    sb.append("  profileImage: ").append(profileImage).append("\n");
-    sb.append("  profileImageThumbnail: ").append(profileImageThumbnail).append("\n");
-    sb.append("  lastFlight: ").append(lastFlight).append("\n");
-    sb.append("  firstFlight: ").append(firstFlight).append("\n");
-    sb.append("}\n");
-    return sb.toString();
+
+      String sb = "class AstronautNormal {\n" +
+              "  id: " + id + "\n" +
+              "  url: " + url + "\n" +
+              "  name: " + name + "\n" +
+              "  status: " + status + "\n" +
+              "  type: " + type + "\n" +
+              "  dateOfBirth: " + dateOfBirth + "\n" +
+              "  dateOfDeath: " + dateOfDeath + "\n" +
+              "  nationality: " + nationality + "\n" +
+              "  bio: " + bio + "\n" +
+              "  twitter: " + twitter + "\n" +
+              "  instagram: " + instagram + "\n" +
+              "  wiki: " + wiki + "\n" +
+              "  agency: " + agency + "\n" +
+              "  profileImage: " + profileImage + "\n" +
+              "  profileImageThumbnail: " + profileImageThumbnail + "\n" +
+              "  lastFlight: " + lastFlight + "\n" +
+              "  firstFlight: " + firstFlight + "\n" +
+              "}\n";
+      return sb;
   }
 }

@@ -14,10 +14,12 @@ package apimodels;
 
 import com.google.gson.annotations.SerializedName;
 
+import java.util.Objects;
+
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 
-@ApiModel(description = "")
+@ApiModel()
 public class PadSerializerNoLocation {
   
   @SerializedName("id")
@@ -45,7 +47,7 @@ public class PadSerializerNoLocation {
 
   /**
    **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty()
   public Integer getId() {
     return id;
   }
@@ -55,7 +57,7 @@ public class PadSerializerNoLocation {
 
   /**
    **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty()
   public String getUrl() {
     return url;
   }
@@ -67,7 +69,7 @@ public class PadSerializerNoLocation {
    * minimum: -2147483648
    * maximum: 2147483647
    **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty()
   public Integer getAgencyId() {
     return agencyId;
   }
@@ -77,7 +79,7 @@ public class PadSerializerNoLocation {
 
   /**
    **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty()
   public String getName() {
     return name;
   }
@@ -87,7 +89,7 @@ public class PadSerializerNoLocation {
 
   /**
    **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty()
   public String getInfoUrl() {
     return infoUrl;
   }
@@ -97,7 +99,7 @@ public class PadSerializerNoLocation {
 
   /**
    **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty()
   public String getWikiUrl() {
     return wikiUrl;
   }
@@ -107,7 +109,7 @@ public class PadSerializerNoLocation {
 
   /**
    **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty()
   public String getMapUrl() {
     return mapUrl;
   }
@@ -117,7 +119,7 @@ public class PadSerializerNoLocation {
 
   /**
    **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty()
   public String getLatitude() {
     return latitude;
   }
@@ -127,7 +129,7 @@ public class PadSerializerNoLocation {
 
   /**
    **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty()
   public String getLongitude() {
     return longitude;
   }
@@ -137,7 +139,7 @@ public class PadSerializerNoLocation {
 
   /**
    **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty()
   public String getMapImage() {
     return mapImage;
   }
@@ -147,7 +149,7 @@ public class PadSerializerNoLocation {
 
   /**
    **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty()
   public String getTotalLaunchCount() {
     return totalLaunchCount;
   }
@@ -165,17 +167,17 @@ public class PadSerializerNoLocation {
       return false;
     }
     PadSerializerNoLocation padSerializerNoLocation = (PadSerializerNoLocation) o;
-    return (this.id == null ? padSerializerNoLocation.id == null : this.id.equals(padSerializerNoLocation.id)) &&
-        (this.url == null ? padSerializerNoLocation.url == null : this.url.equals(padSerializerNoLocation.url)) &&
-        (this.agencyId == null ? padSerializerNoLocation.agencyId == null : this.agencyId.equals(padSerializerNoLocation.agencyId)) &&
-        (this.name == null ? padSerializerNoLocation.name == null : this.name.equals(padSerializerNoLocation.name)) &&
-        (this.infoUrl == null ? padSerializerNoLocation.infoUrl == null : this.infoUrl.equals(padSerializerNoLocation.infoUrl)) &&
-        (this.wikiUrl == null ? padSerializerNoLocation.wikiUrl == null : this.wikiUrl.equals(padSerializerNoLocation.wikiUrl)) &&
-        (this.mapUrl == null ? padSerializerNoLocation.mapUrl == null : this.mapUrl.equals(padSerializerNoLocation.mapUrl)) &&
-        (this.latitude == null ? padSerializerNoLocation.latitude == null : this.latitude.equals(padSerializerNoLocation.latitude)) &&
-        (this.longitude == null ? padSerializerNoLocation.longitude == null : this.longitude.equals(padSerializerNoLocation.longitude)) &&
-        (this.mapImage == null ? padSerializerNoLocation.mapImage == null : this.mapImage.equals(padSerializerNoLocation.mapImage)) &&
-        (this.totalLaunchCount == null ? padSerializerNoLocation.totalLaunchCount == null : this.totalLaunchCount.equals(padSerializerNoLocation.totalLaunchCount));
+    return (Objects.equals(this.id, padSerializerNoLocation.id)) &&
+        (Objects.equals(this.url, padSerializerNoLocation.url)) &&
+        (Objects.equals(this.agencyId, padSerializerNoLocation.agencyId)) &&
+        (Objects.equals(this.name, padSerializerNoLocation.name)) &&
+        (Objects.equals(this.infoUrl, padSerializerNoLocation.infoUrl)) &&
+        (Objects.equals(this.wikiUrl, padSerializerNoLocation.wikiUrl)) &&
+        (Objects.equals(this.mapUrl, padSerializerNoLocation.mapUrl)) &&
+        (Objects.equals(this.latitude, padSerializerNoLocation.latitude)) &&
+        (Objects.equals(this.longitude, padSerializerNoLocation.longitude)) &&
+        (Objects.equals(this.mapImage, padSerializerNoLocation.mapImage)) &&
+        (Objects.equals(this.totalLaunchCount, padSerializerNoLocation.totalLaunchCount));
   }
 
   @Override
@@ -197,21 +199,20 @@ public class PadSerializerNoLocation {
 
   @Override
   public String toString()  {
-    StringBuilder sb = new StringBuilder();
-    sb.append("class PadSerializerNoLocation {\n");
-    
-    sb.append("  id: ").append(id).append("\n");
-    sb.append("  url: ").append(url).append("\n");
-    sb.append("  agencyId: ").append(agencyId).append("\n");
-    sb.append("  name: ").append(name).append("\n");
-    sb.append("  infoUrl: ").append(infoUrl).append("\n");
-    sb.append("  wikiUrl: ").append(wikiUrl).append("\n");
-    sb.append("  mapUrl: ").append(mapUrl).append("\n");
-    sb.append("  latitude: ").append(latitude).append("\n");
-    sb.append("  longitude: ").append(longitude).append("\n");
-    sb.append("  mapImage: ").append(mapImage).append("\n");
-    sb.append("  totalLaunchCount: ").append(totalLaunchCount).append("\n");
-    sb.append("}\n");
-    return sb.toString();
+
+      String sb = "class PadSerializerNoLocation {\n" +
+              "  id: " + id + "\n" +
+              "  url: " + url + "\n" +
+              "  agencyId: " + agencyId + "\n" +
+              "  name: " + name + "\n" +
+              "  infoUrl: " + infoUrl + "\n" +
+              "  wikiUrl: " + wikiUrl + "\n" +
+              "  mapUrl: " + mapUrl + "\n" +
+              "  latitude: " + latitude + "\n" +
+              "  longitude: " + longitude + "\n" +
+              "  mapImage: " + mapImage + "\n" +
+              "  totalLaunchCount: " + totalLaunchCount + "\n" +
+              "}\n";
+      return sb;
   }
 }

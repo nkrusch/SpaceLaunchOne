@@ -16,11 +16,12 @@ import com.google.gson.annotations.SerializedName;
 
 import java.util.Date;
 import java.util.List;
+import java.util.Objects;
 
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 
-@ApiModel(description = "")
+@ApiModel()
 public class SpacecraftFlightDetailedSerializerForLaunch {
   
   @SerializedName("id")
@@ -44,7 +45,7 @@ public class SpacecraftFlightDetailedSerializerForLaunch {
 
   /**
    **/
-  @ApiModelProperty(required = true, value = "")
+  @ApiModelProperty(required = true)
   public Integer getId() {
     return id;
   }
@@ -54,7 +55,7 @@ public class SpacecraftFlightDetailedSerializerForLaunch {
 
   /**
    **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty()
   public String getUrl() {
     return url;
   }
@@ -64,7 +65,7 @@ public class SpacecraftFlightDetailedSerializerForLaunch {
 
   /**
    **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty()
   public Date getMissionEnd() {
     return missionEnd;
   }
@@ -74,7 +75,7 @@ public class SpacecraftFlightDetailedSerializerForLaunch {
 
   /**
    **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty()
   public String getDestination() {
     return destination;
   }
@@ -84,7 +85,7 @@ public class SpacecraftFlightDetailedSerializerForLaunch {
 
   /**
    **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty()
   public List<AstronautFlight> getLaunchCrew() {
     return launchCrew;
   }
@@ -94,7 +95,7 @@ public class SpacecraftFlightDetailedSerializerForLaunch {
 
   /**
    **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty()
   public List<AstronautFlight> getOnboardCrew() {
     return onboardCrew;
   }
@@ -104,7 +105,7 @@ public class SpacecraftFlightDetailedSerializerForLaunch {
 
   /**
    **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty()
   public List<AstronautFlight> getLandingCrew() {
     return landingCrew;
   }
@@ -114,7 +115,7 @@ public class SpacecraftFlightDetailedSerializerForLaunch {
 
   /**
    **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty()
   public SpacecraftDetailedNoFlights getSpacecraft() {
     return spacecraft;
   }
@@ -124,7 +125,7 @@ public class SpacecraftFlightDetailedSerializerForLaunch {
 
   /**
    **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty()
   public List<DockingEventSerializerForSpacecraftFlight> getDockingEvents() {
     return dockingEvents;
   }
@@ -142,15 +143,15 @@ public class SpacecraftFlightDetailedSerializerForLaunch {
       return false;
     }
     SpacecraftFlightDetailedSerializerForLaunch spacecraftFlightDetailedSerializerForLaunch = (SpacecraftFlightDetailedSerializerForLaunch) o;
-    return (this.id == null ? spacecraftFlightDetailedSerializerForLaunch.id == null : this.id.equals(spacecraftFlightDetailedSerializerForLaunch.id)) &&
-        (this.url == null ? spacecraftFlightDetailedSerializerForLaunch.url == null : this.url.equals(spacecraftFlightDetailedSerializerForLaunch.url)) &&
-        (this.missionEnd == null ? spacecraftFlightDetailedSerializerForLaunch.missionEnd == null : this.missionEnd.equals(spacecraftFlightDetailedSerializerForLaunch.missionEnd)) &&
-        (this.destination == null ? spacecraftFlightDetailedSerializerForLaunch.destination == null : this.destination.equals(spacecraftFlightDetailedSerializerForLaunch.destination)) &&
-        (this.launchCrew == null ? spacecraftFlightDetailedSerializerForLaunch.launchCrew == null : this.launchCrew.equals(spacecraftFlightDetailedSerializerForLaunch.launchCrew)) &&
-        (this.onboardCrew == null ? spacecraftFlightDetailedSerializerForLaunch.onboardCrew == null : this.onboardCrew.equals(spacecraftFlightDetailedSerializerForLaunch.onboardCrew)) &&
-        (this.landingCrew == null ? spacecraftFlightDetailedSerializerForLaunch.landingCrew == null : this.landingCrew.equals(spacecraftFlightDetailedSerializerForLaunch.landingCrew)) &&
-        (this.spacecraft == null ? spacecraftFlightDetailedSerializerForLaunch.spacecraft == null : this.spacecraft.equals(spacecraftFlightDetailedSerializerForLaunch.spacecraft)) &&
-        (this.dockingEvents == null ? spacecraftFlightDetailedSerializerForLaunch.dockingEvents == null : this.dockingEvents.equals(spacecraftFlightDetailedSerializerForLaunch.dockingEvents));
+    return (Objects.equals(this.id, spacecraftFlightDetailedSerializerForLaunch.id)) &&
+        (Objects.equals(this.url, spacecraftFlightDetailedSerializerForLaunch.url)) &&
+        (Objects.equals(this.missionEnd, spacecraftFlightDetailedSerializerForLaunch.missionEnd)) &&
+        (Objects.equals(this.destination, spacecraftFlightDetailedSerializerForLaunch.destination)) &&
+        (Objects.equals(this.launchCrew, spacecraftFlightDetailedSerializerForLaunch.launchCrew)) &&
+        (Objects.equals(this.onboardCrew, spacecraftFlightDetailedSerializerForLaunch.onboardCrew)) &&
+        (Objects.equals(this.landingCrew, spacecraftFlightDetailedSerializerForLaunch.landingCrew)) &&
+        (Objects.equals(this.spacecraft, spacecraftFlightDetailedSerializerForLaunch.spacecraft)) &&
+        (Objects.equals(this.dockingEvents, spacecraftFlightDetailedSerializerForLaunch.dockingEvents));
   }
 
   @Override
@@ -170,19 +171,18 @@ public class SpacecraftFlightDetailedSerializerForLaunch {
 
   @Override
   public String toString()  {
-    StringBuilder sb = new StringBuilder();
-    sb.append("class SpacecraftFlightDetailedSerializerForLaunch {\n");
-    
-    sb.append("  id: ").append(id).append("\n");
-    sb.append("  url: ").append(url).append("\n");
-    sb.append("  missionEnd: ").append(missionEnd).append("\n");
-    sb.append("  destination: ").append(destination).append("\n");
-    sb.append("  launchCrew: ").append(launchCrew).append("\n");
-    sb.append("  onboardCrew: ").append(onboardCrew).append("\n");
-    sb.append("  landingCrew: ").append(landingCrew).append("\n");
-    sb.append("  spacecraft: ").append(spacecraft).append("\n");
-    sb.append("  dockingEvents: ").append(dockingEvents).append("\n");
-    sb.append("}\n");
-    return sb.toString();
+
+      String sb = "class SpacecraftFlightDetailedSerializerForLaunch {\n" +
+              "  id: " + id + "\n" +
+              "  url: " + url + "\n" +
+              "  missionEnd: " + missionEnd + "\n" +
+              "  destination: " + destination + "\n" +
+              "  launchCrew: " + launchCrew + "\n" +
+              "  onboardCrew: " + onboardCrew + "\n" +
+              "  landingCrew: " + landingCrew + "\n" +
+              "  spacecraft: " + spacecraft + "\n" +
+              "  dockingEvents: " + dockingEvents + "\n" +
+              "}\n";
+      return sb;
   }
 }

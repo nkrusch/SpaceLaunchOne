@@ -15,11 +15,12 @@ package apimodels;
 import com.google.gson.annotations.SerializedName;
 
 import java.util.List;
+import java.util.Objects;
 
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 
-@ApiModel(description = "")
+@ApiModel()
 public class InlineResponse2004 {
   
   @SerializedName("count")
@@ -33,7 +34,7 @@ public class InlineResponse2004 {
 
   /**
    **/
-  @ApiModelProperty(required = true, value = "")
+  @ApiModelProperty(required = true)
   public Integer getCount() {
     return count;
   }
@@ -43,7 +44,7 @@ public class InlineResponse2004 {
 
   /**
    **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty()
   public String getNext() {
     return next;
   }
@@ -53,7 +54,7 @@ public class InlineResponse2004 {
 
   /**
    **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty()
   public String getPrevious() {
     return previous;
   }
@@ -63,7 +64,7 @@ public class InlineResponse2004 {
 
   /**
    **/
-  @ApiModelProperty(required = true, value = "")
+  @ApiModelProperty(required = true)
   public List<DockingEvent> getResults() {
     return results;
   }
@@ -81,10 +82,10 @@ public class InlineResponse2004 {
       return false;
     }
     InlineResponse2004 inlineResponse2004 = (InlineResponse2004) o;
-    return (this.count == null ? inlineResponse2004.count == null : this.count.equals(inlineResponse2004.count)) &&
-        (this.next == null ? inlineResponse2004.next == null : this.next.equals(inlineResponse2004.next)) &&
-        (this.previous == null ? inlineResponse2004.previous == null : this.previous.equals(inlineResponse2004.previous)) &&
-        (this.results == null ? inlineResponse2004.results == null : this.results.equals(inlineResponse2004.results));
+    return (Objects.equals(this.count, inlineResponse2004.count)) &&
+        (Objects.equals(this.next, inlineResponse2004.next)) &&
+        (Objects.equals(this.previous, inlineResponse2004.previous)) &&
+        (Objects.equals(this.results, inlineResponse2004.results));
   }
 
   @Override
@@ -99,14 +100,13 @@ public class InlineResponse2004 {
 
   @Override
   public String toString()  {
-    StringBuilder sb = new StringBuilder();
-    sb.append("class InlineResponse2004 {\n");
-    
-    sb.append("  count: ").append(count).append("\n");
-    sb.append("  next: ").append(next).append("\n");
-    sb.append("  previous: ").append(previous).append("\n");
-    sb.append("  results: ").append(results).append("\n");
-    sb.append("}\n");
-    return sb.toString();
+
+      String sb = "class InlineResponse2004 {\n" +
+              "  count: " + count + "\n" +
+              "  next: " + next + "\n" +
+              "  previous: " + previous + "\n" +
+              "  results: " + results + "\n" +
+              "}\n";
+      return sb;
   }
 }

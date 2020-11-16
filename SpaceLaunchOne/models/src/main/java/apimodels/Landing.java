@@ -14,10 +14,12 @@ package apimodels;
 
 import com.google.gson.annotations.SerializedName;
 
+import java.util.Objects;
+
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 
-@ApiModel(description = "")
+@ApiModel()
 public class Landing {
   
   @SerializedName("id")
@@ -35,7 +37,7 @@ public class Landing {
 
   /**
    **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty()
   public Integer getId() {
     return id;
   }
@@ -45,7 +47,7 @@ public class Landing {
 
   /**
    **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty()
   public Boolean getAttempt() {
     return attempt;
   }
@@ -55,7 +57,7 @@ public class Landing {
 
   /**
    **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty()
   public Boolean getSuccess() {
     return success;
   }
@@ -65,7 +67,7 @@ public class Landing {
 
   /**
    **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty()
   public String getDescription() {
     return description;
   }
@@ -75,7 +77,7 @@ public class Landing {
 
   /**
    **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty()
   public LandingLocation getLocation() {
     return location;
   }
@@ -85,7 +87,7 @@ public class Landing {
 
   /**
    **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty()
   public LandingType getType() {
     return type;
   }
@@ -103,12 +105,12 @@ public class Landing {
       return false;
     }
     Landing landing = (Landing) o;
-    return (this.id == null ? landing.id == null : this.id.equals(landing.id)) &&
-        (this.attempt == null ? landing.attempt == null : this.attempt.equals(landing.attempt)) &&
-        (this.success == null ? landing.success == null : this.success.equals(landing.success)) &&
-        (this.description == null ? landing.description == null : this.description.equals(landing.description)) &&
-        (this.location == null ? landing.location == null : this.location.equals(landing.location)) &&
-        (this.type == null ? landing.type == null : this.type.equals(landing.type));
+    return (Objects.equals(this.id, landing.id)) &&
+        (Objects.equals(this.attempt, landing.attempt)) &&
+        (Objects.equals(this.success, landing.success)) &&
+        (Objects.equals(this.description, landing.description)) &&
+        (Objects.equals(this.location, landing.location)) &&
+        (Objects.equals(this.type, landing.type));
   }
 
   @Override
@@ -125,16 +127,15 @@ public class Landing {
 
   @Override
   public String toString()  {
-    StringBuilder sb = new StringBuilder();
-    sb.append("class Landing {\n");
-    
-    sb.append("  id: ").append(id).append("\n");
-    sb.append("  attempt: ").append(attempt).append("\n");
-    sb.append("  success: ").append(success).append("\n");
-    sb.append("  description: ").append(description).append("\n");
-    sb.append("  location: ").append(location).append("\n");
-    sb.append("  type: ").append(type).append("\n");
-    sb.append("}\n");
-    return sb.toString();
+
+      String sb = "class Landing {\n" +
+              "  id: " + id + "\n" +
+              "  attempt: " + attempt + "\n" +
+              "  success: " + success + "\n" +
+              "  description: " + description + "\n" +
+              "  location: " + location + "\n" +
+              "  type: " + type + "\n" +
+              "}\n";
+      return sb;
   }
 }

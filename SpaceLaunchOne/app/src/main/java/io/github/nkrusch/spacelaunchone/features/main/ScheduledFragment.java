@@ -4,7 +4,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.DisplayMetrics;
 import android.view.LayoutInflater;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 
@@ -34,24 +33,21 @@ public class ScheduledFragment extends Fragment {
         mToolbar.inflateMenu(R.menu.menu_main);
         mToolbar.setTitle("Future Launches");
 
-        mToolbar.setOnMenuItemClickListener(new Toolbar.OnMenuItemClickListener() {
-            @Override
-            public boolean onMenuItemClick(MenuItem item) {
-                int id = item.getItemId();
-                if (id == R.id.past) {
-                    startActivity(new Intent(getContext(), HistoryActivity.class));
-                    return true;
-                }
-                if (id == R.id.filters) {
-                    startActivity(new Intent(getContext(), FilterActivity.class));
-                    return true;
-                }
-                if (id == R.id.search) {
-                    startActivity(new Intent(getContext(), SearchActivity.class));
-                    return true;
-                }
-                return false;
+        mToolbar.setOnMenuItemClickListener(item -> {
+            int id = item.getItemId();
+            if (id == R.id.past) {
+                startActivity(new Intent(getContext(), HistoryActivity.class));
+                return true;
             }
+            if (id == R.id.filters) {
+                startActivity(new Intent(getContext(), FilterActivity.class));
+                return true;
+            }
+            if (id == R.id.search) {
+                startActivity(new Intent(getContext(), SearchActivity.class));
+                return true;
+            }
+            return false;
         });
 
 

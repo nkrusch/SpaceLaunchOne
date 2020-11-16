@@ -14,10 +14,12 @@ package apimodels;
 
 import com.google.gson.annotations.SerializedName;
 
+import java.util.Objects;
+
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 
-@ApiModel(description = "")
+@ApiModel()
 public class LandingType {
   
   @SerializedName("id")
@@ -31,7 +33,7 @@ public class LandingType {
 
   /**
    **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty()
   public Integer getId() {
     return id;
   }
@@ -41,7 +43,7 @@ public class LandingType {
 
   /**
    **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty()
   public String getName() {
     return name;
   }
@@ -51,7 +53,7 @@ public class LandingType {
 
   /**
    **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty()
   public String getAbbrev() {
     return abbrev;
   }
@@ -61,7 +63,7 @@ public class LandingType {
 
   /**
    **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty()
   public String getDescription() {
     return description;
   }
@@ -79,10 +81,10 @@ public class LandingType {
       return false;
     }
     LandingType landingType = (LandingType) o;
-    return (this.id == null ? landingType.id == null : this.id.equals(landingType.id)) &&
-        (this.name == null ? landingType.name == null : this.name.equals(landingType.name)) &&
-        (this.abbrev == null ? landingType.abbrev == null : this.abbrev.equals(landingType.abbrev)) &&
-        (this.description == null ? landingType.description == null : this.description.equals(landingType.description));
+    return (Objects.equals(this.id, landingType.id)) &&
+        (Objects.equals(this.name, landingType.name)) &&
+        (Objects.equals(this.abbrev, landingType.abbrev)) &&
+        (Objects.equals(this.description, landingType.description));
   }
 
   @Override
@@ -97,14 +99,13 @@ public class LandingType {
 
   @Override
   public String toString()  {
-    StringBuilder sb = new StringBuilder();
-    sb.append("class LandingType {\n");
-    
-    sb.append("  id: ").append(id).append("\n");
-    sb.append("  name: ").append(name).append("\n");
-    sb.append("  abbrev: ").append(abbrev).append("\n");
-    sb.append("  description: ").append(description).append("\n");
-    sb.append("}\n");
-    return sb.toString();
+
+      String sb = "class LandingType {\n" +
+              "  id: " + id + "\n" +
+              "  name: " + name + "\n" +
+              "  abbrev: " + abbrev + "\n" +
+              "  description: " + description + "\n" +
+              "}\n";
+      return sb;
   }
 }

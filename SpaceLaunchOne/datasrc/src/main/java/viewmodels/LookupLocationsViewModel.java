@@ -27,29 +27,23 @@ public class LookupLocationsViewModel extends AndroidViewModel implements IFilte
     }
 
     public void toggle(final LocationLookup l) {
-        AppExecutors.getInstance().DiskIO().execute(new Runnable() {
-            @Override
-            public void run() {
-                LocationFilter lf = new LocationFilter(l.getId());
-                if (l.isFiltered()) db.dao().deleteFilters(lf);
-                else db.dao().addAFilters(lf);
-            }
+        AppExecutors.getInstance().DiskIO().execute(() -> {
+            LocationFilter lf = new LocationFilter(l.getId());
+            if (l.isFiltered()) db.dao().deleteFilters(lf);
+            else db.dao().addAFilters(lf);
         });
     }
 
     public void setAll(final boolean insert) {
-        AppExecutors.getInstance().DiskIO().execute(new Runnable() {
-            @Override
-            public void run() {
-                if (locations.getValue() == null) return;
-                LocationFilter[] data = new LocationFilter[locations.getValue().size()];
-                for (int i = 0; i < locations.getValue().size(); i++)
-                    data[i] = new LocationFilter(locations.getValue().get(i).getId());
-                if (!insert)
-                    db.dao().deleteFilters(data);
-                else
-                    db.dao().addAFilters(data);
-            }
+        AppExecutors.getInstance().DiskIO().execute(() -> {
+            if (locations.getValue() == null) return;
+            LocationFilter[] data = new LocationFilter[locations.getValue().size()];
+            for (int i = 0; i < locations.getValue().size(); i++)
+                data[i] = new LocationFilter(locations.getValue().get(i).getId());
+            if (!insert)
+                db.dao().deleteFilters(data);
+            else
+                db.dao().addAFilters(data);
         });
     }
 }

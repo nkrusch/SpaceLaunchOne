@@ -15,11 +15,12 @@ package apimodels;
 import com.google.gson.annotations.SerializedName;
 
 import java.util.List;
+import java.util.Objects;
 
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 
-@ApiModel(description = "")
+@ApiModel()
 public class LauncherConfig {
   
   @SerializedName("id")
@@ -51,7 +52,7 @@ public class LauncherConfig {
 
   /**
    **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty()
   public Integer getId() {
     return id;
   }
@@ -63,7 +64,7 @@ public class LauncherConfig {
    * minimum: -2147483648
    * maximum: 2147483647
    **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty()
   public Integer getLaunchLibraryId() {
     return launchLibraryId;
   }
@@ -73,7 +74,7 @@ public class LauncherConfig {
 
   /**
    **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty()
   public String getUrl() {
     return url;
   }
@@ -83,7 +84,7 @@ public class LauncherConfig {
 
   /**
    **/
-  @ApiModelProperty(required = true, value = "")
+  @ApiModelProperty(required = true)
   public String getName() {
     return name;
   }
@@ -93,7 +94,7 @@ public class LauncherConfig {
 
   /**
    **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty()
   public Agency getManufacturer() {
     return manufacturer;
   }
@@ -103,7 +104,7 @@ public class LauncherConfig {
 
   /**
    **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty()
   public List<Program> getProgram() {
     return program;
   }
@@ -113,7 +114,7 @@ public class LauncherConfig {
 
   /**
    **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty()
   public String getFamily() {
     return family;
   }
@@ -123,7 +124,7 @@ public class LauncherConfig {
 
   /**
    **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty()
   public String getFullName() {
     return fullName;
   }
@@ -133,7 +134,7 @@ public class LauncherConfig {
 
   /**
    **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty()
   public String getVariant() {
     return variant;
   }
@@ -143,7 +144,7 @@ public class LauncherConfig {
 
   /**
    **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty()
   public Boolean getReusable() {
     return reusable;
   }
@@ -153,7 +154,7 @@ public class LauncherConfig {
 
   /**
    **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty()
   public String getImageUrl() {
     return imageUrl;
   }
@@ -163,7 +164,7 @@ public class LauncherConfig {
 
   /**
    **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty()
   public String getInfoUrl() {
     return infoUrl;
   }
@@ -173,7 +174,7 @@ public class LauncherConfig {
 
   /**
    **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty()
   public String getWikiUrl() {
     return wikiUrl;
   }
@@ -191,19 +192,19 @@ public class LauncherConfig {
       return false;
     }
     LauncherConfig launcherConfig = (LauncherConfig) o;
-    return (this.id == null ? launcherConfig.id == null : this.id.equals(launcherConfig.id)) &&
-        (this.launchLibraryId == null ? launcherConfig.launchLibraryId == null : this.launchLibraryId.equals(launcherConfig.launchLibraryId)) &&
-        (this.url == null ? launcherConfig.url == null : this.url.equals(launcherConfig.url)) &&
-        (this.name == null ? launcherConfig.name == null : this.name.equals(launcherConfig.name)) &&
-        (this.manufacturer == null ? launcherConfig.manufacturer == null : this.manufacturer.equals(launcherConfig.manufacturer)) &&
-        (this.program == null ? launcherConfig.program == null : this.program.equals(launcherConfig.program)) &&
-        (this.family == null ? launcherConfig.family == null : this.family.equals(launcherConfig.family)) &&
-        (this.fullName == null ? launcherConfig.fullName == null : this.fullName.equals(launcherConfig.fullName)) &&
-        (this.variant == null ? launcherConfig.variant == null : this.variant.equals(launcherConfig.variant)) &&
-        (this.reusable == null ? launcherConfig.reusable == null : this.reusable.equals(launcherConfig.reusable)) &&
-        (this.imageUrl == null ? launcherConfig.imageUrl == null : this.imageUrl.equals(launcherConfig.imageUrl)) &&
-        (this.infoUrl == null ? launcherConfig.infoUrl == null : this.infoUrl.equals(launcherConfig.infoUrl)) &&
-        (this.wikiUrl == null ? launcherConfig.wikiUrl == null : this.wikiUrl.equals(launcherConfig.wikiUrl));
+    return (Objects.equals(this.id, launcherConfig.id)) &&
+        (Objects.equals(this.launchLibraryId, launcherConfig.launchLibraryId)) &&
+        (Objects.equals(this.url, launcherConfig.url)) &&
+        (Objects.equals(this.name, launcherConfig.name)) &&
+        (Objects.equals(this.manufacturer, launcherConfig.manufacturer)) &&
+        (Objects.equals(this.program, launcherConfig.program)) &&
+        (Objects.equals(this.family, launcherConfig.family)) &&
+        (Objects.equals(this.fullName, launcherConfig.fullName)) &&
+        (Objects.equals(this.variant, launcherConfig.variant)) &&
+        (Objects.equals(this.reusable, launcherConfig.reusable)) &&
+        (Objects.equals(this.imageUrl, launcherConfig.imageUrl)) &&
+        (Objects.equals(this.infoUrl, launcherConfig.infoUrl)) &&
+        (Objects.equals(this.wikiUrl, launcherConfig.wikiUrl));
   }
 
   @Override
@@ -227,23 +228,22 @@ public class LauncherConfig {
 
   @Override
   public String toString()  {
-    StringBuilder sb = new StringBuilder();
-    sb.append("class LauncherConfig {\n");
-    
-    sb.append("  id: ").append(id).append("\n");
-    sb.append("  launchLibraryId: ").append(launchLibraryId).append("\n");
-    sb.append("  url: ").append(url).append("\n");
-    sb.append("  name: ").append(name).append("\n");
-    sb.append("  manufacturer: ").append(manufacturer).append("\n");
-    sb.append("  program: ").append(program).append("\n");
-    sb.append("  family: ").append(family).append("\n");
-    sb.append("  fullName: ").append(fullName).append("\n");
-    sb.append("  variant: ").append(variant).append("\n");
-    sb.append("  reusable: ").append(reusable).append("\n");
-    sb.append("  imageUrl: ").append(imageUrl).append("\n");
-    sb.append("  infoUrl: ").append(infoUrl).append("\n");
-    sb.append("  wikiUrl: ").append(wikiUrl).append("\n");
-    sb.append("}\n");
-    return sb.toString();
+
+      String sb = "class LauncherConfig {\n" +
+              "  id: " + id + "\n" +
+              "  launchLibraryId: " + launchLibraryId + "\n" +
+              "  url: " + url + "\n" +
+              "  name: " + name + "\n" +
+              "  manufacturer: " + manufacturer + "\n" +
+              "  program: " + program + "\n" +
+              "  family: " + family + "\n" +
+              "  fullName: " + fullName + "\n" +
+              "  variant: " + variant + "\n" +
+              "  reusable: " + reusable + "\n" +
+              "  imageUrl: " + imageUrl + "\n" +
+              "  infoUrl: " + infoUrl + "\n" +
+              "  wikiUrl: " + wikiUrl + "\n" +
+              "}\n";
+      return sb;
   }
 }

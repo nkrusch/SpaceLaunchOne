@@ -19,14 +19,11 @@ import com.google.android.gms.maps.model.PointOfInterest;
 import com.google.android.material.snackbar.Snackbar;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.appcompat.widget.AppCompatImageButton;
 import androidx.fragment.app.Fragment;
-import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 import io.github.nkrusch.spacelaunchone.R;
 import io.github.nkrusch.spacelaunchone.app.Utilities;
-import local.LaunchDetails;
 import viewmodels.LaunchDetailsViewModel;
 
 import static android.view.View.GONE;
@@ -68,13 +65,10 @@ public class MapFragment extends Fragment implements OnMapReadyCallback, GoogleM
     private void setupViewModel() {
         if (getActivity() == null) return;
         ViewModelProviders.of(getActivity()).get(LaunchDetailsViewModel.class)
-                .get().observe(this, new Observer<LaunchDetails>() {
-            @Override
-            public void onChanged(@Nullable LaunchDetails result) {
-                if (result != null) {
-                    location = new LatLng(result.getLatitude(), result.getLongitude());
-                    setMarker();
-                }
+                .get().observe(this, result -> {
+            if (result != null) {
+                location = new LatLng(result.getLatitude(), result.getLongitude());
+                setMarker();
             }
         });
     }
@@ -83,19 +77,16 @@ public class MapFragment extends Fragment implements OnMapReadyCallback, GoogleM
      * This custom button zooms in and out of the launch size
      */
     private View.OnClickListener onMarkerZoomButtonClick() {
-        return new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (mMap == null) return;
-                float currentZoomLevel = mMap.getCameraPosition().zoom;
-                float midZoom = Math.abs(mMap.getMaxZoomLevel() - mMap.getMinZoomLevel()) * 0.5f;
-                float current = currentZoomLevel < midZoom ?
-                        0.58f * mMap.getMaxZoomLevel() :
-                        mMap.getMinZoomLevel();
-                mMap.animateCamera(
-                        CameraUpdateFactory.newLatLngZoom(marker.getPosition(), current),
-                        customZoomDuration, null);
-            }
+        return v -> {
+            if (mMap == null) return;
+            float currentZoomLevel = mMap.getCameraPosition().zoom;
+            float midZoom = Math.abs(mMap.getMaxZoomLevel() - mMap.getMinZoomLevel()) * 0.5f;
+            float current = currentZoomLevel < midZoom ?
+                    0.58f * mMap.getMaxZoomLevel() :
+                    mMap.getMinZoomLevel();
+            mMap.animateCamera(
+                    CameraUpdateFactory.newLatLngZoom(marker.getPosition(), current),
+                    customZoomDuration, null);
         };
     }
 
@@ -121,8 +112,9 @@ public class MapFragment extends Fragment implements OnMapReadyCallback, GoogleM
      * This will attempt to load places images for the selected location
      */
     public void onPoiClick(PointOfInterest poi) {
-        final ConnectivityManager cm = (ConnectivityManager)
-                getActivity().getSystemService(Context.CONNECTIVITY_SERVICE);
+        if (getActivity() == null) return;
+        final ConnectivityManager cm = (ConnectivityManager) getActivity()
+                .getSystemService(Context.CONNECTIVITY_SERVICE);
 
         boolean canLoadPlaces = Utilities.isNetworkAvailable(cm);
         if (canLoadPlaces) {

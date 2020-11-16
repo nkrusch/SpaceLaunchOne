@@ -14,10 +14,12 @@ package apimodels;
 
 import com.google.gson.annotations.SerializedName;
 
+import java.util.Objects;
+
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 
-@ApiModel(description = "")
+@ApiModel()
 public class LaunchStatus {
   
   @SerializedName("id")
@@ -29,7 +31,7 @@ public class LaunchStatus {
    * minimum: -2147483648
    * maximum: 2147483647
    **/
-  @ApiModelProperty(required = true, value = "")
+  @ApiModelProperty(required = true)
   public Integer getId() {
     return id;
   }
@@ -39,7 +41,7 @@ public class LaunchStatus {
 
   /**
    **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty()
   public String getName() {
     return name;
   }
@@ -57,8 +59,8 @@ public class LaunchStatus {
       return false;
     }
     LaunchStatus launchStatus = (LaunchStatus) o;
-    return (this.id == null ? launchStatus.id == null : this.id.equals(launchStatus.id)) &&
-        (this.name == null ? launchStatus.name == null : this.name.equals(launchStatus.name));
+    return (Objects.equals(this.id, launchStatus.id)) &&
+        (Objects.equals(this.name, launchStatus.name));
   }
 
   @Override
@@ -71,12 +73,11 @@ public class LaunchStatus {
 
   @Override
   public String toString()  {
-    StringBuilder sb = new StringBuilder();
-    sb.append("class LaunchStatus {\n");
-    
-    sb.append("  id: ").append(id).append("\n");
-    sb.append("  name: ").append(name).append("\n");
-    sb.append("}\n");
-    return sb.toString();
+
+      String sb = "class LaunchStatus {\n" +
+              "  id: " + id + "\n" +
+              "  name: " + name + "\n" +
+              "}\n";
+      return sb;
   }
 }

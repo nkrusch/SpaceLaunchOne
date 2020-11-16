@@ -10,6 +10,7 @@ import com.google.android.material.tabs.TabLayout;
 
 import java.util.Objects;
 
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.lifecycle.ViewModelProvider;
@@ -94,6 +95,7 @@ public class DetailsAgencyActivity extends TabbedActivity {
             super(tabCount, fm);
         }
 
+        @NonNull
         @Override
         public Fragment getItem(int position) {
             if (position == MISSIONS_INDEX) {

@@ -12,7 +12,6 @@ import java.util.List;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 import androidx.recyclerview.widget.GridLayoutManager;
 import io.github.nkrusch.spacelaunchone.R;
@@ -22,7 +21,7 @@ import io.github.nkrusch.spacelaunchone.features.DetailsAgencyActivity;
 import local.Agency;
 import viewmodels.AgencyListViewModel;
 
-public class AgencyRecyclerView extends RecyclerViewFragment{
+public class AgencyRecyclerView extends RecyclerViewFragment {
 
     private LinearLayout mEmptyState;
 
@@ -33,22 +32,12 @@ public class AgencyRecyclerView extends RecyclerViewFragment{
     protected void setupViewModel() {
         if (getActivity() != null) {
             AgencyListViewModel vm = ViewModelProviders.of(getActivity()).get(AgencyListViewModel.class);
-            vm.getAll().observe(getActivity(), new Observer<List<Agency>>() {
-                @Override
-                public void onChanged(@Nullable List<Agency> agencies) {
-                    handleDataChange(agencies);
-                }
-            });
+            vm.getAll().observe(getActivity(), agencies -> handleDataChange(agencies));
         }
     }
 
     OnItemListener onItemClick() {
-        return new OnItemListener() {
-            @Override
-            public void onItemClick(int id, String name) {
-                startActivity(DetailsAgencyActivity.getIntent(getContext(), id, name));
-            }
-        };
+        return (id, name) -> startActivity(DetailsAgencyActivity.getIntent(getContext(), id, name));
     }
 
     /**
@@ -61,8 +50,10 @@ public class AgencyRecyclerView extends RecyclerViewFragment{
             mEmptyState.setVisibility(View.GONE);
             mRecyclerView.setVisibility(View.VISIBLE);
             AgencyAdapter adapter = (AgencyAdapter) mRecyclerView.getAdapter();
-            adapter.updateData(entries);
-            adapter.notifyDataSetChanged();
+            if (adapter != null) {
+                adapter.updateData(entries);
+                adapter.notifyDataSetChanged();
+            }
         } else {
             mRecyclerView.setVisibility(View.GONE);
             mEmptyState.setVisibility(View.VISIBLE);
@@ -70,7 +61,8 @@ public class AgencyRecyclerView extends RecyclerViewFragment{
     }
 
     /**
-     * initialize recyclerview and bind adapter; bind item click listener; restore previous recyclerview state (if any)
+     * initialize recyclerview and bind adapter; bind item click listener;
+     * restore previous recyclerview state (if any)
      */
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {

@@ -16,11 +16,12 @@ import com.google.gson.annotations.SerializedName;
 
 import java.util.Date;
 import java.util.List;
+import java.util.Objects;
 
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 
-@ApiModel(description = "")
+@ApiModel()
 public class SpaceStationDetailedSerializerForExpedition {
   
   @SerializedName("id")
@@ -44,7 +45,7 @@ public class SpaceStationDetailedSerializerForExpedition {
 
   /**
    **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty()
   public Integer getId() {
     return id;
   }
@@ -54,7 +55,7 @@ public class SpaceStationDetailedSerializerForExpedition {
 
   /**
    **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty()
   public String getUrl() {
     return url;
   }
@@ -64,7 +65,7 @@ public class SpaceStationDetailedSerializerForExpedition {
 
   /**
    **/
-  @ApiModelProperty(required = true, value = "")
+  @ApiModelProperty(required = true)
   public String getName() {
     return name;
   }
@@ -74,7 +75,7 @@ public class SpaceStationDetailedSerializerForExpedition {
 
   /**
    **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty()
   public SpaceStationStatus getStatus() {
     return status;
   }
@@ -84,7 +85,7 @@ public class SpaceStationDetailedSerializerForExpedition {
 
   /**
    **/
-  @ApiModelProperty(required = true, value = "")
+  @ApiModelProperty(required = true)
   public Date getFounded() {
     return founded;
   }
@@ -94,7 +95,7 @@ public class SpaceStationDetailedSerializerForExpedition {
 
   /**
    **/
-  @ApiModelProperty(required = true, value = "")
+  @ApiModelProperty(required = true)
   public String getDescription() {
     return description;
   }
@@ -104,7 +105,7 @@ public class SpaceStationDetailedSerializerForExpedition {
 
   /**
    **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty()
   public String getOrbit() {
     return orbit;
   }
@@ -114,7 +115,7 @@ public class SpaceStationDetailedSerializerForExpedition {
 
   /**
    **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty()
   public String getImageUrl() {
     return imageUrl;
   }
@@ -124,7 +125,7 @@ public class SpaceStationDetailedSerializerForExpedition {
 
   /**
    **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty()
   public List<AgencyList> getOwners() {
     return owners;
   }
@@ -142,15 +143,15 @@ public class SpaceStationDetailedSerializerForExpedition {
       return false;
     }
     SpaceStationDetailedSerializerForExpedition spaceStationDetailedSerializerForExpedition = (SpaceStationDetailedSerializerForExpedition) o;
-    return (this.id == null ? spaceStationDetailedSerializerForExpedition.id == null : this.id.equals(spaceStationDetailedSerializerForExpedition.id)) &&
-        (this.url == null ? spaceStationDetailedSerializerForExpedition.url == null : this.url.equals(spaceStationDetailedSerializerForExpedition.url)) &&
-        (this.name == null ? spaceStationDetailedSerializerForExpedition.name == null : this.name.equals(spaceStationDetailedSerializerForExpedition.name)) &&
-        (this.status == null ? spaceStationDetailedSerializerForExpedition.status == null : this.status.equals(spaceStationDetailedSerializerForExpedition.status)) &&
-        (this.founded == null ? spaceStationDetailedSerializerForExpedition.founded == null : this.founded.equals(spaceStationDetailedSerializerForExpedition.founded)) &&
-        (this.description == null ? spaceStationDetailedSerializerForExpedition.description == null : this.description.equals(spaceStationDetailedSerializerForExpedition.description)) &&
-        (this.orbit == null ? spaceStationDetailedSerializerForExpedition.orbit == null : this.orbit.equals(spaceStationDetailedSerializerForExpedition.orbit)) &&
-        (this.imageUrl == null ? spaceStationDetailedSerializerForExpedition.imageUrl == null : this.imageUrl.equals(spaceStationDetailedSerializerForExpedition.imageUrl)) &&
-        (this.owners == null ? spaceStationDetailedSerializerForExpedition.owners == null : this.owners.equals(spaceStationDetailedSerializerForExpedition.owners));
+    return (Objects.equals(this.id, spaceStationDetailedSerializerForExpedition.id)) &&
+        (Objects.equals(this.url, spaceStationDetailedSerializerForExpedition.url)) &&
+        (Objects.equals(this.name, spaceStationDetailedSerializerForExpedition.name)) &&
+        (Objects.equals(this.status, spaceStationDetailedSerializerForExpedition.status)) &&
+        (Objects.equals(this.founded, spaceStationDetailedSerializerForExpedition.founded)) &&
+        (Objects.equals(this.description, spaceStationDetailedSerializerForExpedition.description)) &&
+        (Objects.equals(this.orbit, spaceStationDetailedSerializerForExpedition.orbit)) &&
+        (Objects.equals(this.imageUrl, spaceStationDetailedSerializerForExpedition.imageUrl)) &&
+        (Objects.equals(this.owners, spaceStationDetailedSerializerForExpedition.owners));
   }
 
   @Override
@@ -170,19 +171,18 @@ public class SpaceStationDetailedSerializerForExpedition {
 
   @Override
   public String toString()  {
-    StringBuilder sb = new StringBuilder();
-    sb.append("class SpaceStationDetailedSerializerForExpedition {\n");
-    
-    sb.append("  id: ").append(id).append("\n");
-    sb.append("  url: ").append(url).append("\n");
-    sb.append("  name: ").append(name).append("\n");
-    sb.append("  status: ").append(status).append("\n");
-    sb.append("  founded: ").append(founded).append("\n");
-    sb.append("  description: ").append(description).append("\n");
-    sb.append("  orbit: ").append(orbit).append("\n");
-    sb.append("  imageUrl: ").append(imageUrl).append("\n");
-    sb.append("  owners: ").append(owners).append("\n");
-    sb.append("}\n");
-    return sb.toString();
+
+      String sb = "class SpaceStationDetailedSerializerForExpedition {\n" +
+              "  id: " + id + "\n" +
+              "  url: " + url + "\n" +
+              "  name: " + name + "\n" +
+              "  status: " + status + "\n" +
+              "  founded: " + founded + "\n" +
+              "  description: " + description + "\n" +
+              "  orbit: " + orbit + "\n" +
+              "  imageUrl: " + imageUrl + "\n" +
+              "  owners: " + owners + "\n" +
+              "}\n";
+      return sb;
   }
 }

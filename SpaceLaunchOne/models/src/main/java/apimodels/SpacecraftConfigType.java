@@ -14,10 +14,12 @@ package apimodels;
 
 import com.google.gson.annotations.SerializedName;
 
+import java.util.Objects;
+
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 
-@ApiModel(description = "")
+@ApiModel()
 public class SpacecraftConfigType {
   
   @SerializedName("id")
@@ -27,7 +29,7 @@ public class SpacecraftConfigType {
 
   /**
    **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty()
   public Integer getId() {
     return id;
   }
@@ -37,7 +39,7 @@ public class SpacecraftConfigType {
 
   /**
    **/
-  @ApiModelProperty(required = true, value = "")
+  @ApiModelProperty(required = true)
   public String getName() {
     return name;
   }
@@ -55,8 +57,8 @@ public class SpacecraftConfigType {
       return false;
     }
     SpacecraftConfigType spacecraftConfigType = (SpacecraftConfigType) o;
-    return (this.id == null ? spacecraftConfigType.id == null : this.id.equals(spacecraftConfigType.id)) &&
-        (this.name == null ? spacecraftConfigType.name == null : this.name.equals(spacecraftConfigType.name));
+    return (Objects.equals(this.id, spacecraftConfigType.id)) &&
+        (Objects.equals(this.name, spacecraftConfigType.name));
   }
 
   @Override
@@ -69,12 +71,11 @@ public class SpacecraftConfigType {
 
   @Override
   public String toString()  {
-    StringBuilder sb = new StringBuilder();
-    sb.append("class SpacecraftConfigType {\n");
-    
-    sb.append("  id: ").append(id).append("\n");
-    sb.append("  name: ").append(name).append("\n");
-    sb.append("}\n");
-    return sb.toString();
+
+      String sb = "class SpacecraftConfigType {\n" +
+              "  id: " + id + "\n" +
+              "  name: " + name + "\n" +
+              "}\n";
+      return sb;
   }
 }

@@ -38,6 +38,8 @@ import io.github.nkrusch.spacelaunchone.R;
  * The map identifies the placeId of the clicked location and provides it to this fragment.
  * This fragment can then display images about the selected place (if any)
  */
+
+@Deprecated
 public class PlacesFragment extends BottomSheetDialogFragment {
 
     private final String EXTRA_RV_STATE = "recyclerview_state";
@@ -75,13 +77,17 @@ public class PlacesFragment extends BottomSheetDialogFragment {
         }
     }
 
+    @NonNull
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {
         Dialog psf = super.onCreateDialog(savedInstanceState);
         psf.setOnShowListener(dialog -> {
             BottomSheetDialog d = (BottomSheetDialog) dialog;
             FrameLayout bottomSheet = d.findViewById(R.id.design_bottom_sheet);
-            BottomSheetBehavior.from(bottomSheet).setState(BottomSheetBehavior.STATE_EXPANDED);
+            if (bottomSheet != null) {
+                BottomSheetBehavior.from(bottomSheet)
+                        .setState(BottomSheetBehavior.STATE_EXPANDED);
+            }
         });
         return psf;
     }
@@ -133,6 +139,7 @@ public class PlacesFragment extends BottomSheetDialogFragment {
         mGeoDataClient.getPlaceById(placeId).addOnCompleteListener(task -> {
             if (task.isSuccessful()) {
                 PlaceBufferResponse places = task.getResult();
+                if (places == null) return;
                 Place myPlace = places.get(0);
                 mHeading.setText(myPlace.getName());
                 getPhotos(placeId);
@@ -153,6 +160,7 @@ public class PlacesFragment extends BottomSheetDialogFragment {
         final Task<PlacePhotoMetadataResponse> photoMetadataResponse = mGeoDataClient.getPlacePhotos(placeId);
         photoMetadataResponse.addOnCompleteListener(task -> {
             PlacePhotoMetadataResponse photos = task.getResult();
+            if (photos == null) return;
             final PlacePhotoMetadataBuffer photoMetadataBuffer = photos.getPhotoMetadata();
             final List<Bitmap> tmp = new LinkedList();
             final List<Bitmap> images = new LinkedList();
@@ -163,7 +171,8 @@ public class PlacesFragment extends BottomSheetDialogFragment {
                 final Task<PlacePhotoResponse> photoResponse = mGeoDataClient.getPhoto(meta);
                 photoResponse.addOnCompleteListener(task1 -> {
                     PlacePhotoResponse photo = task1.getResult();
-                    if (task1.isSuccessful()) images.add(photo.getBitmap());
+                    if (task1.isSuccessful() && photo != null)
+                        images.add(photo.getBitmap());
                     progressCounter.add(1);
                     if (progressCounter.size() == photoMetadataBuffer.getCount())
                         handleDataChange(images);
@@ -178,8 +187,10 @@ public class PlacesFragment extends BottomSheetDialogFragment {
      */
     private void handleDataChange(List<Bitmap> data) {
         PlacesImageAdapter adapter = (PlacesImageAdapter) mRecyclerView.getAdapter();
-        adapter.updateData(data);
-        adapter.notifyDataSetChanged();
+        if (adapter != null) {
+            adapter.updateData(data);
+            adapter.notifyDataSetChanged();
+        }
         if (data == null || data.size() == 0)
             mHeading.setText(R.string.no_place_images);
     }

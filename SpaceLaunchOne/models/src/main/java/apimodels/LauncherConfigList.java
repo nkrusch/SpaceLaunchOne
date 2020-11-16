@@ -14,10 +14,12 @@ package apimodels;
 
 import com.google.gson.annotations.SerializedName;
 
+import java.util.Objects;
+
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 
-@ApiModel(description = "")
+@ApiModel()
 public class LauncherConfigList {
   
   @SerializedName("id")
@@ -37,7 +39,7 @@ public class LauncherConfigList {
 
   /**
    **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty()
   public Integer getId() {
     return id;
   }
@@ -49,7 +51,7 @@ public class LauncherConfigList {
    * minimum: -2147483648
    * maximum: 2147483647
    **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty()
   public Integer getLaunchLibraryId() {
     return launchLibraryId;
   }
@@ -59,7 +61,7 @@ public class LauncherConfigList {
 
   /**
    **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty()
   public String getUrl() {
     return url;
   }
@@ -69,7 +71,7 @@ public class LauncherConfigList {
 
   /**
    **/
-  @ApiModelProperty(required = true, value = "")
+  @ApiModelProperty(required = true)
   public String getName() {
     return name;
   }
@@ -79,7 +81,7 @@ public class LauncherConfigList {
 
   /**
    **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty()
   public String getFamily() {
     return family;
   }
@@ -89,7 +91,7 @@ public class LauncherConfigList {
 
   /**
    **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty()
   public String getFullName() {
     return fullName;
   }
@@ -99,7 +101,7 @@ public class LauncherConfigList {
 
   /**
    **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty()
   public String getVariant() {
     return variant;
   }
@@ -117,13 +119,13 @@ public class LauncherConfigList {
       return false;
     }
     LauncherConfigList launcherConfigList = (LauncherConfigList) o;
-    return (this.id == null ? launcherConfigList.id == null : this.id.equals(launcherConfigList.id)) &&
-        (this.launchLibraryId == null ? launcherConfigList.launchLibraryId == null : this.launchLibraryId.equals(launcherConfigList.launchLibraryId)) &&
-        (this.url == null ? launcherConfigList.url == null : this.url.equals(launcherConfigList.url)) &&
-        (this.name == null ? launcherConfigList.name == null : this.name.equals(launcherConfigList.name)) &&
-        (this.family == null ? launcherConfigList.family == null : this.family.equals(launcherConfigList.family)) &&
-        (this.fullName == null ? launcherConfigList.fullName == null : this.fullName.equals(launcherConfigList.fullName)) &&
-        (this.variant == null ? launcherConfigList.variant == null : this.variant.equals(launcherConfigList.variant));
+    return (Objects.equals(this.id, launcherConfigList.id)) &&
+        (Objects.equals(this.launchLibraryId, launcherConfigList.launchLibraryId)) &&
+        (Objects.equals(this.url, launcherConfigList.url)) &&
+        (Objects.equals(this.name, launcherConfigList.name)) &&
+        (Objects.equals(this.family, launcherConfigList.family)) &&
+        (Objects.equals(this.fullName, launcherConfigList.fullName)) &&
+        (Objects.equals(this.variant, launcherConfigList.variant));
   }
 
   @Override
@@ -141,17 +143,16 @@ public class LauncherConfigList {
 
   @Override
   public String toString()  {
-    StringBuilder sb = new StringBuilder();
-    sb.append("class LauncherConfigList {\n");
-    
-    sb.append("  id: ").append(id).append("\n");
-    sb.append("  launchLibraryId: ").append(launchLibraryId).append("\n");
-    sb.append("  url: ").append(url).append("\n");
-    sb.append("  name: ").append(name).append("\n");
-    sb.append("  family: ").append(family).append("\n");
-    sb.append("  fullName: ").append(fullName).append("\n");
-    sb.append("  variant: ").append(variant).append("\n");
-    sb.append("}\n");
-    return sb.toString();
+
+      String sb = "class LauncherConfigList {\n" +
+              "  id: " + id + "\n" +
+              "  launchLibraryId: " + launchLibraryId + "\n" +
+              "  url: " + url + "\n" +
+              "  name: " + name + "\n" +
+              "  family: " + family + "\n" +
+              "  fullName: " + fullName + "\n" +
+              "  variant: " + variant + "\n" +
+              "}\n";
+      return sb;
   }
 }

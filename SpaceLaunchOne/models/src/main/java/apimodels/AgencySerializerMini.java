@@ -14,10 +14,12 @@ package apimodels;
 
 import com.google.gson.annotations.SerializedName;
 
+import java.util.Objects;
+
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 
-@ApiModel(description = "")
+@ApiModel()
 public class AgencySerializerMini {
   
   @SerializedName("id")
@@ -31,7 +33,7 @@ public class AgencySerializerMini {
 
   /**
    **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty()
   public Integer getId() {
     return id;
   }
@@ -41,7 +43,7 @@ public class AgencySerializerMini {
 
   /**
    **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty()
   public String getUrl() {
     return url;
   }
@@ -51,7 +53,7 @@ public class AgencySerializerMini {
 
   /**
    **/
-  @ApiModelProperty(required = true, value = "")
+  @ApiModelProperty(required = true)
   public String getName() {
     return name;
   }
@@ -61,7 +63,7 @@ public class AgencySerializerMini {
 
   /**
    **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty()
   public String getType() {
     return type;
   }
@@ -79,10 +81,10 @@ public class AgencySerializerMini {
       return false;
     }
     AgencySerializerMini agencySerializerMini = (AgencySerializerMini) o;
-    return (this.id == null ? agencySerializerMini.id == null : this.id.equals(agencySerializerMini.id)) &&
-        (this.url == null ? agencySerializerMini.url == null : this.url.equals(agencySerializerMini.url)) &&
-        (this.name == null ? agencySerializerMini.name == null : this.name.equals(agencySerializerMini.name)) &&
-        (this.type == null ? agencySerializerMini.type == null : this.type.equals(agencySerializerMini.type));
+    return (Objects.equals(this.id, agencySerializerMini.id)) &&
+        (Objects.equals(this.url, agencySerializerMini.url)) &&
+        (Objects.equals(this.name, agencySerializerMini.name)) &&
+        (Objects.equals(this.type, agencySerializerMini.type));
   }
 
   @Override
@@ -97,14 +99,13 @@ public class AgencySerializerMini {
 
   @Override
   public String toString()  {
-    StringBuilder sb = new StringBuilder();
-    sb.append("class AgencySerializerMini {\n");
-    
-    sb.append("  id: ").append(id).append("\n");
-    sb.append("  url: ").append(url).append("\n");
-    sb.append("  name: ").append(name).append("\n");
-    sb.append("  type: ").append(type).append("\n");
-    sb.append("}\n");
-    return sb.toString();
+
+    String sb = "class AgencySerializerMini {\n" +
+            "  id: " + id + "\n" +
+            "  url: " + url + "\n" +
+            "  name: " + name + "\n" +
+            "  type: " + type + "\n" +
+            "}\n";
+    return sb;
   }
 }

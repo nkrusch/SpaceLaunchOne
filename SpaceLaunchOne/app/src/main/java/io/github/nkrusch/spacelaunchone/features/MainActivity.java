@@ -4,9 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
-import android.view.MenuItem;
 
-import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.snackbar.Snackbar;
 
 import androidx.annotation.NonNull;
@@ -67,30 +65,27 @@ public class MainActivity extends TabbedActivity {
         final Context ctx = this;
 
         bottomNav.setOnNavigationItemSelectedListener(
-                new BottomNavigationView.OnNavigationItemSelectedListener() {
-                    @Override
-                    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-                        int pos = -1;
-                        switch (item.getItemId()) {
-                            case R.id.scheduled:
-                                pos = SCHEDULED_FRAGMENT;
-                                break;
-                            case R.id.favorites:
-                                pos = FAV_FRAGMENT;
-                                break;
-                            case R.id.agencies:
-                                pos = AGENCY_FRAGMENT;
-                                break;
-                            case R.id.location:
-                                pos = LOC_FRAGMENT;
-                                break;
-                            case R.id.settings:
-                                startActivity(new Intent(ctx, SettingsActivity.class));
-                                return true;
-                        }
-                        if (pos >= 0) mPager.setCurrentItem(pos);
-                        return true;
+                item -> {
+                    int pos = -1;
+                    switch (item.getItemId()) {
+                        case R.id.scheduled:
+                            pos = SCHEDULED_FRAGMENT;
+                            break;
+                        case R.id.favorites:
+                            pos = FAV_FRAGMENT;
+                            break;
+                        case R.id.agencies:
+                            pos = AGENCY_FRAGMENT;
+                            break;
+                        case R.id.location:
+                            pos = LOC_FRAGMENT;
+                            break;
+                        case R.id.settings:
+                            startActivity(new Intent(ctx, SettingsActivity.class));
+                            return true;
                     }
+                    if (pos >= 0) mPager.setCurrentItem(pos);
+                    return true;
                 });
     }
 
@@ -111,6 +106,7 @@ public class MainActivity extends TabbedActivity {
             super(TAB_COUNT, fm);
         }
 
+        @NonNull
         @Override
         public Fragment getItem(int position) {
             switch (position) {

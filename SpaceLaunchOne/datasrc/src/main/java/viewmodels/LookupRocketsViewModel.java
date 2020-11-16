@@ -27,29 +27,23 @@ public class LookupRocketsViewModel extends AndroidViewModel implements IFilterV
     }
 
     public void toggle(final RocketLookup r) {
-        AppExecutors.getInstance().DiskIO().execute(new Runnable() {
-            @Override
-            public void run() {
-                RocketFilter rf = new RocketFilter(r.getId());
-                if (r.isFiltered()) db.dao().deleteFilters(rf);
-                else db.dao().addAFilters(rf);
-            }
+        AppExecutors.getInstance().DiskIO().execute(() -> {
+            RocketFilter rf = new RocketFilter(r.getId());
+            if (r.isFiltered()) db.dao().deleteFilters(rf);
+            else db.dao().addAFilters(rf);
         });
     }
 
     public void setAll(final boolean insert) {
-        AppExecutors.getInstance().DiskIO().execute(new Runnable() {
-            @Override
-            public void run() {
-                if (rockets.getValue() == null) return;
-                RocketFilter[] data = new RocketFilter[rockets.getValue().size()];
-                for (int i = 0; i < rockets.getValue().size(); i++)
-                    data[i] = new RocketFilter(rockets.getValue().get(i).getId());
-                if (!insert)
-                    db.dao().deleteFilters(data);
-                else
-                    db.dao().addAFilters(data);
-            }
+        AppExecutors.getInstance().DiskIO().execute(() -> {
+            if (rockets.getValue() == null) return;
+            RocketFilter[] data = new RocketFilter[rockets.getValue().size()];
+            for (int i = 0; i < rockets.getValue().size(); i++)
+                data[i] = new RocketFilter(rockets.getValue().get(i).getId());
+            if (!insert)
+                db.dao().deleteFilters(data);
+            else
+                db.dao().addAFilters(data);
         });
     }
 }

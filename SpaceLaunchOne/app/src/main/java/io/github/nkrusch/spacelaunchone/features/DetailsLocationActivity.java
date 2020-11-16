@@ -8,10 +8,12 @@ import android.view.View;
 
 import com.google.android.material.tabs.TabLayout;
 
+import java.util.Objects;
+
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
-import androidx.lifecycle.Observer;
-import androidx.lifecycle.ViewModelProviders;
+import androidx.lifecycle.ViewModelProvider;
 import io.github.nkrusch.spacelaunchone.R;
 import io.github.nkrusch.spacelaunchone.app.TabbedActivity;
 import io.github.nkrusch.spacelaunchone.app.TabsAdapter;
@@ -48,20 +50,20 @@ public class DetailsLocationActivity extends TabbedActivity {
         title = getIntent().getStringExtra(EXTRA_NAME);
         super.onCreate(savedInstanceState);
 
-        vm = ViewModelProviders.of(this).get(LocationDetailsViewModel.class);
-        vm.loadDetails(locationId).observe(this, new Observer<local.LocationDetails>() {
-            @Override
-            public void onChanged(local.LocationDetails locationDetails) {
-                if (locationDetails != null) {
-                    tabLayout.getTabAt(PAD_INDEX).setText(getResources().getQuantityString(R.plurals.tab_pads,
-                            locationDetails.getPads().size(), locationDetails.getPads().size()));
-                    tabLayout.getTabAt(LAUNCH_INDEX).setText(getResources().getQuantityString(R.plurals.tab_launches,
-                            locationDetails.getLaunches().size(), locationDetails.getLaunches().size()));
-                    tabLayout.getTabAt(AGENCY_INDEX).setText(getResources().getQuantityString(R.plurals.tab_agencies,
-                            locationDetails.getAgencies().size(), locationDetails.getAgencies().size()));
-                    mPager.setVisibility(View.VISIBLE);
-                    mProgress.setVisibility(GONE);
-                }
+        vm = new ViewModelProvider(this).get(LocationDetailsViewModel.class);
+        vm.loadDetails(locationId).observe(this, locationDetails -> {
+            if (locationDetails != null) {
+                Objects.requireNonNull(tabLayout.getTabAt(PAD_INDEX)).
+                        setText(getResources().getQuantityString(R.plurals.tab_pads,
+                                locationDetails.getPads().size(), locationDetails.getPads().size()));
+                Objects.requireNonNull(tabLayout.getTabAt(LAUNCH_INDEX)).
+                        setText(getResources().getQuantityString(R.plurals.tab_launches,
+                                locationDetails.getLaunches().size(), locationDetails.getLaunches().size()));
+                Objects.requireNonNull(tabLayout.getTabAt(AGENCY_INDEX)).
+                        setText(getResources().getQuantityString(R.plurals.tab_agencies,
+                                locationDetails.getAgencies().size(), locationDetails.getAgencies().size()));
+                mPager.setVisibility(View.VISIBLE);
+                mProgress.setVisibility(GONE);
             }
         });
     }
@@ -106,6 +108,7 @@ public class DetailsLocationActivity extends TabbedActivity {
             super(tabCount, fm);
         }
 
+        @NonNull
         @Override
         public Fragment getItem(int position) {
             switch (position) {

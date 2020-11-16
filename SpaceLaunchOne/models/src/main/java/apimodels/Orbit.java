@@ -14,10 +14,12 @@ package apimodels;
 
 import com.google.gson.annotations.SerializedName;
 
+import java.util.Objects;
+
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 
-@ApiModel(description = "")
+@ApiModel()
 public class Orbit {
   
   @SerializedName("id")
@@ -29,7 +31,7 @@ public class Orbit {
 
   /**
    **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty()
   public Integer getId() {
     return id;
   }
@@ -39,7 +41,7 @@ public class Orbit {
 
   /**
    **/
-  @ApiModelProperty(required = true, value = "")
+  @ApiModelProperty(required = true)
   public String getName() {
     return name;
   }
@@ -49,7 +51,7 @@ public class Orbit {
 
   /**
    **/
-  @ApiModelProperty(required = true, value = "")
+  @ApiModelProperty(required = true)
   public String getAbbrev() {
     return abbrev;
   }
@@ -67,9 +69,9 @@ public class Orbit {
       return false;
     }
     Orbit orbit = (Orbit) o;
-    return (this.id == null ? orbit.id == null : this.id.equals(orbit.id)) &&
-        (this.name == null ? orbit.name == null : this.name.equals(orbit.name)) &&
-        (this.abbrev == null ? orbit.abbrev == null : this.abbrev.equals(orbit.abbrev));
+    return (Objects.equals(this.id, orbit.id)) &&
+        (Objects.equals(this.name, orbit.name)) &&
+        (Objects.equals(this.abbrev, orbit.abbrev));
   }
 
   @Override
@@ -83,13 +85,12 @@ public class Orbit {
 
   @Override
   public String toString()  {
-    StringBuilder sb = new StringBuilder();
-    sb.append("class Orbit {\n");
-    
-    sb.append("  id: ").append(id).append("\n");
-    sb.append("  name: ").append(name).append("\n");
-    sb.append("  abbrev: ").append(abbrev).append("\n");
-    sb.append("}\n");
-    return sb.toString();
+
+      String sb = "class Orbit {\n" +
+              "  id: " + id + "\n" +
+              "  name: " + name + "\n" +
+              "  abbrev: " + abbrev + "\n" +
+              "}\n";
+      return sb;
   }
 }

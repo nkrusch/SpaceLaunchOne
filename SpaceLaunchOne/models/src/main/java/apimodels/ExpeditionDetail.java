@@ -16,11 +16,12 @@ import com.google.gson.annotations.SerializedName;
 
 import java.util.Date;
 import java.util.List;
+import java.util.Objects;
 
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 
-@ApiModel(description = "")
+@ApiModel()
 public class ExpeditionDetail {
   
   @SerializedName("id")
@@ -40,7 +41,7 @@ public class ExpeditionDetail {
 
   /**
    **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty()
   public Integer getId() {
     return id;
   }
@@ -50,7 +51,7 @@ public class ExpeditionDetail {
 
   /**
    **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty()
   public String getUrl() {
     return url;
   }
@@ -60,7 +61,7 @@ public class ExpeditionDetail {
 
   /**
    **/
-  @ApiModelProperty(required = true, value = "")
+  @ApiModelProperty(required = true)
   public String getName() {
     return name;
   }
@@ -70,7 +71,7 @@ public class ExpeditionDetail {
 
   /**
    **/
-  @ApiModelProperty(required = true, value = "")
+  @ApiModelProperty(required = true)
   public Date getStart() {
     return start;
   }
@@ -80,7 +81,7 @@ public class ExpeditionDetail {
 
   /**
    **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty()
   public Date getEnd() {
     return end;
   }
@@ -90,7 +91,7 @@ public class ExpeditionDetail {
 
   /**
    **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty()
   public SpaceStationDetailedSerializerForExpedition getSpacestation() {
     return spacestation;
   }
@@ -100,7 +101,7 @@ public class ExpeditionDetail {
 
   /**
    **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty()
   public List<AstronautFlightForExpedition> getCrew() {
     return crew;
   }
@@ -118,13 +119,13 @@ public class ExpeditionDetail {
       return false;
     }
     ExpeditionDetail expeditionDetail = (ExpeditionDetail) o;
-    return (this.id == null ? expeditionDetail.id == null : this.id.equals(expeditionDetail.id)) &&
-        (this.url == null ? expeditionDetail.url == null : this.url.equals(expeditionDetail.url)) &&
-        (this.name == null ? expeditionDetail.name == null : this.name.equals(expeditionDetail.name)) &&
-        (this.start == null ? expeditionDetail.start == null : this.start.equals(expeditionDetail.start)) &&
-        (this.end == null ? expeditionDetail.end == null : this.end.equals(expeditionDetail.end)) &&
-        (this.spacestation == null ? expeditionDetail.spacestation == null : this.spacestation.equals(expeditionDetail.spacestation)) &&
-        (this.crew == null ? expeditionDetail.crew == null : this.crew.equals(expeditionDetail.crew));
+    return (Objects.equals(this.id, expeditionDetail.id)) &&
+        (Objects.equals(this.url, expeditionDetail.url)) &&
+        (Objects.equals(this.name, expeditionDetail.name)) &&
+        (Objects.equals(this.start, expeditionDetail.start)) &&
+        (Objects.equals(this.end, expeditionDetail.end)) &&
+        (Objects.equals(this.spacestation, expeditionDetail.spacestation)) &&
+        (Objects.equals(this.crew, expeditionDetail.crew));
   }
 
   @Override
@@ -142,17 +143,16 @@ public class ExpeditionDetail {
 
   @Override
   public String toString()  {
-    StringBuilder sb = new StringBuilder();
-    sb.append("class ExpeditionDetail {\n");
-    
-    sb.append("  id: ").append(id).append("\n");
-    sb.append("  url: ").append(url).append("\n");
-    sb.append("  name: ").append(name).append("\n");
-    sb.append("  start: ").append(start).append("\n");
-    sb.append("  end: ").append(end).append("\n");
-    sb.append("  spacestation: ").append(spacestation).append("\n");
-    sb.append("  crew: ").append(crew).append("\n");
-    sb.append("}\n");
-    return sb.toString();
+
+      String sb = "class ExpeditionDetail {\n" +
+              "  id: " + id + "\n" +
+              "  url: " + url + "\n" +
+              "  name: " + name + "\n" +
+              "  start: " + start + "\n" +
+              "  end: " + end + "\n" +
+              "  spacestation: " + spacestation + "\n" +
+              "  crew: " + crew + "\n" +
+              "}\n";
+      return sb;
   }
 }

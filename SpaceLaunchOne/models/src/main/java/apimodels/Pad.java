@@ -14,10 +14,12 @@ package apimodels;
 
 import com.google.gson.annotations.SerializedName;
 
+import java.util.Objects;
+
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 
-@ApiModel(description = "")
+@ApiModel()
 public class Pad {
   
   @SerializedName("id")
@@ -47,7 +49,7 @@ public class Pad {
 
   /**
    **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty()
   public Integer getId() {
     return id;
   }
@@ -57,7 +59,7 @@ public class Pad {
 
   /**
    **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty()
   public String getUrl() {
     return url;
   }
@@ -69,7 +71,7 @@ public class Pad {
    * minimum: -2147483648
    * maximum: 2147483647
    **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty()
   public Integer getAgencyId() {
     return agencyId;
   }
@@ -79,7 +81,7 @@ public class Pad {
 
   /**
    **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty()
   public String getName() {
     return name;
   }
@@ -89,7 +91,7 @@ public class Pad {
 
   /**
    **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty()
   public String getInfoUrl() {
     return infoUrl;
   }
@@ -99,7 +101,7 @@ public class Pad {
 
   /**
    **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty()
   public String getWikiUrl() {
     return wikiUrl;
   }
@@ -109,7 +111,7 @@ public class Pad {
 
   /**
    **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty()
   public String getMapUrl() {
     return mapUrl;
   }
@@ -119,7 +121,7 @@ public class Pad {
 
   /**
    **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty()
   public String getLatitude() {
     return latitude;
   }
@@ -129,7 +131,7 @@ public class Pad {
 
   /**
    **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty()
   public String getLongitude() {
     return longitude;
   }
@@ -139,7 +141,7 @@ public class Pad {
 
   /**
    **/
-  @ApiModelProperty(required = true, value = "")
+  @ApiModelProperty(required = true)
   public Location getLocation() {
     return location;
   }
@@ -149,7 +151,7 @@ public class Pad {
 
   /**
    **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty()
   public String getMapImage() {
     return mapImage;
   }
@@ -159,7 +161,7 @@ public class Pad {
 
   /**
    **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty()
   public String getTotalLaunchCount() {
     return totalLaunchCount;
   }
@@ -177,18 +179,18 @@ public class Pad {
       return false;
     }
     Pad pad = (Pad) o;
-    return (this.id == null ? pad.id == null : this.id.equals(pad.id)) &&
-        (this.url == null ? pad.url == null : this.url.equals(pad.url)) &&
-        (this.agencyId == null ? pad.agencyId == null : this.agencyId.equals(pad.agencyId)) &&
-        (this.name == null ? pad.name == null : this.name.equals(pad.name)) &&
-        (this.infoUrl == null ? pad.infoUrl == null : this.infoUrl.equals(pad.infoUrl)) &&
-        (this.wikiUrl == null ? pad.wikiUrl == null : this.wikiUrl.equals(pad.wikiUrl)) &&
-        (this.mapUrl == null ? pad.mapUrl == null : this.mapUrl.equals(pad.mapUrl)) &&
-        (this.latitude == null ? pad.latitude == null : this.latitude.equals(pad.latitude)) &&
-        (this.longitude == null ? pad.longitude == null : this.longitude.equals(pad.longitude)) &&
-        (this.location == null ? pad.location == null : this.location.equals(pad.location)) &&
-        (this.mapImage == null ? pad.mapImage == null : this.mapImage.equals(pad.mapImage)) &&
-        (this.totalLaunchCount == null ? pad.totalLaunchCount == null : this.totalLaunchCount.equals(pad.totalLaunchCount));
+    return (Objects.equals(this.id, pad.id)) &&
+        (Objects.equals(this.url, pad.url)) &&
+        (Objects.equals(this.agencyId, pad.agencyId)) &&
+        (Objects.equals(this.name, pad.name)) &&
+        (Objects.equals(this.infoUrl, pad.infoUrl)) &&
+        (Objects.equals(this.wikiUrl, pad.wikiUrl)) &&
+        (Objects.equals(this.mapUrl, pad.mapUrl)) &&
+        (Objects.equals(this.latitude, pad.latitude)) &&
+        (Objects.equals(this.longitude, pad.longitude)) &&
+        (Objects.equals(this.location, pad.location)) &&
+        (Objects.equals(this.mapImage, pad.mapImage)) &&
+        (Objects.equals(this.totalLaunchCount, pad.totalLaunchCount));
   }
 
   @Override
@@ -211,22 +213,21 @@ public class Pad {
 
   @Override
   public String toString()  {
-    StringBuilder sb = new StringBuilder();
-    sb.append("class Pad {\n");
-    
-    sb.append("  id: ").append(id).append("\n");
-    sb.append("  url: ").append(url).append("\n");
-    sb.append("  agencyId: ").append(agencyId).append("\n");
-    sb.append("  name: ").append(name).append("\n");
-    sb.append("  infoUrl: ").append(infoUrl).append("\n");
-    sb.append("  wikiUrl: ").append(wikiUrl).append("\n");
-    sb.append("  mapUrl: ").append(mapUrl).append("\n");
-    sb.append("  latitude: ").append(latitude).append("\n");
-    sb.append("  longitude: ").append(longitude).append("\n");
-    sb.append("  location: ").append(location).append("\n");
-    sb.append("  mapImage: ").append(mapImage).append("\n");
-    sb.append("  totalLaunchCount: ").append(totalLaunchCount).append("\n");
-    sb.append("}\n");
-    return sb.toString();
+
+      String sb = "class Pad {\n" +
+              "  id: " + id + "\n" +
+              "  url: " + url + "\n" +
+              "  agencyId: " + agencyId + "\n" +
+              "  name: " + name + "\n" +
+              "  infoUrl: " + infoUrl + "\n" +
+              "  wikiUrl: " + wikiUrl + "\n" +
+              "  mapUrl: " + mapUrl + "\n" +
+              "  latitude: " + latitude + "\n" +
+              "  longitude: " + longitude + "\n" +
+              "  location: " + location + "\n" +
+              "  mapImage: " + mapImage + "\n" +
+              "  totalLaunchCount: " + totalLaunchCount + "\n" +
+              "}\n";
+      return sb;
   }
 }

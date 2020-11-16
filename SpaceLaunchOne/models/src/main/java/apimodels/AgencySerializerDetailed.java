@@ -15,11 +15,12 @@ package apimodels;
 import com.google.gson.annotations.SerializedName;
 
 import java.util.List;
+import java.util.Objects;
 
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 
-@ApiModel(description = "")
+@ApiModel()
 public class AgencySerializerDetailed {
   
   @SerializedName("id")
@@ -85,7 +86,7 @@ public class AgencySerializerDetailed {
 
   /**
    **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty()
   public Integer getId() {
     return id;
   }
@@ -95,7 +96,7 @@ public class AgencySerializerDetailed {
 
   /**
    **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty()
   public String getUrl() {
     return url;
   }
@@ -105,7 +106,7 @@ public class AgencySerializerDetailed {
 
   /**
    **/
-  @ApiModelProperty(required = true, value = "")
+  @ApiModelProperty(required = true)
   public String getName() {
     return name;
   }
@@ -115,7 +116,7 @@ public class AgencySerializerDetailed {
 
   /**
    **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty()
   public Boolean getFeatured() {
     return featured;
   }
@@ -125,7 +126,7 @@ public class AgencySerializerDetailed {
 
   /**
    **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty()
   public String getType() {
     return type;
   }
@@ -135,7 +136,7 @@ public class AgencySerializerDetailed {
 
   /**
    **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty()
   public String getCountryCode() {
     return countryCode;
   }
@@ -145,7 +146,7 @@ public class AgencySerializerDetailed {
 
   /**
    **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty()
   public String getAbbrev() {
     return abbrev;
   }
@@ -155,7 +156,7 @@ public class AgencySerializerDetailed {
 
   /**
    **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty()
   public String getDescription() {
     return description;
   }
@@ -165,7 +166,7 @@ public class AgencySerializerDetailed {
 
   /**
    **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty()
   public String getAdministrator() {
     return administrator;
   }
@@ -175,7 +176,7 @@ public class AgencySerializerDetailed {
 
   /**
    **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty()
   public String getFoundingYear() {
     return foundingYear;
   }
@@ -185,7 +186,7 @@ public class AgencySerializerDetailed {
 
   /**
    **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty()
   public String getLaunchers() {
     return launchers;
   }
@@ -195,7 +196,7 @@ public class AgencySerializerDetailed {
 
   /**
    **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty()
   public String getSpacecraft() {
     return spacecraft;
   }
@@ -205,7 +206,7 @@ public class AgencySerializerDetailed {
 
   /**
    **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty()
   public String getParent() {
     return parent;
   }
@@ -215,7 +216,7 @@ public class AgencySerializerDetailed {
 
   /**
    **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty()
   public String getLaunchLibraryUrl() {
     return launchLibraryUrl;
   }
@@ -225,7 +226,7 @@ public class AgencySerializerDetailed {
 
   /**
    **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty()
   public String getTotalLaunchCount() {
     return totalLaunchCount;
   }
@@ -235,7 +236,7 @@ public class AgencySerializerDetailed {
 
   /**
    **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty()
   public String getSuccessfulLaunches() {
     return successfulLaunches;
   }
@@ -245,7 +246,7 @@ public class AgencySerializerDetailed {
 
   /**
    **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty()
   public String getConsecutiveSuccessfulLaunches() {
     return consecutiveSuccessfulLaunches;
   }
@@ -255,7 +256,7 @@ public class AgencySerializerDetailed {
 
   /**
    **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty()
   public String getFailedLaunches() {
     return failedLaunches;
   }
@@ -265,7 +266,7 @@ public class AgencySerializerDetailed {
 
   /**
    **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty()
   public String getPendingLaunches() {
     return pendingLaunches;
   }
@@ -275,7 +276,7 @@ public class AgencySerializerDetailed {
 
   /**
    **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty()
   public String getSuccessfulLandings() {
     return successfulLandings;
   }
@@ -285,7 +286,7 @@ public class AgencySerializerDetailed {
 
   /**
    **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty()
   public String getFailedLandings() {
     return failedLandings;
   }
@@ -295,7 +296,7 @@ public class AgencySerializerDetailed {
 
   /**
    **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty()
   public String getAttemptedLandings() {
     return attemptedLandings;
   }
@@ -305,7 +306,7 @@ public class AgencySerializerDetailed {
 
   /**
    **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty()
   public String getConsecutiveSuccessfulLandings() {
     return consecutiveSuccessfulLandings;
   }
@@ -315,7 +316,7 @@ public class AgencySerializerDetailed {
 
   /**
    **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty()
   public String getInfoUrl() {
     return infoUrl;
   }
@@ -325,7 +326,7 @@ public class AgencySerializerDetailed {
 
   /**
    **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty()
   public String getWikiUrl() {
     return wikiUrl;
   }
@@ -335,7 +336,7 @@ public class AgencySerializerDetailed {
 
   /**
    **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty()
   public String getLogoUrl() {
     return logoUrl;
   }
@@ -345,7 +346,7 @@ public class AgencySerializerDetailed {
 
   /**
    **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty()
   public String getImageUrl() {
     return imageUrl;
   }
@@ -355,7 +356,7 @@ public class AgencySerializerDetailed {
 
   /**
    **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty()
   public String getNationUrl() {
     return nationUrl;
   }
@@ -365,7 +366,7 @@ public class AgencySerializerDetailed {
 
   /**
    **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty()
   public List<LauncherConfigDetailSerializerForAgency> getLauncherList() {
     return launcherList;
   }
@@ -375,7 +376,7 @@ public class AgencySerializerDetailed {
 
   /**
    **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty()
   public List<SpacecraftConfigurationDetail> getSpacecraftList() {
     return spacecraftList;
   }
@@ -393,36 +394,36 @@ public class AgencySerializerDetailed {
       return false;
     }
     AgencySerializerDetailed agencySerializerDetailed = (AgencySerializerDetailed) o;
-    return (this.id == null ? agencySerializerDetailed.id == null : this.id.equals(agencySerializerDetailed.id)) &&
-        (this.url == null ? agencySerializerDetailed.url == null : this.url.equals(agencySerializerDetailed.url)) &&
-        (this.name == null ? agencySerializerDetailed.name == null : this.name.equals(agencySerializerDetailed.name)) &&
-        (this.featured == null ? agencySerializerDetailed.featured == null : this.featured.equals(agencySerializerDetailed.featured)) &&
-        (this.type == null ? agencySerializerDetailed.type == null : this.type.equals(agencySerializerDetailed.type)) &&
-        (this.countryCode == null ? agencySerializerDetailed.countryCode == null : this.countryCode.equals(agencySerializerDetailed.countryCode)) &&
-        (this.abbrev == null ? agencySerializerDetailed.abbrev == null : this.abbrev.equals(agencySerializerDetailed.abbrev)) &&
-        (this.description == null ? agencySerializerDetailed.description == null : this.description.equals(agencySerializerDetailed.description)) &&
-        (this.administrator == null ? agencySerializerDetailed.administrator == null : this.administrator.equals(agencySerializerDetailed.administrator)) &&
-        (this.foundingYear == null ? agencySerializerDetailed.foundingYear == null : this.foundingYear.equals(agencySerializerDetailed.foundingYear)) &&
-        (this.launchers == null ? agencySerializerDetailed.launchers == null : this.launchers.equals(agencySerializerDetailed.launchers)) &&
-        (this.spacecraft == null ? agencySerializerDetailed.spacecraft == null : this.spacecraft.equals(agencySerializerDetailed.spacecraft)) &&
-        (this.parent == null ? agencySerializerDetailed.parent == null : this.parent.equals(agencySerializerDetailed.parent)) &&
-        (this.launchLibraryUrl == null ? agencySerializerDetailed.launchLibraryUrl == null : this.launchLibraryUrl.equals(agencySerializerDetailed.launchLibraryUrl)) &&
-        (this.totalLaunchCount == null ? agencySerializerDetailed.totalLaunchCount == null : this.totalLaunchCount.equals(agencySerializerDetailed.totalLaunchCount)) &&
-        (this.successfulLaunches == null ? agencySerializerDetailed.successfulLaunches == null : this.successfulLaunches.equals(agencySerializerDetailed.successfulLaunches)) &&
-        (this.consecutiveSuccessfulLaunches == null ? agencySerializerDetailed.consecutiveSuccessfulLaunches == null : this.consecutiveSuccessfulLaunches.equals(agencySerializerDetailed.consecutiveSuccessfulLaunches)) &&
-        (this.failedLaunches == null ? agencySerializerDetailed.failedLaunches == null : this.failedLaunches.equals(agencySerializerDetailed.failedLaunches)) &&
-        (this.pendingLaunches == null ? agencySerializerDetailed.pendingLaunches == null : this.pendingLaunches.equals(agencySerializerDetailed.pendingLaunches)) &&
-        (this.successfulLandings == null ? agencySerializerDetailed.successfulLandings == null : this.successfulLandings.equals(agencySerializerDetailed.successfulLandings)) &&
-        (this.failedLandings == null ? agencySerializerDetailed.failedLandings == null : this.failedLandings.equals(agencySerializerDetailed.failedLandings)) &&
-        (this.attemptedLandings == null ? agencySerializerDetailed.attemptedLandings == null : this.attemptedLandings.equals(agencySerializerDetailed.attemptedLandings)) &&
-        (this.consecutiveSuccessfulLandings == null ? agencySerializerDetailed.consecutiveSuccessfulLandings == null : this.consecutiveSuccessfulLandings.equals(agencySerializerDetailed.consecutiveSuccessfulLandings)) &&
-        (this.infoUrl == null ? agencySerializerDetailed.infoUrl == null : this.infoUrl.equals(agencySerializerDetailed.infoUrl)) &&
-        (this.wikiUrl == null ? agencySerializerDetailed.wikiUrl == null : this.wikiUrl.equals(agencySerializerDetailed.wikiUrl)) &&
-        (this.logoUrl == null ? agencySerializerDetailed.logoUrl == null : this.logoUrl.equals(agencySerializerDetailed.logoUrl)) &&
-        (this.imageUrl == null ? agencySerializerDetailed.imageUrl == null : this.imageUrl.equals(agencySerializerDetailed.imageUrl)) &&
-        (this.nationUrl == null ? agencySerializerDetailed.nationUrl == null : this.nationUrl.equals(agencySerializerDetailed.nationUrl)) &&
-        (this.launcherList == null ? agencySerializerDetailed.launcherList == null : this.launcherList.equals(agencySerializerDetailed.launcherList)) &&
-        (this.spacecraftList == null ? agencySerializerDetailed.spacecraftList == null : this.spacecraftList.equals(agencySerializerDetailed.spacecraftList));
+    return (Objects.equals(this.id, agencySerializerDetailed.id)) &&
+        (Objects.equals(this.url, agencySerializerDetailed.url)) &&
+        (Objects.equals(this.name, agencySerializerDetailed.name)) &&
+        (Objects.equals(this.featured, agencySerializerDetailed.featured)) &&
+        (Objects.equals(this.type, agencySerializerDetailed.type)) &&
+        (Objects.equals(this.countryCode, agencySerializerDetailed.countryCode)) &&
+        (Objects.equals(this.abbrev, agencySerializerDetailed.abbrev)) &&
+        (Objects.equals(this.description, agencySerializerDetailed.description)) &&
+        (Objects.equals(this.administrator, agencySerializerDetailed.administrator)) &&
+        (Objects.equals(this.foundingYear, agencySerializerDetailed.foundingYear)) &&
+        (Objects.equals(this.launchers, agencySerializerDetailed.launchers)) &&
+        (Objects.equals(this.spacecraft, agencySerializerDetailed.spacecraft)) &&
+        (Objects.equals(this.parent, agencySerializerDetailed.parent)) &&
+        (Objects.equals(this.launchLibraryUrl, agencySerializerDetailed.launchLibraryUrl)) &&
+        (Objects.equals(this.totalLaunchCount, agencySerializerDetailed.totalLaunchCount)) &&
+        (Objects.equals(this.successfulLaunches, agencySerializerDetailed.successfulLaunches)) &&
+        (Objects.equals(this.consecutiveSuccessfulLaunches, agencySerializerDetailed.consecutiveSuccessfulLaunches)) &&
+        (Objects.equals(this.failedLaunches, agencySerializerDetailed.failedLaunches)) &&
+        (Objects.equals(this.pendingLaunches, agencySerializerDetailed.pendingLaunches)) &&
+        (Objects.equals(this.successfulLandings, agencySerializerDetailed.successfulLandings)) &&
+        (Objects.equals(this.failedLandings, agencySerializerDetailed.failedLandings)) &&
+        (Objects.equals(this.attemptedLandings, agencySerializerDetailed.attemptedLandings)) &&
+        (Objects.equals(this.consecutiveSuccessfulLandings, agencySerializerDetailed.consecutiveSuccessfulLandings)) &&
+        (Objects.equals(this.infoUrl, agencySerializerDetailed.infoUrl)) &&
+        (Objects.equals(this.wikiUrl, agencySerializerDetailed.wikiUrl)) &&
+        (Objects.equals(this.logoUrl, agencySerializerDetailed.logoUrl)) &&
+        (Objects.equals(this.imageUrl, agencySerializerDetailed.imageUrl)) &&
+        (Objects.equals(this.nationUrl, agencySerializerDetailed.nationUrl)) &&
+        (Objects.equals(this.launcherList, agencySerializerDetailed.launcherList)) &&
+        (Objects.equals(this.spacecraftList, agencySerializerDetailed.spacecraftList));
   }
 
   @Override
@@ -463,40 +464,39 @@ public class AgencySerializerDetailed {
 
   @Override
   public String toString()  {
-    StringBuilder sb = new StringBuilder();
-    sb.append("class AgencySerializerDetailed {\n");
-    
-    sb.append("  id: ").append(id).append("\n");
-    sb.append("  url: ").append(url).append("\n");
-    sb.append("  name: ").append(name).append("\n");
-    sb.append("  featured: ").append(featured).append("\n");
-    sb.append("  type: ").append(type).append("\n");
-    sb.append("  countryCode: ").append(countryCode).append("\n");
-    sb.append("  abbrev: ").append(abbrev).append("\n");
-    sb.append("  description: ").append(description).append("\n");
-    sb.append("  administrator: ").append(administrator).append("\n");
-    sb.append("  foundingYear: ").append(foundingYear).append("\n");
-    sb.append("  launchers: ").append(launchers).append("\n");
-    sb.append("  spacecraft: ").append(spacecraft).append("\n");
-    sb.append("  parent: ").append(parent).append("\n");
-    sb.append("  launchLibraryUrl: ").append(launchLibraryUrl).append("\n");
-    sb.append("  totalLaunchCount: ").append(totalLaunchCount).append("\n");
-    sb.append("  successfulLaunches: ").append(successfulLaunches).append("\n");
-    sb.append("  consecutiveSuccessfulLaunches: ").append(consecutiveSuccessfulLaunches).append("\n");
-    sb.append("  failedLaunches: ").append(failedLaunches).append("\n");
-    sb.append("  pendingLaunches: ").append(pendingLaunches).append("\n");
-    sb.append("  successfulLandings: ").append(successfulLandings).append("\n");
-    sb.append("  failedLandings: ").append(failedLandings).append("\n");
-    sb.append("  attemptedLandings: ").append(attemptedLandings).append("\n");
-    sb.append("  consecutiveSuccessfulLandings: ").append(consecutiveSuccessfulLandings).append("\n");
-    sb.append("  infoUrl: ").append(infoUrl).append("\n");
-    sb.append("  wikiUrl: ").append(wikiUrl).append("\n");
-    sb.append("  logoUrl: ").append(logoUrl).append("\n");
-    sb.append("  imageUrl: ").append(imageUrl).append("\n");
-    sb.append("  nationUrl: ").append(nationUrl).append("\n");
-    sb.append("  launcherList: ").append(launcherList).append("\n");
-    sb.append("  spacecraftList: ").append(spacecraftList).append("\n");
-    sb.append("}\n");
-    return sb.toString();
+
+    String sb = "class AgencySerializerDetailed {\n" +
+            "  id: " + id + "\n" +
+            "  url: " + url + "\n" +
+            "  name: " + name + "\n" +
+            "  featured: " + featured + "\n" +
+            "  type: " + type + "\n" +
+            "  countryCode: " + countryCode + "\n" +
+            "  abbrev: " + abbrev + "\n" +
+            "  description: " + description + "\n" +
+            "  administrator: " + administrator + "\n" +
+            "  foundingYear: " + foundingYear + "\n" +
+            "  launchers: " + launchers + "\n" +
+            "  spacecraft: " + spacecraft + "\n" +
+            "  parent: " + parent + "\n" +
+            "  launchLibraryUrl: " + launchLibraryUrl + "\n" +
+            "  totalLaunchCount: " + totalLaunchCount + "\n" +
+            "  successfulLaunches: " + successfulLaunches + "\n" +
+            "  consecutiveSuccessfulLaunches: " + consecutiveSuccessfulLaunches + "\n" +
+            "  failedLaunches: " + failedLaunches + "\n" +
+            "  pendingLaunches: " + pendingLaunches + "\n" +
+            "  successfulLandings: " + successfulLandings + "\n" +
+            "  failedLandings: " + failedLandings + "\n" +
+            "  attemptedLandings: " + attemptedLandings + "\n" +
+            "  consecutiveSuccessfulLandings: " + consecutiveSuccessfulLandings + "\n" +
+            "  infoUrl: " + infoUrl + "\n" +
+            "  wikiUrl: " + wikiUrl + "\n" +
+            "  logoUrl: " + logoUrl + "\n" +
+            "  imageUrl: " + imageUrl + "\n" +
+            "  nationUrl: " + nationUrl + "\n" +
+            "  launcherList: " + launcherList + "\n" +
+            "  spacecraftList: " + spacecraftList + "\n" +
+            "}\n";
+    return sb;
   }
 }

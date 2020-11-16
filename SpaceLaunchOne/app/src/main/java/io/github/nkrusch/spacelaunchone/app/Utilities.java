@@ -183,13 +183,13 @@ public class Utilities {
      */
     public static int[] fullTimeDiff(Long utc) {
         Long current = new Date(System.currentTimeMillis()).getTime();
-        Long diff = Math.max(0, utc - current);
+        long diff = Math.max(0, utc - current);
         if (diff < 0) return new int[]{0, 0, 0, 0};
 
-        final int MS = 1000;
-        final int MINS = MS * 60;
-        final int HOURS = MINS * 60;
-        final int DAYS = HOURS * 24;
+        final double MS = 1000;
+        final double MINS = MS * 60;
+        final double HOURS = MINS * 60;
+        final double DAYS = HOURS * 24;
         int days = ((Double) Math.floor(diff / DAYS)).intValue();
         int hours = ((Double) Math.floor(diff / HOURS % 24)).intValue();
         int mins = ((Double) Math.floor(diff / MINS % 60)).intValue();

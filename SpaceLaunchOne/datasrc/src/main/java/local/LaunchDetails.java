@@ -3,6 +3,7 @@ package local;
 import java.util.Date;
 import java.util.List;
 
+import androidx.annotation.NonNull;
 import androidx.room.Embedded;
 import androidx.room.Ignore;
 import androidx.room.Relation;
@@ -210,6 +211,7 @@ public class LaunchDetails {
         return detail.getLastModified();
     }
 
+    @NonNull
     @Override
     public String toString() {
         return "LaunchDetails{" +

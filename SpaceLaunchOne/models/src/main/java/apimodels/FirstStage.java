@@ -14,10 +14,12 @@ package apimodels;
 
 import com.google.gson.annotations.SerializedName;
 
+import java.util.Objects;
+
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 
-@ApiModel(description = "")
+@ApiModel()
 public class FirstStage {
   
   @SerializedName("id")
@@ -41,7 +43,7 @@ public class FirstStage {
 
   /**
    **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty()
   public Integer getId() {
     return id;
   }
@@ -51,7 +53,7 @@ public class FirstStage {
 
   /**
    **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty()
   public String getType() {
     return type;
   }
@@ -61,7 +63,7 @@ public class FirstStage {
 
   /**
    **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty()
   public Boolean getReused() {
     return reused;
   }
@@ -71,7 +73,7 @@ public class FirstStage {
 
   /**
    **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty()
   public String getLauncherFlightNumber() {
     return launcherFlightNumber;
   }
@@ -81,7 +83,7 @@ public class FirstStage {
 
   /**
    **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty()
   public LauncherDetailed getLauncher() {
     return launcher;
   }
@@ -91,7 +93,7 @@ public class FirstStage {
 
   /**
    **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty()
   public Landing getLanding() {
     return landing;
   }
@@ -101,7 +103,7 @@ public class FirstStage {
 
   /**
    **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty()
   public String getPreviousFlightDate() {
     return previousFlightDate;
   }
@@ -111,7 +113,7 @@ public class FirstStage {
 
   /**
    **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty()
   public String getTurnAroundTimeDays() {
     return turnAroundTimeDays;
   }
@@ -121,7 +123,7 @@ public class FirstStage {
 
   /**
    **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty()
   public LaunchSerializerMini getPreviousFlight() {
     return previousFlight;
   }
@@ -139,15 +141,15 @@ public class FirstStage {
       return false;
     }
     FirstStage firstStage = (FirstStage) o;
-    return (this.id == null ? firstStage.id == null : this.id.equals(firstStage.id)) &&
-        (this.type == null ? firstStage.type == null : this.type.equals(firstStage.type)) &&
-        (this.reused == null ? firstStage.reused == null : this.reused.equals(firstStage.reused)) &&
-        (this.launcherFlightNumber == null ? firstStage.launcherFlightNumber == null : this.launcherFlightNumber.equals(firstStage.launcherFlightNumber)) &&
-        (this.launcher == null ? firstStage.launcher == null : this.launcher.equals(firstStage.launcher)) &&
-        (this.landing == null ? firstStage.landing == null : this.landing.equals(firstStage.landing)) &&
-        (this.previousFlightDate == null ? firstStage.previousFlightDate == null : this.previousFlightDate.equals(firstStage.previousFlightDate)) &&
-        (this.turnAroundTimeDays == null ? firstStage.turnAroundTimeDays == null : this.turnAroundTimeDays.equals(firstStage.turnAroundTimeDays)) &&
-        (this.previousFlight == null ? firstStage.previousFlight == null : this.previousFlight.equals(firstStage.previousFlight));
+    return (Objects.equals(this.id, firstStage.id)) &&
+        (Objects.equals(this.type, firstStage.type)) &&
+        (Objects.equals(this.reused, firstStage.reused)) &&
+        (Objects.equals(this.launcherFlightNumber, firstStage.launcherFlightNumber)) &&
+        (Objects.equals(this.launcher, firstStage.launcher)) &&
+        (Objects.equals(this.landing, firstStage.landing)) &&
+        (Objects.equals(this.previousFlightDate, firstStage.previousFlightDate)) &&
+        (Objects.equals(this.turnAroundTimeDays, firstStage.turnAroundTimeDays)) &&
+        (Objects.equals(this.previousFlight, firstStage.previousFlight));
   }
 
   @Override
@@ -167,19 +169,18 @@ public class FirstStage {
 
   @Override
   public String toString()  {
-    StringBuilder sb = new StringBuilder();
-    sb.append("class FirstStage {\n");
-    
-    sb.append("  id: ").append(id).append("\n");
-    sb.append("  type: ").append(type).append("\n");
-    sb.append("  reused: ").append(reused).append("\n");
-    sb.append("  launcherFlightNumber: ").append(launcherFlightNumber).append("\n");
-    sb.append("  launcher: ").append(launcher).append("\n");
-    sb.append("  landing: ").append(landing).append("\n");
-    sb.append("  previousFlightDate: ").append(previousFlightDate).append("\n");
-    sb.append("  turnAroundTimeDays: ").append(turnAroundTimeDays).append("\n");
-    sb.append("  previousFlight: ").append(previousFlight).append("\n");
-    sb.append("}\n");
-    return sb.toString();
+
+      String sb = "class FirstStage {\n" +
+              "  id: " + id + "\n" +
+              "  type: " + type + "\n" +
+              "  reused: " + reused + "\n" +
+              "  launcherFlightNumber: " + launcherFlightNumber + "\n" +
+              "  launcher: " + launcher + "\n" +
+              "  landing: " + landing + "\n" +
+              "  previousFlightDate: " + previousFlightDate + "\n" +
+              "  turnAroundTimeDays: " + turnAroundTimeDays + "\n" +
+              "  previousFlight: " + previousFlight + "\n" +
+              "}\n";
+      return sb;
   }
 }

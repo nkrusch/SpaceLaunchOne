@@ -22,6 +22,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import io.github.nkrusch.spacelaunchone.R;
 import io.github.nkrusch.spacelaunchone.app.AppImage;
 import local.LaunchDetails;
+import utilities.Logger;
 
 import static android.view.View.GONE;
 import static android.view.View.VISIBLE;
@@ -44,7 +45,7 @@ public class VideosFragment extends HorizontalRecyclerViewFragment<VideosFragmen
 
     @Override
     VideoAdapter getAdapter() {
-        return new VideoAdapter(new LinkedList<String>());
+        return new VideoAdapter(new LinkedList<>());
     }
 
     @Override
@@ -140,6 +141,7 @@ public class VideosFragment extends HorizontalRecyclerViewFragment<VideosFragmen
                             startActivity(appIntent);
                             return;
                         } catch (ActivityNotFoundException ex) {
+                            Logger.displayError(ex);
                         }
                     }
                     Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(url));

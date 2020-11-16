@@ -14,10 +14,12 @@ package apimodels;
 
 import com.google.gson.annotations.SerializedName;
 
+import java.util.Objects;
+
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 
-@ApiModel(description = "")
+@ApiModel()
 public class AstronautFlight {
   
   @SerializedName("id")
@@ -29,7 +31,7 @@ public class AstronautFlight {
 
   /**
    **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty()
   public Integer getId() {
     return id;
   }
@@ -39,7 +41,7 @@ public class AstronautFlight {
 
   /**
    **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty()
   public String getRole() {
     return role;
   }
@@ -49,7 +51,7 @@ public class AstronautFlight {
 
   /**
    **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty()
   public AstronautDetailedSerializerNoFlights getAstronaut() {
     return astronaut;
   }
@@ -67,9 +69,9 @@ public class AstronautFlight {
       return false;
     }
     AstronautFlight astronautFlight = (AstronautFlight) o;
-    return (this.id == null ? astronautFlight.id == null : this.id.equals(astronautFlight.id)) &&
-        (this.role == null ? astronautFlight.role == null : this.role.equals(astronautFlight.role)) &&
-        (this.astronaut == null ? astronautFlight.astronaut == null : this.astronaut.equals(astronautFlight.astronaut));
+    return (Objects.equals(this.id, astronautFlight.id)) &&
+        (Objects.equals(this.role, astronautFlight.role)) &&
+        (Objects.equals(this.astronaut, astronautFlight.astronaut));
   }
 
   @Override
@@ -83,13 +85,12 @@ public class AstronautFlight {
 
   @Override
   public String toString()  {
-    StringBuilder sb = new StringBuilder();
-    sb.append("class AstronautFlight {\n");
-    
-    sb.append("  id: ").append(id).append("\n");
-    sb.append("  role: ").append(role).append("\n");
-    sb.append("  astronaut: ").append(astronaut).append("\n");
-    sb.append("}\n");
-    return sb.toString();
+
+      String sb = "class AstronautFlight {\n" +
+              "  id: " + id + "\n" +
+              "  role: " + role + "\n" +
+              "  astronaut: " + astronaut + "\n" +
+              "}\n";
+      return sb;
   }
 }

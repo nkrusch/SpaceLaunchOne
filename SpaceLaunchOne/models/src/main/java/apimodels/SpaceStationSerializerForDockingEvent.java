@@ -14,10 +14,12 @@ package apimodels;
 
 import com.google.gson.annotations.SerializedName;
 
+import java.util.Objects;
+
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 
-@ApiModel(description = "")
+@ApiModel()
 public class SpaceStationSerializerForDockingEvent {
   
   @SerializedName("id")
@@ -31,7 +33,7 @@ public class SpaceStationSerializerForDockingEvent {
 
   /**
    **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty()
   public Integer getId() {
     return id;
   }
@@ -41,7 +43,7 @@ public class SpaceStationSerializerForDockingEvent {
 
   /**
    **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty()
   public String getUrl() {
     return url;
   }
@@ -51,7 +53,7 @@ public class SpaceStationSerializerForDockingEvent {
 
   /**
    **/
-  @ApiModelProperty(required = true, value = "")
+  @ApiModelProperty(required = true)
   public String getName() {
     return name;
   }
@@ -61,7 +63,7 @@ public class SpaceStationSerializerForDockingEvent {
 
   /**
    **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty()
   public String getImageUrl() {
     return imageUrl;
   }
@@ -79,10 +81,10 @@ public class SpaceStationSerializerForDockingEvent {
       return false;
     }
     SpaceStationSerializerForDockingEvent spaceStationSerializerForDockingEvent = (SpaceStationSerializerForDockingEvent) o;
-    return (this.id == null ? spaceStationSerializerForDockingEvent.id == null : this.id.equals(spaceStationSerializerForDockingEvent.id)) &&
-        (this.url == null ? spaceStationSerializerForDockingEvent.url == null : this.url.equals(spaceStationSerializerForDockingEvent.url)) &&
-        (this.name == null ? spaceStationSerializerForDockingEvent.name == null : this.name.equals(spaceStationSerializerForDockingEvent.name)) &&
-        (this.imageUrl == null ? spaceStationSerializerForDockingEvent.imageUrl == null : this.imageUrl.equals(spaceStationSerializerForDockingEvent.imageUrl));
+    return (Objects.equals(this.id, spaceStationSerializerForDockingEvent.id)) &&
+        (Objects.equals(this.url, spaceStationSerializerForDockingEvent.url)) &&
+        (Objects.equals(this.name, spaceStationSerializerForDockingEvent.name)) &&
+        (Objects.equals(this.imageUrl, spaceStationSerializerForDockingEvent.imageUrl));
   }
 
   @Override
@@ -97,14 +99,13 @@ public class SpaceStationSerializerForDockingEvent {
 
   @Override
   public String toString()  {
-    StringBuilder sb = new StringBuilder();
-    sb.append("class SpaceStationSerializerForDockingEvent {\n");
-    
-    sb.append("  id: ").append(id).append("\n");
-    sb.append("  url: ").append(url).append("\n");
-    sb.append("  name: ").append(name).append("\n");
-    sb.append("  imageUrl: ").append(imageUrl).append("\n");
-    sb.append("}\n");
-    return sb.toString();
+
+      String sb = "class SpaceStationSerializerForDockingEvent {\n" +
+              "  id: " + id + "\n" +
+              "  url: " + url + "\n" +
+              "  name: " + name + "\n" +
+              "  imageUrl: " + imageUrl + "\n" +
+              "}\n";
+      return sb;
   }
 }

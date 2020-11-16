@@ -31,12 +31,9 @@ public class NextLaunchViewModel extends AndroidViewModel {
     }
 
     public void reload() {
-        AppExecutors.getInstance().DiskIO().execute(new Runnable() {
-            @Override
-            public void run() {
-                currentTimeMs = new Date().getTime();
-                launch = db.dao().getNext(currentTimeMs);
-            }
+        AppExecutors.getInstance().DiskIO().execute(() -> {
+            currentTimeMs = new Date().getTime();
+            launch = db.dao().getNext(currentTimeMs);
         });
     }
 }

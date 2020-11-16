@@ -14,10 +14,12 @@ package apimodels;
 
 import com.google.gson.annotations.SerializedName;
 
+import java.util.Objects;
+
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 
-@ApiModel(description = "")
+@ApiModel()
 public class InfoURL {
   
   @SerializedName("priority")
@@ -35,7 +37,7 @@ public class InfoURL {
    * minimum: -2147483648
    * maximum: 2147483647
    **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty()
   public Integer getPriority() {
     return priority;
   }
@@ -45,7 +47,7 @@ public class InfoURL {
 
   /**
    **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty()
   public String getTitle() {
     return title;
   }
@@ -55,7 +57,7 @@ public class InfoURL {
 
   /**
    **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty()
   public String getDescription() {
     return description;
   }
@@ -65,7 +67,7 @@ public class InfoURL {
 
   /**
    **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty()
   public String getFeatureImage() {
     return featureImage;
   }
@@ -75,7 +77,7 @@ public class InfoURL {
 
   /**
    **/
-  @ApiModelProperty(required = true, value = "")
+  @ApiModelProperty(required = true)
   public String getUrl() {
     return url;
   }
@@ -93,11 +95,11 @@ public class InfoURL {
       return false;
     }
     InfoURL infoURL = (InfoURL) o;
-    return (this.priority == null ? infoURL.priority == null : this.priority.equals(infoURL.priority)) &&
-        (this.title == null ? infoURL.title == null : this.title.equals(infoURL.title)) &&
-        (this.description == null ? infoURL.description == null : this.description.equals(infoURL.description)) &&
-        (this.featureImage == null ? infoURL.featureImage == null : this.featureImage.equals(infoURL.featureImage)) &&
-        (this.url == null ? infoURL.url == null : this.url.equals(infoURL.url));
+    return (Objects.equals(this.priority, infoURL.priority)) &&
+        (Objects.equals(this.title, infoURL.title)) &&
+        (Objects.equals(this.description, infoURL.description)) &&
+        (Objects.equals(this.featureImage, infoURL.featureImage)) &&
+        (Objects.equals(this.url, infoURL.url));
   }
 
   @Override
@@ -113,15 +115,14 @@ public class InfoURL {
 
   @Override
   public String toString()  {
-    StringBuilder sb = new StringBuilder();
-    sb.append("class InfoURL {\n");
-    
-    sb.append("  priority: ").append(priority).append("\n");
-    sb.append("  title: ").append(title).append("\n");
-    sb.append("  description: ").append(description).append("\n");
-    sb.append("  featureImage: ").append(featureImage).append("\n");
-    sb.append("  url: ").append(url).append("\n");
-    sb.append("}\n");
-    return sb.toString();
+
+      String sb = "class InfoURL {\n" +
+              "  priority: " + priority + "\n" +
+              "  title: " + title + "\n" +
+              "  description: " + description + "\n" +
+              "  featureImage: " + featureImage + "\n" +
+              "  url: " + url + "\n" +
+              "}\n";
+      return sb;
   }
 }

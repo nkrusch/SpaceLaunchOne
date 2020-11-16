@@ -15,11 +15,12 @@ package apimodels;
 import com.google.gson.annotations.SerializedName;
 
 import java.util.Date;
+import java.util.Objects;
 
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 
-@ApiModel(description = "")
+@ApiModel()
 public class DockingEventDetailed {
   
   @SerializedName("id")
@@ -41,7 +42,7 @@ public class DockingEventDetailed {
 
   /**
    **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty()
   public Integer getId() {
     return id;
   }
@@ -51,7 +52,7 @@ public class DockingEventDetailed {
 
   /**
    **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty()
   public String getUrl() {
     return url;
   }
@@ -61,7 +62,7 @@ public class DockingEventDetailed {
 
   /**
    **/
-  @ApiModelProperty(required = true, value = "")
+  @ApiModelProperty(required = true)
   public String getLaunchId() {
     return launchId;
   }
@@ -71,7 +72,7 @@ public class DockingEventDetailed {
 
   /**
    **/
-  @ApiModelProperty(required = true, value = "")
+  @ApiModelProperty(required = true)
   public Date getDocking() {
     return docking;
   }
@@ -81,7 +82,7 @@ public class DockingEventDetailed {
 
   /**
    **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty()
   public Date getDeparture() {
     return departure;
   }
@@ -91,7 +92,7 @@ public class DockingEventDetailed {
 
   /**
    **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty()
   public SpacecraftFlightSerializerForDockingEventDetailed getFlightVehicle() {
     return flightVehicle;
   }
@@ -101,7 +102,7 @@ public class DockingEventDetailed {
 
   /**
    **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty()
   public DockingLocation getDockingLocation() {
     return dockingLocation;
   }
@@ -111,7 +112,7 @@ public class DockingEventDetailed {
 
   /**
    **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty()
   public SpaceStationSerializerForDockingEvent getSpaceStation() {
     return spaceStation;
   }
@@ -129,14 +130,14 @@ public class DockingEventDetailed {
       return false;
     }
     DockingEventDetailed dockingEventDetailed = (DockingEventDetailed) o;
-    return (this.id == null ? dockingEventDetailed.id == null : this.id.equals(dockingEventDetailed.id)) &&
-        (this.url == null ? dockingEventDetailed.url == null : this.url.equals(dockingEventDetailed.url)) &&
-        (this.launchId == null ? dockingEventDetailed.launchId == null : this.launchId.equals(dockingEventDetailed.launchId)) &&
-        (this.docking == null ? dockingEventDetailed.docking == null : this.docking.equals(dockingEventDetailed.docking)) &&
-        (this.departure == null ? dockingEventDetailed.departure == null : this.departure.equals(dockingEventDetailed.departure)) &&
-        (this.flightVehicle == null ? dockingEventDetailed.flightVehicle == null : this.flightVehicle.equals(dockingEventDetailed.flightVehicle)) &&
-        (this.dockingLocation == null ? dockingEventDetailed.dockingLocation == null : this.dockingLocation.equals(dockingEventDetailed.dockingLocation)) &&
-        (this.spaceStation == null ? dockingEventDetailed.spaceStation == null : this.spaceStation.equals(dockingEventDetailed.spaceStation));
+    return (Objects.equals(this.id, dockingEventDetailed.id)) &&
+        (Objects.equals(this.url, dockingEventDetailed.url)) &&
+        (Objects.equals(this.launchId, dockingEventDetailed.launchId)) &&
+        (Objects.equals(this.docking, dockingEventDetailed.docking)) &&
+        (Objects.equals(this.departure, dockingEventDetailed.departure)) &&
+        (Objects.equals(this.flightVehicle, dockingEventDetailed.flightVehicle)) &&
+        (Objects.equals(this.dockingLocation, dockingEventDetailed.dockingLocation)) &&
+        (Objects.equals(this.spaceStation, dockingEventDetailed.spaceStation));
   }
 
   @Override
@@ -155,18 +156,17 @@ public class DockingEventDetailed {
 
   @Override
   public String toString()  {
-    StringBuilder sb = new StringBuilder();
-    sb.append("class DockingEventDetailed {\n");
-    
-    sb.append("  id: ").append(id).append("\n");
-    sb.append("  url: ").append(url).append("\n");
-    sb.append("  launchId: ").append(launchId).append("\n");
-    sb.append("  docking: ").append(docking).append("\n");
-    sb.append("  departure: ").append(departure).append("\n");
-    sb.append("  flightVehicle: ").append(flightVehicle).append("\n");
-    sb.append("  dockingLocation: ").append(dockingLocation).append("\n");
-    sb.append("  spaceStation: ").append(spaceStation).append("\n");
-    sb.append("}\n");
-    return sb.toString();
+
+      String sb = "class DockingEventDetailed {\n" +
+              "  id: " + id + "\n" +
+              "  url: " + url + "\n" +
+              "  launchId: " + launchId + "\n" +
+              "  docking: " + docking + "\n" +
+              "  departure: " + departure + "\n" +
+              "  flightVehicle: " + flightVehicle + "\n" +
+              "  dockingLocation: " + dockingLocation + "\n" +
+              "  spaceStation: " + spaceStation + "\n" +
+              "}\n";
+      return sb;
   }
 }

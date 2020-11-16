@@ -13,7 +13,6 @@ import utilities.ImageResolver;
 @Entity(tableName = "agencies")
 public class Agency {
 
-    @NonNull
     @PrimaryKey()
     private int aid;
     private String name;
@@ -161,6 +160,7 @@ public class Agency {
         return a;
     }
 
+    @NonNull
     @Ignore
     @Override
     public String toString() {

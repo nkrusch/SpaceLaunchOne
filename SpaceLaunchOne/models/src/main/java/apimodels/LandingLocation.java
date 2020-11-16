@@ -14,10 +14,12 @@ package apimodels;
 
 import com.google.gson.annotations.SerializedName;
 
+import java.util.Objects;
+
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 
-@ApiModel(description = "")
+@ApiModel()
 public class LandingLocation {
   
   @SerializedName("id")
@@ -35,7 +37,7 @@ public class LandingLocation {
 
   /**
    **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty()
   public Integer getId() {
     return id;
   }
@@ -45,7 +47,7 @@ public class LandingLocation {
 
   /**
    **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty()
   public String getName() {
     return name;
   }
@@ -55,7 +57,7 @@ public class LandingLocation {
 
   /**
    **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty()
   public String getAbbrev() {
     return abbrev;
   }
@@ -65,7 +67,7 @@ public class LandingLocation {
 
   /**
    **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty()
   public String getDescription() {
     return description;
   }
@@ -75,7 +77,7 @@ public class LandingLocation {
 
   /**
    **/
-  @ApiModelProperty(required = true, value = "")
+  @ApiModelProperty(required = true)
   public Location getLocation() {
     return location;
   }
@@ -85,7 +87,7 @@ public class LandingLocation {
 
   /**
    **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty()
   public String getSuccessfulLandings() {
     return successfulLandings;
   }
@@ -103,12 +105,12 @@ public class LandingLocation {
       return false;
     }
     LandingLocation landingLocation = (LandingLocation) o;
-    return (this.id == null ? landingLocation.id == null : this.id.equals(landingLocation.id)) &&
-        (this.name == null ? landingLocation.name == null : this.name.equals(landingLocation.name)) &&
-        (this.abbrev == null ? landingLocation.abbrev == null : this.abbrev.equals(landingLocation.abbrev)) &&
-        (this.description == null ? landingLocation.description == null : this.description.equals(landingLocation.description)) &&
-        (this.location == null ? landingLocation.location == null : this.location.equals(landingLocation.location)) &&
-        (this.successfulLandings == null ? landingLocation.successfulLandings == null : this.successfulLandings.equals(landingLocation.successfulLandings));
+    return (Objects.equals(this.id, landingLocation.id)) &&
+        (Objects.equals(this.name, landingLocation.name)) &&
+        (Objects.equals(this.abbrev, landingLocation.abbrev)) &&
+        (Objects.equals(this.description, landingLocation.description)) &&
+        (Objects.equals(this.location, landingLocation.location)) &&
+        (Objects.equals(this.successfulLandings, landingLocation.successfulLandings));
   }
 
   @Override
@@ -125,16 +127,15 @@ public class LandingLocation {
 
   @Override
   public String toString()  {
-    StringBuilder sb = new StringBuilder();
-    sb.append("class LandingLocation {\n");
-    
-    sb.append("  id: ").append(id).append("\n");
-    sb.append("  name: ").append(name).append("\n");
-    sb.append("  abbrev: ").append(abbrev).append("\n");
-    sb.append("  description: ").append(description).append("\n");
-    sb.append("  location: ").append(location).append("\n");
-    sb.append("  successfulLandings: ").append(successfulLandings).append("\n");
-    sb.append("}\n");
-    return sb.toString();
+
+      String sb = "class LandingLocation {\n" +
+              "  id: " + id + "\n" +
+              "  name: " + name + "\n" +
+              "  abbrev: " + abbrev + "\n" +
+              "  description: " + description + "\n" +
+              "  location: " + location + "\n" +
+              "  successfulLandings: " + successfulLandings + "\n" +
+              "}\n";
+      return sb;
   }
 }

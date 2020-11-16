@@ -1,6 +1,7 @@
 package io.github.nkrusch.spacelaunchone.app;
 
 
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentStatePagerAdapter;
@@ -29,5 +30,6 @@ public abstract class TabsAdapter extends FragmentStatePagerAdapter {
      * This function should return fragment in specified
      * position in a tabLayout
      */
+    @NonNull
     public abstract Fragment getItem(int position);
 }

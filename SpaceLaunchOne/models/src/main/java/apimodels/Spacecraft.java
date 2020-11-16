@@ -14,10 +14,12 @@ package apimodels;
 
 import com.google.gson.annotations.SerializedName;
 
+import java.util.Objects;
+
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 
-@ApiModel(description = "")
+@ApiModel()
 public class Spacecraft {
   
   @SerializedName("id")
@@ -37,7 +39,7 @@ public class Spacecraft {
 
   /**
    **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty()
   public Integer getId() {
     return id;
   }
@@ -47,7 +49,7 @@ public class Spacecraft {
 
   /**
    **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty()
   public String getUrl() {
     return url;
   }
@@ -57,7 +59,7 @@ public class Spacecraft {
 
   /**
    **/
-  @ApiModelProperty(required = true, value = "")
+  @ApiModelProperty(required = true)
   public String getName() {
     return name;
   }
@@ -67,7 +69,7 @@ public class Spacecraft {
 
   /**
    **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty()
   public String getSerialNumber() {
     return serialNumber;
   }
@@ -77,7 +79,7 @@ public class Spacecraft {
 
   /**
    **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty()
   public SpacecraftStatus getStatus() {
     return status;
   }
@@ -87,7 +89,7 @@ public class Spacecraft {
 
   /**
    **/
-  @ApiModelProperty(required = true, value = "")
+  @ApiModelProperty(required = true)
   public String getDescription() {
     return description;
   }
@@ -97,7 +99,7 @@ public class Spacecraft {
 
   /**
    **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty()
   public SpacecraftConfig getSpacecraftConfig() {
     return spacecraftConfig;
   }
@@ -115,13 +117,13 @@ public class Spacecraft {
       return false;
     }
     Spacecraft spacecraft = (Spacecraft) o;
-    return (this.id == null ? spacecraft.id == null : this.id.equals(spacecraft.id)) &&
-        (this.url == null ? spacecraft.url == null : this.url.equals(spacecraft.url)) &&
-        (this.name == null ? spacecraft.name == null : this.name.equals(spacecraft.name)) &&
-        (this.serialNumber == null ? spacecraft.serialNumber == null : this.serialNumber.equals(spacecraft.serialNumber)) &&
-        (this.status == null ? spacecraft.status == null : this.status.equals(spacecraft.status)) &&
-        (this.description == null ? spacecraft.description == null : this.description.equals(spacecraft.description)) &&
-        (this.spacecraftConfig == null ? spacecraft.spacecraftConfig == null : this.spacecraftConfig.equals(spacecraft.spacecraftConfig));
+    return (Objects.equals(this.id, spacecraft.id)) &&
+        (Objects.equals(this.url, spacecraft.url)) &&
+        (Objects.equals(this.name, spacecraft.name)) &&
+        (Objects.equals(this.serialNumber, spacecraft.serialNumber)) &&
+        (Objects.equals(this.status, spacecraft.status)) &&
+        (Objects.equals(this.description, spacecraft.description)) &&
+        (Objects.equals(this.spacecraftConfig, spacecraft.spacecraftConfig));
   }
 
   @Override
@@ -139,17 +141,16 @@ public class Spacecraft {
 
   @Override
   public String toString()  {
-    StringBuilder sb = new StringBuilder();
-    sb.append("class Spacecraft {\n");
-    
-    sb.append("  id: ").append(id).append("\n");
-    sb.append("  url: ").append(url).append("\n");
-    sb.append("  name: ").append(name).append("\n");
-    sb.append("  serialNumber: ").append(serialNumber).append("\n");
-    sb.append("  status: ").append(status).append("\n");
-    sb.append("  description: ").append(description).append("\n");
-    sb.append("  spacecraftConfig: ").append(spacecraftConfig).append("\n");
-    sb.append("}\n");
-    return sb.toString();
+
+      String sb = "class Spacecraft {\n" +
+              "  id: " + id + "\n" +
+              "  url: " + url + "\n" +
+              "  name: " + name + "\n" +
+              "  serialNumber: " + serialNumber + "\n" +
+              "  status: " + status + "\n" +
+              "  description: " + description + "\n" +
+              "  spacecraftConfig: " + spacecraftConfig + "\n" +
+              "}\n";
+      return sb;
   }
 }

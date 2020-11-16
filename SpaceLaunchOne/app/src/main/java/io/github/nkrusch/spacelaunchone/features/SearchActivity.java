@@ -5,7 +5,7 @@ import android.view.MenuItem;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.SearchView;
-import androidx.lifecycle.ViewModelProviders;
+import androidx.lifecycle.ViewModelProvider;
 import io.github.nkrusch.spacelaunchone.R;
 import viewmodels.SearchLaunchesViewModel;
 
@@ -22,8 +22,9 @@ public class SearchActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_search);
-        vm = ViewModelProviders.of(this).get(SearchLaunchesViewModel.class);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        vm = new ViewModelProvider(this).get(SearchLaunchesViewModel.class);
+        if (getSupportActionBar() != null)
+            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         SearchView searchView = findViewById(R.id.search_view);
         searchView.setQuery("", true);
@@ -37,7 +38,7 @@ public class SearchActivity extends AppCompatActivity {
     /**
      * Handle query text change
      */
-    private SearchView.OnQueryTextListener onQueryTextListener =
+    private final SearchView.OnQueryTextListener onQueryTextListener =
             new SearchView.OnQueryTextListener() {
                 @Override
                 public boolean onQueryTextSubmit(String query) {

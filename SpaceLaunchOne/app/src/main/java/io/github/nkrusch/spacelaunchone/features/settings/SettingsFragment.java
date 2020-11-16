@@ -82,12 +82,7 @@ public class SettingsFragment extends PreferenceFragment {
      */
     private static void bindPreferenceSummaryToValue(Preference preference) {
         Preference.OnPreferenceChangeListener mSummaryToValueListener =
-                new Preference.OnPreferenceChangeListener() {
-                    @Override
-                    public boolean onPreferenceChange(Preference preference, Object newValue) {
-                        return handlePreferenceChange(preference, newValue);
-                    }
-                };
+                (preference1, newValue) -> handlePreferenceChange(preference1, newValue);
         Object value = PreferenceManager
                 .getDefaultSharedPreferences(preference.getContext())
                 .getString(preference.getKey(), "");
@@ -125,17 +120,14 @@ public class SettingsFragment extends PreferenceFragment {
      * Set last sync timestamp and bind click handler
      */
     private void initSyncNowPreference() {
-        Long syncTime = this.getArguments().getLong(EXTRA_SYNC_TS, -1);
+        long syncTime = this.getArguments().getLong(EXTRA_SYNC_TS, -1);
         int resId = syncTime > 0 ? R.string.last_sync_timestamp : R.string.last_sync_never_occurred;
         String mLastSync = getResources().getString(resId, Utilities.localTimeLabel(syncTime));
         findPreference(PREF_LAST_SYNC).setSummary(mLastSync + "");
         findPreference(PREF_LAST_SYNC).setOnPreferenceClickListener(
-                new android.preference.Preference.OnPreferenceClickListener() {
-                    @Override
-                    public boolean onPreferenceClick(android.preference.Preference preference) {
-                        if (mSyncHandler != null) mSyncHandler.run();
-                        return true;
-                    }
+                preference -> {
+                    if (mSyncHandler != null) mSyncHandler.run();
+                    return true;
                 });
     }
 
@@ -144,13 +136,10 @@ public class SettingsFragment extends PreferenceFragment {
      */
     private void initNotificationPreference() {
         findPreference(PREF_NOTIFICATIONS).setOnPreferenceChangeListener(
-                new Preference.OnPreferenceChangeListener() {
-            @Override
-            public boolean onPreferenceChange(Preference preference, Object newValue) {
-                SwitchPreference switchPref = (SwitchPreference) preference;
-                OneSignal.setSubscription(!switchPref.isChecked());
-                return true;
-            }
-        });
+                (preference, newValue) -> {
+                    SwitchPreference switchPref = (SwitchPreference) preference;
+                    OneSignal.setSubscription(!switchPref.isChecked());
+                    return true;
+                });
     }
 }

@@ -75,20 +75,17 @@ public class LaunchDetailsViewModel extends AndroidViewModel {
      * - If launch date occurs today always update because that record is likely to get udpated often
      */
     private void conditionallyUpdate(final String id) {
-        AppExecutors.getInstance().DiskIO().execute(new Runnable() {
-            @Override
-            public void run() {
-                LaunchDetails launch = db.dao().get(id);
-                if (launch == null) return;
-                long current = new Date().getTime();
-                long launchDate = launch.getLaunchDateUTC();
-                long lastModMs = launch.getLasModified() == null ? 0 : launch.getLasModified().getTime();
-                boolean occursSoon = Math.abs(current - launchDate) < MIN_RECENT;
-                boolean isStale = current - lastModMs > MIN_UPDATE;
-                if (!(occursSoon || isStale)) return;
-                final Context context = getApplication().getBaseContext();
-                AppDataMethods.updateLaunchDetails(context, id, null);
-            }
+        AppExecutors.getInstance().DiskIO().execute(() -> {
+            LaunchDetails launch = db.dao().get(id);
+            if (launch == null) return;
+            long current = new Date().getTime();
+            long launchDate = launch.getLaunchDateUTC();
+            long lastModMs = launch.getLasModified() == null ? 0 : launch.getLasModified().getTime();
+            boolean occursSoon = Math.abs(current - launchDate) < MIN_RECENT;
+            boolean isStale = current - lastModMs > MIN_UPDATE;
+            if (!(occursSoon || isStale)) return;
+            final Context context = getApplication().getBaseContext();
+            AppDataMethods.updateLaunchDetails(context, id, null);
         });
     }
 }

@@ -15,11 +15,12 @@ package apimodels;
 import com.google.gson.annotations.SerializedName;
 
 import java.util.Date;
+import java.util.Objects;
 
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 
-@ApiModel(description = "")
+@ApiModel()
 public class SpaceStationSerializerForCommon {
   
   @SerializedName("id")
@@ -41,7 +42,7 @@ public class SpaceStationSerializerForCommon {
 
   /**
    **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty()
   public Integer getId() {
     return id;
   }
@@ -51,7 +52,7 @@ public class SpaceStationSerializerForCommon {
 
   /**
    **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty()
   public String getUrl() {
     return url;
   }
@@ -61,7 +62,7 @@ public class SpaceStationSerializerForCommon {
 
   /**
    **/
-  @ApiModelProperty(required = true, value = "")
+  @ApiModelProperty(required = true)
   public String getName() {
     return name;
   }
@@ -71,7 +72,7 @@ public class SpaceStationSerializerForCommon {
 
   /**
    **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty()
   public SpaceStationStatus getStatus() {
     return status;
   }
@@ -81,7 +82,7 @@ public class SpaceStationSerializerForCommon {
 
   /**
    **/
-  @ApiModelProperty(required = true, value = "")
+  @ApiModelProperty(required = true)
   public Date getFounded() {
     return founded;
   }
@@ -91,7 +92,7 @@ public class SpaceStationSerializerForCommon {
 
   /**
    **/
-  @ApiModelProperty(required = true, value = "")
+  @ApiModelProperty(required = true)
   public String getDescription() {
     return description;
   }
@@ -101,7 +102,7 @@ public class SpaceStationSerializerForCommon {
 
   /**
    **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty()
   public String getOrbit() {
     return orbit;
   }
@@ -111,7 +112,7 @@ public class SpaceStationSerializerForCommon {
 
   /**
    **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty()
   public String getImageUrl() {
     return imageUrl;
   }
@@ -129,14 +130,14 @@ public class SpaceStationSerializerForCommon {
       return false;
     }
     SpaceStationSerializerForCommon spaceStationSerializerForCommon = (SpaceStationSerializerForCommon) o;
-    return (this.id == null ? spaceStationSerializerForCommon.id == null : this.id.equals(spaceStationSerializerForCommon.id)) &&
-        (this.url == null ? spaceStationSerializerForCommon.url == null : this.url.equals(spaceStationSerializerForCommon.url)) &&
-        (this.name == null ? spaceStationSerializerForCommon.name == null : this.name.equals(spaceStationSerializerForCommon.name)) &&
-        (this.status == null ? spaceStationSerializerForCommon.status == null : this.status.equals(spaceStationSerializerForCommon.status)) &&
-        (this.founded == null ? spaceStationSerializerForCommon.founded == null : this.founded.equals(spaceStationSerializerForCommon.founded)) &&
-        (this.description == null ? spaceStationSerializerForCommon.description == null : this.description.equals(spaceStationSerializerForCommon.description)) &&
-        (this.orbit == null ? spaceStationSerializerForCommon.orbit == null : this.orbit.equals(spaceStationSerializerForCommon.orbit)) &&
-        (this.imageUrl == null ? spaceStationSerializerForCommon.imageUrl == null : this.imageUrl.equals(spaceStationSerializerForCommon.imageUrl));
+    return (Objects.equals(this.id, spaceStationSerializerForCommon.id)) &&
+        (Objects.equals(this.url, spaceStationSerializerForCommon.url)) &&
+        (Objects.equals(this.name, spaceStationSerializerForCommon.name)) &&
+        (Objects.equals(this.status, spaceStationSerializerForCommon.status)) &&
+        (Objects.equals(this.founded, spaceStationSerializerForCommon.founded)) &&
+        (Objects.equals(this.description, spaceStationSerializerForCommon.description)) &&
+        (Objects.equals(this.orbit, spaceStationSerializerForCommon.orbit)) &&
+        (Objects.equals(this.imageUrl, spaceStationSerializerForCommon.imageUrl));
   }
 
   @Override
@@ -155,18 +156,17 @@ public class SpaceStationSerializerForCommon {
 
   @Override
   public String toString()  {
-    StringBuilder sb = new StringBuilder();
-    sb.append("class SpaceStationSerializerForCommon {\n");
-    
-    sb.append("  id: ").append(id).append("\n");
-    sb.append("  url: ").append(url).append("\n");
-    sb.append("  name: ").append(name).append("\n");
-    sb.append("  status: ").append(status).append("\n");
-    sb.append("  founded: ").append(founded).append("\n");
-    sb.append("  description: ").append(description).append("\n");
-    sb.append("  orbit: ").append(orbit).append("\n");
-    sb.append("  imageUrl: ").append(imageUrl).append("\n");
-    sb.append("}\n");
-    return sb.toString();
+
+      String sb = "class SpaceStationSerializerForCommon {\n" +
+              "  id: " + id + "\n" +
+              "  url: " + url + "\n" +
+              "  name: " + name + "\n" +
+              "  status: " + status + "\n" +
+              "  founded: " + founded + "\n" +
+              "  description: " + description + "\n" +
+              "  orbit: " + orbit + "\n" +
+              "  imageUrl: " + imageUrl + "\n" +
+              "}\n";
+      return sb;
   }
 }

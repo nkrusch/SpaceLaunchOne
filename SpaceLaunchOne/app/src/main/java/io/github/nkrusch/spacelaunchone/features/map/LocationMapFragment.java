@@ -15,13 +15,10 @@ import com.google.android.gms.maps.model.LatLngBounds;
 import com.google.android.gms.maps.model.MarkerOptions;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.appcompat.widget.AppCompatImageButton;
 import androidx.fragment.app.Fragment;
-import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 import io.github.nkrusch.spacelaunchone.R;
-import local.LocationDetails;
 import local.Pad;
 import viewmodels.LocationDetailsViewModel;
 
@@ -52,21 +49,18 @@ public class LocationMapFragment extends Fragment implements OnMapReadyCallback 
     private void setupViewModel() {
         if (getActivity() == null) return;
         ViewModelProviders.of(getActivity()).get(LocationDetailsViewModel.class)
-                .get().observe(this, new Observer<LocationDetails>() {
-            @Override
-            public void onChanged(@Nullable LocationDetails result) {
-                if (result != null && result.getPads() != null && locations==null) {
-                    locations = new LatLng[result.getPads().size()];
-                    names = new String[result.getPads().size()];
-                    for (int i = 0; i < result.getPads().size(); i++) {
-                        Pad p = result.getPads().get(i);
-                        locations[i] = new LatLng(p.getLatitude(), p.getLongitude());
-                        names[i] = p.getName();
+                .get().observe(this, result -> {
+                    if (result != null && result.getPads() != null && locations==null) {
+                        locations = new LatLng[result.getPads().size()];
+                        names = new String[result.getPads().size()];
+                        for (int i = 0; i < result.getPads().size(); i++) {
+                            Pad p = result.getPads().get(i);
+                            locations[i] = new LatLng(p.getLatitude(), p.getLongitude());
+                            names[i] = p.getName();
+                        }
+                        setMarker();
                     }
-                    setMarker();
-                }
-            }
-        });
+                });
     }
 
     @Override
@@ -92,12 +86,7 @@ public class LocationMapFragment extends Fragment implements OnMapReadyCallback 
                 mMap.addMarker(new MarkerOptions().position(location).title(name));
                 builder.include(location);
             }
-            mMap.setOnMapLoadedCallback(new GoogleMap.OnMapLoadedCallback() {
-                @Override
-                public void onMapLoaded() {
-                    centerMap();
-                }
-            });
+            mMap.setOnMapLoadedCallback(() -> centerMap());
         }
     }
 

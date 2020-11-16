@@ -14,10 +14,12 @@ package apimodels;
 
 import com.google.gson.annotations.SerializedName;
 
+import java.util.Objects;
+
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 
-@ApiModel(description = "")
+@ApiModel()
 public class RocketSerializerCommon {
   
   @SerializedName("id")
@@ -27,7 +29,7 @@ public class RocketSerializerCommon {
 
   /**
    **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty()
   public Integer getId() {
     return id;
   }
@@ -37,7 +39,7 @@ public class RocketSerializerCommon {
 
   /**
    **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty()
   public LauncherConfigList getConfiguration() {
     return configuration;
   }
@@ -55,8 +57,8 @@ public class RocketSerializerCommon {
       return false;
     }
     RocketSerializerCommon rocketSerializerCommon = (RocketSerializerCommon) o;
-    return (this.id == null ? rocketSerializerCommon.id == null : this.id.equals(rocketSerializerCommon.id)) &&
-        (this.configuration == null ? rocketSerializerCommon.configuration == null : this.configuration.equals(rocketSerializerCommon.configuration));
+    return (Objects.equals(this.id, rocketSerializerCommon.id)) &&
+        (Objects.equals(this.configuration, rocketSerializerCommon.configuration));
   }
 
   @Override
@@ -69,12 +71,11 @@ public class RocketSerializerCommon {
 
   @Override
   public String toString()  {
-    StringBuilder sb = new StringBuilder();
-    sb.append("class RocketSerializerCommon {\n");
-    
-    sb.append("  id: ").append(id).append("\n");
-    sb.append("  configuration: ").append(configuration).append("\n");
-    sb.append("}\n");
-    return sb.toString();
+
+      String sb = "class RocketSerializerCommon {\n" +
+              "  id: " + id + "\n" +
+              "  configuration: " + configuration + "\n" +
+              "}\n";
+      return sb;
   }
 }

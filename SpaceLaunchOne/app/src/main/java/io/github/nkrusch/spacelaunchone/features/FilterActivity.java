@@ -1,7 +1,6 @@
 package io.github.nkrusch.spacelaunchone.features;
 
 import android.app.Dialog;
-import android.content.DialogInterface;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -93,17 +92,16 @@ public class FilterActivity extends TabbedActivity {
             super(3, fm);
         }
 
+        @NonNull
         @Override
         public Fragment getItem(int position) {
             switch (position) {
-                case 0:
-                    return Agencies.newInstance();
                 case 1:
                     return Locations.newInstance();
                 case 2:
                     return Rockets.newInstance();
                 default:
-                    return null;
+                    return Agencies.newInstance();
             }
         }
     }
@@ -119,11 +117,7 @@ public class FilterActivity extends TabbedActivity {
             final AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
             builder.setMessage(R.string.filter_instructions);
             builder.setTitle(R.string.filter_instructions_title);
-            builder.setPositiveButton(R.string.ok, new DialogInterface.OnClickListener() {
-                        public void onClick(DialogInterface dialog, int whichButton) {
-                            dialog.dismiss();
-                        }
-                    }
+            builder.setPositiveButton(R.string.ok, (dialog, whichButton) -> dialog.dismiss()
             );
             return builder.create();
         }

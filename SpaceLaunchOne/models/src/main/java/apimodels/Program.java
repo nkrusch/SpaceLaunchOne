@@ -16,11 +16,12 @@ import com.google.gson.annotations.SerializedName;
 
 import java.util.Date;
 import java.util.List;
+import java.util.Objects;
 
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 
-@ApiModel(description = "")
+@ApiModel()
 public class Program {
   
   @SerializedName("id")
@@ -46,7 +47,7 @@ public class Program {
 
   /**
    **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty()
   public Integer getId() {
     return id;
   }
@@ -56,7 +57,7 @@ public class Program {
 
   /**
    **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty()
   public String getUrl() {
     return url;
   }
@@ -66,7 +67,7 @@ public class Program {
 
   /**
    **/
-  @ApiModelProperty(required = true, value = "")
+  @ApiModelProperty(required = true)
   public String getName() {
     return name;
   }
@@ -76,7 +77,7 @@ public class Program {
 
   /**
    **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty()
   public String getDescription() {
     return description;
   }
@@ -86,7 +87,7 @@ public class Program {
 
   /**
    **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty()
   public List<AgencySerializerMini> getAgencies() {
     return agencies;
   }
@@ -96,7 +97,7 @@ public class Program {
 
   /**
    **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty()
   public String getImageUrl() {
     return imageUrl;
   }
@@ -106,7 +107,7 @@ public class Program {
 
   /**
    **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty()
   public Date getStartDate() {
     return startDate;
   }
@@ -116,7 +117,7 @@ public class Program {
 
   /**
    **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty()
   public Date getEndDate() {
     return endDate;
   }
@@ -126,7 +127,7 @@ public class Program {
 
   /**
    **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty()
   public String getInfoUrl() {
     return infoUrl;
   }
@@ -136,7 +137,7 @@ public class Program {
 
   /**
    **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty()
   public String getWikiUrl() {
     return wikiUrl;
   }
@@ -154,16 +155,16 @@ public class Program {
       return false;
     }
     Program program = (Program) o;
-    return (this.id == null ? program.id == null : this.id.equals(program.id)) &&
-        (this.url == null ? program.url == null : this.url.equals(program.url)) &&
-        (this.name == null ? program.name == null : this.name.equals(program.name)) &&
-        (this.description == null ? program.description == null : this.description.equals(program.description)) &&
-        (this.agencies == null ? program.agencies == null : this.agencies.equals(program.agencies)) &&
-        (this.imageUrl == null ? program.imageUrl == null : this.imageUrl.equals(program.imageUrl)) &&
-        (this.startDate == null ? program.startDate == null : this.startDate.equals(program.startDate)) &&
-        (this.endDate == null ? program.endDate == null : this.endDate.equals(program.endDate)) &&
-        (this.infoUrl == null ? program.infoUrl == null : this.infoUrl.equals(program.infoUrl)) &&
-        (this.wikiUrl == null ? program.wikiUrl == null : this.wikiUrl.equals(program.wikiUrl));
+    return (Objects.equals(this.id, program.id)) &&
+        (Objects.equals(this.url, program.url)) &&
+        (Objects.equals(this.name, program.name)) &&
+        (Objects.equals(this.description, program.description)) &&
+        (Objects.equals(this.agencies, program.agencies)) &&
+        (Objects.equals(this.imageUrl, program.imageUrl)) &&
+        (Objects.equals(this.startDate, program.startDate)) &&
+        (Objects.equals(this.endDate, program.endDate)) &&
+        (Objects.equals(this.infoUrl, program.infoUrl)) &&
+        (Objects.equals(this.wikiUrl, program.wikiUrl));
   }
 
   @Override
@@ -184,20 +185,19 @@ public class Program {
 
   @Override
   public String toString()  {
-    StringBuilder sb = new StringBuilder();
-    sb.append("class Program {\n");
-    
-    sb.append("  id: ").append(id).append("\n");
-    sb.append("  url: ").append(url).append("\n");
-    sb.append("  name: ").append(name).append("\n");
-    sb.append("  description: ").append(description).append("\n");
-    sb.append("  agencies: ").append(agencies).append("\n");
-    sb.append("  imageUrl: ").append(imageUrl).append("\n");
-    sb.append("  startDate: ").append(startDate).append("\n");
-    sb.append("  endDate: ").append(endDate).append("\n");
-    sb.append("  infoUrl: ").append(infoUrl).append("\n");
-    sb.append("  wikiUrl: ").append(wikiUrl).append("\n");
-    sb.append("}\n");
-    return sb.toString();
+
+      String sb = "class Program {\n" +
+              "  id: " + id + "\n" +
+              "  url: " + url + "\n" +
+              "  name: " + name + "\n" +
+              "  description: " + description + "\n" +
+              "  agencies: " + agencies + "\n" +
+              "  imageUrl: " + imageUrl + "\n" +
+              "  startDate: " + startDate + "\n" +
+              "  endDate: " + endDate + "\n" +
+              "  infoUrl: " + infoUrl + "\n" +
+              "  wikiUrl: " + wikiUrl + "\n" +
+              "}\n";
+      return sb;
   }
 }

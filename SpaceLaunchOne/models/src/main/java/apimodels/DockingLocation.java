@@ -14,10 +14,12 @@ package apimodels;
 
 import com.google.gson.annotations.SerializedName;
 
+import java.util.Objects;
+
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 
-@ApiModel(description = "")
+@ApiModel()
 public class DockingLocation {
   
   @SerializedName("id")
@@ -27,7 +29,7 @@ public class DockingLocation {
 
   /**
    **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty()
   public Integer getId() {
     return id;
   }
@@ -37,7 +39,7 @@ public class DockingLocation {
 
   /**
    **/
-  @ApiModelProperty(required = true, value = "")
+  @ApiModelProperty(required = true)
   public String getName() {
     return name;
   }
@@ -55,8 +57,8 @@ public class DockingLocation {
       return false;
     }
     DockingLocation dockingLocation = (DockingLocation) o;
-    return (this.id == null ? dockingLocation.id == null : this.id.equals(dockingLocation.id)) &&
-        (this.name == null ? dockingLocation.name == null : this.name.equals(dockingLocation.name));
+    return (Objects.equals(this.id, dockingLocation.id)) &&
+        (Objects.equals(this.name, dockingLocation.name));
   }
 
   @Override
@@ -69,12 +71,11 @@ public class DockingLocation {
 
   @Override
   public String toString()  {
-    StringBuilder sb = new StringBuilder();
-    sb.append("class DockingLocation {\n");
-    
-    sb.append("  id: ").append(id).append("\n");
-    sb.append("  name: ").append(name).append("\n");
-    sb.append("}\n");
-    return sb.toString();
+
+      String sb = "class DockingLocation {\n" +
+              "  id: " + id + "\n" +
+              "  name: " + name + "\n" +
+              "}\n";
+      return sb;
   }
 }

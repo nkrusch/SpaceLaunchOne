@@ -17,11 +17,12 @@ import com.google.gson.annotations.SerializedName;
 import java.math.BigDecimal;
 import java.util.Date;
 import java.util.List;
+import java.util.Objects;
 
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 
-@ApiModel(description = "")
+@ApiModel()
 public class SpaceStationDetailed {
   
   @SerializedName("id")
@@ -63,7 +64,7 @@ public class SpaceStationDetailed {
 
   /**
    **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty()
   public Integer getId() {
     return id;
   }
@@ -73,7 +74,7 @@ public class SpaceStationDetailed {
 
   /**
    **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty()
   public String getUrl() {
     return url;
   }
@@ -83,7 +84,7 @@ public class SpaceStationDetailed {
 
   /**
    **/
-  @ApiModelProperty(required = true, value = "")
+  @ApiModelProperty(required = true)
   public String getName() {
     return name;
   }
@@ -93,7 +94,7 @@ public class SpaceStationDetailed {
 
   /**
    **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty()
   public SpaceStationStatus getStatus() {
     return status;
   }
@@ -103,7 +104,7 @@ public class SpaceStationDetailed {
 
   /**
    **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty()
   public SpaceStationType getType() {
     return type;
   }
@@ -113,7 +114,7 @@ public class SpaceStationDetailed {
 
   /**
    **/
-  @ApiModelProperty(required = true, value = "")
+  @ApiModelProperty(required = true)
   public Date getFounded() {
     return founded;
   }
@@ -123,7 +124,7 @@ public class SpaceStationDetailed {
 
   /**
    **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty()
   public Date getDeorbited() {
     return deorbited;
   }
@@ -133,7 +134,7 @@ public class SpaceStationDetailed {
 
   /**
    **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty()
   public BigDecimal getHeight() {
     return height;
   }
@@ -143,7 +144,7 @@ public class SpaceStationDetailed {
 
   /**
    **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty()
   public BigDecimal getWidth() {
     return width;
   }
@@ -153,7 +154,7 @@ public class SpaceStationDetailed {
 
   /**
    **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty()
   public BigDecimal getMass() {
     return mass;
   }
@@ -165,7 +166,7 @@ public class SpaceStationDetailed {
    * minimum: -2147483648
    * maximum: 2147483647
    **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty()
   public Integer getVolume() {
     return volume;
   }
@@ -175,7 +176,7 @@ public class SpaceStationDetailed {
 
   /**
    **/
-  @ApiModelProperty(required = true, value = "")
+  @ApiModelProperty(required = true)
   public String getDescription() {
     return description;
   }
@@ -185,7 +186,7 @@ public class SpaceStationDetailed {
 
   /**
    **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty()
   public String getOrbit() {
     return orbit;
   }
@@ -195,7 +196,7 @@ public class SpaceStationDetailed {
 
   /**
    **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty()
   public String getOnboardCrew() {
     return onboardCrew;
   }
@@ -205,7 +206,7 @@ public class SpaceStationDetailed {
 
   /**
    **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty()
   public List<Agency> getOwners() {
     return owners;
   }
@@ -215,7 +216,7 @@ public class SpaceStationDetailed {
 
   /**
    **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty()
   public List<ExpeditionDetailedSerializerForSpacestation> getActiveExpeditions() {
     return activeExpeditions;
   }
@@ -225,7 +226,7 @@ public class SpaceStationDetailed {
 
   /**
    **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty()
   public List<DockingLocationSerializerForSpacestation> getDockingLocation() {
     return dockingLocation;
   }
@@ -235,7 +236,7 @@ public class SpaceStationDetailed {
 
   /**
    **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty()
   public String getImageUrl() {
     return imageUrl;
   }
@@ -253,24 +254,24 @@ public class SpaceStationDetailed {
       return false;
     }
     SpaceStationDetailed spaceStationDetailed = (SpaceStationDetailed) o;
-    return (this.id == null ? spaceStationDetailed.id == null : this.id.equals(spaceStationDetailed.id)) &&
-        (this.url == null ? spaceStationDetailed.url == null : this.url.equals(spaceStationDetailed.url)) &&
-        (this.name == null ? spaceStationDetailed.name == null : this.name.equals(spaceStationDetailed.name)) &&
-        (this.status == null ? spaceStationDetailed.status == null : this.status.equals(spaceStationDetailed.status)) &&
-        (this.type == null ? spaceStationDetailed.type == null : this.type.equals(spaceStationDetailed.type)) &&
-        (this.founded == null ? spaceStationDetailed.founded == null : this.founded.equals(spaceStationDetailed.founded)) &&
-        (this.deorbited == null ? spaceStationDetailed.deorbited == null : this.deorbited.equals(spaceStationDetailed.deorbited)) &&
-        (this.height == null ? spaceStationDetailed.height == null : this.height.equals(spaceStationDetailed.height)) &&
-        (this.width == null ? spaceStationDetailed.width == null : this.width.equals(spaceStationDetailed.width)) &&
-        (this.mass == null ? spaceStationDetailed.mass == null : this.mass.equals(spaceStationDetailed.mass)) &&
-        (this.volume == null ? spaceStationDetailed.volume == null : this.volume.equals(spaceStationDetailed.volume)) &&
-        (this.description == null ? spaceStationDetailed.description == null : this.description.equals(spaceStationDetailed.description)) &&
-        (this.orbit == null ? spaceStationDetailed.orbit == null : this.orbit.equals(spaceStationDetailed.orbit)) &&
-        (this.onboardCrew == null ? spaceStationDetailed.onboardCrew == null : this.onboardCrew.equals(spaceStationDetailed.onboardCrew)) &&
-        (this.owners == null ? spaceStationDetailed.owners == null : this.owners.equals(spaceStationDetailed.owners)) &&
-        (this.activeExpeditions == null ? spaceStationDetailed.activeExpeditions == null : this.activeExpeditions.equals(spaceStationDetailed.activeExpeditions)) &&
-        (this.dockingLocation == null ? spaceStationDetailed.dockingLocation == null : this.dockingLocation.equals(spaceStationDetailed.dockingLocation)) &&
-        (this.imageUrl == null ? spaceStationDetailed.imageUrl == null : this.imageUrl.equals(spaceStationDetailed.imageUrl));
+    return (Objects.equals(this.id, spaceStationDetailed.id)) &&
+        (Objects.equals(this.url, spaceStationDetailed.url)) &&
+        (Objects.equals(this.name, spaceStationDetailed.name)) &&
+        (Objects.equals(this.status, spaceStationDetailed.status)) &&
+        (Objects.equals(this.type, spaceStationDetailed.type)) &&
+        (Objects.equals(this.founded, spaceStationDetailed.founded)) &&
+        (Objects.equals(this.deorbited, spaceStationDetailed.deorbited)) &&
+        (Objects.equals(this.height, spaceStationDetailed.height)) &&
+        (Objects.equals(this.width, spaceStationDetailed.width)) &&
+        (Objects.equals(this.mass, spaceStationDetailed.mass)) &&
+        (Objects.equals(this.volume, spaceStationDetailed.volume)) &&
+        (Objects.equals(this.description, spaceStationDetailed.description)) &&
+        (Objects.equals(this.orbit, spaceStationDetailed.orbit)) &&
+        (Objects.equals(this.onboardCrew, spaceStationDetailed.onboardCrew)) &&
+        (Objects.equals(this.owners, spaceStationDetailed.owners)) &&
+        (Objects.equals(this.activeExpeditions, spaceStationDetailed.activeExpeditions)) &&
+        (Objects.equals(this.dockingLocation, spaceStationDetailed.dockingLocation)) &&
+        (Objects.equals(this.imageUrl, spaceStationDetailed.imageUrl));
   }
 
   @Override
@@ -299,28 +300,27 @@ public class SpaceStationDetailed {
 
   @Override
   public String toString()  {
-    StringBuilder sb = new StringBuilder();
-    sb.append("class SpaceStationDetailed {\n");
-    
-    sb.append("  id: ").append(id).append("\n");
-    sb.append("  url: ").append(url).append("\n");
-    sb.append("  name: ").append(name).append("\n");
-    sb.append("  status: ").append(status).append("\n");
-    sb.append("  type: ").append(type).append("\n");
-    sb.append("  founded: ").append(founded).append("\n");
-    sb.append("  deorbited: ").append(deorbited).append("\n");
-    sb.append("  height: ").append(height).append("\n");
-    sb.append("  width: ").append(width).append("\n");
-    sb.append("  mass: ").append(mass).append("\n");
-    sb.append("  volume: ").append(volume).append("\n");
-    sb.append("  description: ").append(description).append("\n");
-    sb.append("  orbit: ").append(orbit).append("\n");
-    sb.append("  onboardCrew: ").append(onboardCrew).append("\n");
-    sb.append("  owners: ").append(owners).append("\n");
-    sb.append("  activeExpeditions: ").append(activeExpeditions).append("\n");
-    sb.append("  dockingLocation: ").append(dockingLocation).append("\n");
-    sb.append("  imageUrl: ").append(imageUrl).append("\n");
-    sb.append("}\n");
-    return sb.toString();
+
+      String sb = "class SpaceStationDetailed {\n" +
+              "  id: " + id + "\n" +
+              "  url: " + url + "\n" +
+              "  name: " + name + "\n" +
+              "  status: " + status + "\n" +
+              "  type: " + type + "\n" +
+              "  founded: " + founded + "\n" +
+              "  deorbited: " + deorbited + "\n" +
+              "  height: " + height + "\n" +
+              "  width: " + width + "\n" +
+              "  mass: " + mass + "\n" +
+              "  volume: " + volume + "\n" +
+              "  description: " + description + "\n" +
+              "  orbit: " + orbit + "\n" +
+              "  onboardCrew: " + onboardCrew + "\n" +
+              "  owners: " + owners + "\n" +
+              "  activeExpeditions: " + activeExpeditions + "\n" +
+              "  dockingLocation: " + dockingLocation + "\n" +
+              "  imageUrl: " + imageUrl + "\n" +
+              "}\n";
+      return sb;
   }
 }

@@ -11,7 +11,6 @@ import androidx.room.PrimaryKey;
 @Entity(tableName = "locations")
 public class Location {
 
-    @NonNull
     @PrimaryKey()
     private int lid;
     private String name;
@@ -69,6 +68,7 @@ public class Location {
         return a;
     }
 
+    @NonNull
     @Ignore
     @Override
     public String toString() {

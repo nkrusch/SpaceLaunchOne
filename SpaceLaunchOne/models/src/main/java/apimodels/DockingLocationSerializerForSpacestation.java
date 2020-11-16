@@ -14,10 +14,12 @@ package apimodels;
 
 import com.google.gson.annotations.SerializedName;
 
+import java.util.Objects;
+
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 
-@ApiModel(description = "")
+@ApiModel()
 public class DockingLocationSerializerForSpacestation {
   
   @SerializedName("id")
@@ -29,7 +31,7 @@ public class DockingLocationSerializerForSpacestation {
 
   /**
    **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty()
   public Integer getId() {
     return id;
   }
@@ -39,7 +41,7 @@ public class DockingLocationSerializerForSpacestation {
 
   /**
    **/
-  @ApiModelProperty(required = true, value = "")
+  @ApiModelProperty(required = true)
   public String getName() {
     return name;
   }
@@ -49,7 +51,7 @@ public class DockingLocationSerializerForSpacestation {
 
   /**
    **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty()
   public DockingEventDetailedSerializerForSpacestation getDocked() {
     return docked;
   }
@@ -67,9 +69,9 @@ public class DockingLocationSerializerForSpacestation {
       return false;
     }
     DockingLocationSerializerForSpacestation dockingLocationSerializerForSpacestation = (DockingLocationSerializerForSpacestation) o;
-    return (this.id == null ? dockingLocationSerializerForSpacestation.id == null : this.id.equals(dockingLocationSerializerForSpacestation.id)) &&
-        (this.name == null ? dockingLocationSerializerForSpacestation.name == null : this.name.equals(dockingLocationSerializerForSpacestation.name)) &&
-        (this.docked == null ? dockingLocationSerializerForSpacestation.docked == null : this.docked.equals(dockingLocationSerializerForSpacestation.docked));
+    return (Objects.equals(this.id, dockingLocationSerializerForSpacestation.id)) &&
+        (Objects.equals(this.name, dockingLocationSerializerForSpacestation.name)) &&
+        (Objects.equals(this.docked, dockingLocationSerializerForSpacestation.docked));
   }
 
   @Override
@@ -83,13 +85,12 @@ public class DockingLocationSerializerForSpacestation {
 
   @Override
   public String toString()  {
-    StringBuilder sb = new StringBuilder();
-    sb.append("class DockingLocationSerializerForSpacestation {\n");
-    
-    sb.append("  id: ").append(id).append("\n");
-    sb.append("  name: ").append(name).append("\n");
-    sb.append("  docked: ").append(docked).append("\n");
-    sb.append("}\n");
-    return sb.toString();
+
+      String sb = "class DockingLocationSerializerForSpacestation {\n" +
+              "  id: " + id + "\n" +
+              "  name: " + name + "\n" +
+              "  docked: " + docked + "\n" +
+              "}\n";
+      return sb;
   }
 }

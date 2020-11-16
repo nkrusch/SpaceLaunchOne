@@ -16,12 +16,13 @@ import com.google.gson.annotations.SerializedName;
 
 import java.util.Date;
 import java.util.List;
+import java.util.Objects;
 import java.util.UUID;
 
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 
-@ApiModel(description = "")
+@ApiModel()
 public class LaunchDetailed {
   
   @SerializedName("id")
@@ -95,7 +96,7 @@ public class LaunchDetailed {
 
   /**
    **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty()
   public UUID getId() {
     return id;
   }
@@ -105,7 +106,7 @@ public class LaunchDetailed {
 
   /**
    **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty()
   public String getUrl() {
     return url;
   }
@@ -117,7 +118,7 @@ public class LaunchDetailed {
    * minimum: -2147483648
    * maximum: 2147483647
    **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty()
   public Integer getLaunchLibraryId() {
     return launchLibraryId;
   }
@@ -127,7 +128,7 @@ public class LaunchDetailed {
 
   /**
    **/
-  @ApiModelProperty(required = true, value = "")
+  @ApiModelProperty(required = true)
   public String getSlug() {
     return slug;
   }
@@ -137,7 +138,7 @@ public class LaunchDetailed {
 
   /**
    **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty()
   public String getName() {
     return name;
   }
@@ -147,7 +148,7 @@ public class LaunchDetailed {
 
   /**
    **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty()
   public LaunchStatus getStatus() {
     return status;
   }
@@ -157,7 +158,7 @@ public class LaunchDetailed {
 
   /**
    **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty()
   public Date getNet() {
     return net;
   }
@@ -167,7 +168,7 @@ public class LaunchDetailed {
 
   /**
    **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty()
   public Date getWindowEnd() {
     return windowEnd;
   }
@@ -177,7 +178,7 @@ public class LaunchDetailed {
 
   /**
    **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty()
   public Date getWindowStart() {
     return windowStart;
   }
@@ -187,7 +188,7 @@ public class LaunchDetailed {
 
   /**
    **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty()
   public Boolean getInhold() {
     return inhold;
   }
@@ -197,7 +198,7 @@ public class LaunchDetailed {
 
   /**
    **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty()
   public Boolean getTbdtime() {
     return tbdtime;
   }
@@ -207,7 +208,7 @@ public class LaunchDetailed {
 
   /**
    **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty()
   public Boolean getTbddate() {
     return tbddate;
   }
@@ -219,7 +220,7 @@ public class LaunchDetailed {
    * minimum: -2147483648
    * maximum: 2147483647
    **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty()
   public Integer getProbability() {
     return probability;
   }
@@ -229,7 +230,7 @@ public class LaunchDetailed {
 
   /**
    **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty()
   public String getHoldreason() {
     return holdreason;
   }
@@ -239,7 +240,7 @@ public class LaunchDetailed {
 
   /**
    **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty()
   public String getFailreason() {
     return failreason;
   }
@@ -249,7 +250,7 @@ public class LaunchDetailed {
 
   /**
    **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty()
   public String getHashtag() {
     return hashtag;
   }
@@ -259,7 +260,7 @@ public class LaunchDetailed {
 
   /**
    **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty()
   public AgencySerializerDetailedCommon getLaunchServiceProvider() {
     return launchServiceProvider;
   }
@@ -269,7 +270,7 @@ public class LaunchDetailed {
 
   /**
    **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty()
   public RocketDetailed getRocket() {
     return rocket;
   }
@@ -279,7 +280,7 @@ public class LaunchDetailed {
 
   /**
    **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty()
   public Mission getMission() {
     return mission;
   }
@@ -289,7 +290,7 @@ public class LaunchDetailed {
 
   /**
    **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty()
   public Pad getPad() {
     return pad;
   }
@@ -299,7 +300,7 @@ public class LaunchDetailed {
 
   /**
    **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty()
   public List<InfoURL> getInfoURLs() {
     return infoURLs;
   }
@@ -309,7 +310,7 @@ public class LaunchDetailed {
 
   /**
    **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty()
   public List<VidURL> getVidURLs() {
     return vidURLs;
   }
@@ -319,7 +320,7 @@ public class LaunchDetailed {
 
   /**
    **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty()
   public Boolean getWebcastLive() {
     return webcastLive;
   }
@@ -329,7 +330,7 @@ public class LaunchDetailed {
 
   /**
    **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty()
   public String getImage() {
     return image;
   }
@@ -339,7 +340,7 @@ public class LaunchDetailed {
 
   /**
    **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty()
   public String getInfographic() {
     return infographic;
   }
@@ -349,7 +350,7 @@ public class LaunchDetailed {
 
   /**
    **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty()
   public List<Program> getProgram() {
     return program;
   }
@@ -359,7 +360,7 @@ public class LaunchDetailed {
 
   /**
    **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty()
   public String getOrbitalLaunchAttemptCount() {
     return orbitalLaunchAttemptCount;
   }
@@ -369,7 +370,7 @@ public class LaunchDetailed {
 
   /**
    **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty()
   public String getLocationLaunchAttemptCount() {
     return locationLaunchAttemptCount;
   }
@@ -379,7 +380,7 @@ public class LaunchDetailed {
 
   /**
    **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty()
   public String getPadLaunchAttemptCount() {
     return padLaunchAttemptCount;
   }
@@ -389,7 +390,7 @@ public class LaunchDetailed {
 
   /**
    **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty()
   public String getAgencyLaunchAttemptCount() {
     return agencyLaunchAttemptCount;
   }
@@ -399,7 +400,7 @@ public class LaunchDetailed {
 
   /**
    **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty()
   public String getOrbitalLaunchAttemptCountYear() {
     return orbitalLaunchAttemptCountYear;
   }
@@ -409,7 +410,7 @@ public class LaunchDetailed {
 
   /**
    **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty()
   public String getLocationLaunchAttemptCountYear() {
     return locationLaunchAttemptCountYear;
   }
@@ -419,7 +420,7 @@ public class LaunchDetailed {
 
   /**
    **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty()
   public String getPadLaunchAttemptCountYear() {
     return padLaunchAttemptCountYear;
   }
@@ -429,7 +430,7 @@ public class LaunchDetailed {
 
   /**
    **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty()
   public String getAgencyLaunchAttemptCountYear() {
     return agencyLaunchAttemptCountYear;
   }
@@ -447,40 +448,40 @@ public class LaunchDetailed {
       return false;
     }
     LaunchDetailed launchDetailed = (LaunchDetailed) o;
-    return (this.id == null ? launchDetailed.id == null : this.id.equals(launchDetailed.id)) &&
-        (this.url == null ? launchDetailed.url == null : this.url.equals(launchDetailed.url)) &&
-        (this.launchLibraryId == null ? launchDetailed.launchLibraryId == null : this.launchLibraryId.equals(launchDetailed.launchLibraryId)) &&
-        (this.slug == null ? launchDetailed.slug == null : this.slug.equals(launchDetailed.slug)) &&
-        (this.name == null ? launchDetailed.name == null : this.name.equals(launchDetailed.name)) &&
-        (this.status == null ? launchDetailed.status == null : this.status.equals(launchDetailed.status)) &&
-        (this.net == null ? launchDetailed.net == null : this.net.equals(launchDetailed.net)) &&
-        (this.windowEnd == null ? launchDetailed.windowEnd == null : this.windowEnd.equals(launchDetailed.windowEnd)) &&
-        (this.windowStart == null ? launchDetailed.windowStart == null : this.windowStart.equals(launchDetailed.windowStart)) &&
-        (this.inhold == null ? launchDetailed.inhold == null : this.inhold.equals(launchDetailed.inhold)) &&
-        (this.tbdtime == null ? launchDetailed.tbdtime == null : this.tbdtime.equals(launchDetailed.tbdtime)) &&
-        (this.tbddate == null ? launchDetailed.tbddate == null : this.tbddate.equals(launchDetailed.tbddate)) &&
-        (this.probability == null ? launchDetailed.probability == null : this.probability.equals(launchDetailed.probability)) &&
-        (this.holdreason == null ? launchDetailed.holdreason == null : this.holdreason.equals(launchDetailed.holdreason)) &&
-        (this.failreason == null ? launchDetailed.failreason == null : this.failreason.equals(launchDetailed.failreason)) &&
-        (this.hashtag == null ? launchDetailed.hashtag == null : this.hashtag.equals(launchDetailed.hashtag)) &&
-        (this.launchServiceProvider == null ? launchDetailed.launchServiceProvider == null : this.launchServiceProvider.equals(launchDetailed.launchServiceProvider)) &&
-        (this.rocket == null ? launchDetailed.rocket == null : this.rocket.equals(launchDetailed.rocket)) &&
-        (this.mission == null ? launchDetailed.mission == null : this.mission.equals(launchDetailed.mission)) &&
-        (this.pad == null ? launchDetailed.pad == null : this.pad.equals(launchDetailed.pad)) &&
-        (this.infoURLs == null ? launchDetailed.infoURLs == null : this.infoURLs.equals(launchDetailed.infoURLs)) &&
-        (this.vidURLs == null ? launchDetailed.vidURLs == null : this.vidURLs.equals(launchDetailed.vidURLs)) &&
-        (this.webcastLive == null ? launchDetailed.webcastLive == null : this.webcastLive.equals(launchDetailed.webcastLive)) &&
-        (this.image == null ? launchDetailed.image == null : this.image.equals(launchDetailed.image)) &&
-        (this.infographic == null ? launchDetailed.infographic == null : this.infographic.equals(launchDetailed.infographic)) &&
-        (this.program == null ? launchDetailed.program == null : this.program.equals(launchDetailed.program)) &&
-        (this.orbitalLaunchAttemptCount == null ? launchDetailed.orbitalLaunchAttemptCount == null : this.orbitalLaunchAttemptCount.equals(launchDetailed.orbitalLaunchAttemptCount)) &&
-        (this.locationLaunchAttemptCount == null ? launchDetailed.locationLaunchAttemptCount == null : this.locationLaunchAttemptCount.equals(launchDetailed.locationLaunchAttemptCount)) &&
-        (this.padLaunchAttemptCount == null ? launchDetailed.padLaunchAttemptCount == null : this.padLaunchAttemptCount.equals(launchDetailed.padLaunchAttemptCount)) &&
-        (this.agencyLaunchAttemptCount == null ? launchDetailed.agencyLaunchAttemptCount == null : this.agencyLaunchAttemptCount.equals(launchDetailed.agencyLaunchAttemptCount)) &&
-        (this.orbitalLaunchAttemptCountYear == null ? launchDetailed.orbitalLaunchAttemptCountYear == null : this.orbitalLaunchAttemptCountYear.equals(launchDetailed.orbitalLaunchAttemptCountYear)) &&
-        (this.locationLaunchAttemptCountYear == null ? launchDetailed.locationLaunchAttemptCountYear == null : this.locationLaunchAttemptCountYear.equals(launchDetailed.locationLaunchAttemptCountYear)) &&
-        (this.padLaunchAttemptCountYear == null ? launchDetailed.padLaunchAttemptCountYear == null : this.padLaunchAttemptCountYear.equals(launchDetailed.padLaunchAttemptCountYear)) &&
-        (this.agencyLaunchAttemptCountYear == null ? launchDetailed.agencyLaunchAttemptCountYear == null : this.agencyLaunchAttemptCountYear.equals(launchDetailed.agencyLaunchAttemptCountYear));
+    return (Objects.equals(this.id, launchDetailed.id)) &&
+        (Objects.equals(this.url, launchDetailed.url)) &&
+        (Objects.equals(this.launchLibraryId, launchDetailed.launchLibraryId)) &&
+        (Objects.equals(this.slug, launchDetailed.slug)) &&
+        (Objects.equals(this.name, launchDetailed.name)) &&
+        (Objects.equals(this.status, launchDetailed.status)) &&
+        (Objects.equals(this.net, launchDetailed.net)) &&
+        (Objects.equals(this.windowEnd, launchDetailed.windowEnd)) &&
+        (Objects.equals(this.windowStart, launchDetailed.windowStart)) &&
+        (Objects.equals(this.inhold, launchDetailed.inhold)) &&
+        (Objects.equals(this.tbdtime, launchDetailed.tbdtime)) &&
+        (Objects.equals(this.tbddate, launchDetailed.tbddate)) &&
+        (Objects.equals(this.probability, launchDetailed.probability)) &&
+        (Objects.equals(this.holdreason, launchDetailed.holdreason)) &&
+        (Objects.equals(this.failreason, launchDetailed.failreason)) &&
+        (Objects.equals(this.hashtag, launchDetailed.hashtag)) &&
+        (Objects.equals(this.launchServiceProvider, launchDetailed.launchServiceProvider)) &&
+        (Objects.equals(this.rocket, launchDetailed.rocket)) &&
+        (Objects.equals(this.mission, launchDetailed.mission)) &&
+        (Objects.equals(this.pad, launchDetailed.pad)) &&
+        (Objects.equals(this.infoURLs, launchDetailed.infoURLs)) &&
+        (Objects.equals(this.vidURLs, launchDetailed.vidURLs)) &&
+        (Objects.equals(this.webcastLive, launchDetailed.webcastLive)) &&
+        (Objects.equals(this.image, launchDetailed.image)) &&
+        (Objects.equals(this.infographic, launchDetailed.infographic)) &&
+        (Objects.equals(this.program, launchDetailed.program)) &&
+        (Objects.equals(this.orbitalLaunchAttemptCount, launchDetailed.orbitalLaunchAttemptCount)) &&
+        (Objects.equals(this.locationLaunchAttemptCount, launchDetailed.locationLaunchAttemptCount)) &&
+        (Objects.equals(this.padLaunchAttemptCount, launchDetailed.padLaunchAttemptCount)) &&
+        (Objects.equals(this.agencyLaunchAttemptCount, launchDetailed.agencyLaunchAttemptCount)) &&
+        (Objects.equals(this.orbitalLaunchAttemptCountYear, launchDetailed.orbitalLaunchAttemptCountYear)) &&
+        (Objects.equals(this.locationLaunchAttemptCountYear, launchDetailed.locationLaunchAttemptCountYear)) &&
+        (Objects.equals(this.padLaunchAttemptCountYear, launchDetailed.padLaunchAttemptCountYear)) &&
+        (Objects.equals(this.agencyLaunchAttemptCountYear, launchDetailed.agencyLaunchAttemptCountYear));
   }
 
   @Override
@@ -525,44 +526,43 @@ public class LaunchDetailed {
 
   @Override
   public String toString()  {
-    StringBuilder sb = new StringBuilder();
-    sb.append("class LaunchDetailed {\n");
-    
-    sb.append("  id: ").append(id).append("\n");
-    sb.append("  url: ").append(url).append("\n");
-    sb.append("  launchLibraryId: ").append(launchLibraryId).append("\n");
-    sb.append("  slug: ").append(slug).append("\n");
-    sb.append("  name: ").append(name).append("\n");
-    sb.append("  status: ").append(status).append("\n");
-    sb.append("  net: ").append(net).append("\n");
-    sb.append("  windowEnd: ").append(windowEnd).append("\n");
-    sb.append("  windowStart: ").append(windowStart).append("\n");
-    sb.append("  inhold: ").append(inhold).append("\n");
-    sb.append("  tbdtime: ").append(tbdtime).append("\n");
-    sb.append("  tbddate: ").append(tbddate).append("\n");
-    sb.append("  probability: ").append(probability).append("\n");
-    sb.append("  holdreason: ").append(holdreason).append("\n");
-    sb.append("  failreason: ").append(failreason).append("\n");
-    sb.append("  hashtag: ").append(hashtag).append("\n");
-    sb.append("  launchServiceProvider: ").append(launchServiceProvider).append("\n");
-    sb.append("  rocket: ").append(rocket).append("\n");
-    sb.append("  mission: ").append(mission).append("\n");
-    sb.append("  pad: ").append(pad).append("\n");
-    sb.append("  infoURLs: ").append(infoURLs).append("\n");
-    sb.append("  vidURLs: ").append(vidURLs).append("\n");
-    sb.append("  webcastLive: ").append(webcastLive).append("\n");
-    sb.append("  image: ").append(image).append("\n");
-    sb.append("  infographic: ").append(infographic).append("\n");
-    sb.append("  program: ").append(program).append("\n");
-    sb.append("  orbitalLaunchAttemptCount: ").append(orbitalLaunchAttemptCount).append("\n");
-    sb.append("  locationLaunchAttemptCount: ").append(locationLaunchAttemptCount).append("\n");
-    sb.append("  padLaunchAttemptCount: ").append(padLaunchAttemptCount).append("\n");
-    sb.append("  agencyLaunchAttemptCount: ").append(agencyLaunchAttemptCount).append("\n");
-    sb.append("  orbitalLaunchAttemptCountYear: ").append(orbitalLaunchAttemptCountYear).append("\n");
-    sb.append("  locationLaunchAttemptCountYear: ").append(locationLaunchAttemptCountYear).append("\n");
-    sb.append("  padLaunchAttemptCountYear: ").append(padLaunchAttemptCountYear).append("\n");
-    sb.append("  agencyLaunchAttemptCountYear: ").append(agencyLaunchAttemptCountYear).append("\n");
-    sb.append("}\n");
-    return sb.toString();
+
+      String sb = "class LaunchDetailed {\n" +
+              "  id: " + id + "\n" +
+              "  url: " + url + "\n" +
+              "  launchLibraryId: " + launchLibraryId + "\n" +
+              "  slug: " + slug + "\n" +
+              "  name: " + name + "\n" +
+              "  status: " + status + "\n" +
+              "  net: " + net + "\n" +
+              "  windowEnd: " + windowEnd + "\n" +
+              "  windowStart: " + windowStart + "\n" +
+              "  inhold: " + inhold + "\n" +
+              "  tbdtime: " + tbdtime + "\n" +
+              "  tbddate: " + tbddate + "\n" +
+              "  probability: " + probability + "\n" +
+              "  holdreason: " + holdreason + "\n" +
+              "  failreason: " + failreason + "\n" +
+              "  hashtag: " + hashtag + "\n" +
+              "  launchServiceProvider: " + launchServiceProvider + "\n" +
+              "  rocket: " + rocket + "\n" +
+              "  mission: " + mission + "\n" +
+              "  pad: " + pad + "\n" +
+              "  infoURLs: " + infoURLs + "\n" +
+              "  vidURLs: " + vidURLs + "\n" +
+              "  webcastLive: " + webcastLive + "\n" +
+              "  image: " + image + "\n" +
+              "  infographic: " + infographic + "\n" +
+              "  program: " + program + "\n" +
+              "  orbitalLaunchAttemptCount: " + orbitalLaunchAttemptCount + "\n" +
+              "  locationLaunchAttemptCount: " + locationLaunchAttemptCount + "\n" +
+              "  padLaunchAttemptCount: " + padLaunchAttemptCount + "\n" +
+              "  agencyLaunchAttemptCount: " + agencyLaunchAttemptCount + "\n" +
+              "  orbitalLaunchAttemptCountYear: " + orbitalLaunchAttemptCountYear + "\n" +
+              "  locationLaunchAttemptCountYear: " + locationLaunchAttemptCountYear + "\n" +
+              "  padLaunchAttemptCountYear: " + padLaunchAttemptCountYear + "\n" +
+              "  agencyLaunchAttemptCountYear: " + agencyLaunchAttemptCountYear + "\n" +
+              "}\n";
+      return sb;
   }
 }

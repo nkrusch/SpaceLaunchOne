@@ -15,11 +15,12 @@ package apimodels;
 import com.google.gson.annotations.SerializedName;
 
 import java.util.Date;
+import java.util.Objects;
 
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 
-@ApiModel(description = "")
+@ApiModel()
 public class Expedition {
   
   @SerializedName("id")
@@ -37,7 +38,7 @@ public class Expedition {
 
   /**
    **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty()
   public Integer getId() {
     return id;
   }
@@ -47,7 +48,7 @@ public class Expedition {
 
   /**
    **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty()
   public String getUrl() {
     return url;
   }
@@ -57,7 +58,7 @@ public class Expedition {
 
   /**
    **/
-  @ApiModelProperty(required = true, value = "")
+  @ApiModelProperty(required = true)
   public String getName() {
     return name;
   }
@@ -67,7 +68,7 @@ public class Expedition {
 
   /**
    **/
-  @ApiModelProperty(required = true, value = "")
+  @ApiModelProperty(required = true)
   public Date getStart() {
     return start;
   }
@@ -77,7 +78,7 @@ public class Expedition {
 
   /**
    **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty()
   public Date getEnd() {
     return end;
   }
@@ -87,7 +88,7 @@ public class Expedition {
 
   /**
    **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty()
   public SpaceStationSerializerForExpedition getSpacestation() {
     return spacestation;
   }
@@ -105,12 +106,12 @@ public class Expedition {
       return false;
     }
     Expedition expedition = (Expedition) o;
-    return (this.id == null ? expedition.id == null : this.id.equals(expedition.id)) &&
-        (this.url == null ? expedition.url == null : this.url.equals(expedition.url)) &&
-        (this.name == null ? expedition.name == null : this.name.equals(expedition.name)) &&
-        (this.start == null ? expedition.start == null : this.start.equals(expedition.start)) &&
-        (this.end == null ? expedition.end == null : this.end.equals(expedition.end)) &&
-        (this.spacestation == null ? expedition.spacestation == null : this.spacestation.equals(expedition.spacestation));
+    return (Objects.equals(this.id, expedition.id)) &&
+        (Objects.equals(this.url, expedition.url)) &&
+        (Objects.equals(this.name, expedition.name)) &&
+        (Objects.equals(this.start, expedition.start)) &&
+        (Objects.equals(this.end, expedition.end)) &&
+        (Objects.equals(this.spacestation, expedition.spacestation));
   }
 
   @Override
@@ -127,16 +128,15 @@ public class Expedition {
 
   @Override
   public String toString()  {
-    StringBuilder sb = new StringBuilder();
-    sb.append("class Expedition {\n");
-    
-    sb.append("  id: ").append(id).append("\n");
-    sb.append("  url: ").append(url).append("\n");
-    sb.append("  name: ").append(name).append("\n");
-    sb.append("  start: ").append(start).append("\n");
-    sb.append("  end: ").append(end).append("\n");
-    sb.append("  spacestation: ").append(spacestation).append("\n");
-    sb.append("}\n");
-    return sb.toString();
+
+      String sb = "class Expedition {\n" +
+              "  id: " + id + "\n" +
+              "  url: " + url + "\n" +
+              "  name: " + name + "\n" +
+              "  start: " + start + "\n" +
+              "  end: " + end + "\n" +
+              "  spacestation: " + spacestation + "\n" +
+              "}\n";
+      return sb;
   }
 }

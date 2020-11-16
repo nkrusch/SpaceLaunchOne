@@ -27,10 +27,7 @@ public class BlurTransform implements Transformation {
 
         if (radius < LOW_LIMIT) {
             this.blurRadius = LOW_LIMIT;
-        } else if (radius > UP_LIMIT) {
-            this.blurRadius = UP_LIMIT;
-        } else
-            this.blurRadius = radius;
+        } else this.blurRadius = Math.min(radius, UP_LIMIT);
     }
 
     @Override

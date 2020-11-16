@@ -14,10 +14,12 @@ package apimodels;
 
 import com.google.gson.annotations.SerializedName;
 
+import java.util.Objects;
+
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 
-@ApiModel(description = "")
+@ApiModel()
 public class Astronaut {
   
   @SerializedName("id")
@@ -37,7 +39,7 @@ public class Astronaut {
 
   /**
    **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty()
   public Integer getId() {
     return id;
   }
@@ -47,7 +49,7 @@ public class Astronaut {
 
   /**
    **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty()
   public String getUrl() {
     return url;
   }
@@ -57,7 +59,7 @@ public class Astronaut {
 
   /**
    **/
-  @ApiModelProperty(required = true, value = "")
+  @ApiModelProperty(required = true)
   public String getName() {
     return name;
   }
@@ -67,7 +69,7 @@ public class Astronaut {
 
   /**
    **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty()
   public AstronautStatus getStatus() {
     return status;
   }
@@ -77,7 +79,7 @@ public class Astronaut {
 
   /**
    **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty()
   public AgencySerializerMini getAgency() {
     return agency;
   }
@@ -87,7 +89,7 @@ public class Astronaut {
 
   /**
    **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty()
   public String getProfileImage() {
     return profileImage;
   }
@@ -97,7 +99,7 @@ public class Astronaut {
 
   /**
    **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty()
   public String getProfileImageThumbnail() {
     return profileImageThumbnail;
   }
@@ -115,13 +117,13 @@ public class Astronaut {
       return false;
     }
     Astronaut astronaut = (Astronaut) o;
-    return (this.id == null ? astronaut.id == null : this.id.equals(astronaut.id)) &&
-        (this.url == null ? astronaut.url == null : this.url.equals(astronaut.url)) &&
-        (this.name == null ? astronaut.name == null : this.name.equals(astronaut.name)) &&
-        (this.status == null ? astronaut.status == null : this.status.equals(astronaut.status)) &&
-        (this.agency == null ? astronaut.agency == null : this.agency.equals(astronaut.agency)) &&
-        (this.profileImage == null ? astronaut.profileImage == null : this.profileImage.equals(astronaut.profileImage)) &&
-        (this.profileImageThumbnail == null ? astronaut.profileImageThumbnail == null : this.profileImageThumbnail.equals(astronaut.profileImageThumbnail));
+    return (Objects.equals(this.id, astronaut.id)) &&
+        (Objects.equals(this.url, astronaut.url)) &&
+        (Objects.equals(this.name, astronaut.name)) &&
+        (Objects.equals(this.status, astronaut.status)) &&
+        (Objects.equals(this.agency, astronaut.agency)) &&
+        (Objects.equals(this.profileImage, astronaut.profileImage)) &&
+        (Objects.equals(this.profileImageThumbnail, astronaut.profileImageThumbnail));
   }
 
   @Override
@@ -139,17 +141,16 @@ public class Astronaut {
 
   @Override
   public String toString()  {
-    StringBuilder sb = new StringBuilder();
-    sb.append("class Astronaut {\n");
-    
-    sb.append("  id: ").append(id).append("\n");
-    sb.append("  url: ").append(url).append("\n");
-    sb.append("  name: ").append(name).append("\n");
-    sb.append("  status: ").append(status).append("\n");
-    sb.append("  agency: ").append(agency).append("\n");
-    sb.append("  profileImage: ").append(profileImage).append("\n");
-    sb.append("  profileImageThumbnail: ").append(profileImageThumbnail).append("\n");
-    sb.append("}\n");
-    return sb.toString();
+
+    String sb = "class Astronaut {\n" +
+            "  id: " + id + "\n" +
+            "  url: " + url + "\n" +
+            "  name: " + name + "\n" +
+            "  status: " + status + "\n" +
+            "  agency: " + agency + "\n" +
+            "  profileImage: " + profileImage + "\n" +
+            "  profileImageThumbnail: " + profileImageThumbnail + "\n" +
+            "}\n";
+    return sb;
   }
 }

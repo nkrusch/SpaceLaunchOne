@@ -14,10 +14,12 @@ package apimodels;
 
 import com.google.gson.annotations.SerializedName;
 
+import java.util.Objects;
+
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 
-@ApiModel(description = "")
+@ApiModel()
 public class Agency {
   
   @SerializedName("id")
@@ -51,7 +53,7 @@ public class Agency {
 
   /**
    **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty()
   public Integer getId() {
     return id;
   }
@@ -61,7 +63,7 @@ public class Agency {
 
   /**
    **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty()
   public String getUrl() {
     return url;
   }
@@ -71,7 +73,7 @@ public class Agency {
 
   /**
    **/
-  @ApiModelProperty(required = true, value = "")
+  @ApiModelProperty(required = true)
   public String getName() {
     return name;
   }
@@ -81,7 +83,7 @@ public class Agency {
 
   /**
    **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty()
   public Boolean getFeatured() {
     return featured;
   }
@@ -91,7 +93,7 @@ public class Agency {
 
   /**
    **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty()
   public String getType() {
     return type;
   }
@@ -101,7 +103,7 @@ public class Agency {
 
   /**
    **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty()
   public String getCountryCode() {
     return countryCode;
   }
@@ -111,7 +113,7 @@ public class Agency {
 
   /**
    **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty()
   public String getAbbrev() {
     return abbrev;
   }
@@ -121,7 +123,7 @@ public class Agency {
 
   /**
    **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty()
   public String getDescription() {
     return description;
   }
@@ -131,7 +133,7 @@ public class Agency {
 
   /**
    **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty()
   public String getAdministrator() {
     return administrator;
   }
@@ -141,7 +143,7 @@ public class Agency {
 
   /**
    **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty()
   public String getFoundingYear() {
     return foundingYear;
   }
@@ -151,7 +153,7 @@ public class Agency {
 
   /**
    **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty()
   public String getLaunchers() {
     return launchers;
   }
@@ -161,7 +163,7 @@ public class Agency {
 
   /**
    **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty()
   public String getSpacecraft() {
     return spacecraft;
   }
@@ -171,7 +173,7 @@ public class Agency {
 
   /**
    **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty()
   public String getParent() {
     return parent;
   }
@@ -181,7 +183,7 @@ public class Agency {
 
   /**
    **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty()
   public String getImageUrl() {
     return imageUrl;
   }
@@ -199,20 +201,20 @@ public class Agency {
       return false;
     }
     Agency agency = (Agency) o;
-    return (this.id == null ? agency.id == null : this.id.equals(agency.id)) &&
-        (this.url == null ? agency.url == null : this.url.equals(agency.url)) &&
-        (this.name == null ? agency.name == null : this.name.equals(agency.name)) &&
-        (this.featured == null ? agency.featured == null : this.featured.equals(agency.featured)) &&
-        (this.type == null ? agency.type == null : this.type.equals(agency.type)) &&
-        (this.countryCode == null ? agency.countryCode == null : this.countryCode.equals(agency.countryCode)) &&
-        (this.abbrev == null ? agency.abbrev == null : this.abbrev.equals(agency.abbrev)) &&
-        (this.description == null ? agency.description == null : this.description.equals(agency.description)) &&
-        (this.administrator == null ? agency.administrator == null : this.administrator.equals(agency.administrator)) &&
-        (this.foundingYear == null ? agency.foundingYear == null : this.foundingYear.equals(agency.foundingYear)) &&
-        (this.launchers == null ? agency.launchers == null : this.launchers.equals(agency.launchers)) &&
-        (this.spacecraft == null ? agency.spacecraft == null : this.spacecraft.equals(agency.spacecraft)) &&
-        (this.parent == null ? agency.parent == null : this.parent.equals(agency.parent)) &&
-        (this.imageUrl == null ? agency.imageUrl == null : this.imageUrl.equals(agency.imageUrl));
+    return (Objects.equals(this.id, agency.id)) &&
+        (Objects.equals(this.url, agency.url)) &&
+        (Objects.equals(this.name, agency.name)) &&
+        (Objects.equals(this.featured, agency.featured)) &&
+        (Objects.equals(this.type, agency.type)) &&
+        (Objects.equals(this.countryCode, agency.countryCode)) &&
+        (Objects.equals(this.abbrev, agency.abbrev)) &&
+        (Objects.equals(this.description, agency.description)) &&
+        (Objects.equals(this.administrator, agency.administrator)) &&
+        (Objects.equals(this.foundingYear, agency.foundingYear)) &&
+        (Objects.equals(this.launchers, agency.launchers)) &&
+        (Objects.equals(this.spacecraft, agency.spacecraft)) &&
+        (Objects.equals(this.parent, agency.parent)) &&
+        (Objects.equals(this.imageUrl, agency.imageUrl));
   }
 
   @Override
@@ -237,24 +239,23 @@ public class Agency {
 
   @Override
   public String toString()  {
-    StringBuilder sb = new StringBuilder();
-    sb.append("class Agency {\n");
-    
-    sb.append("  id: ").append(id).append("\n");
-    sb.append("  url: ").append(url).append("\n");
-    sb.append("  name: ").append(name).append("\n");
-    sb.append("  featured: ").append(featured).append("\n");
-    sb.append("  type: ").append(type).append("\n");
-    sb.append("  countryCode: ").append(countryCode).append("\n");
-    sb.append("  abbrev: ").append(abbrev).append("\n");
-    sb.append("  description: ").append(description).append("\n");
-    sb.append("  administrator: ").append(administrator).append("\n");
-    sb.append("  foundingYear: ").append(foundingYear).append("\n");
-    sb.append("  launchers: ").append(launchers).append("\n");
-    sb.append("  spacecraft: ").append(spacecraft).append("\n");
-    sb.append("  parent: ").append(parent).append("\n");
-    sb.append("  imageUrl: ").append(imageUrl).append("\n");
-    sb.append("}\n");
-    return sb.toString();
+
+    String sb = "class Agency {\n" +
+            "  id: " + id + "\n" +
+            "  url: " + url + "\n" +
+            "  name: " + name + "\n" +
+            "  featured: " + featured + "\n" +
+            "  type: " + type + "\n" +
+            "  countryCode: " + countryCode + "\n" +
+            "  abbrev: " + abbrev + "\n" +
+            "  description: " + description + "\n" +
+            "  administrator: " + administrator + "\n" +
+            "  foundingYear: " + foundingYear + "\n" +
+            "  launchers: " + launchers + "\n" +
+            "  spacecraft: " + spacecraft + "\n" +
+            "  parent: " + parent + "\n" +
+            "  imageUrl: " + imageUrl + "\n" +
+            "}\n";
+    return sb;
   }
 }

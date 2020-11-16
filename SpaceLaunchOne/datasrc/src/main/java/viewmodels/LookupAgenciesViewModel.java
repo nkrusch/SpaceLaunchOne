@@ -27,29 +27,23 @@ public class LookupAgenciesViewModel extends AndroidViewModel implements IFilter
     }
 
     public void toggle(final AgencyLookup a) {
-        AppExecutors.getInstance().DiskIO().execute(new Runnable() {
-            @Override
-            public void run() {
-                AgencyFilter af = new AgencyFilter(a.getId());
-                if (a.isFiltered()) db.dao().deleteFilters(af);
-                else db.dao().addAFilters(af);
-            }
+        AppExecutors.getInstance().DiskIO().execute(() -> {
+            AgencyFilter af = new AgencyFilter(a.getId());
+            if (a.isFiltered()) db.dao().deleteFilters(af);
+            else db.dao().addAFilters(af);
         });
     }
 
     public void setAll(final boolean insert) {
-        AppExecutors.getInstance().DiskIO().execute(new Runnable() {
-            @Override
-            public void run() {
-                if (agencies.getValue() == null) return;
-                AgencyFilter[] data = new AgencyFilter[agencies.getValue().size()];
-                for (int i = 0; i < agencies.getValue().size(); i++)
-                    data[i] = new AgencyFilter(agencies.getValue().get(i).getId());
-                if (!insert)
-                    db.dao().deleteFilters(data);
-                else
-                    db.dao().addAFilters(data);
-            }
+        AppExecutors.getInstance().DiskIO().execute(() -> {
+            if (agencies.getValue() == null) return;
+            AgencyFilter[] data = new AgencyFilter[agencies.getValue().size()];
+            for (int i = 0; i < agencies.getValue().size(); i++)
+                data[i] = new AgencyFilter(agencies.getValue().get(i).getId());
+            if (!insert)
+                db.dao().deleteFilters(data);
+            else
+                db.dao().addAFilters(data);
         });
     }
 }

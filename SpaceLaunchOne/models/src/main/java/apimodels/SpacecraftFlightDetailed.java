@@ -16,11 +16,12 @@ import com.google.gson.annotations.SerializedName;
 
 import java.util.Date;
 import java.util.List;
+import java.util.Objects;
 
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 
-@ApiModel(description = "")
+@ApiModel()
 public class SpacecraftFlightDetailed {
   
   @SerializedName("id")
@@ -46,7 +47,7 @@ public class SpacecraftFlightDetailed {
 
   /**
    **/
-  @ApiModelProperty(required = true, value = "")
+  @ApiModelProperty(required = true)
   public Integer getId() {
     return id;
   }
@@ -56,7 +57,7 @@ public class SpacecraftFlightDetailed {
 
   /**
    **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty()
   public String getUrl() {
     return url;
   }
@@ -66,7 +67,7 @@ public class SpacecraftFlightDetailed {
 
   /**
    **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty()
   public Date getMissionEnd() {
     return missionEnd;
   }
@@ -76,7 +77,7 @@ public class SpacecraftFlightDetailed {
 
   /**
    **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty()
   public String getDestination() {
     return destination;
   }
@@ -86,7 +87,7 @@ public class SpacecraftFlightDetailed {
 
   /**
    **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty()
   public List<AstronautFlight> getLaunchCrew() {
     return launchCrew;
   }
@@ -96,7 +97,7 @@ public class SpacecraftFlightDetailed {
 
   /**
    **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty()
   public List<AstronautFlight> getOnboardCrew() {
     return onboardCrew;
   }
@@ -106,7 +107,7 @@ public class SpacecraftFlightDetailed {
 
   /**
    **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty()
   public List<AstronautFlight> getLandingCrew() {
     return landingCrew;
   }
@@ -116,7 +117,7 @@ public class SpacecraftFlightDetailed {
 
   /**
    **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty()
   public SpacecraftDetailedNoFlights getSpacecraft() {
     return spacecraft;
   }
@@ -126,7 +127,7 @@ public class SpacecraftFlightDetailed {
 
   /**
    **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty()
   public LaunchSerializerCommon getLaunch() {
     return launch;
   }
@@ -136,7 +137,7 @@ public class SpacecraftFlightDetailed {
 
   /**
    **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty()
   public List<DockingEventSerializerForSpacecraftFlight> getDockingEvents() {
     return dockingEvents;
   }
@@ -154,16 +155,16 @@ public class SpacecraftFlightDetailed {
       return false;
     }
     SpacecraftFlightDetailed spacecraftFlightDetailed = (SpacecraftFlightDetailed) o;
-    return (this.id == null ? spacecraftFlightDetailed.id == null : this.id.equals(spacecraftFlightDetailed.id)) &&
-        (this.url == null ? spacecraftFlightDetailed.url == null : this.url.equals(spacecraftFlightDetailed.url)) &&
-        (this.missionEnd == null ? spacecraftFlightDetailed.missionEnd == null : this.missionEnd.equals(spacecraftFlightDetailed.missionEnd)) &&
-        (this.destination == null ? spacecraftFlightDetailed.destination == null : this.destination.equals(spacecraftFlightDetailed.destination)) &&
-        (this.launchCrew == null ? spacecraftFlightDetailed.launchCrew == null : this.launchCrew.equals(spacecraftFlightDetailed.launchCrew)) &&
-        (this.onboardCrew == null ? spacecraftFlightDetailed.onboardCrew == null : this.onboardCrew.equals(spacecraftFlightDetailed.onboardCrew)) &&
-        (this.landingCrew == null ? spacecraftFlightDetailed.landingCrew == null : this.landingCrew.equals(spacecraftFlightDetailed.landingCrew)) &&
-        (this.spacecraft == null ? spacecraftFlightDetailed.spacecraft == null : this.spacecraft.equals(spacecraftFlightDetailed.spacecraft)) &&
-        (this.launch == null ? spacecraftFlightDetailed.launch == null : this.launch.equals(spacecraftFlightDetailed.launch)) &&
-        (this.dockingEvents == null ? spacecraftFlightDetailed.dockingEvents == null : this.dockingEvents.equals(spacecraftFlightDetailed.dockingEvents));
+    return (Objects.equals(this.id, spacecraftFlightDetailed.id)) &&
+        (Objects.equals(this.url, spacecraftFlightDetailed.url)) &&
+        (Objects.equals(this.missionEnd, spacecraftFlightDetailed.missionEnd)) &&
+        (Objects.equals(this.destination, spacecraftFlightDetailed.destination)) &&
+        (Objects.equals(this.launchCrew, spacecraftFlightDetailed.launchCrew)) &&
+        (Objects.equals(this.onboardCrew, spacecraftFlightDetailed.onboardCrew)) &&
+        (Objects.equals(this.landingCrew, spacecraftFlightDetailed.landingCrew)) &&
+        (Objects.equals(this.spacecraft, spacecraftFlightDetailed.spacecraft)) &&
+        (Objects.equals(this.launch, spacecraftFlightDetailed.launch)) &&
+        (Objects.equals(this.dockingEvents, spacecraftFlightDetailed.dockingEvents));
   }
 
   @Override
@@ -184,20 +185,19 @@ public class SpacecraftFlightDetailed {
 
   @Override
   public String toString()  {
-    StringBuilder sb = new StringBuilder();
-    sb.append("class SpacecraftFlightDetailed {\n");
-    
-    sb.append("  id: ").append(id).append("\n");
-    sb.append("  url: ").append(url).append("\n");
-    sb.append("  missionEnd: ").append(missionEnd).append("\n");
-    sb.append("  destination: ").append(destination).append("\n");
-    sb.append("  launchCrew: ").append(launchCrew).append("\n");
-    sb.append("  onboardCrew: ").append(onboardCrew).append("\n");
-    sb.append("  landingCrew: ").append(landingCrew).append("\n");
-    sb.append("  spacecraft: ").append(spacecraft).append("\n");
-    sb.append("  launch: ").append(launch).append("\n");
-    sb.append("  dockingEvents: ").append(dockingEvents).append("\n");
-    sb.append("}\n");
-    return sb.toString();
+
+      String sb = "class SpacecraftFlightDetailed {\n" +
+              "  id: " + id + "\n" +
+              "  url: " + url + "\n" +
+              "  missionEnd: " + missionEnd + "\n" +
+              "  destination: " + destination + "\n" +
+              "  launchCrew: " + launchCrew + "\n" +
+              "  onboardCrew: " + onboardCrew + "\n" +
+              "  landingCrew: " + landingCrew + "\n" +
+              "  spacecraft: " + spacecraft + "\n" +
+              "  launch: " + launch + "\n" +
+              "  dockingEvents: " + dockingEvents + "\n" +
+              "}\n";
+      return sb;
   }
 }

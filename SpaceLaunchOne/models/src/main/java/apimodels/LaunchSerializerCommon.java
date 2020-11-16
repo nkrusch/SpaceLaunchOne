@@ -16,12 +16,13 @@ import com.google.gson.annotations.SerializedName;
 
 import java.util.Date;
 import java.util.List;
+import java.util.Objects;
 import java.util.UUID;
 
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 
-@ApiModel(description = "")
+@ApiModel()
 public class LaunchSerializerCommon {
   
   @SerializedName("id")
@@ -79,7 +80,7 @@ public class LaunchSerializerCommon {
 
   /**
    **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty()
   public UUID getId() {
     return id;
   }
@@ -89,7 +90,7 @@ public class LaunchSerializerCommon {
 
   /**
    **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty()
   public String getUrl() {
     return url;
   }
@@ -101,7 +102,7 @@ public class LaunchSerializerCommon {
    * minimum: -2147483648
    * maximum: 2147483647
    **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty()
   public String getLaunchLibraryId() {
     return launchLibraryId;
   }
@@ -111,7 +112,7 @@ public class LaunchSerializerCommon {
 
   /**
    **/
-  @ApiModelProperty(required = true, value = "")
+  @ApiModelProperty(required = true)
   public String getSlug() {
     return slug;
   }
@@ -121,7 +122,7 @@ public class LaunchSerializerCommon {
 
   /**
    **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty()
   public String getName() {
     return name;
   }
@@ -131,7 +132,7 @@ public class LaunchSerializerCommon {
 
   /**
    **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty()
   public LaunchStatus getStatus() {
     return status;
   }
@@ -141,7 +142,7 @@ public class LaunchSerializerCommon {
 
   /**
    **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty()
   public Date getNet() {
     return net;
   }
@@ -151,7 +152,7 @@ public class LaunchSerializerCommon {
 
   /**
    **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty()
   public Date getWindowEnd() {
     return windowEnd;
   }
@@ -161,7 +162,7 @@ public class LaunchSerializerCommon {
 
   /**
    **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty()
   public Date getWindowStart() {
     return windowStart;
   }
@@ -171,7 +172,7 @@ public class LaunchSerializerCommon {
 
   /**
    **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty()
   public Boolean getInhold() {
     return inhold;
   }
@@ -181,7 +182,7 @@ public class LaunchSerializerCommon {
 
   /**
    **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty()
   public Boolean getTbdtime() {
     return tbdtime;
   }
@@ -191,7 +192,7 @@ public class LaunchSerializerCommon {
 
   /**
    **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty()
   public Boolean getTbddate() {
     return tbddate;
   }
@@ -203,7 +204,7 @@ public class LaunchSerializerCommon {
    * minimum: -2147483648
    * maximum: 2147483647
    **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty()
   public Integer getProbability() {
     return probability;
   }
@@ -213,7 +214,7 @@ public class LaunchSerializerCommon {
 
   /**
    **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty()
   public String getHoldreason() {
     return holdreason;
   }
@@ -223,7 +224,7 @@ public class LaunchSerializerCommon {
 
   /**
    **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty()
   public String getFailreason() {
     return failreason;
   }
@@ -233,7 +234,7 @@ public class LaunchSerializerCommon {
 
   /**
    **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty()
   public String getHashtag() {
     return hashtag;
   }
@@ -243,7 +244,7 @@ public class LaunchSerializerCommon {
 
   /**
    **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty()
   public AgencySerializerMini getLaunchServiceProvider() {
     return launchServiceProvider;
   }
@@ -253,7 +254,7 @@ public class LaunchSerializerCommon {
 
   /**
    **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty()
   public RocketSerializerCommon getRocket() {
     return rocket;
   }
@@ -263,7 +264,7 @@ public class LaunchSerializerCommon {
 
   /**
    **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty()
   public Mission getMission() {
     return mission;
   }
@@ -273,7 +274,7 @@ public class LaunchSerializerCommon {
 
   /**
    **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty()
   public Pad getPad() {
     return pad;
   }
@@ -283,7 +284,7 @@ public class LaunchSerializerCommon {
 
   /**
    **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty()
   public String getInfoURLs() {
     return infoURLs;
   }
@@ -293,7 +294,7 @@ public class LaunchSerializerCommon {
 
   /**
    **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty()
   public String getVidURLs() {
     return vidURLs;
   }
@@ -303,7 +304,7 @@ public class LaunchSerializerCommon {
 
   /**
    **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty()
   public Boolean getWebcastLive() {
     return webcastLive;
   }
@@ -313,7 +314,7 @@ public class LaunchSerializerCommon {
 
   /**
    **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty()
   public String getImage() {
     return image;
   }
@@ -323,7 +324,7 @@ public class LaunchSerializerCommon {
 
   /**
    **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty()
   public String getInfographic() {
     return infographic;
   }
@@ -333,7 +334,7 @@ public class LaunchSerializerCommon {
 
   /**
    **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty()
   public List<Program> getProgram() {
     return program;
   }
@@ -351,32 +352,32 @@ public class LaunchSerializerCommon {
       return false;
     }
     LaunchSerializerCommon launchSerializerCommon = (LaunchSerializerCommon) o;
-    return (this.id == null ? launchSerializerCommon.id == null : this.id.equals(launchSerializerCommon.id)) &&
-        (this.url == null ? launchSerializerCommon.url == null : this.url.equals(launchSerializerCommon.url)) &&
-        (this.launchLibraryId == null ? launchSerializerCommon.launchLibraryId == null : this.launchLibraryId.equals(launchSerializerCommon.launchLibraryId)) &&
-        (this.slug == null ? launchSerializerCommon.slug == null : this.slug.equals(launchSerializerCommon.slug)) &&
-        (this.name == null ? launchSerializerCommon.name == null : this.name.equals(launchSerializerCommon.name)) &&
-        (this.status == null ? launchSerializerCommon.status == null : this.status.equals(launchSerializerCommon.status)) &&
-        (this.net == null ? launchSerializerCommon.net == null : this.net.equals(launchSerializerCommon.net)) &&
-        (this.windowEnd == null ? launchSerializerCommon.windowEnd == null : this.windowEnd.equals(launchSerializerCommon.windowEnd)) &&
-        (this.windowStart == null ? launchSerializerCommon.windowStart == null : this.windowStart.equals(launchSerializerCommon.windowStart)) &&
-        (this.inhold == null ? launchSerializerCommon.inhold == null : this.inhold.equals(launchSerializerCommon.inhold)) &&
-        (this.tbdtime == null ? launchSerializerCommon.tbdtime == null : this.tbdtime.equals(launchSerializerCommon.tbdtime)) &&
-        (this.tbddate == null ? launchSerializerCommon.tbddate == null : this.tbddate.equals(launchSerializerCommon.tbddate)) &&
-        (this.probability == null ? launchSerializerCommon.probability == null : this.probability.equals(launchSerializerCommon.probability)) &&
-        (this.holdreason == null ? launchSerializerCommon.holdreason == null : this.holdreason.equals(launchSerializerCommon.holdreason)) &&
-        (this.failreason == null ? launchSerializerCommon.failreason == null : this.failreason.equals(launchSerializerCommon.failreason)) &&
-        (this.hashtag == null ? launchSerializerCommon.hashtag == null : this.hashtag.equals(launchSerializerCommon.hashtag)) &&
-        (this.launchServiceProvider == null ? launchSerializerCommon.launchServiceProvider == null : this.launchServiceProvider.equals(launchSerializerCommon.launchServiceProvider)) &&
-        (this.rocket == null ? launchSerializerCommon.rocket == null : this.rocket.equals(launchSerializerCommon.rocket)) &&
-        (this.mission == null ? launchSerializerCommon.mission == null : this.mission.equals(launchSerializerCommon.mission)) &&
-        (this.pad == null ? launchSerializerCommon.pad == null : this.pad.equals(launchSerializerCommon.pad)) &&
-        (this.infoURLs == null ? launchSerializerCommon.infoURLs == null : this.infoURLs.equals(launchSerializerCommon.infoURLs)) &&
-        (this.vidURLs == null ? launchSerializerCommon.vidURLs == null : this.vidURLs.equals(launchSerializerCommon.vidURLs)) &&
-        (this.webcastLive == null ? launchSerializerCommon.webcastLive == null : this.webcastLive.equals(launchSerializerCommon.webcastLive)) &&
-        (this.image == null ? launchSerializerCommon.image == null : this.image.equals(launchSerializerCommon.image)) &&
-        (this.infographic == null ? launchSerializerCommon.infographic == null : this.infographic.equals(launchSerializerCommon.infographic)) &&
-        (this.program == null ? launchSerializerCommon.program == null : this.program.equals(launchSerializerCommon.program));
+    return (Objects.equals(this.id, launchSerializerCommon.id)) &&
+        (Objects.equals(this.url, launchSerializerCommon.url)) &&
+        (Objects.equals(this.launchLibraryId, launchSerializerCommon.launchLibraryId)) &&
+        (Objects.equals(this.slug, launchSerializerCommon.slug)) &&
+        (Objects.equals(this.name, launchSerializerCommon.name)) &&
+        (Objects.equals(this.status, launchSerializerCommon.status)) &&
+        (Objects.equals(this.net, launchSerializerCommon.net)) &&
+        (Objects.equals(this.windowEnd, launchSerializerCommon.windowEnd)) &&
+        (Objects.equals(this.windowStart, launchSerializerCommon.windowStart)) &&
+        (Objects.equals(this.inhold, launchSerializerCommon.inhold)) &&
+        (Objects.equals(this.tbdtime, launchSerializerCommon.tbdtime)) &&
+        (Objects.equals(this.tbddate, launchSerializerCommon.tbddate)) &&
+        (Objects.equals(this.probability, launchSerializerCommon.probability)) &&
+        (Objects.equals(this.holdreason, launchSerializerCommon.holdreason)) &&
+        (Objects.equals(this.failreason, launchSerializerCommon.failreason)) &&
+        (Objects.equals(this.hashtag, launchSerializerCommon.hashtag)) &&
+        (Objects.equals(this.launchServiceProvider, launchSerializerCommon.launchServiceProvider)) &&
+        (Objects.equals(this.rocket, launchSerializerCommon.rocket)) &&
+        (Objects.equals(this.mission, launchSerializerCommon.mission)) &&
+        (Objects.equals(this.pad, launchSerializerCommon.pad)) &&
+        (Objects.equals(this.infoURLs, launchSerializerCommon.infoURLs)) &&
+        (Objects.equals(this.vidURLs, launchSerializerCommon.vidURLs)) &&
+        (Objects.equals(this.webcastLive, launchSerializerCommon.webcastLive)) &&
+        (Objects.equals(this.image, launchSerializerCommon.image)) &&
+        (Objects.equals(this.infographic, launchSerializerCommon.infographic)) &&
+        (Objects.equals(this.program, launchSerializerCommon.program));
   }
 
   @Override
@@ -413,36 +414,35 @@ public class LaunchSerializerCommon {
 
   @Override
   public String toString()  {
-    StringBuilder sb = new StringBuilder();
-    sb.append("class LaunchSerializerCommon {\n");
-    
-    sb.append("  id: ").append(id).append("\n");
-    sb.append("  url: ").append(url).append("\n");
-    sb.append("  launchLibraryId: ").append(launchLibraryId).append("\n");
-    sb.append("  slug: ").append(slug).append("\n");
-    sb.append("  name: ").append(name).append("\n");
-    sb.append("  status: ").append(status).append("\n");
-    sb.append("  net: ").append(net).append("\n");
-    sb.append("  windowEnd: ").append(windowEnd).append("\n");
-    sb.append("  windowStart: ").append(windowStart).append("\n");
-    sb.append("  inhold: ").append(inhold).append("\n");
-    sb.append("  tbdtime: ").append(tbdtime).append("\n");
-    sb.append("  tbddate: ").append(tbddate).append("\n");
-    sb.append("  probability: ").append(probability).append("\n");
-    sb.append("  holdreason: ").append(holdreason).append("\n");
-    sb.append("  failreason: ").append(failreason).append("\n");
-    sb.append("  hashtag: ").append(hashtag).append("\n");
-    sb.append("  launchServiceProvider: ").append(launchServiceProvider).append("\n");
-    sb.append("  rocket: ").append(rocket).append("\n");
-    sb.append("  mission: ").append(mission).append("\n");
-    sb.append("  pad: ").append(pad).append("\n");
-    sb.append("  infoURLs: ").append(infoURLs).append("\n");
-    sb.append("  vidURLs: ").append(vidURLs).append("\n");
-    sb.append("  webcastLive: ").append(webcastLive).append("\n");
-    sb.append("  image: ").append(image).append("\n");
-    sb.append("  infographic: ").append(infographic).append("\n");
-    sb.append("  program: ").append(program).append("\n");
-    sb.append("}\n");
-    return sb.toString();
+
+      String sb = "class LaunchSerializerCommon {\n" +
+              "  id: " + id + "\n" +
+              "  url: " + url + "\n" +
+              "  launchLibraryId: " + launchLibraryId + "\n" +
+              "  slug: " + slug + "\n" +
+              "  name: " + name + "\n" +
+              "  status: " + status + "\n" +
+              "  net: " + net + "\n" +
+              "  windowEnd: " + windowEnd + "\n" +
+              "  windowStart: " + windowStart + "\n" +
+              "  inhold: " + inhold + "\n" +
+              "  tbdtime: " + tbdtime + "\n" +
+              "  tbddate: " + tbddate + "\n" +
+              "  probability: " + probability + "\n" +
+              "  holdreason: " + holdreason + "\n" +
+              "  failreason: " + failreason + "\n" +
+              "  hashtag: " + hashtag + "\n" +
+              "  launchServiceProvider: " + launchServiceProvider + "\n" +
+              "  rocket: " + rocket + "\n" +
+              "  mission: " + mission + "\n" +
+              "  pad: " + pad + "\n" +
+              "  infoURLs: " + infoURLs + "\n" +
+              "  vidURLs: " + vidURLs + "\n" +
+              "  webcastLive: " + webcastLive + "\n" +
+              "  image: " + image + "\n" +
+              "  infographic: " + infographic + "\n" +
+              "  program: " + program + "\n" +
+              "}\n";
+      return sb;
   }
 }

@@ -13,7 +13,6 @@ import java.util.List;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 import androidx.recyclerview.widget.GridLayoutManager;
 import io.github.nkrusch.spacelaunchone.R;
@@ -21,7 +20,6 @@ import io.github.nkrusch.spacelaunchone.app.OnItemClickListener;
 import io.github.nkrusch.spacelaunchone.app.RecyclerViewFragment;
 import io.github.nkrusch.spacelaunchone.features.DetailsLaunchActivity;
 import local.Launch;
-import local.LocationDetails;
 import viewmodels.LocationDetailsViewModel;
 
 /**
@@ -29,7 +27,7 @@ import viewmodels.LocationDetailsViewModel;
  * list of launches. This fragment takes care of initializing and
  * saving state of the recyclerview.
  */
-public class LocationLaunchRecyclerView extends RecyclerViewFragment{
+public class LocationLaunchRecyclerView extends RecyclerViewFragment {
 
     private LinearLayout mEmptyState;
 
@@ -40,12 +38,9 @@ public class LocationLaunchRecyclerView extends RecyclerViewFragment{
     protected void setupViewModel() {
         if (getActivity() != null) {
             LocationDetailsViewModel vm = ViewModelProviders.of(getActivity()).get(LocationDetailsViewModel.class);
-            vm.get().observe(getActivity(), new Observer<LocationDetails>() {
-                @Override
-                public void onChanged(LocationDetails locationDetails) {
-                    if(locationDetails!=null && locationDetails.getLaunches()!=null)
-                        handleDataChange(locationDetails.getLaunches());
-                }
+            vm.get().observe(getActivity(), locationDetails -> {
+                if (locationDetails != null && locationDetails.getLaunches() != null)
+                    handleDataChange(locationDetails.getLaunches());
             });
         }
     }
@@ -54,12 +49,7 @@ public class LocationLaunchRecyclerView extends RecyclerViewFragment{
      * When user clicks on recyclerview items launch details view
      */
     private OnItemClickListener onItemClick() {
-        return new OnItemClickListener() {
-            @Override
-            public void onItemClick(String id, String name) {
-                startActivity(DetailsLaunchActivity.launchDetails(getContext(), id, name));
-            }
-        };
+        return (id, name) -> startActivity(DetailsLaunchActivity.launchDetails(getContext(), id, name));
     }
 
     /**
@@ -72,8 +62,10 @@ public class LocationLaunchRecyclerView extends RecyclerViewFragment{
             mEmptyState.setVisibility(View.GONE);
             mRecyclerView.setVisibility(View.VISIBLE);
             ListAdapter adapter = (ListAdapter) mRecyclerView.getAdapter();
-            adapter.updateData(entries);
-            adapter.notifyDataSetChanged();
+            if (adapter != null) {
+                adapter.updateData(entries);
+                adapter.notifyDataSetChanged();
+            }
         } else {
             mRecyclerView.setVisibility(View.GONE);
             mEmptyState.setVisibility(View.VISIBLE);

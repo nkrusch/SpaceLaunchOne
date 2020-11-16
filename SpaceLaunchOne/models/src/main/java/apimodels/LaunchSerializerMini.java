@@ -14,12 +14,13 @@ package apimodels;
 
 import com.google.gson.annotations.SerializedName;
 
+import java.util.Objects;
 import java.util.UUID;
 
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 
-@ApiModel(description = "")
+@ApiModel()
 public class LaunchSerializerMini {
   
   @SerializedName("id")
@@ -29,7 +30,7 @@ public class LaunchSerializerMini {
 
   /**
    **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty()
   public UUID getId() {
     return id;
   }
@@ -39,7 +40,7 @@ public class LaunchSerializerMini {
 
   /**
    **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty()
   public String getName() {
     return name;
   }
@@ -57,8 +58,8 @@ public class LaunchSerializerMini {
       return false;
     }
     LaunchSerializerMini launchSerializerMini = (LaunchSerializerMini) o;
-    return (this.id == null ? launchSerializerMini.id == null : this.id.equals(launchSerializerMini.id)) &&
-        (this.name == null ? launchSerializerMini.name == null : this.name.equals(launchSerializerMini.name));
+    return (Objects.equals(this.id, launchSerializerMini.id)) &&
+        (Objects.equals(this.name, launchSerializerMini.name));
   }
 
   @Override
@@ -71,12 +72,11 @@ public class LaunchSerializerMini {
 
   @Override
   public String toString()  {
-    StringBuilder sb = new StringBuilder();
-    sb.append("class LaunchSerializerMini {\n");
-    
-    sb.append("  id: ").append(id).append("\n");
-    sb.append("  name: ").append(name).append("\n");
-    sb.append("}\n");
-    return sb.toString();
+
+      String sb = "class LaunchSerializerMini {\n" +
+              "  id: " + id + "\n" +
+              "  name: " + name + "\n" +
+              "}\n";
+      return sb;
   }
 }

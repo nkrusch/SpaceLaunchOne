@@ -18,7 +18,7 @@ public class SearchLaunchesViewModel extends AndroidViewModel implements ILaunch
 
     private final MutableLiveData<List<Launch>> launches;
     private String lastQuery;
-    private AppDatabase db;
+    private final AppDatabase db;
 
     public SearchLaunchesViewModel(Application application) {
         super(application);
@@ -35,12 +35,7 @@ public class SearchLaunchesViewModel extends AndroidViewModel implements ILaunch
         if (query == null || query.equals(lastQuery) || query.length() < 2) return;
         lastQuery = query;
         AppExecutors.getInstance().DiskIO().execute(
-                new Runnable() {
-                    @Override
-                    public void run() {
-                        launches.postValue(db.dao().searchLaunches(query, 50, 0));
-                    }
-                }
+                () -> launches.postValue(db.dao().searchLaunches(query, 50, 0))
         );
     }
 }

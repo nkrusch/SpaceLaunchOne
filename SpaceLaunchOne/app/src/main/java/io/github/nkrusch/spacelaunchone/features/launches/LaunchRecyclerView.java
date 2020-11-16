@@ -13,7 +13,6 @@ import java.util.List;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.lifecycle.AndroidViewModel;
-import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 import androidx.recyclerview.widget.GridLayoutManager;
 import io.github.nkrusch.spacelaunchone.R;
@@ -37,7 +36,7 @@ abstract class LaunchRecyclerView<S extends AndroidViewModel & ILaunchesViewMode
 
     abstract Class<S> getType();
 
-    protected boolean showNextLaunch(){
+    protected boolean showNextLaunch() {
         return false;
     }
 
@@ -48,12 +47,7 @@ abstract class LaunchRecyclerView<S extends AndroidViewModel & ILaunchesViewMode
     protected void setupViewModel() {
         if (getActivity() != null) {
             S vm = ViewModelProviders.of(getActivity()).get(getType());
-            vm.getLaunches().observe(getActivity(), new Observer<List<Launch>>() {
-                @Override
-                public void onChanged(@Nullable List<Launch> launches) {
-                    handleDataChange(launches);
-                }
-            });
+            vm.getLaunches().observe(getActivity(), launches -> handleDataChange(launches));
         }
     }
 
@@ -61,12 +55,7 @@ abstract class LaunchRecyclerView<S extends AndroidViewModel & ILaunchesViewMode
      * When user clicks on recyclerview items launch details view
      */
     private OnItemClickListener onItemClick() {
-        return new OnItemClickListener() {
-            @Override
-            public void onItemClick(String id, String name) {
-                startActivity(DetailsLaunchActivity.launchDetails(getContext(), id, name));
-            }
-        };
+        return (id, name) -> startActivity(DetailsLaunchActivity.launchDetails(getContext(), id, name));
     }
 
     /**
@@ -81,8 +70,10 @@ abstract class LaunchRecyclerView<S extends AndroidViewModel & ILaunchesViewMode
             ListAdapter adapter = (ListAdapter) mRecyclerView.getAdapter();
             if (customFirstItem && entries.get(0) != null)
                 entries.add(0, null);
-            adapter.updateData(entries);
-            adapter.notifyDataSetChanged();
+            if (adapter != null) {
+                adapter.updateData(entries);
+                adapter.notifyDataSetChanged();
+            }
         } else {
             mRecyclerView.setVisibility(View.GONE);
             mEmptyState.setVisibility(View.VISIBLE);

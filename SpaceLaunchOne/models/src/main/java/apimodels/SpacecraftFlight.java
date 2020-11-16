@@ -15,11 +15,12 @@ package apimodels;
 import com.google.gson.annotations.SerializedName;
 
 import java.util.Date;
+import java.util.Objects;
 
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 
-@ApiModel(description = "")
+@ApiModel()
 public class SpacecraftFlight {
   
   @SerializedName("id")
@@ -37,7 +38,7 @@ public class SpacecraftFlight {
 
   /**
    **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty()
   public Integer getId() {
     return id;
   }
@@ -47,7 +48,7 @@ public class SpacecraftFlight {
 
   /**
    **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty()
   public String getUrl() {
     return url;
   }
@@ -57,7 +58,7 @@ public class SpacecraftFlight {
 
   /**
    **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty()
   public String getDestination() {
     return destination;
   }
@@ -67,7 +68,7 @@ public class SpacecraftFlight {
 
   /**
    **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty()
   public Date getMissionEnd() {
     return missionEnd;
   }
@@ -77,7 +78,7 @@ public class SpacecraftFlight {
 
   /**
    **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty()
   public Spacecraft getSpacecraft() {
     return spacecraft;
   }
@@ -87,7 +88,7 @@ public class SpacecraftFlight {
 
   /**
    **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty()
   public LaunchSerializerCommon getLaunch() {
     return launch;
   }
@@ -105,12 +106,12 @@ public class SpacecraftFlight {
       return false;
     }
     SpacecraftFlight spacecraftFlight = (SpacecraftFlight) o;
-    return (this.id == null ? spacecraftFlight.id == null : this.id.equals(spacecraftFlight.id)) &&
-        (this.url == null ? spacecraftFlight.url == null : this.url.equals(spacecraftFlight.url)) &&
-        (this.destination == null ? spacecraftFlight.destination == null : this.destination.equals(spacecraftFlight.destination)) &&
-        (this.missionEnd == null ? spacecraftFlight.missionEnd == null : this.missionEnd.equals(spacecraftFlight.missionEnd)) &&
-        (this.spacecraft == null ? spacecraftFlight.spacecraft == null : this.spacecraft.equals(spacecraftFlight.spacecraft)) &&
-        (this.launch == null ? spacecraftFlight.launch == null : this.launch.equals(spacecraftFlight.launch));
+    return (Objects.equals(this.id, spacecraftFlight.id)) &&
+        (Objects.equals(this.url, spacecraftFlight.url)) &&
+        (Objects.equals(this.destination, spacecraftFlight.destination)) &&
+        (Objects.equals(this.missionEnd, spacecraftFlight.missionEnd)) &&
+        (Objects.equals(this.spacecraft, spacecraftFlight.spacecraft)) &&
+        (Objects.equals(this.launch, spacecraftFlight.launch));
   }
 
   @Override
@@ -127,16 +128,15 @@ public class SpacecraftFlight {
 
   @Override
   public String toString()  {
-    StringBuilder sb = new StringBuilder();
-    sb.append("class SpacecraftFlight {\n");
-    
-    sb.append("  id: ").append(id).append("\n");
-    sb.append("  url: ").append(url).append("\n");
-    sb.append("  destination: ").append(destination).append("\n");
-    sb.append("  missionEnd: ").append(missionEnd).append("\n");
-    sb.append("  spacecraft: ").append(spacecraft).append("\n");
-    sb.append("  launch: ").append(launch).append("\n");
-    sb.append("}\n");
-    return sb.toString();
+
+      String sb = "class SpacecraftFlight {\n" +
+              "  id: " + id + "\n" +
+              "  url: " + url + "\n" +
+              "  destination: " + destination + "\n" +
+              "  missionEnd: " + missionEnd + "\n" +
+              "  spacecraft: " + spacecraft + "\n" +
+              "  launch: " + launch + "\n" +
+              "}\n";
+      return sb;
   }
 }

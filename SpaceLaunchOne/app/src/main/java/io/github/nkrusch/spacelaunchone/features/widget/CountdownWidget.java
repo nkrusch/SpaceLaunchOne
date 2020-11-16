@@ -121,24 +121,21 @@ public class CountdownWidget extends AppWidgetProvider {
      * Load the widget image
      */
     private void setImage(final Context context, final AppWidgetManager appWidgetManager, final int appWidgetId, final RemoteViews views) {
-        AppExecutors.getInstance().MainThread().execute(new Runnable() {
-            @Override
-            public void run() {
-                try {
-                    TypedArray imgs = context.getResources().obtainTypedArray(R.array.next_launch_images);
-                    int dailyImageIndex = Calendar.getInstance().get(Calendar.DAY_OF_YEAR) % imgs.length();
-                    Bitmap bm = BitmapFactory.decodeResource(context.getResources(), imgs.getResourceId(dailyImageIndex, -1));
-                    float ratio = bm.getHeight() / (float) (Math.max(1, bm.getWidth()));
-                    int imageWidth = 200;
-                    int imageHeight = Math.round(ratio * imageWidth);
-                    Bitmap scaledBm = Bitmap.createScaledBitmap(bm, imageWidth, imageHeight, false);
-                    views.setImageViewBitmap(R.id.widget_image, scaledBm);
-                    views.setViewVisibility(R.id.widget_image, VISIBLE);
-                    imgs.recycle();
-                    appWidgetManager.updateAppWidget(appWidgetId, views);
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
+        AppExecutors.getInstance().MainThread().execute(() -> {
+            try {
+                TypedArray imgs = context.getResources().obtainTypedArray(R.array.next_launch_images);
+                int dailyImageIndex = Calendar.getInstance().get(Calendar.DAY_OF_YEAR) % imgs.length();
+                Bitmap bm = BitmapFactory.decodeResource(context.getResources(), imgs.getResourceId(dailyImageIndex, -1));
+                float ratio = bm.getHeight() / (float) (Math.max(1, bm.getWidth()));
+                int imageWidth = 200;
+                int imageHeight = Math.round(ratio * imageWidth);
+                Bitmap scaledBm = Bitmap.createScaledBitmap(bm, imageWidth, imageHeight, false);
+                views.setImageViewBitmap(R.id.widget_image, scaledBm);
+                views.setViewVisibility(R.id.widget_image, VISIBLE);
+                imgs.recycle();
+                appWidgetManager.updateAppWidget(appWidgetId, views);
+            } catch (Exception e) {
+                e.printStackTrace();
             }
         });
     }
@@ -147,14 +144,11 @@ public class CountdownWidget extends AppWidgetProvider {
      * Set widget time value
      */
     private void setTime(final AppWidgetManager appWidgetManager, final int appWidgetId, final RemoteViews views) {
-        AppExecutors.getInstance().MainThread().execute(new Runnable() {
-            @Override
-            public void run() {
-                long baseTime = SystemClock.elapsedRealtime() + (TargetDate - new Date().getTime());
-                views.setChronometer(R.id.timer, baseTime, null, true);
-                views.setChronometerCountDown(R.id.timer, true);
-                appWidgetManager.updateAppWidget(appWidgetId, views);
-            }
+        AppExecutors.getInstance().MainThread().execute(() -> {
+            long baseTime = SystemClock.elapsedRealtime() + (TargetDate - new Date().getTime());
+            views.setChronometer(R.id.timer, baseTime, null, true);
+            views.setChronometerCountDown(R.id.timer, true);
+            appWidgetManager.updateAppWidget(appWidgetId, views);
         });
     }
 

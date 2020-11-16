@@ -15,7 +15,7 @@ public class Launch implements Comparable<Launch> {
 
     @NonNull
     @PrimaryKey()
-    private String luuid;
+    private String luuid = "";
     private String name;
     private String image;
     private Long launchDateUTC;

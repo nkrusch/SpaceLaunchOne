@@ -33,7 +33,7 @@ abstract class FilterRecyclerView<T extends IFilter, S extends
     protected void setupViewModel() {
         if (getActivity() != null) {
             vm = new ViewModelProvider(getActivity()).get(getType());
-            vm.getAll().observe(getActivity(), (Observer<List<T>>) launches -> handleDataChange(launches));
+            vm.getAll().observe(getActivity(), (Observer<List<T>>) this::handleDataChange);
         }
     }
 
@@ -41,7 +41,7 @@ abstract class FilterRecyclerView<T extends IFilter, S extends
         return item -> vm.toggle(item);
     }
 
-    private View.OnClickListener onCheckAllClick(){
+    private View.OnClickListener onCheckAllClick() {
         return v -> {
             boolean value = ((CheckBox) v).isChecked();
             vm.setAll(!value);
@@ -69,8 +69,10 @@ abstract class FilterRecyclerView<T extends IFilter, S extends
         if (hasEntries) {
             mRecyclerView.setVisibility(View.VISIBLE);
             FilterAdapter adapter = (FilterAdapter) mRecyclerView.getAdapter();
-            adapter.updateData(entries);
-            adapter.notifyDataSetChanged();
+            if (adapter != null) {
+                adapter.updateData(entries);
+                adapter.notifyDataSetChanged();
+            }
         } else {
             mRecyclerView.setVisibility(View.GONE);
         }

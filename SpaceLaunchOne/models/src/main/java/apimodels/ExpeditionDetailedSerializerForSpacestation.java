@@ -16,11 +16,12 @@ import com.google.gson.annotations.SerializedName;
 
 import java.util.Date;
 import java.util.List;
+import java.util.Objects;
 
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 
-@ApiModel(description = "")
+@ApiModel()
 public class ExpeditionDetailedSerializerForSpacestation {
   
   @SerializedName("id")
@@ -38,7 +39,7 @@ public class ExpeditionDetailedSerializerForSpacestation {
 
   /**
    **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty()
   public Integer getId() {
     return id;
   }
@@ -48,7 +49,7 @@ public class ExpeditionDetailedSerializerForSpacestation {
 
   /**
    **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty()
   public String getUrl() {
     return url;
   }
@@ -58,7 +59,7 @@ public class ExpeditionDetailedSerializerForSpacestation {
 
   /**
    **/
-  @ApiModelProperty(required = true, value = "")
+  @ApiModelProperty(required = true)
   public String getName() {
     return name;
   }
@@ -68,7 +69,7 @@ public class ExpeditionDetailedSerializerForSpacestation {
 
   /**
    **/
-  @ApiModelProperty(required = true, value = "")
+  @ApiModelProperty(required = true)
   public Date getStart() {
     return start;
   }
@@ -78,7 +79,7 @@ public class ExpeditionDetailedSerializerForSpacestation {
 
   /**
    **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty()
   public Date getEnd() {
     return end;
   }
@@ -88,7 +89,7 @@ public class ExpeditionDetailedSerializerForSpacestation {
 
   /**
    **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty()
   public List<AstronautFlightForExpedition> getCrew() {
     return crew;
   }
@@ -106,12 +107,12 @@ public class ExpeditionDetailedSerializerForSpacestation {
       return false;
     }
     ExpeditionDetailedSerializerForSpacestation expeditionDetailedSerializerForSpacestation = (ExpeditionDetailedSerializerForSpacestation) o;
-    return (this.id == null ? expeditionDetailedSerializerForSpacestation.id == null : this.id.equals(expeditionDetailedSerializerForSpacestation.id)) &&
-        (this.url == null ? expeditionDetailedSerializerForSpacestation.url == null : this.url.equals(expeditionDetailedSerializerForSpacestation.url)) &&
-        (this.name == null ? expeditionDetailedSerializerForSpacestation.name == null : this.name.equals(expeditionDetailedSerializerForSpacestation.name)) &&
-        (this.start == null ? expeditionDetailedSerializerForSpacestation.start == null : this.start.equals(expeditionDetailedSerializerForSpacestation.start)) &&
-        (this.end == null ? expeditionDetailedSerializerForSpacestation.end == null : this.end.equals(expeditionDetailedSerializerForSpacestation.end)) &&
-        (this.crew == null ? expeditionDetailedSerializerForSpacestation.crew == null : this.crew.equals(expeditionDetailedSerializerForSpacestation.crew));
+    return (Objects.equals(this.id, expeditionDetailedSerializerForSpacestation.id)) &&
+        (Objects.equals(this.url, expeditionDetailedSerializerForSpacestation.url)) &&
+        (Objects.equals(this.name, expeditionDetailedSerializerForSpacestation.name)) &&
+        (Objects.equals(this.start, expeditionDetailedSerializerForSpacestation.start)) &&
+        (Objects.equals(this.end, expeditionDetailedSerializerForSpacestation.end)) &&
+        (Objects.equals(this.crew, expeditionDetailedSerializerForSpacestation.crew));
   }
 
   @Override
@@ -128,16 +129,15 @@ public class ExpeditionDetailedSerializerForSpacestation {
 
   @Override
   public String toString()  {
-    StringBuilder sb = new StringBuilder();
-    sb.append("class ExpeditionDetailedSerializerForSpacestation {\n");
-    
-    sb.append("  id: ").append(id).append("\n");
-    sb.append("  url: ").append(url).append("\n");
-    sb.append("  name: ").append(name).append("\n");
-    sb.append("  start: ").append(start).append("\n");
-    sb.append("  end: ").append(end).append("\n");
-    sb.append("  crew: ").append(crew).append("\n");
-    sb.append("}\n");
-    return sb.toString();
+
+      String sb = "class ExpeditionDetailedSerializerForSpacestation {\n" +
+              "  id: " + id + "\n" +
+              "  url: " + url + "\n" +
+              "  name: " + name + "\n" +
+              "  start: " + start + "\n" +
+              "  end: " + end + "\n" +
+              "  crew: " + crew + "\n" +
+              "}\n";
+      return sb;
   }
 }

@@ -12,13 +12,11 @@ import java.util.List;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 import androidx.recyclerview.widget.GridLayoutManager;
 import io.github.nkrusch.spacelaunchone.R;
 import io.github.nkrusch.spacelaunchone.app.OnItemListener;
 import io.github.nkrusch.spacelaunchone.app.RecyclerViewFragment;
-import local.AgencyDetails;
 import local.Mission;
 import viewmodels.AgencyDetailsViewModel;
 
@@ -35,12 +33,9 @@ public class MissionsRecyclerView extends RecyclerViewFragment {
         if (getActivity() != null) {
             AgencyDetailsViewModel vm = ViewModelProviders.of(getActivity())
                     .get(AgencyDetailsViewModel.class);
-            vm.get().observe(getActivity(), new Observer<AgencyDetails>() {
-                @Override
-                public void onChanged(AgencyDetails agencyDetails) {
-                    if (agencyDetails != null && agencyDetails.getLaunches() != null)
-                        handleDataChange(agencyDetails.getMissions());
-                }
+            vm.get().observe(getActivity(), agencyDetails -> {
+                if (agencyDetails != null && agencyDetails.getLaunches() != null)
+                    handleDataChange(agencyDetails.getMissions());
             });
         }
     }
@@ -49,11 +44,8 @@ public class MissionsRecyclerView extends RecyclerViewFragment {
      * When user clicks on mission list item
      */
     private OnItemListener onItemClick() {
-        return new OnItemListener() {
-            @Override
-            public void onItemClick(int id, String name) {
-                // do something on missions click
-            }
+        return (id, name) -> {
+            // do something on missions click
         };
     }
 
@@ -67,8 +59,10 @@ public class MissionsRecyclerView extends RecyclerViewFragment {
             mEmptyState.setVisibility(View.GONE);
             mRecyclerView.setVisibility(View.VISIBLE);
             MissionsAdapter adapter = (MissionsAdapter) mRecyclerView.getAdapter();
-            adapter.updateData(entries);
-            adapter.notifyDataSetChanged();
+            if(adapter!=null) {
+                adapter.updateData(entries);
+                adapter.notifyDataSetChanged();
+            }
         } else {
             mRecyclerView.setVisibility(View.GONE);
             mEmptyState.setVisibility(View.VISIBLE);

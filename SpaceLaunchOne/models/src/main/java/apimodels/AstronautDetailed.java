@@ -16,11 +16,12 @@ import com.google.gson.annotations.SerializedName;
 
 import java.util.Date;
 import java.util.List;
+import java.util.Objects;
 
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 
-@ApiModel(description = "")
+@ApiModel()
 public class AstronautDetailed {
   
   @SerializedName("id")
@@ -64,7 +65,7 @@ public class AstronautDetailed {
 
   /**
    **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty()
   public Integer getId() {
     return id;
   }
@@ -74,7 +75,7 @@ public class AstronautDetailed {
 
   /**
    **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty()
   public String getUrl() {
     return url;
   }
@@ -84,7 +85,7 @@ public class AstronautDetailed {
 
   /**
    **/
-  @ApiModelProperty(required = true, value = "")
+  @ApiModelProperty(required = true)
   public String getName() {
     return name;
   }
@@ -94,7 +95,7 @@ public class AstronautDetailed {
 
   /**
    **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty()
   public AstronautStatus getStatus() {
     return status;
   }
@@ -104,7 +105,7 @@ public class AstronautDetailed {
 
   /**
    **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty()
   public AstronautType getType() {
     return type;
   }
@@ -114,7 +115,7 @@ public class AstronautDetailed {
 
   /**
    **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty()
   public AgencySerializerMini getAgency() {
     return agency;
   }
@@ -124,7 +125,7 @@ public class AstronautDetailed {
 
   /**
    **/
-  @ApiModelProperty(required = true, value = "")
+  @ApiModelProperty(required = true)
   public Date getDateOfBirth() {
     return dateOfBirth;
   }
@@ -134,7 +135,7 @@ public class AstronautDetailed {
 
   /**
    **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty()
   public Date getDateOfDeath() {
     return dateOfDeath;
   }
@@ -144,7 +145,7 @@ public class AstronautDetailed {
 
   /**
    **/
-  @ApiModelProperty(required = true, value = "")
+  @ApiModelProperty(required = true)
   public String getNationality() {
     return nationality;
   }
@@ -154,7 +155,7 @@ public class AstronautDetailed {
 
   /**
    **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty()
   public String getTwitter() {
     return twitter;
   }
@@ -164,7 +165,7 @@ public class AstronautDetailed {
 
   /**
    **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty()
   public String getInstagram() {
     return instagram;
   }
@@ -174,7 +175,7 @@ public class AstronautDetailed {
 
   /**
    **/
-  @ApiModelProperty(required = true, value = "")
+  @ApiModelProperty(required = true)
   public String getBio() {
     return bio;
   }
@@ -184,7 +185,7 @@ public class AstronautDetailed {
 
   /**
    **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty()
   public String getProfileImage() {
     return profileImage;
   }
@@ -194,7 +195,7 @@ public class AstronautDetailed {
 
   /**
    **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty()
   public String getProfileImageThumbnail() {
     return profileImageThumbnail;
   }
@@ -204,7 +205,7 @@ public class AstronautDetailed {
 
   /**
    **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty()
   public String getWiki() {
     return wiki;
   }
@@ -214,7 +215,7 @@ public class AstronautDetailed {
 
   /**
    **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty()
   public List<LaunchSerializerCommon> getFlights() {
     return flights;
   }
@@ -224,7 +225,7 @@ public class AstronautDetailed {
 
   /**
    **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty()
   public List<SpacecraftFlight> getLandings() {
     return landings;
   }
@@ -234,7 +235,7 @@ public class AstronautDetailed {
 
   /**
    **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty()
   public String getLastFlight() {
     return lastFlight;
   }
@@ -244,7 +245,7 @@ public class AstronautDetailed {
 
   /**
    **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty()
   public String getFirstFlight() {
     return firstFlight;
   }
@@ -262,25 +263,25 @@ public class AstronautDetailed {
       return false;
     }
     AstronautDetailed astronautDetailed = (AstronautDetailed) o;
-    return (this.id == null ? astronautDetailed.id == null : this.id.equals(astronautDetailed.id)) &&
-        (this.url == null ? astronautDetailed.url == null : this.url.equals(astronautDetailed.url)) &&
-        (this.name == null ? astronautDetailed.name == null : this.name.equals(astronautDetailed.name)) &&
-        (this.status == null ? astronautDetailed.status == null : this.status.equals(astronautDetailed.status)) &&
-        (this.type == null ? astronautDetailed.type == null : this.type.equals(astronautDetailed.type)) &&
-        (this.agency == null ? astronautDetailed.agency == null : this.agency.equals(astronautDetailed.agency)) &&
-        (this.dateOfBirth == null ? astronautDetailed.dateOfBirth == null : this.dateOfBirth.equals(astronautDetailed.dateOfBirth)) &&
-        (this.dateOfDeath == null ? astronautDetailed.dateOfDeath == null : this.dateOfDeath.equals(astronautDetailed.dateOfDeath)) &&
-        (this.nationality == null ? astronautDetailed.nationality == null : this.nationality.equals(astronautDetailed.nationality)) &&
-        (this.twitter == null ? astronautDetailed.twitter == null : this.twitter.equals(astronautDetailed.twitter)) &&
-        (this.instagram == null ? astronautDetailed.instagram == null : this.instagram.equals(astronautDetailed.instagram)) &&
-        (this.bio == null ? astronautDetailed.bio == null : this.bio.equals(astronautDetailed.bio)) &&
-        (this.profileImage == null ? astronautDetailed.profileImage == null : this.profileImage.equals(astronautDetailed.profileImage)) &&
-        (this.profileImageThumbnail == null ? astronautDetailed.profileImageThumbnail == null : this.profileImageThumbnail.equals(astronautDetailed.profileImageThumbnail)) &&
-        (this.wiki == null ? astronautDetailed.wiki == null : this.wiki.equals(astronautDetailed.wiki)) &&
-        (this.flights == null ? astronautDetailed.flights == null : this.flights.equals(astronautDetailed.flights)) &&
-        (this.landings == null ? astronautDetailed.landings == null : this.landings.equals(astronautDetailed.landings)) &&
-        (this.lastFlight == null ? astronautDetailed.lastFlight == null : this.lastFlight.equals(astronautDetailed.lastFlight)) &&
-        (this.firstFlight == null ? astronautDetailed.firstFlight == null : this.firstFlight.equals(astronautDetailed.firstFlight));
+    return (Objects.equals(this.id, astronautDetailed.id)) &&
+        (Objects.equals(this.url, astronautDetailed.url)) &&
+        (Objects.equals(this.name, astronautDetailed.name)) &&
+        (Objects.equals(this.status, astronautDetailed.status)) &&
+        (Objects.equals(this.type, astronautDetailed.type)) &&
+        (Objects.equals(this.agency, astronautDetailed.agency)) &&
+        (Objects.equals(this.dateOfBirth, astronautDetailed.dateOfBirth)) &&
+        (Objects.equals(this.dateOfDeath, astronautDetailed.dateOfDeath)) &&
+        (Objects.equals(this.nationality, astronautDetailed.nationality)) &&
+        (Objects.equals(this.twitter, astronautDetailed.twitter)) &&
+        (Objects.equals(this.instagram, astronautDetailed.instagram)) &&
+        (Objects.equals(this.bio, astronautDetailed.bio)) &&
+        (Objects.equals(this.profileImage, astronautDetailed.profileImage)) &&
+        (Objects.equals(this.profileImageThumbnail, astronautDetailed.profileImageThumbnail)) &&
+        (Objects.equals(this.wiki, astronautDetailed.wiki)) &&
+        (Objects.equals(this.flights, astronautDetailed.flights)) &&
+        (Objects.equals(this.landings, astronautDetailed.landings)) &&
+        (Objects.equals(this.lastFlight, astronautDetailed.lastFlight)) &&
+        (Objects.equals(this.firstFlight, astronautDetailed.firstFlight));
   }
 
   @Override
@@ -310,29 +311,28 @@ public class AstronautDetailed {
 
   @Override
   public String toString()  {
-    StringBuilder sb = new StringBuilder();
-    sb.append("class AstronautDetailed {\n");
-    
-    sb.append("  id: ").append(id).append("\n");
-    sb.append("  url: ").append(url).append("\n");
-    sb.append("  name: ").append(name).append("\n");
-    sb.append("  status: ").append(status).append("\n");
-    sb.append("  type: ").append(type).append("\n");
-    sb.append("  agency: ").append(agency).append("\n");
-    sb.append("  dateOfBirth: ").append(dateOfBirth).append("\n");
-    sb.append("  dateOfDeath: ").append(dateOfDeath).append("\n");
-    sb.append("  nationality: ").append(nationality).append("\n");
-    sb.append("  twitter: ").append(twitter).append("\n");
-    sb.append("  instagram: ").append(instagram).append("\n");
-    sb.append("  bio: ").append(bio).append("\n");
-    sb.append("  profileImage: ").append(profileImage).append("\n");
-    sb.append("  profileImageThumbnail: ").append(profileImageThumbnail).append("\n");
-    sb.append("  wiki: ").append(wiki).append("\n");
-    sb.append("  flights: ").append(flights).append("\n");
-    sb.append("  landings: ").append(landings).append("\n");
-    sb.append("  lastFlight: ").append(lastFlight).append("\n");
-    sb.append("  firstFlight: ").append(firstFlight).append("\n");
-    sb.append("}\n");
-    return sb.toString();
+
+    String sb = "class AstronautDetailed {\n" +
+            "  id: " + id + "\n" +
+            "  url: " + url + "\n" +
+            "  name: " + name + "\n" +
+            "  status: " + status + "\n" +
+            "  type: " + type + "\n" +
+            "  agency: " + agency + "\n" +
+            "  dateOfBirth: " + dateOfBirth + "\n" +
+            "  dateOfDeath: " + dateOfDeath + "\n" +
+            "  nationality: " + nationality + "\n" +
+            "  twitter: " + twitter + "\n" +
+            "  instagram: " + instagram + "\n" +
+            "  bio: " + bio + "\n" +
+            "  profileImage: " + profileImage + "\n" +
+            "  profileImageThumbnail: " + profileImageThumbnail + "\n" +
+            "  wiki: " + wiki + "\n" +
+            "  flights: " + flights + "\n" +
+            "  landings: " + landings + "\n" +
+            "  lastFlight: " + lastFlight + "\n" +
+            "  firstFlight: " + firstFlight + "\n" +
+            "}\n";
+    return sb;
   }
 }

@@ -8,6 +8,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import java.util.List;
+import java.util.Objects;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -128,23 +129,27 @@ abstract class HorizontalRecyclerViewFragment<T extends RecyclerView.Adapter & B
     private RecyclerView.OnScrollListener scrollHandler() {
         return new RecyclerView.OnScrollListener() {
             @Override
-            public void onScrollStateChanged(RecyclerView recyclerView, int newState) {
+            public void onScrollStateChanged(@NonNull RecyclerView recyclerView, int newState) {
                 super.onScrollStateChanged(recyclerView, newState);
                 GridLayoutManager lm = ((GridLayoutManager) mRecyclerView.getLayoutManager());
-                setupBullets(lm.findFirstVisibleItemPosition());
+                if (lm != null) {
+                    setupBullets(lm.findFirstVisibleItemPosition());
+                }
             }
         };
     }
 
     private void setupBullets(int selected) {
         if (mBullets == null) return;
-        final int pageSize = getPageSize();
-        int pageCount = (int) Math.ceil((float) mRecyclerView.getAdapter().getItemCount() / pageSize);
+        final double pageSize = getPageSize();
+        int pageCount = (int) Math.ceil((float)
+                Objects.requireNonNull(mRecyclerView.getAdapter()).getItemCount() / pageSize);
         final int total = Utilities.clamp(0, 5, pageCount);
         TextView[] bullets = new TextView[]{mBullet1, mBullet2, mBullet3, mBullet4, mBullet5};
         int inactive = getResources().getColor(R.color.bullet_inactive);
         int active = getResources().getColor(R.color.bullet_active);
-        int activeBullet = Math.min(bullets.length - 1, Math.max(0, (int) Math.floor(selected / pageSize)));
+        int activeBullet = Math.min(bullets.length - 1,
+                Math.max(0, (int) Math.floor(selected / pageSize)));
 
         mBullets.setVisibility(total > 1 ? VISIBLE : GONE);
         for (int n = 0; n < bullets.length; n++) {
@@ -153,8 +158,9 @@ abstract class HorizontalRecyclerViewFragment<T extends RecyclerView.Adapter & B
             final int currentIndex = n;
             if (!bullets[n].hasOnClickListeners())
                 bullets[n].setOnClickListener(v -> {
-                    smoothScroller.setTargetPosition(currentIndex * pageSize);
-                    (mRecyclerView.getLayoutManager()).startSmoothScroll(smoothScroller);
+                    smoothScroller.setTargetPosition((currentIndex * (int) pageSize));
+                    (Objects.requireNonNull(mRecyclerView.getLayoutManager()))
+                            .startSmoothScroll(smoothScroller);
                     setupBullets(currentIndex);
                 });
         }

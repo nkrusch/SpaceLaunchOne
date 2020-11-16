@@ -14,10 +14,12 @@ package apimodels;
 
 import com.google.gson.annotations.SerializedName;
 
+import java.util.Objects;
+
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 
-@ApiModel(description = "")
+@ApiModel()
 public class Launcher {
   
   @SerializedName("id")
@@ -45,7 +47,7 @@ public class Launcher {
 
   /**
    **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty()
   public Integer getId() {
     return id;
   }
@@ -55,7 +57,7 @@ public class Launcher {
 
   /**
    **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty()
   public String getUrl() {
     return url;
   }
@@ -65,7 +67,7 @@ public class Launcher {
 
   /**
    **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty()
   public Boolean getFlightProven() {
     return flightProven;
   }
@@ -75,7 +77,7 @@ public class Launcher {
 
   /**
    **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty()
   public String getSerialNumber() {
     return serialNumber;
   }
@@ -85,7 +87,7 @@ public class Launcher {
 
   /**
    **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty()
   public String getStatus() {
     return status;
   }
@@ -95,7 +97,7 @@ public class Launcher {
 
   /**
    **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty()
   public String getDetails() {
     return details;
   }
@@ -105,7 +107,7 @@ public class Launcher {
 
   /**
    **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty()
   public LauncherConfigList getLauncherConfig() {
     return launcherConfig;
   }
@@ -115,7 +117,7 @@ public class Launcher {
 
   /**
    **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty()
   public String getImageUrl() {
     return imageUrl;
   }
@@ -125,7 +127,7 @@ public class Launcher {
 
   /**
    **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty()
   public String getFlights() {
     return flights;
   }
@@ -135,7 +137,7 @@ public class Launcher {
 
   /**
    **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty()
   public String getLastLaunchDate() {
     return lastLaunchDate;
   }
@@ -145,7 +147,7 @@ public class Launcher {
 
   /**
    **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty()
   public String getFirstLaunchDate() {
     return firstLaunchDate;
   }
@@ -163,17 +165,17 @@ public class Launcher {
       return false;
     }
     Launcher launcher = (Launcher) o;
-    return (this.id == null ? launcher.id == null : this.id.equals(launcher.id)) &&
-        (this.url == null ? launcher.url == null : this.url.equals(launcher.url)) &&
-        (this.flightProven == null ? launcher.flightProven == null : this.flightProven.equals(launcher.flightProven)) &&
-        (this.serialNumber == null ? launcher.serialNumber == null : this.serialNumber.equals(launcher.serialNumber)) &&
-        (this.status == null ? launcher.status == null : this.status.equals(launcher.status)) &&
-        (this.details == null ? launcher.details == null : this.details.equals(launcher.details)) &&
-        (this.launcherConfig == null ? launcher.launcherConfig == null : this.launcherConfig.equals(launcher.launcherConfig)) &&
-        (this.imageUrl == null ? launcher.imageUrl == null : this.imageUrl.equals(launcher.imageUrl)) &&
-        (this.flights == null ? launcher.flights == null : this.flights.equals(launcher.flights)) &&
-        (this.lastLaunchDate == null ? launcher.lastLaunchDate == null : this.lastLaunchDate.equals(launcher.lastLaunchDate)) &&
-        (this.firstLaunchDate == null ? launcher.firstLaunchDate == null : this.firstLaunchDate.equals(launcher.firstLaunchDate));
+    return (Objects.equals(this.id, launcher.id)) &&
+        (Objects.equals(this.url, launcher.url)) &&
+        (Objects.equals(this.flightProven, launcher.flightProven)) &&
+        (Objects.equals(this.serialNumber, launcher.serialNumber)) &&
+        (Objects.equals(this.status, launcher.status)) &&
+        (Objects.equals(this.details, launcher.details)) &&
+        (Objects.equals(this.launcherConfig, launcher.launcherConfig)) &&
+        (Objects.equals(this.imageUrl, launcher.imageUrl)) &&
+        (Objects.equals(this.flights, launcher.flights)) &&
+        (Objects.equals(this.lastLaunchDate, launcher.lastLaunchDate)) &&
+        (Objects.equals(this.firstLaunchDate, launcher.firstLaunchDate));
   }
 
   @Override
@@ -195,21 +197,20 @@ public class Launcher {
 
   @Override
   public String toString()  {
-    StringBuilder sb = new StringBuilder();
-    sb.append("class Launcher {\n");
-    
-    sb.append("  id: ").append(id).append("\n");
-    sb.append("  url: ").append(url).append("\n");
-    sb.append("  flightProven: ").append(flightProven).append("\n");
-    sb.append("  serialNumber: ").append(serialNumber).append("\n");
-    sb.append("  status: ").append(status).append("\n");
-    sb.append("  details: ").append(details).append("\n");
-    sb.append("  launcherConfig: ").append(launcherConfig).append("\n");
-    sb.append("  imageUrl: ").append(imageUrl).append("\n");
-    sb.append("  flights: ").append(flights).append("\n");
-    sb.append("  lastLaunchDate: ").append(lastLaunchDate).append("\n");
-    sb.append("  firstLaunchDate: ").append(firstLaunchDate).append("\n");
-    sb.append("}\n");
-    return sb.toString();
+
+      String sb = "class Launcher {\n" +
+              "  id: " + id + "\n" +
+              "  url: " + url + "\n" +
+              "  flightProven: " + flightProven + "\n" +
+              "  serialNumber: " + serialNumber + "\n" +
+              "  status: " + status + "\n" +
+              "  details: " + details + "\n" +
+              "  launcherConfig: " + launcherConfig + "\n" +
+              "  imageUrl: " + imageUrl + "\n" +
+              "  flights: " + flights + "\n" +
+              "  lastLaunchDate: " + lastLaunchDate + "\n" +
+              "  firstLaunchDate: " + firstLaunchDate + "\n" +
+              "}\n";
+      return sb;
   }
 }

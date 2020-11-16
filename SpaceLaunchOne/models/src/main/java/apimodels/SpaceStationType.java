@@ -14,10 +14,12 @@ package apimodels;
 
 import com.google.gson.annotations.SerializedName;
 
+import java.util.Objects;
+
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 
-@ApiModel(description = "")
+@ApiModel()
 public class SpaceStationType {
   
   @SerializedName("id")
@@ -27,7 +29,7 @@ public class SpaceStationType {
 
   /**
    **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty()
   public Integer getId() {
     return id;
   }
@@ -37,7 +39,7 @@ public class SpaceStationType {
 
   /**
    **/
-  @ApiModelProperty(required = true, value = "")
+  @ApiModelProperty(required = true)
   public String getName() {
     return name;
   }
@@ -55,8 +57,8 @@ public class SpaceStationType {
       return false;
     }
     SpaceStationType spaceStationType = (SpaceStationType) o;
-    return (this.id == null ? spaceStationType.id == null : this.id.equals(spaceStationType.id)) &&
-        (this.name == null ? spaceStationType.name == null : this.name.equals(spaceStationType.name));
+    return (Objects.equals(this.id, spaceStationType.id)) &&
+        (Objects.equals(this.name, spaceStationType.name));
   }
 
   @Override
@@ -69,12 +71,11 @@ public class SpaceStationType {
 
   @Override
   public String toString()  {
-    StringBuilder sb = new StringBuilder();
-    sb.append("class SpaceStationType {\n");
-    
-    sb.append("  id: ").append(id).append("\n");
-    sb.append("  name: ").append(name).append("\n");
-    sb.append("}\n");
-    return sb.toString();
+
+      String sb = "class SpaceStationType {\n" +
+              "  id: " + id + "\n" +
+              "  name: " + name + "\n" +
+              "}\n";
+      return sb;
   }
 }

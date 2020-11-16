@@ -15,11 +15,12 @@ package apimodels;
 import com.google.gson.annotations.SerializedName;
 
 import java.util.List;
+import java.util.Objects;
 
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 
-@ApiModel(description = "")
+@ApiModel()
 public class LocationDetail {
   
   @SerializedName("id")
@@ -39,7 +40,7 @@ public class LocationDetail {
 
   /**
    **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty()
   public Integer getId() {
     return id;
   }
@@ -49,7 +50,7 @@ public class LocationDetail {
 
   /**
    **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty()
   public String getName() {
     return name;
   }
@@ -59,7 +60,7 @@ public class LocationDetail {
 
   /**
    **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty()
   public String getCountryCode() {
     return countryCode;
   }
@@ -69,7 +70,7 @@ public class LocationDetail {
 
   /**
    **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty()
   public String getMapImage() {
     return mapImage;
   }
@@ -79,7 +80,7 @@ public class LocationDetail {
 
   /**
    **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty()
   public String getTotalLaunchCount() {
     return totalLaunchCount;
   }
@@ -89,7 +90,7 @@ public class LocationDetail {
 
   /**
    **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty()
   public String getTotalLandingCount() {
     return totalLandingCount;
   }
@@ -99,7 +100,7 @@ public class LocationDetail {
 
   /**
    **/
-  @ApiModelProperty(required = true, value = "")
+  @ApiModelProperty(required = true)
   public List<PadSerializerNoLocation> getPads() {
     return pads;
   }
@@ -117,13 +118,13 @@ public class LocationDetail {
       return false;
     }
     LocationDetail locationDetail = (LocationDetail) o;
-    return (this.id == null ? locationDetail.id == null : this.id.equals(locationDetail.id)) &&
-        (this.name == null ? locationDetail.name == null : this.name.equals(locationDetail.name)) &&
-        (this.countryCode == null ? locationDetail.countryCode == null : this.countryCode.equals(locationDetail.countryCode)) &&
-        (this.mapImage == null ? locationDetail.mapImage == null : this.mapImage.equals(locationDetail.mapImage)) &&
-        (this.totalLaunchCount == null ? locationDetail.totalLaunchCount == null : this.totalLaunchCount.equals(locationDetail.totalLaunchCount)) &&
-        (this.totalLandingCount == null ? locationDetail.totalLandingCount == null : this.totalLandingCount.equals(locationDetail.totalLandingCount)) &&
-        (this.pads == null ? locationDetail.pads == null : this.pads.equals(locationDetail.pads));
+    return (Objects.equals(this.id, locationDetail.id)) &&
+        (Objects.equals(this.name, locationDetail.name)) &&
+        (Objects.equals(this.countryCode, locationDetail.countryCode)) &&
+        (Objects.equals(this.mapImage, locationDetail.mapImage)) &&
+        (Objects.equals(this.totalLaunchCount, locationDetail.totalLaunchCount)) &&
+        (Objects.equals(this.totalLandingCount, locationDetail.totalLandingCount)) &&
+        (Objects.equals(this.pads, locationDetail.pads));
   }
 
   @Override
@@ -141,17 +142,16 @@ public class LocationDetail {
 
   @Override
   public String toString()  {
-    StringBuilder sb = new StringBuilder();
-    sb.append("class LocationDetail {\n");
-    
-    sb.append("  id: ").append(id).append("\n");
-    sb.append("  name: ").append(name).append("\n");
-    sb.append("  countryCode: ").append(countryCode).append("\n");
-    sb.append("  mapImage: ").append(mapImage).append("\n");
-    sb.append("  totalLaunchCount: ").append(totalLaunchCount).append("\n");
-    sb.append("  totalLandingCount: ").append(totalLandingCount).append("\n");
-    sb.append("  pads: ").append(pads).append("\n");
-    sb.append("}\n");
-    return sb.toString();
+
+      String sb = "class LocationDetail {\n" +
+              "  id: " + id + "\n" +
+              "  name: " + name + "\n" +
+              "  countryCode: " + countryCode + "\n" +
+              "  mapImage: " + mapImage + "\n" +
+              "  totalLaunchCount: " + totalLaunchCount + "\n" +
+              "  totalLandingCount: " + totalLandingCount + "\n" +
+              "  pads: " + pads + "\n" +
+              "}\n";
+      return sb;
   }
 }

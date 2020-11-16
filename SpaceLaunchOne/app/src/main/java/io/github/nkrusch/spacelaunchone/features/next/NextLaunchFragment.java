@@ -82,7 +82,7 @@ public class NextLaunchFragment extends Fragment {
      */
     private void setupViewModel() {
         if (getActivity() != null) {
-            vm.getNext().observe(getActivity(), launch -> PopulateViews(launch));
+            vm.getNext().observe(getActivity(), this::PopulateViews);
         }
     }
 
@@ -119,12 +119,7 @@ public class NextLaunchFragment extends Fragment {
      * -> will launch details on that launch event
      */
     private View.OnClickListener onClickListener(final String id, final String name) {
-        return new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(DetailsLaunchActivity.launchDetails(getContext(), id, name));
-            }
-        };
+        return v -> startActivity(DetailsLaunchActivity.launchDetails(getContext(), id, name));
     }
 
     /**
@@ -132,12 +127,7 @@ public class NextLaunchFragment extends Fragment {
      */
     private void onTimerEnd() {
         Handler handler = new Handler();
-        Runnable run = new Runnable() {
-            @Override
-            public void run() {
-                vm.reload();
-            }
-        };
+        Runnable run = () -> vm.reload();
         int reloadDelay = 20 * 1000;
         handler.postDelayed(run, reloadDelay);
     }
@@ -158,11 +148,6 @@ public class NextLaunchFragment extends Fragment {
                     .setCustomAnimations(R.animator.slide_down, R.animator.slide_up)
                     .replace(mTimer.getId(), f)
                     .commit();
-        f.registerOnFinishCallback(new TimerFragment.OnFinishCallback() {
-            @Override
-            public void OnFinish() {
-                onTimerEnd();
-            }
-        });
+        f.registerOnFinishCallback(() -> onTimerEnd());
     }
 }

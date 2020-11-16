@@ -14,10 +14,12 @@ package apimodels;
 
 import com.google.gson.annotations.SerializedName;
 
+import java.util.Objects;
+
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 
-@ApiModel(description = "")
+@ApiModel()
 public class SpaceStationSerializerForExpedition {
   
   @SerializedName("id")
@@ -35,7 +37,7 @@ public class SpaceStationSerializerForExpedition {
 
   /**
    **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty()
   public Integer getId() {
     return id;
   }
@@ -45,7 +47,7 @@ public class SpaceStationSerializerForExpedition {
 
   /**
    **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty()
   public String getUrl() {
     return url;
   }
@@ -55,7 +57,7 @@ public class SpaceStationSerializerForExpedition {
 
   /**
    **/
-  @ApiModelProperty(required = true, value = "")
+  @ApiModelProperty(required = true)
   public String getName() {
     return name;
   }
@@ -65,7 +67,7 @@ public class SpaceStationSerializerForExpedition {
 
   /**
    **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty()
   public SpaceStationStatus getStatus() {
     return status;
   }
@@ -75,7 +77,7 @@ public class SpaceStationSerializerForExpedition {
 
   /**
    **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty()
   public String getOrbit() {
     return orbit;
   }
@@ -85,7 +87,7 @@ public class SpaceStationSerializerForExpedition {
 
   /**
    **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty()
   public String getImageUrl() {
     return imageUrl;
   }
@@ -103,12 +105,12 @@ public class SpaceStationSerializerForExpedition {
       return false;
     }
     SpaceStationSerializerForExpedition spaceStationSerializerForExpedition = (SpaceStationSerializerForExpedition) o;
-    return (this.id == null ? spaceStationSerializerForExpedition.id == null : this.id.equals(spaceStationSerializerForExpedition.id)) &&
-        (this.url == null ? spaceStationSerializerForExpedition.url == null : this.url.equals(spaceStationSerializerForExpedition.url)) &&
-        (this.name == null ? spaceStationSerializerForExpedition.name == null : this.name.equals(spaceStationSerializerForExpedition.name)) &&
-        (this.status == null ? spaceStationSerializerForExpedition.status == null : this.status.equals(spaceStationSerializerForExpedition.status)) &&
-        (this.orbit == null ? spaceStationSerializerForExpedition.orbit == null : this.orbit.equals(spaceStationSerializerForExpedition.orbit)) &&
-        (this.imageUrl == null ? spaceStationSerializerForExpedition.imageUrl == null : this.imageUrl.equals(spaceStationSerializerForExpedition.imageUrl));
+    return (Objects.equals(this.id, spaceStationSerializerForExpedition.id)) &&
+        (Objects.equals(this.url, spaceStationSerializerForExpedition.url)) &&
+        (Objects.equals(this.name, spaceStationSerializerForExpedition.name)) &&
+        (Objects.equals(this.status, spaceStationSerializerForExpedition.status)) &&
+        (Objects.equals(this.orbit, spaceStationSerializerForExpedition.orbit)) &&
+        (Objects.equals(this.imageUrl, spaceStationSerializerForExpedition.imageUrl));
   }
 
   @Override
@@ -125,16 +127,15 @@ public class SpaceStationSerializerForExpedition {
 
   @Override
   public String toString()  {
-    StringBuilder sb = new StringBuilder();
-    sb.append("class SpaceStationSerializerForExpedition {\n");
-    
-    sb.append("  id: ").append(id).append("\n");
-    sb.append("  url: ").append(url).append("\n");
-    sb.append("  name: ").append(name).append("\n");
-    sb.append("  status: ").append(status).append("\n");
-    sb.append("  orbit: ").append(orbit).append("\n");
-    sb.append("  imageUrl: ").append(imageUrl).append("\n");
-    sb.append("}\n");
-    return sb.toString();
+
+      String sb = "class SpaceStationSerializerForExpedition {\n" +
+              "  id: " + id + "\n" +
+              "  url: " + url + "\n" +
+              "  name: " + name + "\n" +
+              "  status: " + status + "\n" +
+              "  orbit: " + orbit + "\n" +
+              "  imageUrl: " + imageUrl + "\n" +
+              "}\n";
+      return sb;
   }
 }

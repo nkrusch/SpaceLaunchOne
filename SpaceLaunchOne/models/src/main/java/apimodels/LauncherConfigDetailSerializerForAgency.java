@@ -16,11 +16,12 @@ import com.google.gson.annotations.SerializedName;
 
 import java.math.BigDecimal;
 import java.util.Date;
+import java.util.Objects;
 
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 
-@ApiModel(description = "")
+@ApiModel()
 public class LauncherConfigDetailSerializerForAgency {
   
   @SerializedName("id")
@@ -80,7 +81,7 @@ public class LauncherConfigDetailSerializerForAgency {
 
   /**
    **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty()
   public Integer getId() {
     return id;
   }
@@ -92,7 +93,7 @@ public class LauncherConfigDetailSerializerForAgency {
    * minimum: -2147483648
    * maximum: 2147483647
    **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty()
   public Integer getLaunchLibraryId() {
     return launchLibraryId;
   }
@@ -102,7 +103,7 @@ public class LauncherConfigDetailSerializerForAgency {
 
   /**
    **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty()
   public String getUrl() {
     return url;
   }
@@ -112,7 +113,7 @@ public class LauncherConfigDetailSerializerForAgency {
 
   /**
    **/
-  @ApiModelProperty(required = true, value = "")
+  @ApiModelProperty(required = true)
   public String getName() {
     return name;
   }
@@ -122,7 +123,7 @@ public class LauncherConfigDetailSerializerForAgency {
 
   /**
    **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty()
   public String getDescription() {
     return description;
   }
@@ -132,7 +133,7 @@ public class LauncherConfigDetailSerializerForAgency {
 
   /**
    **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty()
   public String getFamily() {
     return family;
   }
@@ -142,7 +143,7 @@ public class LauncherConfigDetailSerializerForAgency {
 
   /**
    **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty()
   public String getFullName() {
     return fullName;
   }
@@ -152,7 +153,7 @@ public class LauncherConfigDetailSerializerForAgency {
 
   /**
    **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty()
   public String getVariant() {
     return variant;
   }
@@ -162,7 +163,7 @@ public class LauncherConfigDetailSerializerForAgency {
 
   /**
    **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty()
   public String getAlias() {
     return alias;
   }
@@ -174,7 +175,7 @@ public class LauncherConfigDetailSerializerForAgency {
    * minimum: -2147483648
    * maximum: 2147483647
    **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty()
   public Integer getMinStage() {
     return minStage;
   }
@@ -186,7 +187,7 @@ public class LauncherConfigDetailSerializerForAgency {
    * minimum: -2147483648
    * maximum: 2147483647
    **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty()
   public Integer getMaxStage() {
     return maxStage;
   }
@@ -196,7 +197,7 @@ public class LauncherConfigDetailSerializerForAgency {
 
   /**
    **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty()
   public BigDecimal getLength() {
     return length;
   }
@@ -206,7 +207,7 @@ public class LauncherConfigDetailSerializerForAgency {
 
   /**
    **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty()
   public BigDecimal getDiameter() {
     return diameter;
   }
@@ -216,7 +217,7 @@ public class LauncherConfigDetailSerializerForAgency {
 
   /**
    **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty()
   public Date getMaidenFlight() {
     return maidenFlight;
   }
@@ -228,7 +229,7 @@ public class LauncherConfigDetailSerializerForAgency {
    * minimum: -2147483648
    * maximum: 2147483647
    **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty()
   public Integer getLaunchMass() {
     return launchMass;
   }
@@ -240,7 +241,7 @@ public class LauncherConfigDetailSerializerForAgency {
    * minimum: -2147483648
    * maximum: 2147483647
    **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty()
   public Integer getLeoCapacity() {
     return leoCapacity;
   }
@@ -252,7 +253,7 @@ public class LauncherConfigDetailSerializerForAgency {
    * minimum: -2147483648
    * maximum: 2147483647
    **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty()
   public Integer getGtoCapacity() {
     return gtoCapacity;
   }
@@ -264,7 +265,7 @@ public class LauncherConfigDetailSerializerForAgency {
    * minimum: -2147483648
    * maximum: 2147483647
    **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty()
   public Integer getToThrust() {
     return toThrust;
   }
@@ -276,7 +277,7 @@ public class LauncherConfigDetailSerializerForAgency {
    * minimum: -2147483648
    * maximum: 2147483647
    **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty()
   public Integer getApogee() {
     return apogee;
   }
@@ -288,7 +289,7 @@ public class LauncherConfigDetailSerializerForAgency {
    * minimum: -2147483648
    * maximum: 2147483647
    **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty()
   public Integer getVehicleRange() {
     return vehicleRange;
   }
@@ -298,7 +299,7 @@ public class LauncherConfigDetailSerializerForAgency {
 
   /**
    **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty()
   public String getImageUrl() {
     return imageUrl;
   }
@@ -308,7 +309,7 @@ public class LauncherConfigDetailSerializerForAgency {
 
   /**
    **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty()
   public String getInfoUrl() {
     return infoUrl;
   }
@@ -318,7 +319,7 @@ public class LauncherConfigDetailSerializerForAgency {
 
   /**
    **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty()
   public String getWikiUrl() {
     return wikiUrl;
   }
@@ -328,7 +329,7 @@ public class LauncherConfigDetailSerializerForAgency {
 
   /**
    **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty()
   public String getConsecutiveSuccessfulLaunches() {
     return consecutiveSuccessfulLaunches;
   }
@@ -338,7 +339,7 @@ public class LauncherConfigDetailSerializerForAgency {
 
   /**
    **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty()
   public String getSuccessfulLaunches() {
     return successfulLaunches;
   }
@@ -348,7 +349,7 @@ public class LauncherConfigDetailSerializerForAgency {
 
   /**
    **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty()
   public String getFailedLaunches() {
     return failedLaunches;
   }
@@ -358,7 +359,7 @@ public class LauncherConfigDetailSerializerForAgency {
 
   /**
    **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty()
   public String getPendingLaunches() {
     return pendingLaunches;
   }
@@ -376,33 +377,33 @@ public class LauncherConfigDetailSerializerForAgency {
       return false;
     }
     LauncherConfigDetailSerializerForAgency launcherConfigDetailSerializerForAgency = (LauncherConfigDetailSerializerForAgency) o;
-    return (this.id == null ? launcherConfigDetailSerializerForAgency.id == null : this.id.equals(launcherConfigDetailSerializerForAgency.id)) &&
-        (this.launchLibraryId == null ? launcherConfigDetailSerializerForAgency.launchLibraryId == null : this.launchLibraryId.equals(launcherConfigDetailSerializerForAgency.launchLibraryId)) &&
-        (this.url == null ? launcherConfigDetailSerializerForAgency.url == null : this.url.equals(launcherConfigDetailSerializerForAgency.url)) &&
-        (this.name == null ? launcherConfigDetailSerializerForAgency.name == null : this.name.equals(launcherConfigDetailSerializerForAgency.name)) &&
-        (this.description == null ? launcherConfigDetailSerializerForAgency.description == null : this.description.equals(launcherConfigDetailSerializerForAgency.description)) &&
-        (this.family == null ? launcherConfigDetailSerializerForAgency.family == null : this.family.equals(launcherConfigDetailSerializerForAgency.family)) &&
-        (this.fullName == null ? launcherConfigDetailSerializerForAgency.fullName == null : this.fullName.equals(launcherConfigDetailSerializerForAgency.fullName)) &&
-        (this.variant == null ? launcherConfigDetailSerializerForAgency.variant == null : this.variant.equals(launcherConfigDetailSerializerForAgency.variant)) &&
-        (this.alias == null ? launcherConfigDetailSerializerForAgency.alias == null : this.alias.equals(launcherConfigDetailSerializerForAgency.alias)) &&
-        (this.minStage == null ? launcherConfigDetailSerializerForAgency.minStage == null : this.minStage.equals(launcherConfigDetailSerializerForAgency.minStage)) &&
-        (this.maxStage == null ? launcherConfigDetailSerializerForAgency.maxStage == null : this.maxStage.equals(launcherConfigDetailSerializerForAgency.maxStage)) &&
-        (this.length == null ? launcherConfigDetailSerializerForAgency.length == null : this.length.equals(launcherConfigDetailSerializerForAgency.length)) &&
-        (this.diameter == null ? launcherConfigDetailSerializerForAgency.diameter == null : this.diameter.equals(launcherConfigDetailSerializerForAgency.diameter)) &&
-        (this.maidenFlight == null ? launcherConfigDetailSerializerForAgency.maidenFlight == null : this.maidenFlight.equals(launcherConfigDetailSerializerForAgency.maidenFlight)) &&
-        (this.launchMass == null ? launcherConfigDetailSerializerForAgency.launchMass == null : this.launchMass.equals(launcherConfigDetailSerializerForAgency.launchMass)) &&
-        (this.leoCapacity == null ? launcherConfigDetailSerializerForAgency.leoCapacity == null : this.leoCapacity.equals(launcherConfigDetailSerializerForAgency.leoCapacity)) &&
-        (this.gtoCapacity == null ? launcherConfigDetailSerializerForAgency.gtoCapacity == null : this.gtoCapacity.equals(launcherConfigDetailSerializerForAgency.gtoCapacity)) &&
-        (this.toThrust == null ? launcherConfigDetailSerializerForAgency.toThrust == null : this.toThrust.equals(launcherConfigDetailSerializerForAgency.toThrust)) &&
-        (this.apogee == null ? launcherConfigDetailSerializerForAgency.apogee == null : this.apogee.equals(launcherConfigDetailSerializerForAgency.apogee)) &&
-        (this.vehicleRange == null ? launcherConfigDetailSerializerForAgency.vehicleRange == null : this.vehicleRange.equals(launcherConfigDetailSerializerForAgency.vehicleRange)) &&
-        (this.imageUrl == null ? launcherConfigDetailSerializerForAgency.imageUrl == null : this.imageUrl.equals(launcherConfigDetailSerializerForAgency.imageUrl)) &&
-        (this.infoUrl == null ? launcherConfigDetailSerializerForAgency.infoUrl == null : this.infoUrl.equals(launcherConfigDetailSerializerForAgency.infoUrl)) &&
-        (this.wikiUrl == null ? launcherConfigDetailSerializerForAgency.wikiUrl == null : this.wikiUrl.equals(launcherConfigDetailSerializerForAgency.wikiUrl)) &&
-        (this.consecutiveSuccessfulLaunches == null ? launcherConfigDetailSerializerForAgency.consecutiveSuccessfulLaunches == null : this.consecutiveSuccessfulLaunches.equals(launcherConfigDetailSerializerForAgency.consecutiveSuccessfulLaunches)) &&
-        (this.successfulLaunches == null ? launcherConfigDetailSerializerForAgency.successfulLaunches == null : this.successfulLaunches.equals(launcherConfigDetailSerializerForAgency.successfulLaunches)) &&
-        (this.failedLaunches == null ? launcherConfigDetailSerializerForAgency.failedLaunches == null : this.failedLaunches.equals(launcherConfigDetailSerializerForAgency.failedLaunches)) &&
-        (this.pendingLaunches == null ? launcherConfigDetailSerializerForAgency.pendingLaunches == null : this.pendingLaunches.equals(launcherConfigDetailSerializerForAgency.pendingLaunches));
+    return (Objects.equals(this.id, launcherConfigDetailSerializerForAgency.id)) &&
+        (Objects.equals(this.launchLibraryId, launcherConfigDetailSerializerForAgency.launchLibraryId)) &&
+        (Objects.equals(this.url, launcherConfigDetailSerializerForAgency.url)) &&
+        (Objects.equals(this.name, launcherConfigDetailSerializerForAgency.name)) &&
+        (Objects.equals(this.description, launcherConfigDetailSerializerForAgency.description)) &&
+        (Objects.equals(this.family, launcherConfigDetailSerializerForAgency.family)) &&
+        (Objects.equals(this.fullName, launcherConfigDetailSerializerForAgency.fullName)) &&
+        (Objects.equals(this.variant, launcherConfigDetailSerializerForAgency.variant)) &&
+        (Objects.equals(this.alias, launcherConfigDetailSerializerForAgency.alias)) &&
+        (Objects.equals(this.minStage, launcherConfigDetailSerializerForAgency.minStage)) &&
+        (Objects.equals(this.maxStage, launcherConfigDetailSerializerForAgency.maxStage)) &&
+        (Objects.equals(this.length, launcherConfigDetailSerializerForAgency.length)) &&
+        (Objects.equals(this.diameter, launcherConfigDetailSerializerForAgency.diameter)) &&
+        (Objects.equals(this.maidenFlight, launcherConfigDetailSerializerForAgency.maidenFlight)) &&
+        (Objects.equals(this.launchMass, launcherConfigDetailSerializerForAgency.launchMass)) &&
+        (Objects.equals(this.leoCapacity, launcherConfigDetailSerializerForAgency.leoCapacity)) &&
+        (Objects.equals(this.gtoCapacity, launcherConfigDetailSerializerForAgency.gtoCapacity)) &&
+        (Objects.equals(this.toThrust, launcherConfigDetailSerializerForAgency.toThrust)) &&
+        (Objects.equals(this.apogee, launcherConfigDetailSerializerForAgency.apogee)) &&
+        (Objects.equals(this.vehicleRange, launcherConfigDetailSerializerForAgency.vehicleRange)) &&
+        (Objects.equals(this.imageUrl, launcherConfigDetailSerializerForAgency.imageUrl)) &&
+        (Objects.equals(this.infoUrl, launcherConfigDetailSerializerForAgency.infoUrl)) &&
+        (Objects.equals(this.wikiUrl, launcherConfigDetailSerializerForAgency.wikiUrl)) &&
+        (Objects.equals(this.consecutiveSuccessfulLaunches, launcherConfigDetailSerializerForAgency.consecutiveSuccessfulLaunches)) &&
+        (Objects.equals(this.successfulLaunches, launcherConfigDetailSerializerForAgency.successfulLaunches)) &&
+        (Objects.equals(this.failedLaunches, launcherConfigDetailSerializerForAgency.failedLaunches)) &&
+        (Objects.equals(this.pendingLaunches, launcherConfigDetailSerializerForAgency.pendingLaunches));
   }
 
   @Override
@@ -440,37 +441,36 @@ public class LauncherConfigDetailSerializerForAgency {
 
   @Override
   public String toString()  {
-    StringBuilder sb = new StringBuilder();
-    sb.append("class LauncherConfigDetailSerializerForAgency {\n");
-    
-    sb.append("  id: ").append(id).append("\n");
-    sb.append("  launchLibraryId: ").append(launchLibraryId).append("\n");
-    sb.append("  url: ").append(url).append("\n");
-    sb.append("  name: ").append(name).append("\n");
-    sb.append("  description: ").append(description).append("\n");
-    sb.append("  family: ").append(family).append("\n");
-    sb.append("  fullName: ").append(fullName).append("\n");
-    sb.append("  variant: ").append(variant).append("\n");
-    sb.append("  alias: ").append(alias).append("\n");
-    sb.append("  minStage: ").append(minStage).append("\n");
-    sb.append("  maxStage: ").append(maxStage).append("\n");
-    sb.append("  length: ").append(length).append("\n");
-    sb.append("  diameter: ").append(diameter).append("\n");
-    sb.append("  maidenFlight: ").append(maidenFlight).append("\n");
-    sb.append("  launchMass: ").append(launchMass).append("\n");
-    sb.append("  leoCapacity: ").append(leoCapacity).append("\n");
-    sb.append("  gtoCapacity: ").append(gtoCapacity).append("\n");
-    sb.append("  toThrust: ").append(toThrust).append("\n");
-    sb.append("  apogee: ").append(apogee).append("\n");
-    sb.append("  vehicleRange: ").append(vehicleRange).append("\n");
-    sb.append("  imageUrl: ").append(imageUrl).append("\n");
-    sb.append("  infoUrl: ").append(infoUrl).append("\n");
-    sb.append("  wikiUrl: ").append(wikiUrl).append("\n");
-    sb.append("  consecutiveSuccessfulLaunches: ").append(consecutiveSuccessfulLaunches).append("\n");
-    sb.append("  successfulLaunches: ").append(successfulLaunches).append("\n");
-    sb.append("  failedLaunches: ").append(failedLaunches).append("\n");
-    sb.append("  pendingLaunches: ").append(pendingLaunches).append("\n");
-    sb.append("}\n");
-    return sb.toString();
+
+      String sb = "class LauncherConfigDetailSerializerForAgency {\n" +
+              "  id: " + id + "\n" +
+              "  launchLibraryId: " + launchLibraryId + "\n" +
+              "  url: " + url + "\n" +
+              "  name: " + name + "\n" +
+              "  description: " + description + "\n" +
+              "  family: " + family + "\n" +
+              "  fullName: " + fullName + "\n" +
+              "  variant: " + variant + "\n" +
+              "  alias: " + alias + "\n" +
+              "  minStage: " + minStage + "\n" +
+              "  maxStage: " + maxStage + "\n" +
+              "  length: " + length + "\n" +
+              "  diameter: " + diameter + "\n" +
+              "  maidenFlight: " + maidenFlight + "\n" +
+              "  launchMass: " + launchMass + "\n" +
+              "  leoCapacity: " + leoCapacity + "\n" +
+              "  gtoCapacity: " + gtoCapacity + "\n" +
+              "  toThrust: " + toThrust + "\n" +
+              "  apogee: " + apogee + "\n" +
+              "  vehicleRange: " + vehicleRange + "\n" +
+              "  imageUrl: " + imageUrl + "\n" +
+              "  infoUrl: " + infoUrl + "\n" +
+              "  wikiUrl: " + wikiUrl + "\n" +
+              "  consecutiveSuccessfulLaunches: " + consecutiveSuccessfulLaunches + "\n" +
+              "  successfulLaunches: " + successfulLaunches + "\n" +
+              "  failedLaunches: " + failedLaunches + "\n" +
+              "  pendingLaunches: " + pendingLaunches + "\n" +
+              "}\n";
+      return sb;
   }
 }

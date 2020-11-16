@@ -67,7 +67,8 @@ public class LinksFragment extends HorizontalRecyclerViewFragment
         List<LinkItem> tmp = new LinkedList<>();
         addLinks(tmp, launch.getRocketName(), merge(launch.getRocketInfoURLs(), launch.getRocketWikiURL()));
         addLinks(tmp, launch.getAgencyName(), merge(launch.getAgencyInfoURLs(), launch.getAgencyWikiURL()));
-        if (launch.getPadInfoURLs() != null) addLinks(tmp, launch.getPadName(), Arrays.asList(launch.getPadInfoURLs()));
+        if (launch.getPadInfoURLs() != null)
+            addLinks(tmp, launch.getPadName(), Arrays.asList(launch.getPadInfoURLs()));
         handleDataChange(tmp);
     }
 
@@ -77,6 +78,7 @@ public class LinksFragment extends HorizontalRecyclerViewFragment
             if (StringUtils.isEmpty(u)) continue;
 
             String host = Uri.parse(u).getHost();
+            if (host == null) continue;
             host = host.substring(host.indexOf(".") + 1);
 
             if (host.contains("wikipedia")) {

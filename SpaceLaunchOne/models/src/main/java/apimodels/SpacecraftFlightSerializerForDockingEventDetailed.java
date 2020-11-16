@@ -15,11 +15,12 @@ package apimodels;
 import com.google.gson.annotations.SerializedName;
 
 import java.util.Date;
+import java.util.Objects;
 
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 
-@ApiModel(description = "")
+@ApiModel()
 public class SpacecraftFlightSerializerForDockingEventDetailed {
   
   @SerializedName("id")
@@ -35,7 +36,7 @@ public class SpacecraftFlightSerializerForDockingEventDetailed {
 
   /**
    **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty()
   public Integer getId() {
     return id;
   }
@@ -45,7 +46,7 @@ public class SpacecraftFlightSerializerForDockingEventDetailed {
 
   /**
    **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty()
   public String getUrl() {
     return url;
   }
@@ -55,7 +56,7 @@ public class SpacecraftFlightSerializerForDockingEventDetailed {
 
   /**
    **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty()
   public String getDestination() {
     return destination;
   }
@@ -65,7 +66,7 @@ public class SpacecraftFlightSerializerForDockingEventDetailed {
 
   /**
    **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty()
   public Date getMissionEnd() {
     return missionEnd;
   }
@@ -75,7 +76,7 @@ public class SpacecraftFlightSerializerForDockingEventDetailed {
 
   /**
    **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty()
   public SpacecraftDetailedNoFlights getSpacecraft() {
     return spacecraft;
   }
@@ -93,11 +94,11 @@ public class SpacecraftFlightSerializerForDockingEventDetailed {
       return false;
     }
     SpacecraftFlightSerializerForDockingEventDetailed spacecraftFlightSerializerForDockingEventDetailed = (SpacecraftFlightSerializerForDockingEventDetailed) o;
-    return (this.id == null ? spacecraftFlightSerializerForDockingEventDetailed.id == null : this.id.equals(spacecraftFlightSerializerForDockingEventDetailed.id)) &&
-        (this.url == null ? spacecraftFlightSerializerForDockingEventDetailed.url == null : this.url.equals(spacecraftFlightSerializerForDockingEventDetailed.url)) &&
-        (this.destination == null ? spacecraftFlightSerializerForDockingEventDetailed.destination == null : this.destination.equals(spacecraftFlightSerializerForDockingEventDetailed.destination)) &&
-        (this.missionEnd == null ? spacecraftFlightSerializerForDockingEventDetailed.missionEnd == null : this.missionEnd.equals(spacecraftFlightSerializerForDockingEventDetailed.missionEnd)) &&
-        (this.spacecraft == null ? spacecraftFlightSerializerForDockingEventDetailed.spacecraft == null : this.spacecraft.equals(spacecraftFlightSerializerForDockingEventDetailed.spacecraft));
+    return (Objects.equals(this.id, spacecraftFlightSerializerForDockingEventDetailed.id)) &&
+        (Objects.equals(this.url, spacecraftFlightSerializerForDockingEventDetailed.url)) &&
+        (Objects.equals(this.destination, spacecraftFlightSerializerForDockingEventDetailed.destination)) &&
+        (Objects.equals(this.missionEnd, spacecraftFlightSerializerForDockingEventDetailed.missionEnd)) &&
+        (Objects.equals(this.spacecraft, spacecraftFlightSerializerForDockingEventDetailed.spacecraft));
   }
 
   @Override
@@ -113,15 +114,14 @@ public class SpacecraftFlightSerializerForDockingEventDetailed {
 
   @Override
   public String toString()  {
-    StringBuilder sb = new StringBuilder();
-    sb.append("class SpacecraftFlightSerializerForDockingEventDetailed {\n");
-    
-    sb.append("  id: ").append(id).append("\n");
-    sb.append("  url: ").append(url).append("\n");
-    sb.append("  destination: ").append(destination).append("\n");
-    sb.append("  missionEnd: ").append(missionEnd).append("\n");
-    sb.append("  spacecraft: ").append(spacecraft).append("\n");
-    sb.append("}\n");
-    return sb.toString();
+
+      String sb = "class SpacecraftFlightSerializerForDockingEventDetailed {\n" +
+              "  id: " + id + "\n" +
+              "  url: " + url + "\n" +
+              "  destination: " + destination + "\n" +
+              "  missionEnd: " + missionEnd + "\n" +
+              "  spacecraft: " + spacecraft + "\n" +
+              "}\n";
+      return sb;
   }
 }

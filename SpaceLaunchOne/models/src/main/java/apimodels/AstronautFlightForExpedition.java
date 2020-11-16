@@ -14,10 +14,12 @@ package apimodels;
 
 import com.google.gson.annotations.SerializedName;
 
+import java.util.Objects;
+
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 
-@ApiModel(description = "")
+@ApiModel()
 public class AstronautFlightForExpedition {
   
   @SerializedName("id")
@@ -29,7 +31,7 @@ public class AstronautFlightForExpedition {
 
   /**
    **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty()
   public Integer getId() {
     return id;
   }
@@ -39,7 +41,7 @@ public class AstronautFlightForExpedition {
 
   /**
    **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty()
   public String getRole() {
     return role;
   }
@@ -49,7 +51,7 @@ public class AstronautFlightForExpedition {
 
   /**
    **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty()
   public Astronaut getAstronaut() {
     return astronaut;
   }
@@ -67,9 +69,9 @@ public class AstronautFlightForExpedition {
       return false;
     }
     AstronautFlightForExpedition astronautFlightForExpedition = (AstronautFlightForExpedition) o;
-    return (this.id == null ? astronautFlightForExpedition.id == null : this.id.equals(astronautFlightForExpedition.id)) &&
-        (this.role == null ? astronautFlightForExpedition.role == null : this.role.equals(astronautFlightForExpedition.role)) &&
-        (this.astronaut == null ? astronautFlightForExpedition.astronaut == null : this.astronaut.equals(astronautFlightForExpedition.astronaut));
+    return (Objects.equals(this.id, astronautFlightForExpedition.id)) &&
+        (Objects.equals(this.role, astronautFlightForExpedition.role)) &&
+        (Objects.equals(this.astronaut, astronautFlightForExpedition.astronaut));
   }
 
   @Override
@@ -83,13 +85,12 @@ public class AstronautFlightForExpedition {
 
   @Override
   public String toString()  {
-    StringBuilder sb = new StringBuilder();
-    sb.append("class AstronautFlightForExpedition {\n");
-    
-    sb.append("  id: ").append(id).append("\n");
-    sb.append("  role: ").append(role).append("\n");
-    sb.append("  astronaut: ").append(astronaut).append("\n");
-    sb.append("}\n");
-    return sb.toString();
+
+      String sb = "class AstronautFlightForExpedition {\n" +
+              "  id: " + id + "\n" +
+              "  role: " + role + "\n" +
+              "  astronaut: " + astronaut + "\n" +
+              "}\n";
+      return sb;
   }
 }

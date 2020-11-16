@@ -15,11 +15,12 @@ package apimodels;
 import com.google.gson.annotations.SerializedName;
 
 import java.util.Date;
+import java.util.Objects;
 
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 
-@ApiModel(description = "")
+@ApiModel()
 public class DockingEventDetailedSerializerForSpacestation {
   
   @SerializedName("id")
@@ -35,7 +36,7 @@ public class DockingEventDetailedSerializerForSpacestation {
 
   /**
    **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty()
   public Integer getId() {
     return id;
   }
@@ -45,7 +46,7 @@ public class DockingEventDetailedSerializerForSpacestation {
 
   /**
    **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty()
   public String getUrl() {
     return url;
   }
@@ -55,7 +56,7 @@ public class DockingEventDetailedSerializerForSpacestation {
 
   /**
    **/
-  @ApiModelProperty(required = true, value = "")
+  @ApiModelProperty(required = true)
   public Date getDocking() {
     return docking;
   }
@@ -65,7 +66,7 @@ public class DockingEventDetailedSerializerForSpacestation {
 
   /**
    **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty()
   public Date getDeparture() {
     return departure;
   }
@@ -75,7 +76,7 @@ public class DockingEventDetailedSerializerForSpacestation {
 
   /**
    **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty()
   public SpacecraftFlightForDockingEvent getFlightVehicle() {
     return flightVehicle;
   }
@@ -93,11 +94,11 @@ public class DockingEventDetailedSerializerForSpacestation {
       return false;
     }
     DockingEventDetailedSerializerForSpacestation dockingEventDetailedSerializerForSpacestation = (DockingEventDetailedSerializerForSpacestation) o;
-    return (this.id == null ? dockingEventDetailedSerializerForSpacestation.id == null : this.id.equals(dockingEventDetailedSerializerForSpacestation.id)) &&
-        (this.url == null ? dockingEventDetailedSerializerForSpacestation.url == null : this.url.equals(dockingEventDetailedSerializerForSpacestation.url)) &&
-        (this.docking == null ? dockingEventDetailedSerializerForSpacestation.docking == null : this.docking.equals(dockingEventDetailedSerializerForSpacestation.docking)) &&
-        (this.departure == null ? dockingEventDetailedSerializerForSpacestation.departure == null : this.departure.equals(dockingEventDetailedSerializerForSpacestation.departure)) &&
-        (this.flightVehicle == null ? dockingEventDetailedSerializerForSpacestation.flightVehicle == null : this.flightVehicle.equals(dockingEventDetailedSerializerForSpacestation.flightVehicle));
+    return (Objects.equals(this.id, dockingEventDetailedSerializerForSpacestation.id)) &&
+        (Objects.equals(this.url, dockingEventDetailedSerializerForSpacestation.url)) &&
+        (Objects.equals(this.docking, dockingEventDetailedSerializerForSpacestation.docking)) &&
+        (Objects.equals(this.departure, dockingEventDetailedSerializerForSpacestation.departure)) &&
+        (Objects.equals(this.flightVehicle, dockingEventDetailedSerializerForSpacestation.flightVehicle));
   }
 
   @Override
@@ -113,15 +114,14 @@ public class DockingEventDetailedSerializerForSpacestation {
 
   @Override
   public String toString()  {
-    StringBuilder sb = new StringBuilder();
-    sb.append("class DockingEventDetailedSerializerForSpacestation {\n");
-    
-    sb.append("  id: ").append(id).append("\n");
-    sb.append("  url: ").append(url).append("\n");
-    sb.append("  docking: ").append(docking).append("\n");
-    sb.append("  departure: ").append(departure).append("\n");
-    sb.append("  flightVehicle: ").append(flightVehicle).append("\n");
-    sb.append("}\n");
-    return sb.toString();
+
+      String sb = "class DockingEventDetailedSerializerForSpacestation {\n" +
+              "  id: " + id + "\n" +
+              "  url: " + url + "\n" +
+              "  docking: " + docking + "\n" +
+              "  departure: " + departure + "\n" +
+              "  flightVehicle: " + flightVehicle + "\n" +
+              "}\n";
+      return sb;
   }
 }

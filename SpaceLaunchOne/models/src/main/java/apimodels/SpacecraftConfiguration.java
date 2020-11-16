@@ -15,11 +15,12 @@ package apimodels;
 import com.google.gson.annotations.SerializedName;
 
 import java.util.Date;
+import java.util.Objects;
 
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 
-@ApiModel(description = "")
+@ApiModel()
 public class SpacecraftConfiguration {
   
   @SerializedName("id")
@@ -51,7 +52,7 @@ public class SpacecraftConfiguration {
 
   /**
    **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty()
   public Integer getId() {
     return id;
   }
@@ -61,7 +62,7 @@ public class SpacecraftConfiguration {
 
   /**
    **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty()
   public String getUrl() {
     return url;
   }
@@ -71,7 +72,7 @@ public class SpacecraftConfiguration {
 
   /**
    **/
-  @ApiModelProperty(required = true, value = "")
+  @ApiModelProperty(required = true)
   public String getName() {
     return name;
   }
@@ -81,7 +82,7 @@ public class SpacecraftConfiguration {
 
   /**
    **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty()
   public Agency getAgency() {
     return agency;
   }
@@ -91,7 +92,7 @@ public class SpacecraftConfiguration {
 
   /**
    **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty()
   public Boolean getInUse() {
     return inUse;
   }
@@ -101,7 +102,7 @@ public class SpacecraftConfiguration {
 
   /**
    **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty()
   public String getCapability() {
     return capability;
   }
@@ -111,7 +112,7 @@ public class SpacecraftConfiguration {
 
   /**
    **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty()
   public Date getMaidenFlight() {
     return maidenFlight;
   }
@@ -121,7 +122,7 @@ public class SpacecraftConfiguration {
 
   /**
    **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty()
   public Boolean getHumanRated() {
     return humanRated;
   }
@@ -133,7 +134,7 @@ public class SpacecraftConfiguration {
    * minimum: -2147483648
    * maximum: 2147483647
    **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty()
   public Integer getCrewCapacity() {
     return crewCapacity;
   }
@@ -143,7 +144,7 @@ public class SpacecraftConfiguration {
 
   /**
    **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty()
   public String getImageUrl() {
     return imageUrl;
   }
@@ -153,7 +154,7 @@ public class SpacecraftConfiguration {
 
   /**
    **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty()
   public String getNationUrl() {
     return nationUrl;
   }
@@ -163,7 +164,7 @@ public class SpacecraftConfiguration {
 
   /**
    **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty()
   public String getWikiLink() {
     return wikiLink;
   }
@@ -173,7 +174,7 @@ public class SpacecraftConfiguration {
 
   /**
    **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty()
   public String getInfoLink() {
     return infoLink;
   }
@@ -191,19 +192,19 @@ public class SpacecraftConfiguration {
       return false;
     }
     SpacecraftConfiguration spacecraftConfiguration = (SpacecraftConfiguration) o;
-    return (this.id == null ? spacecraftConfiguration.id == null : this.id.equals(spacecraftConfiguration.id)) &&
-        (this.url == null ? spacecraftConfiguration.url == null : this.url.equals(spacecraftConfiguration.url)) &&
-        (this.name == null ? spacecraftConfiguration.name == null : this.name.equals(spacecraftConfiguration.name)) &&
-        (this.agency == null ? spacecraftConfiguration.agency == null : this.agency.equals(spacecraftConfiguration.agency)) &&
-        (this.inUse == null ? spacecraftConfiguration.inUse == null : this.inUse.equals(spacecraftConfiguration.inUse)) &&
-        (this.capability == null ? spacecraftConfiguration.capability == null : this.capability.equals(spacecraftConfiguration.capability)) &&
-        (this.maidenFlight == null ? spacecraftConfiguration.maidenFlight == null : this.maidenFlight.equals(spacecraftConfiguration.maidenFlight)) &&
-        (this.humanRated == null ? spacecraftConfiguration.humanRated == null : this.humanRated.equals(spacecraftConfiguration.humanRated)) &&
-        (this.crewCapacity == null ? spacecraftConfiguration.crewCapacity == null : this.crewCapacity.equals(spacecraftConfiguration.crewCapacity)) &&
-        (this.imageUrl == null ? spacecraftConfiguration.imageUrl == null : this.imageUrl.equals(spacecraftConfiguration.imageUrl)) &&
-        (this.nationUrl == null ? spacecraftConfiguration.nationUrl == null : this.nationUrl.equals(spacecraftConfiguration.nationUrl)) &&
-        (this.wikiLink == null ? spacecraftConfiguration.wikiLink == null : this.wikiLink.equals(spacecraftConfiguration.wikiLink)) &&
-        (this.infoLink == null ? spacecraftConfiguration.infoLink == null : this.infoLink.equals(spacecraftConfiguration.infoLink));
+    return (Objects.equals(this.id, spacecraftConfiguration.id)) &&
+        (Objects.equals(this.url, spacecraftConfiguration.url)) &&
+        (Objects.equals(this.name, spacecraftConfiguration.name)) &&
+        (Objects.equals(this.agency, spacecraftConfiguration.agency)) &&
+        (Objects.equals(this.inUse, spacecraftConfiguration.inUse)) &&
+        (Objects.equals(this.capability, spacecraftConfiguration.capability)) &&
+        (Objects.equals(this.maidenFlight, spacecraftConfiguration.maidenFlight)) &&
+        (Objects.equals(this.humanRated, spacecraftConfiguration.humanRated)) &&
+        (Objects.equals(this.crewCapacity, spacecraftConfiguration.crewCapacity)) &&
+        (Objects.equals(this.imageUrl, spacecraftConfiguration.imageUrl)) &&
+        (Objects.equals(this.nationUrl, spacecraftConfiguration.nationUrl)) &&
+        (Objects.equals(this.wikiLink, spacecraftConfiguration.wikiLink)) &&
+        (Objects.equals(this.infoLink, spacecraftConfiguration.infoLink));
   }
 
   @Override
@@ -227,23 +228,22 @@ public class SpacecraftConfiguration {
 
   @Override
   public String toString()  {
-    StringBuilder sb = new StringBuilder();
-    sb.append("class SpacecraftConfiguration {\n");
-    
-    sb.append("  id: ").append(id).append("\n");
-    sb.append("  url: ").append(url).append("\n");
-    sb.append("  name: ").append(name).append("\n");
-    sb.append("  agency: ").append(agency).append("\n");
-    sb.append("  inUse: ").append(inUse).append("\n");
-    sb.append("  capability: ").append(capability).append("\n");
-    sb.append("  maidenFlight: ").append(maidenFlight).append("\n");
-    sb.append("  humanRated: ").append(humanRated).append("\n");
-    sb.append("  crewCapacity: ").append(crewCapacity).append("\n");
-    sb.append("  imageUrl: ").append(imageUrl).append("\n");
-    sb.append("  nationUrl: ").append(nationUrl).append("\n");
-    sb.append("  wikiLink: ").append(wikiLink).append("\n");
-    sb.append("  infoLink: ").append(infoLink).append("\n");
-    sb.append("}\n");
-    return sb.toString();
+
+      String sb = "class SpacecraftConfiguration {\n" +
+              "  id: " + id + "\n" +
+              "  url: " + url + "\n" +
+              "  name: " + name + "\n" +
+              "  agency: " + agency + "\n" +
+              "  inUse: " + inUse + "\n" +
+              "  capability: " + capability + "\n" +
+              "  maidenFlight: " + maidenFlight + "\n" +
+              "  humanRated: " + humanRated + "\n" +
+              "  crewCapacity: " + crewCapacity + "\n" +
+              "  imageUrl: " + imageUrl + "\n" +
+              "  nationUrl: " + nationUrl + "\n" +
+              "  wikiLink: " + wikiLink + "\n" +
+              "  infoLink: " + infoLink + "\n" +
+              "}\n";
+      return sb;
   }
 }

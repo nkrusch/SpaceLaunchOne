@@ -87,18 +87,15 @@ public class MissionsFragment extends HorizontalRecyclerViewFragment
             final int missionTextLen = mission.getDescription().length();
 
             toggleExpandState(holder, missionTextLen);
-            holder.mExpandButton.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    holder.isExpanded = !holder.isExpanded;
-                    toggleExpandState(holder, missionTextLen);
-                    if (getActivity() != null) {
-                        NestedScrollView mScrollView = getActivity().findViewById(R.id.scrollview);
-                        if (mScrollView != null && !holder.isExpanded) {
-                            int[] pos = new int[2];
-                            (holder.mMissionNo).getLocationOnScreen(pos);
-                            mScrollView.scrollTo(0, Math.max(400, pos[1]));
-                        }
+            holder.mExpandButton.setOnClickListener(v -> {
+                holder.isExpanded = !holder.isExpanded;
+                toggleExpandState(holder, missionTextLen);
+                if (getActivity() != null) {
+                    NestedScrollView mScrollView = getActivity().findViewById(R.id.scrollview);
+                    if (mScrollView != null && !holder.isExpanded) {
+                        int[] pos = new int[2];
+                        (holder.mMissionNo).getLocationOnScreen(pos);
+                        mScrollView.scrollTo(0, Math.max(400, pos[1]));
                     }
                 }
             });

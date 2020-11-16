@@ -12,7 +12,6 @@ import java.util.List;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 import androidx.recyclerview.widget.GridLayoutManager;
 import io.github.nkrusch.spacelaunchone.R;
@@ -34,23 +33,15 @@ public class LocationAgencyRecyclerView extends RecyclerViewFragment {
         if (getActivity() != null) {
             LocationDetailsViewModel vm = ViewModelProviders.of(getActivity())
                     .get(LocationDetailsViewModel.class);
-            vm.get().observe(getActivity(), new Observer<local.LocationDetails>() {
-                @Override
-                public void onChanged(local.LocationDetails locationDetails) {
-                    if(locationDetails!=null && locationDetails.getLaunches()!=null)
-                        handleDataChange(locationDetails.getAgencies());
-                }
+            vm.get().observe(getActivity(), locationDetails -> {
+                if(locationDetails!=null && locationDetails.getLaunches()!=null)
+                    handleDataChange(locationDetails.getAgencies());
             });
         }
     }
 
     OnItemListener onItemClick() {
-        return new OnItemListener() {
-            @Override
-            public void onItemClick(int id, String name) {
-                startActivity(DetailsAgencyActivity.getIntent(getContext(), id, name));
-            }
-        };
+        return (id, name) -> startActivity(DetailsAgencyActivity.getIntent(getContext(), id, name));
     }
 
     /**
@@ -63,8 +54,10 @@ public class LocationAgencyRecyclerView extends RecyclerViewFragment {
             mEmptyState.setVisibility(View.GONE);
             mRecyclerView.setVisibility(View.VISIBLE);
             AgencyAdapter adapter = (AgencyAdapter) mRecyclerView.getAdapter();
-            adapter.updateData(entries);
-            adapter.notifyDataSetChanged();
+            if(adapter!=null) {
+                adapter.updateData(entries);
+                adapter.notifyDataSetChanged();
+            }
         } else {
             mRecyclerView.setVisibility(View.GONE);
             mEmptyState.setVisibility(View.VISIBLE);

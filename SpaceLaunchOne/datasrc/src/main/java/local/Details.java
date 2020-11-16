@@ -25,7 +25,7 @@ public class Details {
 
     @NonNull
     @PrimaryKey()
-    private String UUID;
+    private String UUID = "";
     private String net;
     private String hashtag;
     private String changed;
