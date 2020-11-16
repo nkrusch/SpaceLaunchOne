@@ -8,7 +8,8 @@ import utilities.Logger;
 
 public class InitTime extends Logger {
 
-    private final static String INIT_KEY = "application_dataset_initialized";
+    // change this key name when moving from v.2 -> v.3 to fire off init event
+    private final static String INIT_KEY = "app_data_init";
 
     /**
      * Set the last sync timestamp
@@ -28,5 +29,4 @@ public class InitTime extends Logger {
     public static boolean isInitDone(SharedPreferences sharedPref) {
         return getInitTimestamp(sharedPref) > 0;
     }
-
 }

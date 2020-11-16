@@ -38,6 +38,14 @@ public abstract class AppDatabase extends RoomDatabase {
             database.execSQL("DROP TABLE `favorites`");
             database.execSQL("CREATE TABLE `favorites` (`fid` TEXT NOT NULL, PRIMARY KEY(`fid`))");
 
+            // Delete old local data on this migration because some API ids have changed
+            database.execSQL("DELETE FROM `agencies`");
+            database.execSQL("DELETE FROM `locations`");
+            database.execSQL("DELETE FROM `pads`");
+            database.execSQL("DELETE FROM `rockets`");
+            database.execSQL("DELETE FROM `locationagency`");
+            database.execSQL("DELETE FROM `agencymission`");
+
             dropIndexes(database);
 
             database.execSQL("CREATE INDEX `index_agencymission_aid` ON `agencymission` (`aid`)");          // 1
@@ -120,7 +128,7 @@ public abstract class AppDatabase extends RoomDatabase {
                     Logger.Log("Dropping index: " + indexNames[i] + "...");
                     try {
                         db.execSQL("DROP INDEX " + indexNames[i]);
-                        Logger.Log( "...index dropped!");
+                        Logger.Log("...index dropped!");
                     } catch (Exception e) {
                         Logger.displayError(e);
                     }
