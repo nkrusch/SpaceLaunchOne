@@ -22,7 +22,7 @@ This application gets its data from [Launch Library API](https://ll.thespacedevs
 
 **Privacy Policy**: read it [here &raquo;](https://github.com/nkrusch/SpaceLaunchOne/blob/master/docs/privacy_policy.md)
 
-**Want early releases?** join open beta <a href="https://play.google.com/apps/testing/io.github.nkrusch.spacelaunchone">here ↗</a> 
+**Want early releases?** join open beta [here &raquo;](https://play.google.com/apps/testing/io.github.nkrusch.spacelaunchone)
 
 ## App Features
 
