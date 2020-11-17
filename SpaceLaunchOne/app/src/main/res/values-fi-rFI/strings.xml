@@ -96,7 +96,6 @@
     <string name="tab_event">Yhteenveto</string>
     <string name="tab_map">Kartta</string>
     <string name="unknown">Tuntematon</string>
-    <string name="external_link">Ulkoinen linkki</string>
     <string name="none">-</string>
     <string name="filter_by_rocket">Raketit</string>
     <string name="filter_by_agency">Agentuurit</string>
@@ -114,7 +113,7 @@
     <string name="launch_service_provider">Laukaisualustan Agentuuri</string>
     <string name="rocket">Raketti</string>
     <string name="videos">Videot</string>
-    <string name="watch_this_launch">Katso Videolta</string>
+    <string name="watch_this_launch">Katso videolta</string>
     <string name="check_uncheck_all">Valitse kaikki / Poista valinnat</string>
     <string name="pref_immediate_sync">"Synkronisoi data nyt "</string>
     <string name="launch_site">Laukaisualusta</string>
@@ -152,4 +151,10 @@
     <string name="launch_location">Paikka</string>
     <string name="mission">Missio</string>
     <string name="launch_pad">Alusta</string>
+    <string name="checkbox_for">"Valitse "</string>
+    <string name="icon_for">"Kuvake "</string>
+    <string name="last_sync_never_occurred">-</string>
+    <string name="play_video">"Toista video "</string>
+    <string name="space_background">Taustakuva</string>
+    <string name="title_space_agencies">Agentuurit</string>
 </resources>

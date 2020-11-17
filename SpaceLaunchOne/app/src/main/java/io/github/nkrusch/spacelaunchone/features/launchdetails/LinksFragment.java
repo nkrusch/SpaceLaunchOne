@@ -1,11 +1,13 @@
 package io.github.nkrusch.spacelaunchone.features.launchdetails;
 
 import android.content.Intent;
+import android.content.res.Resources;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -145,7 +147,12 @@ public class LinksFragment extends HorizontalRecyclerViewFragment
         @Override
         public void onBindViewHolder(@NonNull final ExternalLinksAdapter.ItemViewHolder holder, int position) {
             LinkItem item = dataSource.get(position);
+            Resources res = holder.mTitle.getResources();
             holder.mTitle.setText(item.getLabel());
+            holder.mTitle.setContentDescription(item.getLabel());
+            holder.mIcon.setContentDescription(getString(R.string.icon_for) + item.getLabel());
+
+
             if (columnCount > 1)
                 holder.mLayout.getLayoutParams().width = getResources()
                         .getDimensionPixelSize(R.dimen.links_column_width);
@@ -159,11 +166,13 @@ public class LinksFragment extends HorizontalRecyclerViewFragment
         public class ItemViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
             private final TextView mTitle;
             private final LinearLayout mLayout;
+            private final ImageView mIcon;
 
             ItemViewHolder(View v) {
                 super(v);
                 mLayout = v.findViewById(R.id.link_layout);
                 mTitle = v.findViewById(R.id.link_text);
+                mIcon = v.findViewById(R.id.link_icon);
                 v.setOnClickListener(this);
             }
 

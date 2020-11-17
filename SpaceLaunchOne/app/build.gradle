@@ -92,7 +92,6 @@ dependencies {
 
     // project modules
     implementation project(':datasrc')
-    implementation project(':models')
 }
 
 task javadoc(type: Javadoc) {

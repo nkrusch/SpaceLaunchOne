@@ -1,10 +1,9 @@
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/layout_root"
     xmlns:tools="http://schemas.android.com/tools"
-    tools:ignore="MissingConstraints"
-    style="@style/timer_container">
+    android:id="@+id/layout_root"
+    style="@style/timer_container"
+    tools:ignore="MissingConstraints">
 
     <TextView
         android:id="@+id/days"
@@ -19,6 +18,7 @@
     <TextView
         android:id="@+id/hours"
         style="@style/timer_number"
+        android:contentDescription="@string/hour"
         app:layout_constraintEnd_toStartOf="@id/middle_div" />
 
     <TextView
@@ -35,6 +35,7 @@
     <TextView
         android:id="@+id/right_div"
         style="@style/timer_divider"
+        android:contentDescription="@string/min"
         app:layout_constraintStart_toEndOf="@id/mins" />
 
     <TextView
@@ -49,6 +50,7 @@
     <TextView
         android:id="@+id/day_text"
         style="@style/timer_text"
+        android:contentDescription="@string/day"
         android:text="@string/day"
         app:layout_constraintEnd_toEndOf="@id/days"
         app:layout_constraintStart_toStartOf="@id/days" />
@@ -56,6 +58,7 @@
     <TextView
         android:id="@+id/hour_text"
         style="@style/timer_text"
+        android:contentDescription="@string/hour"
         android:text="@string/hour"
         app:layout_constraintEnd_toEndOf="@id/hours"
         app:layout_constraintStart_toStartOf="@id/hours" />
@@ -63,6 +66,7 @@
     <TextView
         android:id="@+id/min_text"
         style="@style/timer_text"
+        android:contentDescription="@string/min"
         android:text="@string/min"
         app:layout_constraintEnd_toEndOf="@id/mins"
         app:layout_constraintStart_toStartOf="@id/mins" />
@@ -70,6 +74,7 @@
     <TextView
         android:id="@+id/sec_text"
         style="@style/timer_text"
+        android:contentDescription="@string/sec"
         android:text="@string/sec"
         app:layout_constraintEnd_toEndOf="@id/secs"
         app:layout_constraintStart_toStartOf="@id/secs" />
@@ -82,6 +87,7 @@
 
     <TextView
         android:id="@+id/blastoff"
-        style="@style/timer_blastoff" />
+        style="@style/timer_blastoff"
+        android:contentDescription="@string/blastoff" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

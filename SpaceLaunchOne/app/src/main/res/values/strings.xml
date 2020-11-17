@@ -108,7 +108,7 @@
     <string name="version">Version Number</string>
     <string name="search">Search…</string>
     <string name="dataset_last_sync" translatable="false">last_sync_timestamp</string>
-    <string name="last_sync_never_occurred" translatable="false">has not run</string>
+    <string name="last_sync_never_occurred">has not run</string>
     <string name="last_sync_timestamp">Last synced %s</string>
     <string name="widget_loading">Loading</string>
     <string name="widget_image">widget image</string>
@@ -120,7 +120,6 @@
     <string name="tab_event">Details</string>
     <string name="tab_map">Launch Site</string>
     <string name="unknown">unknown</string>
-    <string name="external_link">External link</string>
     <string name="bullet" translatable="false">●</string>
     <string name="none">None</string>
     <string name="filter_by_rocket">Rockets</string>
@@ -136,6 +135,7 @@
     </string>
     <string name="Help">Help</string>
     <string name="space_themed_background">space themed background</string>
+    <string name="space_background">space background</string>
     <string name="launch_status_icon">snapshot icon</string>
     <string name="launch_thumbnail">launch thumbnail</string>
     <string name="image_background_gradient">image background gradient</string>
@@ -161,11 +161,11 @@
     <string name="app_notifications">App Notifications</string>
     <string name="no_matches">No matches</string>
     <string name="launches">launches</string>
-    <string name="location">Launch Site</string>
+    <string name="location">Location</string>
     <string name="lsp">LSP</string>
     <string name="favorites_is_empty">No favorite launches\n\nWhen you mark launches as favorites,\nthey will appear here.</string>
     <string name="favorites">Favorites</string>
-    <string name="floating_action_button">Floating action button</string>
+    <string name="floating_action_button">set as favorite</string>
     <string name="agency_empty_state">Loading agencies…</string>
     <string name="location_empty_state">Loading locations…</string>
     <string name="pads_empty_state">No known pads at this location</string>
@@ -185,4 +185,8 @@
     <string name="launch_location">launch location</string>
     <string name="mission">mission</string>
     <string name="launch_pad">launch pad</string>
+    <string name="checkbox_for">"checkbox for "</string>
+    <string name="icon_for">"Icon for "</string>
+    <string name="play_video">"play video "</string>
+    <string name="title_space_agencies">Space Agencies</string>
 </resources>

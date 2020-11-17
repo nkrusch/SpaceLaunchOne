@@ -67,14 +67,14 @@ This application consists of three libraries. Each library is futher divided int
 Library/Package | Purpose
 --- | ---
 └ **app** | Application UI layer
-└─── app | UI related code accessible to all activities
-└─── features | Specific activities and fragments
-└ **datasrc** | Services and methods for accessing local and external data
-└─── api | External network methods
-└─── local | Local database methods
-└─── service | Services for initializing and synchronizing data over time
-└─── utilities | Data utitlity methods
-└─── viewmodels | ViewModels provide assess to data to the UI layer
+└─── app | app-level UI code and base classes
+└─── features | Activities and fragments
+└ **datasrc** | Application data
+└─── api | External network data
+└─── local | Local data (Room DB)
+└─── service | Services for initializing and synchronizing data
+└─── utilities | Utility methods
+└─── viewmodels | ViewModels provide access to data to UI layer
 └ **models** | API models
 └─── apimodels | Launch library API models
 

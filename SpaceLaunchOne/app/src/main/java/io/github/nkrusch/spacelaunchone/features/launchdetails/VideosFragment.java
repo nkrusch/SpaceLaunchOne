@@ -105,6 +105,7 @@ public class VideosFragment extends HorizontalRecyclerViewFragment<VideosFragmen
                 String YOUTUBE_IMG = "https://i.ytimg.com/vi/{:id}/sddefault.jpg";
                 String imageUrl = YOUTUBE_IMG.replace("{:id}", videoId);
                 AppImage.LoadImageFromURL(imageUrl, holder.mVideoImage);
+                holder.mVideoImage.setContentDescription(getString(R.string.play_video) + videoId);
             }
         }
 
@@ -145,7 +146,7 @@ public class VideosFragment extends HorizontalRecyclerViewFragment<VideosFragmen
                         }
                     }
                     Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(url));
-                  startActivity(intent);
+                    startActivity(intent);
                 } catch (Exception e) {
                     e.printStackTrace();
                 }

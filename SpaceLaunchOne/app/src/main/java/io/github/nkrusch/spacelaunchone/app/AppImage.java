@@ -137,7 +137,7 @@ public class AppImage {
                 .into(target, new Callback() {
                     @Override
                     public void onSuccess() {
-                        ((View) visibleTarget).setVisibility(VISIBLE);
+                        visibleTarget.setVisibility(VISIBLE);
                     }
 
                     @Override

@@ -8,7 +8,7 @@
     <ImageView
         android:id="@+id/videos_icon"
         style="@style/video_header_image"
-        android:contentDescription="@string/videos" />
+        tools:ignore="ContentDescription" />
 
     <TextView
         android:id="@+id/video_header"

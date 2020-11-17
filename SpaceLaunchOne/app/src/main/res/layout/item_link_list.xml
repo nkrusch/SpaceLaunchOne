@@ -1,14 +1,16 @@
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/link_layout"
-    style="@style/link_item">
+    style="@style/link_item"
+    tools:ignore="UseCompoundDrawables">
 
     <ImageView
+        android:id="@+id/link_icon"
         style="@style/links_icon"
-        android:contentDescription="@string/external_link" />
+        tools:ignore="ContentDescription" />
 
     <TextView
-        android:contentDescription="@string/external_link"
         android:id="@+id/link_text"
         style="@style/links_text" />
 

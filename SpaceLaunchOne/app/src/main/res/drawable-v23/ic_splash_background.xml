@@ -4,8 +4,8 @@
     <item android:drawable="@android:color/black" />
 
     <item
-        android:width="256dp"
-        android:height="256dp"
+        android:width="192dp"
+        android:height="192dp"
         android:gravity="center"
         android:drawable="@drawable/ic_splash_icon" />
 

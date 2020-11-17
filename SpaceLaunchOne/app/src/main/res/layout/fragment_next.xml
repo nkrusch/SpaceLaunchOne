@@ -8,7 +8,7 @@
     <ImageView
         android:id="@+id/image"
         style="@style/next_launch_image"
-        android:contentDescription="@string/space_themed_background" />
+        android:contentDescription="@string/space_background" />
 
     <ImageView
         style="@style/next_launch_image"

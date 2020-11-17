@@ -46,7 +46,8 @@ public class FilterAdapter<T extends IFilter> extends RecyclerView.Adapter<Filte
         IFilter item = dataSource.get(position);
         holder.mName.setText(item.getName());
         holder.mCheck.setChecked(!item.isFiltered());
-        holder.mCheck.setContentDescription(item.getName());
+        holder.mCheck.setContentDescription(holder.mCheck.getResources()
+                .getString(R.string.checkbox_for) + item.getName());
     }
 
     @Override
