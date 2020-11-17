@@ -8,39 +8,44 @@
     <TextView
         android:id="@+id/days"
         style="@style/timer_number"
+        android:contentDescription="@string/day_value"
         app:layout_constraintEnd_toStartOf="@id/left_div" />
 
     <TextView
         android:id="@+id/left_div"
         style="@style/timer_divider"
+        android:contentDescription="@string/day_hour_divider"
         app:layout_constraintEnd_toStartOf="@id/hours" />
 
     <TextView
         android:id="@+id/hours"
         style="@style/timer_number"
-        android:contentDescription="@string/hour"
+        android:contentDescription="@string/hour_value"
         app:layout_constraintEnd_toStartOf="@id/middle_div" />
 
     <TextView
         android:id="@+id/middle_div"
         style="@style/timer_divider"
+        android:contentDescription="@string/hour_minute_divider"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
         android:id="@+id/mins"
         style="@style/timer_number"
+        android:contentDescription="@string/minute_value"
         app:layout_constraintStart_toEndOf="@id/middle_div" />
 
     <TextView
         android:id="@+id/right_div"
         style="@style/timer_divider"
-        android:contentDescription="@string/min"
+        android:contentDescription="@string/minute_second_divider"
         app:layout_constraintStart_toEndOf="@id/mins" />
 
     <TextView
         android:id="@+id/secs"
         style="@style/timer_number"
+        android:contentDescription="@string/second_value"
         app:layout_constraintStart_toEndOf="@id/right_div" />
 
     <View

@@ -189,4 +189,11 @@
     <string name="icon_for">"Icon for "</string>
     <string name="play_video">"play video "</string>
     <string name="title_space_agencies">Space Agencies</string>
+    <string name="second_value">second value</string>
+    <string name="minute_value">minute value</string>
+    <string name="hour_value">hour value</string>
+    <string name="day_value">day value</string>
+    <string name="day_hour_divider">day hour divider</string>
+    <string name="hour_minute_divider">hour minute divider</string>
+    <string name="minute_second_divider">minute second divider</string>
 </resources>
