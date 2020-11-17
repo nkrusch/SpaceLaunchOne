@@ -14,7 +14,7 @@
         style="@style/snapshot_guideline_horz" />
 
     <ImageView
-        android:contentDescription="@string/launch_status_icon"
+        android:contentDescription="@string/status_summary"
         android:id="@+id/event_status"
         style="@style/event_snapshot_image"
         app:layout_constraintStart_toStartOf="parent"
@@ -37,7 +37,7 @@
 
 
     <ImageView
-     android:contentDescription="@string/launch_status_icon"
+     android:contentDescription="@string/summary_rocket"
         android:id="@+id/event_rocket"
         style="@style/event_snapshot_image"
         app:layout_constraintStart_toStartOf="@+id/center_guideline_vert"
@@ -60,7 +60,7 @@
 
 
     <ImageView
-        android:contentDescription="@string/launch_status_icon"
+        android:contentDescription="@string/summary_agency"
         android:id="@+id/event_agency"
         style="@style/event_snapshot_image"
         app:layout_constraintStart_toStartOf="parent"
@@ -83,7 +83,7 @@
 
 
     <ImageView
-        android:contentDescription="@string/launch_status_icon"
+        android:contentDescription="@string/summary_launch_site"
         android:id="@+id/event_country"
         style="@style/event_snapshot_image"
         app:layout_constraintStart_toStartOf="@id/center_guideline_vert"

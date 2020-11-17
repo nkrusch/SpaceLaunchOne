@@ -106,16 +106,19 @@ public class VideosFragment extends HorizontalRecyclerViewFragment<VideosFragmen
                 String imageUrl = YOUTUBE_IMG.replace("{:id}", videoId);
                 AppImage.LoadImageFromURL(imageUrl, holder.mVideoImage);
                 holder.mVideoImage.setContentDescription(getString(R.string.play_video) + videoId);
+                holder.mVideoIcon.setContentDescription(getString(R.string.start_video)+ videoId);
             }
         }
 
         public class ItemViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
             private final ImageView mVideoImage;
+            private final ImageView mVideoIcon;
 
             ItemViewHolder(View v) {
                 super(v);
                 mVideoImage = v.findViewById(R.id.video_image);
+                mVideoIcon = v.findViewById(R.id.video_icon);
                 mVideoImage.setOnClickListener(this);
             }
 

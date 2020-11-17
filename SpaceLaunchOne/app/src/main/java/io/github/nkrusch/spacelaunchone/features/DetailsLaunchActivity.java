@@ -88,6 +88,9 @@ public class DetailsLaunchActivity extends TabbedActivity {
      */
     @Override
     public String getTitleText() {
+        if (title != null && title.indexOf("|") > 0) {
+            return title.substring(title.indexOf("|") + 1).trim();
+        }
         return title;
     }
 

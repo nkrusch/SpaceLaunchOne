@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <lint>
+    <issue id="IconColors">
+        <ignore path="src/main/res/drawable-hdpi/ic_stat_onesignal_default.webp" />
+    </issue>
     <issue id="IconLocation">
         <ignore path="src/main/res/drawable/flag_ind.png" />
         <ignore path="src/main/res/drawable/flag_jpn.png" />

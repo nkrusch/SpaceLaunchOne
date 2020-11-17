@@ -80,7 +80,8 @@ public class ListAdapter<T extends Launch> extends
         holder.mSubText2.setText(Utilities.getLocationShortName(item.getLocationName()));
         holder.mNumber.setText(String.format(Locale.getDefault(), "%02d", position + 1));
         holder.mStatus.setText(context.getString(R.string.bullet));
-        holder.mStatus.setTextColor(Color.parseColor(item.getStatusColor()));
+        holder.mStatus.setTextColor(Color.parseColor(Utilities.getStatusColor(
+                holder.mStatus.getResources(), item.getStatus())));
 
         holder.mImageView.setVisibility(View.VISIBLE);
         holder.mImageView.setImageResource(R.drawable.ic_rocket_background);

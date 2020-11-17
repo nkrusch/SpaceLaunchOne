@@ -31,7 +31,8 @@
     <color name="bullet_active">@color/colorAccent</color>
     <color name="icon_color">@android:color/black</color>
     <color name="fabTint">@android:color/white</color>
-    <color name="favoriteFabBgTint">#FF6F00</color>
+    <color name="favoriteFabBgTint">@color/colorAccent</color>
     <color name="favoriteFabBgTintInactive">#263238</color>
+    <color name="statusGreen">#07A548</color>
 
 </resources>

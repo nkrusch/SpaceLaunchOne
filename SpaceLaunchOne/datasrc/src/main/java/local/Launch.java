@@ -96,27 +96,6 @@ public class Launch implements Comparable<Launch> {
         }
     }
 
-    @Ignore
-    public String getStatusColor() {
-        switch (status) {
-            case 1:
-                return "#55D400";  // go
-            case 2:
-                return "#ff0000"; // no go
-            case 3:
-                return "#4CAF50"; // success
-            case 4:
-                return "#FFFF0000"; // fail
-            case 5:
-                return "#CD4EED"; // hold
-            case 6:
-                return "#42bcf4"; // in flight
-            case 7:
-                return "#FFA726"; // partial fail
-            default:
-                return "#00FFFFFF"; // unknown
-        }
-    }
 
     private static String locationName(Pad pad) {
         if (pad == null) return null;

@@ -13,8 +13,8 @@
             android:id="@+id/thumbnail"
             style="@style/list_image"
             android:scaleType="fitCenter"
-            android:contentDescription="@string/space_agency"
-            android:background="@color/transparent" />
+            android:background="@color/transparent"
+            tools:ignore="ContentDescription" />
     </androidx.cardview.widget.CardView>
 
     <TextView

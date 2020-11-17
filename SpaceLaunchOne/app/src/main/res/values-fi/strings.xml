@@ -104,10 +104,7 @@
     <string name="filter_instructions">Suodattimien avulla voit rajoitaa appin listaamia laukaisuja.\n\nKun poistat valinnan, kaikki laukaisut jotka sisältävät kyseisen ehdon piilotetaan.\n\nKun mitään suodattimia ei ole valittuna, appi piilottaa kaikki laukaisut.\n\nESIMERKKEJÄ\n\n1.) Jos haluat poissulkea tietyn raketin laukaisut, etsi sitä vastaava valitaruutu ja poista kyseisen raketin valinta.\n\n2.) Jos haluat nähdä laukaisuja vain tietystä paikasta, poista ensin valinta kaikista paikoista, sitten valitse vain haluamasi paikka.</string>
     <string name="Help">Apua</string>
     <string name="space_themed_background">avaruus teemainen tausta</string>
-    <string name="launch_status_icon">tilannekuvan kuvake</string>
     <string name="launch_thumbnail">laukaisun pienoiskuva</string>
-    <string name="image_background_gradient">kuvan tausta</string>
-    <string name="video_play_icon">videon toisto kuvake</string>
     <string name="event_name">Laukaisun Nimi</string>
     <string name="launch_date">Laukaisun Ajankohta</string>
     <string name="launch_service_provider">Laukaisualustan Agentuuri</string>
@@ -146,7 +143,6 @@
     <string name="locations">Paikat</string>
     <string name="scheduled">Laukaisut</string>
     <string name="no_missions">Ei missioita</string>
-    <string name="space_agency">Agentuuri</string>
     <string name="space_launch">Laukaisu</string>
     <string name="launch_location">Paikka</string>
     <string name="mission">Missio</string>
@@ -164,4 +160,9 @@
     <string name="day_hour_divider">day hour divider</string>
     <string name="hour_minute_divider">hour minute divider</string>
     <string name="minute_second_divider">minute second divider</string>
+    <string name="status_summary">status summary</string>
+    <string name="summary_rocket">summary rocket</string>
+    <string name="summary_agency">summary agency</string>
+    <string name="summary_launch_site">summary launch site</string>
+    <string name="start_video">"start video "</string>
 </resources>

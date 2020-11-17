@@ -105,7 +105,8 @@ public class NextLaunchFragment extends Fragment {
             mDate.setText(Utilities.fullTimeLabel(launch.getLaunchDateUTC()));
             mLayout.setOnClickListener(onClickListener(launch.getLuuid(), launch.getName()));
             mStatus.setText(getString(R.string.bullet));
-            mStatus.setTextColor(Color.parseColor(launch.getStatusColor()));
+            mStatus.setTextColor(Color.parseColor(Utilities.getStatusColor(
+                    mStatus.getResources(), launch.getStatus())));
             if (!launch.getLuuid().equals(launchId)) {
                 addCountdown(launch.getLaunchDateUTC());
                 launchId = launch.getLuuid();

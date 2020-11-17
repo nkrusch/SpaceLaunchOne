@@ -22,6 +22,7 @@
 # hide the original source file name.
 #-renamesourcefileattribute SourceFile
 
+#noinspection ShrinkerUnresolvedReference
 -keep public class io.github.nkrusch.spacelaunchone.features.** {
   public protected *;
 }

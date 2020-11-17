@@ -100,7 +100,7 @@
     <string name="timer_divider" translatable="false">:</string>
     <string name="blastoff">blastoff</string>
     <string name="past">past event</string>
-    <string name="pref_title_sync_frequency">Automatic data synchronization</string>
+    <string name="pref_title_sync_frequency">Update application data</string>
     <string name="timer">timer</string>
     <string name="pref_sync_started">Synchronizing…</string>
     <string name="sync_frequency">Sync frequency</string>
@@ -109,7 +109,7 @@
     <string name="search">Search…</string>
     <string name="dataset_last_sync" translatable="false">last_sync_timestamp</string>
     <string name="last_sync_never_occurred">has not run</string>
-    <string name="last_sync_timestamp">Last synced %s</string>
+    <string name="last_sync_timestamp">Last updated %s</string>
     <string name="widget_loading">Loading</string>
     <string name="widget_image">widget image</string>
     <string name="widget_unavailable">No confirmed launches</string>
@@ -126,20 +126,17 @@
     <string name="filter_by_agency">Agencies</string>
     <string name="filter_by_location">Locations</string>
     <string name="filter_instructions_title">How filters work</string>
-    <string name="filter_instructions">Filters allow you to limit the list of launches displayed in the scheduled launches list.
-        \n\nUncheck filter property and you will exclude any launches that match that property from displaying.
+    <string name="filter_instructions">Filters can be used to prevent launches from displaying in the launches list.
+        \n\nUncheck an option to exclude any launches that match that property from displaying.
         \n\nHaving all options unchecked means no launches will be displayed.
         \n\nEXAMPLES
-        \n\n1.) to exclude launches by specific rocket, find rocket by name and uncheck box next to it
-        \n\n2.) to view launches from specific location only, first uncheck all locations, then check the desired location
+        \n\n1. to exclude launches by specific rocket, find rocket by name and uncheck box next to it
+        \n\n2. to view launches from specific location only, first uncheck all locations then check the desired location
     </string>
     <string name="Help">Help</string>
     <string name="space_themed_background">space themed background</string>
     <string name="space_background">space background</string>
-    <string name="launch_status_icon">snapshot icon</string>
     <string name="launch_thumbnail">launch thumbnail</string>
-    <string name="image_background_gradient">image background gradient</string>
-    <string name="video_play_icon">video play icon</string>
     <string name="event_name">Launch Name</string>
     <string name="launch_date">Launch Date and Time</string>
     <string name="launch_service_provider">Launch Service Provider</string>
@@ -161,7 +158,7 @@
     <string name="app_notifications">App Notifications</string>
     <string name="no_matches">No matches</string>
     <string name="launches">launches</string>
-    <string name="location">Location</string>
+    <string name="location">Launch Site</string>
     <string name="lsp">LSP</string>
     <string name="favorites_is_empty">No favorite launches\n\nWhen you mark launches as favorites,\nthey will appear here.</string>
     <string name="favorites">Favorites</string>
@@ -180,14 +177,13 @@
     <string name="agencies">Agencies</string>
     <string name="locations">Locations</string>
     <string name="no_missions">No missions</string>
-    <string name="space_agency">space agency</string>
     <string name="space_launch">space launch</string>
     <string name="launch_location">launch location</string>
     <string name="mission">mission</string>
     <string name="launch_pad">launch pad</string>
-    <string name="checkbox_for">"checkbox for "</string>
-    <string name="icon_for">"Icon for "</string>
-    <string name="play_video">"play video "</string>
+    <string name="checkbox_for">choose </string>
+    <string name="icon_for">Icon for </string>
+    <string name="play_video">play video </string>
     <string name="title_space_agencies">Space Agencies</string>
     <string name="second_value">second value</string>
     <string name="minute_value">minute value</string>
@@ -196,4 +192,9 @@
     <string name="day_hour_divider">day hour divider</string>
     <string name="hour_minute_divider">hour minute divider</string>
     <string name="minute_second_divider">minute second divider</string>
+    <string name="status_summary">status summary</string>
+    <string name="summary_rocket">summary rocket</string>
+    <string name="summary_agency">summary agency</string>
+    <string name="summary_launch_site">summary launch site</string>
+    <string name="start_video">start video </string>
 </resources>
