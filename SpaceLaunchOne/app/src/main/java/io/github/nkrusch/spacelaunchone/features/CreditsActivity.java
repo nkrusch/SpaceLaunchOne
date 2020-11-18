@@ -76,16 +76,16 @@ public class CreditsActivity extends AppCompatActivity {
         TypedArray credits = getResources().obtainTypedArray(R.array.credits_array);
         final String separator = getString(R.string.credits_array_separator);
 
-        List<Pair<String, String>> data = new LinkedList();
+        List<Pair<String, String>> data = new LinkedList<>();
         for (int n = 0; n < credits.length(); n++) {
             String[] pairs = (String.format("%s", credits.getString(n))).split(separator, 2);
-            data.add(new Pair(pairs[0].trim(), pairs[1].trim()));
+            data.add(new Pair<>(pairs[0].trim(), pairs[1].trim()));
         }
         String version = tryGetVersion();
-        if (version != null) data.add(new Pair(getString(R.string.version), version));
+        if (version != null) data.add(new Pair<>(getString(R.string.version), version));
         credits.recycle();
 
-        RecyclerView.Adapter mAdapter = new CreditsAdapter(data);
+        CreditsAdapter mAdapter = new CreditsAdapter(data);
         LinearLayoutManager lm = new LinearLayoutManager(this);
         DividerItemDecoration dividerItemDecoration = new DividerItemDecoration(this, lm.getOrientation());
         mRecyclerView = findViewById(R.id.recyclerView);
@@ -141,7 +141,7 @@ public class CreditsActivity extends AppCompatActivity {
             holder.value.setText(Html.fromHtml(entry.second));
             if (entry.second != null && entry.second.contains("href")) {
                 holder.value.setMovementMethod(LinkMovementMethod.getInstance());
-                holder.value.setPadding(0, 20, 0, 20);
+                holder.value.setPadding(0, 24, 0, 24);
             }
         }
 

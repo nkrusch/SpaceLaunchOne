@@ -1,5 +1,7 @@
 package api;
 
+import android.annotation.SuppressLint;
+
 import java.io.IOException;
 import java.util.LinkedList;
 import java.util.List;
@@ -23,8 +25,6 @@ import utilities.Logger;
 
 public class LaunchLibrary extends Logger {
 
-    private static final String RESOURCE_BASE = BuildConfig.ApiBasepath;
-
     private interface methodRunner<T> {
         T run(ILaunchLibrary service) throws IOException;
     }
@@ -34,12 +34,16 @@ public class LaunchLibrary extends Logger {
             // Create a trust manager that does not validate certificate chains
             final TrustManager[] trustAllCerts = new TrustManager[]{
                     new X509TrustManager() {
+                        @SuppressLint("TrustAllX509TrustManager")
                         @Override
-                        public void checkClientTrusted(java.security.cert.X509Certificate[] chain, String authType) {
+                        public void checkClientTrusted(
+                                java.security.cert.X509Certificate[] chain, String authType) {
                         }
 
+                        @SuppressLint("TrustAllX509TrustManager")
                         @Override
-                        public void checkServerTrusted(java.security.cert.X509Certificate[] chain, String authType) {
+                        public void checkServerTrusted(
+                                java.security.cert.X509Certificate[] chain, String authType) {
                         }
 
                         @Override
@@ -71,16 +75,19 @@ public class LaunchLibrary extends Logger {
      * @param exec     - method to execute
      * @param callback - handler to process result
      */
-    private static void makeRequest(@NonNull final methodRunner exec, @NonNull final OnLoadCallback callback) {
+    @SuppressWarnings("unchecked")
+    private static <T> void makeRequest(
+            @NonNull final methodRunner<?> exec,
+            @NonNull final OnLoadCallback<T> callback) {
         AppExecutors.getInstance().networkIO().execute(() -> {
             ILaunchLibrary request = new Retrofit.Builder()
-                    .baseUrl(RESOURCE_BASE)
+                    .baseUrl(BuildConfig.ApiBasepath)
                     .client(getUnsafeOkHttpClient().build())
                     .addConverterFactory(GsonConverterFactory.create())
                     .build()
                     .create(ILaunchLibrary.class);
             try {
-                callback.call(exec.run(request));
+                callback.call((T) exec.run(request));
             } catch (Exception e) {
                 displayError(e);
                 callback.onError(e);
@@ -98,14 +105,7 @@ public class LaunchLibrary extends Logger {
         Response<LaunchListDetailed> resp = null;
         try {
             resp = request.execute();
-        } catch (IOException e) {
-            displayError(e);
-        }
-        try {
-            Log("URL:" + request.request().url().toString() +
-                    "\nSUCCESS: " + (resp != null && resp.isSuccessful()) +
-                    "\nMESSAGE: " + (resp != null && resp.errorBody() != null ?
-                    resp.errorBody().string() : ""));
+            requestLog(request, resp);
         } catch (IOException e) {
             displayError(e);
         }
@@ -125,7 +125,7 @@ public class LaunchLibrary extends Logger {
      * @param count    - number of launches to fetch when initializing
      * @param callback - handler to process result
      */
-    public static void initialLaunches(final int count, @NonNull final OnLoadCallback callback) {
+    public static void initialLaunches(final int count, @NonNull final OnLoadCallback<LaunchListDetailed> callback) {
         makeRequest((methodRunner<LaunchListDetailed>) service -> {
             LaunchListDetailed result = new LaunchListDetailed();
             result.setResults(new LinkedList<>());
@@ -141,13 +141,11 @@ public class LaunchLibrary extends Logger {
      * @param id       - launch id
      * @param callback - handler to process result
      */
-    public static void getSingleLaunch(final String id, @NonNull final OnLoadCallback callback) {
+    public static void getSingleLaunch(final String id, @NonNull final OnLoadCallback<LaunchDetailed> callback) {
         makeRequest((methodRunner<LaunchDetailed>) service -> {
             Call<LaunchDetailed> request = service.launch(id);
             Response<LaunchDetailed> resp = request.execute();
-            Log("URL: " + request.request().url().toString() +
-                    "\nSUCCESS: " + resp.isSuccessful() +
-                    "\nERROR: " + (resp.errorBody() != null ? resp.errorBody().string() : "None"));
+            requestLog(request, resp);
             return resp.body();
         }, callback);
     }
@@ -158,15 +156,13 @@ public class LaunchLibrary extends Logger {
      * @param offset   - offset from start of results
      * @param callback - handler to process result
      */
-    public static void allLaunches(final int offset, @NonNull final OnLoadCallback callback) {
+    public static void allLaunches(final int offset, @NonNull final
+    OnLoadCallback<LaunchListDetailed> callback) {
         makeRequest((methodRunner<LaunchListDetailed>) service -> {
             Call<LaunchListDetailed> request = service.all_launches(offset);
             Response<LaunchListDetailed> resp = service.all_launches(offset).execute();
-            Log("URL: " + request.request().url().toString() +
-                    "\nSUCCESS: " + resp.isSuccessful() +
-                    "\nERROR: " + (resp.errorBody() != null ? resp.errorBody().string() : "None"));
+            requestLog(request, resp);
             return resp.body();
         }, callback);
     }
-
 }

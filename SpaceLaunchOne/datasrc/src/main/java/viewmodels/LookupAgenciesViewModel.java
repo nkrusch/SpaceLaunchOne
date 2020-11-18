@@ -9,6 +9,7 @@ import androidx.lifecycle.LiveData;
 import local.AgencyFilter;
 import local.AgencyLookup;
 import local.AppDatabase;
+import local.IFilter;
 import utilities.AppExecutors;
 
 public class LookupAgenciesViewModel extends AndroidViewModel implements IFilterViewModel<AgencyLookup> {
@@ -26,7 +27,7 @@ public class LookupAgenciesViewModel extends AndroidViewModel implements IFilter
         return agencies;
     }
 
-    public void toggle(final AgencyLookup a) {
+    public void toggle(final IFilter a) {
         AppExecutors.getInstance().DiskIO().execute(() -> {
             AgencyFilter af = new AgencyFilter(a.getId());
             if (a.isFiltered()) db.dao().deleteFilters(af);

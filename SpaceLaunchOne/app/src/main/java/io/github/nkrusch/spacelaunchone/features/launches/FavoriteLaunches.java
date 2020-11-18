@@ -18,7 +18,7 @@ import viewmodels.FavoriteLaunchesViewModel;
 public class FavoriteLaunches extends LaunchRecyclerView<FavoriteLaunchesViewModel> {
 
     @Override
-    Class getType() {
+    Class<FavoriteLaunchesViewModel> getType() {
         return FavoriteLaunchesViewModel.class;
     }
 

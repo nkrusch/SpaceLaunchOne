@@ -57,7 +57,7 @@ abstract class DetailsBaseFragment extends Fragment {
  * @param <S> adapter data type
  * @param <T> adapter type
  */
-abstract class HorizontalRecyclerViewFragment<T extends RecyclerView.Adapter & BaseRecyclerViewAdapter<S>, S> extends DetailsBaseFragment {
+abstract class HorizontalRecyclerViewFragment<T extends RecyclerView.Adapter<?> & BaseRecyclerViewAdapter<S>, S> extends DetailsBaseFragment {
 
     private final String EXTRA_RV_STATE = "recyclerview_state";
     private BaseRecyclerViewAdapter<S> mAdapter;
@@ -99,7 +99,7 @@ abstract class HorizontalRecyclerViewFragment<T extends RecyclerView.Adapter & B
         mRecyclerView = view.findViewById(R.id.recyclerView);
         mAdapter = getAdapter();
         setGridLayoutManager();
-        mRecyclerView.setAdapter((RecyclerView.Adapter) mAdapter);
+        mRecyclerView.setAdapter((RecyclerView.Adapter<?>) mAdapter);
         mRecyclerView.addOnScrollListener(scrollHandler());
         mBullets = view.findViewById(R.id.bullets);
         mBullet1 = view.findViewById(R.id.bullet_1);
@@ -172,7 +172,7 @@ abstract class HorizontalRecyclerViewFragment<T extends RecyclerView.Adapter & B
         if (hasEntries) {
             mRecyclerView.setVisibility(VISIBLE);
             mAdapter.updateData(entries);
-            ((RecyclerView.Adapter) mAdapter).notifyDataSetChanged();
+            ((RecyclerView.Adapter<?>) mAdapter).notifyDataSetChanged();
         } else {
             mRecyclerView.setVisibility(GONE);
         }

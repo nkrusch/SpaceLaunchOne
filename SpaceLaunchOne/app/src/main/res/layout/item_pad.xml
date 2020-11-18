@@ -15,9 +15,9 @@
         <ImageView
             android:id="@+id/thumbnail"
             style="@style/list_image"
-            android:contentDescription="@string/launch_pad"
             android:visibility="visible"
-            app:srcCompat="@drawable/ic_map_marker" />
+            app:srcCompat="@drawable/ic_map_marker"
+            tools:ignore="ContentDescription" />
 
     </androidx.cardview.widget.CardView>
 

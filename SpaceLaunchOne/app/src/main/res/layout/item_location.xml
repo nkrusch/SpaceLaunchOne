@@ -11,11 +11,11 @@
         style="@style/list_image_card">
 
         <ImageView
-            android:contentDescription="@string/launch_location"
             android:id="@+id/thumbnail"
             android:scaleType="fitCenter"
             android:background="@color/transparent"
-            style="@style/list_image" />
+            style="@style/list_image"
+            tools:ignore="ContentDescription" />
 
     </androidx.cardview.widget.CardView>
 

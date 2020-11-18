@@ -7,6 +7,7 @@ import java.util.List;
 import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.LiveData;
 import local.AppDatabase;
+import local.IFilter;
 import local.LocationFilter;
 import local.LocationLookup;
 import utilities.AppExecutors;
@@ -26,7 +27,7 @@ public class LookupLocationsViewModel extends AndroidViewModel implements IFilte
         return locations;
     }
 
-    public void toggle(final LocationLookup l) {
+    public void toggle(final IFilter l) {
         AppExecutors.getInstance().DiskIO().execute(() -> {
             LocationFilter lf = new LocationFilter(l.getId());
             if (l.isFiltered()) db.dao().deleteFilters(lf);

@@ -11,7 +11,7 @@ import viewmodels.CompletedLaunchesViewModel;
 public class PastLaunches extends LaunchRecyclerView<CompletedLaunchesViewModel> {
 
     @Override
-    Class getType() {
+    Class<CompletedLaunchesViewModel> getType() {
         return CompletedLaunchesViewModel.class;
     }
 

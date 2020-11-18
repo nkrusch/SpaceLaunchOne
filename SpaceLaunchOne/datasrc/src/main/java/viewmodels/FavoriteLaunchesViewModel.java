@@ -27,4 +27,5 @@ public class FavoriteLaunchesViewModel extends AndroidViewModel implements ILaun
     public LiveData<List<Launch>> getLaunches() {
         return launches;
     }
+
 }

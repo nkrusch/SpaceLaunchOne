@@ -21,7 +21,7 @@ import local.IFilter;
 import viewmodels.IFilterViewModel;
 
 abstract class FilterRecyclerView<T extends IFilter, S extends
-        AndroidViewModel & IFilterViewModel> extends RecyclerViewFragment {
+        AndroidViewModel & IFilterViewModel<T>> extends RecyclerViewFragment {
 
     private S vm;
 
@@ -52,7 +52,7 @@ abstract class FilterRecyclerView<T extends IFilter, S extends
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_filter, container, false);
 
-        FilterAdapter la = new FilterAdapter(new LinkedList<>());
+        FilterAdapter<T> la = new FilterAdapter<>(new LinkedList<>());
         la.SetOnItemClickListener(onItemClick());
 
         mRecyclerView = view.findViewById(R.id.recyclerView);
@@ -63,12 +63,13 @@ abstract class FilterRecyclerView<T extends IFilter, S extends
         return view;
     }
 
+    @SuppressWarnings("unchecked")
     private void handleDataChange(@Nullable List<T> entries) {
         if (mRecyclerView == null || entries == null) return;
         boolean hasEntries = entries.size() > 0;
         if (hasEntries) {
             mRecyclerView.setVisibility(View.VISIBLE);
-            FilterAdapter adapter = (FilterAdapter) mRecyclerView.getAdapter();
+            FilterAdapter<T> adapter = (FilterAdapter<T>) mRecyclerView.getAdapter();
             if (adapter != null) {
                 adapter.updateData(entries);
                 adapter.notifyDataSetChanged();

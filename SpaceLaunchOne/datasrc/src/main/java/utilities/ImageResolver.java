@@ -12,8 +12,7 @@ import apimodels.data.BuildConfig;
  * This class provides image utilities for finding the best image of some resource
  */
 public class ImageResolver {
-
-    private void get(final String urlStr, final OnLoadCallback callback) {
+    private void get(final String urlStr, final OnLoadCallback<String> callback) {
         AppExecutors.getInstance().networkIO().execute(() -> {
             String imageUrl;
             try {
@@ -45,7 +44,7 @@ public class ImageResolver {
         });
     }
 
-    public void resolveImage(final local.Rocket rocket, final OnLoadCallback callback) {
+    public void resolveImage(final local.Rocket rocket, final OnLoadCallback<String> callback) {
 
         final String defaultImage = rocket.getImageURL();
         final String wikiUrl = rocket.getWikiURL();

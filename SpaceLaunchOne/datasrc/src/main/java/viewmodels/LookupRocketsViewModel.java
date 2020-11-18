@@ -7,6 +7,7 @@ import java.util.List;
 import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.LiveData;
 import local.AppDatabase;
+import local.IFilter;
 import local.RocketFilter;
 import local.RocketLookup;
 import utilities.AppExecutors;
@@ -26,7 +27,7 @@ public class LookupRocketsViewModel extends AndroidViewModel implements IFilterV
         return rockets;
     }
 
-    public void toggle(final RocketLookup r) {
+    public void toggle(final IFilter r) {
         AppExecutors.getInstance().DiskIO().execute(() -> {
             RocketFilter rf = new RocketFilter(r.getId());
             if (r.isFiltered()) db.dao().deleteFilters(rf);

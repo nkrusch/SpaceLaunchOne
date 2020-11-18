@@ -59,6 +59,7 @@ public class MissionsAdapter extends RecyclerView.Adapter<MissionsAdapter.ItemVi
         holder.mNumber.setText(String.format(Locale.getDefault(), "%02d", position + 1));
 
         holder.mImageView.setVisibility(View.VISIBLE);
+        holder.mImageView.setContentDescription(item.getName());
         AppImage.LoadImageFromURL(item.getMissionImage(), holder.mImageView, R.drawable.ic_information_outline);
     }
 

@@ -1,6 +1,5 @@
 package io.github.nkrusch.spacelaunchone.features.locations;
 
-import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -52,16 +51,14 @@ public class LocationAdapter extends RecyclerView.Adapter<LocationAdapter.ItemVi
 
     @Override
     public void onBindViewHolder(@NonNull final LocationAdapter.ItemViewHolder holder, int position) {
-
         Location item = dataSource.get(position);
-        final Context context = holder.mImageView.getContext();
-
         holder.mTextView.setText(Utilities.getLocationShortName(item.getName()));
         holder.mSubText1.setText(Utilities.countryName(item.getCountryCode()));
         holder.mNumber.setText(String.format(Locale.getDefault(), "%02d", position + 1));
-
         holder.mImageView.setVisibility(View.VISIBLE);
-        AppImage.LoadImageFromURL(Utilities.countryIcon(item.getCountryCode()), holder.mImageView, R.drawable.ic_earth);
+        holder.mImageView.setContentDescription(item.getName());
+        AppImage.LoadImageFromURL(Utilities.countryIcon(item.getCountryCode()),
+                holder.mImageView, R.drawable.ic_earth);
     }
 
     @Override

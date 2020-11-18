@@ -52,7 +52,7 @@ public class SplashActivity extends InitActivity {
      * Launch main activity
      */
     private void launchApp() {
-        Class mainActivityClass = getResources().getBoolean(R.bool.is_large_device) ?
+        Class<?> mainActivityClass = getResources().getBoolean(R.bool.is_large_device) ?
                 ImageListActivity.class : MainActivity.class;
         Intent intent = new Intent(this, mainActivityClass);
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);

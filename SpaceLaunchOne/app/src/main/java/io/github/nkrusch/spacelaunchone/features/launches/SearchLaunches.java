@@ -17,7 +17,7 @@ import viewmodels.SearchLaunchesViewModel;
 public class SearchLaunches extends LaunchRecyclerView<SearchLaunchesViewModel> {
 
     @Override
-    Class getType() {
+    Class<SearchLaunchesViewModel> getType() {
         return SearchLaunchesViewModel.class;
     }
 

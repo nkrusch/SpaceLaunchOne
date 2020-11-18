@@ -11,7 +11,7 @@ import viewmodels.FutureLaunchesViewModel;
 public class FutureLaunches extends LaunchRecyclerView<FutureLaunchesViewModel> {
 
     @Override
-    Class getType() {
+    Class<FutureLaunchesViewModel> getType() {
         return FutureLaunchesViewModel.class;
     }
 

@@ -13,7 +13,7 @@ public class Rockets extends FilterRecyclerView<RocketLookup, LookupRocketsViewM
     }
 
     @Override
-    Class getType() {
+    Class<LookupRocketsViewModel> getType() {
         return LookupRocketsViewModel.class;
     }
 

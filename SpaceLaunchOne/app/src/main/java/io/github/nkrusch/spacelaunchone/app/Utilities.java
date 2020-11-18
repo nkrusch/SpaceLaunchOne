@@ -120,7 +120,7 @@ public class Utilities {
      */
     private static String sizedImage(String url, int width, int height) {
         if (url == null || url.length() == 0) return null;
-        Transformation t = new Transformation().gravity("face");
+        Transformation<?> t = new Transformation<>().gravity("face");
         t = (width > 0) ? t.width(width) : t.height(height);
         return MediaManager.get().url().transformation(t.crop("thumb")
                 .fetchFormat("auto")).type("fetch").generate(url);
@@ -135,7 +135,7 @@ public class Utilities {
      */
     public static String squareImage(String url, int size) {
         if (url == null || url.length() == 0) return null;
-        Transformation t = new Transformation().gravity("face").width(size).height(size);
+        Transformation<?> t = new Transformation<>().gravity("face").width(size).height(size);
         return MediaManager.get().url().transformation(t.crop("fill")
                 .fetchFormat("auto")).type("fetch").generate(url);
     }
@@ -149,7 +149,7 @@ public class Utilities {
      */
     public static String roundImage(String url, int radius) {
         if (url == null || url.length() == 0) return null;
-        return MediaManager.get().url().transformation(new Transformation()
+        return MediaManager.get().url().transformation(new Transformation<>()
                 .width(radius * 2).height(radius * 2).crop("thumb").chain()
                 .radius(radius).crop("thumb")).type("fetch").generate(url);
     }

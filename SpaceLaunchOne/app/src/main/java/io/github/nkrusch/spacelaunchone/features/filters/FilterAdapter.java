@@ -13,7 +13,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import io.github.nkrusch.spacelaunchone.R;
 import local.IFilter;
 
-public class FilterAdapter<T extends IFilter> extends RecyclerView.Adapter<FilterAdapter.ItemViewHolder> {
+public class FilterAdapter<T extends IFilter> extends RecyclerView.Adapter<FilterAdapter<T>.ItemViewHolder> {
 
     private List<T> dataSource;
     private OnItemClickListener mItemClickListener;

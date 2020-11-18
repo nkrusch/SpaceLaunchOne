@@ -30,17 +30,18 @@ public class InitIntentService extends IntentService {
     @Override
     protected void onHandleIntent(@Nullable Intent intent) {
         if (intent != null && ACTION_INITIALIZE.equals(intent.getAction())) {
-            AppDataMethods.init(this, BuildConfig.InitialLoadSize, new OnLoadCallback<ProcessResult>() {
-                @Override
-                public void call(ProcessResult result) {
-                    onActionCompleted(ACTION_INITIALIZE, result.isSuccess());
-                }
+            AppDataMethods.init(this, BuildConfig.InitialLoadSize,
+                    new OnLoadCallback<ProcessResult>() {
+                        @Override
+                        public void call(ProcessResult result) {
+                            onActionCompleted(ACTION_INITIALIZE, result.isSuccess());
+                        }
 
-                @Override
-                public void onError(Exception e) {
-                    onActionCompleted(ACTION_INITIALIZE, false);
-                }
-            });
+                        @Override
+                        public void onError(Exception e) {
+                            onActionCompleted(ACTION_INITIALIZE, false);
+                        }
+                    });
         }
     }
 

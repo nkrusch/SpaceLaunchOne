@@ -61,13 +61,14 @@ abstract class LaunchRecyclerView<S extends AndroidViewModel & ILaunchesViewMode
     /**
      * When viewModel state changes, update the adapter
      */
+    @SuppressWarnings("unchecked")
     private void handleDataChange(@Nullable List<Launch> entries) {
         if (mRecyclerView == null || entries == null) return;
         boolean hasEntries = entries.size() > 0;
         if (hasEntries) {
             mEmptyState.setVisibility(View.GONE);
             mRecyclerView.setVisibility(View.VISIBLE);
-            ListAdapter adapter = (ListAdapter) mRecyclerView.getAdapter();
+            ListAdapter<Launch> adapter = (ListAdapter<Launch>) mRecyclerView.getAdapter();
             if (customFirstItem && entries.get(0) != null)
                 entries.add(0, null);
             if (adapter != null) {
@@ -90,7 +91,7 @@ abstract class LaunchRecyclerView<S extends AndroidViewModel & ILaunchesViewMode
         int columns = getResources().getInteger(R.integer.list_column_count);
 
         List<Launch> data = new LinkedList<>();
-        ListAdapter la = new ListAdapter(data, customFirstItem);
+        ListAdapter<?> la = new ListAdapter<>(data, customFirstItem);
         la.SetOnItemClickListener(this.onItemClick());
         GridLayoutManager glm = new GridLayoutManager(getContext(), columns);
 

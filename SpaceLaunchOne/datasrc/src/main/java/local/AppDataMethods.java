@@ -257,7 +257,7 @@ public class AppDataMethods extends Logger {
                 @Override
                 public void call(String image) {
                     images.add(rocketId);
-                    if (!(image == null || image.isEmpty())) {
+                    if (image != null) {
                         for (String launchId : rocket.getLaunchIds())
                             db.dao().updateImage(launchId, image);
                     }

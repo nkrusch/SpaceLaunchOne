@@ -116,7 +116,7 @@
     <string name="offline_message">No connection</string>
     <string name="next_launch_title">next launch</string>
     <string name="list_empty">Application needs to initialize. Make sure you are connected to the Internet then relaunch app.</string>
-    <string name="list_no_matches">There are no launches to show.\nThis is most likely caused by filters.\n\nUse menu in top right corner to adjust filters.</string>
+    <string name="list_no_matches">There are no launches to show.\nThis is most likely caused by filters.</string>
     <string name="tab_event">Details</string>
     <string name="tab_map">Launch Site</string>
     <string name="unknown">unknown</string>
@@ -177,10 +177,6 @@
     <string name="agencies">Agencies</string>
     <string name="locations">Locations</string>
     <string name="no_missions">No missions</string>
-    <string name="space_launch">space launch</string>
-    <string name="launch_location">launch location</string>
-    <string name="mission">mission</string>
-    <string name="launch_pad">launch pad</string>
     <string name="checkbox_for">choose </string>
     <string name="icon_for">Icon for </string>
     <string name="play_video">play video </string>

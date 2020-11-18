@@ -25,7 +25,7 @@ import local.Launch;
  * This adapter renders list of launches
  */
 public class ListAdapter<T extends Launch> extends
-        RecyclerView.Adapter<ListAdapter.ItemViewHolder> {
+        RecyclerView.Adapter<ListAdapter<T>.ItemViewHolder> {
 
     private List<T> dataSource;
     private OnItemClickListener mItemClickListener;

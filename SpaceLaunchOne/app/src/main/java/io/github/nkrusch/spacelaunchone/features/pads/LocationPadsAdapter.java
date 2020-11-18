@@ -59,6 +59,7 @@ public class LocationPadsAdapter extends RecyclerView.Adapter<LocationPadsAdapte
         holder.mSubText1.setText(item.isRetired() ? "Retired" : "Active");
         holder.mNumber.setText(String.format(Locale.getDefault(), "%02d", position + 1));
         holder.mImageView.setImageResource(R.drawable.ic_map_marker);
+        holder.mImageView.setContentDescription(item.getName());
     }
 
     @Override

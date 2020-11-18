@@ -12,7 +12,7 @@ public class Locations extends FilterRecyclerView<LocationLookup, LookupLocation
     }
 
     @Override
-    Class getType() {
+    Class<LookupLocationsViewModel> getType() {
         return LookupLocationsViewModel.class;
     }
 

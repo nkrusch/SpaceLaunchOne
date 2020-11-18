@@ -6,7 +6,6 @@ import androidx.room.Ignore;
 import androidx.room.Index;
 import androidx.room.PrimaryKey;
 import apimodels.LaunchDetailed;
-import apimodels.LaunchSerializerCommon;
 import apimodels.Pad;
 
 @SuppressWarnings("NullableProblems")
@@ -101,18 +100,6 @@ public class Launch implements Comparable<Launch> {
         if (pad == null) return null;
         if (pad.getLocation() != null) return pad.getLocation().getName();
         return pad.getName();
-    }
-
-    @Ignore
-    public static Launch Map(LaunchSerializerCommon launch) {
-        Launch r = new Launch();
-        r.setLuuid(launch.getId().toString());
-        r.setName(launch.getName());
-        r.setImage(launch.getImage());
-        r.setLaunchDateUTC(launch.getNet().getTime());
-        r.setLocationName(locationName(launch.getPad()));
-        r.setStatus(launch.getStatus().getId());
-        return r;
     }
 
     @Ignore
