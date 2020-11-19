@@ -13,7 +13,7 @@ This repository contains both stages of the capstone project. In stage 1 the pur
 This application gets its data from [Launch Library API](https://ll.thespacedevs.com/2.0.0/swagger/). Then using the data, this Android app presents it to the user in an organized way. This app is intended for astronomy enthusiasts who are looking for up-to-date information about upcoming rocket launches.
 
 <p align="center">
-<a href='https://play.google.com/store/apps/details?id=io.github.nkrusch.spacelaunchone&utm_source=github&utm_campaign=github&pcampaignid=MKT-Other-global-all-co-prtnr-py-PartBadge-Mar2515-1'><img alt='Get it on Google Play' height="72" src='https://play.google.com/intl/en_us/badges/images/generic/en_badge_web_generic.png'/></a>
+<a href='https://play.google.com/store/apps/details?id=io.github.nkrusch.spacelaunchone><img alt='Get it on Google Play' height="72" src='https://play.google.com/intl/en_us/badges/images/generic/en_badge_web_generic.png'/></a>
 </p>
 
 **Stage 1**: design proposal is [here &raquo;](https://github.com/nkrusch/SpaceLaunchOne/tree/master/docs/Capstone_Stage1.pdf)
