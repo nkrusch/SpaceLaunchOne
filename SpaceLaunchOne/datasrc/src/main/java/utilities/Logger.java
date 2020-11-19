@@ -22,9 +22,9 @@ public class Logger {
         if (DEBUG) Log.d(TAG, ("  " + DIV + msg + DIV));
     }
 
-    public static void requestLog(Call<?> request, Response<?> resp){
+    public static void requestLog(Call<?> request, Response<?> resp) {
         try {
-            Log("URL: " + request.request().url().toString() +
+            if (DEBUG) Log("URL: " + request.request().url().toString() +
                     "\nSUCCESS: " + resp.isSuccessful() +
                     "\nERROR: " + (resp.errorBody() != null ? resp.errorBody().string() : "None"));
         } catch (IOException e) {
