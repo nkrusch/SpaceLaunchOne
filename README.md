@@ -1,6 +1,6 @@
 <h1 align='center'><img src='https://raw.githubusercontent.com/nkrusch/SpaceLaunchOne/master/SpaceLaunchOne/app/src/main/res/mipmap-xxhdpi/ic_launcher_round.png' width="84"><br/>Space Launch 1</h1>
 
-<img src="feature.png" alt="app feature" />
+<img src="feature.jpg" alt="app feature" />
 
 [![Build Status](https://travis-ci.com/nkrusch/SpaceLaunchOne.svg?branch=master)](https://travis-ci.com/nkrusch/SpaceLaunchOne)
 ![GitHub release (latest by date)](https://img.shields.io/github/v/release/nkrusch/SpaceLaunchOne)
