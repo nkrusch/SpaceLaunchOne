@@ -15,6 +15,7 @@ import android.widget.RemoteViews;
 
 import java.util.Calendar;
 import java.util.Date;
+import java.util.Locale;
 import java.util.UUID;
 
 import androidx.annotation.RequiresApi;
@@ -120,7 +121,9 @@ public class CountdownWidget extends AppWidgetProvider {
     /**
      * Load the widget image
      */
-    private void setImage(final Context context, final AppWidgetManager appWidgetManager, final int appWidgetId, final RemoteViews views) {
+    private void setImage(
+            final Context context, final AppWidgetManager appWidgetManager,
+            final int appWidgetId, final RemoteViews views) {
         AppExecutors.getInstance().MainThread().execute(() -> {
             try {
                 TypedArray imgs = context.getResources().obtainTypedArray(R.array.next_launch_images);
@@ -145,8 +148,16 @@ public class CountdownWidget extends AppWidgetProvider {
      */
     private void setTime(final AppWidgetManager appWidgetManager, final int appWidgetId, final RemoteViews views) {
         AppExecutors.getInstance().MainThread().execute(() -> {
-            long baseTime = SystemClock.elapsedRealtime() + (TargetDate - new Date().getTime());
-            views.setChronometer(R.id.timer, baseTime, null, true);
+            long totalTime = SystemClock.elapsedRealtime() + (TargetDate - new Date().getTime());
+            int[] parts = Utilities.fullTimeDiff(TargetDate);
+            long remaining = totalTime, days = parts[0], hours = parts[1];
+            String format = null;
+            if (days > 0) {
+                remaining = totalTime - (days * 24 * 60 * 60 * 1000);
+                String formatDays = String.format(Locale.US, "%02d", days);
+                format = formatDays + ":" + (hours < 10 ? "0" : "") + "%s";
+            }
+            views.setChronometer(R.id.timer, remaining, format, true);
             views.setChronometerCountDown(R.id.timer, true);
             appWidgetManager.updateAppWidget(appWidgetId, views);
         });

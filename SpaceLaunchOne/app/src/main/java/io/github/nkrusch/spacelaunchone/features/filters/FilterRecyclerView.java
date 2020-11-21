@@ -33,7 +33,7 @@ abstract class FilterRecyclerView<T extends IFilter, S extends
     protected void setupViewModel() {
         if (getActivity() != null) {
             vm = new ViewModelProvider(getActivity()).get(getType());
-            vm.getAll().observe(getActivity(), (Observer<List<T>>) this::handleDataChange);
+            vm.getAll().observe(getActivity(), this::handleDataChange);
         }
     }
 
