@@ -10,7 +10,7 @@
 
         <com.google.android.material.appbar.CollapsingToolbarLayout
             android:layout_width="match_parent"
-            android:layout_height="@dimen/next_launch_fragment_height"
+            android:layout_height="@dimen/pads_map_height"
             android:minHeight="?attr/actionBarSize"
             android:layout_gravity="top"
             app:contentScrim="?attr/colorPrimaryDark"
@@ -23,7 +23,7 @@
                 android:name="io.github.nkrusch.spacelaunchone.features.map.LocationMapFragment"
                 android:layout_width="match_parent"
                 app:layout_collapseMode="parallax"
-                android:layout_height="@dimen/next_launch_fragment_height" />
+                android:layout_height="@dimen/pads_map_height" />
         </com.google.android.material.appbar.CollapsingToolbarLayout>
     </com.google.android.material.appbar.AppBarLayout>
 

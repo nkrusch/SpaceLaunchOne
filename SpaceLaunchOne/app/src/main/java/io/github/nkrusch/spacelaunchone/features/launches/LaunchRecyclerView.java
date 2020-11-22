@@ -87,7 +87,7 @@ abstract class LaunchRecyclerView<S extends AndroidViewModel & ILaunchesViewMode
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_list, container, false);
-        customFirstItem = getResources().getBoolean(R.bool.is_large_device) && showNextLaunch();
+        customFirstItem = false;
         int columns = getResources().getInteger(R.integer.list_column_count);
 
         List<Launch> data = new LinkedList<>();

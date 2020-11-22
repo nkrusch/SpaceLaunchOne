@@ -12,7 +12,6 @@ import java.util.List;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.lifecycle.AndroidViewModel;
-import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.GridLayoutManager;
 import io.github.nkrusch.spacelaunchone.R;

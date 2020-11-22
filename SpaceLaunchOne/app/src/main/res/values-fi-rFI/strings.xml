@@ -66,7 +66,6 @@
     </string-array>
 
     <string name="app_name">Avaruuslaukaisu 1</string>
-    <string name="title_activity_main">Tulevat Laukaisut</string>
     <string name="title_activity_settings">Asetukset</string>
     <string name="title_activity_credits">Tietoa</string>
     <string name="title_activity_details">Lisätiedot</string>

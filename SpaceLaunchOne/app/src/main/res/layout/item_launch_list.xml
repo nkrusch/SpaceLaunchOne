@@ -1,4 +1,5 @@
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/list_item_container"
     style="@style/list_item"
@@ -9,6 +10,7 @@
         style="@style/list_image_card">
 
         <ImageView
+            android:scaleType="centerCrop"
             android:id="@+id/thumbnail"
             style="@style/list_image"
             tools:ignore="ContentDescription" />

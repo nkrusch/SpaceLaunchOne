@@ -7,7 +7,6 @@
     <!-- backgrounds -->
     <color name="list_item_background">@android:color/black</color>
     <color name="photo_placeholder">#111</color>
-    <color name="photo_placeholder_inverse">#333</color>
     <color name="photo_placeholder_tint">#fff</color>
     <color name="details_background">#222</color>
     <color name="filter_divider_color">#777</color>

@@ -33,10 +33,6 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".features.ImageListActivity"
-            android:label="@string/title_activity_main"
-            android:launchMode="singleTop" />
-        <activity
             android:name=".features.DetailsLaunchActivity"
             android:label="@string/title_activity_details"
             android:parentActivityName=".features.MainActivity"
