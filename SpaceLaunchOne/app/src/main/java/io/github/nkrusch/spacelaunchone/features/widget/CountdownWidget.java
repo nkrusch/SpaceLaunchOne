@@ -155,7 +155,7 @@ public class CountdownWidget extends AppWidgetProvider {
             if (days > 0) {
                 remaining = totalTime - (days * 24 * 60 * 60 * 1000);
                 String formatDays = String.format(Locale.US, "%02d", days);
-                format = formatDays + ":" + (hours < 10 ? "0" : "") + "%s";
+                format = formatDays + ":" + (hours == 0 ? "00:" : hours < 10 ? "0" : "") + "%s";
             }
             views.setChronometer(R.id.timer, remaining, format, true);
             views.setChronometerCountDown(R.id.timer, true);

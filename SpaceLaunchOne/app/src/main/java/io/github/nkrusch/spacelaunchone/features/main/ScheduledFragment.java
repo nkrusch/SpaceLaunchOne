@@ -25,7 +25,7 @@ public class ScheduledFragment extends Fragment {
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_scheduled, container, false);
+        View view = inflater.inflate(R.layout.fragment_launches, container, false);
 
         mAppbar = view.findViewById(R.id.list_appbar_layout);
 

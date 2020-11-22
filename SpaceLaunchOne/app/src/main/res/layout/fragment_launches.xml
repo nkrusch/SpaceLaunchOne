@@ -35,8 +35,6 @@
                 android:theme="@style/ClearToolbar" />
 
         </com.google.android.material.appbar.CollapsingToolbarLayout>
-
-
     </com.google.android.material.appbar.AppBarLayout>
 
     <androidx.fragment.app.FragmentContainerView
