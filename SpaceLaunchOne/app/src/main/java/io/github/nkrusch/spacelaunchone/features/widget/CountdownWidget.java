@@ -13,6 +13,7 @@ import android.net.Uri;
 import android.os.SystemClock;
 import android.widget.RemoteViews;
 
+import java.lang.annotation.Target;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.Locale;
@@ -149,15 +150,7 @@ public class CountdownWidget extends AppWidgetProvider {
     private void setTime(final AppWidgetManager appWidgetManager, final int appWidgetId, final RemoteViews views) {
         AppExecutors.getInstance().MainThread().execute(() -> {
             long totalTime = SystemClock.elapsedRealtime() + (TargetDate - new Date().getTime());
-            int[] parts = Utilities.fullTimeDiff(TargetDate);
-            long remaining = totalTime, days = parts[0], hours = parts[1];
-            String format = null;
-            if (days > 0) {
-                remaining = totalTime - (days * 24 * 60 * 60 * 1000);
-                String formatDays = String.format(Locale.US, "%02d", days);
-                format = formatDays + ":" + (hours == 0 ? "00:" : hours < 10 ? "0" : "") + "%s";
-            }
-            views.setChronometer(R.id.timer, remaining, format, true);
+            views.setChronometer(R.id.timer, totalTime, null, true);
             views.setChronometerCountDown(R.id.timer, true);
             appWidgetManager.updateAppWidget(appWidgetId, views);
         });
