@@ -6,6 +6,8 @@ import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
 
+import com.google.android.material.appbar.AppBarLayout;
+import com.google.android.material.appbar.CollapsingToolbarLayout;
 import com.google.android.material.tabs.TabLayout;
 
 import java.util.Objects;
@@ -19,7 +21,8 @@ import io.github.nkrusch.spacelaunchone.app.TabbedActivity;
 import io.github.nkrusch.spacelaunchone.app.TabsAdapter;
 import io.github.nkrusch.spacelaunchone.features.agencies.LocationAgencyRecyclerView;
 import io.github.nkrusch.spacelaunchone.features.launches.LocationLaunchRecyclerView;
-import io.github.nkrusch.spacelaunchone.features.pads.LocationPadsFragment;
+import io.github.nkrusch.spacelaunchone.features.map.LocationMapFragment;
+import io.github.nkrusch.spacelaunchone.features.pads.PadsRecyclerView;
 import viewmodels.LocationDetailsViewModel;
 
 import static android.view.View.GONE;
@@ -29,10 +32,10 @@ public class DetailsLocationActivity extends TabbedActivity {
 
     private static final String EXTRA_ID = "extra_id";
     private static final String EXTRA_NAME = "extra_name";
-    private final int tabCount = 3;
-    private final int PAD_INDEX = 0;
-    private final int LAUNCH_INDEX = 1;
-    private final int AGENCY_INDEX = 2;
+    private final int tabCount = 4;
+    private final int PAD_INDEX = 1;
+    private final int LAUNCH_INDEX = 2;
+    private final int AGENCY_INDEX = 3;
 
     LocationDetailsViewModel vm;
     private String title;
@@ -69,6 +72,11 @@ public class DetailsLocationActivity extends TabbedActivity {
     }
 
     @Override
+    protected boolean canToolbarCollapse() {
+        return false;
+    }
+
+    @Override
     public String getTitleText() {
         return title;
     }
@@ -82,6 +90,7 @@ public class DetailsLocationActivity extends TabbedActivity {
      * Setup details tabs toolbar options
      */
     public void addToolbarTabs(TabLayout tabLayout) {
+        tabLayout.addTab(tabLayout.newTab().setText(R.string.map));
         tabLayout.addTab(tabLayout.newTab().setText(getResources()
                 .getQuantityString(R.plurals.tab_pads, 0, 0)));
         tabLayout.addTab(tabLayout.newTab().setText(getResources()
@@ -112,12 +121,14 @@ public class DetailsLocationActivity extends TabbedActivity {
         @Override
         public Fragment getItem(int position) {
             switch (position) {
+                case PAD_INDEX:
+                    return PadsRecyclerView.newInstance();
                 case LAUNCH_INDEX:
                     return LocationLaunchRecyclerView.newInstance();
                 case AGENCY_INDEX:
                     return LocationAgencyRecyclerView.newInstance();
                 default:
-                    return LocationPadsFragment.newInstance();
+                    return LocationMapFragment.newInstance();
             }
         }
     }

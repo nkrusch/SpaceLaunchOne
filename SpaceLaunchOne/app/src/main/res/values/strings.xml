@@ -41,16 +41,16 @@
     </plurals>
 
     <plurals name="tab_pads">
-        <item quantity="other">pads (%d)</item>
+        <item quantity="other">pads</item>
     </plurals>
     <plurals name="tab_launches">
-        <item quantity="other">launches (%d)</item>
+        <item quantity="other">launches</item>
     </plurals>
     <plurals name="tab_agencies">
-        <item quantity="other">agencies (%d)</item>
+        <item quantity="other">agencies</item>
     </plurals>
     <plurals name="tab_missions">
-        <item quantity="other">missions (%d)</item>
+        <item quantity="other">missions</item>
     </plurals>
     <plurals name="many_countries">
         <item quantity="other">%d countries</item>
@@ -192,4 +192,5 @@
     <string name="summary_agency">summary agency</string>
     <string name="summary_launch_site">summary launch site</string>
     <string name="start_video">start video </string>
+    <string name="map">Map</string>
 </resources>

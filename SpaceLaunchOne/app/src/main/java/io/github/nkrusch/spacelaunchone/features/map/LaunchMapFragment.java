@@ -13,7 +13,6 @@ import com.google.android.gms.maps.UiSettings;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
-import com.google.android.gms.maps.model.PointOfInterest;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.widget.AppCompatImageButton;
@@ -27,7 +26,7 @@ import static android.view.View.GONE;
 /**
  * This fragment displays google map with a marker set to the rocket launch site
  */
-public class MapFragment extends Fragment implements OnMapReadyCallback, GoogleMap.OnPoiClickListener {
+public class LaunchMapFragment extends Fragment implements OnMapReadyCallback {
 
     private AppCompatImageButton mLaunchSiteZoomToggleButton;
     private GoogleMap mMap;
@@ -36,7 +35,7 @@ public class MapFragment extends Fragment implements OnMapReadyCallback, GoogleM
     private final int customZoomDuration = 800;
 
     public static Fragment newInstance() {
-        return new MapFragment();
+        return new LaunchMapFragment();
     }
 
     /**
@@ -44,11 +43,13 @@ public class MapFragment extends Fragment implements OnMapReadyCallback, GoogleM
      * Also find custom toggle button and set it invisible for now
      */
     @Override
-    public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+    public View onCreateView(
+            @NonNull LayoutInflater inflater,
+            ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_map, container, false);
-        SupportMapFragment mapFragment = (SupportMapFragment) getChildFragmentManager().findFragmentById(R.id.google_map);
+        SupportMapFragment mapFragment = (SupportMapFragment) getChildFragmentManager()
+                .findFragmentById(R.id.google_map);
         if (mapFragment != null) mapFragment.getMapAsync(this);
-
         mLaunchSiteZoomToggleButton = view.findViewById(R.id.custom_map_button);
         mLaunchSiteZoomToggleButton.setOnClickListener(onMarkerZoomButtonClick());
         mLaunchSiteZoomToggleButton.setVisibility(GONE);
@@ -99,29 +100,7 @@ public class MapFragment extends Fragment implements OnMapReadyCallback, GoogleM
         mUiSettings.setZoomGesturesEnabled(true);
         mUiSettings.setTiltGesturesEnabled(true);
         mUiSettings.setRotateGesturesEnabled(true);
-        mMap.setOnPoiClickListener(this);
         setMarker();
-    }
-
-    /**
-     * Handle map click on some point of interest ->
-     * This will attempt to load places images for the selected location
-     */
-    public void onPoiClick(PointOfInterest poi) {
-        // TODO: reimplement this or remove
-
-        //        if (getActivity() == null) return;
-        //        final ConnectivityManager cm = (ConnectivityManager) getActivity()
-        //                .getSystemService(Context.CONNECTIVITY_SERVICE);
-        //
-        //        boolean canLoadPlaces = Utilities.isNetworkAvailable(cm);
-        //        if (canLoadPlaces) {
-        //            if (getFragmentManager() != null) {
-        //                PlacesFragment psf = PlacesFragment.newInstance(poi.placeId, poi.name);
-        //                psf.show(getFragmentManager(), null);
-        //            }
-        //        } else Snackbar.make(getActivity().findViewById(android.R.id.content),
-        //                R.string.offline_message, Snackbar.LENGTH_LONG).show();
     }
 
     /**

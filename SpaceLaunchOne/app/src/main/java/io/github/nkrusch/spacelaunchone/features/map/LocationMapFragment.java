@@ -27,40 +27,55 @@ import static android.view.View.GONE;
 
 public class LocationMapFragment extends Fragment implements OnMapReadyCallback {
 
+    public static final String EXTRA_HAS_CENTERED = "extra_has_centered";
     private GoogleMap mMap;
     private LatLng[] locations;
     private String[] names;
     private LatLngBounds.Builder builder;
+    private boolean hasCentered = false;
 
     public static Fragment newInstance() {
         return new LocationMapFragment();
     }
 
     @Override
-    public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+    public View onCreateView(
+            @NonNull LayoutInflater inflater,
+            ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_map, container, false);
-        SupportMapFragment mapFragment = (SupportMapFragment) getChildFragmentManager().findFragmentById(R.id.google_map);
+        SupportMapFragment mapFragment = (SupportMapFragment) getChildFragmentManager()
+                .findFragmentById(R.id.google_map);
         if (mapFragment != null) mapFragment.getMapAsync(this);
-        AppCompatImageButton mLaunchSiteZoomToggleButton = view.findViewById(R.id.custom_map_button);
+        AppCompatImageButton mLaunchSiteZoomToggleButton =
+                view.findViewById(R.id.custom_map_button);
         mLaunchSiteZoomToggleButton.setVisibility(GONE);
+        if (savedInstanceState!=null && savedInstanceState.containsKey(EXTRA_HAS_CENTERED)) {
+            hasCentered = savedInstanceState.getBoolean(EXTRA_HAS_CENTERED, false);
+        }
         return view;
+    }
+
+    @Override
+    public void onSaveInstanceState(@NonNull Bundle outState) {
+        outState.putBoolean(EXTRA_HAS_CENTERED, hasCentered);
+        super.onSaveInstanceState(outState);
     }
 
     private void setupViewModel() {
         if (getActivity() == null) return;
         new ViewModelProvider(getActivity()).get(LocationDetailsViewModel.class)
                 .get().observe(this, result -> {
-                    if (result != null && result.getPads() != null && locations==null) {
-                        locations = new LatLng[result.getPads().size()];
-                        names = new String[result.getPads().size()];
-                        for (int i = 0; i < result.getPads().size(); i++) {
-                            Pad p = result.getPads().get(i);
-                            locations[i] = new LatLng(p.getLatitude(), p.getLongitude());
-                            names[i] = p.getName();
-                        }
-                        setMarker();
-                    }
-                });
+            if (result != null && result.getPads() != null && locations == null) {
+                locations = new LatLng[result.getPads().size()];
+                names = new String[result.getPads().size()];
+                for (int i = 0; i < result.getPads().size(); i++) {
+                    Pad p = result.getPads().get(i);
+                    locations[i] = new LatLng(p.getLatitude(), p.getLongitude());
+                    names[i] = p.getName();
+                }
+                setMarker();
+            }
+        });
     }
 
     @Override
@@ -95,9 +110,12 @@ public class LocationMapFragment extends Fragment implements OnMapReadyCallback 
             mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(locations[0], 10.0f));
         } else {
             LatLngBounds bounds = builder.build();
-            int mapCameraPadding = 100;
-            mMap.animateCamera(com.google.android.gms.maps.CameraUpdateFactory.
-                    newLatLngBounds(bounds, mapCameraPadding));
+            int mapCameraPadding = 300;
+            if (!hasCentered) {
+                mMap.animateCamera(com.google.android.gms.maps.CameraUpdateFactory.
+                        newLatLngBounds(bounds, mapCameraPadding));
+                hasCentered = true;
+            }
         }
     }
 

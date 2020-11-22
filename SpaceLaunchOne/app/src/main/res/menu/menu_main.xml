@@ -12,7 +12,7 @@
         android:title="@string/search"
         app:showAsAction="ifRoom" />
     <item
-        android:icon="@drawable/ic_tune_white"
+        android:icon="@drawable/ic_filter_white"
         android:id="@+id/filters"
         android:title="@string/title_activity_filters"
         app:showAsAction="ifRoom" />

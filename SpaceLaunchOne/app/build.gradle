@@ -86,7 +86,6 @@ dependencies {
     implementation "com.cloudinary:cloudinary-android:$cloudinaryVersion"
     implementation "com.squareup.picasso:picasso:$picassoVersion"
     implementation "com.google.android.gms:play-services-maps:$googleMapsVersion"
-    implementation "com.google.android.gms:play-services-places:$googlePlacesVersion"
     implementation "com.google.android.gms:play-services-gcm:$googlegcmVersion"
     implementation "com.onesignal:OneSignal:$oneSignalVersion"
 

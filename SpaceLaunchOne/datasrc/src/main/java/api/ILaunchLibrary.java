@@ -1,10 +1,7 @@
 package api;
 
-import apimodels.Agency;
 import apimodels.LaunchDetailed;
 import apimodels.LaunchListDetailed;
-import apimodels.Location;
-import apimodels.Pad;
 import apimodels.data.BuildConfig;
 import retrofit2.Call;
 import retrofit2.http.GET;
@@ -24,14 +21,5 @@ interface ILaunchLibrary {
 
     @GET("launch/{id}?format=json&mode=detailed")
     Call<LaunchDetailed> launch(@Path("id") String id);
-
-    @GET("agency?format=json&mode=list")
-    Call<Agency> agencies(@Query("limit") int limit, @Query("offset") int offset);
-
-    @GET("location?format=json&mode=list")
-    Call<Location> locations(@Query("limit") int limit, @Query("offset") int offset);
-
-    @GET("pad?format=json&mode=list")
-    Call<Pad> pads(@Query("limit") int limit, @Query("offset") int offset);
 
 }

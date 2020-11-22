@@ -21,10 +21,10 @@ import local.Pad;
 import viewmodels.LocationDetailsViewModel;
 
 
-public class LocationPadsRecyclerView extends RecyclerViewFragment {
+public class PadsRecyclerView extends RecyclerViewFragment {
 
-    public static LocationPadsRecyclerView newInstance() {
-        return new LocationPadsRecyclerView();
+    public static PadsRecyclerView newInstance() {
+        return new PadsRecyclerView();
     }
 
     private LinearLayout mEmptyState;
@@ -58,7 +58,7 @@ public class LocationPadsRecyclerView extends RecyclerViewFragment {
         if (hasEntries) {
             mEmptyState.setVisibility(View.GONE);
             mRecyclerView.setVisibility(View.VISIBLE);
-            LocationPadsAdapter adapter = (LocationPadsAdapter) mRecyclerView.getAdapter();
+            PadsAdapter adapter = (PadsAdapter) mRecyclerView.getAdapter();
             if(adapter!=null) {
                 adapter.updateData(entries);
                 adapter.notifyDataSetChanged();
@@ -78,7 +78,7 @@ public class LocationPadsRecyclerView extends RecyclerViewFragment {
         int columns = getResources().getInteger(R.integer.list_column_count);
 
         List<Pad> data = new LinkedList<>();
-        LocationPadsAdapter la = new LocationPadsAdapter(data);
+        PadsAdapter la = new PadsAdapter(data);
         la.SetOnItemClickListener(this.onItemClick());
         GridLayoutManager glm = new GridLayoutManager(getContext(), columns);
 

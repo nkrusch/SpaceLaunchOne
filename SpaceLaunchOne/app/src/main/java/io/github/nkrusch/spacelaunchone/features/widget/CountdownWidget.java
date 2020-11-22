@@ -13,10 +13,8 @@ import android.net.Uri;
 import android.os.SystemClock;
 import android.widget.RemoteViews;
 
-import java.lang.annotation.Target;
 import java.util.Calendar;
 import java.util.Date;
-import java.util.Locale;
 import java.util.UUID;
 
 import androidx.annotation.RequiresApi;

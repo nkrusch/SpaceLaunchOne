@@ -22,7 +22,7 @@ import io.github.nkrusch.spacelaunchone.R;
 import io.github.nkrusch.spacelaunchone.app.TabbedActivity;
 import io.github.nkrusch.spacelaunchone.app.TabsAdapter;
 import io.github.nkrusch.spacelaunchone.features.launchdetails.SummaryFragment;
-import io.github.nkrusch.spacelaunchone.features.map.MapFragment;
+import io.github.nkrusch.spacelaunchone.features.map.LaunchMapFragment;
 import viewmodels.LaunchDetailsViewModel;
 
 import static android.view.View.GONE;
@@ -51,6 +51,10 @@ public class DetailsLaunchActivity extends TabbedActivity {
         intent.putExtra(EXTRA_LAUNCH, id);
         intent.putExtra(EXTRA_NAME, name);
         return intent;
+    }
+    @Override
+    protected boolean canToolbarCollapse() {
+        return false;
     }
 
     @Override
@@ -178,7 +182,7 @@ public class DetailsLaunchActivity extends TabbedActivity {
         @Override
         public Fragment getItem(int position) {
             if (position == 1) {
-                return MapFragment.newInstance();
+                return LaunchMapFragment.newInstance();
             }
             return SummaryFragment.newInstance();
         }

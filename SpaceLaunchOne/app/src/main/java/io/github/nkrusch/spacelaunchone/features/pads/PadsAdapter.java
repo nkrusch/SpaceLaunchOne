@@ -22,12 +22,12 @@ import local.Pad;
 /**
  * This adapter renders list of launchpads
  */
-public class LocationPadsAdapter extends RecyclerView.Adapter<LocationPadsAdapter.ItemViewHolder> {
+public class PadsAdapter extends RecyclerView.Adapter<PadsAdapter.ItemViewHolder> {
 
     private List<Pad> dataSource;
     private OnItemListener mItemClickListener;
 
-    LocationPadsAdapter(List<Pad> dataArgs) {
+    PadsAdapter(List<Pad> dataArgs) {
         updateData(dataArgs);
     }
 
@@ -50,7 +50,7 @@ public class LocationPadsAdapter extends RecyclerView.Adapter<LocationPadsAdapte
     }
 
     @Override
-    public void onBindViewHolder(@NonNull final LocationPadsAdapter.ItemViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull final PadsAdapter.ItemViewHolder holder, int position) {
 
         Pad item = dataSource.get(position);
         final Context context = holder.mImageView.getContext();

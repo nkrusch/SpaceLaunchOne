@@ -4,12 +4,15 @@ import android.os.Bundle;
 import android.view.MenuItem;
 import android.widget.ProgressBar;
 
+import com.google.android.material.appbar.AppBarLayout;
+import com.google.android.material.appbar.CollapsingToolbarLayout;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.tabs.TabLayout;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.widget.Toolbar;
+import androidx.coordinatorlayout.widget.CoordinatorLayout;
 import androidx.viewpager.widget.ViewPager;
 import io.github.nkrusch.spacelaunchone.R;
 
@@ -27,12 +30,32 @@ public abstract class TabbedActivity extends SyncActivity {
     protected TabLayout tabLayout;
     protected BottomNavigationView bottomNav;
     protected FloatingActionButton mFab;
+    private AppBarLayout mAppBarLayout;
+    private CollapsingToolbarLayout mCollapsingToolbar;
 
     /**
      * This title is displayed above the tabs in the actionbar
      */
     protected String getTitleText() {
         return "";
+    }
+
+    /**
+     * Which layout resource to use
+     *
+     * @return layout resource id
+     */
+    private int getLayoutResource() {
+        return R.layout.activity_tabbed;
+    }
+
+    /**
+     * Override this method to make the activity toolbar static
+     *
+     * @return - true if toolbar should collapse & exit out of view on scroll
+     */
+    protected boolean canToolbarCollapse() {
+        return true;
     }
 
     /**
@@ -123,7 +146,7 @@ public abstract class TabbedActivity extends SyncActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_tabbed);
+        setContentView(getLayoutResource());
 
         int activeTab = 0;
         if (savedInstanceState != null &&
@@ -137,6 +160,8 @@ public abstract class TabbedActivity extends SyncActivity {
         bottomNav = findViewById(R.id.navigation);
         mFab = findViewById(R.id.tabbed_fab);
         mPager.setOffscreenPageLimit(3);
+        mAppBarLayout = findViewById(R.id.appbar_layout);
+        mCollapsingToolbar = findViewById(R.id.collapsing_toolbar);
 
         setupToolbar();
         setupTabLayout(activeTab);
@@ -152,6 +177,13 @@ public abstract class TabbedActivity extends SyncActivity {
     private void setupToolbar() {
         setSupportActionBar(mToolbar);
         boolean tablet = getResources().getBoolean(R.bool.is_large_device);
+
+        AppBarLayout.LayoutParams params = (AppBarLayout.LayoutParams)
+                mCollapsingToolbar.getLayoutParams();
+        int scrollFlag = canToolbarCollapse() ?
+                AppBarLayout.LayoutParams.SCROLL_FLAG_SCROLL :
+                AppBarLayout.LayoutParams.SCROLL_FLAG_NO_SCROLL;
+        params.setScrollFlags(scrollFlag);
 
         if (getSupportActionBar() != null) {
             if (Utilities.isPortrait(this) || tablet) {

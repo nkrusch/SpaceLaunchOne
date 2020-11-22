@@ -20,6 +20,14 @@
             android:summaryOff="@string/disabled"
             android:summaryOn="@string/enabled"
             android:title="@string/app_notifications" />
+        <PreferenceScreen
+            android:icon="@drawable/ic_filter"
+            android:key="prefs_feedback_screen"
+            android:title="@string/title_activity_filters">
+            <intent
+                android:targetClass="io.github.nkrusch.spacelaunchone.features.FilterActivity"
+                android:targetPackage="io.github.nkrusch.spacelaunchone" />
+        </PreferenceScreen>
     </PreferenceCategory>
     <PreferenceCategory android:title="Information">
         <Preference
