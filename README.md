@@ -39,7 +39,7 @@ Originally I made this Android app as a capstone project for Udacity Android dev
   <tr>
     <td><h4 align="center">Search for launches</h4></td>
     <td><h4 align="center">Live video of launches</h4></td>
-    <td><h4 align="center">Explore Launch sites</h4></td>
+    <td><h4 align="center">Explore launch sites</h4></td>
     <td><h4 align="center">Space agensies</h4></td>
   </tr>
   <tr>  
