@@ -8,11 +8,9 @@
 
 Space Launch 1 is an Android application for tracking upcoming and past rocket launches.
 
-Originally I made this Android app as a capstone project for Udacity Android developer nanodegree program. The purpose of a capstone project is to apply different concepts learned during the program, and demonstrate these skills by creating and designing an application of choice. 
-
-This repository contains both stages of the capstone project. In stage 1 the purpose is to design the application and produce a design document. In stage 2 the purpose is to build the application based on the design document. 
-
 This application gets its data from [Launch Library API](https://ll.thespacedevs.com/2.0.0/swagger/). Then using the data, this Android app presents it to the user in an organized way. This app is intended for astronomy enthusiasts who are looking for up-to-date information about upcoming rocket launches.
+
+Originally I made this Android app as a capstone project for Udacity Android developer nanodegree program. The purpose of a capstone project is to apply different concepts learned during the program, and demonstrate these skills by creating and designing an application of choice. This repository contains both stages of the capstone project. In stage 1 the purpose is to design the application and produce a design document. In stage 2 the purpose is to build the application based on the design document. 
 
 <p align="center">
 <a href='https://play.google.com/store/apps/details?id=io.github.nkrusch.spacelaunchone'><img alt='Get it on Google Play' height="72" src='https://play.google.com/intl/en_us/badges/images/generic/en_badge_web_generic.png'/></a>
