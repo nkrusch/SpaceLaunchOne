@@ -6,6 +6,8 @@
 ![GitHub release (latest by date)](https://img.shields.io/github/v/release/nkrusch/SpaceLaunchOne)
 ![GitHub Release Date](https://img.shields.io/github/release-date/nkrusch/SpaceLaunchOne)
 
+Space Launch 1 is an Android application for tracking upcoming and past rocket launches.
+
 Originally I made this Android app as a capstone project for Udacity Android developer nanodegree program. The purpose of a capstone project is to apply different concepts learned during the program, and demonstrate these skills by creating and designing an application of choice. 
 
 This repository contains both stages of the capstone project. In stage 1 the purpose is to design the application and produce a design document. In stage 2 the purpose is to build the application based on the design document. 
