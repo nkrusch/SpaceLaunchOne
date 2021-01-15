@@ -68,6 +68,12 @@ public class Utilities {
                 Configuration.ORIENTATION_PORTRAIT;
     }
 
+    public static String getTimeZone(Context context) {
+        SharedPreferences sharedPref = Utilities.pref(context);
+        String timezonePrefKey = context.getResources().getString(R.string.pref_timezone_key);
+        return sharedPref.getString(timezonePrefKey, null);
+    }
+
     /**
      * Convert dp to pixel values
      *
@@ -223,39 +229,41 @@ public class Utilities {
     /**
      * Convert utc timestamp to date string
      */
-    public static String timeLabel(Long utc) {
+    public static String timeLabel(Long utc, String timezone) {
         Date current = new Date(utc);
-        String pattern = "dd MMMM yyyy";
+        String pattern = "dd MMMM yyyy HH:mm XXX";
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat(pattern, Locale.getDefault());
-        simpleDateFormat.setTimeZone(TimeZone.getTimeZone("UTC"));
+        simpleDateFormat.setTimeZone(TimeZone.getTimeZone(timezone == null ? "UTC" : timezone));
         // do not display year if date occurs in current year
         int year = Calendar.getInstance().get(Calendar.YEAR);
-        return simpleDateFormat.format(current).replace(year + "", "").trim();
+        return simpleDateFormat.format(current).replace(" " + year, "").trim();
     }
 
     /**
      * Convert utc timestamp to UTC datetime string
      */
-    public static String fullTimeLabel(Long utc) {
-        return fullTimeLabel(utc, null);
+    public static String fullTimeLabel(Long utc, String timezone) {
+        return fullTimeLabel(utc, null, timezone);
     }
 
-    public static String fullTimeLabelwithYear(Long utc) {
-        return fullTimeLabel(utc, "dd MMMM yyyy, HH:mm 'UTC'");
+    public static String fullTimeLabelwithYear(Long utc, String timezone) {
+        return fullTimeLabel(utc, "dd MMMM yyyy HH:mm XXX", timezone);
     }
 
     /**
      * Convert utc timestamp to UTC datetime string
      *
-     * @param utc     UTC timestamp
-     * @param pattern date string patter
+     * @param utc      UTC timestamp
+     * @param pattern  date string patter
+     * @param timezone preferred timezone; will be UTC if not specified
      */
     @SuppressWarnings("SameParameterValue")
-    private static String fullTimeLabel(Long utc, String pattern) {
+    private static String fullTimeLabel(Long utc, String pattern, String timezone) {
         Date current = new Date(utc);
-        pattern = pattern == null ? "dd MMMM, HH:mm 'UTC'" : pattern;
+        pattern = pattern == null ? "dd MMMM HH:mm XXX" : pattern;
+        timezone = timezone == null ? "UTC" : timezone;
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat(pattern, Locale.getDefault());
-        simpleDateFormat.setTimeZone(TimeZone.getTimeZone("UTC"));
+        simpleDateFormat.setTimeZone(TimeZone.getTimeZone(timezone));
         return simpleDateFormat.format(current);
     }
 

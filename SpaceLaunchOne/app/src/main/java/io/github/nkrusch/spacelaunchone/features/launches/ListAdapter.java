@@ -72,7 +72,7 @@ public class ListAdapter<T extends Launch> extends
 
         T item = dataSource.get(position);
         final Context context = holder.mImageView.getContext();
-        String timeLabel = Utilities.timeLabel(item.getLaunchDateUTC());
+        String timeLabel = Utilities.timeLabel(item.getLaunchDateUTC(), Utilities.getTimeZone(context));
         String timeDiff = Utilities.shortTimeDiff(item.getLaunchDateUTC(), context.getResources());
 
         holder.mTextView.setText(item.getName());

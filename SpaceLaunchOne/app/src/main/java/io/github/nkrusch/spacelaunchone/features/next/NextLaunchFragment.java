@@ -1,5 +1,6 @@
 package io.github.nkrusch.spacelaunchone.features.next;
 
+import android.content.SharedPreferences;
 import android.content.res.TypedArray;
 import android.graphics.Color;
 import android.os.Bundle;
@@ -102,7 +103,7 @@ public class NextLaunchFragment extends Fragment {
             mLayout.setVisibility(VISIBLE);
             mTitle.setVisibility(VISIBLE);
             mName.setText(launch.getName());
-            mDate.setText(Utilities.fullTimeLabel(launch.getLaunchDateUTC()));
+            mDate.setText(Utilities.fullTimeLabel(launch.getLaunchDateUTC(), Utilities.getTimeZone(getContext())));
             mLayout.setOnClickListener(onClickListener(launch.getLuuid(), launch.getName()));
             mStatus.setText(getString(R.string.bullet));
             mStatus.setTextColor(Color.parseColor(Utilities.getStatusColor(
