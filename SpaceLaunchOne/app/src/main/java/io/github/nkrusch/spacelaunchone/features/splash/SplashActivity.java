@@ -1,4 +1,4 @@
-package io.github.nkrusch.spacelaunchone.features;
+package io.github.nkrusch.spacelaunchone.features.splash;
 
 import android.annotation.TargetApi;
 import android.content.Intent;
@@ -10,19 +10,23 @@ import android.os.Build;
 import android.os.Bundle;
 
 import io.github.nkrusch.spacelaunchone.R;
-import io.github.nkrusch.spacelaunchone.app.InitActivity;
 import io.github.nkrusch.spacelaunchone.app.Utilities;
+import io.github.nkrusch.spacelaunchone.features.MainActivity;
 import service.InitTime;
 
 /**
- * This activity shows an animated loading screen when initializing dataset
- * on the very first app launch. On subsequent launches this
- * activity will just launch the main activity.
+ * This is application entry point activity.
+ *
+ * On first app launch this activity shows an animated loading screen while
+ * waiting for initialization of the dataset. If the init behavior fails, this activity
+ * will re-attempt to init on every app launch until successful.
+ *
+ * After successful init, this activity launches the main activity.
  */
 public class SplashActivity extends InitActivity {
 
     /**
-     * Check if app has ever been initialized; if YES, proceed straight
+     * Check if app has ever been initialized; if yes, proceed straight
      * to main activity; else show splash icon and initialize app data.
      */
     @Override
@@ -42,7 +46,7 @@ public class SplashActivity extends InitActivity {
     }
 
     /**
-     * When initial data load has completed, launch the main activity.
+     * When initial data load has completed, launch the main activity
      */
     public void onReceiveHandler() {
         launchApp();
@@ -61,7 +65,7 @@ public class SplashActivity extends InitActivity {
     }
 
     /**
-     * Animate splash icon
+     * Animate the splash icon
      */
     @TargetApi(23)
     private void animateSplashIcon() {

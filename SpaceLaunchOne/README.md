@@ -1,6 +1,6 @@
 # Space Launch 1 Source
 
-This directory contains the source code for Space Launch 1 android app.
+This directory contains the source code for Space Launch 1 Android app.
 
 ### Table of Contents
 
@@ -20,19 +20,20 @@ git clone https://github.com/nkrusch/SpaceLaunchOne.git
 
 **3. Create keystore for signing** 
 
-If you need instructions [see signing your app](https://developer.android.com/studio/publish/app-signing)
+If you need instructions [see signing your app ↗](https://developer.android.com/studio/publish/app-signing)
 
 **4. Optional: obtain 3rd party API keys** 
 
 This application uses multiple 3rd party services: Google Maps, Cloudinary and OneSignal. 
-To get these services working properly, you must obtain API keys. OR you may skip this
+To get these services working properly, you must obtain your own API keys -OR- you may skip this
 step knowing that some functionality will not work as intended until you obtain the keys.
 
-For instructions how to acquire API keys see: 
-
-[Cloudinary Setup](https://cloudinary.com/documentation/android_integration#setup) | 
+For instructions how to acquire API keys see:
+[Cloudinary Setup](https://cloudinary.com/documentation/android_integration#setup) |
 [Google Maps](https://developers.google.com/maps/documentation/android-sdk/start) |
 [OneSignal](https://documentation.onesignal.com/docs/android-sdk-setup)
+
+If you go through the setup steps, you will use these API keys in step #5.
 
 **5. Create a file called `secret.properites` and add following properties to it:**
 
@@ -56,6 +57,14 @@ onesignal = 00000000-0000-0000-0000-000000000000
 The file path should be `./SpaceLaunchOne/secret.properties` relative to repository root. 
 Failure to add this file and the listed <Key,Value> pairs will cause project to not compile.
 
+Replace values:
+
+- **Keystore** - replace these values with the values you chose in step #3
+- **Cloudinary Name** - This is your cloud name, from step #4
+- **Maps key** - this is your Maps API key, from step #4
+- **OneSignal** - API key, from step #4
+
+
 **6. Build the project**
 
 -----
@@ -66,17 +75,17 @@ This application consists of three libraries. Each library is futher divided int
 
 Library/Package | Purpose
 --- | ---
-└ **app** | Application UI layer
-└─── app | app-level UI code and base classes
-└─── features | Activities and fragments
+└ **app** | Application UI
+└─── app | app-level UI code; utility and base classes
+└─── features | Specific activities and fragments
 └ **datasrc** | Application data
 └─── api | External network data
 └─── local | Local data (Room DB)
 └─── service | Services for initializing and synchronizing data
-└─── utilities | Utility methods
+└─── utilities | Data-related utility methods
 └─── viewmodels | ViewModels provide access to data to UI layer
 └ **models** | API models
-└─── apimodels | Launch library API models
+└─── apimodels | Launch library API models; used for mapping raw data to objects
 
 -----
 

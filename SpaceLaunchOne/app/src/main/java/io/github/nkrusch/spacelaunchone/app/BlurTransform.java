@@ -10,9 +10,12 @@ import android.renderscript.ScriptIntrinsicBlur;
 import com.squareup.picasso.Transformation;
 
 /**
+ * Create blurred image w/ picasso
+ *
  * USAGE:
  *
- * Picasso.with(context).load(imageUri)
+ * Picasso.get()
+ *   .load(imageUri)
  *   .transform(new BlurTransform(context, 25))
  *   .into(mImageView);
  */

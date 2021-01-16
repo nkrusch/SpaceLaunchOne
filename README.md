@@ -6,7 +6,7 @@
 ![GitHub release (latest by date)](https://img.shields.io/github/v/release/nkrusch/SpaceLaunchOne)
 ![GitHub Release Date](https://img.shields.io/github/release-date/nkrusch/SpaceLaunchOne)
 
-Space Launch 1 is an Android application for tracking upcoming and past rocket launches.
+Space Launch 1 is an Android application for tracking space flights.
 
 This application gets its data from [Launch Library API](https://ll.thespacedevs.com/2.0.0/swagger/). Then using the data, this Android app presents it to the user in an organized way. This app is intended for astronomy enthusiasts who are looking for up-to-date information about upcoming rocket launches.
 

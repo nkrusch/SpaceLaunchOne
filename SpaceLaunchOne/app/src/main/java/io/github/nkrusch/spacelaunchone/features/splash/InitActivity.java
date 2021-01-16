@@ -1,4 +1,4 @@
-package io.github.nkrusch.spacelaunchone.app;
+package io.github.nkrusch.spacelaunchone.features.splash;
 
 import android.content.BroadcastReceiver;
 import android.content.Context;
@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.content.IntentFilter;
 
 import androidx.appcompat.app.AppCompatActivity;
+import io.github.nkrusch.spacelaunchone.app.Utilities;
 import service.InitIntentService;
 import service.InitTime;
 
@@ -13,7 +14,7 @@ import static service.InitIntentService.ACTION_INITIALIZE;
 import static service.InitIntentService.ACTION_OUTCOME;
 
 /**
- * This class provides necessary methods to initialize application data.
+ * This class provides necessary base methods to initialize application data.
  * This initialization is only necessary on the first launch.
  */
 public abstract class InitActivity extends AppCompatActivity {
@@ -40,7 +41,7 @@ public abstract class InitActivity extends AppCompatActivity {
     }
 
     /**
-     * Unregister broadcast received
+     * Unregister broadcast receiver
      */
     protected void onStop() {
         super.onStop();
