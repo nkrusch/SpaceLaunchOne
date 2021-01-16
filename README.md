@@ -67,6 +67,12 @@ This application gets its data from [Launch Library API](https://ll.thespacedevs
   </tbody>
 </table>
 
+### Feature requests and Issues
+
+If you find something that is not working as inteded or want to request new features, open a new issue here on Github.
+
+[Go to issues](https://github.com/nkrusch/SpaceLaunchOne/issues)
+
 ### Background
 
 Originally I made this Android app in 2018 as a capstone project for Udacity Android developer nanodegree program. The purpose of a capstone project is to apply different concepts learned during the program, and demonstrate these skills by creating and designing an application of choice. This repository contains both stages of the capstone project. In [stage 1](https://github.com/nkrusch/SpaceLaunchOne/tree/master/docs/Capstone_Stage1.pdf) the purpose is to design the application and produce a design document. In [stage 2](https://github.com/nkrusch/SpaceLaunchOne/tree/master/SpaceLaunchOne) the purpose is to build the application based on the design document. 
