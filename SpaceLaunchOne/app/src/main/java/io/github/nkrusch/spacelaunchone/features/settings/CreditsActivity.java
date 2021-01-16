@@ -141,7 +141,7 @@ public class CreditsActivity extends AppCompatActivity {
             holder.value.setText(Html.fromHtml(entry.second));
             if (entry.second != null && entry.second.contains("href")) {
                 holder.value.setMovementMethod(LinkMovementMethod.getInstance());
-                holder.value.setPadding(0, 24, 0, 34);
+                holder.value.setPadding(0, 24, 0, 24);
             }
         }
 

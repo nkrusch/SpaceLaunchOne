@@ -71,11 +71,11 @@
         <item>48</item>
     </string-array>
     <string-array name="credits_array">
-        <item>What is Space Launch 1? ; This app was originally created as a capstone project for Udacity Android
+        <item>What is Space Launch 1? ; Initially I created this app as a capstone project for Udacity Android
             developer nanodegree program. Since then it has become a standalone resource for
             tracking space flights. This application is open source and available on Github.
-            You are welcome to contribute to the improvement of this app.
-            &lt;br/>&lt;br/>Application data is provided and maintained by &lt;a href="https://thespacedevs.com/">the Space Devs&lt;/a>.
+            You are invited to contribute to the improvement of this app.
+            &lt;br/>&lt;br/>Application data is provided and maintained by the Space Devs.
             They continuously work on updating the data and share this resource with the world for free.
             If you appreciate the effort and wish to see it continue, consider supporting the Space Devs.
         </item>
@@ -83,7 +83,7 @@
         <item>Source Code ; &lt;a href="https://github.com/nkrusch/SpaceLaunchOne">Space Launch 1 on Github&lt;/a></item>
         <item>Beta Version; &lt;a href="https://play.google.com/apps/testing/io.github.nkrusch.spacelaunchone">Join beta program to get early updates&lt;a></item>
         <item>Rate this app ; &lt;a href="https://play.google.com/store/apps/details?id=io.github.nkrusch.spacelaunchone">Rate at Google Play Store&lt;/a></item>
-        <item>Application Data ; &lt;a href="https://thespacedevs.com/llapi">Launch Library 2 API&lt;/a></item>
+        <item>Application Data ; &lt;a href="https://thespacedevs.com/llapi">The Space Devs, Launch Library 2 API&lt;/a></item>
         <item>Image Credits ; &lt;a href="https://thespacedevs.com/llapi">Launch Library 2 &lt;/a>&lt;br/>
             &lt;a href="https://www.nasa.gov/multimedia/imagegallery/iotd.html">NASA image of the day&lt;/a></item>
         <item>Maps ; &lt;a href="https://developers.google.com/maps/documentation/android-sdk/intro">Google Maps&lt;/a></item>
@@ -757,5 +757,6 @@
     <string name="pref_timezone">Your Timezone</string>
     <string name="pref_timezone_key" translatable="false">user_local_timezone</string>
     <string name="video">Video</string>
+    <string name="search_launches">Search for launches</string>
 
 </resources>

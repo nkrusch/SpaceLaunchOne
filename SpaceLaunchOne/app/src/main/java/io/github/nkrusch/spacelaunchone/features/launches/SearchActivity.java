@@ -32,6 +32,7 @@ public class SearchActivity extends AppCompatActivity {
         searchView.setOnQueryTextListener(onQueryTextListener);
         searchView.setFocusable(true);
         searchView.setIconified(false);
+        searchView.setContentDescription(getString(R.string.search_launches));
         searchView.requestFocusFromTouch();
     }
 
