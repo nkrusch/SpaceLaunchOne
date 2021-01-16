@@ -28,6 +28,7 @@ public class SettingsFragment extends PreferenceFragment {
     private static String PREF_FREQUENCY_KEY;
     private static String PREF_LAST_SYNC;
     private static String PREF_NOTIFICATIONS;
+    private static String PREF_TIMEZONE;
     private onSyncRequest mSyncHandler;
     private static boolean hasInitialized;
 
@@ -58,11 +59,13 @@ public class SettingsFragment extends PreferenceFragment {
         PREF_LAST_SYNC = getString(R.string.dataset_last_sync);
         PREF_FREQUENCY_KEY = getString(R.string.sync_frequency);
         PREF_NOTIFICATIONS = getString(R.string.notifications_preference);
+        PREF_TIMEZONE = getString(R.string.pref_timezone_key);
 
         hasInitialized = false;
         initSyncFrequencyPreference();
         initSyncNowPreference();
         initNotificationPreference();
+        initTimezonePreference();
         hasInitialized = true;
     }
 
@@ -139,6 +142,18 @@ public class SettingsFragment extends PreferenceFragment {
                 (preference, newValue) -> {
                     SwitchPreference switchPref = (SwitchPreference) preference;
                     OneSignal.setSubscription(!switchPref.isChecked());
+                    return true;
+                });
+    }
+
+    /**
+     * Bind timezone preference change handler
+     */
+    private void initTimezonePreference() {
+        bindPreferenceSummaryToValue(findPreference(PREF_TIMEZONE));
+        findPreference(PREF_TIMEZONE).setOnPreferenceChangeListener(
+                (preference, newValue) -> {
+                    findPreference(PREF_TIMEZONE).setSummary(newValue.toString());
                     return true;
                 });
     }

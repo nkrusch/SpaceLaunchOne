@@ -25,6 +25,7 @@
             android:entries="@array/pref_timezones"
             android:entryValues="@array/pref_timezones"
             android:icon="@drawable/ic_earth"
+            android:summary=""
             android:key="@string/pref_timezone_key"
             android:title="@string/pref_timezone" />
         <PreferenceScreen

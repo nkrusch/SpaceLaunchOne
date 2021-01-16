@@ -1,6 +1,7 @@
 package io.github.nkrusch.spacelaunchone.app;
 
 import android.annotation.SuppressLint;
+import android.annotation.TargetApi;
 import android.app.Activity;
 import android.content.Context;
 import android.content.SharedPreferences;
@@ -9,6 +10,7 @@ import android.content.res.Resources;
 import android.graphics.Rect;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
+import android.os.Build;
 import android.util.DisplayMetrics;
 import android.util.Pair;
 import android.view.View;
@@ -17,6 +19,7 @@ import android.view.WindowManager;
 import com.cloudinary.Transformation;
 import com.cloudinary.android.MediaManager;
 import com.cloudinary.utils.StringUtils;
+import com.google.android.gms.common.internal.safeparcel.SafeParcelable;
 import com.google.android.material.snackbar.Snackbar;
 
 import java.text.SimpleDateFormat;
@@ -29,6 +32,7 @@ import java.util.Locale;
 import java.util.TimeZone;
 
 import androidx.annotation.Nullable;
+import androidx.annotation.RequiresApi;
 import io.github.nkrusch.spacelaunchone.R;
 import utilities.ImageResolver;
 
@@ -72,6 +76,14 @@ public class Utilities {
         SharedPreferences sharedPref = Utilities.pref(context);
         String timezonePrefKey = context.getResources().getString(R.string.pref_timezone_key);
         return sharedPref.getString(timezonePrefKey, null);
+    }
+
+    public static String getDateFormatString(String timezone, Boolean includeYear) {
+        String yearPattern = includeYear ? " yyyy " : " ";
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N && !"UTC".equals(timezone)) {
+            return "dd MMMM" + yearPattern + "HH:mm XXX";
+        }
+        return "dd MMMM" + yearPattern + "HH:mm";
     }
 
     /**
@@ -128,8 +140,10 @@ public class Utilities {
         if (url == null || url.length() == 0) return null;
         Transformation<?> t = new Transformation<>().gravity("face");
         t = (width > 0) ? t.width(width) : t.height(height);
-        return MediaManager.get().url().transformation(t.crop("thumb")
-                .fetchFormat("auto")).type("fetch").generate(url);
+        return MediaManager.get().url()
+                .transformation(t.crop("thumb")
+                        .fetchFormat("auto"))
+                .type("fetch").generate(url);
     }
 
     /**
@@ -231,7 +245,7 @@ public class Utilities {
      */
     public static String timeLabel(Long utc, String timezone) {
         Date current = new Date(utc);
-        String pattern = "dd MMMM yyyy HH:mm XXX";
+        String pattern = getDateFormatString(timezone, true);
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat(pattern, Locale.getDefault());
         simpleDateFormat.setTimeZone(TimeZone.getTimeZone(timezone == null ? "UTC" : timezone));
         // do not display year if date occurs in current year
@@ -243,24 +257,24 @@ public class Utilities {
      * Convert utc timestamp to UTC datetime string
      */
     public static String fullTimeLabel(Long utc, String timezone) {
-        return fullTimeLabel(utc, null, timezone);
+        return fullTimeLabel(utc, timezone, false);
     }
 
     public static String fullTimeLabelwithYear(Long utc, String timezone) {
-        return fullTimeLabel(utc, "dd MMMM yyyy HH:mm XXX", timezone);
+        return fullTimeLabel(utc, timezone, true);
     }
 
     /**
      * Convert utc timestamp to UTC datetime string
      *
-     * @param utc      UTC timestamp
-     * @param pattern  date string patter
-     * @param timezone preferred timezone; will be UTC if not specified
+     * @param utc         UTC timestamp
+     * @param timezone    preferred timezone; will be UTC if not specified
+     * @param includeYear include year in formatted date value
      */
     @SuppressWarnings("SameParameterValue")
-    private static String fullTimeLabel(Long utc, String pattern, String timezone) {
+    private static String fullTimeLabel(Long utc, String timezone, Boolean includeYear) {
         Date current = new Date(utc);
-        pattern = pattern == null ? "dd MMMM HH:mm XXX" : pattern;
+        String pattern = getDateFormatString(timezone, includeYear);
         timezone = timezone == null ? "UTC" : timezone;
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat(pattern, Locale.getDefault());
         simpleDateFormat.setTimeZone(TimeZone.getTimeZone(timezone));
