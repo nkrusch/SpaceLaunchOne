@@ -8,6 +8,8 @@
 
 Space Launch 1 is an Android application for tracking space flights.
 
+**What makes Space Launch 1 better than other apps in the Play Store?** After initial setup it does not require active network connection to work, meaning it doesn't eat up your data. It will periodically update the space launch data but only when you are connected to wifi. It also does not have annoying ads like other apps in the same category. The UI follows material design guidelines. It comes with a homescreen widget that shows a live countdown to next launch. The widget countdown uses second precision and this behavior is achieved without negative impact on your battery life.
+
 This application gets its data from [Launch Library API](https://ll.thespacedevs.com/2.0.0/swagger/). Then using the data, this Android app presents it to the user in an organized way. This app is intended for astronomy enthusiasts who are looking for up-to-date information about upcoming rocket launches.
 
 <p align="center">
