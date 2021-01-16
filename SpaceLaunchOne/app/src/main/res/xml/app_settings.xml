@@ -33,7 +33,7 @@
             android:key="prefs_feedback_screen"
             android:title="@string/title_activity_filters">
             <intent
-                android:targetClass="io.github.nkrusch.spacelaunchone.features.FilterActivity"
+                android:targetClass="io.github.nkrusch.spacelaunchone.features.filters.FilterActivity"
                 android:targetPackage="io.github.nkrusch.spacelaunchone" />
         </PreferenceScreen>
     </PreferenceCategory>
