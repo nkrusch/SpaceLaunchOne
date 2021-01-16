@@ -13,10 +13,12 @@ import android.widget.TextView;
 import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.regex.MatchResult;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import androidx.annotation.NonNull;
+import androidx.cardview.widget.CardView;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.RecyclerView;
 import io.github.nkrusch.spacelaunchone.R;
@@ -100,23 +102,33 @@ public class VideosFragment extends HorizontalRecyclerViewFragment<VideosFragmen
         @Override
         public void onBindViewHolder(@NonNull final VideoAdapter.ItemViewHolder holder, int position) {
             String videoUrl = dataSource.get(position);
-            if (videoUrl.indexOf("youtube") > 0 && videoUrl.indexOf("watch?v=") > 0) {
-                String videoId = videoUrl.split("=", 2)[1];
-                String YOUTUBE_IMG = "https://i.ytimg.com/vi/{:id}/sddefault.jpg";
-                String imageUrl = YOUTUBE_IMG.replace("{:id}", videoId);
-                AppImage.LoadImageFromURL(imageUrl, holder.mVideoImage);
-                holder.mVideoImage.setContentDescription(getString(R.string.play_video) + videoId);
-                holder.mVideoIcon.setContentDescription(getString(R.string.start_video)+ videoId);
+            String videoId = position + "";
+            String pattern = "^((?:https?:)?//)?((?:www|m)\\.)?((?:youtube\\.com|youtu.be))(/(?:[\\w\\-]+\\?v=|embed/|v/)?)([\\w\\-]+)(\\S+)?$";
+            Pattern r = Pattern.compile(pattern);
+            try {
+                Matcher matcher = r.matcher(videoUrl);
+                if (matcher.find()) {
+                    videoId = matcher.group(5);
+                    String YOUTUBE_IMG = "https://i.ytimg.com/vi/{:id}/sddefault.jpg";
+                    String imageUrl = YOUTUBE_IMG.replace("{:id}", videoId);
+                    AppImage.LoadImageFromURL(imageUrl, holder.mVideoImage);
+                }
+            } catch (Exception ignored) {
             }
+            holder.mCard.setContentDescription(getString(R.string.video) + " " + videoId);
+            holder.mVideoImage.setContentDescription(getString(R.string.play_video) + " " + videoId);
+            holder.mVideoIcon.setContentDescription(getString(R.string.start_video) + " " + videoId);
         }
 
         public class ItemViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
+            private final CardView mCard;
             private final ImageView mVideoImage;
             private final ImageView mVideoIcon;
 
             ItemViewHolder(View v) {
                 super(v);
+                mCard = v.findViewById(R.id.video_card);
                 mVideoImage = v.findViewById(R.id.video_image);
                 mVideoIcon = v.findViewById(R.id.video_icon);
                 mVideoImage.setOnClickListener(this);

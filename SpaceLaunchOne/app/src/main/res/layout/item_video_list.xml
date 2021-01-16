@@ -1,15 +1,17 @@
 <androidx.cardview.widget.CardView
+    android:id="@+id/video_card"
+    android:contentDescription="@string/videos"
     xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    tools:ignore="ContentDescription"
     style="@style/video_card">
 
     <ImageView
         android:id="@+id/video_image"
-        style="@style/video_image_background" />
+        style="@style/video_image_background"
+        android:contentDescription="@string/play_video" />
 
     <ImageView
         android:id="@+id/video_icon"
-        style="@style/video_play_icon" />
+        style="@style/video_play_icon"
+        android:contentDescription="@string/start_video" />
 
 </androidx.cardview.widget.CardView>
