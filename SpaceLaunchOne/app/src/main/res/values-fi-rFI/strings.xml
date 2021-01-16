@@ -60,8 +60,7 @@
         <item>Arvostele appi ; &lt;a href="https://play.google.com/store/apps/details?id=io.github.nkrusch.spacelaunchone">Arvostele Google Play Storessa&lt;/a></item>
         <item>Laukaisu Data ; &lt;a href="https://thespacedevs.com/llapi">Launch Library API&lt;/a></item>
         <item>Kuvat ; &lt;a href="https://thespacedevs.com/llapi">Launch Library&lt;/a>&lt;br/>
-            &lt;a href="https://www.nasa.gov/multimedia/imagegallery/iotd.html">NASA image of the day&lt;/a>&lt;br/>
-            &lt;a href="https://en.wikipedia.org">Wikipedia&lt;/a></item>
+            &lt;a href="https://www.nasa.gov/multimedia/imagegallery/iotd.html">NASA image of the day&lt;/a></item>
         <item>Maps ; &lt;a href="https://developers.google.com/maps/documentation/android-sdk/intro">Google Maps&lt;/a></item>
     </string-array>
 

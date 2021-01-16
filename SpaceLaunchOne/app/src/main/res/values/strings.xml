@@ -86,8 +86,7 @@
         <item>Rate this app ; &lt;a href="https://play.google.com/store/apps/details?id=io.github.nkrusch.spacelaunchone">Rate at Google Play Store&lt;/a></item>
         <item>Application Data ; &lt;a href="https://thespacedevs.com/llapi">Launch Library 2 API&lt;/a></item>
         <item>Image Credits ; &lt;a href="https://thespacedevs.com/llapi">Launch Library 2 &lt;/a>&lt;br/>
-            &lt;a href="https://www.nasa.gov/multimedia/imagegallery/iotd.html">NASA image of the day&lt;/a>&lt;br/>
-            &lt;a href="https://en.wikipedia.org">Wikipedia&lt;/a></item>
+            &lt;a href="https://www.nasa.gov/multimedia/imagegallery/iotd.html">NASA image of the day&lt;/a></item>
         <item>Maps ; &lt;a href="https://developers.google.com/maps/documentation/android-sdk/intro">Google Maps&lt;/a></item>
     </string-array>
     <string-array name="pref_timezones">
