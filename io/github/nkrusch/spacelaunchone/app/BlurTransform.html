@@ -110,9 +110,12 @@ var activeTableTab = "activeTableTab";
 <br>
 <pre>public class <span class="typeNameLabel">BlurTransform</span>
 extends java.lang.Object</pre>
-<div class="block">USAGE:
+<div class="block">Create blurred image w/ picasso
 
- Picasso.with(context).load(imageUri)
+ USAGE:
+
+ Picasso.get()
+   .load(imageUri)
    .transform(new BlurTransform(context, 25))
    .into(mImageView);</div>
 </li>

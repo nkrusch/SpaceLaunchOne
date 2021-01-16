@@ -11,5 +11,6 @@ io.github.nkrusch.spacelaunchone.features.missions
 io.github.nkrusch.spacelaunchone.features.next
 io.github.nkrusch.spacelaunchone.features.pads
 io.github.nkrusch.spacelaunchone.features.settings
+io.github.nkrusch.spacelaunchone.features.splash
 io.github.nkrusch.spacelaunchone.features.timers
 io.github.nkrusch.spacelaunchone.features.widget

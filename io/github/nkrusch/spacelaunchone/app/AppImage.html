@@ -110,8 +110,13 @@ var activeTableTab = "activeTableTab";
 <br>
 <pre>public class <span class="typeNameLabel">AppImage</span>
 extends java.lang.Object</pre>
-<div class="block">Writing this wrapper class so if and when Picasso implementation
- changes, it will be easy to update the syntax in one place</div>
+<div class="block">Writing this wrapper class so if (and when) Picasso implementation
+ changes, it will be easy to update the syntax in one place. Do
+ not refer to picasso directly outside this class. Add new methods
+ here if use case is not handled by what is already here.
+ <p>
+ Use this class for loading images that either are hosted remotely
+ or need to be transformed, e.g. circular view.</div>
 </li>
 </ul>
 </div>
@@ -152,14 +157,15 @@ extends java.lang.Object</pre>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../../io/github/nkrusch/spacelaunchone/app/AppImage.html#LoadAndDisplay-java.lang.String-android.widget.ImageView-android.view.View-">LoadAndDisplay</a></span>(java.lang.String&nbsp;imageURL,
               android.widget.ImageView&nbsp;target,
               android.view.View&nbsp;visibleTarget)</code>
-<div class="block">Attempt to load image into hidden view, and if successful, make that view visible</div>
+<div class="block">Attempt to load image into hidden view, and if successful, make that view visible.</div>
 </td>
 </tr>
 <tr id="i1" class="rowColor">
 <td class="colFirst"><code>static void</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../../io/github/nkrusch/spacelaunchone/app/AppImage.html#LoadCircleImage-java.lang.String-android.widget.ImageView-">LoadCircleImage</a></span>(java.lang.String&nbsp;res,
                android.widget.ImageView&nbsp;target)</code>
-<div class="block">Load image from URL into circular target; if it fails do nothing</div>
+<div class="block">Load image from URL into circular target
+ On error behavior: do nothing</div>
 </td>
 </tr>
 <tr id="i2" class="altColor">
@@ -167,14 +173,16 @@ extends java.lang.Object</pre>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../../io/github/nkrusch/spacelaunchone/app/AppImage.html#LoadCircleImage-java.lang.String-android.widget.ImageView-int-">LoadCircleImage</a></span>(java.lang.String&nbsp;res,
                android.widget.ImageView&nbsp;target,
                int&nbsp;errorResource)</code>
-<div class="block">Load image from URL into circular target; if it display default res image instead</div>
+<div class="block">Load image from URL into circular target
+ On error behavior: display default resource image instead</div>
 </td>
 </tr>
 <tr id="i3" class="rowColor">
 <td class="colFirst"><code>static void</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../../io/github/nkrusch/spacelaunchone/app/AppImage.html#LoadImageFromURL-java.lang.String-android.widget.ImageView-">LoadImageFromURL</a></span>(java.lang.String&nbsp;imageURL,
                 android.widget.ImageView&nbsp;target)</code>
-<div class="block">Load image from URL into some target; if it fails do nothing</div>
+<div class="block">Load image from URL into some target view
+ On error behavior: do nothing</div>
 </td>
 </tr>
 <tr id="i4" class="altColor">
@@ -182,7 +190,8 @@ extends java.lang.Object</pre>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../../io/github/nkrusch/spacelaunchone/app/AppImage.html#LoadImageFromURL-java.lang.String-android.widget.ImageView-int-">LoadImageFromURL</a></span>(java.lang.String&nbsp;imageURL,
                 android.widget.ImageView&nbsp;target,
                 int&nbsp;errorResource)</code>
-<div class="block">Load image from URL into some target; if it fails display default res image instead</div>
+<div class="block">Load image from URL into some target
+ On error behavior: display default resource image instead</div>
 </td>
 </tr>
 <tr id="i5" class="rowColor">
@@ -191,7 +200,8 @@ extends java.lang.Object</pre>
                       int&nbsp;width,
                       android.widget.ImageView&nbsp;target,
                       int&nbsp;errorResource)</code>
-<div class="block">Load image from URL into square target; if it display default res image instead</div>
+<div class="block">Load image from URL into square target
+ On error behavior: display default resource image instead</div>
 </td>
 </tr>
 </table>
@@ -243,7 +253,8 @@ extends java.lang.Object</pre>
                                           int&nbsp;width,
                                           android.widget.ImageView&nbsp;target,
                                           int&nbsp;errorResource)</pre>
-<div class="block">Load image from URL into square target; if it display default res image instead</div>
+<div class="block">Load image from URL into square target
+ On error behavior: display default resource image instead</div>
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>
 <dd><code>imageURL</code> - - URL o image to load</dd>
@@ -261,7 +272,8 @@ extends java.lang.Object</pre>
 <h4>LoadCircleImage</h4>
 <pre>public static&nbsp;void&nbsp;LoadCircleImage(java.lang.String&nbsp;res,
                                    android.widget.ImageView&nbsp;target)</pre>
-<div class="block">Load image from URL into circular target; if it fails do nothing</div>
+<div class="block">Load image from URL into circular target
+ On error behavior: do nothing</div>
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>
 <dd><code>res</code> - - local resource id to load</dd>
@@ -278,7 +290,8 @@ extends java.lang.Object</pre>
 <pre>public static&nbsp;void&nbsp;LoadCircleImage(java.lang.String&nbsp;res,
                                    android.widget.ImageView&nbsp;target,
                                    int&nbsp;errorResource)</pre>
-<div class="block">Load image from URL into circular target; if it display default res image instead</div>
+<div class="block">Load image from URL into circular target
+ On error behavior: display default resource image instead</div>
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>
 <dd><code>res</code> - - local resource id</dd>
@@ -295,10 +308,11 @@ extends java.lang.Object</pre>
 <h4>LoadImageFromURL</h4>
 <pre>public static&nbsp;void&nbsp;LoadImageFromURL(java.lang.String&nbsp;imageURL,
                                     android.widget.ImageView&nbsp;target)</pre>
-<div class="block">Load image from URL into some target; if it fails do nothing</div>
+<div class="block">Load image from URL into some target view
+ On error behavior: do nothing</div>
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>
-<dd><code>imageURL</code> - - URL o image to load</dd>
+<dd><code>imageURL</code> - - URL of image to load</dd>
 <dd><code>target</code> - - view where to load image</dd>
 </dl>
 </li>
@@ -312,7 +326,8 @@ extends java.lang.Object</pre>
 <pre>public static&nbsp;void&nbsp;LoadImageFromURL(java.lang.String&nbsp;imageURL,
                                     android.widget.ImageView&nbsp;target,
                                     int&nbsp;errorResource)</pre>
-<div class="block">Load image from URL into some target; if it fails display default res image instead</div>
+<div class="block">Load image from URL into some target
+ On error behavior: display default resource image instead</div>
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>
 <dd><code>imageURL</code> - - URL o image to load</dd>
@@ -330,7 +345,9 @@ extends java.lang.Object</pre>
 <pre>public static&nbsp;void&nbsp;LoadAndDisplay(java.lang.String&nbsp;imageURL,
                                   android.widget.ImageView&nbsp;target,
                                   android.view.View&nbsp;visibleTarget)</pre>
-<div class="block">Attempt to load image into hidden view, and if successful, make that view visible</div>
+<div class="block">Attempt to load image into hidden view, and if successful, make that view visible.
+ View is assumed to be initially GONE.
+ On error behavior: No image will be visible to user if image load fails</div>
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>
 <dd><code>imageURL</code> - - URL o image to load</dd>

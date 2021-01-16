@@ -113,8 +113,8 @@
 <dd>&nbsp;</dd>
 <dt><a href="io/github/nkrusch/spacelaunchone/app/AppImage.html" title="class in io.github.nkrusch.spacelaunchone.app"><span class="typeNameLink">AppImage</span></a> - Class in <a href="io/github/nkrusch/spacelaunchone/app/package-summary.html">io.github.nkrusch.spacelaunchone.app</a></dt>
 <dd>
-<div class="block">Writing this wrapper class so if and when Picasso implementation
- changes, it will be easy to update the syntax in one place</div>
+<div class="block">Writing this wrapper class so if (and when) Picasso implementation
+ changes, it will be easy to update the syntax in one place.</div>
 </dd>
 <dt><span class="memberNameLink"><a href="io/github/nkrusch/spacelaunchone/app/AppImage.html#AppImage--">AppImage()</a></span> - Constructor for class io.github.nkrusch.spacelaunchone.app.<a href="io/github/nkrusch/spacelaunchone/app/AppImage.html" title="class in io.github.nkrusch.spacelaunchone.app">AppImage</a></dt>
 <dd>&nbsp;</dd>
@@ -130,9 +130,12 @@
 <dl>
 <dt><a href="io/github/nkrusch/spacelaunchone/app/BlurTransform.html" title="class in io.github.nkrusch.spacelaunchone.app"><span class="typeNameLink">BlurTransform</span></a> - Class in <a href="io/github/nkrusch/spacelaunchone/app/package-summary.html">io.github.nkrusch.spacelaunchone.app</a></dt>
 <dd>
-<div class="block">USAGE:
+<div class="block">Create blurred image w/ picasso
 
- Picasso.with(context).load(imageUri)
+ USAGE:
+
+ Picasso.get()
+   .load(imageUri)
    .transform(new BlurTransform(context, 25))
    .into(mImageView);</div>
 </dd>
@@ -395,11 +398,11 @@
 </a>
 <h2 class="title">I</h2>
 <dl>
-<dt><a href="io/github/nkrusch/spacelaunchone/app/InitActivity.html" title="class in io.github.nkrusch.spacelaunchone.app"><span class="typeNameLink">InitActivity</span></a> - Class in <a href="io/github/nkrusch/spacelaunchone/app/package-summary.html">io.github.nkrusch.spacelaunchone.app</a></dt>
+<dt><a href="io/github/nkrusch/spacelaunchone/features/splash/InitActivity.html" title="class in io.github.nkrusch.spacelaunchone.features.splash"><span class="typeNameLink">InitActivity</span></a> - Class in <a href="io/github/nkrusch/spacelaunchone/features/splash/package-summary.html">io.github.nkrusch.spacelaunchone.features.splash</a></dt>
 <dd>
-<div class="block">This class provides necessary methods to initialize application data.</div>
+<div class="block">This class provides necessary base methods to initialize application data.</div>
 </dd>
-<dt><span class="memberNameLink"><a href="io/github/nkrusch/spacelaunchone/app/InitActivity.html#InitActivity--">InitActivity()</a></span> - Constructor for class io.github.nkrusch.spacelaunchone.app.<a href="io/github/nkrusch/spacelaunchone/app/InitActivity.html" title="class in io.github.nkrusch.spacelaunchone.app">InitActivity</a></dt>
+<dt><span class="memberNameLink"><a href="io/github/nkrusch/spacelaunchone/features/splash/InitActivity.html#InitActivity--">InitActivity()</a></span> - Constructor for class io.github.nkrusch.spacelaunchone.features.splash.<a href="io/github/nkrusch/spacelaunchone/features/splash/InitActivity.html" title="class in io.github.nkrusch.spacelaunchone.features.splash">InitActivity</a></dt>
 <dd>&nbsp;</dd>
 <dt><a href="io/github/nkrusch/spacelaunchone/app/package-summary.html">io.github.nkrusch.spacelaunchone.app</a> - package io.github.nkrusch.spacelaunchone.app</dt>
 <dd>&nbsp;</dd>
@@ -426,6 +429,8 @@
 <dt><a href="io/github/nkrusch/spacelaunchone/features/pads/package-summary.html">io.github.nkrusch.spacelaunchone.features.pads</a> - package io.github.nkrusch.spacelaunchone.features.pads</dt>
 <dd>&nbsp;</dd>
 <dt><a href="io/github/nkrusch/spacelaunchone/features/settings/package-summary.html">io.github.nkrusch.spacelaunchone.features.settings</a> - package io.github.nkrusch.spacelaunchone.features.settings</dt>
+<dd>&nbsp;</dd>
+<dt><a href="io/github/nkrusch/spacelaunchone/features/splash/package-summary.html">io.github.nkrusch.spacelaunchone.features.splash</a> - package io.github.nkrusch.spacelaunchone.features.splash</dt>
 <dd>&nbsp;</dd>
 <dt><a href="io/github/nkrusch/spacelaunchone/features/timers/package-summary.html">io.github.nkrusch.spacelaunchone.features.timers</a> - package io.github.nkrusch.spacelaunchone.features.timers</dt>
 <dd>&nbsp;</dd>
@@ -483,27 +488,32 @@
 <dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="io/github/nkrusch/spacelaunchone/app/AppImage.html#LoadAndDisplay-java.lang.String-android.widget.ImageView-android.view.View-">LoadAndDisplay(String, ImageView, View)</a></span> - Static method in class io.github.nkrusch.spacelaunchone.app.<a href="io/github/nkrusch/spacelaunchone/app/AppImage.html" title="class in io.github.nkrusch.spacelaunchone.app">AppImage</a></dt>
 <dd>
-<div class="block">Attempt to load image into hidden view, and if successful, make that view visible</div>
+<div class="block">Attempt to load image into hidden view, and if successful, make that view visible.</div>
 </dd>
 <dt><span class="memberNameLink"><a href="io/github/nkrusch/spacelaunchone/app/AppImage.html#LoadCircleImage-java.lang.String-android.widget.ImageView-">LoadCircleImage(String, ImageView)</a></span> - Static method in class io.github.nkrusch.spacelaunchone.app.<a href="io/github/nkrusch/spacelaunchone/app/AppImage.html" title="class in io.github.nkrusch.spacelaunchone.app">AppImage</a></dt>
 <dd>
-<div class="block">Load image from URL into circular target; if it fails do nothing</div>
+<div class="block">Load image from URL into circular target
+ On error behavior: do nothing</div>
 </dd>
 <dt><span class="memberNameLink"><a href="io/github/nkrusch/spacelaunchone/app/AppImage.html#LoadCircleImage-java.lang.String-android.widget.ImageView-int-">LoadCircleImage(String, ImageView, int)</a></span> - Static method in class io.github.nkrusch.spacelaunchone.app.<a href="io/github/nkrusch/spacelaunchone/app/AppImage.html" title="class in io.github.nkrusch.spacelaunchone.app">AppImage</a></dt>
 <dd>
-<div class="block">Load image from URL into circular target; if it display default res image instead</div>
+<div class="block">Load image from URL into circular target
+ On error behavior: display default resource image instead</div>
 </dd>
 <dt><span class="memberNameLink"><a href="io/github/nkrusch/spacelaunchone/app/AppImage.html#LoadImageFromURL-java.lang.String-android.widget.ImageView-">LoadImageFromURL(String, ImageView)</a></span> - Static method in class io.github.nkrusch.spacelaunchone.app.<a href="io/github/nkrusch/spacelaunchone/app/AppImage.html" title="class in io.github.nkrusch.spacelaunchone.app">AppImage</a></dt>
 <dd>
-<div class="block">Load image from URL into some target; if it fails do nothing</div>
+<div class="block">Load image from URL into some target view
+ On error behavior: do nothing</div>
 </dd>
 <dt><span class="memberNameLink"><a href="io/github/nkrusch/spacelaunchone/app/AppImage.html#LoadImageFromURL-java.lang.String-android.widget.ImageView-int-">LoadImageFromURL(String, ImageView, int)</a></span> - Static method in class io.github.nkrusch.spacelaunchone.app.<a href="io/github/nkrusch/spacelaunchone/app/AppImage.html" title="class in io.github.nkrusch.spacelaunchone.app">AppImage</a></dt>
 <dd>
-<div class="block">Load image from URL into some target; if it fails display default res image instead</div>
+<div class="block">Load image from URL into some target
+ On error behavior: display default resource image instead</div>
 </dd>
 <dt><span class="memberNameLink"><a href="io/github/nkrusch/spacelaunchone/app/AppImage.html#LoadSquareImageFromURL-java.lang.String-int-android.widget.ImageView-int-">LoadSquareImageFromURL(String, int, ImageView, int)</a></span> - Static method in class io.github.nkrusch.spacelaunchone.app.<a href="io/github/nkrusch/spacelaunchone/app/AppImage.html" title="class in io.github.nkrusch.spacelaunchone.app">AppImage</a></dt>
 <dd>
-<div class="block">Load image from URL into square target; if it display default res image instead</div>
+<div class="block">Load image from URL into square target
+ On error behavior: display default resource image instead</div>
 </dd>
 <dt><span class="memberNameLink"><a href="io/github/nkrusch/spacelaunchone/app/Utilities.html#localTimeLabel-java.lang.Long-">localTimeLabel(Long)</a></span> - Static method in class io.github.nkrusch.spacelaunchone.app.<a href="io/github/nkrusch/spacelaunchone/app/Utilities.html" title="class in io.github.nkrusch.spacelaunchone.app">Utilities</a></dt>
 <dd>
@@ -828,9 +838,9 @@
 </dd>
 <dt><span class="memberNameLink"><a href="io/github/nkrusch/spacelaunchone/features/timers/TimerFragment.html#onPause--">onPause()</a></span> - Method in class io.github.nkrusch.spacelaunchone.features.timers.<a href="io/github/nkrusch/spacelaunchone/features/timers/TimerFragment.html" title="class in io.github.nkrusch.spacelaunchone.features.timers">TimerFragment</a></dt>
 <dd>&nbsp;</dd>
-<dt><span class="memberNameLink"><a href="io/github/nkrusch/spacelaunchone/features/SplashActivity.html#onReceiveHandler--">onReceiveHandler()</a></span> - Method in class io.github.nkrusch.spacelaunchone.features.<a href="io/github/nkrusch/spacelaunchone/features/SplashActivity.html" title="class in io.github.nkrusch.spacelaunchone.features">SplashActivity</a></dt>
+<dt><span class="memberNameLink"><a href="io/github/nkrusch/spacelaunchone/features/splash/SplashActivity.html#onReceiveHandler--">onReceiveHandler()</a></span> - Method in class io.github.nkrusch.spacelaunchone.features.splash.<a href="io/github/nkrusch/spacelaunchone/features/splash/SplashActivity.html" title="class in io.github.nkrusch.spacelaunchone.features.splash">SplashActivity</a></dt>
 <dd>
-<div class="block">When initial data load has completed, launch the main activity.</div>
+<div class="block">When initial data load has completed, launch the main activity</div>
 </dd>
 <dt><span class="memberNameLink"><a href="io/github/nkrusch/spacelaunchone/features/next/NextLaunchFragment.html#onResume--">onResume()</a></span> - Method in class io.github.nkrusch.spacelaunchone.features.next.<a href="io/github/nkrusch/spacelaunchone/features/next/NextLaunchFragment.html" title="class in io.github.nkrusch.spacelaunchone.features.next">NextLaunchFragment</a></dt>
 <dd>&nbsp;</dd>
@@ -994,12 +1004,11 @@
 <dd>
 <div class="block">Get image url matching specified width</div>
 </dd>
-<dt><a href="io/github/nkrusch/spacelaunchone/features/SplashActivity.html" title="class in io.github.nkrusch.spacelaunchone.features"><span class="typeNameLink">SplashActivity</span></a> - Class in <a href="io/github/nkrusch/spacelaunchone/features/package-summary.html">io.github.nkrusch.spacelaunchone.features</a></dt>
+<dt><a href="io/github/nkrusch/spacelaunchone/features/splash/SplashActivity.html" title="class in io.github.nkrusch.spacelaunchone.features.splash"><span class="typeNameLink">SplashActivity</span></a> - Class in <a href="io/github/nkrusch/spacelaunchone/features/splash/package-summary.html">io.github.nkrusch.spacelaunchone.features.splash</a></dt>
 <dd>
-<div class="block">This activity shows an animated loading screen when initializing dataset
- on the very first app launch.</div>
+<div class="block">This is application entry point activity.</div>
 </dd>
-<dt><span class="memberNameLink"><a href="io/github/nkrusch/spacelaunchone/features/SplashActivity.html#SplashActivity--">SplashActivity()</a></span> - Constructor for class io.github.nkrusch.spacelaunchone.features.<a href="io/github/nkrusch/spacelaunchone/features/SplashActivity.html" title="class in io.github.nkrusch.spacelaunchone.features">SplashActivity</a></dt>
+<dt><span class="memberNameLink"><a href="io/github/nkrusch/spacelaunchone/features/splash/SplashActivity.html#SplashActivity--">SplashActivity()</a></span> - Constructor for class io.github.nkrusch.spacelaunchone.features.splash.<a href="io/github/nkrusch/spacelaunchone/features/splash/SplashActivity.html" title="class in io.github.nkrusch.spacelaunchone.features.splash">SplashActivity</a></dt>
 <dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="io/github/nkrusch/spacelaunchone/app/Utilities.html#squareImage-java.lang.String-int-">squareImage(String, int)</a></span> - Static method in class io.github.nkrusch.spacelaunchone.app.<a href="io/github/nkrusch/spacelaunchone/app/Utilities.html" title="class in io.github.nkrusch.spacelaunchone.app">Utilities</a></dt>
 <dd>
