@@ -14,9 +14,9 @@ This application gets its data from [Launch Library API](https://ll.thespacedevs
 <a href='https://play.google.com/store/apps/details?id=io.github.nkrusch.spacelaunchone'><img alt='Get it on Google Play' height="72" src='https://play.google.com/intl/en_us/badges/images/generic/en_badge_web_generic.png'/></a>
 </p>
 
-**Privacy Policy**: read it [here &raquo;](https://github.com/nkrusch/SpaceLaunchOne/blob/master/docs/privacy_policy.md)
+**Privacy Policy**: read it **[here &raquo;](https://github.com/nkrusch/SpaceLaunchOne/blob/master/docs/privacy_policy.md)**
 
-**Want early releases?** join open beta [here &raquo;](https://play.google.com/apps/testing/io.github.nkrusch.spacelaunchone)
+**Want early releases?** join open beta **[here &raquo;](https://play.google.com/apps/testing/io.github.nkrusch.spacelaunchone)**
 
 ## App Features
 
@@ -71,7 +71,7 @@ This application gets its data from [Launch Library API](https://ll.thespacedevs
 
 If you find something that is not working as inteded or want to request new features, open a new issue here on Github.
 
-[Go to issues](https://github.com/nkrusch/SpaceLaunchOne/issues)
+**[Go to issues](https://github.com/nkrusch/SpaceLaunchOne/issues)**
 
 ### Background
 
