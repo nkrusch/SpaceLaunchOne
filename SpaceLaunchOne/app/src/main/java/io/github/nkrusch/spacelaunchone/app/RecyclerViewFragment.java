@@ -19,12 +19,12 @@ public abstract class RecyclerViewFragment extends Fragment {
 
     protected abstract void setupViewModel();
 
-
     @Override
     public void onStart() {
         super.onStart();
         setupViewModel();
     }
+
     protected void restoreRecyclerViewState(Bundle savedInstanceState) {
         if (savedInstanceState != null && mRecyclerView != null && savedInstanceState.containsKey(EXTRA_RV_STATE))
             mRecyclerView.scrollToPosition(savedInstanceState.getInt(EXTRA_RV_STATE));
