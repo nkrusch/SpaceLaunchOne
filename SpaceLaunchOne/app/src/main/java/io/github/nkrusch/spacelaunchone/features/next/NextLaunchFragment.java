@@ -1,6 +1,5 @@
 package io.github.nkrusch.spacelaunchone.features.next;
 
-import android.content.SharedPreferences;
 import android.content.res.TypedArray;
 import android.graphics.Color;
 import android.os.Bundle;
@@ -20,7 +19,7 @@ import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 import io.github.nkrusch.spacelaunchone.R;
 import io.github.nkrusch.spacelaunchone.app.Utilities;
-import io.github.nkrusch.spacelaunchone.features.DetailsLaunchActivity;
+import io.github.nkrusch.spacelaunchone.features.launchdetails.DetailsLaunchActivity;
 import io.github.nkrusch.spacelaunchone.features.timers.TimerFragment;
 import local.Launch;
 import viewmodels.NextLaunchViewModel;

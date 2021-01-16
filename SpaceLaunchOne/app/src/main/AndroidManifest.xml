@@ -33,7 +33,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".features.DetailsLaunchActivity"
+            android:name=".features.launchdetails.DetailsLaunchActivity"
             android:label="@string/title_activity_details"
             android:parentActivityName=".features.MainActivity"
             android:theme="@style/TabbedActivityTheme">
@@ -42,13 +42,13 @@
                 android:value=".features.MainActivity" />
         </activity>
         <activity
-            android:name=".features.SettingsActivity"
+            android:name=".features.settings.SettingsActivity"
             android:label="@string/title_activity_settings"
             android:parentActivityName=".features.MainActivity" />
         <activity
             android:label="@string/title_activity_credits"
-            android:name=".features.CreditsActivity"
-            android:parentActivityName=".features.SettingsActivity">
+            android:name=".features.settings.CreditsActivity"
+            android:parentActivityName=".features.settings.SettingsActivity">
             <intent-filter>
                 <action android:name="example.action.ACTION_ABOUT_ACTIVITY" />
 
@@ -56,11 +56,11 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".features.HistoryActivity"
+            android:name=".features.launches.HistoryActivity"
             android:parentActivityName=".features.MainActivity"
             android:label="@string/title_activity_history" />
         <activity
-            android:name=".features.SearchActivity"
+            android:name=".features.launches.SearchActivity"
             android:label="@string/title_activity_search" />
         <activity
             android:windowSoftInputMode="adjustPan"
@@ -68,17 +68,17 @@
             android:name=".features.MainActivity" />
         <activity
             android:label="@string/title_activity_filters"
-            android:name=".features.FilterActivity"
+            android:name=".features.filters.FilterActivity"
             android:parentActivityName=".features.MainActivity"
             android:theme="@style/TabbedActivityTheme" />
         <activity
             android:label="@string/title_agency_details"
-            android:name=".features.DetailsAgencyActivity"
+            android:name=".features.agencies.DetailsAgencyActivity"
             android:theme="@style/TabbedActivityTheme"
             android:parentActivityName=".features.MainActivity" />
         <activity
             android:label="@string/title_pad_details"
-            android:name=".features.DetailsLocationActivity"
+            android:name=".features.locations.DetailsLocationActivity"
             android:theme="@style/TabbedActivityTheme"
             android:parentActivityName=".features.MainActivity" />
 

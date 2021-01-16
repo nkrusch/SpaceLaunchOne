@@ -1,4 +1,4 @@
-package io.github.nkrusch.spacelaunchone.features;
+package io.github.nkrusch.spacelaunchone.features.launchdetails;
 
 import android.content.Context;
 import android.content.Intent;
@@ -21,7 +21,6 @@ import androidx.lifecycle.ViewModelProvider;
 import io.github.nkrusch.spacelaunchone.R;
 import io.github.nkrusch.spacelaunchone.app.TabbedActivity;
 import io.github.nkrusch.spacelaunchone.app.TabsAdapter;
-import io.github.nkrusch.spacelaunchone.features.launchdetails.SummaryFragment;
 import io.github.nkrusch.spacelaunchone.features.map.LaunchMapFragment;
 import viewmodels.LaunchDetailsViewModel;
 

@@ -14,9 +14,9 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
 import io.github.nkrusch.spacelaunchone.R;
 import io.github.nkrusch.spacelaunchone.app.Utilities;
-import io.github.nkrusch.spacelaunchone.features.FilterActivity;
-import io.github.nkrusch.spacelaunchone.features.HistoryActivity;
-import io.github.nkrusch.spacelaunchone.features.SearchActivity;
+import io.github.nkrusch.spacelaunchone.features.filters.FilterActivity;
+import io.github.nkrusch.spacelaunchone.features.launches.HistoryActivity;
+import io.github.nkrusch.spacelaunchone.features.launches.SearchActivity;
 
 public class ScheduledFragment extends Fragment {
 

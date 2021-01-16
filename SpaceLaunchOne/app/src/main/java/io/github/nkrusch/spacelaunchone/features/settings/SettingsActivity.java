@@ -1,4 +1,4 @@
-package io.github.nkrusch.spacelaunchone.features;
+package io.github.nkrusch.spacelaunchone.features.settings;
 
 import android.content.Context;
 import android.net.ConnectivityManager;

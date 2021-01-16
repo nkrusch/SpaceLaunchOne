@@ -1,4 +1,4 @@
-package io.github.nkrusch.spacelaunchone.features;
+package io.github.nkrusch.spacelaunchone.features.filters;
 
 import android.app.Dialog;
 import android.os.Bundle;

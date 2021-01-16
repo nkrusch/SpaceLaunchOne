@@ -1,4 +1,4 @@
-package io.github.nkrusch.spacelaunchone.features;
+package io.github.nkrusch.spacelaunchone.features.launches;
 
 import android.os.Bundle;
 import android.view.MenuItem;

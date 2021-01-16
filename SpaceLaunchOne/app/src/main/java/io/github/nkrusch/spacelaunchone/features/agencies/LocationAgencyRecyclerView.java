@@ -17,7 +17,6 @@ import androidx.recyclerview.widget.GridLayoutManager;
 import io.github.nkrusch.spacelaunchone.R;
 import io.github.nkrusch.spacelaunchone.app.OnItemListener;
 import io.github.nkrusch.spacelaunchone.app.RecyclerViewFragment;
-import io.github.nkrusch.spacelaunchone.features.DetailsAgencyActivity;
 import local.Agency;
 import viewmodels.LocationDetailsViewModel;
 
