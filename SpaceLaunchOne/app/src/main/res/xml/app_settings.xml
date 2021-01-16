@@ -42,7 +42,7 @@
             android:icon="@drawable/ic_information_outline"
             android:title="@string/pref_about_label">
             <intent
-                android:targetClass="io.github.nkrusch.spacelaunchone.features.CreditsActivity"
+                android:targetClass="io.github.nkrusch.spacelaunchone.features.settings.CreditsActivity"
                 android:targetPackage="io.github.nkrusch.spacelaunchone" />
         </Preference>
     </PreferenceCategory>
