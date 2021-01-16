@@ -33,9 +33,9 @@ For instructions how to acquire API keys see:
 [Google Maps](https://developers.google.com/maps/documentation/android-sdk/start) |
 [OneSignal](https://documentation.onesignal.com/docs/android-sdk-setup)
 
-If you go through the setup steps, you will use these API keys in step #5.
+If you complete these setup steps, you will use the API keys in step #5.
 
-**5. Create a file called `secret.properites` and add following properties to it:**
+**5. Create a file called `secret.properties` and add following properties to it:**
 
 ```
 # Keystore
@@ -85,7 +85,7 @@ Library/Package | Purpose
 └─── utilities | Data-related utility methods
 └─── viewmodels | ViewModels provide access to data to UI layer
 └ **models** | API models
-└─── apimodels | Launch library API models; used for mapping raw data to objects
+└─── apimodels | Launch library API models<br/>used for mapping raw data to objects
 
 -----
 
