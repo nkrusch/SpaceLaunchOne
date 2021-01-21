@@ -57,7 +57,24 @@
         <item>Kehittäjä ; Neea Rusch (GA, USA)</item>
         <item>Lähdekoodi ; &lt;a href="https://github.com/nkrusch/SpaceLaunchOne">Space Launch 1 Githubissa&lt;/a></item>
         <item>Beta Versio; &lt;a href="https://play.google.com/apps/testing/io.github.nkrusch.spacelaunchone">Liity beta ohjelmaan&lt;a></item>
-        <item>Arvostele appi ; &lt;a href="https://play.google.com/store/apps/details?id=io.github.nkrusch.spacelaunchone">Arvostele Google Play Storessa&lt;/a></item>
+        <item>Arvostele appi ; &lt;a href="{rate_URL}">Jatka arvosteluun&lt;/a></item>
+        <item>Laukaisu Data ; &lt;a href="https://thespacedevs.com/llapi">Launch Library API&lt;/a></item>
+        <item>Kuvat ; &lt;a href="https://thespacedevs.com/llapi">Launch Library&lt;/a>&lt;br/>
+            &lt;a href="https://www.nasa.gov/multimedia/imagegallery/iotd.html">NASA image of the day&lt;/a></item>
+        <item>Maps ; &lt;a href="https://developers.google.com/maps/documentation/android-sdk/intro">Google Maps&lt;/a></item>
+    </string-array>
+    <string-array name="credits_array_amazon">
+        <item>Tietoa Sovelluksesta ; Tämä appi on Udacity Android nanodegree ohjelman opinnäytetyö.
+            Tämän työn tarkoitus on käyttää erilaisia konsepteja ja tekniikoita
+            joita on opittu ohjelman aikana sekä suunnitella ja luoda appi niiden pohjalta.
+            &lt;br/>&lt;br/>Tämä appi hyödyntää &lt;a href="https://thespacedevs.com/llapi">Launch Library&lt;/a> nimistä palvelua.
+            Appin tarkoitus on tarjota avaruuslaukaisu dataa uudella ja mielenkiintoisella
+            tavalla. Se on suunnattu astronomian harrastelijille ja opiskelijoille jotka
+            etsivät ajantasalla olevaa tietoa laukaisuista.
+        </item>
+        <item>Kehittäjä ; Neea Rusch (GA, USA)</item>
+        <item>Lähdekoodi ; &lt;a href="https://github.com/nkrusch/SpaceLaunchOne">Space Launch 1 Githubissa&lt;/a></item>
+        <item>Arvostele appi ; &lt;a href="{rate_URL}">Jatka arvosteluun&lt;/a></item>
         <item>Laukaisu Data ; &lt;a href="https://thespacedevs.com/llapi">Launch Library API&lt;/a></item>
         <item>Kuvat ; &lt;a href="https://thespacedevs.com/llapi">Launch Library&lt;/a>&lt;br/>
             &lt;a href="https://www.nasa.gov/multimedia/imagegallery/iotd.html">NASA image of the day&lt;/a></item>

@@ -21,6 +21,7 @@ import androidx.core.util.Pair;
 import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import io.github.nkrusch.spacelaunchone.BuildConfig;
 import io.github.nkrusch.spacelaunchone.R;
 
 /**
@@ -73,7 +74,12 @@ public class CreditsActivity extends AppCompatActivity {
         ActionBar ab = getSupportActionBar();
         if (ab != null) ab.setDisplayHomeAsUpEnabled(true);
 
-        TypedArray credits = getResources().obtainTypedArray(R.array.credits_array);
+        // TODO: redo this whole credit to better handle these differences
+        int arraySource = BuildConfig.FLAVOR.startsWith("amazon")
+                ? R.array.credits_array_amazon
+                : R.array.credits_array;
+
+        TypedArray credits = getResources().obtainTypedArray(arraySource);
         final String separator = getString(R.string.credits_array_separator);
 
         List<Pair<String, String>> data = new LinkedList<>();
@@ -131,6 +137,10 @@ public class CreditsActivity extends AppCompatActivity {
                     .inflate(R.layout.item_credit_list, parent, false));
         }
 
+        public static String replacePattern(String input, String pattern, String value) {
+            return input.contains(pattern) ? input.replace(pattern, value) : input;
+        }
+
         /**
          * Bind the view data; make links clickable
          */
@@ -138,7 +148,12 @@ public class CreditsActivity extends AppCompatActivity {
         public void onBindViewHolder(@NonNull final CreditsAdapter.ItemViewHolder holder, int position) {
             Pair<String, String> entry = dataSource.get(position);
             holder.label.setText(entry.first);
-            holder.value.setText(Html.fromHtml(entry.second));
+            if (entry.second != null) {
+                String text = replacePattern(
+                        replacePattern(entry.second, "{beta_URL}", BuildConfig.betaURL),
+                        "{rate_URL}", BuildConfig.rateURL);
+                holder.value.setText(Html.fromHtml(text));
+            }
             if (entry.second != null && entry.second.contains("href")) {
                 holder.value.setMovementMethod(LinkMovementMethod.getInstance());
                 holder.value.setPadding(0, 24, 0, 24);

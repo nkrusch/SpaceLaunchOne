@@ -63,6 +63,19 @@ android {
             signingConfig signingConfigs.config
         }
     }
+    flavorDimensions "distribution"
+    productFlavors {
+        playstore {
+            dimension "distribution"
+            buildConfigField 'String', "betaURL", Google_Play_Beta_URL
+            buildConfigField 'String', "rateURL", Google_Play_Store_rate_URL
+        }
+        amazonAppstore {
+            dimension "distribution"
+            buildConfigField 'String', "betaURL", Amazon_appstore_Beta_URL
+            buildConfigField 'String', "rateURL", Amazon_appstore_rate_URL
+        }
+    }
 }
 
 dependencies {
