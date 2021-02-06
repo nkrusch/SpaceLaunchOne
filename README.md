@@ -34,7 +34,7 @@ Also **[Available at Amazon appstore](https://www.amazon.com/gp/product/B08TB6GD
     <td><h4 align="center">Past & future launches</h4></td>
     <td><h4 align="center">Filter & search for launches</h4></td>
     <td><h4 align="center">View launch details</h4></td>
-    <td><h4 align="center">Homescreen widget</h4></td>
+    <td><h4 align="center">Homescreen countdown widget</h4></td>
   </tr>
   <tr>
     <td><h4 align="center">Live video of launches</h4></td>
