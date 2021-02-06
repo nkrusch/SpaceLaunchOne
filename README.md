@@ -8,7 +8,7 @@
 
 Space Launch 1 is an Android application for tracking space flights.
 
-This application gets its data from [Launch Library API](https://ll.thespacedevs.com/2.0.0/swagger/). Then using the data, this Android app presents it to the user in an organized way. This app is intended for astronomy enthusiasts who are looking for up-to-date information about upcoming rocket launches.
+This application gets its data from [Launch Library API](https://ll.thespacedevs.com/2.0.0/swagger/). Then using the data, the Android app presents it to the user in an organized way. This app is intended for astronomy enthusiasts who are looking for up-to-date information about upcoming rocket launches.
 
 <p align="center">
 <a href='https://play.google.com/store/apps/details?id=io.github.nkrusch.spacelaunchone'><img alt='Get it on Google Play' height="72" src='https://play.google.com/intl/en_us/badges/images/generic/en_badge_web_generic.png'/></a>
@@ -31,22 +31,16 @@ Also **[Available at Amazon appstore](https://www.amazon.com/gp/product/B08TB6GD
     <td width="228px"><h3 align="center">☄️</h3></td>
   </tr>
   <tr>
-    <td><h4 align="center">Future launches</h4></td>
-    <td><h4 align="center">Past launches</h4></td>
-    <td><h4 align="center">Launch details</h4></td>
-    <td><h4 align="center">Filter launches</h4></td>
+    <td><h4 align="center">Past & future launches</h4></td>
+    <td><h4 align="center">Filter & search for launches</h4></td>
+    <td><h4 align="center">View launch details</h4></td>
+    <td><h4 align="center">Homescreen widget</h4></td>
   </tr>
   <tr>
-    <td><h4 align="center">Search for launches</h4></td>
     <td><h4 align="center">Live video of launches</h4></td>
     <td><h4 align="center">Explore launch sites</h4></td>
-    <td><h4 align="center">Space agensies</h4></td>
-  </tr>
-  <tr>  
-    <td><h4 align="center">Agency missions</h4></td>
+    <td><h4 align="center">Browse space agensies</h4></td>
     <td><h4 align="center">Save favorites</h4></td>
-    <td><h4 align="center">Homescreen widget</h4></td>
-    <td><h4 align="center">Space-themed imagery</h4></td> 
   </tr>
   <tr>  
     <td><h4 align="center">Dark mode support</h4></td>
