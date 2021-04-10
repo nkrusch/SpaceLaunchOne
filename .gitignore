@@ -11,3 +11,4 @@ SpaceLaunchOne/secret.properties
 private_key.pepk
 icon.png
 SpaceLaunchOne/app/amazonAppstore
+static/build_index.py
