@@ -14,7 +14,6 @@ android:
     - 'google-gdk-license-.+'
 
 before_install:
-  - chmod +x ./SpaceLaunchOne/gradlew
   - openssl aes-256-cbc -K $encrypted_9b77b653ae5c_key -iv $encrypted_9b77b653ae5c_iv
     -in secrets.tar.enc -out ./SpaceLaunchOne/secrets.tar -d
   - tar -C ./SpaceLaunchOne/ -xvf ./SpaceLaunchOne/secrets.tar
