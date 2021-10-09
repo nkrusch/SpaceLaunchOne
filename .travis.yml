@@ -14,15 +14,14 @@ android:
     - 'google-gdk-license-.+'
 
 before_install:
-#  - wget https://github.com/sormuras/bach/raw/master/install-jdk.sh
-#  - chmod +x $TRAVIS_BUILD_DIR/install-jdk.sh
-#  - export JAVA_HOME=$HOME/openjdk11
-#  - $TRAVIS_BUILD_DIR/install-jdk.sh -F 11 --target $JAVA_HOME
   - chmod +x ./SpaceLaunchOne/gradlew
-#  - yes | sdkmanager "platforms;android-30"
   - openssl aes-256-cbc -K $encrypted_9b77b653ae5c_key -iv $encrypted_9b77b653ae5c_iv
     -in secrets.tar.enc -out ./SpaceLaunchOne/secrets.tar -d
   - tar -C ./SpaceLaunchOne/ -xvf ./SpaceLaunchOne/secrets.tar
+  - yes | sdkmanager "platforms;android-30"
+
+before_script:
+  - chmod +x ./SpaceLaunchOne/gradlew
 
 script:
   - "./SpaceLaunchOne/gradlew -p ./SpaceLaunchOne assembleRelease"
