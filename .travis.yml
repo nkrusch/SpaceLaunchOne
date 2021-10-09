@@ -2,30 +2,25 @@ language: android
 dist: trusty
 jdk: openjdk11
 sudo: required
+
 android:
   components:
     - tools
     - platform-tools
-    - build-tools-30.0.3
-    - android-30
+    - tools
+    - extra-android-m2repository
   licenses:
     - 'android-sdk-preview-license-52d11cd2'
     - 'android-sdk-license-.+'
     - 'google-gdk-license-.+'
 
 before_install:
+  - touch $HOME/.android/repositories.cfg
+  - yes | sdkmanager "platforms;android-30"
+  - yes | sdkmanager "build-tools;30.0.3"
   - openssl aes-256-cbc -K $encrypted_9b77b653ae5c_key -iv $encrypted_9b77b653ae5c_iv
     -in secrets.tar.enc -out ./SpaceLaunchOne/secrets.tar -d
   - tar -C ./SpaceLaunchOne/ -xvf ./SpaceLaunchOne/secrets.tar
-#  - yes | sdkmanager "platforms;android-30"
-  - yes | sudo sdkmanager --licenses
-
-before_script:
-  - chmod +x ./SpaceLaunchOne/gradlew
-
-script:
-  - "./SpaceLaunchOne/gradlew -p ./SpaceLaunchOne assembleRelease"
-  - "./SpaceLaunchOne/gradlew -p ./SpaceLaunchOne javadoc"
 
 before_cache:
   - rm -f  $HOME/.gradle/caches/modules-2/modules-2.lock
@@ -36,6 +31,13 @@ cache:
     - $HOME/.gradle/caches/
     - $HOME/.gradle/wrapper/
     - $HOME/.android/build-cache
+
+before_script:
+  - chmod +x ./SpaceLaunchOne/gradlew
+
+script:
+  - "./SpaceLaunchOne/gradlew -p ./SpaceLaunchOne assembleRelease"
+  - "./SpaceLaunchOne/gradlew -p ./SpaceLaunchOne javadoc"
 
 deploy:
   provider: pages
