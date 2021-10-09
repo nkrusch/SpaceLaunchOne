@@ -61,6 +61,10 @@ android {
             buildConfigField 'String', "rateURL", Amazon_appstore_rate_URL
         }
     }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_11
+        targetCompatibility JavaVersion.VERSION_11
+    }
 }
 
 dependencies {
