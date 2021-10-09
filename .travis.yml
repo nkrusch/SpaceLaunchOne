@@ -1,12 +1,12 @@
 language: android
-jdk: oraclejdk8
+jdk: oraclejdk11
 android:
   components:
   - tools
   - tools
   - platform-tools
-  - build-tools-29.0.2
-  - android-29
+  - build-tools-30.0.3
+  - android-30
 notifications:
   email: false
 before_script:
@@ -18,7 +18,7 @@ before_install:
 - openssl aes-256-cbc -K $encrypted_9b77b653ae5c_key -iv $encrypted_9b77b653ae5c_iv
   -in secrets.tar.enc -out ./SpaceLaunchOne/secrets.tar -d
 - tar -C ./SpaceLaunchOne/ -xvf ./SpaceLaunchOne/secrets.tar
-- yes | sdkmanager "platforms;android-28"
+- yes | sdkmanager "platforms;android-30"
 deploy:
   provider: pages
   skip-cleanup: true

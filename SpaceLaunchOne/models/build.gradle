@@ -5,3 +5,8 @@ dependencies {
     implementation "com.google.code.gson:gson:$gsonVersion"
     implementation "io.swagger:swagger-annotations:$swagger_annotations_version"
 }
+
+java {
+    sourceCompatibility = JavaVersion.VERSION_11
+    targetCompatibility = JavaVersion.VERSION_11
+}

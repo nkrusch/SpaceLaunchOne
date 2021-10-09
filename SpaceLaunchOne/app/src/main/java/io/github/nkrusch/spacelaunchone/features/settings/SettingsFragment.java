@@ -10,7 +10,7 @@ import android.preference.SwitchPreference;
 import android.view.View;
 import android.widget.ListView;
 
-import com.onesignal.OneSignal;
+//import com.onesignal.OneSignal;
 
 import io.github.nkrusch.spacelaunchone.R;
 import io.github.nkrusch.spacelaunchone.app.SyncUtility;
@@ -141,7 +141,7 @@ public class SettingsFragment extends PreferenceFragment {
         findPreference(PREF_NOTIFICATIONS).setOnPreferenceChangeListener(
                 (preference, newValue) -> {
                     SwitchPreference switchPref = (SwitchPreference) preference;
-                    OneSignal.setSubscription(!switchPref.isChecked());
+                    // OneSignal.setSubscription(!switchPref.isChecked());
                     return true;
                 });
     }

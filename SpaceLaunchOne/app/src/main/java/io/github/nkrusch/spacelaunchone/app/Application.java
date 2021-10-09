@@ -3,7 +3,7 @@ package io.github.nkrusch.spacelaunchone.app;
 import android.os.Build;
 
 import com.cloudinary.android.MediaManager;
-import com.onesignal.OneSignal;
+//import com.onesignal.OneSignal;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -28,9 +28,9 @@ public class Application extends android.app.Application {
             SyncUtility.scheduleJob(this);
 
         // init cloud messaging
-        OneSignal.startInit(this)
-                .inFocusDisplaying(OneSignal.OSInFocusDisplayOption.Notification)
-                .unsubscribeWhenNotificationsAreDisabled(true)
-                .init();
+    //        OneSignal.startInit(this)
+    //                .inFocusDisplaying(OneSignal.OSInFocusDisplayOption.Notification)
+    //                .unsubscribeWhenNotificationsAreDisabled(true)
+    //                .init();
     }
 }
