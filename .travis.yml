@@ -1,24 +1,34 @@
 language: android
+dist: trusty
 jdk: oraclejdk11
 android:
   components:
   - tools
-  - tools
   - platform-tools
   - build-tools-30.0.3
-  - android-29
-notifications:
-  email: false
-before_script:
-- chmod +x ./SpaceLaunchOne/gradlew
-script:
-- "./SpaceLaunchOne/gradlew -p ./SpaceLaunchOne assembleRelease"
-- "./SpaceLaunchOne/gradlew -p ./SpaceLaunchOne javadoc"
+  - android-30
+
 before_install:
-- openssl aes-256-cbc -K $encrypted_9b77b653ae5c_key -iv $encrypted_9b77b653ae5c_iv
-  -in secrets.tar.enc -out ./SpaceLaunchOne/secrets.tar -d
-- tar -C ./SpaceLaunchOne/ -xvf ./SpaceLaunchOne/secrets.tar
-- yes | sdkmanager "platforms;android-29"
+  - chmod +x ./SpaceLaunchOne/gradlew
+  - yes | sdkmanager "platforms;android-30"
+  - openssl aes-256-cbc -K $encrypted_9b77b653ae5c_key -iv $encrypted_9b77b653ae5c_iv
+    -in secrets.tar.enc -out ./SpaceLaunchOne/secrets.tar -d
+  - tar -C ./SpaceLaunchOne/ -xvf ./SpaceLaunchOne/secrets.tar
+
+script:
+  - "./SpaceLaunchOne/gradlew -p ./SpaceLaunchOne assembleRelease"
+  - "./SpaceLaunchOne/gradlew -p ./SpaceLaunchOne javadoc"
+
+before_cache:
+  - rm -f  $HOME/.gradle/caches/modules-2/modules-2.lock
+  - rm -fr $HOME/.gradle/caches/*/plugin-resolution/
+
+cache:
+  directories:
+    - $HOME/.gradle/caches/
+    - $HOME/.gradle/wrapper/
+    - $HOME/.android/build-cache
+
 deploy:
   provider: pages
   skip-cleanup: true
