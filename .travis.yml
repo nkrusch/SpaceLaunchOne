@@ -10,7 +10,6 @@ android:
   - android-30
 
 before_install:
-  - jdk_switcher use openjdk11
 #  - wget https://github.com/sormuras/bach/raw/master/install-jdk.sh
 #  - chmod +x $TRAVIS_BUILD_DIR/install-jdk.sh
 #  - export JAVA_HOME=$HOME/openjdk11
