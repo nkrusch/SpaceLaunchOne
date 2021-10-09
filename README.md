@@ -2,7 +2,7 @@
 
 <img src="feature.jpg" alt="app feature" />
 
-[![Build Status](https://travis-ci.com/nkrusch/SpaceLaunchOne.svg?branch=master)](https://travis-ci.com/nkrusch/SpaceLaunchOne)
+[![Build Status](https://app.travis-ci.com/nkrusch/SpaceLaunchOne.svg?branch=master)](https://app.travis-ci.com/nkrusch/SpaceLaunchOne)
 ![GitHub release (latest by date)](https://img.shields.io/github/v/release/nkrusch/SpaceLaunchOne)
 ![GitHub Release Date](https://img.shields.io/github/release-date/nkrusch/SpaceLaunchOne)
 
