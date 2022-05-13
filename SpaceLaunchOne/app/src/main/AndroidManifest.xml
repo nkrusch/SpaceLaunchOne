@@ -25,7 +25,8 @@
 
         <activity
             android:name=".features.splash.SplashActivity"
-            android:theme="@style/SplashTheme">
+            android:theme="@style/SplashTheme"
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -48,7 +49,8 @@
         <activity
             android:label="@string/title_activity_credits"
             android:name=".features.settings.CreditsActivity"
-            android:parentActivityName=".features.settings.SettingsActivity">
+            android:parentActivityName=".features.settings.SettingsActivity"
+            android:exported="false">
             <intent-filter>
                 <action android:name="example.action.ACTION_ABOUT_ACTIVITY" />
 
@@ -84,7 +86,8 @@
 
         <receiver
             android:name=".features.widget.CountdownWidget"
-            android:enabled="@bool/is_api_greater_or_equal_24">
+            android:enabled="@bool/is_api_greater_or_equal_24"
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
             </intent-filter>
@@ -95,13 +98,13 @@
         </receiver>
 
         <service
-            android:name="service.InitIntentService"
+            android:name="services.InitIntentService"
             android:exported="false" />
         <service
-            android:name="service.UpdateIntentService"
+            android:name="services.SyncService$UpdateIntentService"
             android:exported="false" />
         <service
-            android:name="service.UpdateJobService"
+            android:name="services.SyncService$UpdateJobService"
             android:exported="true"
             android:label="Data synchronization service"
             android:permission="android.permission.BIND_JOB_SERVICE" />

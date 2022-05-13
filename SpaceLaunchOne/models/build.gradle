@@ -3,7 +3,8 @@ apply plugin: 'java-library'
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation "com.google.code.gson:gson:$gsonVersion"
-    implementation "io.swagger:swagger-annotations:$swagger_annotations_version"
+    implementation "io.swagger:swagger-annotations:$swaggerAnnotationsVersion"
+    implementation "org.threeten:threetenbp:$threetenbpVersion"
 }
 
 java {

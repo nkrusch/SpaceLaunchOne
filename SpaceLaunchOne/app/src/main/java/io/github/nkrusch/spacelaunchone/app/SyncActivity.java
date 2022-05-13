@@ -7,12 +7,12 @@ import android.content.IntentFilter;
 import android.content.SharedPreferences;
 
 import androidx.appcompat.app.AppCompatActivity;
-import service.InitTime;
-import service.SyncTime;
-import service.UpdateIntentService;
+import services.InitTime;
+import services.SyncTime;
+import services.SyncService;
 import utilities.Logger;
 
-import static service.SyncTime.SYNC_KEY;
+import static services.SyncTime.SYNC_KEY;
 
 /**
  * This class provides necessary methods for activities
@@ -90,7 +90,7 @@ public abstract class SyncActivity extends AppCompatActivity {
         receiverRegistered = true;
         Intent initIntent = new Intent();
         initIntent.setAction(SYNC_KEY);
-        initIntent.setClass(this, UpdateIntentService.class);
+        initIntent.setClass(this, SyncService.UpdateIntentService.class);
         startService(initIntent);
     }
 }

@@ -5,13 +5,15 @@ import android.os.AsyncTask;
 
 import java.util.Date;
 
+import models.data.BuildConfig;
+
 /**
  * This task is used by the application widget to get the next
  * upcoming launch from the local database
  */
 public class WidgetGetNextTask extends AsyncTask<Context, Void, Launch> {
 
-    private static final int MIN_RECENT = apimodels.data.BuildConfig.MinRecentLimit;
+    private static final int MIN_RECENT = BuildConfig.MinRecentLimit;
 
     public interface onLoadComplete {
         void call(Launch result);

@@ -9,13 +9,13 @@ import java.util.List;
 import java.util.Objects;
 
 import androidx.annotation.Nullable;
+import api.AsyncCallback;
 import api.LaunchLibrary;
-import api.OnLoadCallback;
-import apimodels.AgencySerializerDetailedCommon;
-import apimodels.LaunchDetailed;
-import apimodels.LaunchListDetailed;
-import apimodels.LauncherConfigDetail;
-import apimodels.RocketDetailed;
+import models.AgencySerializerDetailedCommon;
+import models.LaunchDetailed;
+import models.LaunchListDetailed;
+import models.LauncherConfigDetail;
+import models.RocketDetailed;
 import utilities.ImageResolver;
 import utilities.Logger;
 import utilities.ProcessResult;
@@ -26,12 +26,12 @@ import utilities.ProcessResult;
 @SuppressWarnings("SameParameterValue")
 public class AppDataMethods extends Logger {
 
-    public static void init(Context context, int count, final OnLoadCallback<ProcessResult> callback) {
+    public static void init(Context context, int count, final AsyncCallback<ProcessResult> callback) {
         Log("Initializing app data...");
         final AppDatabase db = AppDatabase.getInstance(context);
-        LaunchLibrary.initialLaunches(count, new OnLoadCallback<LaunchListDetailed>() {
+        LaunchLibrary.initialLaunches(count, new AsyncCallback<>() {
             @Override
-            public void call(LaunchListDetailed result) {
+            public void onSuccess(LaunchListDetailed result) {
                 AppDataMethods.processLaunches(db, result, 0, callback);
             }
 
@@ -42,18 +42,18 @@ public class AppDataMethods extends Logger {
         });
     }
 
-    public static void sync(Context context, int offset, final OnLoadCallback<ProcessResult> callback) {
+    public static void sync(Context context, int offset, final AsyncCallback<ProcessResult> callback) {
         Log("Updating app data.... offset: " + offset);
         final AppDatabase db = AppDatabase.getInstance(context);
         updateAllLaunches(db, offset, callback);
     }
 
-    public static void updateLaunchDetails(Context context, final String id, @Nullable final OnLoadCallback<Boolean> callback) {
+    public static void updateLaunchDetails(Context context, final String id, @Nullable final AsyncCallback<Boolean> callback) {
         Log("Getting launch id: " + id);
         final AppDatabase db = AppDatabase.getInstance(context);
-        LaunchLibrary.getSingleLaunch(id, new OnLoadCallback<LaunchDetailed>() {
+        LaunchLibrary.getSingleLaunch(id, new AsyncCallback<LaunchDetailed>() {
             @Override
-            public void call(LaunchDetailed result) {
+            public void onSuccess(LaunchDetailed result) {
                 processSingleLaunch(db, result, callback);
             }
 
@@ -65,10 +65,10 @@ public class AppDataMethods extends Logger {
         });
     }
 
-    private static void updateAllLaunches(final AppDatabase db, final int offset, final OnLoadCallback<ProcessResult> callback) {
-        LaunchLibrary.allLaunches(offset, new OnLoadCallback<LaunchListDetailed>() {
+    private static void updateAllLaunches(final AppDatabase db, final int offset, final AsyncCallback<ProcessResult> callback) {
+        LaunchLibrary.allLaunches(offset, new AsyncCallback<LaunchListDetailed>() {
             @Override
-            public void call(final LaunchListDetailed result) {
+            public void onSuccess(final LaunchListDetailed result) {
                 processLaunches(db, result, offset, callback);
             }
 
@@ -83,10 +83,10 @@ public class AppDataMethods extends Logger {
     private static void processSingleLaunch(
             final AppDatabase db,
             final LaunchDetailed launch,
-            final OnLoadCallback<Boolean> callback) {
+            final AsyncCallback<Boolean> callback) {
 
         if (launch == null) {
-            if (callback != null) callback.call(false);
+            if (callback != null) callback.onSuccess(false);
             return;
         }
 
@@ -137,12 +137,12 @@ public class AppDataMethods extends Logger {
             final AppDatabase db,
             final LaunchListDetailed result,
             final int offset,
-            final OnLoadCallback<ProcessResult> callback) {
+            final AsyncCallback<ProcessResult> callback) {
 
         ProcessResult out = new ProcessResult();
         if (result == null || result.getResults() == null) {
             out.setResult(false, result, offset);
-            if (callback != null) callback.call(out);
+            if (callback != null) callback.onSuccess(out);
             return;
         }
         Log("PROCESSING: " + result.getResults().size());
@@ -163,7 +163,7 @@ public class AppDataMethods extends Logger {
             final LaunchDetailed l = result.getResults().get(i);
             final RocketDetailed r = l.getRocket();
             final AgencySerializerDetailedCommon a = l.getLaunchServiceProvider();
-            final apimodels.Pad p = l.getPad();
+            final models.Pad p = l.getPad();
             final String launchId = l.getId().toString();
 
             details[i] = Details.Map(l);
@@ -242,7 +242,7 @@ public class AppDataMethods extends Logger {
 
         if (rockets.size() == 0) {
             out.setResult(true, result, offset);
-            if (callback != null) callback.call(out);
+            if (callback != null) callback.onSuccess(out);
             return;
         }
 
@@ -253,9 +253,9 @@ public class AppDataMethods extends Logger {
         for (int j = 0; j < rockets.size(); j++) {
             final int rocketId = rockets.keyAt(j);
             final Rocket rocket = rockets.valueAt(j);
-            new ImageResolver().resolveImage(rocket, new OnLoadCallback<String>() {
+            new ImageResolver().resolveImage(rocket, new AsyncCallback<String>() {
                 @Override
-                public void call(String image) {
+                public void onSuccess(String image) {
                     images.add(rocketId);
                     if (image != null) {
                         for (String launchId : rocket.getLaunchIds())
@@ -263,7 +263,7 @@ public class AppDataMethods extends Logger {
                     }
                     if (images.size() == rocketCount && callback != null) {
                         out.setResult(true, result, offset);
-                        callback.call(out);
+                        callback.onSuccess(out);
                     }
                 }
 

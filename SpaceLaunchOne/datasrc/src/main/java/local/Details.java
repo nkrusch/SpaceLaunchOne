@@ -9,9 +9,9 @@ import androidx.room.Entity;
 import androidx.room.Ignore;
 import androidx.room.Index;
 import androidx.room.PrimaryKey;
-import apimodels.InfoURL;
-import apimodels.LaunchDetailed;
-import apimodels.VidURL;
+import models.InfoURL;
+import models.LaunchDetailed;
+import models.VidURL;
 
 
 @SuppressWarnings({"NullableProblems", "SpellCheckingInspection"})

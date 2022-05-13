@@ -1,19 +1,19 @@
 package utilities;
 
-import api.OnLoadCallback;
-import apimodels.data.BuildConfig;
+import api.AsyncCallback;
+import models.data.BuildConfig;
 
 /**
  * This class provides image utilities for finding the best image of some resource
  */
 public class ImageResolver {
-    private void get(final String urlStr, final OnLoadCallback<String> callback) {
-        callback.call(null);
+    private void get(final String urlStr, final AsyncCallback<String> callback) {
+        callback.onSuccess(null);
     }
 
-    public void resolveImage(final local.Rocket rocket, final OnLoadCallback<String> callback) {
+    public void resolveImage(final local.Rocket rocket, final AsyncCallback<String> callback) {
         final String defaultImage = rocket.getImageURL();
-        callback.call(defaultImage);
+        callback.onSuccess(defaultImage);
     }
 
     public static String resolveImage(final int agency) {

@@ -26,11 +26,5 @@ public class Application extends android.app.Application {
         // schedule data update job service
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP)
             SyncUtility.scheduleJob(this);
-
-        // init cloud messaging
-    //        OneSignal.startInit(this)
-    //                .inFocusDisplaying(OneSignal.OSInFocusDisplayOption.Notification)
-    //                .unsubscribeWhenNotificationsAreDisabled(true)
-    //                .init();
     }
 }

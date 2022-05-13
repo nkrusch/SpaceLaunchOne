@@ -14,11 +14,9 @@ import java.util.Date;
 import androidx.annotation.RequiresApi;
 import io.github.nkrusch.spacelaunchone.BuildConfig;
 import io.github.nkrusch.spacelaunchone.R;
-import service.SyncTime;
-import service.UpdateJobService;
+import services.SyncTime;
+import services.SyncService;
 import utilities.Logger;
-
-import static service.UpdateJobService.UPDATE_DATA_JOB_ID;
 
 
 /**
@@ -55,12 +53,12 @@ public class SyncUtility {
     public static void scheduleJob(Context context, boolean overridePrevious, int intervalHours) {
         final long interval_milliseconds = overridePrevious ?
                 intervalHours * MS_IN_HOUR : getSyncInterval(context);
-        ComponentName componentName = new ComponentName(context, UpdateJobService.class);
+        ComponentName componentName = new ComponentName(context, SyncService.UpdateJobService.class);
         JobScheduler jobScheduler = (JobScheduler) context
                 .getSystemService(Context.JOB_SCHEDULER_SERVICE);
         JobInfo previous = null;
         for (JobInfo ji : jobScheduler.getAllPendingJobs()) {
-            if (ji.getId() == UPDATE_DATA_JOB_ID) {
+            if (ji.getId() == SyncService.UPDATE_DATA_JOB_ID) {
                 previous = ji;
                 break;
             }
@@ -69,8 +67,8 @@ public class SyncUtility {
             Logger.Log("Job already scheduled; will not reschedule");
             return;
         }
-        jobScheduler.cancel(UPDATE_DATA_JOB_ID);
-        JobInfo jobInfo = new JobInfo.Builder(UPDATE_DATA_JOB_ID, componentName)
+        jobScheduler.cancel(SyncService.UPDATE_DATA_JOB_ID);
+        JobInfo jobInfo = new JobInfo.Builder(SyncService.UPDATE_DATA_JOB_ID, componentName)
                 .setRequiresCharging(false)
                 .setRequiredNetworkType(JobInfo.NETWORK_TYPE_ANY)
                 .setPeriodic(interval_milliseconds)

@@ -59,7 +59,7 @@ public class Location {
     }
 
     @Ignore
-    public static Location Map(apimodels.Location loc) {
+    public static Location Map(models.Location loc) {
         Location a = new Location();
         a.setLid(loc.getId());
         a.setName(loc.getName());

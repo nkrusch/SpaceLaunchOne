@@ -117,7 +117,7 @@ public class Mission {
     }
 
     @Ignore
-    public static Mission Map(String launchId, apimodels.Mission mission) {
+    public static Mission Map(String launchId, models.Mission mission) {
         Mission m = new Mission();
         m.setMid(mission.getId());
         m.setLaunchId(launchId);

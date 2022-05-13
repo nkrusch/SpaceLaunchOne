@@ -64,7 +64,6 @@ public class SettingsFragment extends PreferenceFragment {
         hasInitialized = false;
         initSyncFrequencyPreference();
         initSyncNowPreference();
-        initNotificationPreference();
         initTimezonePreference();
         hasInitialized = true;
     }
@@ -130,18 +129,6 @@ public class SettingsFragment extends PreferenceFragment {
         findPreference(PREF_LAST_SYNC).setOnPreferenceClickListener(
                 preference -> {
                     if (mSyncHandler != null) mSyncHandler.run();
-                    return true;
-                });
-    }
-
-    /**
-     * Bind notification preference change handler
-     */
-    private void initNotificationPreference() {
-        findPreference(PREF_NOTIFICATIONS).setOnPreferenceChangeListener(
-                (preference, newValue) -> {
-                    SwitchPreference switchPref = (SwitchPreference) preference;
-                    // OneSignal.setSubscription(!switchPref.isChecked());
                     return true;
                 });
     }

@@ -5,8 +5,8 @@ import androidx.room.Entity;
 import androidx.room.Ignore;
 import androidx.room.Index;
 import androidx.room.PrimaryKey;
-import apimodels.LaunchDetailed;
-import apimodels.Pad;
+import models.LaunchDetailed;
+import models.Pad;
 
 @SuppressWarnings("NullableProblems")
 @Entity(tableName = "launch", indices = {@Index("launchDateUTC")})
@@ -108,7 +108,7 @@ public class Launch implements Comparable<Launch> {
         r.setLuuid(launch.getId().toString());
         r.setName(launch.getName());
         r.setImage(launch.getImage());
-        r.setLaunchDateUTC(launch.getNet().getTime());
+        r.setLaunchDateUTC(launch.getNet().toEpochSecond());
         r.setLocationName(locationName(launch.getPad()));
         r.setStatus(launch.getStatus().getId());
         return r;

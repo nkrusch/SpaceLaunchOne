@@ -13,13 +13,6 @@
             android:key="@string/dataset_last_sync"
             android:summary="synchronize immediately"
             android:title="@string/pref_immediate_sync" />
-        <SwitchPreference
-            android:defaultValue="true"
-            android:icon="@drawable/ic_message_text_outline"
-            android:key="@string/notifications_preference"
-            android:summaryOff="@string/disabled"
-            android:summaryOn="@string/enabled"
-            android:title="@string/app_notifications" />
         <ListPreference
             android:defaultValue="UTC"
             android:entries="@array/pref_timezones"

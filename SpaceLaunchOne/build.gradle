@@ -1,41 +1,41 @@
 buildscript {
     repositories {
         google()
-        jcenter()
         mavenCentral()
+        jcenter()
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:7.0.2'
+        classpath 'com.android.tools.build:gradle:7.0.4'
     }
 }
 
 allprojects {
     repositories {
         google()
-        jcenter()
         mavenCentral()
+        jcenter()
     }
     ext {
-        legacySupportVersion = "1.0.0"
-        androidxVersion = "1.1.1"
-        materialVersion = "1.5.0-alpha01"
+        androidxVersion = "1.2.0"
+        appCompatVersion = "1.4.1"
         cardViewVersion = "1.0.0"
-        recyclerViewVersion = "1.2.1"
-        appCompatVersion = "1.3.1"
-        googleMapsVersion = "17.0.1"
-        googlePlacesVersion = "17.0.0"
-        googlegcmVersion = "17.0.0"
-        picassoVersion = "2.71828"
-        lifecycleVersion = "2.2.0"
-        roomVersion = "2.3.0"
-        fragmentVersion = "1.3.6"
-        constraintLayoutVersion = "2.1.1"
-        retrofitVersion = "2.9.0"
         cloudinaryVersion = "1.30.0"
-        oneSignalVersion = "3.15.4"
-        vectorVersion = "1.1.0"
+        constraintLayoutVersion = "2.1.3"
+        fragmentVersion = "1.4.1"
+        googleMapsVersion = "18.0.2"
+        googlegcmVersion = "17.0.0"
         gsonVersion = "2.8.6"
-        swagger_annotations_version = "1.5.0"
+        legacySupportVersion = "1.0.0"
+        lifecycleVersion = "2.2.0"
+        materialVersion = "1.5.0"
+        multidexVersion = "2.0.1"
+        picassoVersion = "2.71828"
+        recyclerViewVersion = "1.2.1"
+        retrofitVersion = "2.9.0"
+        roomVersion = "2.4.2"
+        swaggerAnnotationsVersion = "1.5.0"
+        threetenbpVersion = "1.6.0"
+        vectorVersion = "1.1.0"
     }
 }
 

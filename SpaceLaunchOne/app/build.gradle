@@ -22,13 +22,14 @@ android {
             keyPassword properties.getProperty('keyPassword')
         }
     }
-    compileSdkVersion 30
+    compileSdkVersion 31
     buildToolsVersion "30.0.3"
     defaultConfig {
         applicationId "io.github.nkrusch.spacelaunchone"
         minSdkVersion 19
-        targetSdkVersion 30
+        targetSdkVersion 31
         versionCode code
+        multiDexEnabled true
         versionName major + "." + minor + "." + patch
         vectorDrawables.useSupportLibrary = true
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
@@ -36,10 +37,6 @@ android {
         buildConfigField 'int', "MissionTextClipLength", MissionText_ClipLength
         buildConfigField 'String', "CloudinaryClound", properties.getProperty('Cloudinary_Cloud')
         resValue("string", "google_maps_key", properties.getProperty('Google_Maps_Key'))
-        manifestPlaceholders = [
-                onesignal_app_id               : properties.getProperty('onesignal'),
-                onesignal_google_project_number: 'REMOTE'
-        ]
     }
     buildTypes {
         release {
@@ -70,7 +67,7 @@ android {
 dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
 
-    // support libraries
+    // android + support libraries
     implementation "androidx.legacy:legacy-support-v4:$legacySupportVersion"
     implementation "androidx.vectordrawable:vectordrawable:$vectorVersion"
     implementation "androidx.appcompat:appcompat:$appCompatVersion"
@@ -79,17 +76,15 @@ dependencies {
     implementation "com.google.android.material:material:$materialVersion"
     implementation "androidx.constraintlayout:constraintlayout:$constraintLayoutVersion"
     implementation "androidx.preference:preference:$androidxVersion"
-
-    // viewModels
     implementation "androidx.fragment:fragment:$fragmentVersion"
     implementation "androidx.lifecycle:lifecycle-extensions:$lifecycleVersion"
+    implementation "androidx.multidex:multidex:$multidexVersion"
 
     // 3rd party libs
-    implementation "com.cloudinary:cloudinary-android:$cloudinaryVersion"
     implementation "com.squareup.picasso:picasso:$picassoVersion"
+    implementation "com.cloudinary:cloudinary-android:$cloudinaryVersion"
     implementation "com.google.android.gms:play-services-maps:$googleMapsVersion"
     implementation "com.google.android.gms:play-services-gcm:$googlegcmVersion"
-    //implementation "com.onesignal:OneSignal:$oneSignalVersion"
 
     // project modules
     implementation project(':datasrc')

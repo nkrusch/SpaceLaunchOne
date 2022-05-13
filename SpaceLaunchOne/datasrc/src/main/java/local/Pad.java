@@ -25,6 +25,29 @@ public class Pad implements Comparable<Pad> {
     private String[] infoURLs;
     private Date lastModified;
 
+    @Ignore
+    public static Pad Map(models.Pad pad) {
+        Pad a = new Pad();
+        List<String> urls = new LinkedList<>();
+        a.setPid(pad.getId());
+        a.setName(pad.getName());
+        a.setLocationId(pad.getLocation().getId());
+        try {
+            if (pad.getLatitude() != null)
+                a.setLatitude(Double.parseDouble(pad.getLatitude()));
+            if (pad.getLongitude() != null)
+                a.setLongitude(Double.parseDouble(pad.getLongitude()));
+        } catch (NumberFormatException e) {
+            a.setLatitude(0d);
+            a.setLongitude(0d);
+        }
+        if (pad.getInfoUrl() != null) urls.add(pad.getInfoUrl());
+        if (pad.getWikiUrl() != null) urls.add(pad.getWikiUrl());
+        if (urls.size() > 0) a.setInfoURLs(urls.toArray(new String[0]));
+        a.setLastModified(new Date());
+        return a;
+    }
+
     public int getPid() {
         return pid;
     }
@@ -91,27 +114,6 @@ public class Pad implements Comparable<Pad> {
 
     public void setLastModified(Date lastModified) {
         this.lastModified = lastModified;
-    }
-
-    @Ignore
-    public static Pad Map(apimodels.Pad pad) {
-        Pad a = new Pad();
-        List<String> urls = new LinkedList<>();
-        a.setPid(pad.getId());
-        a.setName(pad.getName());
-        a.setLocationId(pad.getLocation().getId());
-        try {
-            a.setLatitude(Double.parseDouble(pad.getLatitude()));
-            a.setLongitude(Double.parseDouble(pad.getLongitude()));
-        } catch (NumberFormatException e) {
-            a.setLatitude(0d);
-            a.setLongitude(0d);
-        }
-        if (pad.getInfoUrl() != null) urls.add(pad.getInfoUrl());
-        if (pad.getWikiUrl() != null) urls.add(pad.getWikiUrl());
-        if (urls.size() > 0) a.setInfoURLs(urls.toArray(new String[0]));
-        a.setLastModified(new Date());
-        return a;
     }
 
     @NonNull

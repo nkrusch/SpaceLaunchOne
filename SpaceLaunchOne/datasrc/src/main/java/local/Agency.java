@@ -7,7 +7,7 @@ import androidx.annotation.NonNull;
 import androidx.room.Entity;
 import androidx.room.Ignore;
 import androidx.room.PrimaryKey;
-import apimodels.AgencySerializerDetailedCommon;
+import models.AgencySerializerDetailedCommon;
 import utilities.ImageResolver;
 
 @Entity(tableName = "agencies")

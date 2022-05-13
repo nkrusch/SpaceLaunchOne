@@ -1,11 +1,11 @@
 apply plugin: 'com.android.library'
 
 android {
-    compileSdkVersion 30
+    compileSdkVersion 31
     buildToolsVersion "30.0.3"
     defaultConfig {
         minSdkVersion 19
-        targetSdkVersion 30
+        targetSdkVersion 31
         versionCode 1
         versionName "1.0"
         buildConfigField 'String', "ImageAssetPath", Image_Asset_Path
@@ -44,6 +44,7 @@ dependencies {
     annotationProcessor "androidx.room:room-compiler:$roomVersion"
     implementation "com.squareup.retrofit2:converter-gson:$retrofitVersion"
     implementation "com.squareup.retrofit2:retrofit:$retrofitVersion"
+    implementation "org.threeten:threetenbp:$threetenbpVersion"
     implementation 'org.jsoup:jsoup:1.13.1'
     implementation project(':models')
 }

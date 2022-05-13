@@ -1,7 +1,7 @@
 package utilities;
 
-import apimodels.LaunchListDetailed;
-import apimodels.data.BuildConfig;
+import models.LaunchListDetailed;
+import models.data.BuildConfig;
 
 public class ProcessResult {
     boolean success;

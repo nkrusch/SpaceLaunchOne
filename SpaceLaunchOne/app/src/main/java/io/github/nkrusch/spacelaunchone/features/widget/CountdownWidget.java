@@ -23,7 +23,7 @@ import io.github.nkrusch.spacelaunchone.app.Utilities;
 import io.github.nkrusch.spacelaunchone.features.launchdetails.DetailsLaunchActivity;
 import io.github.nkrusch.spacelaunchone.features.MainActivity;
 import local.WidgetGetNextTask;
-import service.InitTime;
+import services.InitTime;
 import utilities.AppExecutors;
 
 import static android.view.View.VISIBLE;

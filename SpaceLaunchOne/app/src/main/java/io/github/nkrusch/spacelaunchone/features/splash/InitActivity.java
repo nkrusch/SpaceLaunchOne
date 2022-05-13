@@ -7,11 +7,11 @@ import android.content.IntentFilter;
 
 import androidx.appcompat.app.AppCompatActivity;
 import io.github.nkrusch.spacelaunchone.app.Utilities;
-import service.InitIntentService;
-import service.InitTime;
+import services.InitIntentService;
+import services.InitTime;
 
-import static service.InitIntentService.ACTION_INITIALIZE;
-import static service.InitIntentService.ACTION_OUTCOME;
+import static services.InitIntentService.ACTION_INITIALIZE;
+import static services.InitIntentService.ACTION_OUTCOME;
 
 /**
  * This class provides necessary base methods to initialize application data.

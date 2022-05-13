@@ -21,7 +21,7 @@ import io.github.nkrusch.spacelaunchone.features.main.FavoriteFragment;
 import io.github.nkrusch.spacelaunchone.features.main.LocationsFragment;
 import io.github.nkrusch.spacelaunchone.features.main.ScheduledFragment;
 import io.github.nkrusch.spacelaunchone.features.settings.SettingsActivity;
-import service.InitTime;
+import services.InitTime;
 
 import static android.view.View.GONE;
 import static android.view.View.VISIBLE;

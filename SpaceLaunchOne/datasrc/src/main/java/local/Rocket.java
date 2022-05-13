@@ -8,7 +8,7 @@ import androidx.annotation.NonNull;
 import androidx.room.Entity;
 import androidx.room.Ignore;
 import androidx.room.PrimaryKey;
-import apimodels.LauncherConfigDetail;
+import models.LauncherConfigDetail;
 
 
 @Entity(tableName = "rockets")

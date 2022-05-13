@@ -12,7 +12,7 @@ import android.os.Bundle;
 import io.github.nkrusch.spacelaunchone.R;
 import io.github.nkrusch.spacelaunchone.app.Utilities;
 import io.github.nkrusch.spacelaunchone.features.MainActivity;
-import service.InitTime;
+import services.InitTime;
 
 /**
  * This is application entry point activity.

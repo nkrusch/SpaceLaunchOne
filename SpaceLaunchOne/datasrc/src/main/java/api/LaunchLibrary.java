@@ -12,9 +12,9 @@ import javax.net.ssl.TrustManager;
 import javax.net.ssl.X509TrustManager;
 
 import androidx.annotation.NonNull;
-import apimodels.LaunchDetailed;
-import apimodels.LaunchListDetailed;
-import apimodels.data.BuildConfig;
+import models.LaunchDetailed;
+import models.LaunchListDetailed;
+import models.data.BuildConfig;
 import okhttp3.OkHttpClient;
 import retrofit2.Call;
 import retrofit2.Response;
@@ -78,7 +78,7 @@ public class LaunchLibrary extends Logger {
     @SuppressWarnings("unchecked")
     private static <T> void makeRequest(
             @NonNull final methodRunner<?> exec,
-            @NonNull final OnLoadCallback<T> callback) {
+            @NonNull final AsyncCallback<T> callback) {
         AppExecutors.getInstance().networkIO().execute(() -> {
             ILaunchLibrary request = new Retrofit.Builder()
                     .baseUrl(BuildConfig.ApiBasepath)
@@ -87,7 +87,7 @@ public class LaunchLibrary extends Logger {
                     .build()
                     .create(ILaunchLibrary.class);
             try {
-                callback.call((T) exec.run(request));
+                callback.onSuccess((T) exec.run(request));
             } catch (Exception e) {
                 displayError(e);
                 callback.onError(e);
@@ -125,7 +125,7 @@ public class LaunchLibrary extends Logger {
      * @param count    - number of launches to fetch when initializing
      * @param callback - handler to process result
      */
-    public static void initialLaunches(final int count, @NonNull final OnLoadCallback<LaunchListDetailed> callback) {
+    public static void initialLaunches(final int count, @NonNull final AsyncCallback<LaunchListDetailed> callback) {
         makeRequest((methodRunner<LaunchListDetailed>) service -> {
             LaunchListDetailed result = new LaunchListDetailed();
             result.setResults(new LinkedList<>());
@@ -141,7 +141,7 @@ public class LaunchLibrary extends Logger {
      * @param id       - launch id
      * @param callback - handler to process result
      */
-    public static void getSingleLaunch(final String id, @NonNull final OnLoadCallback<LaunchDetailed> callback) {
+    public static void getSingleLaunch(final String id, @NonNull final AsyncCallback<LaunchDetailed> callback) {
         makeRequest((methodRunner<LaunchDetailed>) service -> {
             Call<LaunchDetailed> request = service.launch(id);
             Response<LaunchDetailed> resp = request.execute();
@@ -157,7 +157,7 @@ public class LaunchLibrary extends Logger {
      * @param callback - handler to process result
      */
     public static void allLaunches(final int offset, @NonNull final
-    OnLoadCallback<LaunchListDetailed> callback) {
+    AsyncCallback<LaunchListDetailed> callback) {
         makeRequest((methodRunner<LaunchListDetailed>) service -> {
             Call<LaunchListDetailed> request = service.all_launches(offset);
             Response<LaunchListDetailed> resp = service.all_launches(offset).execute();
