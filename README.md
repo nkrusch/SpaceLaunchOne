@@ -11,9 +11,11 @@ Space Launch 1 is an Android application for tracking space flights.
 This application gets its data from [Launch Library API](https://ll.thespacedevs.com/2.0.0/swagger/). Then using the data, the Android app presents it to the user in an organized way. This app is intended for astronomy enthusiasts who are looking for up-to-date information about upcoming rocket launches.
 Also [available at Amazon appstore](https://www.amazon.com/gp/product/B08TB6GDNQ).
 
+<!--
 <p align="center">
 <a href='https://play.google.com/store/apps/details?id=io.github.nkrusch.spacelaunchone'><img alt='Get it on Google Play' height="72" src='https://play.google.com/intl/en_us/badges/images/generic/en_badge_web_generic.png'/></a>
 </p>
+-->
 
 
 
