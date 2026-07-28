@@ -2,10 +2,6 @@
 
 <img src="feature.jpg" alt="app feature" />
 
-[![Build Status](https://app.travis-ci.com/nkrusch/SpaceLaunchOne.svg?branch=master)](https://app.travis-ci.com/nkrusch/SpaceLaunchOne)
-![GitHub release (latest by date)](https://img.shields.io/github/v/release/nkrusch/SpaceLaunchOne)
-![GitHub Release Date](https://img.shields.io/github/release-date/nkrusch/SpaceLaunchOne)
-
 Space Launch 1 is an Android application for tracking space flights.
 
 This application gets its data from [Launch Library API](https://ll.thespacedevs.com/2.0.0/swagger/). Then using the data, the Android app presents it to the user in an organized way. This app is intended for astronomy enthusiasts who are looking for up-to-date information about upcoming rocket launches.
@@ -29,7 +25,7 @@ Also [available at Amazon appstore](https://www.amazon.com/gp/product/B08TB6GDNQ
 | No tracking | No ads | API >= Kitkat | Translations: 2 | 
 
 
-### Feature requests and Issues
+### Feature Requests and Issues
 
 If you find something that is not working as inteded or want to request new features, open a new issue here on Github.
 
@@ -38,9 +34,5 @@ If you find something that is not working as inteded or want to request new feat
 ### Background
 
 Originally I made this Android app in 2018 as a capstone project for Udacity Android developer nanodegree program. The purpose of a capstone project is to apply different concepts learned during the program, and demonstrate these skills by creating and designing an application of choice. This repository contains both stages of the capstone project. In [stage 1](https://github.com/nkrusch/SpaceLaunchOne/tree/master/docs/Capstone_Stage1.pdf) the purpose is to design the application and produce a design document. In [stage 2](https://github.com/nkrusch/SpaceLaunchOne/tree/master/SpaceLaunchOne) the purpose is to build the application based on the design document. 
-
-* * *
-
-**Want early releases?** join open beta **[here &raquo;](https://play.google.com/apps/testing/io.github.nkrusch.spacelaunchone)**
 
 **Privacy Policy**: read it **[here &raquo;](https://github.com/nkrusch/SpaceLaunchOne/blob/master/docs/privacy_policy.md)**
